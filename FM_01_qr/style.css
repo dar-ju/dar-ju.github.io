@@ -5,9 +5,9 @@ body {
 
 .section {
     display: flex;
-    min-width: 375px;
+    min-width: 360px;
     width: 1440px;
-    padding: 234px 0;
+    padding: 220px 0;
     margin: auto;
     justify-content: center;
 }
@@ -29,7 +29,7 @@ body {
 
 .qr__wrapper {
     display: flex;
-    padding: 0 15px;
+    padding: 0 20px;
     margin-bottom: 25px;
     gap: 18px;
     flex-direction: column;
@@ -40,7 +40,7 @@ body {
 }
 
 .qr__title {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 28px;
 }
 
