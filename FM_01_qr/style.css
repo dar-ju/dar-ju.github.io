@@ -7,7 +7,7 @@ body {
     display: flex;
     min-width: 375px;
     width: 1440px;
-    padding: 150px 0;
+    padding: 234px 0;
     margin: auto;
     justify-content: center;
 }
@@ -19,7 +19,7 @@ body {
 
 .qr {
     display: flex;
-    max-width: 290px;
+    max-width: 306px;
     padding: 15px;
     gap: 23px;
     flex-direction: column;
@@ -31,7 +31,7 @@ body {
     display: flex;
     padding: 0 15px;
     margin-bottom: 25px;
-    gap: 17px;
+    gap: 18px;
     flex-direction: column;
 }
 
@@ -40,13 +40,13 @@ body {
 }
 
 .qr__title {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 22px;
+    line-height: 28px;
 }
 
 .qr__description {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 16px;
+    line-height: 22px;
 }
 
 .attribution a {
