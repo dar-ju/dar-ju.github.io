@@ -28,7 +28,7 @@ body {
     background-color: hsl(47, 88%, 63%);
 }
 
-.section {
+.article {
     padding-top: 220px;
     padding-bottom: 220px;
 }
@@ -111,7 +111,7 @@ body {
 
 /* MEDIA */
 @media (max-width: 480px) {
-    .section {
+    .article {
         padding-top: 156px;
         padding-bottom: 156px;
     }
