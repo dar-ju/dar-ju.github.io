@@ -1,4 +1,8 @@
 ![изображение](https://github.com/user-attachments/assets/505e5f51-6730-473c-80d4-d8cd9cd3e931)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 71fe2c4a71a10a0d19c8e2e3d18f0942fa5525e2
 
 ### Links
 
