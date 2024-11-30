@@ -42,11 +42,13 @@ body {
 .qr__title {
     font-size: 21px;
     line-height: 26px;
+    color: hsl(218, 44%, 22%);
 }
 
 .qr__description {
     font-size: 15px;
     line-height: 20px;
+    color: hsl(216, 15%, 48%);
 }
 
 .attribution a {
