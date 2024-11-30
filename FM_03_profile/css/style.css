@@ -1,0 +1,152 @@
+/* FONTS */
+@font-face {
+    font-family: "Inter";
+    src: url("../assets/fonts/static/Inter-Regular.ttf");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../assets/fonts/static/Inter-SemiBold.ttf");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Inter";
+    src: url("../assets/fonts/static/Inter-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* GENERAL */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 375px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    background-color: hsl(0, 0%, 8%);
+    color: hsl(0, 0%, 100%);
+}
+
+.article {
+    padding-top: 174px;
+    padding-bottom: 174px;
+}
+
+.container {
+    display: block;
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+}
+
+.profile {
+    display: flex;
+    max-width: 304px;
+    padding: 40px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 12%);
+}
+
+.profile__image {
+    width: 88px;
+    margin-bottom: 27px;
+    border-radius: 50%;
+}
+
+.profile__info {
+    display: flex;
+    margin-bottom: 28px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile__title {
+    margin: 0;
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.profile__location {
+    margin-bottom: 27px;
+    color: hsl(75, 94%, 57%);
+    font-weight: 600;
+}
+
+.profile__list {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile__item {
+    width: 100%;
+    border-radius: 10px;
+    background-color: hsl(0, 0%, 20%);
+    text-align: center;
+}
+
+.profile__btn {
+    width: 100%;
+    height: 100%;
+    padding: 15px 0;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: hsl(0, 0%, 100%);
+    font-weight: 600;
+}
+
+.profile__item:hover {
+    background-color: hsl(75, 94%, 57%);
+    color: hsl(0, 0%, 12%);
+    transition: background-color 0.3s ease-in-out;
+}
+
+.profile__btn:hover {
+    color: hsl(0, 0%, 12%);
+    transition: color 0.3s ease-in-out;
+}
+
+/* MEDIA */
+@media (max-width: 480px) {
+    .article {
+        padding-top: 132px;
+        padding-bottom: 132px;
+    }
+
+    .profile {
+        width: 289px;
+        padding: 20px;
+    }
+
+    .profile__image {
+        width: 95px;
+    }
+
+    .profile__info {
+        margin-bottom: 25px;
+    }
+
+    .profile__list {
+        width: 97%;
+    }
+}
