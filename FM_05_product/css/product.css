@@ -30,6 +30,7 @@ body {
 
 .product-card__image {
     min-width: 300px;
+    height: 100%;
     overflow: hidden;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -62,7 +63,7 @@ body {
 
 .product-card__price {
     display: flex;
-    margin-bottom: 25px;
+    margin-bottom: 26px;
     align-items: center;
     gap: 18px;
 }
@@ -80,7 +81,7 @@ body {
 
 .product-card__button {
     width: 100%;
-    padding: 16px;
+    padding: 15px;
     background-color: var(--color-dark-cyan);
     border-radius: 9px;
     font-weight: 700;
