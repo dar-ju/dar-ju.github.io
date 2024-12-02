@@ -12,3 +12,4 @@
 - Flexbox
 - Mobile-first workflow
 - BEM metodology
+- Perfect Pixel
