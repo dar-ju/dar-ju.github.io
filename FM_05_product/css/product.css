@@ -29,7 +29,7 @@ body {
 }
 
 .product-card__image {
-    min-width: 301px;
+    min-width: 302px;
     overflow: hidden;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
