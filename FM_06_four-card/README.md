@@ -1,4 +1,4 @@
-![Four card screen](c:\Users\user\Desktop\screen06.jpg)
+![Four card screen](image.png)
 
 ## Links
 
