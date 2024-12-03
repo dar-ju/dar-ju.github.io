@@ -1,0 +1,158 @@
+/* FONT */
+@font-face {
+    font-family: "Figtree";
+    src: url("../assets/fonts/static/Figtree-SemiBold.ttf");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Figtree";
+    src: url("../assets/fonts/static/Figtree-ExtraBold.ttf");
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* GENERAL */
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 375px;
+    font-family: "Figtree", sans-serif;
+    font-weight: 500;
+    background-color: hsl(47, 88%, 63%);
+}
+
+.article {
+    padding-top: 220px;
+    padding-bottom: 220px;
+}
+
+.container {
+    display: block;
+    max-width: 1440px;
+    width: 100%;
+    margin: auto;
+}
+
+.card {
+    display: flex;
+    max-width: 340px;
+    padding: 20px;
+    margin: 0 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #000;
+    border-radius: 20px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 10px 10px black;
+}
+
+.card__image {
+    width: 100%;
+    margin-bottom: 22px;
+    border-radius: 10px;
+}
+
+.card__lable {
+    margin-bottom: 14px;
+    padding: 7px 14px;
+    background-color: hsl(47, 88%, 63%);
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.card__date {
+    display: block;
+    margin-bottom: 11px;
+    color: hsl(0, 0%, 7%);
+    font-size: 14px;
+}
+
+.card__title {
+    margin: 0;
+    margin-bottom: 16px;
+}
+
+.card__link {
+    font-size: 24px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 800;
+}
+
+.card__link:hover {
+    color: hsl(47, 88%, 63%);
+    transition: color 0.3s ease-in-out;
+}
+
+.card__description {
+    margin: 0;
+    margin-bottom: 22px;
+    line-height: 1.5;
+    color: hsl(0, 0%, 42%);
+}
+
+.card__author {
+    padding: 10px 45px;
+    background-image: url("../assets/images/image-avatar.webp");
+    background-repeat: no-repeat;
+    background-size: 35px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+/* MEDIA */
+@media (max-width: 480px) {
+    .article {
+        padding-top: 156px;
+        padding-bottom: 156px;
+    }
+
+    .card {
+        max-width: 280px;
+        padding: 23px;
+    }
+
+    .card__image {
+        min-height: 200px;
+        margin-bottom: 24px;
+        object-fit: cover;
+    }
+
+    .card__lable {
+        margin-bottom: 13px;
+        padding: 7px 12px;
+        font-size: 12px;
+    }
+
+    .card__title {
+        margin-bottom: 13px;
+    }
+
+    .card__date {
+        margin-bottom: 7px;
+        font-size: 12px;
+    }
+
+    .card__link {
+        font-size: 20px;
+    }
+
+    .card__description {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .card__author {
+        padding: 8px 0;
+        padding-left: 44px;
+        background-size: 32px;
+    }
+}
