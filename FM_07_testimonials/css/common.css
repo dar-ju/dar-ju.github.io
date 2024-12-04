@@ -1,0 +1,19 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+/* COLORS */
+:root {
+  --color-moderate-violet: hsl(263, 55%, 52%);
+  --color-very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --color-very-dark-grayish-blue30: hsl(217, 19%, 35%, 0.3);
+  --color-very-dark-blackish-blue: hsl(219, 29%, 14%);
+  --color-very-dark-blackish-blue50: hsl(219, 29%, 14%, 0.5);
+  --color-very-dark-blackish-blue70: hsl(219, 29%, 14%, 0.7);
+  --color-white: hsl(0, 0%, 100%);
+
+  --color-light-gray: hsl(0, 0%, 81%);
+  --color-light-gray50: hsla(0, 0%, 81%, 0.5);
+  --color-light-gray70: hsla(0, 0%, 81%, 0.7);
+  --color-light-grayish-blue: hsl(210, 46%, 95%);
+  --color-moderate-light-violet: hsl(263, 51%, 59%);
+}
