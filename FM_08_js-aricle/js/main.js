@@ -15,8 +15,7 @@ function toggle(block, state) {
 // click on follow button
 followButton.addEventListener('click', (event) => {
   event.stopPropagation();
-  if (window.innerWidth > 768) toggle(popupBlock, 1);
-  else toggle(panelBlock, 1);
+  window.innerWidth > 768 ? toggle(popupBlock, 1) : toggle(panelBlock, 1)
   followButton.style.backgroundColor = colorDesaturatedDarkBlue;
   followArrow.style.fill = colorLightGrayishBlue;
 })
@@ -25,8 +24,7 @@ followButton.addEventListener('click', (event) => {
 document.addEventListener('click', (event) => {
   if (Array.from(socialButtons).includes(event.target)) return
   if (!popupBlock.contains(event.target) || !panelBlock.contains(event.target)) {
-    if (window.innerWidth > 768) toggle(popupBlock, 0);
-    else toggle(panelBlock, 0);
+    window.innerWidth > 768 ? toggle(popupBlock, 0) : toggle(panelBlock, 0)
     followButton.style.backgroundColor = colorLightGrayishBlue;
     followArrow.style.fill = colorDesaturatedDarkBlue;
   }
