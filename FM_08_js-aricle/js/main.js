@@ -9,7 +9,7 @@ const colorLightGrayishBlue = getComputedStyle(document.documentElement).getProp
 // toggle function of states
 function toggle(block, state) {
   block.style.opacity = state;
-  state ? popupBlock.style.pointerEvents = 'auto' : popupBlock.style.pointerEvents = 'none'
+  state ? block.style.pointerEvents = 'auto' : block.style.pointerEvents = 'none'
 }
 
 // click on follow button
