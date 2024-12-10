@@ -1,83 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
   <link rel="stylesheet" href="./css/styles.css">
   <script defer src="./js/main.js"></script>
 </head>
+
 <body>
-
-<main>
-  <section class="newsletter">
-    <article class="newsletter__wrapper">
-      <div class="container newsletter__container">
-        <div class="newsletter__main-block">
-          <h2 class="newsletter__title">Stay updated!</h2>
-          <p class="newsletter__description">Join&nbsp;60,000+ product managers receiving monthly updates&nbsp;on:</p>
-          <ul class="newsletter__advantage-list">
-            <li class="newsletter__advantage-item">Product discovery and building what matters</li>
-            <li class="newsletter__advantage-item">Measuring to&nbsp;ensure updates are a&nbsp;success</li>
-            <li class="newsletter__advantage-item">And much more!</li>
-          </ul>
-          <form id="subscribe" class="newsletter__form">
-            <div class="newsletter__form-block">
-              <label class="newsletter__form-input-label" for="email">Email address</label>
-              <span class="newsletter__form-notice">Valid email required</span>
-            </div>
-            <input class="newsletter__form-input" type="email" name="email" placeholder="email@company.com">
-            <button id="subscribe-button" class="main-button" type="submit">Subscribe to&nbsp;monthly newsletter</button>
-          </form>
+  <main>
+    <div class="newsletter">
+      <article class="newsletter__wrapper">
+        <div class="container newsletter__container">
+          <div class="newsletter__main-block">
+            <h2 class="newsletter__title">Stay updated!</h2>
+            <p class="newsletter__description">Join&nbsp;60,000+ product managers receiving monthly updates&nbsp;on:</p>
+            <ul class="newsletter__advantage-list">
+              <li class="newsletter__advantage-item">Product discovery and building what matters</li>
+              <li class="newsletter__advantage-item">Measuring to&nbsp;ensure updates are a&nbsp;success</li>
+              <li class="newsletter__advantage-item">And much more!</li>
+            </ul>
+            <form id="subscribe" class="newsletter__form">
+              <div class="newsletter__form-block">
+                <label class="newsletter__form-input-label" for="subscribe-email-field">Email address</label>
+                <span class="newsletter__form-notice">Valid email required</span>
+              </div>
+              <input id="subscribe-email-field" class="newsletter__form-input" type="email"
+                placeholder="email@company.com">
+              <button id="subscribe-button" class="main-button" type="submit">Subscribe to&nbsp;monthly
+                newsletter</button>
+            </form>
+          </div>
+          <div class="newsletter__image-block"></div>
         </div>
-        <div class="newsletter__image-block"></div>
-      </div>
-    </article>
-  </section>
+      </article>
+    </div>
 
-  <div class="container success__container">
-    <div class="success">
-      <div class="success__wrapper">
-        <h2 class="success__title">Thanks for subscribing!</h2>
-        <p class="success__description">A&nbsp;confirmation email has been sent to ash@loremcompany.com. Please open it&nbsp;and click the button inside to&nbsp;confirm your subscription.</p>
-        <button id="success-button" class="main-button">Dismiss message</button>
+    <div class="container success__container">
+      <div class="success">
+        <div class="success__wrapper">
+          <h2 class="success__title">Thanks for subscribing!</h2>
+          <p class="success__description"></p>
+          <button id="success-button" class="main-button">Dismiss message</button>
+        </div>
       </div>
     </div>
-  </div>
-</main>
-
-  <!-- Sign-up form start -->
-
-  <!-- Stay updated!
-
-  Join 60,000+ product managers receiving monthly updates on:
-
-  Product discovery and building what matters
-  Measuring to ensure updates are a success
-  And much more!
-
-  Email address
-  email@company.com
-
-  Subscribe to monthly newsletter -->
-
-  <!-- Sign-up form end -->
-
-  <!-- Success message start -->
-
-  <!-- Thanks for subscribing!
-
-  A confirmation email has been sent to ash@loremcompany.com.
-  Please open it and click the button inside to confirm your subscription.
-
-  Dismiss message -->
-
-  <!-- Success message end -->
-<!--
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
-  </div> -->
+  </main>
 </body>
+
 </html>
