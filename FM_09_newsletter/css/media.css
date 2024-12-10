@@ -1,0 +1,81 @@
+/* MEDIA */
+
+@media (max-width: 1024px) {
+  .newsletter__image-block {
+    width: 40%;
+  }
+
+  .newsletter__main-block {
+    padding: 23px 15px 26px 15px;
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .newsletter {
+    padding: 0;
+  }
+
+  .newsletter__container {
+    padding: 0;
+    flex-direction: column;
+    border-radius: 0;
+  }
+
+  .newsletter__wrapper {
+    padding: 0;
+  }
+
+  .newsletter__image-block {
+    width: 100%;
+    min-height: 283px;
+    order: -1;
+    background-image: url('../assets/images/illustration-sign-up-mobile.svg');
+    background-position: center top;
+    background-size: 100%;
+    border-radius: 0;
+  }
+
+  .newsletter__main-block {
+    width: 100%;
+    padding: 37px 24px;
+  }
+
+  .newsletter__title {
+    margin-bottom: 20px;
+    font-size: 40px;
+  }
+
+  .newsletter__description {
+    margin-bottom: 28px;
+  }
+
+  .newsletter__advantage-list {
+    gap: 11px;
+  }
+
+  .newsletter__advantage-item {
+    align-items: start;
+    line-height: 23px;
+  }
+
+  /* MODAL SUCCESS */
+  .success__container {
+    padding: 0;
+  }
+
+  .success {
+    padding: 150px 25px;
+    padding-bottom: 25px;
+    border-radius: 0;
+  }
+
+  .success__title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .success__description {
+    margin-bottom: 267px;
+  }
+}
