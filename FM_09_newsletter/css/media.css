@@ -1,5 +1,5 @@
 /* MEDIA */
-
+/* 1024px */
 @media (max-width: 1024px) {
   .newsletter__image-block {
     width: 40%;
@@ -11,6 +11,7 @@
   }
 }
 
+/* 768px */
 @media (max-width: 768px) {
   .newsletter {
     padding: 0;
@@ -59,7 +60,7 @@
     line-height: 23px;
   }
 
-  /* MODAL SUCCESS */
+  /* MODAL SUCCESS 768px */
   .success__container {
     padding: 0;
   }

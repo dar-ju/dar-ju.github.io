@@ -107,11 +107,14 @@ body {
   padding: 18px 25px;
   border: 1px solid var(--color-grey);
   border-radius: 10px;
-  transition: border ease-in-out 0.3s;
+  color: var(--color-charcoal-grey);
+  transition: border ease-in-out 0.3s, background-color ease-in-out 0.3s;
 }
 
 .newsletter__form-input_error {
   border: 1px solid var(--color-tomato);
+  background-color: var(--color-tomato-light);
+  color: var(--color-tomato);
 }
 
 .newsletter__form-input_error:-webkit-autofill {

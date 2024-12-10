@@ -28,6 +28,12 @@ inputField.addEventListener('blur', () => {
   if (inputField.value) emailCheck();
 })
 
+// error message hide on focus
+inputField.addEventListener('focus', () => {
+  inputField.classList.remove('newsletter__form-input_error');
+  errorNotice.style.opacity = '0';
+})
+
 // submit form
 form.addEventListener('submit', (event) => {
   event.preventDefault();
