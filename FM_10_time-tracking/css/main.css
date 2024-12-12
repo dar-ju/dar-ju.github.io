@@ -11,84 +11,175 @@ body {
 .container {
   max-width: 1440px;
   margin: auto;
-  padding-left: 70px;
-  padding-right: 70px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .dash {
   display: grid;
-  width: 1110px;
-  padding-top: 260px;
-  padding-bottom: 260px;
-  grid-template-columns: repeat(4, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	gap: 20px 30px;
+  max-width: 1111px;
+  margin: 0 auto;
+  padding-top: 253px;
+  padding-bottom: 253px;
+  grid-template-columns: repeat(4, minmax(200px, auto));
+	gap: 25px 30px;
 }
 
+/* USER CARD */
 .dash__user {
+  display: flex;
   grid-row: 1 / 3;
-}
-
-.dash__user-main {
-  padding: 15px;
-  border-radius: 10px;
-  background-color: var(--color-desaturated-blue);
-  z-index: 2;
-}
-.dash__main-img {
-  width: 40px;
-  margin-bottom: 30px;
-  border: 2px solid var(--color-white);
-}
-
-.dash__main-report {
-  color: var(--color-pale-blue);
-}
-
-.dash__main-name {
-  font-size: 48px;
-}
-
-.dash__user-period {
-  padding: 15px;
-  background-color: var(--color-dark-blue);
-}
-
-.dash__user-period-list {
-  display: flex;
-  gap: 15px;
-  flex-direction: column;
-}
-
-.dash__user-period-item {
-  color: var(--color-pale-blue);
-}
-
-.dash__card {
-  display: flex;
   flex-direction: column;
   border-radius: 15px;
   background-color: var(--color-dark-blue);
 }
-.dash__card_work {
-}
-.dash__card-decor {
-  width: 100%;
-  background-image: url('../images/icon-work.svg');
-  background-repeat: no-repeat;
-}
-.dash__card-data {
+
+.dash__user-main {
   display: flex;
-  max-height: 80%;
-  padding: 30px;
-  justify-self: flex-end;
+  padding: 32px;
+  padding-bottom: 77px;
+  flex-direction: column;
+  border-radius: 15px;
+  background-color: var(--color-blue);
+}
+
+.dash__user-img {
+  width: 82px;
+  margin-bottom: 44px;
+  border-radius: 50%;
+  border: 4px solid var(--color-white);
+}
+
+.dash__user-report {
+  font-size: 15px;
+  color: var(--color-pale-blue);
+}
+
+.dash__user-name {
+  font-size: 40px;
+  font-weight: 200;
+  line-height: 49px;
+}
+
+.dash__user-name-wrap {
+  display: block;
+}
+
+.dash__user-period {
+  padding: 28px 32px;
+}
+
+.dash__user-period-list {
+  display: flex;
+  gap: 21px;
   flex-direction: column;
 }
+
+.dash__user-period-item {
+  color: var(--color-desaturated-blue);
+  cursor: pointer;
+  transition: color ease-in-out 0.3s;
+}
+
+.dash__user-period-item:hover {
+  color: var(--color-white);
+}
+
+/* CARD */
+.dash__card {
+  display: flex;
+  min-height: 248px;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: right 16px top -9px;
+}
+
+.dash__card-data {
+  display: flex;
+  padding: 34px 31px;
+  flex-direction: column;
+  background-color: var(--color-dark-blue);
+  border-radius: 15px;
+  box-shadow: 0 0 0 1px var(--color-dark-blue);
+  cursor: pointer;
+  transition: background-color ease-in-out 0.3s;
+}
+
+.dash__card-data:hover {
+  background-color: var(--color-lite-blue);
+}
+
+.dash__card-title-wrapper {
+  display: flex;
+  margin-bottom: 26px;
+  justify-content: space-between;
+}
+
 .dash__card-title {
+  font-size: 17px;
+  font-weight: 500;
 }
+
+.dash__card-menu {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 8px;
+  letter-spacing: 3px;
+  color: var(--color-pale-blue);
+  transition: color ease-in-out 0.3s;
+}
+
+.dash__card-menu:hover {
+  color: var(--color-white);
+}
+
+.dash__card-period-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .dash__card-time {
+  font-size: 55px;
+  font-weight: 300;
 }
+
 .dash__card-previous-data {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--color-pale-blue);
 }
+
+.dash__card_work {
+  background-image: url('../images/icon-work.svg');
+  background-color: var(--color-light-orange);
+}
+
 .dash__card_play {
+  background-image: url('../images/icon-play.svg');
+  background-color: var(--color-soft-blue);
+  background-position: right 21px top -4px;
+}
+
+.dash__card_study {
+  background-image: url('../images/icon-study.svg');
+  background-color: var(--color-light-red);
+}
+
+.dash__card_exercise {
+  background-image: url('../images/icon-exercise.svg');
+  background-color: var(--color-lime-green);
+  background-position: right 16px top;
+}
+
+.dash__card_social {
+  background-image: url('../images/icon-social.svg');
+  background-color: var(--color-violet);
+}
+
+.dash__card_self-care {
+  background-image: url('../images/icon-self-care.svg');
+  background-color: var(--color-soft-orange);
 }
