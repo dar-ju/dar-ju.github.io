@@ -187,6 +187,10 @@ body {
   background-image: url('../images/icon-self-care.svg');
   background-color: var(--color-soft-orange);
 }
+.dash__card_xxx {
+  background-image: url('../images/icon-self-care.svg');
+  background-color: var(--color-soft-orange);
+}
 
 /* ANIMATION */
 
