@@ -85,6 +85,10 @@ body {
   color: var(--color-white);
 }
 
+.dash__user-period-item_color {
+  color: var(--color-white);
+}
+
 /* CARD */
 .dash__card {
   display: flex;
@@ -182,4 +186,19 @@ body {
 .dash__card_self-care {
   background-image: url('../images/icon-self-care.svg');
   background-color: var(--color-soft-orange);
+}
+
+/* ANIMATION */
+
+.dash__fadeout {
+  animation: fadeOut 0.2s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
