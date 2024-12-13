@@ -8,7 +8,7 @@ const periodNames = {
 // fetch data function
 async function loadPeriods() {
   try {
-    const response = await fetch('../data.json')
+    const response = await fetch('https://dar-ju.github.io/FM_10_time-tracking/data.json')
     const data = await response.json();
     return data;
   } catch (err) {
