@@ -1,0 +1,132 @@
+/* MAIN */
+body {
+  font-family: "Space Mono", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  background-color: var(--color-light-grayish-cyan);
+  color: var(--color-very-dark-cyan);
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.tip-calculator {
+  max-width: 920px;
+  margin: 0 auto;
+  padding-top: 163px;
+  padding-bottom: 163px;
+}
+
+.tip-calculator__logo {
+  margin: auto;
+  margin-bottom: 87px;
+}
+
+.tip-calculator__wrapper {
+  display: flex;
+  padding: 32px;
+  gap: 50px;
+  border-radius: 25px;
+  background-color: var(--color-white);
+}
+
+.tip-calculator__data-wrapper {
+  padding: 16px;
+}
+
+.tip-calculator__data {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.tip-calculator__data-title {
+  margin-bottom: 9px;
+  font-size: 16px;
+  color: var(--color-dark-grayish-cyan);
+}
+
+.tip-calculator__data-title_margin {
+  margin-bottom: 18px;
+}
+
+.tip-calculator__input {
+  max-width: 378px;
+  min-height: 47px;
+  text-align: right;
+  border-radius: 10px;
+  background-color: var(--color-very-light-grayish-cyan);
+  background-repeat: no-repeat;
+  background-position: center left 18px;
+}
+
+.tip-calculator__input_bill {
+  margin-bottom: 44px;
+  background-image: url('../images/icon-dollar.svg');
+}
+
+.tip-calculator__input_person {
+  background-image: url('../images/icon-person.svg');
+}
+
+.tip-calculator__tip-list {
+  display: flex;
+  margin-bottom: 44px;
+  gap: 16px 11px;
+  flex-wrap: wrap;
+}
+
+.tip-calculator__tip-item {
+  width: 120px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: var(--color-very-dark-cyan);
+  color: var(--color-very-light-grayish-cyan);
+}
+
+.tip-calculator__tip-item_custom {}
+
+.tip-calculator__result-wrapper {
+  padding: 30px;
+  background-color: var(--color-very-dark-cyan);
+}
+
+.tip-calculator__result {
+
+}
+
+.tip-calculator__item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tip-calculator__title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.tip-calculator__result-title {
+  font-size: 16px;
+  color: var(--color-very-light-grayish-cyan);
+}
+
+.tip-calculator__result-subtitle {
+  font-size: 16px;
+  color: var(--color-grayish-cyan);
+}
+
+.tip-calculator__result-data {
+  color: var(--color-strong-cyan);
+  font-size: 48px;
+}
+
+.tip-calculator__total-wrapper {}
+
+.tip-calculator__button-reset {
+  width: 100%;
+}

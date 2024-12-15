@@ -1,22 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
   <title>Frontend Mentor | Tip calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./main.js"></script>
 </head>
-<body>
 
-  Bill
+<body>
+  <main>
+    <div class="container">
+      <div class="tip-calculator">
+        <img class="tip-calculator__logo" src="./images/logo.svg" alt="Splitter logo">
+        <div class="tip-calculator__wrapper">
+          <div class="tip-calculator__data-wrapper">
+            <div class="tip-calculator__data">
+              <label class="tip-calculator__data-title" for="bill">Bill</label>
+              <input class="tip-calculator__input tip-calculator__input_bill" type="number" placeholder="0" name="bill">
+              <span class="tip-calculator__data-title tip-calculator__data-title_margin">Select Tip %</span>
+              <ul class="tip-calculator__tip-list">
+                <li class="tip-calculator__tip-item">5%</li>
+                <li class="tip-calculator__tip-item">10%</li>
+                <li class="tip-calculator__tip-item">15%</li>
+                <li class="tip-calculator__tip-item">25%</li>
+                <li class="tip-calculator__tip-item">50%</li>
+                <li class="tip-calculator__tip-item tip-calculator__tip-item_custom">Custom</li>
+              </ul>
+              <label class="tip-calculator__data-title" for="people">Number of People</label>
+              <input class="tip-calculator__input tip-calculator__input_person" type="number" placeholder="0"
+                name="people">
+            </div>
+          </div>
+          <div class="tip-calculator__result-wrapper">
+            <ul class="tip-calculator__result">
+              <li class="tip-calculator__item">
+                <div class="tip-calculator__title-block">
+                  <span class="tip-calculator__result-title">Tip Amount</span>
+                  <span class="tip-calculator__result-subtitle">/ person</span>
+                </div>
+                <span class="tip-calculator__result-data">$0.00</span>
+              </li>
+              <li class="tip-calculator__item">
+                <div class="tip-calculator__title-block">
+                  <span class="tip-calculator__result-title">Total</span>
+                  <span class="tip-calculator__result-subtitle">/ person</span>
+                </div>
+                <span class="tip-calculator__result-data">$0.00</span>
+              </li>
+            </ul>
+            <button class="tip-calculator__button-reset">RESET</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bill
 
   Select Tip %
   5%
@@ -34,11 +77,8 @@
   Total
   / person
 
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  Reset -->
+
 </body>
+
 </html>
