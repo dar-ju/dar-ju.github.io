@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Tip calculator app</title>
   <link rel="stylesheet" href="./css/styles.css">
@@ -18,23 +17,26 @@
         <img class="tip-calculator__logo" src="./images/logo.svg" alt="Splitter logo">
         <div class="tip-calculator__wrapper">
           <div class="tip-calculator__data-wrapper">
-            <div class="tip-calculator__data">
-              <label class="tip-calculator__data-title" for="bill">Bill</label>
-              <input class="tip-calculator__input tip-calculator__input_bill" type="number" placeholder="0" name="bill">
-              <span class="tip-calculator__data-title tip-calculator__data-title_margin">Select Tip %</span>
+            <form class="tip-calculator__data">
+              <label class="tip-calculator__data-title tip-calculator__data-title_margin9" for="bill">Bill</label>
+              <input class="tip-calculator__input tip-calculator__input_bill" type="number" placeholder="0" id="bill">
+              <span class="tip-calculator__data-title tip-calculator__data-title_margin18">Select Tip %</span>
               <ul class="tip-calculator__tip-list">
-                <li class="tip-calculator__tip-item">5%</li>
-                <li class="tip-calculator__tip-item">10%</li>
-                <li class="tip-calculator__tip-item">15%</li>
-                <li class="tip-calculator__tip-item">25%</li>
-                <li class="tip-calculator__tip-item">50%</li>
-                <li class="tip-calculator__tip-item tip-calculator__tip-item_custom">Custom</li>
+                <li><button class="tip-calculator__tip-item" value="5">5%</button></li>
+                <li><button class="tip-calculator__tip-item" value="10">10%</button></li>
+                <li><button class="tip-calculator__tip-item" value="15">15%</button></li>
+                <li><button class="tip-calculator__tip-item" value="25">25%</button></li>
+                <li><button class="tip-calculator__tip-item" value="50">50%</button></li>
+                <li class="tip-calculator__tip-button-block"><button class="tip-calculator__tip-item">Custom</button></li>
                 <li class="tip-calculator__tip-item tip-calculator__tip-item_custom-field"><input class="tip-calculator__input tip-calculator__input_tip" type="number" placeholder="0"></li>
               </ul>
-              <label class="tip-calculator__data-title" for="people">Number of People</label>
+              <div class="tip-calculator__label-wrapper">
+                <label class="tip-calculator__data-title" for="people">Number of People</label>
+                <span class="tip-calculator__warning">Can't be zero</span>
+              </div>
               <input class="tip-calculator__input tip-calculator__input_person" type="number" placeholder="0"
-                name="people">
-            </div>
+                id="people">
+            </form>
           </div>
           <div class="tip-calculator__result-wrapper">
             <ul class="tip-calculator__result">
@@ -53,33 +55,12 @@
                 <span id="resultTotal" class="tip-calculator__result-data">$0.00</span>
               </li>
             </ul>
-            <button id="reset" class="tip-calculator__main-button">RESET</button>
+            <button id="reset" class="tip-calculator__main-button" disabled>RESET</button>
           </div>
         </div>
       </div>
     </div>
   </main>
-
-  <!-- Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset -->
-
 </body>
 
 </html>
