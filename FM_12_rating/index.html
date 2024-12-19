@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Interactive rating component</title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./main.js"></script>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <div class="rating__wrapper">
+        <div class="rating rating__choose">
+          <span class="rating__star"></span>
+          <h1 class="rating__title">How did we do?</h1>
+          <p class="rating__description">Please let&nbsp;us know how we&nbsp;did with your support request. All feedback is&nbsp;appreciated to&nbsp;help&nbsp;us improve our offering!</p>
+          <form>
+            <ul class="rating__list">
+              <li class="rating__item"><button class="rating__button" value="1">1</button></li>
+              <li class="rating__item"><button class="rating__button" value="2">2</button></li>
+              <li class="rating__item"><button class="rating__button" value="3">3</button></li>
+              <li class="rating__item"><button class="rating__button" value="4">4</button></li>
+              <li class="rating__item"><button class="rating__button" value="5">5</button></li>
+            </ul>
+            <button aria-haspopup="dialog" class="rating__submit">Submit</button>
+          </form>
+        </div>
+        <!-- Thank modal window -->
+        <div class="rating rating__thank">
+          <div class="rating__thank-img"></div>
+          <span class="rating__thank-result"></span>
+          <h1 class="rating__title">Thank you!</h1>
+          <p class="rating__description">We&nbsp;appreciate you taking the time to&nbsp;give a&nbsp;rating. If&nbsp;you ever need more support, don&rsquo;t hesitate to&nbsp;get in&nbsp;touch!</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

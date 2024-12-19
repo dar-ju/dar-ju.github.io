@@ -1,0 +1,45 @@
+/* MEDIA */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+
+  .rating__wrapper {
+    padding-top: 154px;
+    padding-bottom: 154px;
+  }
+
+  .rating {
+    padding: 25px;
+    padding-bottom: 32px;
+    border-radius: 17px
+  }
+
+  .rating__star {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 23px;
+    padding: 20px;
+  }
+
+  .rating__title {
+    margin-bottom: 12px;
+    font-size: 1.56rem;
+  }
+
+  .rating__description {
+    margin-bottom: 20px;
+    font-size: .93rem;
+    line-height: 1.55rem;
+  }
+
+  .rating__list {
+    margin-bottom: 23px;
+  }
+
+  .rating__button {
+    min-width: 44px;
+    padding: 14px;
+  }
+}

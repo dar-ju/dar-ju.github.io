@@ -1,0 +1,131 @@
+/* MAIN */
+body {
+  min-width: 320px;
+  font-family: "Overpass", sans-serif;
+  font-weight: 400;
+  background-color: var(--color-very-dark-blue);
+  color: var(--color-light-grey);
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.rating__wrapper {
+  padding-top: 196px;
+  padding-bottom: 196px;
+}
+
+.rating {
+  display: flex;
+  max-width: 412px;
+  margin: 0 auto;
+  padding: 32px;
+  padding-right: 39px;
+  flex-direction: column;
+  border-radius: 28px;
+  background: linear-gradient(to bottom, var(--color-dark-blue), var(--color-darker-blue));
+}
+
+.rating__star {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 36px;
+  border-radius: 50%;
+  background-color: var(--color-dark-grey);
+  background-image: url('../images/icon-star.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rating__title {
+  margin-bottom: 10px;
+  font-size: 1.85rem;
+  color: var(--color-white);
+}
+
+.rating__description {
+  margin-bottom: 24px;
+  line-height: 1.6rem;
+}
+
+.rating__list {
+  display: flex;
+  width: 100%;
+  margin-bottom: 35px;
+  justify-content: space-between;
+}
+
+.rating__button {
+  min-width: 50px;
+  padding: 16px;
+  font-weight: 700;
+  line-height: 1rem;
+  border-radius: 50%;
+  color: var(--color-light-grey);
+  background-color: var(--color-dark-grey);
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+}
+
+.rating__button:hover {
+  color: var(--color-very-dark-blue);
+  background-color: var(--color-orange);
+}
+
+.rating__item_pushed {
+  color: var(--color-very-dark-blue);
+  background-color: var(--color-white);
+}
+
+.rating__item_pushed:hover {
+  color: var(--color-very-dark-blue);
+  background-color: var(--color-white);
+}
+
+.rating__submit {
+  width: 100%;
+  padding: 15px;
+  border-radius: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1rem;
+  color: var(--color-very-dark-blue);
+  background-color: var(--color-orange);
+  transition: background-color ease-in-out 0.3s;
+}
+
+.rating__submit:hover {
+  background-color: var(--color-white);
+}
+
+/* THANK MODAL WINDOW */
+
+.rating__thank {
+  display: none;
+  opacity: 0;
+  text-align: center;
+  transition: opacity ease-in-out 0.3s;
+}
+
+.rating__thank-img {
+  width: 100%;
+  min-height: 132px;
+  margin: auto;
+  margin-bottom: 22px;
+  background-image: url('../images/illustration-thank-you.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.rating__thank-result {
+  display: inline-block;
+  margin-bottom: 40px;
+  padding: 7px 20px;
+  border-radius: 30px;
+  color: var(--color-rark-orange);
+  background-color: var(--color-dark-grey);
+}

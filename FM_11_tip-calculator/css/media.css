@@ -77,6 +77,7 @@
   .splitter__result-wrapper {
     width: 96%;
     padding: 43px 25px;
+    padding-bottom: 26px;
   }
 
   .splitter__result {

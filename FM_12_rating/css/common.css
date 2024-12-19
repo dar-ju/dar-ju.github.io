@@ -1,0 +1,21 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400..700&display=swap');
+
+/* COLORS */
+:root {
+  /* fonts */
+  --color-white: hsl(0, 0%, 100%);
+  --color-light-grey: hsl(217, 12%, 63%);
+  --color-rark-orange: hsl(23, 54%, 56%);
+
+  /* body */
+  --color-very-dark-blue: hsl(216, 12%, 8%);
+
+  /* block */
+  --color-dark-blue: hsl(213, 19%, 18%);
+  --color-darker-blue: hsl(212, 25%, 12%);
+
+  /* buttons */
+  --color-dark-grey: hsl(210, 19%, 18%);
+  --color-orange: hsl(25, 97%, 53%);
+}
