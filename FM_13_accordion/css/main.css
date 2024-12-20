@@ -1,0 +1,107 @@
+/* MAIN */
+body {
+  min-width: 320px;
+  font-family: "Work Sans", sans-serif;
+  font-weight: 400;
+  color: var(--color-dark-purple);
+  background-color: var(--color-light-pink);
+  background-image: url('../assets/images/background-pattern-desktop.svg');
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.faq {
+  display: flex;
+  max-width: 600px;
+  margin: auto;
+  padding-top: 167px;
+  padding-bottom: 167px;
+  flex-direction: column;
+}
+
+.faq__wrapper {
+  padding: 40px;
+  border-radius: 16px;
+  background-color: var(--color-white);
+}
+
+.faq__title {
+  margin-bottom: 36px;
+  padding-left: 64px;
+  font-size: 3.7rem;
+  background-image: url('../assets/images/icon-star.svg');
+  background-repeat: no-repeat;
+  background-position: top 13px left;
+}
+
+.faq input {
+  display: none;
+}
+
+.faq__item:not(:last-child) {
+  margin-bottom: 53px;
+}
+
+.faq__item:last-child .faq__label {
+  margin-bottom: 0;
+}
+
+.faq__label {
+  display: block;
+  position: relative;
+  margin-bottom: 28px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.8rem;
+  cursor: pointer;
+  background-image: url('../assets/images/icon-plus.svg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  transition: color ease-in-out 0.3s;
+}
+
+.faq__item:not(:last-child) .faq__label::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  width: 100%;
+  border-bottom: 3px solid var(--color-grayish-20purple);
+}
+
+.faq__label:hover {
+  color: var(--color-purple);
+}
+
+.faq__content {
+  display: none;
+}
+
+.faq input:checked + .faq__label::after {
+  display: none;
+}
+
+.faq__item:last-child input:checked + .faq__label {
+  margin-bottom: 36px;
+}
+
+.faq input:checked + .faq__label {
+  background-image: url('../assets/images/icon-minus.svg');
+}
+
+/* Когда чекбокс активен, показывать содержимое */
+.faq input:checked + .faq__label + .faq__content {
+  display: block;
+}
+
+.faq__description {
+  font-size: 1.07rem;
+  line-height: 1.5rem;
+  color: var(--color-grayish-purple);
+}

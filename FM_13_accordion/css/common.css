@@ -1,0 +1,34 @@
+/* FONT */
+@font-face {
+  font-family: "Work Sans";
+  src: url("../assets/fonts/static/WorkSans-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+font-family: "Work Sans";
+src: url("../assets/fonts/static/WorkSans-SemiBold.ttf");
+font-weight: 600;
+font-style: normal;
+font-display: swap;
+}
+
+@font-face {
+font-family: "Work Sans";
+src: url("../assets/fonts/static/WorkSans-Bold.ttf");
+font-weight: 700;
+font-style: normal;
+font-display: swap;
+}
+
+/* COLORS */
+:root {
+  --color-white: hsl(0, 0%, 100%);
+  --color-light-pink: hsl(275, 100%, 97%);
+  --color-purple: hsl(281, 83%, 54%);
+  --color-grayish-purple: hsl(292, 16%, 49%);
+  --color-grayish-20purple: hsla(293, 16%, 49%, 0.2);
+  --color-dark-purple: hsl(292, 42%, 14%);
+}
