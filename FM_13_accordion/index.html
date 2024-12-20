@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Frontend Mentor | FAQ accordion</title>
   <link rel="stylesheet" href="./css/styles.css">
 </head>
+
 <body>
   <main>
     <div class="container">
@@ -14,31 +16,42 @@
         <div class="faq__wrapper">
           <h1 class="faq__title">FAQs</h1>
           <div class="faq__item">
-            <input type="checkbox" id="section1">
-            <label class="faq__label" for="section1">What is&nbsp;Frontend Mentor, and how will it&nbsp;help&nbsp;me?</label>
-            <div class="faq__content">
-              <p class="faq__description">Frontend Mentor offers realistic coding challenges to&nbsp;help developers improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It&rsquo;s suitable for all levels and ideal for portfolio building.</p>
+            <input type="checkbox" id="section1" checked>
+            <label class="faq__label" for="section1" aria-controls="section1">What
+              is&nbsp;Frontend Mentor, and how will it&nbsp;help&nbsp;me?</label>
+            <div class="faq__content" role="region" aria-labelledby="section1">
+              <p class="faq__description">Frontend Mentor offers realistic coding challenges to&nbsp;help developers
+                improve their frontend coding skills with projects in HTML, CSS, and JavaScript. It&rsquo;s suitable for
+                all levels and ideal for portfolio building.</p>
             </div>
           </div>
           <div class="faq__item">
             <input type="checkbox" id="section2">
-            <label class="faq__label" for="section2">Is&nbsp;Frontend Mentor free?</label>
-            <div class="faq__content">
-              <p class="faq__description">Yes, Frontend Mentor offers both free and premium coding challenges, with the free option providing access to&nbsp;a&nbsp;range of&nbsp;projects suitable for all skill levels</p>
+            <label class="faq__label" for="section2" aria-controls="section2">Is&nbsp;Frontend
+              Mentor free?</label>
+            <div class="faq__content" role="region" aria-labelledby="section2">
+              <p class="faq__description">Yes, Frontend Mentor offers both free and premium coding challenges, with the
+                free option providing access to&nbsp;a&nbsp;range of&nbsp;projects suitable for all skill levels</p>
             </div>
           </div>
           <div class="faq__item">
             <input type="checkbox" id="section3">
-            <label class="faq__label" for="section3">Can I&nbsp;use Frontend Mentor projects in&nbsp;my&nbsp;portfolio?</label>
-            <div class="faq__content">
-              <p class="faq__description">Yes, you can use projects completed on&nbsp;Frontend Mentor in&nbsp;your portfolio. It&rsquo;s an&nbsp;excellent way to&nbsp;showcase your skills to&nbsp;potential employers!</p>
+            <label class="faq__label" for="section3" aria-controls="section3">Can
+              I&nbsp;use Frontend Mentor projects in&nbsp;my&nbsp;portfolio?</label>
+            <div class="faq__content" role="region" aria-labelledby="section2">
+              <p class="faq__description">Yes, you can use projects completed on&nbsp;Frontend Mentor in&nbsp;your
+                portfolio. It&rsquo;s an&nbsp;excellent way to&nbsp;showcase your skills to&nbsp;potential employers!
+              </p>
             </div>
           </div>
           <div class="faq__item">
             <input type="checkbox" id="section4">
-            <label class="faq__label" for="section4">How can&nbsp;I get help if&nbsp;I&rsquo;m stuck on&nbsp;a&nbsp;challenge?</label>
-            <div class="faq__content">
-              <p class="faq__description">The best place to&nbsp;get help is&nbsp;inside Frontend Mentor&rsquo;s Discord community. There&rsquo;s a&nbsp;help channel where you can ask questions and seek support from other community members.</p>
+            <label class="faq__label" for="section4" aria-controls="section4">How
+              can&nbsp;I get help if&nbsp;I&rsquo;m stuck on&nbsp;a&nbsp;challenge?</label>
+            <div class="faq__content" role="region" aria-labelledby="section3">
+              <p class="faq__description">The best place to&nbsp;get help is&nbsp;inside Frontend Mentor&rsquo;s Discord
+                community. There&rsquo;s a&nbsp;help channel where you can ask questions and seek support from other
+                community members.</p>
             </div>
           </div>
         </div>
@@ -46,4 +59,5 @@
     </div>
   </main>
 </body>
+
 </html>

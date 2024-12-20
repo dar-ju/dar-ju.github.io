@@ -7,6 +7,7 @@ body {
   background-color: var(--color-light-pink);
   background-image: url('../assets/images/background-pattern-desktop.svg');
   background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .container {
@@ -16,6 +17,7 @@ body {
   padding-right: 50px;
 }
 
+/* FAQ block */
 .faq {
   display: flex;
   max-width: 600px;
@@ -27,8 +29,10 @@ body {
 
 .faq__wrapper {
   padding: 40px;
+  padding-bottom: 12px;
   border-radius: 16px;
   background-color: var(--color-white);
+  box-shadow: 0 10px 60px -30px var(--color-grayish-purple);
 }
 
 .faq__title {
@@ -45,17 +49,14 @@ body {
 }
 
 .faq__item:not(:last-child) {
-  margin-bottom: 53px;
-}
-
-.faq__item:last-child .faq__label {
-  margin-bottom: 0;
+  margin-bottom: 25px;
 }
 
 .faq__label {
   display: block;
   position: relative;
   margin-bottom: 28px;
+  padding-right: 30px;
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.8rem;
@@ -69,18 +70,28 @@ body {
 .faq__item:not(:last-child) .faq__label::after {
   content: "";
   position: absolute;
-  bottom: -20px;
+  bottom: -27px;
   left: 0;
   width: 100%;
-  border-bottom: 3px solid var(--color-grayish-20purple);
+  border-bottom: 1px solid var(--color-grayish-20purple);
 }
 
 .faq__label:hover {
   color: var(--color-purple);
 }
 
+.faq__label:focus {
+  color: var(--color-purple);
+}
+
+.faq__label:focus-visible {
+  outline: none;
+}
+
 .faq__content {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
 }
 
 .faq input:checked + .faq__label::after {
@@ -88,16 +99,16 @@ body {
 }
 
 .faq__item:last-child input:checked + .faq__label {
-  margin-bottom: 36px;
+  margin-bottom: 28px;
 }
 
 .faq input:checked + .faq__label {
   background-image: url('../assets/images/icon-minus.svg');
 }
 
-/* Когда чекбокс активен, показывать содержимое */
 .faq input:checked + .faq__label + .faq__content {
-  display: block;
+  max-height: var(--text-block-height);
+  margin-bottom: 53px;
 }
 
 .faq__description {

@@ -1,7 +1,56 @@
 /* MEDIA */
 @media (max-width: 480px) {
+  body {
+    background-image: url('../assets/images/background-pattern-mobile.svg');
+  }
+
   .container {
-    padding-left: 23px;
-    padding-right: 23px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .faq {
+    padding-top: 142px;
+    padding-bottom: 142px;
+  }
+
+  .faq__wrapper {
+    padding: 24px;
+    padding-bottom: 0;
+    border-radius: 8px;
+  }
+
+  .faq__title {
+    margin-bottom: 22px;
+    padding-left: 48px;
+    font-size: 2.1rem;
+    background-position: top 7px left;
+    background-size: 9%;
+  }
+
+  .faq__label {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 23px;
+    padding-right: 45px;
+    font-size: 1.07rem;
+    line-height: 1.2rem;
+  }
+
+  .faq__label:hover {
+    color: initial;
+  }
+
+  .faq__description {
+    font-size: .93rem;
+    line-height: 1.4rem;
+  }
+
+  .faq input:checked + .faq__label + .faq__content {
+    margin-bottom: 46px;
+  }
+
+  .faq__item:not(:last-child) {
+    margin-bottom: 13px;
   }
 }

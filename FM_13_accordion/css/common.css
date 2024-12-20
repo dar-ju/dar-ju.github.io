@@ -1,4 +1,4 @@
-/* FONT */
+/* FONTS */
 @font-face {
   font-family: "Work Sans";
   src: url("../assets/fonts/static/WorkSans-Regular.ttf");
@@ -23,7 +23,7 @@ font-style: normal;
 font-display: swap;
 }
 
-/* COLORS */
+/* COLORS & BLOCK height */
 :root {
   --color-white: hsl(0, 0%, 100%);
   --color-light-pink: hsl(275, 100%, 97%);
@@ -31,4 +31,8 @@ font-display: swap;
   --color-grayish-purple: hsl(292, 16%, 49%);
   --color-grayish-20purple: hsla(293, 16%, 49%, 0.2);
   --color-dark-purple: hsl(292, 42%, 14%);
+
+
+  /* Increase the maximum height if there is more content! */
+  --text-block-height: 120px
 }
