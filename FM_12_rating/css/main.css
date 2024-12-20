@@ -68,7 +68,7 @@ body {
   border-radius: 50%;
   color: var(--color-light-grey);
   background-color: var(--color-dark-grey);
-  transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s, outline ease-in-out 0.3s;
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
 }
 
 .rating__button:hover {
@@ -77,7 +77,7 @@ body {
 }
 
 .rating__button:focus {
-  outline: 1px solid var(--color-white);
+  box-shadow: inset 0 0 0 1px var(--color-white);
 }
 
 .rating__item_pushed {
@@ -101,7 +101,7 @@ body {
   line-height: 1rem;
   color: var(--color-very-dark-blue);
   background-color: var(--color-orange);
-  transition: background-color ease-in-out 0.3s, outline ease-in-out 0.3s;
+  transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
 }
 
 .rating__submit:hover {
@@ -109,7 +109,7 @@ body {
 }
 
 .rating__submit:focus {
-  outline: 1px solid var(--color-white);
+  box-shadow: inset 0 0 0 1px var(--color-white);
 }
 
 /* THANK MODAL WINDOW */
