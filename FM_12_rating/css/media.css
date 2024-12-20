@@ -5,12 +5,12 @@
     padding-right: 23px;
   }
 
-  .rating__wrapper {
+  .ratingr {
     padding-top: 154px;
     padding-bottom: 154px;
   }
 
-  .rating {
+  .rating__window {
     padding: 25px;
     padding-bottom: 32px;
     border-radius: 17px
@@ -41,5 +41,21 @@
   .rating__button {
     min-width: 44px;
     padding: 14px;
+  }
+
+  /* THANK MODAL WINDOW */
+  .rating__window_thank {
+    padding-bottom: 14px;
+  }
+
+  .rating__thank-img {
+    min-height: 116px;
+    margin-bottom: 16px;
+    background-size: 50%;
+  }
+
+  .rating__thank-result {
+    margin-bottom: 32px;
+    font-size: .94rem;
   }
 }
