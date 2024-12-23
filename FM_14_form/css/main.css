@@ -29,6 +29,105 @@ body {
 }
 
 .form__title {
-  margin-bottom: 30px;
+  margin-bottom: 26px;
   font-size: 1.9rem;
+}
+
+.form__double-col {
+  display: flex;
+  margin-bottom: 18px;
+  gap: 17px;
+}
+
+.form__fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  margin-bottom: 18px;
+}
+
+.form__query {
+  display: flex;
+  padding-left: 30px;
+  gap: 15px;
+  align-items: center;
+}
+
+.form__query input[type='radio'] {
+  transform: scale(1.5);
+}
+
+.form__box {
+  margin-bottom: 24px;
+}
+
+.form__label {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 13px;
+  font-size: 1rem;
+}
+
+.form__label_margin {
+  margin-bottom: 22px;
+}
+
+.form__label_query {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.form__required::after {
+  content: "*";
+  position: relative;
+  left: 9px;
+  color: var(--color-green-600-medium);
+}
+
+.form__input {
+  width: 100%;
+  min-height: 50px;
+  padding-left: 24px;
+  border-radius: 7px;
+  font-size: 1.12rem;
+  outline: 1px solid var(--color-grey-900-darker);
+  transition: outline ease-in-out 0.3s;
+}
+
+.form__input:focus {
+  outline: 1px solid var(--color-green-600-medium);
+}
+
+.form__textarea {
+  padding: 11px 22px;
+  font-size: 1.2rem;
+  line-height: 1.7rem;
+}
+
+.form__message {
+  margin-bottom: 26px;
+}
+
+.form__agree {
+  display: block;
+  padding-left: 7px;
+  margin-bottom: 43px;
+}
+
+.form__agree-input {
+  margin-right: 14px;
+  transform: scale(1.6);
+}
+
+.form__agree-text {
+  font-size: 1rem;
+}
+
+.form__btn {
+  width: 100%;
+  min-height: 59px;
+  font-size: 1.15rem;
+  color: var(--color-green-200-lighter);
+  border-radius: 8px;
+  background-color: var(--color-green-600-medium);
 }
