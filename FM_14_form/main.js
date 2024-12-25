@@ -1,6 +1,23 @@
 const form = document.querySelector('.form')
 const success = document.querySelector('.successful')
+const radioButtons = document.querySelectorAll('input[type="radio"]')
 let warnings = []
+
+// radio block background change
+radioButtons.forEach(radio => {
+  radio.addEventListener('change', (event) => {
+    backgroundColorRemove()
+    const selectedQueryDiv = event.target.closest('.form__query')
+    selectedQueryDiv.classList.add('form__query_selected')
+  });
+});
+
+// radio block background color remove
+function backgroundColorRemove() {
+  document.querySelectorAll('.form__query').forEach(div => {
+    div.classList.remove('form__query_selected')
+  })
+}
 
 // common form check function
 function formCheck() {
@@ -13,8 +30,8 @@ function formCheck() {
       if (!emailCheck(item.value)) warnings.push(item.id)
     }
     if (item.type === 'radio' && !item.checked) {
-      const radioGroup = form.querySelectorAll(`input[name="${item.name}"]`);
-      const isAnyChecked = Array.from(radioGroup).some(radio => radio.checked);
+      const radioGroup = form.querySelectorAll(`input[name="${item.name}"]`)
+      const isAnyChecked = Array.from(radioGroup).some(radio => radio.checked)
       if (!isAnyChecked) warnings.push(item.name)
     }
     if (item.type === 'checkbox' && !item.checked) warnings.push(item.id)
@@ -39,18 +56,25 @@ function clearForm() {
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   formCheck()
-  warnings.forEach(item => {
-    const warningElement = document.getElementById(`${item}Warning`)
-    const element = document.getElementById(item)
-    warningElement.style.display = 'inline-block'
-    if (item) {
-      if (element && element.type !== 'checkbox') element.classList.add('form__input-warning')
+  if (warnings.length) {
+    warnings.forEach(item => {
+      const warningElement = document.getElementById(`${item}Warning`)
+      const element = document.getElementById(item)
+      warningElement.style.display = 'inline-block'
+      if (item) {
+        if (element && element.type !== 'checkbox') element.classList.add('form__input-warning')
+      }
+    });
+    // focus on the first warning field
+    if (warnings[0] !== 'query') {
+      const focusElement = document.getElementById(warnings[0])
+      focusElement.focus()
     }
-  });
-  if (!warnings.length) {
+  } else {
     success.style.display = 'flex'
     setTimeout(() => { success.style.opacity = 1 })
     setTimeout(() => { success.style.display = 'none' }, 4000)
+    backgroundColorRemove()
     clearForm()
   }
 })
