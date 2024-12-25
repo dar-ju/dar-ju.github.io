@@ -9,25 +9,22 @@ body {
 }
 
 .container {
-  display: block;
-  max-width: 1440px;
+  display: grid;
+  max-width: 1210px;
   width: 100%;
   margin: auto;
   padding-left: 50px;
   padding-right: 50px;
+  grid-template-columns: repeat(4, minmax(20%, 25%));
+	grid-template-rows: minmax(280px, 1fr);
+  gap: 24px 29px;
   text-align: center;
 }
 
 /* BLOCKS */
 .testimonials {
-  display: grid;
-  max-width: 1110px;
-  margin: 0 auto;
   padding-top: 164px;
   padding-bottom: 164px;
-  grid-template-columns: repeat(4, minmax(20%, 25%));
-	grid-template-rows: minmax(280px, 1fr);
-  gap: 24px 29px;
 }
 
 .testimonials__block {
