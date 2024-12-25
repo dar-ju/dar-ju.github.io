@@ -154,6 +154,7 @@ body {
   width: 100%;
   min-height: 59px;
   font-size: 1.15rem;
+  font-weight: 700;
   color: var(--color-green-200-lighter);
   border-radius: 8px;
   background-color: var(--color-green-600-medium);

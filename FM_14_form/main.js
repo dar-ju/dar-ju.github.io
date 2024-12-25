@@ -74,6 +74,7 @@ form.addEventListener('submit', (event) => {
     success.style.display = 'flex'
     setTimeout(() => { success.style.opacity = 1 })
     setTimeout(() => { success.style.display = 'none' }, 4000)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     backgroundColorRemove()
     clearForm()
   }
