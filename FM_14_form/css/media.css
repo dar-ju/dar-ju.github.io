@@ -1,8 +1,43 @@
 /* MEDIA */
-@media (max-width: 768px) {
-  .splitter {
-    padding-top: 50px;
-    padding-bottom: 50px;
+@media (max-width: 620px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
   }
 
+  .form {
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .form__double-col {
+    flex-direction: column;
+  }
+
+  .form__wrapper {
+    padding: 24px;
+  }
+
+  .form__textarea {
+    min-height: 238px;
+  }
+
+  .form__agree {
+    display: flex;
+    margin-bottom: 38px;
+    flex-wrap: wrap;
+  }
+
+  .form__agree-text {
+    width: 75%;
+  }
+
+  .form__warning {
+    line-height: 1.5rem;
+  }
+
+  .successful {
+    width: 100%;
+  }
 }

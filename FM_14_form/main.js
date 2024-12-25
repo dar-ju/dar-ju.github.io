@@ -1,62 +1,69 @@
 const form = document.querySelector('.form')
-const radios = form.querySelectorAll('input[type="radio"]');
-const formElements = ['firstName', 'lastName', 'email', 'queryGeneral', 'querySupport', 'message', 'agree']
+const success = document.querySelector('.successful')
 let warnings = []
 
+// common form check function
+function formCheck() {
+  warnings = []
+  for (let item of form) {
+    if ((item.type === 'text' || item.type === 'textarea') && item.value.trim() === '') {
+      warnings.push(item.id)
+    }
+    if (item.type === 'email') {
+      if (!emailCheck(item.value)) warnings.push(item.id)
+    }
+    if (item.type === 'radio' && !item.checked) {
+      const radioGroup = form.querySelectorAll(`input[name="${item.name}"]`);
+      const isAnyChecked = Array.from(radioGroup).some(radio => radio.checked);
+      if (!isAnyChecked) warnings.push(item.name)
+    }
+    if (item.type === 'checkbox' && !item.checked) warnings.push(item.id)
+  }
+}
+
+// email check function
+function emailCheck(value) {
+  const regular = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regular.test(value)
+}
+
+// clear form function
+function clearForm() {
+  for (let item of form) {
+    item.value = ''
+    if (item.type === 'checkbox' || item.type === 'radio') item.checked = false
+  }
+}
+
+// submit button listener
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  let radioState = false
-  for (let radio of radios) {
-    if (radio.checked) {
-      radioState = true
-    }
-  }
-  formElements.forEach(item => {
-    // console.log(form.elements[item].value);
-    // console.log(form.elements[item].id);
-    for (let radio of radios) {
-      if (radio.checked) {
-        selectedRadio = radio;
-      }
-    }
-    // console.log(form.elements[item].value, form.elements[item].checked);
-
-    if (!form.elements[item].value) warnings.push(form.elements[item].id)
-    });
-if (!radioState) warnings.push('query')
-if (!form.elements['agree'].checked) warnings.push('agree')
-console.log(warnings);
-
-
+  formCheck()
   warnings.forEach(item => {
     const warningElement = document.getElementById(`${item}Warning`)
     const element = document.getElementById(item)
-    console.log(item);
-
-    if (!item) warningElement.style.display = 'inline-block'
-    else {
-      warningElement.style.display = 'inline-block'
-      console.log(element);
-
-      if (element && element.type !== 'checkbox') element.style.outline = '1px solid var(--color-red)'
+    warningElement.style.display = 'inline-block'
+    if (item) {
+      if (element && element.type !== 'checkbox') element.classList.add('form__input-warning')
     }
-    console.log(form.elements[item].checked);
   });
-
+  if (!warnings.length) {
+    success.style.display = 'flex'
+    setTimeout(() => { success.style.opacity = 1 })
+    setTimeout(() => { success.style.display = 'none' }, 4000)
+    clearForm()
+  }
 })
 
-// email check function
-// const emailCheck = () => {
-//   const inputText = inputField.value;
-//   const regular = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-//   if (!regular.test(inputText)) {
-//     inputField.classList.add('newsletter__form-input_error');
-//     errorNotice.style.opacity = '1';
-//     submitButton.setAttribute('disabled', '');
-//   }
-//   else {
-//     inputField.classList.remove('newsletter__form-input_error');
-//     errorNotice.style.opacity = '0';
-//     submitButton.removeAttribute('disabled', '');
-//   }
-// }
+// remove warning if field changed
+form.addEventListener('change', (event) => {
+  const item = event.target
+  const warningElement = document.getElementById(`${item.id}Warning`)
+  const warningRadioElement = document.getElementById('queryWarning')
+  const element = document.getElementById(item.id)
+  if (element.type === 'radio') warningRadioElement.style.display = 'none'
+  else {
+    warningElement.style.display = 'none'
+    element.classList.remove('form__input-warning')
+  }
+})

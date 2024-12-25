@@ -1,6 +1,6 @@
 /* MAIN */
 body {
-  /* min-width: 210px; */
+  min-width: 280px;
   font-family: "Karla", sans-serif;
   font-size: 1.5rem;
   font-weight: 400;
@@ -9,12 +9,16 @@ body {
 }
 
 .container {
+  display: flex;
+  position: relative;
   max-width: 1440px;
   margin: auto;
   padding-left: 50px;
   padding-right: 50px;
+  justify-content: center;
 }
 
+/* FORM */
 .form {
   max-width: 735px;
   margin: 0 auto;
@@ -37,6 +41,10 @@ body {
   display: flex;
   margin-bottom: 18px;
   gap: 17px;
+}
+
+.form__double-col div {
+  flex: 1;
 }
 
 .form__fieldset {
@@ -96,6 +104,10 @@ body {
   transition: outline ease-in-out 0.3s;
 }
 
+.form__input-warning {
+  outline: 1px solid var(--color-red);
+}
+
 .form__input:focus {
   outline: 1px solid var(--color-green-600-medium);
 }
@@ -130,6 +142,7 @@ body {
 
 .form__agree-text {
   font-size: 1rem;
+  line-height: 1.5rem;
   cursor: pointer;
 }
 
@@ -147,4 +160,45 @@ body {
   font-size: 1rem;
   line-height: 2.1rem;
   color: var(--color-red);
+}
+
+/* SUCCESSFUL MODAL */
+.successful {
+  display: none;
+  position: fixed;
+  width: 450px;
+  padding: 29px;
+  top: 24px;
+  flex-direction: column;
+  border-radius: 13px;
+  background-color: var(--color-grey-900-darker);
+  opacity: 0;
+  z-index: 1;
+  animation: successfulFadeIn 0.8s forwards;
+}
+
+.successful__title {
+  margin-bottom: 12px;
+  padding-left: 30px;
+  font-size: 1.15rem;
+  color: var(--color-white);
+  background-image: url('../assets/images/icon-success-check.svg');
+  background-repeat: no-repeat;
+}
+
+.successful__message {
+  font-size: 0.97rem;
+  color: var(--color-green-200-lighter);
+}
+
+/* ANIMATION */
+@keyframes successfulFadeIn {
+  0% {
+    top: 60px;
+    opacity: 0;
+  }
+  100% {
+    top: 24px;
+    opacity: 1;
+  }
 }
