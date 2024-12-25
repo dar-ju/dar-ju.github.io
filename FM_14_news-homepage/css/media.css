@@ -1,0 +1,13 @@
+/* MEDIA */
+@media (max-width: 620px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .form {
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
