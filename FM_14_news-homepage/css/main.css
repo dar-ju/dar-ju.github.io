@@ -142,7 +142,7 @@ body {
   font-weight: 800;
 }
 
-.new__about {
+.new__about:not(:last-child) {
   margin-bottom: 33px;
 }
 
