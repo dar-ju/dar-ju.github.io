@@ -73,7 +73,7 @@ body {
   display: grid;
   max-width: 730px;
   gap: 31px;
-  grid-template-columns: repeat(2, minmax(20%, 1fr));
+  grid-template-columns: minmax(280px, 1fr) minmax(20%, 1fr);
   grid-column: 1 / 3;
 }
 .hero__image-wrapper {
@@ -81,10 +81,13 @@ body {
   grid-row: 1 / 2;
 }
 .hero__image {
+  height: 100%;
+  object-fit: cover;
 }
 .hero__title {
   grid-column: 1 / 2;
   /* padding: 34px 0; */
+  margin: auto;
   font-size: 3.75rem;
   font-weight: 800;
   line-height: 3.75rem;
@@ -92,6 +95,7 @@ body {
 }
 .hero__description-block {
   grid-column: 2 / 3;
+  margin: auto;
   /* margin-bottom: 34px; */
   /* padding: 30px 15px; */
 }
