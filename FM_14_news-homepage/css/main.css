@@ -232,6 +232,7 @@ body {
 }
 
 .new__about {
+  color: var(--color-grayish-blue);
   line-height: 1.6rem;
 }
 
