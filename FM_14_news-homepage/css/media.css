@@ -5,6 +5,10 @@
     padding-left: 50px;
   }
 
+  .main__container {
+    gap: 50px 30px;
+  }
+
   .top__item {
     flex-direction: column;
   }
@@ -20,8 +24,17 @@
     padding-left: 50px;
   }
 
-  .header__list {
-    gap: 25px;
+  .header {
+    padding-top: 27px;
+    padding-bottom: 15px;
+  }
+
+  .header__nav-list {
+    gap: 10px 25px;
+  }
+
+  .main {
+    padding-top: 16px;
   }
 
   .main__container {
@@ -41,50 +54,81 @@
 
   .top {
     grid-row: 3 / 4;
-
+    grid-column: initial;
   }
 
-  @media (max-width: 600px) {
-    .container {
-      padding-right: 16px;
-      padding-left: 16px;
-    }
+  .top__item {
+    width: calc((100% - var(--top-card-gap)) / 2);
+  }
+}
 
-    .section {
-      padding-top: 18px;
-      padding-bottom: 15px;
-    }
+@media (max-width: 600px) {
+  .container {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
 
-    .header {
-      padding-top: 27px;
-    }
+  .main__container {
+    gap: 64px 0;
+  }
 
-    .header__logo {
-      width: 46px;
-    }
+  .header__logo {
+    width: 46px;
+  }
 
-    .hero {
-      grid-template-columns: initial;
-      gap: 25px;
-    }
+  .header__nav-list {
+    position: fixed;
+    transform: translateX(100%);
+    gap: 27px;
+  }
 
-    .hero__title {
-      grid-column: 1 / 3;
-      font-size: 2.67rem;
-      line-height: 2.67rem;
-    }
+  .header__btn {
+    display: block;
+  }
 
-    .hero__description-block {
-      grid-column: 1 / 3;
-    }
+  .hero {
+    grid-template-columns: initial;
+    gap: 0;
+  }
 
-    .top__block {
-      flex-direction: column;
-    }
+  .hero__image-wrapper {
+    margin-bottom: 24px;
+  }
 
-    .top__item {
-      width: 100%;
-      flex-direction: row;
-    }
+  .hero__title {
+    grid-column: 1 / 3;
+    margin-bottom: 16px;
+    font-size: 2.67rem;
+    line-height: 2.67rem;
+  }
+
+  .hero__description-block {
+    grid-column: 1 / 3;
+  }
+
+  .hero__description {
+    margin-bottom: 26px;
+  }
+
+  .new {
+    padding: 24px 22px;
+  }
+
+  .new__title {
+    font-size: 2.1rem;
+  }
+
+  .top__block {
+    gap: 32px;
+    flex-direction: column;
+  }
+
+  .top__item {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .top__title {
+    margin-bottom: 13px;
   }
 }

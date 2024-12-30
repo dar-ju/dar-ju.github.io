@@ -6,26 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <title>Frontend Mentor | News homepage</title>
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script> -->
+  <script defer src="./main.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
 </head>
 
 <body>
   <div class="section header">
     <header class="container header__container">
-      <img class="header__logo" src="./assets/images/logo.svg" alt="W. logo">
+      <a class="header__logo-wrapper" href="#" aria-label="Home Page">
+        <img class="header__logo" src="./assets/images/logo.svg" alt="W. logo">
+      </a>
       <nav class="header__nav">
-        <ul class="header__list">
-          <li class="header__item">Home</li>
-          <li class="header__item">New</li>
-          <li class="header__item">Popular</li>
-          <li class="header__item">Trending</li>
-          <li class="header__item">Categories</li>
+        <ul class="header__nav-list">
+          <li class="header__item"><a href="#" aria-current="page">Home</a></li>
+          <li class="header__item"><a href="#">New</a></li>
+          <li class="header__item"><a href="#">Popular</a></li>
+          <li class="header__item"><a href="#">Trending</a></li>
+          <li class="header__item"><a href="#">Categories</a></li>
         </ul>
+        <button class="header__btn" aria-label="menu"></button>
       </nav>
     </header>
   </div>
@@ -33,105 +32,27 @@
   <main>
     <section class="section main">
       <div class="container main__container">
-        <article class="hero">
+        <div class="hero">
           <picture class="hero__image-wrapper">
             <source media="(max-width: 600px)" srcset="./assets/images/image-web-3-mobile.jpg">
-            <img class="hero__image" src="./assets/images/image-web-3-desktop.jpg" alt="">
+            <img class="hero__image" src="./assets/images/image-web-3-desktop.jpg" alt="Bright Future of Web 3.0">
           </picture>
-          <h1 class="hero__title">The Bright Future of Web 3.0?</h1>
+          <h1 class="hero__title">Title</h1>
           <div class="hero__description-block">
-            <p class="hero__description">We&nbsp;dive into the next evolution of&nbsp;the web that claims to&nbsp;put
-              the power of&nbsp;the platforms back into the hands of&nbsp;the people. But is&nbsp;it&nbsp;really
-              fulfilling its promise?</p>
-            <button class="main-button">Read more</button>
+            <p class="hero__description"></p>
+            <a class="main-button" href="#" aria-label="Read more about the future of Web 3.0">
+              Read more
+            </a>
           </div>
-        </article>
+        </div>
         <article class="new">
           <h2 class="new__title">New</h2>
-          <ul class="new__block">
-            <li class="new__item">
-              <h3 class="new__subtitle">Hydrogen VS&nbsp;Electric Cars</h3>
-              <p class="new__about">Will hydrogen-fueled cars ever catch up to EVs?</p>
-            </li>
-            <li class="new__item">
-              <h3 class="new__subtitle">The Downsides of&nbsp;AI&nbsp;Artistry</h3>
-              <p class="new__about">What are the possible adverse effects of on-demand AI&nbsp;image generation?</p>
-            </li>
-            <li class="new__item">
-              <h3 class="new__subtitle">Is&nbsp;VC&nbsp;Funding Drying&nbsp;Up?</h3>
-              <p class="new__about">Private funding by&nbsp;VC firms is&nbsp;down 50% YOY. We&nbsp;take a&nbsp;look
-                at&nbsp;what that means.</p>
-            </li>
-          </ul>
         </article>
         <article class="top">
-          <ul class="top__block">
-            <li class="top__item">
-              <img class="top__image" src="./assets/images/image-retro-pcs.jpg" alt="Retro PC">
-              <div class="top__item-wrapper">
-                <h2 class="top__title">01</h2>
-                <h3 class="top__subtitle">Reviving Retro PCs</h3>
-                <p class="top__about">What happens when old PCs are given modern upgrades?</p>
-              </div>
-            </li>
-            <li class="top__item">
-              <img class="top__image" src="./assets/images/image-top-laptops.jpg" alt="Top Laptops">
-              <div class="top__item-wrapper">
-                <h2 class="top__title">02</h2>
-                <h3 class="top__subtitle">Top&nbsp;10 Laptops of&nbsp;2022</h3>
-                <p class="top__about">Our best picks for various needs and budgets.</p>
-              </div>
-            </li>
-            <li class="top__item">
-              <img class="top__image" src="./assets/images/image-gaming-growth.jpg" alt="Gaming Growth">
-              <div class="top__item-wrapper">
-                <h2 class="top__title">03</h2>
-                <h3 class="top__subtitle">The Growth of&nbsp;Gaming</h3>
-                <p class="top__about">How the pandemic has sparked fresh opportunities.</p>
-              </div>
-            </li>
-          </ul>
         </article>
       </div>
     </section>
   </main>
-
-  <!-- Home
-  New
-  Popular
-  Trending
-  Categories
-
-  The Bright Future of Web 3.0?
-
-  We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people.
-  But is it really fulfilling its promise?
-
-  Read more
-
-  New
-
-  Hydrogen VS Electric Cars
-  Will hydrogen-fueled cars ever catch up to EVs?
-
-  The Downsides of AI Artistry
-  What are the possible adverse effects of on-demand AI image generation?
-
-  Is VC Funding Drying Up?
-  Private funding by VC firms is down 50% YOY. We take a look at what that means.
-
-  01
-  Reviving Retro PCs
-  What happens when old PCs are given modern upgrades?
-
-  02
-  Top 10 Laptops of 2022
-  Our best picks for various needs and budgets.
-
-  03
-  The Growth of Gaming
-  How the pandemic has sparked fresh opportunities. -->
-
 </body>
 
 </html>
