@@ -7,7 +7,7 @@ body {
 .article {
     display: flex;
     max-width: 1440px;
-    padding: 230px 0;
+    padding: 157px 0;
     margin: auto;
     justify-content: center;
 }
