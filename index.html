@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./public/assets/images/favicon-32x32.png">
+  <title>FM Solutions</title>
+  <script src="./public/js/lazyload.min.js"></script>
+  <script type="module" defer src="./public/js/main.js"></script>
+  <link rel="stylesheet" href="./public/css/styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="section header">
+        <div class="header__menu">
+          <a href="https://www.frontendmentor.io/">
+            <img src="./public/assets/images/header-logo.png" alt="Frontend Mentor logo">
+          </a>
+          <nav class="header__menu header__nav">
+            <a class="link header__link" href="#latest" id="menuLatest">My Latest</a>
+            <a class="link header__link" href="#all" id="menuAll">All Solutions</a>
+          </nav>
+        </div>
+        <div class="header__menu" aria-label="Switch language">
+          <a class="link header__link selected" id="langEng" href="">eng</a>
+          <a class="link header__link" id="langRus" href="">rus</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="section hero">
+        <h1 class="title"><span class="hero__title-underline">Frontend</span>Mentor <span
+            class="hero__title-background"></span></h1>
+        <div class="hero__card">
+          <div class="hero__description">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+          </div>
+          <img class="hero__img" src="./public/assets/images/hero-image-desktop.png" alt="Examples images group">
+        </div>
+      </div>
+
+      <div class="section latest" id="latest">
+        <h2 class="subtitle latest__subtitle">My Latest</h2>
+        <div class="latest__card"></div>
+      </div>
+
+      <div class="section all" id="all">
+        <h2 class="subtitle all__subtitle">All Solutions</h2>
+        <ul class="all__group"></ul>
+      </div>
+    </div>
+  </main>
+
+  <footer class="section footer">
+    <img class="footer__image" src="./public/assets/images/footer-img.png" alt="Footer decor image">
+    <span class="footer__thank"></span>
+    <div class="footer__social">
+      <a class="footer__link" href="https://github.com/dar-ju" aria-label="Github page">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_15_137)">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M19.9404 0C8.91388 0 0 9.16667 0 20.5071C0 29.5721 5.71143 37.2454 13.6347 39.9612C14.6253 40.1654 14.9882 39.52 14.9882 38.9771C14.9882 38.5017 14.9555 36.8721 14.9555 35.1742C9.40857 36.3967 8.25347 32.7296 8.25347 32.7296C7.36204 30.3529 6.04122 29.7421 6.04122 29.7421C4.22571 28.4858 6.17347 28.4858 6.17347 28.4858C8.18735 28.6217 9.24408 30.5908 9.24408 30.5908C11.0265 33.7142 13.8988 32.8317 15.0543 32.2883C15.2192 30.9642 15.7478 30.0475 16.309 29.5383C11.8849 29.0629 7.2302 27.2975 7.2302 19.4204C7.2302 17.1796 8.02204 15.3462 9.27673 13.9204C9.07878 13.4112 8.38531 11.3058 9.4751 8.48792C9.4751 8.48792 11.1588 7.94458 14.9551 10.5929C16.5804 10.144 18.2566 9.91567 19.9404 9.91375C21.6241 9.91375 23.3404 10.1517 24.9253 10.5929C28.722 7.94458 30.4057 8.48792 30.4057 8.48792C31.4955 11.3058 30.8016 13.4112 30.6037 13.9204C31.8914 15.3462 32.6506 17.1796 32.6506 19.4204C32.6506 27.2975 27.9959 29.0287 23.5388 29.5383C24.2653 30.1833 24.8922 31.4054 24.8922 33.3408C24.8922 36.0908 24.8596 38.2979 24.8596 38.9767C24.8596 39.52 25.2229 40.1654 26.2131 39.9617C34.1363 37.245 39.8478 29.5721 39.8478 20.5071C39.8804 9.16667 30.9339 0 19.9404 0Z"
+              fill="#20231F" />
+          </g>
+          <defs>
+            <clipPath id="clip0_15_137">
+              <rect width="40" height="40" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+      <a class="footer__link" href="https://t.me/justdar" aria-label="To contact via Telegram">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_15_139)">
+            <path
+              d="M28.1766 11.9721C28.1846 11.9721 28.1952 11.9721 28.2058 11.9721C28.4834 11.9721 28.741 12.0584 28.9522 12.2072L28.9482 12.2045C29.1023 12.3386 29.2058 12.5272 29.2311 12.7397V12.7437C29.2576 12.9057 29.2722 13.0916 29.2722 13.2815C29.2722 13.3679 29.2696 13.4529 29.2629 13.5378V13.5259C28.9641 16.672 27.668 24.3015 27.0093 27.8234C26.7304 29.3147 26.1819 29.8141 25.6507 29.8619C24.4967 29.9695 23.6202 29.0996 22.502 28.3665C20.7517 27.2178 19.7623 26.5033 18.0637 25.3838C16.0996 24.0916 17.3732 23.3785 18.4914 22.2178C18.7849 21.9123 23.8725 17.2842 23.9721 16.8645C23.9774 16.8393 23.9801 16.8114 23.9801 16.7822C23.9801 16.6786 23.9416 16.5843 23.8791 16.5126C23.8101 16.4675 23.7238 16.4422 23.6335 16.4422C23.5737 16.4422 23.5166 16.4542 23.4635 16.4741L23.4661 16.4728C23.2908 16.5126 20.4949 18.3603 15.0784 22.0159C14.4874 22.4821 13.741 22.7769 12.9283 22.8114H12.9203C11.7689 22.672 10.7238 22.4157 9.73174 22.0505L9.83001 22.0823C8.58433 21.676 7.59495 21.4621 7.67995 20.7742C7.7251 20.4166 8.21824 20.0505 9.15936 19.676C14.9566 17.1501 18.8225 15.4852 20.757 14.6813C22.8911 13.5485 25.3652 12.6162 27.9668 12.012L28.1753 11.9708L28.1766 11.9721ZM19.9535 0C8.92829 0.0265604 0 8.97078 0 20C0 31.0452 8.95352 40 20 40C31.0465 40 40 31.0465 40 20C40 8.97078 31.0717 0.0265604 20.0491 0H20.0465C20.0155 0 19.9845 0 19.9535 0Z"
+              fill="#20231F" />
+          </g>
+          <defs>
+            <clipPath id="clip0_15_139">
+              <rect width="40" height="40" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+      <a class="footer__link-fm" href="https://www.frontendmentor.io/profile/dar-ju" aria-label="Frontend Mentor page">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_15_157)">
+            <circle cx="20" cy="20" r="20" fill="#20231F" />
+            <path
+              d="M20.187 9.04773C19.9765 9.05176 19.776 9.13826 19.6285 9.28864C19.4811 9.43901 19.3985 9.64126 19.3986 9.8519V25.1377C19.3986 25.3509 19.4833 25.5555 19.634 25.7063C19.7848 25.8571 19.9892 25.9418 20.2024 25.9418C20.4156 25.9418 20.62 25.8571 20.7708 25.7063C20.9215 25.5555 21.0062 25.3509 21.0062 25.1377V9.8519C21.0063 9.74508 20.985 9.63933 20.9437 9.54082C20.9024 9.44232 20.8419 9.35302 20.7658 9.27816C20.6896 9.2033 20.5993 9.14436 20.5001 9.1048C20.4009 9.06524 20.2938 9.04584 20.187 9.04773ZM32.3499 13.6266C32.245 13.6297 32.1417 13.6532 32.0458 13.6959L25.1473 16.7763C25.0062 16.8401 24.8864 16.9432 24.8024 17.0734C24.7184 17.2036 24.6737 17.3552 24.6737 17.5102C24.6737 17.6651 24.7184 17.8167 24.8024 17.9469C24.8864 18.0771 25.0062 18.1802 25.1473 18.244L32.0458 21.3343C32.1494 21.381 32.2616 21.4053 32.3752 21.4057C32.559 21.4052 32.737 21.3416 32.8796 21.2256C33.0223 21.1097 33.1208 20.9483 33.159 20.7685C33.1971 20.5886 33.1725 20.4011 33.0892 20.2372C33.006 20.0733 32.8691 19.9429 32.7014 19.8677L27.4457 17.5113L32.7014 15.1636C32.8954 15.0762 33.047 14.9155 33.1231 14.7167C33.1992 14.5179 33.1937 14.2971 33.1077 14.1023C33.0424 13.9571 32.9357 13.8343 32.8008 13.7497C32.666 13.665 32.5091 13.6222 32.3499 13.6266ZM7.64196 19.1547C7.51806 19.1525 7.39531 19.1789 7.28332 19.232C7.17132 19.2851 7.07311 19.3633 6.99634 19.4606C6.91958 19.558 6.86635 19.6717 6.84081 19.793C6.81527 19.9143 6.81811 20.0399 6.84911 20.16C8.75547 27.4952 15.3871 32.619 22.973 32.619C23.1862 32.619 23.3906 32.5343 23.5414 32.3835C23.6921 32.2327 23.7768 32.0281 23.7768 31.8149C23.7768 31.6016 23.6921 31.397 23.5414 31.2462C23.3906 31.0954 23.1862 31.0107 22.973 31.0107C19.6421 31.012 16.4049 29.9079 13.7685 27.8714C11.1321 25.8349 9.24541 22.981 8.40406 19.7568C8.35983 19.5872 8.26144 19.4368 8.12387 19.3283C7.98631 19.2198 7.81709 19.1582 7.64196 19.1547Z"
+              fill="#E4E4DE" />
+          </g>
+          <defs>
+            <clipPath id="clip0_15_157">
+              <rect width="40" height="40" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
+      </a>
+    </div>
+    <span class="footer__copy"></span>
+  </footer>
+</body>
+
+</html>
