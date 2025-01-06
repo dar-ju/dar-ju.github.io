@@ -4,8 +4,8 @@
 
 ## Links
 
-- Solution URL: [GitHub](https://github.com/dar-ju/dar-ju.github.io/tree/main/FM_14_news-homepage)
-- Live Site URL: [GitHub Pages](https://dar-ju.github.io/FM_14_news-homepage/)
+- Solution URL: [GitHub](https://github.com/dar-ju/dar-ju.github.io/tree/main/FM_15_news-homepage)
+- Live Site URL: [GitHub Pages](https://dar-ju.github.io/FM_15_news-homepage/)
 
 ## Built with
 
