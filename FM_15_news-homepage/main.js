@@ -7,7 +7,7 @@ const menuButton = document.querySelector('.header__btn');
 // fetch data function
 async function loadData() {
   try {
-    const response = await fetch('https://dar-ju.github.io/FM_14_news-homepage/data.json')
+    const response = await fetch('https://dar-ju.github.io/FM_15_news-homepage/data.json')
     // const response = await fetch('./data.json');
     const data = await response.json();
     return data;
