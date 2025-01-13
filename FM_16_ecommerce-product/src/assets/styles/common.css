@@ -18,6 +18,7 @@
 :root {
   /* COLORS */
   --color-orange: hsl(26, 100%, 55%);
+  --color-lite-orange: hsl(27, 100%, 71%);
   --color-pale-orange: hsl(25, 100%, 94%);
 
   --color-very-dark-blue: hsl(220, 13%, 13%);
