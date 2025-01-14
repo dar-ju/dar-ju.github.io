@@ -9,7 +9,6 @@ const cartStore = useCartStore()
 const quantityField = ref(0)
 const images = ref({})
 const thumbnails = ref({})
-const limit = 999
 
 onMounted(async () => {
   await productStore.getProduct(1)
@@ -40,8 +39,8 @@ const quantityIncrease = (type) => {
 }
 
 const checkMax = () => {
-  if (quantityField.value > limit) {
-    quantityField.value = limit
+  if (quantityField.value > productStore.product.stock) {
+    quantityField.value = productStore.product.stock
   }
 }
 
@@ -54,7 +53,7 @@ const addToCart = () => {
   const index = cartStore.cart.findIndex((el) => el.id === productStore.product.id)
   if (index != -1) {
     const summ = quantityField.value + cartStore.cart[index].quantity
-    if (summ > limit) return
+    if (summ > productStore.product.stock) return
     cartStore.cart[index].quantity = summ
     cartStore.totalInCart = summ
     cartStore.cart[index].total = formatPrice(
@@ -70,6 +69,7 @@ const addToCart = () => {
       total: formatPrice(productStore.product.newPrice * quantityField.value),
     })
   }
+  quantityField.value = 0
 }
 </script>
 
@@ -174,6 +174,13 @@ const addToCart = () => {
             </svg>
             Add to cart
           </button>
+          <span
+            class="product__cart-warning"
+            v-show="quantityField > productStore.product.stock - cartStore.totalInCart"
+            >{{
+              `${productStore.product.stock - cartStore.totalInCart} items available to add to cart`
+            }}</span
+          >
         </form>
       </div>
     </div>
@@ -200,7 +207,6 @@ const addToCart = () => {
 }
 
 .product__image {
-  min-width: 415px;
   margin-bottom: 30px;
   border-radius: 16px;
   cursor: pointer;
@@ -350,12 +356,16 @@ const addToCart = () => {
   fill: var(--color-very-dark-blue);
 }
 
+.product__cart-warning {
+  color: var(--color-orange);
+}
+
 /* ARROWS ON MOBILE */
 .product__image-arrow {
   position: absolute;
   width: 40px;
   height: 40px;
-  top: 19.5%;
+  top: 155px;
   background-color: var(--color-white);
   border-radius: 50%;
   stroke: var(--color-very-dark-blue);
@@ -404,10 +414,6 @@ const addToCart = () => {
 @media (max-width: 1200px) {
   .product {
     padding-left: 85px;
-  }
-
-  .product__image {
-    min-width: 400px;
   }
 }
 

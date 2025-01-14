@@ -3,7 +3,6 @@ import { useProductStore } from '@/stores/productStore'
 import { nextTick, onMounted, ref } from 'vue'
 
 const productStore = useProductStore()
-// const thumbs = ref([{ active: true }, { active: false }, { active: false }, { active: false }])
 const activeThumbs = ref([])
 const activeElement = ref(0)
 const focusOnElement = ref(null)
@@ -124,7 +123,7 @@ setFocus()
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -62%);
+  transform: translate(-50%, -50%);
   z-index: 10;
 }
 

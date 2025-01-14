@@ -12,8 +12,17 @@ const mobileMenuToggle = () => {
   isMobileMenuOpened.value = !isMobileMenuOpened.value
 }
 
+const cartDelete = (item) => {
+  cartStore.cartDelete(item)
+  if (cartStore.totalInCart === 0) cartShow.value = false
+}
+
 const cartToggle = () => {
   cartShow.value = !cartShow.value
+}
+
+const cartHover = () => {
+  if (window.innerWidth > 992) cartShow.value = true
 }
 </script>
 
@@ -71,7 +80,7 @@ const cartToggle = () => {
       </nav>
       <div class="header__profile">
         <a
-          v-on:mouseenter="cartShow = true"
+          v-on:mouseenter="cartHover()"
           @click="cartToggle()"
           href="#"
           class="header__cart"
@@ -104,7 +113,7 @@ const cartToggle = () => {
                     </div>
                   </div>
                   <button
-                    @click="cartStore.cartDelete(item.id)"
+                    @click="cartDelete(item.id)"
                     class="header__cart-delete"
                     aria-label="Delete item from cart"
                   >

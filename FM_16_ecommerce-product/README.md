@@ -1,35 +1,17 @@
-# FM_16_ecommerce-product
+# Frontend Mentor - News homepage
 
-This template should help get you started developing with Vue 3 in Vite.
+![Design preview for the News homepage coding challenge](./design/desktop-preview.jpg)
 
-## Recommended IDE Setup
+## Links
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- Solution URL: [GitHub](https://github.com/dar-ju/dar-ju.github.io/tree/main/FM_15_news-homepage)
+- Live Site URL: [GitHub Pages](https://dar-ju.github.io/FM_15_news-homepage/)
 
-## Customize configuration
+## Built with
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+- Semantic HTML5 markup
+- CSS custom properties
+- Mobile-first workflow
+- JS
+- BEM metodology
+- Perfect Pixel
