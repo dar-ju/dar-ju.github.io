@@ -1,7 +1,8 @@
-import { createRouter } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import ProductPage from '@/views/ProductPage.vue'
 
 const router = createRouter({
+  history: createWebHistory('/'),
   routes: [
     {
       name: 'main',
