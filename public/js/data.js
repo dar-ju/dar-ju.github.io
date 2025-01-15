@@ -1,5 +1,18 @@
 export const data = [
   {
+    "ecommerce-product": {
+      "en": {
+        "title": "E-commerce product page",
+        "description": "A stunning product page featuring a sleek lightbox product gallery and dynamic cart functionality. An impressive combination of design and interactivity.",
+      },
+      "ru": {
+        "title": "Страница товара",
+        "description": "Потрясающая страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впечатляющее сочетание дизайна и интерактивности.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
+    }
+  },
+  {
     "news-homepage": {
       "en": {
         "title": "News homepage",
