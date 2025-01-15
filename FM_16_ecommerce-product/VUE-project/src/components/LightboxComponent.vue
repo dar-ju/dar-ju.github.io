@@ -142,6 +142,7 @@ setFocus()
 
 .lightbox__thumbnail {
   width: 90px;
+  height: 90px;
   border-radius: 10px;
   background-color: var(--color-white);
   transition: outline ease-in-out 0.1s;
