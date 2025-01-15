@@ -57,7 +57,7 @@ const addToCart = () => {
     cartStore.cart[index].quantity = summ
     cartStore.totalInCart = summ
     cartStore.cart[index].total = formatPrice(
-      productStore.product.newPrice * cartStore.cart[index].quantity,
+      productStore.product.newPrice * cartStore.cart[index].quantity
     )
   } else {
     cartStore.cartAdd({
@@ -80,8 +80,7 @@ const addToCart = () => {
         <a
           class="product__link-image"
           @click.prevent="lightboxOpen()"
-          href=""
-          aria-controls="lightbox"
+          href="#"
           aria-haspopup="dialog"
         >
           <img
@@ -144,6 +143,7 @@ const addToCart = () => {
               v-model="quantityField"
               type="number"
               class="product__cart-input"
+              aria-label="Quantity"
             />
             <button
               @click.prevent="quantityIncrease(false)"
