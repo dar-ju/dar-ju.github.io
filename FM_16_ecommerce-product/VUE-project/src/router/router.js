@@ -1,12 +1,12 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter } from 'vue-router'
+import ProductPage from '@/views/ProductPage.vue'
 
 const router = createRouter({
-  history: createWebHashHistory(),
   routes: [
     {
       name: 'main',
       path: '/',
-      component: () => import('@/views/ProductPage.vue'),
+      component: ProductPage,
     }
   ],
 })
