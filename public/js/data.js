@@ -3,11 +3,11 @@ export const data = [
     "ecommerce-product": {
       "en": {
         "title": "E-commerce product page",
-        "description": "A stunning product page featuring a sleek lightbox product gallery and dynamic cart functionality. An impressive combination of design and interactivity.",
+        "description": "Product page with elegant lightbox product gallery and dynamic cart functionality. First time making a lightbox, it turned out to be easier than I thought. VUE framework is used in the work.",
       },
       "ru": {
         "title": "Страница товара",
-        "description": "Потрясающая страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впечатляющее сочетание дизайна и интерактивности.",
+        "description": "Страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впервые сделал лайтбокс, оказалось это легче, чем я думал. В работе использовать фреймворк VUE.",
       },
       "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
     }
