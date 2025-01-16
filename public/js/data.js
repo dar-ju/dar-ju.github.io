@@ -13,6 +13,19 @@ export const data = [
     }
   },
   {
+    "nft-preview-card": {
+      "en": {
+        "title": "NFT preview card component",
+        "description": "A small and fairly easy project to create an NFT card component. For focus, I used box-shadow instead of outline or border, quite a convenient option, but without the ability to make an indent.",
+      },
+      "ru": {
+        "title": "Компонент карточки NFT",
+        "description": "Небольшой и довольно легкий проект по созданию компонента карточки NFT. Для фокуса использовал box-shadow вместо outline или border, вполне удобный вариант, но без возможности сделать отступ.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
+    }
+  },
+  {
     "news-homepage": {
       "en": {
         "title": "News homepage",
