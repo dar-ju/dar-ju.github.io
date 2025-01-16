@@ -1,18 +1,5 @@
 export const data = [
   {
-    "ecommerce-product": {
-      "en": {
-        "title": "E-commerce product page",
-        "description": "Product page with elegant lightbox product gallery and dynamic cart functionality. First time making a lightbox, it turned out to be easier than I thought. VUE framework is used in the work.",
-      },
-      "ru": {
-        "title": "Страница товара",
-        "description": "Страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впервые сделал лайтбокс, оказалось это легче, чем я думал. В работе использовать фреймворк VUE.",
-      },
-      "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
-    }
-  },
-  {
     "nft-preview-card": {
       "en": {
         "title": "NFT preview card component",
@@ -21,6 +8,19 @@ export const data = [
       "ru": {
         "title": "Компонент карточки NFT",
         "description": "Небольшой и довольно легкий проект по созданию компонента карточки NFT. Для фокуса использовал box-shadow вместо outline или border, вполне удобный вариант, но без возможности сделать отступ.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/nft-preview-card-component-VTov_a7B19"
+    }
+  },
+  {
+    "ecommerce-product": {
+      "en": {
+        "title": "E-commerce product page",
+        "description": "Product page with elegant lightbox product gallery and dynamic cart functionality. First time making a lightbox, it turned out to be easier than I thought. VUE framework is used in the work.",
+      },
+      "ru": {
+        "title": "Страница товара",
+        "description": "Страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впервые сделал лайтбокс, оказалось это легче, чем я думал. В работе использовать фреймворк VUE.",
       },
       "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
     }
