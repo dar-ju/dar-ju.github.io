@@ -1,5 +1,18 @@
 export const data = [
   {
+    "loopstudios-landing": {
+      "en": {
+        "title": "Loopstudios landing page",
+        "description": "Landing page with a mobile menu without using JS. Used Webpack bundler and SCSS. I think the layout is not so complicated to use a grid, flex is enough.",
+      },
+      "ru": {
+        "title": "Лендинг Loopstudios",
+        "description": "Лендинг с мобильным меню без использования JS. Использовал бандлер Webpack и SCSS. Считаю, что макет не на столько сложный, чтобы использовать сетку, достаточно флексов.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/loopstudios-landing-page-with-css-mobile-menu-t6owMky-h3"
+    }
+  },
+  {
     "nft-preview-card": {
       "en": {
         "title": "NFT preview card component",
