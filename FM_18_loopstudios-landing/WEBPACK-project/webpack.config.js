@@ -5,7 +5,7 @@ module.exports = () => ({
   entry: './src/main.js',
   output: {
     filename: 'main.js',
-    publicPath: '/',
+    publicPath: '/FM_18_loopstudios-landing/',
   },
 
   module: {
