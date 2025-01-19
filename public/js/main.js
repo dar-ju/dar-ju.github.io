@@ -124,6 +124,7 @@ function loadLang() {
     document.querySelector(`.hero__description p:nth-of-type(${i})`).innerHTML = langItem[`heroDescription${i}`]
   }
   document.querySelector('.footer__thank').textContent = langItem.thank
+  document.querySelector('.all__technologies-title').textContent = langItem.technologies
 }
 
 document.querySelector('.footer__copy').textContent = `darju ${new Date().getFullYear()}`

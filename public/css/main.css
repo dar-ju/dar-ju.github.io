@@ -188,6 +188,7 @@ body {
 /* ALL */
 .all__group {
   display: flex;
+  margin-bottom: 60px;
   gap: 60px var(--card-gap);
   flex-wrap: wrap;
 }
@@ -251,6 +252,11 @@ body {
 
 .all__btn:hover {
   background-color: var(--color-off-white);
+}
+
+.all__technologies {
+  display: flex;
+  flex-direction: column;
 }
 
 /* FOOTER */

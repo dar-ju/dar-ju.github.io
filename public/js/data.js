@@ -245,6 +245,7 @@ export const data = [
         "subtitle2": "All Solutions",
         "btnLive": "live site",
         "btnFm": "FM page",
+        "technologies": "Used technologies",
         "thank": "I hope you enjoyed it",
       },
       "ru": {
@@ -257,6 +258,7 @@ export const data = [
         "subtitle2": "Все Решения",
         "btnLive": "страница",
         "btnFm": "страница FM",
+        "technologies": "Примененные технологии",
         "thank": "Надеюсь вам понравилось",
       }
     }
