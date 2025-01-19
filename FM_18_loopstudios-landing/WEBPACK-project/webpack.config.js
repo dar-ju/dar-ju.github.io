@@ -1,26 +1,37 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = (env) => ({
+module.exports = () => ({
   mode: 'production',
   entry: './src/main.js',
-	output: {
-		filename: 'main.js',
-	},
+  output: {
+    filename: 'main.js',
+    publicPath: '/',
+  },
 
   module: {
     rules: [
       {
         test: /\.(ttf|otf|woff2?)/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name][hash][ext]',
+        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'assets/images/[name][hash][ext]',
+        },
+      },
+      {
+        test: /\.html$/i,
+        use: ['html-loader'],
       },
       {
         test: /\.scss$/i,
         use: [
-          env.prod ? MiniCssExtractPlugin.loader : 'style-loader',
+          'style-loader',
           "css-loader",
           "sass-loader",
         ],
@@ -44,8 +55,8 @@ module.exports = (env) => ({
   },
 
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'main.[contenthash].css',
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
     }),
-  ],
+  ]
 });

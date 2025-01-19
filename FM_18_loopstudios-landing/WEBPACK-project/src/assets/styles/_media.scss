@@ -1,0 +1,362 @@
+/* MEDIA */
+@media (max-width: 1280px) {
+  .creations {
+    &__item {
+      width: calc((100% - 30px) / 2);
+      background-size: cover;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  .leader {
+    &__wrapper {
+      padding-top: 50px;
+      padding-bottom: 40px;
+    }
+  }
+  .footer {
+    &__container {
+      gap: 50px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 47px;
+    padding-left: 47px;
+  }
+  .subtitle {
+    margin-bottom: 33px;
+    font-size: 4.26rem;
+    line-height: 4.26rem;
+    text-align: center;
+  }
+  .header {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    &__logo {
+      width: 289px;
+    }
+    &__nav {
+      position: fixed;
+      width: 100%;
+      padding: 80px 48px;
+      padding-right: 52px;
+      height: 100%;
+      top: 0;
+      left: -100%;
+      gap: 320px;
+      z-index: 10;
+      flex-direction: column;
+      background-color: black;
+      overflow: auto;
+      transition: left 0.3s ease;
+    }
+    &__nav-list {
+      flex-direction: column;
+      gap: 41px;
+    }
+    &__nav-item {
+      font-family: "JosefinSans-Light";
+      font-size: 3.2rem;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+    &__nav-item::after {
+      left: 13%;
+    }
+    &__nav-item:hover::after {
+      width: 70px;
+    }
+    &__nav-logo {
+      display: block;
+      width: 288px;
+    }
+    &__burger {
+      display: block;
+      width: 48px;
+      height: 48px;
+      background-image: url('../images/icon-hamburger.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      cursor: pointer;
+    }
+  }
+
+  #menu:checked~.header__nav {
+    left: 0;
+  }
+
+  #menu:checked~.header__burger {
+    background-image: url('../images/icon-close.svg');
+    position: fixed;
+    right: 47px;
+    z-index: 20;
+  }
+
+  .hero {
+    padding-top: 452px;
+    padding-bottom: 453px;
+    background-image: url('../images/mobile/image-hero.jpg');
+    &__wrapper {
+      max-width: 656px;
+      padding: 53px 46px;
+      padding-bottom: 36px;
+    }
+    &__title {
+      font-size: clamp(1rem, 11vw, 5.33rem);
+      line-height: 5rem;
+    }
+  }
+
+  .leader {
+    position: initial;
+    padding-top: 192px;
+    padding-bottom: 47px;
+    &__wrapper {
+      position: initial;
+      padding: 97px 52px;
+    }
+    &__description {
+      max-width: initial;
+      font-size: 2.05rem;
+      line-height: 3.33rem;
+      text-align: center;
+    }
+  }
+
+  .creations {
+    padding-top: 47px;
+    padding-bottom: 191px;
+    &__container {
+      gap: 0;
+    }
+    &__title {
+      margin: auto;
+      margin-bottom: 96px;
+    }
+    &__btn {
+      order: 1;
+      width: 313px;
+      max-height: initial;
+      margin: auto;
+      padding: 23px;
+      font-size: 2rem;
+      letter-spacing: 9px;
+    }
+    &__list {
+      margin-bottom: 66px;
+      gap: 48px;
+    }
+    &__item {
+      width: 100%;
+      min-height: 240px;
+      &_earth {
+        background-image: url('../images/mobile/image-deep-earth.jpg');
+      }
+      &_arcade {
+        background-image: url('../images/mobile/image-night-arcade.jpg');
+      }
+      &_team {
+        background-image: url('../images/mobile/image-soccer-team.jpg');
+      }
+      &_grid {
+        background-image: url('../images/mobile/image-grid.jpg');
+      }
+      &_vr {
+        background-image: url('../images/mobile/image-from-above.jpg');
+      }
+      &_borealis {
+        background-image: url('../images/mobile/image-pocket-borealis.jpg');
+      }
+      &_curiosity {
+        background-image: url('../images/mobile/image-curiosity.jpg');
+      }
+      &_fisheye {
+        background-image: url('../images/mobile/image-fisheye.jpg');
+      }
+    }
+    &__item-title {
+      width: 275px;
+      font-size: 3.2rem;
+      line-height: 3.2rem;
+    }
+    &__link {
+      padding: 41px;
+    }
+  }
+
+  .footer {
+    padding-top: 112px;
+    padding-bottom: 112px;
+    &__container {
+      gap: 100px;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    &__main-block {
+      display: flex;
+      gap: 43px;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__logo {
+      width: 288px;
+    }
+    &__second-block {
+      gap: 39px;
+      align-items: center;
+    }
+    &__nav-list {
+      flex-direction: column;
+      gap: 48px;
+    }
+    &__nav-item {
+      font-size: 2rem;
+    }
+    &__social-list {
+      gap: 32px
+    }
+    &__social-item {
+      svg {
+        width: 48px;
+        height: 48px;
+      }
+    }
+    &__rights {
+      max-width: initial;
+      font-size: 2.07rem;
+    }
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .subtitle {
+    font-size: 2.5rem;
+    line-height: 3.26rem;
+  }
+
+  .header {
+    &__logo {
+      width: 210px;
+    }
+    &__burger {
+      width: 35px;
+      height: 35px;
+    }
+    &__nav {
+      padding: 85px 20px;
+      gap: 120px;
+    }
+    &__nav-logo {
+      width: 170px;
+    }
+    &__nav-list {
+      gap: 30px;
+    }
+    &__nav-item {
+      font-size: 2rem;
+    }
+  }
+
+  #menu:checked~.header__burger {
+    right: 20px;
+  }
+
+  .hero {
+    padding-top: 250px;
+    padding-bottom: 250px;
+    &__title {
+      font-size: clamp(1rem, 9vw, 4.33rem);
+    }
+    &__wrapper {
+      padding: 30px;
+    }
+  }
+
+  .leader {
+    padding-top: 80px;
+    &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__wrapper {
+      padding: 0;
+    }
+    &__description {
+      font-size: 1.3rem;
+      line-height: 2rem;
+    }
+  }
+
+  .creations {
+    padding-bottom: 90px;
+    &__title {
+      margin-bottom: 40px;
+    }
+    &__list {
+      margin-bottom: 40px;
+    }
+    &__item {
+      padding: 30px;
+      background-position: center;
+    }
+    &__item-title {
+      font-size: 2.2rem;
+      line-height: 2.2rem;
+    }
+    &__btn {
+      width: 235px;
+      padding: 13px;
+      font-size: 1.5rem;
+      letter-spacing: 6px;
+    }
+  }
+
+  .footer {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &__container {
+      gap: 60px;
+    }
+    &__main-block {
+      gap: 20px
+    }
+    &__logo {
+      width: 210px;
+    }
+    &__nav-list {
+      gap: 23px;
+    }
+    &__nav-item {
+      font-size: 1.5rem;
+    }
+    &__social-list {
+      gap: 25px;
+    }
+    &__social-item {
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    &__rights {
+      text-align: center;
+      font-size: 1.5rem;
+    }
+  }
+}
