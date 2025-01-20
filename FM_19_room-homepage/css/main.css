@@ -1,0 +1,25 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap");
+/* COLORS */
+/* MAIN */
+body {
+  position: relative;
+  min-width: 320px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  color: hsl(0, 0%, 27%);
+  background-color: hsl(0, 0%, 100%);
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.header__container {
+  position: absolute;
+  background-color: beige;
+}
+.header__menu-list {
+  display: flex;
+}/*# sourceMappingURL=main.css.map */

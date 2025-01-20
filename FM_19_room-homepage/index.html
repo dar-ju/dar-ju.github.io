@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Room homepage</title>
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container header__container">
+      <input type="checkbox" id="menu-button" hidden>
+      <label for="menu-button" class="header__button"></label>
+      <img src="./images/logo.svg" class="header__logo" alt="Room logo">
+      <nav>
+        <ul class="header__menu-list">
+          <li class="header__menu-item"><a href="#" class="link">Home</a></li>
+          <li class="header__menu-item"><a href="#" class="link">Shop</a></li>
+          <li class="header__menu-item"><a href="#" class="link">About</a></li>
+          <li class="header__menu-item"><a href="#" class="link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="carousel">
+      <div class="container carousel__container">
+        <picture class="carousel__image-wrapper">
+          <source media="(max-width: 768px)" srcset="./images/mobile-image-hero-1.jpg">
+          <img class="carousel__image" src="./images/desktop-image-hero-1.jpg" alt="Discover innovative ways to decorate image">
+        </picture>
+        <div class="carousel__block">
+          <h1 class="carousel__title">Discover innovative ways to decorate</h1>
+          <p class="carousel__description">We&nbsp;provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in&nbsp;bringing your vision to&nbsp;life. Create a&nbsp;room in&nbsp;your own style with our collection and make your property a reflection of&nbsp;you and what you love.</p>
+          <a href="#" class="carousel__btn">Shop now</a>
+          <div class="carousel__nav-btn-block">
+            <a href="#" class="carousel__nav-btn carousel__nav-btn_prev"></a>
+            <a href="#" class="carousel__nav-btn carousel__nav-btn_next"></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <div class="container about__container">
+        <img class="about__image" src="./images/image-about-dark.jpg" alt="" aria-hidden="true">
+        <div class="about__block">
+          <h2 class="about__title">About our furniture</h2>
+          <p class="about__description">Our multifunctional collection blends design and function to&nbsp;suit your individual taste. Make each room unique, or&nbsp;pick a&nbsp;cohesive theme that best express your interests and what inspires you. Find the furniture pieces you need, from traditional to&nbsp;contemporary styles or&nbsp;anything in&nbsp;between. Product specialists are available to&nbsp;help you create your dream space.</p>
+        </div>
+        <img class="about__image" src="./images/image-about-light.jpg" alt="" aria-hidden="true">
+      </div>
+    </section>
+  </main>
+  <!-- Home
+  Shop
+  About
+  Contact
+
+  Discover innovative ways to decorate
+
+  We provide unmatched quality, comfort, and style for property owners across the country.
+  Our experts combine form and function in bringing your vision to life. Create a room in your
+  own style with our collection and make your property a reflection of you and what you love.
+
+  Shop now
+
+  We are available all across the globe
+
+  With stores all over the world, it's easy for you to find furniture for your home or place of business.
+  Locally, we’re in most major cities throughout the country. Find the branch nearest you using our
+  store locator. Any questions? Don't hesitate to contact us today.
+
+  Shop now
+
+  Manufactured with the best materials
+
+  Our modern furniture store provide a high level of quality. Our company has invested in advanced technology
+  to ensure that every product is made as perfect and as consistent as possible. With three decades of
+  experience in this industry, we understand what customers want for their home and office.
+
+  Shop now
+
+  About our furniture
+
+  Our multifunctional collection blends design and function to suit your individual taste.
+  Make each room unique, or pick a cohesive theme that best express your interests and what
+  inspires you. Find the furniture pieces you need, from traditional to contemporary styles
+  or anything in between. Product specialists are available to help you create your dream space.
+   -->
+</body>
+</html>

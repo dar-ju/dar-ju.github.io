@@ -1,0 +1,175 @@
+@use '_variables' as *;
+
+/* MAIN */
+body {
+  position: relative;
+  min-width: 320px;
+  font-family: "League Spartan", sans-serif;
+  font-weight: 500;
+  color: $dark-gray;
+  background-color: $white;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+}
+
+.header {
+  position: absolute;
+  width: 100%;
+  padding-top: 62px;
+  padding-bottom: 62px;
+  &__container {
+    display: flex;
+    padding-left: 64px;
+    padding-right: 64px;
+    align-items: center;
+  }
+  &__logo {
+    height: 100%;
+    margin-right: 56px;
+  }
+  &__menu-list {
+    display: flex;
+    max-width: 260px;
+    gap: 12px 32px;
+    flex-wrap: wrap;
+  }
+  &__menu-item {
+    text-transform: lowercase;
+    color: $white;
+  }
+}
+
+
+.container {
+}
+.header__container {
+}
+.header__button {
+}
+.header__logo {
+}
+.header__menu-list {
+}
+.header__menu-item {
+}
+.link {
+}
+.carousel {
+  &__container {
+    display: flex;
+  }
+  &__image-wrapper {
+    min-width: 50%;
+  }
+  &__image {
+    height: 100%;
+    object-fit: cover;
+  }
+  &__block {
+    position: relative;
+    max-width: 600px;
+    padding: clamp(50px, 8vw, 100px);
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+  &__title {
+    margin-bottom: 23px;
+    font-size: 3.05rem;
+    line-height: 3rem;
+    font-weight: 600;
+    color: $black;
+    letter-spacing: -1px;
+  }
+  &__description {
+    margin-bottom: 23px;
+    font-size: 1.01rem;
+    line-height: 1.45rem;
+  }
+  &__btn {
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    cursor: pointer;
+  }
+  &__btn::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 15px;
+    right: -55px;
+    background-image: url('../images/icon-arrow.svg');
+    background-repeat: no-repeat;
+  }
+  &__nav-btn-block {
+    display: flex;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  &__nav-btn {
+    display: block;
+    width: clamp(40px, 6vw, 80px);
+    height: clamp(40px, 6vw, 80px);
+    background-color: $black;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    &_prev {
+      background-image: url('../images/icon-angle-left.svg');
+    }
+    &_next {
+      background-image: url('../images/icon-angle-right.svg');
+    }
+  }
+}
+.carousel__container {
+}
+.carousel__image {
+}
+.carousel__block {
+}
+.carousel__title {
+}
+.carousel__description {
+}
+.carousel__btn {
+}
+.carousel__btn-block {
+}
+.carousel__btn-prev {
+}
+.carousel__btn-next {
+}
+.about {
+  &__container {
+    display: flex;
+  }
+  &__block {
+    max-width: 580px;
+    padding: 48px;
+    padding-top: 66px;
+  }
+  &__title {
+    margin-bottom: 13px;
+    font-size: 1.15rem;
+    line-height: 1.47rem;
+    color: $black;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+  }
+  &__image {
+    object-fit: cover;
+    min-width: 300px;
+  }
+}
+.about__container {
+}
+.about__block {
+}
+.about__title {
+}
+.about__description {
+}
