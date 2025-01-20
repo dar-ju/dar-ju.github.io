@@ -32,13 +32,16 @@ body {
   }
   &__menu-list {
     display: flex;
-    max-width: 260px;
+    max-width: 350px;
     gap: 12px 32px;
     flex-wrap: wrap;
   }
   &__menu-item {
     text-transform: lowercase;
     color: $white;
+  }
+  &__button {
+    display: none;
   }
 }
 
@@ -61,12 +64,13 @@ body {
   &__container {
     display: flex;
   }
-  &__image-wrapper {
-    min-width: 50%;
+  &__images {
+    min-width: 600px;
   }
-  &__image {
+  &__image-wrapper {
     height: 100%;
     object-fit: cover;
+    object-position: left;
   }
   &__block {
     position: relative;
@@ -149,20 +153,23 @@ body {
   }
   &__block {
     max-width: 580px;
-    padding: 48px;
+    padding: clamp(24px, 4vw, 48px);
     padding-top: 66px;
   }
   &__title {
-    margin-bottom: 13px;
+    margin-bottom: 11px;
     font-size: 1.15rem;
     line-height: 1.47rem;
     color: $black;
     text-transform: uppercase;
     letter-spacing: 6px;
   }
+  &__description {
+    line-height: 1.45rem;
+  }
   &__image {
     object-fit: cover;
-    min-width: 300px;
+    min-width: 266px;
   }
 }
 .about__container {
