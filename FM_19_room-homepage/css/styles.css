@@ -74,7 +74,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -377,7 +378,8 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number],
 input[type=number]:hover,
 input[type=number]:focus {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   -moz-appearance: textfield;
 }
 
@@ -402,6 +404,7 @@ body {
   width: 100%;
   padding-top: 62px;
   padding-bottom: 62px;
+  z-index: 1;
 }
 .header__container {
   display: flex;
@@ -431,19 +434,23 @@ body {
   display: flex;
 }
 .carousel__images {
+  position: relative;
   display: flex;
-  justify-content: center;
+  min-width: 840px;
+  min-height: 534px;
   overflow: hidden;
 }
-.carousel__inner {
-  display: flex;
-  transition: transform 0.5s;
-}
 .carousel__image-wrapper {
-  display: inline-block;
+  position: absolute;
   min-width: 840px;
-  object-fit: cover;
-  object-position: left;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: left;
+     object-position: left;
+}
+.carousel__image {
+  height: 100%;
 }
 .carousel__block {
   position: relative;
@@ -522,7 +529,8 @@ body {
   line-height: 1.45rem;
 }
 .about__image {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   min-width: 266px;
 }
 
