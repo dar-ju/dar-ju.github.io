@@ -65,12 +65,24 @@ body {
     display: flex;
   }
   &__images {
-    min-width: 600px;
+    display: flex;
+    // max-width: 840px;
+    // width: 100%;
+    justify-content: center;
+    overflow: hidden;
+  }
+  &__inner {
+    display: flex;
+    // width: 300%;
+    transition: transform 0.5s;
   }
   &__image-wrapper {
-    height: 100%;
+    display: inline-block;
+    min-width: 840px;
+    // height: 100%;
     object-fit: cover;
     object-position: left;
+    // width: 100%;
   }
   &__block {
     position: relative;
@@ -179,4 +191,22 @@ body {
 .about__title {
 }
 .about__description {
+}
+
+.prevAnimation {
+  animation: prevMove 1s ease-in-out 1;
+}
+
+@keyframes prevMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+.nextAnimation {
+  animation: nextMove 1s ease-in-out 1;
+}
+
+@keyframes nextMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }

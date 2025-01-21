@@ -74,8 +74,7 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -378,8 +377,7 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number],
 input[type=number]:hover,
 input[type=number]:focus {
-  -webkit-appearance: none;
-          appearance: none;
+  appearance: none;
   -moz-appearance: textfield;
 }
 
@@ -433,14 +431,19 @@ body {
   display: flex;
 }
 .carousel__images {
-  min-width: 600px;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+.carousel__inner {
+  display: flex;
+  transition: transform 0.5s;
 }
 .carousel__image-wrapper {
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: left;
-     object-position: left;
+  display: inline-block;
+  min-width: 840px;
+  object-fit: cover;
+  object-position: left;
 }
 .carousel__block {
   position: relative;
@@ -519,11 +522,34 @@ body {
   line-height: 1.45rem;
 }
 .about__image {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   min-width: 266px;
 }
 
+.prevAnimation {
+  animation: prevMove 1s ease-in-out 1;
+}
+
+@keyframes prevMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.nextAnimation {
+  animation: nextMove 1s ease-in-out 1;
+}
+
+@keyframes nextMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
 /* MEDIA */
 @media (max-width: 1024px) {
   .header {

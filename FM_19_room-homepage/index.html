@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Room homepage</title>
   <link rel="stylesheet" href="./css/styles.css">
+  <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
@@ -31,21 +31,7 @@
     <section class="carousel">
       <div class="container carousel__container">
         <div class="carousel__images">
-          <picture class="carousel__image-wrapper">
-            <source media="(max-width: 375px)" srcset="./images/mobile-image-hero-1.jpg">
-            <img class="carousel__image" src="./images/desktop-image-hero-1.jpg"
-              alt="Discover innovative ways to decorate image">
-          </picture>
-          <picture class="carousel__image-wrapper">
-            <source media="(max-width: 375px)" srcset="./images/mobile-image-hero-2.jpg">
-            <img class="carousel__image" src="./images/desktop-image-hero-2.jpg"
-              alt="Discover innovative ways to decorate image">
-          </picture>
-          <picture class="carousel__image-wrapper">
-            <source media="(max-width: 375px)" srcset="./images/mobile-image-hero-3.jpg">
-            <img class="carousel__image" src="./images/desktop-image-hero-3.jpg"
-              alt="Discover innovative ways to decorate image">
-          </picture>
+
         </div>
         <div class="carousel__block">
           <h1 class="carousel__title">Discover innovative ways to decorate</h1>
@@ -55,8 +41,8 @@
             what you love.</p>
           <a href="#" class="carousel__btn">Shop now</a>
           <div class="carousel__nav-btn-block">
-            <a href="#" class="carousel__nav-btn carousel__nav-btn_prev"></a>
-            <a href="#" class="carousel__nav-btn carousel__nav-btn_next"></a>
+            <a href="#" class="carousel__nav-btn carousel__nav-btn_prev" id="prevBtn"></a>
+            <a href="#" class="carousel__nav-btn carousel__nav-btn_next" id="nextBtn"></a>
           </div>
         </div>
       </div>
