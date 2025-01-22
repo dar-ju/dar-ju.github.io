@@ -12,17 +12,28 @@
 </head>
 
 <body>
+  <!-- <ul class="greet" aria-hidden="true">
+    <li class="greet__line"></li>
+    <li class="greet__line">
+      <div class="greet__block">
+        <span class="greet__text">It's better to live in a perfect</span>
+        <img src="./images/logo.svg" class="greet__logo" alt="">
+      </div>
+    </li>
+    <li class="greet__line"></li>
+  </ul> -->
+
   <header class="header">
     <div class="container header__container">
       <input type="checkbox" id="menu-button" hidden>
       <label for="menu-button" class="header__button"></label>
-      <img src="./images/logo.svg" class="header__logo" alt="Room logo">
+      <img src="./images/logo.svg" class="header__logo" alt="Room company logo">
       <nav class="header__nav-block">
         <ul class="header__menu-list">
-          <li class="header__menu-item"><a href="#" class="link">Home</a></li>
-          <li class="header__menu-item"><a href="#" class="link">Shop</a></li>
-          <li class="header__menu-item"><a href="#" class="link">About</a></li>
-          <li class="header__menu-item"><a href="#" class="link">Contact</a></li>
+          <li class="header__menu-item"><a href="#" class="link-item">Home</a></li>
+          <li class="header__menu-item"><a href="#" class="link-item">Shop</a></li>
+          <li class="header__menu-item"><a href="#" class="link-item">About</a></li>
+          <li class="header__menu-item"><a href="#" class="link-item">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -31,19 +42,20 @@
   <main>
     <section class="carousel">
       <div class="container carousel__container">
-        <div class="carousel__images">
-
-        </div>
+        <div class="carousel__images"></div>
         <div class="carousel__block">
           <h1 class="carousel__title">Discover innovative ways to decorate</h1>
           <p class="carousel__description">We&nbsp;provide unmatched quality, comfort, and style for property owners
             across the country. Our experts combine form and function in bringing your vision to&nbsp;life. Create
             a&nbsp;room in your own style with our collection and make your property a reflection of&nbsp;you and
             what you love.</p>
-          <a href="#" class="carousel__btn">Shop now</a>
+          <a href="#" class="carousel__btn">
+            <span>Shop now</span>
+            <svg width="40" height="12" xmlns="http://www.w3.org/2000/svg"><path d="M34.05 0l5.481 5.527h.008v.008L40 6l-.461.465v.063l-.062-.001L34.049 12l-.662-.668 4.765-4.805H0v-1h38.206l-4.82-4.86L34.05 0z" fill-rule="nonzero"/></svg>
+          </a>
           <div class="carousel__nav-btn-block">
-            <button class="carousel__nav-btn carousel__nav-btn_prev" id="prevBtn"></button>
-            <button class="carousel__nav-btn carousel__nav-btn_next" id="nextBtn"></button>
+            <button class="carousel__nav-btn carousel__nav-btn_prev" id="prevBtn" aria-label="Previous carousel slide"></button>
+            <button class="carousel__nav-btn carousel__nav-btn_next" id="nextBtn" aria-label="Next carousel slide"></button>
           </div>
         </div>
       </div>
@@ -64,42 +76,6 @@
       </div>
     </section>
   </main>
-  <!-- Home
-  Shop
-  About
-  Contact
-
-  Discover innovative ways to decorate
-
-  We provide unmatched quality, comfort, and style for property owners across the country.
-  Our experts combine form and function in bringing your vision to life. Create a room in your
-  own style with our collection and make your property a reflection of you and what you love.
-
-  Shop now
-
-  We are available all across the globe
-
-  With stores all over the world, it's easy for you to find furniture for your home or place of business.
-  Locally, we’re in most major cities throughout the country. Find the branch nearest you using our
-  store locator. Any questions? Don't hesitate to contact us today.
-
-  Shop now
-
-  Manufactured with the best materials
-
-  Our modern furniture store provide a high level of quality. Our company has invested in advanced technology
-  to ensure that every product is made as perfect and as consistent as possible. With three decades of
-  experience in this industry, we understand what customers want for their home and office.
-
-  Shop now
-
-  About our furniture
-
-  Our multifunctional collection blends design and function to suit your individual taste.
-  Make each room unique, or pick a cohesive theme that best express your interests and what
-  inspires you. Find the furniture pieces you need, from traditional to contemporary styles
-  or anything in between. Product specialists are available to help you create your dream space.
-   -->
 </body>
 
 </html>

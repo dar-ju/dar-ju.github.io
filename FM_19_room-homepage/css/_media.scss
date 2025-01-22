@@ -56,6 +56,12 @@
   #menu-button:checked~.header__nav-block {
     top: 0;
   }
+
+  .link-item {
+    color: $black;
+    font-weight: 600;
+  }
+
   .header {
     padding-top: 48px;
     &__container {
@@ -79,7 +85,7 @@
       position: absolute;
       width: 100%;
       left: 0;
-      top: -100%;
+      top: -110%;
       background-color: $white;
       transition: top ease-in-out .5s;
     }
