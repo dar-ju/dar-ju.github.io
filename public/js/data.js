@@ -1,5 +1,18 @@
 export const data = [
   {
+    "room-homepage": {
+      "en": {
+        "title": "Room homepage",
+        "description": "The main page of a furniture company with a simple layout, but with the ability to experiment with animation. I used the gsap tool in this project, I think it turned out well.",
+      },
+      "ru": {
+        "title": "Страница компании Room",
+        "description": "Главная страница мебельной компании с простой версткой, но с возможностью поэксперементировать с анимацией. Использовал инструмент гсап в данном проекте, думаю, получилось неплохо.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/animated-room-homepage-OeLQrZAEtq"
+    }
+  },
+  {
     "loopstudios-landing": {
       "en": {
         "title": "Loopstudios landing page",
