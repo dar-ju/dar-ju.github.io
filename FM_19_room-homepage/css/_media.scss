@@ -24,6 +24,11 @@
     &__image-wrapper {
       min-width: initial;
     }
+    &__images {
+      width: initial;
+      min-width: initial;
+      min-height: 360px;
+    }
     &__image {
       width: 100%;
     }

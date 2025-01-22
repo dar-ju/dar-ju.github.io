@@ -68,19 +68,20 @@ body {
   &__images {
     position: relative;
     display: flex;
-    min-width: 840px;
+    width: 840px;
+    min-width: 600px;
     min-height: 534px;
+    aspect-ratio: 140 / 89;
     overflow: hidden;
   }
   &__image-wrapper {
     position: absolute;
-    min-width: 840px;
     height: 100%;
-    object-fit: cover;
-    object-position: left;
   }
   &__image {
     height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
   &__block {
     position: relative;

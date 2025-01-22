@@ -436,21 +436,22 @@ body {
 .carousel__images {
   position: relative;
   display: flex;
-  min-width: 840px;
+  width: 840px;
+  min-width: 600px;
   min-height: 534px;
+  aspect-ratio: 140/89;
   overflow: hidden;
 }
 .carousel__image-wrapper {
   position: absolute;
-  min-width: 840px;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: left;
-     object-position: left;
 }
 .carousel__image {
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 .carousel__block {
   position: relative;
@@ -580,6 +581,11 @@ body {
   }
   .carousel__image-wrapper {
     min-width: initial;
+  }
+  .carousel__images {
+    width: initial;
+    min-width: initial;
+    min-height: 360px;
   }
   .carousel__image {
     width: 100%;
