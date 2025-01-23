@@ -1,5 +1,8 @@
 /* MEDIA */
 @media (max-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(3, minmax(20%, 33%));
+  }
   .testimonials {
     grid-template-columns: repeat(3, minmax(20%, 33%));
     grid-template-rows: repeat(auto-fill, minmax(335px, 1fr));
@@ -35,6 +38,7 @@
   .container {
     padding-left: 24px;
     padding-right: 24px;
+    grid-template-columns: repeat(1, minmax(20%, 100%));
   }
 
   .testimonials {
