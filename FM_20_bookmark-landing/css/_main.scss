@@ -1,11 +1,13 @@
 /* FONTS */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,500;1,500&display=swap');
+
 /* COLORS */
 $white: hsl(0, 0%, 100%);
 $soft-blue: hsl(231, 69%, 60%);
 $soft-red: hsl(0, 94%, 66%);
 $grayish-blue: hsl(229, 8%, 60%);
+$lite-grey: hsl(0, 0%, 97%);
 $very-dark-blue: hsl(229, 31%, 21%);
 
 /* MAIN */
@@ -13,15 +15,44 @@ body {
   min-width: 320px;
   font-family: "Rubik", sans-serif;
   font-weight: 400;
-  background-color: var(--white);
-  color: var(--grayish-blue);
+  background-color: $white;
+  color: $grayish-blue;
 }
 
 .container {
   max-width: 1440px;
   margin: auto;
-  padding-left: 171px;
+  padding-left: 165px;
   padding-right: 165px;
+}
+
+.title {
+  margin-bottom: 27px;
+  font-size: 2.65rem;
+  line-height: 2.9rem;
+  color: $very-dark-blue;
+  font-weight: 500;
+}
+
+.subtitle {
+  margin-bottom: 24px;
+  font-size: 1.77rem;
+  font-weight: 500;
+  color: $very-dark-blue;
+}
+
+.btn {
+  padding: 14px 25px;
+  background-color: $soft-blue;
+  border-radius: 5px;
+  font-size: 0.82rem;
+  color: $white;
+  box-shadow: 0px 7px 20px -8px $grayish-blue;
+}
+
+.second-btn {
+  background-color: $lite-grey;
+  color: $very-dark-blue;
 }
 
 .header {
@@ -37,6 +68,9 @@ body {
   }
   &__social {
     display: none;
+  }
+  &__logo-wrapper {
+    transform: translateX(6px);
   }
   &__nav-wrapper {
     display: flex;
@@ -55,12 +89,70 @@ body {
   &__btn {
     padding: 12px 31px;
     background-color: $soft-red;
-    color: $white;
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: 5px;
-    box-shadow: 0px 7px 20px -8px $grayish-blue;
+  }
+}
+
+.hero {
+  padding-top: 54px;
+  padding-bottom: 30px;
+  &__container {
+    position: relative;
+    display: flex;
+    padding-right: 52px;
+    gap: 30px
+  }
+  &__info-block {
+    padding-top: 80px;
+  }
+  &__description {
+    margin-bottom: 34px;
+    line-height: 1.5rem;
+  }
+  &__button-group {
+    display: flex;
+    gap: 17px;
+  }
+  &__image {
+    z-index: 1;
+  }
+  &__decor {
+    position: absolute;
+    width: 515px;
+    height: 352px;
+    right: 0;
+    bottom: -30px;
+    background-color: $soft-blue;
+    border-top-left-radius: 200px;
+    border-bottom-left-radius: 200px;
+  }
+}
+
+.features {
+  padding-top: 88px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__description {
+    max-width: 560px;
+    margin-bottom: 73px;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+  &__tab-nav {
+
+  }
+  &__tab-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__tab-block {
+    display: flex;
   }
 }
