@@ -75,7 +75,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -378,7 +379,8 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number],
 input[type=number]:hover,
 input[type=number]:focus {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   -moz-appearance: textfield;
 }
 
@@ -498,7 +500,7 @@ body {
   position: absolute;
   width: 100vw;
   height: 353px;
-  right: -63%;
+  right: -64%;
   bottom: 0;
   left: initial;
   border-radius: 171px;
@@ -540,6 +542,7 @@ body {
 }
 .features__image {
   z-index: 1;
+  animation-duration: 1s;
 }
 .features__tab-info-block {
   padding: 65px 0;
@@ -548,10 +551,12 @@ body {
   margin-bottom: 25px;
   font-size: 1.75rem;
   font-weight: 500;
+  animation-duration: 1s;
 }
 .features__tab-block-description {
   line-height: 1.5rem;
   margin-bottom: 46px;
+  animation-duration: 1s;
 }
 .features::before {
   content: "";
@@ -566,8 +571,22 @@ body {
 }
 
 .tab-btn {
+  position: relative;
   min-width: 243px;
   font-size: 0.95rem;
+}
+.tab-btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 4px;
+  left: 0;
+  bottom: -28px;
+  background-color: hsl(0, 94%, 66%);
+}
+
+.tab-active::after {
+  width: 100%;
 }
 
 .download {
@@ -621,4 +640,137 @@ body {
 .download__btn {
   min-width: 232px;
   text-align: center;
+}
+
+.faq {
+  padding-top: 78px;
+  padding-bottom: 150px;
+}
+.faq__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.faq__description {
+  max-width: 530px;
+  margin-bottom: 57px;
+  text-align: center;
+  line-height: 1.5rem;
+}
+.faq__accordion {
+  max-width: 542px;
+  margin-bottom: 53px;
+  border-top: 1px solid hsl(0, 0%, 90%);
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.faq__accordion-item {
+  padding: 23px 0;
+}
+.faq__accordion-item:not(:last-child) {
+  border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.faq__accordion-title {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: hsl(229, 31%, 21%);
+  cursor: pointer;
+  background-image: url("../images/icon-arrow.svg");
+  background-repeat: no-repeat;
+  background-position: right 24px center;
+}
+.faq__accordion-description {
+  font-size: 0.9rem;
+  line-height: 2rem;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.contact {
+  display: flex;
+  padding-top: 70px;
+  padding-bottom: 75px;
+  background-color: hsl(231, 69%, 60%);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.contact__info {
+  display: block;
+  margin-bottom: 40px;
+  letter-spacing: 5px;
+  font-size: 0.71rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: hsl(0, 0%, 100%);
+}
+.contact__title {
+  max-width: 430px;
+  margin-bottom: 37px;
+  font-size: 1.76rem;
+  line-height: 2.1rem;
+  font-weight: 500;
+  color: hsl(0, 0%, 100%);
+}
+.contact__input {
+  width: 300px;
+  min-height: 48px;
+  margin-right: 11px;
+  padding: 0 20px;
+  border-radius: 6px;
+}
+.contact__input::-moz-placeholder {
+  color: hsl(229, 8%, 60%);
+  font-size: 0.8rem;
+}
+.contact__input::placeholder {
+  color: hsl(229, 8%, 60%);
+  font-size: 0.8rem;
+}
+.contact__btn {
+  background-color: hsl(0, 94%, 66%);
+}
+
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: hsl(229, 31%, 21%);
+}
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__block {
+  display: flex;
+  gap: 63px;
+  align-items: center;
+}
+.footer__nav-list {
+  display: flex;
+  gap: 45px;
+}
+.footer__nav-item {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: hsl(0, 0%, 100%);
+}
+.footer__social {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+.footer__social-icon {
+  fill: hsl(0, 0%, 100%);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=styles.css.map */

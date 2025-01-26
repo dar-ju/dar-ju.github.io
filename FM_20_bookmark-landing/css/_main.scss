@@ -156,7 +156,7 @@ body {
     z-index: 1;
   }
   &::before {
-    @include section-decor(initial, -63%)
+    @include section-decor(initial, -64%)
   }
 }
 
@@ -194,6 +194,8 @@ body {
   }
   &__image {
     z-index: 1;
+    // animation-name: fade;
+    animation-duration: 1s;
   }
   &__tab-info-block {
     padding: 65px 0;
@@ -202,10 +204,14 @@ body {
     margin-bottom: 25px;
     font-size: 1.75rem;
     font-weight: 500;
+    // animation-name: fade;
+    animation-duration: 1s;
   }
   &__tab-block-description {
     line-height: 1.5rem;
     margin-bottom: 46px;
+    // animation-name: fade;
+    animation-duration: 1s;
   }
   &::before {
     @include section-decor(-56%, initial)
@@ -213,8 +219,24 @@ body {
 }
 
 .tab-btn {
+  position: relative;
   min-width: 243px;
   font-size: 0.95rem;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    left: 0;
+    bottom: -28px;
+    background-color: $soft-red;
+  }
+}
+
+.tab-active {
+  &::after {
+    width: 100%;
+  }
 }
 
 .download {
@@ -270,4 +292,130 @@ body {
     min-width: 232px;
     text-align: center;
   }
+}
+
+.faq {
+  padding-top: 78px;
+  padding-bottom: 150px;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__description {
+    max-width: 530px;
+    margin-bottom: 57px;
+    text-align: center;
+    line-height: 1.5rem;
+  }
+  &__accordion {
+    max-width: 542px;
+    margin-bottom: 53px;
+    border-top: 1px solid $grey;
+    border-bottom: 1px solid $grey;
+  }
+  &__accordion-item {
+    padding: 23px 0;
+    &:not(:last-child) {
+      border-bottom: 1px solid $grey;
+    }
+  }
+  &__accordion-title {
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: $very-dark-blue;
+    cursor: pointer;
+    background-image: url('../images/icon-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: right 24px center;
+  }
+  &__accordion-description {
+    // padding-top: 37px;
+    font-size: 0.9rem;
+    line-height: 2rem;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.contact {
+  display: flex;
+  padding-top: 70px;
+  padding-bottom: 75px;
+  background-color: $soft-blue;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  &__info {
+    display: block;
+    margin-bottom: 40px;
+    letter-spacing: 5px;
+    font-size: 0.71rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: $white;
+  }
+  &__title {
+    max-width: 430px;
+    margin-bottom: 37px;
+    font-size: 1.76rem;
+    line-height: 2.1rem;
+    font-weight: 500;
+    color: $white;
+  }
+  &__input {
+    width: 300px;
+    min-height: 48px;
+    margin-right: 11px;
+    padding: 0 20px;
+    border-radius: 6px;
+    &::placeholder {
+      color: $grayish-blue;
+      font-size: 0.8rem;
+    }
+  }
+  &__btn {
+    background-color: $soft-red;
+  }
+}
+
+.footer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: $very-dark-blue;
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__block {
+    display: flex;
+    gap: 63px;
+    align-items: center;
+  }
+  &__nav-list {
+    display: flex;
+    gap: 45px;
+  }
+  &__nav-item {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: $white;
+  }
+  &__social {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+  }
+  &__social-icon {
+    fill: $white;
+  }
+}
+
+// ANIMATION
+
+@keyframes fade {
+  0% { opacity: 1 }
+  50% { opacity: 0 }
+  100% { opacity: 1 }
 }
