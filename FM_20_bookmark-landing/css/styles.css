@@ -540,9 +540,10 @@ body {
   display: flex;
   gap: 125px;
 }
-.features__image {
+.features__image-container {
+  min-width: 535px;
+  min-height: 416px;
   z-index: 1;
-  animation-duration: 1s;
 }
 .features__tab-info-block {
   padding: 65px 0;
@@ -551,12 +552,10 @@ body {
   margin-bottom: 25px;
   font-size: 1.75rem;
   font-weight: 500;
-  animation-duration: 1s;
 }
 .features__tab-block-description {
   line-height: 1.5rem;
   margin-bottom: 46px;
-  animation-duration: 1s;
 }
 .features::before {
   content: "";
@@ -564,7 +563,7 @@ body {
   width: 100vw;
   height: 353px;
   right: initial;
-  bottom: 0;
+  bottom: 68px;
   left: -56%;
   border-radius: 171px;
   background-color: hsl(231, 69%, 60%);
@@ -590,7 +589,7 @@ body {
 }
 
 .download {
-  padding-top: 158px;
+  padding-top: 87px;
   padding-bottom: 80px;
 }
 .download__container {
@@ -665,18 +664,24 @@ body {
 }
 .faq__accordion-item {
   padding: 23px 0;
+  padding-right: 24px;
+  cursor: pointer;
 }
 .faq__accordion-item:not(:last-child) {
   border-bottom: 1px solid hsl(0, 0%, 90%);
+}
+.faq__accordion-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.faq__accordion-arrow {
+  stroke: hsl(231, 69%, 60%);
 }
 .faq__accordion-title {
   font-size: 0.98rem;
   font-weight: 500;
   color: hsl(229, 31%, 21%);
-  cursor: pointer;
-  background-image: url("../images/icon-arrow.svg");
-  background-repeat: no-repeat;
-  background-position: right 24px center;
 }
 .faq__accordion-description {
   font-size: 0.9rem;
@@ -761,16 +766,4 @@ body {
 }
 .footer__social-icon {
   fill: hsl(0, 0%, 100%);
-}
-
-@keyframes fade {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }/*# sourceMappingURL=styles.css.map */

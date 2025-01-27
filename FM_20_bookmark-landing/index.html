@@ -7,7 +7,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Bookmark landing page</title>
   <link rel="stylesheet" href="./css/styles.css">
-  <script defer src="./main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+  <script type="module" defer src="./js/main.js"></script>
 </head>
 
 <body>
@@ -76,8 +77,10 @@
             <button class="tab-btn">Easy Sharing</button>
           </div>
           <div class="features__tab-block">
-            <img class="features__image" src="./images/illustration-features-tab-1.svg"
-              alt="Bookmark in one click image">
+            <div class="features__image-container">
+              <img class="features__image" src="./images/illustration-features-tab-1.svg"
+                alt="Bookmark in one click image">
+            </div>
             <div class="features__tab-info-block">
               <h3 class="features__tab-block-title">Bookmark in&nbsp;one click</h3>
               <p class="features__tab-block-description">Organize your bookmarks however you like. Our simple
@@ -132,13 +135,23 @@
           to&nbsp;email&nbsp;us.</p>
         <ul class="faq__accordion">
           <li class="faq__accordion-item">
-            <h3 class="faq__accordion-title">What is Bookmark?</h3>
+            <div class="faq__accordion-title-wrapper">
+              <h3 class="faq__accordion-title">What is Bookmark?</h3>
+              <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
+              </svg>
+            </div>
             <p class="faq__accordion-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
               tincidunt justo eget ultricies fringilla. Phasellus
               blandit ipsum quis quam ornare mattis.</p>
           </li>
           <li class="faq__accordion-item">
-            <h3 class="faq__accordion-title">How can I request a new browser?</h3>
+            <div class="faq__accordion-title-wrapper">
+              <h3 class="faq__accordion-title">How can I request a new browser?</h3>
+              <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
+              </svg>
+            </div>
             <p class="faq__accordion-description">Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa,
               ultricies non ligula. Suspendisse imperdiet.
               Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula. Suspendisse
@@ -147,14 +160,24 @@
             </p>
           </li>
           <li class="faq__accordion-item">
-            <h3 class="faq__accordion-title">Is there a mobile app?</h3>
+            <div class="faq__accordion-title-wrapper">
+              <h3 class="faq__accordion-title">Is there a mobile app?</h3>
+              <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
+              </svg>
+            </div>
             <p class="faq__accordion-description">Sed consectetur quam id neque fermentum accumsan. Praesent luctus
               vestibulum dolor, ut condimentum urna vulputate eget.
               Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed sollicitudin ex et ultricies
               bibendum.</p>
           </li>
           <li class="faq__accordion-item">
-            <h3 class="faq__accordion-title">What about other Chromium browsers?</h3>
+            <div class="faq__accordion-title-wrapper">
+              <h3 class="faq__accordion-title">What about other Chromium browsers?</h3>
+              <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
+              </svg>
+            </div>
             <p class="faq__accordion-description">Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat
               mi, at euismod dui. Aliquam vitae neque eget nisl
               gravida pellentesque non ut velit.</p>

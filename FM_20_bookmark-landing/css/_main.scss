@@ -12,13 +12,13 @@ $grey: hsl(0, 0%, 90%);
 $very-dark-blue: hsl(229, 31%, 21%);
 
 // MIXIN
-@mixin section-decor($left, $right) {
+@mixin section-decor($left, $right, $bottom) {
   content: "";
   position: absolute;
   width: 100vw;
   height: 353px;
   right: $right;
-  bottom: 0;
+  bottom: $bottom;
   left: $left;
   border-radius: 171px;
   background-color: $soft-blue;
@@ -156,7 +156,7 @@ body {
     z-index: 1;
   }
   &::before {
-    @include section-decor(initial, -64%)
+    @include section-decor(initial, -64%, 0)
   }
 }
 
@@ -192,10 +192,13 @@ body {
     display: flex;
     gap: 125px;
   }
-  &__image {
+  &__image-container {
+    min-width: 535px;
+    min-height: 416px;
     z-index: 1;
-    // animation-name: fade;
-    animation-duration: 1s;
+  }
+  &__image {
+    // animation-duration: 1s;
   }
   &__tab-info-block {
     padding: 65px 0;
@@ -205,16 +208,16 @@ body {
     font-size: 1.75rem;
     font-weight: 500;
     // animation-name: fade;
-    animation-duration: 1s;
+    // animation-duration: 1s;
   }
   &__tab-block-description {
     line-height: 1.5rem;
     margin-bottom: 46px;
     // animation-name: fade;
-    animation-duration: 1s;
+    // animation-duration: 1s;
   }
   &::before {
-    @include section-decor(-56%, initial)
+    @include section-decor(-56%, initial, 68px)
   }
 }
 
@@ -240,7 +243,7 @@ body {
 }
 
 .download {
-  padding-top: 158px;
+  padding-top: 87px;
   padding-bottom: 80px;
   &__container {
     display: flex;
@@ -316,18 +319,24 @@ body {
   }
   &__accordion-item {
     padding: 23px 0;
+    padding-right: 24px;
+    cursor: pointer;
     &:not(:last-child) {
       border-bottom: 1px solid $grey;
     }
+  }
+  &__accordion-title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__accordion-arrow {
+    stroke: $soft-blue;
   }
   &__accordion-title {
     font-size: 0.98rem;
     font-weight: 500;
     color: $very-dark-blue;
-    cursor: pointer;
-    background-image: url('../images/icon-arrow.svg');
-    background-repeat: no-repeat;
-    background-position: right 24px center;
   }
   &__accordion-description {
     // padding-top: 37px;
@@ -414,8 +423,8 @@ body {
 
 // ANIMATION
 
-@keyframes fade {
-  0% { opacity: 1 }
-  50% { opacity: 0 }
-  100% { opacity: 1 }
-}
+// @keyframes fade {
+//   0% { opacity: 1 }
+//   50% { opacity: 0 }
+//   100% { opacity: 1 }
+// }
