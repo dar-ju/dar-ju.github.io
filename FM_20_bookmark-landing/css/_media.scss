@@ -29,12 +29,17 @@
     padding-left: 50px;
   }
 
+  .title {
+    text-align: center;
+  }
+
   .hero {
     &__container {
       flex-direction: column;
     }
     &__info-block {
       display: flex;
+      min-width: initial;
       padding-top: 0;
       order: 1;
       flex-direction: column;
@@ -47,7 +52,7 @@
       text-align: center;
     }
     &::before {
-      @include section-decor(initial, -64%, 30%)
+      @include section-decor(initial, -64%, 30%, 353px)
     }
   }
 
@@ -70,7 +75,7 @@
       text-align: center;
     }
     &::before {
-      @include section-decor(-56%, initial, 30%)
+      @include section-decor(-56%, initial, 30%, 353px)
     }
   }
 
@@ -87,8 +92,27 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding-right: 26px;
+    padding-left: 26px;
+  }
+  .title {
+    margin-bottom: 17px;
+    font-size: 1.65rem;
+    line-height: 2.2rem;
+  }
+  .subtitle {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+  }
+  .btn {
+    width: 100%;
+    padding: 14px;
+  }
   .header {
     position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
     // min-height: 100vh;
     // background-color: $very-dark-blue50;
     &__container {
@@ -121,7 +145,7 @@
       min-height: 100vh;
       padding: 40px 32px;
       top: 0;
-      left: 0;
+      left: 110%;
       z-index: 5;
       background-color: $very-dark-blue90;
       flex-direction: column;
@@ -160,6 +184,8 @@
     }
     &__mobile-menu-btn {
       width: 100%;
+      max-width: 300px;
+      margin-bottom: 40px;
       padding: 10px 31px;
       background-color: transparent;
       outline: 2px solid $white;
@@ -168,10 +194,51 @@
       box-shadow: initial;
     }
     &__mobile-menu-social {
+      display: flex;
+      gap: 35px;
       margin-top: auto;
+      align-items: center;
     }
     &__mobile-menu-social-icon {
       fill: $white;
+    }
+  }
+  .hero {
+    padding-top: 36px;
+    padding-bottom: 66px;
+    &__container {
+      gap: 58px;
+      align-items: center;
+    }
+    &__image {
+      max-width: initial;
+      width: 109%;
+    }
+    &__description {
+      margin-bottom: 28px;
+      font-size: 0.87rem;
+      line-height: 1.45rem;
+    }
+    &__button-group {
+      width: 100%;
+      gap: 10px;
+    }
+    &::before {
+      @include section-decor(initial, -69%, 57%, 201px)
+    }
+  }
+  .features {
+    &__description {
+      margin-bottom: 60px;
+      font-size: 0.84rem;
+      line-height: 1.4rem;
+    }
+    &__tab-nav {
+      row-gap: 37px;
+      flex-direction: column;
+    }
+    &__images {
+      width: 100%;
     }
   }
 }

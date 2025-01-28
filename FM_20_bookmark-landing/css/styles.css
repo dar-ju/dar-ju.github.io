@@ -75,7 +75,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -378,7 +379,8 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number],
 input[type=number]:hover,
 input[type=number]:focus {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   -moz-appearance: textfield;
 }
 
@@ -420,6 +422,7 @@ body {
   border-radius: 5px;
   font-size: 0.82rem;
   color: hsl(0, 0%, 100%);
+  text-align: center;
   box-shadow: 0px 7px 20px -8px hsl(229, 8%, 60%);
 }
 
@@ -511,9 +514,9 @@ body {
 .hero::before {
   content: "";
   position: absolute;
-  width: 100vw;
+  width: 150vw;
   height: 353px;
-  right: -64%;
+  right: -115%;
   bottom: 0;
   left: initial;
   border-radius: 171px;
@@ -576,11 +579,11 @@ body {
 .features::before {
   content: "";
   position: absolute;
-  width: 100vw;
+  width: 150vw;
   height: 353px;
   right: initial;
   bottom: 68px;
-  left: -56%;
+  left: -107%;
   border-radius: 171px;
   background-color: hsl(231, 69%, 60%);
 }
@@ -740,6 +743,10 @@ body {
   padding: 0 20px;
   border-radius: 6px;
 }
+.contact__input::-moz-placeholder {
+  color: hsl(229, 8%, 60%);
+  font-size: 0.8rem;
+}
 .contact__input::placeholder {
   color: hsl(229, 8%, 60%);
   font-size: 0.8rem;
@@ -804,11 +811,15 @@ body {
     padding-right: 50px;
     padding-left: 50px;
   }
+  .title {
+    text-align: center;
+  }
   .hero__container {
     flex-direction: column;
   }
   .hero__info-block {
     display: flex;
+    min-width: initial;
     padding-top: 0;
     order: 1;
     flex-direction: column;
@@ -823,7 +834,7 @@ body {
   .hero::before {
     content: "";
     position: absolute;
-    width: 100vw;
+    width: 150vw;
     height: 353px;
     right: -64%;
     bottom: 30%;
@@ -853,7 +864,7 @@ body {
   .features::before {
     content: "";
     position: absolute;
-    width: 100vw;
+    width: 150vw;
     height: 353px;
     right: initial;
     bottom: 30%;
@@ -873,8 +884,27 @@ body {
   }
 }
 @media (max-width: 768px) {
+  .container {
+    padding-right: 26px;
+    padding-left: 26px;
+  }
+  .title {
+    margin-bottom: 17px;
+    font-size: 1.65rem;
+    line-height: 2.2rem;
+  }
+  .subtitle {
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+  }
+  .btn {
+    width: 100%;
+    padding: 14px;
+  }
   .header {
     position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
   .header__container {
     flex-direction: column;
@@ -905,7 +935,7 @@ body {
     min-height: 100vh;
     padding: 40px 32px;
     top: 0;
-    left: 0;
+    left: 110%;
     z-index: 5;
     background-color: hsla(229, 31%, 21%, 0.9);
     flex-direction: column;
@@ -944,6 +974,8 @@ body {
   }
   .header__mobile-menu-btn {
     width: 100%;
+    max-width: 300px;
+    margin-bottom: 40px;
     padding: 10px 31px;
     background-color: transparent;
     outline: 2px solid hsl(0, 0%, 100%);
@@ -952,9 +984,56 @@ body {
     box-shadow: initial;
   }
   .header__mobile-menu-social {
+    display: flex;
+    gap: 35px;
     margin-top: auto;
+    align-items: center;
   }
   .header__mobile-menu-social-icon {
     fill: hsl(0, 0%, 100%);
+  }
+  .hero {
+    padding-top: 36px;
+    padding-bottom: 66px;
+  }
+  .hero__container {
+    gap: 58px;
+    align-items: center;
+  }
+  .hero__image {
+    max-width: initial;
+    width: 109%;
+  }
+  .hero__description {
+    margin-bottom: 28px;
+    font-size: 0.87rem;
+    line-height: 1.45rem;
+  }
+  .hero__button-group {
+    width: 100%;
+    gap: 10px;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 150vw;
+    height: 201px;
+    right: -69%;
+    bottom: 57%;
+    left: initial;
+    border-radius: 171px;
+    background-color: hsl(231, 69%, 60%);
+  }
+  .features__description {
+    margin-bottom: 60px;
+    font-size: 0.84rem;
+    line-height: 1.4rem;
+  }
+  .features__tab-nav {
+    row-gap: 37px;
+    flex-direction: column;
+  }
+  .features__images {
+    width: 100%;
   }
 }/*# sourceMappingURL=styles.css.map */
