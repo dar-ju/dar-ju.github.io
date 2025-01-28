@@ -8,8 +8,10 @@ $soft-blue: hsl(231, 69%, 60%);
 $soft-red: hsl(0, 94%, 66%);
 $grayish-blue: hsl(229, 8%, 60%);
 $lite-grey: hsl(0, 0%, 97%);
+$liter-grey: hsl(236, 14%, 40%);
 $grey: hsl(0, 0%, 90%);
 $very-dark-blue: hsl(229, 31%, 21%);
+$very-dark-blue90: hsla(229, 31%, 21%, 0.9);
 
 // MIXIN
 @mixin section-decor($left, $right, $bottom) {
@@ -69,43 +71,23 @@ body {
   color: $very-dark-blue;
 }
 
-// .section-decor {
-//   position: absolute;
-//   height: 352px;
-//   background-color: $soft-blue;
-// }
-
-// .section-decor-right {
-//   width: 515px;
-//   right: 0;
-//   bottom: -30px;
-//   border-top-left-radius: 200px;
-//   border-bottom-left-radius: 200px;
-// }
-
-// .section-decor-left {
-//   width: 640px;
-//   left: 0;
-//   bottom: -89px;
-//   border-top-right-radius: 200px;
-//   border-bottom-right-radius: 200px;
-// }
-
 .header {
   padding-top: 50px;
   padding-bottom: 50px;
   &__container {
     display: flex;
+    gap: 40px;
     justify-content: space-between;
     align-items: center;
   }
-  &__close {
+  &__burger {
     display: none;
   }
-  &__social {
+  &__mobile-menu {
     display: none;
   }
   &__logo-wrapper {
+    min-width: 147px;
     transform: translateX(6px);
   }
   &__nav-wrapper {
@@ -115,7 +97,9 @@ body {
   }
   &__nav-list {
     display: flex;
-    gap: 47px;
+    gap: 20px 47px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   &__nav-item {
     font-size: 0.75rem;
@@ -132,16 +116,28 @@ body {
   }
 }
 
+// .header__logo  {
+//   color: #702626;
+// }
+.header__logo .path1  {
+  color: #d9f00a;
+}
+.header__logo .path2  {
+  color: #34961b;
+}
+
 .hero {
   position: relative;
   padding-top: 54px;
   padding-bottom: 30px;
+  overflow-x: hidden;
   &__container {
     display: flex;
     padding-right: 52px;
     gap: 30px
   }
   &__info-block {
+    min-width: 450px;
     padding-top: 80px;
   }
   &__description {
@@ -153,6 +149,7 @@ body {
     gap: 17px;
   }
   &__image {
+    width: 54%;
     z-index: 1;
   }
   &::before {
@@ -181,6 +178,9 @@ body {
     display: flex;
     margin-bottom: 70px;
     padding-bottom: 30px;
+    row-gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
     border-bottom: 1px solid $grey;
   }
   &__tab-wrapper {
@@ -402,9 +402,14 @@ body {
     gap: 63px;
     align-items: center;
   }
+  // &__logo {
+
+
+  // }
   &__nav-list {
     display: flex;
-    gap: 45px;
+    gap: 20px 45px;
+    flex-wrap: wrap;
   }
   &__nav-item {
     font-size: 0.85rem;
@@ -421,6 +426,12 @@ body {
   }
 }
 
+// .footer__logo .path1  {
+//   color: #FFF;
+// }
+// .footer__logo .path2  {
+//   color: #862a2a;
+// }
 // ANIMATION
 
 // @keyframes fade {
