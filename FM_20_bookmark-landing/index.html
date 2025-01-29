@@ -221,7 +221,10 @@
         <span class="contact__info">35,000+ already joined</span>
         <h2 class="contact__title">Stay up-to-date with what we&rsquo;re doing</h2>
         <form class="contact__form">
-          <input type="text" class="contact__input" placeholder="Enter your email address">
+          <div class="contact__input-wrapper">
+            <input type="text" class="contact__input" placeholder="Enter your email address" maxlength="64">
+            <div class="contact__input-error">Whoops, make sure it's an email</div>
+          </div>
           <button type="submit" class="btn main-btn contact__btn">Contact Us</button>
         </form>
       </div>

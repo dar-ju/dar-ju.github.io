@@ -75,7 +75,8 @@ a {
 abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -378,7 +379,8 @@ input[type=number]::-webkit-inner-spin-button {
 input[type=number],
 input[type=number]:hover,
 input[type=number]:focus {
-  appearance: none;
+  -webkit-appearance: none;
+          appearance: none;
   -moz-appearance: textfield;
 }
 
@@ -754,6 +756,11 @@ body {
   align-items: center;
   text-align: center;
 }
+.contact__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .contact__info {
   display: block;
   margin-bottom: 40px;
@@ -771,18 +778,58 @@ body {
   font-weight: 500;
   color: hsl(0, 0%, 100%);
 }
-.contact__input {
+.contact__form {
+  display: flex;
+}
+.contact__input-wrapper {
+  position: relative;
   width: 300px;
-  min-height: 48px;
   margin-right: 11px;
+}
+.contact__input {
+  position: inherit;
+  width: 100%;
+  min-height: 48px;
   padding: 0 20px;
   border-radius: 6px;
+  z-index: 1;
+}
+.contact__input::-moz-placeholder {
+  color: hsl(229, 8%, 60%);
+  font-size: 0.8rem;
 }
 .contact__input::placeholder {
   color: hsl(229, 8%, 60%);
   font-size: 0.8rem;
 }
+.contact__input-error {
+  position: absolute;
+  display: none;
+  width: 102%;
+  height: 152%;
+  top: -3px;
+  left: -3px;
+  padding: 5px;
+  padding-left: 13px;
+  background-color: hsl(0, 94%, 66%);
+  align-items: flex-end;
+  border-radius: 8px;
+  color: white;
+  font-size: 0.6rem;
+  font-style: italic;
+}
+.contact__input-error::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 20px;
+  top: 25%;
+  background: url("../images/icon-error.svg") no-repeat;
+  z-index: 2;
+}
 .contact__btn {
+  max-height: 48px;
   background-color: hsl(0, 94%, 66%);
 }
 
@@ -1148,7 +1195,7 @@ body {
     padding: 0;
   }
   .download__btn {
-    width: 232px;
+    max-width: 232px;
   }
   .faq {
     padding-bottom: 126px;
@@ -1192,10 +1239,18 @@ body {
     font-size: 1.33rem;
     line-height: 1.6rem;
   }
-  .contact__input {
+  .contact__form {
+    width: 100%;
+    max-width: 300px;
+    flex-direction: column;
+  }
+  .contact__input-wrapper {
     width: 100%;
     margin-bottom: 17px;
     margin-right: 0;
+  }
+  .contact__input {
+    width: 100%;
   }
   .footer {
     padding-top: 40px;

@@ -391,6 +391,11 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   &__info {
     display: block;
     margin-bottom: 40px;
@@ -408,18 +413,54 @@ body {
     font-weight: 500;
     color: $white;
   }
-  &__input {
+  &__form {
+    display: flex
+  }
+  &__input-wrapper {
+    position: relative;
     width: 300px;
-    min-height: 48px;
     margin-right: 11px;
+  }
+  &__input {
+    position: inherit;
+    width: 100%;
+    min-height: 48px;
     padding: 0 20px;
     border-radius: 6px;
     &::placeholder {
       color: $grayish-blue;
       font-size: 0.8rem;
     }
+    z-index: 1;
+  }
+  &__input-error {
+    position: absolute;
+    display: none;
+    width: 102%;
+    height: 152%;
+    top: -3px;
+    left: -3px;
+    padding: 5px;
+    padding-left: 13px;
+    background-color: $soft-red;
+    align-items: flex-end;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.6rem;
+    font-style: italic;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      right: 20px;
+      top: 25%;
+      background: url('../images/icon-error.svg') no-repeat;
+      z-index: 2;
+    }
   }
   &__btn {
+    max-height: 48px;
     background-color: $soft-red;
   }
 }

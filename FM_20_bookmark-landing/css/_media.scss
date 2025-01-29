@@ -318,7 +318,7 @@
       // }
     }
     &__btn {
-      width: 232px;
+      max-width: 232px;
     }
   }
 
@@ -366,10 +366,21 @@
       font-size: 1.33rem;
       line-height: 1.6rem;
     }
-    &__input {
+    &__form {
+      width: 100%;
+      max-width: 300px;
+      flex-direction: column;
+    }
+    &__input-wrapper {
       width: 100%;
       margin-bottom: 17px;
       margin-right: 0;
+    }
+    &__input {
+      width: 100%;
+    }
+    &__input-error {
+
     }
   }
 

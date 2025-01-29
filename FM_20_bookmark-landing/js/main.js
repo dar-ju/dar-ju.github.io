@@ -65,10 +65,46 @@ mobileMenuClose.addEventListener('click', () => {
 
 // EMAIL VERIFY
 const emailInput = document.querySelector('.contact__input')
+const emailError = document.querySelector('.contact__input-error')
+const formBlock = document.querySelector('.contact__input-wrapper')
+const contactForm = document.querySelector('.contact__form')
 
 function emailCheck(value) {
   const regular = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return regular.test(value)
 }
 
-// emailInput.
+function warningToggle(value) {
+  if (!value) {
+    emailError.style.display = 'flex'
+    formBlock.style.marginBottom = '35px'
+  } else {
+    if (emailError.style.display === 'flex') {
+      emailError.style.display = 'none'
+      formBlock.style.marginBottom = '17px'
+    }
+  }
+}
+
+emailInput.addEventListener('change', (event) => {
+  const isEmailValid = emailCheck(event.target.value)
+  if (isEmailValid) warningToggle(true)
+  else warningToggle(false)
+})
+
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault()
+  if (!emailInput.value) {
+    warningToggle(false)
+    emailError.textContent = 'Please fill in the email field'
+  } else if (!emailCheck(emailInput.value)) emailError.textContent = 'Whoops, make sure it`s an email'
+  else {
+    warningToggle(true)
+    emailError.textContent = 'Whoops, make sure it`s an email'
+    emailInput.value = ''
+    emailInput.placeholder = '🟢 Thank you for your request!'
+    setTimeout(() => {
+      emailInput.placeholder = 'Enter your email address'
+    }, 4000)
+  }
+})
