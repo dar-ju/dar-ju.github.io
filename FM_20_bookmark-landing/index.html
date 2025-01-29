@@ -15,7 +15,9 @@
   <header class="section header">
     <div class="container header__container">
       <div class="header__logo-wrapper">
-        <img src="./images/logo-bookmark-dark.svg" alt="Bookmark dark logo">
+        <a href="#">
+          <img src="./images/logo-bookmark-dark.svg" alt="Bookmark dark logo">
+        </a>
         <button class="header__burger" aria-label="Open mobile menu"></button>
       </div>
       <div class="header__nav-wrapper">
@@ -82,8 +84,8 @@
           <p class="hero__description">A&nbsp;clean and simple interface to&nbsp;organize your favourite websites. Open
             a&nbsp;new browser tab and see your sites load instantly. Try it&nbsp;for free.</p>
           <div class="hero__button-group">
-            <a href="#" class="btn main-btn">Get it on Chrome</a>
-            <a href="#" class="btn second-btn">Get it on Firefox</a>
+            <a href="#" class="btn main-btn hero__btn">Get it on Chrome</a>
+            <a href="#" class="btn second-btn hero__btn">Get it on Firefox</a>
           </div>
         </div>
         <img class="hero__image" src="./images/illustration-hero.svg" alt="Bookmark Manager image">
@@ -99,9 +101,9 @@
         </p>
         <div class="features__tab-wrapper">
           <ul class="features__tab-nav">
-            <li><button class="tab-btn tab-active">Simple Bookmarking</button></li>
-            <li><button class="tab-btn">Speedy Searching</button></li>
-            <li><button class="tab-btn">Easy Sharing</button></li>
+            <li class="features__tab-item"><button class="link tab-btn tab-active">Simple Bookmarking</button></li>
+            <li class="features__tab-item"><button class="link tab-btn">Speedy Searching</button></li>
+            <li class="features__tab-item"><button class="link tab-btn">Easy Sharing</button></li>
           </ul>
           <div class="features__tab-block">
             <div class="features__image-container">
@@ -156,14 +158,14 @@
 
     <section class="section faq">
       <div class="container faq__container">
-        <h2 class="subtitle">Frequently Asked Questions</h2>
+        <h2 class="subtitle faq__subtitle">Frequently Asked Questions</h2>
         <p class="faq__description">Here are some of&nbsp;our FAQs. If&nbsp;you have any other questions you&rsquo;d
           like answered please feel free
           to&nbsp;email&nbsp;us.</p>
         <ul class="faq__accordion">
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="faq__accordion-title">What is Bookmark?</h3>
+              <h3 class="link faq__accordion-title">What is Bookmark?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -174,7 +176,7 @@
           </li>
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="faq__accordion-title">How can I request a new browser?</h3>
+              <h3 class="link faq__accordion-title">How can I request a new browser?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -188,7 +190,7 @@
           </li>
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="faq__accordion-title">Is there a mobile app?</h3>
+              <h3 class="link faq__accordion-title">Is there a mobile app?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -200,7 +202,7 @@
           </li>
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="faq__accordion-title">What about other Chromium browsers?</h3>
+              <h3 class="link faq__accordion-title">What about other Chromium browsers?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -215,19 +217,23 @@
     </section>
 
     <section class="section contact">
-      <span class="contact__info">35,000+ already joined</span>
-      <h2 class="contact__title">Stay up-to-date with what we&rsquo;re doing</h2>
-      <form class="contact__form">
-        <input type="text" class="contact__input" placeholder="Enter your email address">
-        <button type="submit" class="btn main-btn contact__btn">Contact Us</button>
-      </form>
+      <div class="container contact__container">
+        <span class="contact__info">35,000+ already joined</span>
+        <h2 class="contact__title">Stay up-to-date with what we&rsquo;re doing</h2>
+        <form class="contact__form">
+          <input type="text" class="contact__input" placeholder="Enter your email address">
+          <button type="submit" class="btn main-btn contact__btn">Contact Us</button>
+        </form>
+      </div>
     </section>
   </main>
 
   <footer class="footer">
     <div class="container footer__container">
       <div class="footer__block">
-        <img src="./images/logo-bookmark-light.svg" alt="Bookmark light logo">
+        <a href="#">
+          <img src="./images/logo-bookmark-light.svg" alt="Bookmark light logo">
+        </a>
         <nav class="footer__nav">
           <ul class="footer__nav-list">
             <li class="footer__nav-item"><a class="link" href="#">Features</a></li>
@@ -250,115 +256,6 @@
       </div>
     </div>
   </footer>
-
-  Features
-  Pricing
-  Contact
-  Login
-
-  A Simple Bookmark Manager
-
-  A clean and simple interface to organize your favourite websites. Open a new
-  browser tab and see your sites load instantly. Try it for free.
-
-  Get it on Chrome
-  Get it on Firefox
-
-  Features
-
-  Our aim is to make it quick and easy for you to access your favourite websites.
-  Your bookmarks sync between your devices so you can access them on the go.
-
-  Simple Bookmarking
-  Speedy Searching
-  Easy Sharing
-
-  Bookmark in one click
-
-  Organize your bookmarks however you like. Our simple drag-and-drop interface
-  gives you complete control over how you manage your favourite sites.
-
-  More Info
-
-  Intelligent search
-
-  Our powerful search feature will help you find saved sites in no time at all.
-  No need to trawl through all of your bookmarks.
-
-  More Info
-
-  Share your bookmarks
-
-  Easily share your bookmarks and collections with others. Create a shareable
-  link that you can send at the click of a button.
-
-  More Info
-
-  Download the extension
-
-  We’ve got more browsers in the pipeline. Please do let us know if you’ve
-  got a favourite you’d like us to prioritize.
-
-  Add to Chrome
-  Minimum version 62
-  Add & Install Extension
-
-  Add to Firefox
-  Minimum version 55
-  Add & Install Extension
-
-  Add to Opera
-  Minimum version 46
-  Add & Install Extension
-
-  Frequently Asked Questions
-
-  Here are some of our FAQs. If you have any other questions you’d like
-  answered please feel free to email us.
-
-  <!-- Question 1 -->
-  What is Bookmark?
-
-  <!-- Answer 1 -->
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce tincidunt
-  justo eget ultricies fringilla. Phasellus blandit ipsum quis quam ornare mattis.
-
-  <!-- Question 2 -->
-  How can I request a new browser?
-
-  <!-- Answer 2 -->
-  Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa, ultricies non ligula.
-  Suspendisse imperdiet. Vivamus luctus eros aliquet convallis ultricies. Mauris augue massa,
-  ultricies non ligula. Suspendisse imperdie tVivamus luctus eros aliquet convallis ultricies.
-  Mauris augue massa, ultricies non ligula. Suspendisse imperdiet.
-
-  <!-- Question 3 -->
-  Is there a mobile app?
-
-  <!-- Answer 3 -->
-  Sed consectetur quam id neque fermentum accumsan. Praesent luctus vestibulum dolor, ut condimentum
-  urna vulputate eget. Cras in ligula quis est pharetra mattis sit amet pharetra purus. Sed
-  sollicitudin ex et ultricies bibendum.
-
-  <!-- Question 4 -->
-  What about other Chromium browsers?
-
-  <!-- Answer 4 -->
-  Integer condimentum ipsum id imperdiet finibus. Vivamus in placerat mi, at euismod dui. Aliquam
-  vitae neque eget nisl gravida pellentesque non ut velit.
-
-  More Info
-
-  35,000+ already joined
-
-  Stay up-to-date with what we’re doing
-
-  Contact Us
-
-  Features
-  Pricing
-  Contact
-
 </body>
 
 </html>

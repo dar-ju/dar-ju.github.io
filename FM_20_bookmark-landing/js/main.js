@@ -1,6 +1,6 @@
 import { data } from "./data.js"
 
-// TAB logic
+// TAB
 const tabs = document.querySelectorAll('.tab-btn')
 const tabImage = document.querySelector('.features__image')
 const tabTitle = document.querySelector('.features__tab-block-title')
@@ -25,7 +25,7 @@ tabs.forEach(tab => {
   });
 });
 
-// ACCORDION logic
+// ACCORDION
 const accordionItems = document.querySelectorAll('.faq__accordion-item')
 let openedItem
 
@@ -50,3 +50,25 @@ accordionItems.forEach(item => {
     openedItem = item
   })
 })
+
+// MOBILE MENU
+const mobileMenuBurger = document.querySelector('.header__burger')
+const mobileMenuClose = document.querySelector('.header__mobile-menu-close')
+const mobileMenuBlock = document.querySelector('.header__mobile-menu')
+
+mobileMenuBurger.addEventListener('click', () => {
+  gsap.to(mobileMenuBlock, { left: 0 })
+})
+mobileMenuClose.addEventListener('click', () => {
+  gsap.to(mobileMenuBlock, { left: '110%' })
+})
+
+// EMAIL VERIFY
+const emailInput = document.querySelector('.contact__input')
+
+function emailCheck(value) {
+  const regular = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return regular.test(value)
+}
+
+// emailInput.

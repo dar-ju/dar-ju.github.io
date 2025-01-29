@@ -74,8 +74,11 @@
     &__tab-block-description {
       text-align: center;
     }
+    &__image {
+      width: 100%;
+    }
     &::before {
-      @include section-decor(-56%, initial, 30%, 353px)
+      @include section-decor(-75%, initial, 30%, 353px)
     }
   }
 
@@ -222,23 +225,175 @@
     &__button-group {
       width: 100%;
       gap: 10px;
+      justify-content: center;
+    }
+    &__btn {
+      max-width: 157px;
     }
     &::before {
       @include section-decor(initial, -69%, 57%, 201px)
     }
   }
   .features {
+    padding-bottom: 14px;
     &__description {
-      margin-bottom: 60px;
+      margin-bottom: 41px;
       font-size: 0.84rem;
       line-height: 1.4rem;
     }
     &__tab-nav {
-      row-gap: 37px;
+      width: 100%;
+      padding: 0;
+      row-gap: 0;
+      align-items: center;
       flex-direction: column;
+      border-top: 1px solid $grey;
+    }
+    &__tab-item {
+      width: 100%;
+      text-align: center;
+      &:not(:last-child) {
+        border-bottom: 1px solid $grey;
+      }
     }
     &__images {
       width: 100%;
+    }
+    &__image {
+      width: 96%;
+    }
+    &__image-container {
+      min-width: initial;
+      min-height: initial;
+    }
+    &__tab-info-block {
+      min-width: initial;
+      padding: 33px 0;
+    }
+    &__tab-block-title {
+      font-size: 1.33rem;
+      margin-bottom: 11px;
+    }
+    &__tab-block-description {
+      font-size: 0.85rem;
+      line-height: 1.4rem;
+    }
+    &__tab-block-btn {
+      max-width: 157px;
+    }
+    &::before {
+      @include section-decor(-68%, initial, 30%, 203px)
+    }
+  }
+  .tab-btn {
+    padding: 19px 0;
+  }
+  .tab-active {
+    &::after {
+      width: 60%;
+      bottom: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .download {
+    padding-top: 14px;
+    padding-bottom: 64px;
+    &__description {
+      margin-bottom: 59px;
+      font-size: 0.85rem;
+      line-height: 1.4rem;
+    }
+    &__list {
+      width: 85%;
+      gap: 63px;
+      flex-direction: column;
+    }
+    &__item {
+      &_firefox, &_opera {
+        padding: 0;
+      }
+      // &_opera {
+      //   padding: 0;
+      // }
+    }
+    &__btn {
+      width: 232px;
+    }
+  }
+
+  .faq {
+    padding-bottom: 126px;
+    &__container {
+    }
+    &__subtitle {
+      width: 80%;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+    &__description {
+      margin-bottom: 52px;
+      font-size: 0.84rem;
+      line-height: 1.33rem;
+    }
+    &__accordion {
+      margin-bottom: 45px;
+      border-top: initial
+    }
+    &__accordion-item {
+      padding: 23px 5px;
+    }
+    &__accordion-title-wrapper {
+      align-items: flex-start;
+    }
+    &__accordion-title {
+      font-size: 0.8rem;
+    }
+    &__btn {
+      width: 35%;
+    }
+  }
+
+  .contact {
+    padding-top: 73px;
+    padding-bottom: 62px;
+    &__info {
+      margin-bottom: 11px;
+      letter-spacing: 4px;
+    }
+    &__title {
+      margin-bottom: 32px;
+      font-size: 1.33rem;
+      line-height: 1.6rem;
+    }
+    &__input {
+      width: 100%;
+      margin-bottom: 17px;
+      margin-right: 0;
+    }
+  }
+
+  .footer {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    &__container {
+      gap: 47px;
+      flex-direction: column;
+    }
+    &__block {
+      gap: 40px;
+      flex-direction: column;
+    }
+    &__nav-list {
+      gap: 31px 45px;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__nav-item {
+      letter-spacing: 1px;
+    }
+    &__social {
+      justify-content: center;
     }
   }
 }

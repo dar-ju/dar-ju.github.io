@@ -72,6 +72,39 @@ body {
   color: $very-dark-blue;
 }
 
+// STATES
+.link {
+  transition: color ease-in-out 0.3s;
+}
+.link:hover, .link:focus {
+  color: $soft-red;
+}
+
+.btn {
+  transition: color ease-in-out 0.3s, background-color ease-in-out 0.3s, outline ease-in-out 0.1s;
+}
+.header__btn:hover, .header__btn:focus {
+  background-color: transparent;
+  color: $soft-red;
+  outline: 2px solid $soft-red;
+}
+.main-btn:hover, .main-btn:focus {
+  background-color: transparent;
+  color: $soft-blue;
+  outline: 2px solid $soft-blue;
+}
+.second-btn:hover, .second-btn:focus {
+  background-color: transparent;
+  color: $very-dark-blue;
+  outline: 2px solid $very-dark-blue;
+}
+.contact__btn:hover, .contact__btn:focus {
+  background-color: $white;
+  color: $soft-red;
+  outline: 2px solid $soft-red;
+}
+
+// SECTIONS
 .header {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -328,6 +361,7 @@ body {
   }
   &__accordion-title-wrapper {
     display: flex;
+    gap: 20px;
     align-items: center;
     justify-content: space-between;
   }
