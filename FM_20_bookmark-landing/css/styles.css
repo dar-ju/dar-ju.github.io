@@ -661,6 +661,7 @@ body {
 
 .tab-active {
   color: hsl(229, 31%, 21%);
+  font-weight: 500;
 }
 .tab-active::after {
   width: 100%;

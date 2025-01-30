@@ -274,6 +274,7 @@ body {
 }
 .tab-active {
   color: $very-dark-blue;
+  font-weight: 500;
   &::after {
     width: 100%;
   }
