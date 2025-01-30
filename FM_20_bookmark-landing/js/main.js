@@ -12,6 +12,7 @@ const tabImage = document.querySelector('.features__image')
 const tabTitle = document.querySelector('.features__tab-block-title')
 const tabDescr = document.querySelector('.features__tab-block-description')
 const tabBtn = document.querySelector('.features__tab-block-btn')
+tabImage.src = data[0].tab[0].image
 
 tabs.forEach(tab => {
   tab.addEventListener('click', (event) => {
