@@ -1,12 +1,12 @@
 import { data } from "./data.js"
 
 // START ANIMATION
-gsap.to('.hero__title', { opacity: 1, delay: 0.5 })
-gsap.to('.hero__description', { opacity: 1, delay: 1 })
-gsap.to('.hero__image', { transform: 'translateX(0)', delay: 1.5, ease: "power3.out" })
-gsap.to('.hero__button-group', { transform: 'translateX(0)', delay: 1.5, ease: "power3.out" })
+gsap.to('.hero__image', { transform: 'translateX(0)', delay: 0.5, ease: "power3.out" })
+gsap.to('.hero__title', { opacity: 1, delay: 1 })
+gsap.to('.hero__description', { opacity: 1, delay: 1.5 })
+gsap.to('.hero__button-group', { transform: 'translateX(0)', delay: 2, ease: "power3.out" })
 
-// TAB
+// TABS
 const tabs = document.querySelectorAll('.tab-btn')
 const tabImage = document.querySelector('.features__image')
 const tabTitle = document.querySelector('.features__tab-block-title')

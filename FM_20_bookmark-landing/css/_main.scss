@@ -82,10 +82,10 @@ body {
 .link:focus-visible {
   outline: none;
 }
-.icon-link svg {
+.icon-link, .icon-link svg {
   transition: fill ease-in-out 0.3s;
 }
-.icon-link:focus svg {
+.icon-link:focus, .icon-link:focus svg {
   fill: $soft-red;
 }
 .logo-link {
@@ -203,7 +203,7 @@ body {
     transform: translateX(150vw);
   }
   &::before {
-    @include section-decor(initial, -113%, 0, 353px)
+    @include section-decor(initial, -115%, 0, 353px)
   }
 }
 
@@ -250,17 +250,12 @@ body {
   &__tab-info-block {
     padding: 65px 0;
   }
-  &__tab-block-title {
-    margin-bottom: 25px;
-    font-size: 1.75rem;
-    font-weight: 500;
-  }
   &__tab-block-description {
     line-height: 1.5rem;
     margin-bottom: 46px;
   }
   &::before {
-    @include section-decor(-106%, initial, 68px, 353px)
+    @include section-decor(-107%, initial, 68px, 353px)
   }
 }
 .tab-btn {
@@ -322,6 +317,8 @@ body {
     flex-direction: column;
     align-items: center;
     box-shadow: 0 10px 25px -20px $soft-blue;
+    background: url('../images/bg-dots.svg') no-repeat;
+    background-position: center bottom 28%;
   }
   &__image {
     max-width: 100px;
@@ -345,7 +342,7 @@ body {
 
 .faq {
   padding-top: 78px;
-  padding-bottom: 148px;
+  padding-bottom: 153px;
   &__container {
     display: flex;
     flex-direction: column;
@@ -383,7 +380,7 @@ body {
   &__accordion-title {
     max-width: 475px;
     font-size: 0.98rem;
-    font-weight: 500;
+    font-weight: 400;
     color: $very-dark-blue;
   }
   &__accordion-description {
@@ -397,7 +394,7 @@ body {
 
 .contact {
   display: flex;
-  padding-top: 68px;
+  padding-top: 70px;
   padding-bottom: 75px;
   background-color: $soft-blue;
   flex-direction: column;
@@ -413,7 +410,7 @@ body {
     margin-bottom: 40px;
     letter-spacing: 5px;
     font-size: 0.71rem;
-    font-weight: 500;
+    font-weight: 400;
     text-transform: uppercase;
     color: $white;
   }
@@ -478,7 +475,7 @@ body {
 }
 
 .footer {
-  padding-top: 33px;
+  padding-top: 31px;
   padding-bottom: 29px;
   background-color: $very-dark-blue;
   &__container {
@@ -497,9 +494,11 @@ body {
     flex-wrap: wrap;
   }
   &__nav-item {
-    font-size: 0.85rem;
+    font-size: 0.77rem;
+    font-weight: 400;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: $white;
+    color: $grey;
   }
   &__social {
     display: flex;
