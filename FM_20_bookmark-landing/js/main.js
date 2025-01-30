@@ -1,10 +1,10 @@
 import { data } from "./data.js"
 
 // START ANIMATION
-gsap.to('.hero__image', { transform: 'translateX(0)', delay: 0.5, ease: "power3.out" })
-gsap.to('.hero__title', { opacity: 1, delay: 1 })
-gsap.to('.hero__description', { opacity: 1, delay: 1.5 })
-gsap.to('.hero__button-group', { transform: 'translateX(0)', delay: 2, ease: "power3.out" })
+gsap.to('.hero__image', { transform: 'translateX(0)', delay: 0.5, ease: "power3.out", duration: 0.5 })
+gsap.to('.hero__title', { opacity: 1, delay: 1.5 })
+gsap.to('.hero__description', { opacity: 1, delay: 2 })
+gsap.to('.hero__button-group', { transform: 'translateX(0)', delay: 2.5, ease: "power3.out" })
 
 // TABS
 const tabs = document.querySelectorAll('.tab-btn')
@@ -12,7 +12,6 @@ const tabImage = document.querySelector('.features__image')
 const tabTitle = document.querySelector('.features__tab-block-title')
 const tabDescr = document.querySelector('.features__tab-block-description')
 const tabBtn = document.querySelector('.features__tab-block-btn')
-tabImage.src = data[0].tab[0].image
 
 tabs.forEach(tab => {
   tab.addEventListener('click', (event) => {
@@ -21,7 +20,7 @@ tabs.forEach(tab => {
       item.classList.remove('tab-active')
       if (event.target === tabs[index]) {
         gsap.fromTo([tabTitle, tabDescr], { opacity: 0, duration: 1 }, { opacity: 1, duration: 1 })
-        gsap.fromTo(tabImage, { scale: 0.5, duration: 0.5 }, { scale: 1, duration: 0.5 })
+        gsap.fromTo(tabImage, { scale: 0, duration: 0.5 }, { scale: 1, duration: 0.5 })
         tabTitle.textContent = data[0].tab[index].title
         tabDescr.textContent = data[0].tab[index].description
         tabImage.src = data[0].tab[index].image
