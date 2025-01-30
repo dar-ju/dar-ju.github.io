@@ -261,6 +261,7 @@ body {
   position: relative;
   min-width: 243px;
   font-size: 0.95rem;
+  color: $grayish-blue;
   &::after {
     content: "";
     position: absolute;
@@ -272,6 +273,7 @@ body {
   }
 }
 .tab-active {
+  color: $very-dark-blue;
   &::after {
     width: 100%;
   }

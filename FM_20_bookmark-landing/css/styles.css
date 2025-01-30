@@ -647,6 +647,7 @@ body {
   position: relative;
   min-width: 243px;
   font-size: 0.95rem;
+  color: hsl(229, 8%, 60%);
 }
 .tab-btn::after {
   content: "";
@@ -658,6 +659,9 @@ body {
   background-color: hsl(0, 94%, 66%);
 }
 
+.tab-active {
+  color: hsl(229, 31%, 21%);
+}
 .tab-active::after {
   width: 100%;
 }
