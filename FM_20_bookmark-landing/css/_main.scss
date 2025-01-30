@@ -197,13 +197,12 @@ body {
     transform: translateX(-150vw);
   }
   &__image {
-    width: 54%;
     z-index: 1;
     object-fit: contain;
     transform: translateX(150vw);
   }
   &::before {
-    @include section-decor(initial, -115%, 0, 353px)
+    @include section-decor(initial, -114%, 0, 353px)
   }
 }
 
@@ -255,7 +254,7 @@ body {
     margin-bottom: 46px;
   }
   &::before {
-    @include section-decor(-107%, initial, 68px, 353px)
+    @include section-decor(-106%, initial, 68px, 353px)
   }
 }
 .tab-btn {
@@ -342,7 +341,7 @@ body {
 
 .faq {
   padding-top: 78px;
-  padding-bottom: 153px;
+  padding-bottom: 150px;
   &__container {
     display: flex;
     flex-direction: column;
