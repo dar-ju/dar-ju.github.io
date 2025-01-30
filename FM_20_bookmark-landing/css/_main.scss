@@ -79,7 +79,22 @@ body {
 .link:hover, .link:focus {
   color: $soft-red;
 }
-
+.link:focus-visible {
+  outline: none;
+}
+.icon-link svg {
+  transition: fill ease-in-out 0.3s;
+}
+.icon-link:focus svg {
+  fill: $soft-red;
+}
+.logo-link {
+  border-bottom: 2px solid transparent;
+  transition: border ease-in-out 0.3s;
+}
+.logo-link:focus {
+  border-bottom: 2px solid $soft-red;
+}
 .btn {
   transition: color ease-in-out 0.3s, background-color ease-in-out 0.3s, outline ease-in-out 0.1s;
 }
@@ -138,6 +153,7 @@ body {
   &__nav-item {
     font-size: 0.75rem;
     letter-spacing: 1px;
+    color: $very-dark-blue;
     text-transform: uppercase;
   }
   &__btn {
@@ -146,18 +162,9 @@ body {
     font-size: 0.7rem;
     font-weight: 500;
     letter-spacing: 2px;
+    color: $grey;
     text-transform: uppercase;
   }
-}
-
-// .header__logo  {
-//   color: #702626;
-// }
-.header__logo .path1  {
-  color: #d9f00a;
-}
-.header__logo .path2  {
-  color: #34961b;
 }
 
 .hero {
@@ -173,21 +180,30 @@ body {
   &__info-block {
     min-width: 450px;
     padding-top: 80px;
+    z-index: 1;
+  }
+  &__title {
+    opacity: 0;
   }
   &__description {
     margin-bottom: 34px;
     line-height: 1.5rem;
+    opacity: 0;
   }
   &__button-group {
     display: flex;
     gap: 17px;
+    flex-wrap: wrap;
+    transform: translateX(-150vw);
   }
   &__image {
     width: 54%;
     z-index: 1;
+    object-fit: contain;
+    transform: translateX(150vw);
   }
   &::before {
-    @include section-decor(initial, -115%, 0, 353px)
+    @include section-decor(initial, -113%, 0, 353px)
   }
 }
 
@@ -231,9 +247,6 @@ body {
     min-height: 416px;
     z-index: 1;
   }
-  &__image {
-    // animation-duration: 1s;
-  }
   &__tab-info-block {
     padding: 65px 0;
   }
@@ -241,20 +254,15 @@ body {
     margin-bottom: 25px;
     font-size: 1.75rem;
     font-weight: 500;
-    // animation-name: fade;
-    // animation-duration: 1s;
   }
   &__tab-block-description {
     line-height: 1.5rem;
     margin-bottom: 46px;
-    // animation-name: fade;
-    // animation-duration: 1s;
   }
   &::before {
-    @include section-decor(-107%, initial, 68px, 353px)
+    @include section-decor(-106%, initial, 68px, 353px)
   }
 }
-
 .tab-btn {
   position: relative;
   min-width: 243px;
@@ -269,7 +277,6 @@ body {
     background-color: $soft-red;
   }
 }
-
 .tab-active {
   &::after {
     width: 100%;
@@ -292,10 +299,15 @@ body {
   }
   &__list {
     display: flex;
+    max-width: 912px;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
   }
   &__item {
+    min-width: 209px;
+    max-width: 284px;
+    flex: 1 1 209px;
     &_firefox {
       padding-top: 44px;
     }
@@ -333,7 +345,7 @@ body {
 
 .faq {
   padding-top: 78px;
-  padding-bottom: 150px;
+  padding-bottom: 148px;
   &__container {
     display: flex;
     flex-direction: column;
@@ -369,12 +381,12 @@ body {
     stroke: $soft-blue;
   }
   &__accordion-title {
+    max-width: 475px;
     font-size: 0.98rem;
     font-weight: 500;
     color: $very-dark-blue;
   }
   &__accordion-description {
-    // padding-top: 37px;
     font-size: 0.9rem;
     line-height: 2rem;
     height: 0;
@@ -385,7 +397,7 @@ body {
 
 .contact {
   display: flex;
-  padding-top: 70px;
+  padding-top: 68px;
   padding-bottom: 75px;
   background-color: $soft-blue;
   flex-direction: column;
@@ -466,8 +478,8 @@ body {
 }
 
 .footer {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 33px;
+  padding-bottom: 29px;
   background-color: $very-dark-blue;
   &__container {
     display: flex;
@@ -478,12 +490,9 @@ body {
     gap: 63px;
     align-items: center;
   }
-  // &__logo {
-
-
-  // }
   &__nav-list {
     display: flex;
+    margin-right: 50px;
     gap: 20px 45px;
     flex-wrap: wrap;
   }
@@ -499,19 +508,9 @@ body {
   }
   &__social-icon {
     fill: $white;
+    transition: fill ease-in-out 0.3s;
+    &:hover, &:focus {
+      fill: $soft-red;
+    }
   }
 }
-
-// .footer__logo .path1  {
-//   color: #FFF;
-// }
-// .footer__logo .path2  {
-//   color: #862a2a;
-// }
-// ANIMATION
-
-// @keyframes fade {
-//   0% { opacity: 1 }
-//   50% { opacity: 0 }
-//   100% { opacity: 1 }
-// }

@@ -28,11 +28,9 @@
     padding-right: 50px;
     padding-left: 50px;
   }
-
   .title {
     text-align: center;
   }
-
   .hero {
     &__container {
       flex-direction: column;
@@ -55,7 +53,6 @@
       @include section-decor(initial, -64%, 30%, 353px)
     }
   }
-
   .features {
     padding-bottom: 44px;
     &__image-container {
@@ -81,7 +78,6 @@
       @include section-decor(-75%, initial, 30%, 353px)
     }
   }
-
   .download {
     padding-top: 44px;
     padding-bottom: 44px;
@@ -116,8 +112,6 @@
     position: relative;
     padding-top: 40px;
     padding-bottom: 40px;
-    // min-height: 100vh;
-    // background-color: $very-dark-blue50;
     &__container {
       flex-direction: column;
     }
@@ -131,7 +125,6 @@
       display: block;
       width: 18px;
       height: 18px;
-      background: url('../images/icon-hamburger.svg') no-repeat;
     }
     &__nav-wrapper {
       display: none;
@@ -140,10 +133,9 @@
     &__nav-list {
       flex-direction: column;
     }
-
     &__mobile-menu {
       position: fixed;
-      display: flex;
+      display: none;
       width: 100vw;
       min-height: 100vh;
       padding: 40px 32px;
@@ -164,7 +156,9 @@
     &__mobile-menu-close {
       width: 16px;
       height: 16px;
-      background: url('../images/icon-close.svg') no-repeat;
+      svg {
+        fill: $white;
+      }
     }
     &__mobile-menu-nav {
       width: 100%;
@@ -310,22 +304,17 @@
       flex-direction: column;
     }
     &__item {
+      max-width: initial;
       &_firefox, &_opera {
         padding: 0;
       }
-      // &_opera {
-      //   padding: 0;
-      // }
     }
     &__btn {
       max-width: 232px;
     }
   }
-
   .faq {
     padding-bottom: 126px;
-    &__container {
-    }
     &__subtitle {
       width: 80%;
       margin-bottom: 22px;
@@ -353,7 +342,6 @@
       width: 35%;
     }
   }
-
   .contact {
     padding-top: 73px;
     padding-bottom: 62px;
@@ -379,11 +367,7 @@
     &__input {
       width: 100%;
     }
-    &__input-error {
-
-    }
   }
-
   .footer {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -396,6 +380,7 @@
       flex-direction: column;
     }
     &__nav-list {
+      margin-right: 0;
       gap: 31px 45px;
       flex-direction: column;
       align-items: center;

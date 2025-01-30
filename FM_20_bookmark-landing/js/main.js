@@ -1,5 +1,11 @@
 import { data } from "./data.js"
 
+// START ANIMATION
+gsap.to('.hero__title', { opacity: 1, delay: 0.5 })
+gsap.to('.hero__description', { opacity: 1, delay: 1 })
+gsap.to('.hero__image', { transform: 'translateX(0)', delay: 1.5, ease: "power3.out" })
+gsap.to('.hero__button-group', { transform: 'translateX(0)', delay: 1.5, ease: "power3.out" })
+
 // TAB
 const tabs = document.querySelectorAll('.tab-btn')
 const tabImage = document.querySelector('.features__image')
@@ -57,10 +63,12 @@ const mobileMenuClose = document.querySelector('.header__mobile-menu-close')
 const mobileMenuBlock = document.querySelector('.header__mobile-menu')
 
 mobileMenuBurger.addEventListener('click', () => {
+  mobileMenuBlock.style.display = 'flex'
   gsap.to(mobileMenuBlock, { left: 0 })
 })
 mobileMenuClose.addEventListener('click', () => {
   gsap.to(mobileMenuBlock, { left: '110%' })
+  setTimeout(() => { mobileMenuBlock.style.display = 'none' }, 300)
 })
 
 // EMAIL VERIFY
@@ -88,8 +96,7 @@ function warningToggle(value) {
 
 emailInput.addEventListener('change', (event) => {
   const isEmailValid = emailCheck(event.target.value)
-  if (isEmailValid) warningToggle(true)
-  else warningToggle(false)
+  isEmailValid ? warningToggle(true) : warningToggle(false)
 })
 
 contactForm.addEventListener('submit', (event) => {

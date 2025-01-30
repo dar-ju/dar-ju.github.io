@@ -8,7 +8,7 @@
   <title>Frontend Mentor | Bookmark landing page</title>
   <link rel="stylesheet" href="./css/styles.css">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-  <script type="module" defer src="./js/main.js"></script>
+  <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
@@ -18,7 +18,9 @@
         <a href="#">
           <img src="./images/logo-bookmark-dark.svg" alt="Bookmark dark logo">
         </a>
-        <button class="header__burger" aria-label="Open mobile menu"></button>
+        <button class="header__burger icon-link" aria-label="Open mobile menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15"><path fill-rule="evenodd" d="M0 0h18v3H0V0zm0 6h18v3H0V6zm0 6h18v3H0v-3z"/></svg>
+        </button>
       </div>
       <div class="header__nav-wrapper">
         <nav class="header__nav">
@@ -34,7 +36,9 @@
       <div class="header__mobile-menu">
         <div class="header__mobile-menu-logo-wrapper">
           <img src="./images/logo-bookmark-mobile.svg" alt="Bookmark mobile logo">
-          <button class="header__mobile-menu-close" aria-label="Close mobile menu"></button>
+          <button class="header__mobile-menu-close icon-link" aria-label="Close mobile menu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="15"><path fill-rule="evenodd" d="M8 5.379L13.303.075l2.122 2.122L10.12 7.5l5.304 5.303-2.122 2.122L8 9.62l-5.303 5.304-2.122-2.122L5.88 7.5.575 2.197 2.697.075 8 5.38z"/></svg>
+          </button>
         </div>
         <nav class="header__mobile-menu-nav">
           <ul class="header__mobile-menu-nav-list">
@@ -45,31 +49,17 @@
         </nav>
         <a href="#" class="btn header__btn header__mobile-menu-btn">Login</a>
         <div class="header__mobile-menu-social">
-          <a href="#">
+          <a href="#" class="icon-link" aria-label="Link to Facebook">
             <svg class="social-icon header__mobile-menu-social-icon" xmlns="http://www.w3.org/2000/svg" width="24"
               height="20">
               <use href="#fb-icon"></use>
             </svg>
-            <!-- <svg class="social-icon header__mobile-menu-social-icon" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="24" viewBox="0 0 24 24">
-              <symbol id="fb-icon" viewBox="0 0 24 24">
-                <path fill-rule="evenodd"
-                  d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
-              </symbol>
-            </svg> -->
           </a>
-          <a href="#">
+          <a href="#" class="icon-link" aria-label="Link to Twitter">
             <svg class="social-icon header__mobile-menu-social-icon" xmlns="http://www.w3.org/2000/svg" width="24"
               height="20">
               <use href="#twitter-icon"></use>
             </svg>
-            <!-- <svg class="social-icon header__mobile-menu-social-icon" xmlns="http://www.w3.org/2000/svg" width="24"
-              height="20" viewBox="0 0 24 20">
-              <symbol id="twitter-icon" viewBox="0 0 24 20">
-                <path fill-rule="evenodd"
-                  d="M24 2.557a9.83 9.83 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337.608a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 0 1 1.671 1.149a4.93 4.93 0 0 0 1.523 6.574 4.903 4.903 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.928 4.928 0 0 0 4.6 3.419A9.9 9.9 0 0 1 0 17.54a13.94 13.94 0 0 0 7.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0 0 24 2.557z" />
-              </symbol>
-            </svg> -->
           </a>
         </div>
       </div>
@@ -80,7 +70,7 @@
     <section class="section hero">
       <div class="container hero__container">
         <div class="hero__info-block">
-          <h1 class="title">A Simple Bookmark Manager</h1>
+          <h1 class="title hero__title">A Simple Bookmark Manager</h1>
           <p class="hero__description">A&nbsp;clean and simple interface to&nbsp;organize your favourite websites. Open
             a&nbsp;new browser tab and see your sites load instantly. Try it&nbsp;for free.</p>
           <div class="hero__button-group">
@@ -89,7 +79,6 @@
           </div>
         </div>
         <img class="hero__image" src="./images/illustration-hero.svg" alt="Bookmark Manager image">
-        <!-- <div class="section-decor section-decor-right"></div> -->
       </div>
     </section>
 
@@ -108,7 +97,7 @@
           <div class="features__tab-block">
             <div class="features__image-container">
               <img class="features__image" src="./images/illustration-features-tab-1.svg"
-                alt="Bookmark in one click image">
+                alt="Tab image">
             </div>
             <div class="features__tab-info-block">
               <h3 class="features__tab-block-title">Bookmark in&nbsp;one click</h3>
@@ -118,7 +107,6 @@
             </div>
           </div>
         </div>
-        <!-- <div class="section-decor section-decor-left"></div> -->
       </div>
     </section>
 
@@ -133,7 +121,7 @@
               <img class="download__image" src="./images/logo-chrome.svg" alt="Chrome logo">
               <h3 class="download__item-title">Add to Chrome</h3>
               <p class="download__item-description">Minimum version 62</p>
-              <a class="btn main-btn download__btn" href="">Add & Install Extension</a>
+              <a class="btn main-btn download__btn" href="#">Add & Install Extension</a>
             </div>
           </li>
           <li class="download__item download__item_firefox">
@@ -141,7 +129,7 @@
               <img class="download__image" src="./images/logo-firefox.svg" alt="Firefox logo">
               <h3 class="download__item-title">Add to Firefox</h3>
               <p class="download__item-description">Minimum version 55</p>
-              <a class="btn main-btn download__btn" href="">Add & Install Extension</a>
+              <a class="btn main-btn download__btn" href="#">Add & Install Extension</a>
             </div>
           </li>
           <li class="download__item download__item_opera">
@@ -149,7 +137,7 @@
               <img class="download__image" src="./images/logo-opera.svg" alt="Opera logo">
               <h3 class="download__item-title">Add to Opera</h3>
               <p class="download__item-description">Minimum version 46</p>
-              <a class="btn main-btn download__btn" href="">Add & Install Extension</a>
+              <a class="btn main-btn download__btn" href="#">Add & Install Extension</a>
             </div>
           </li>
         </ul>
@@ -165,7 +153,7 @@
         <ul class="faq__accordion">
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="link faq__accordion-title">What is Bookmark?</h3>
+              <h3 class="link faq__accordion-title" tabindex="0" aria-label="Click to expand more information">What is Bookmark?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -176,7 +164,7 @@
           </li>
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="link faq__accordion-title">How can I request a new browser?</h3>
+              <h3 class="link faq__accordion-title" tabindex="0" aria-label="Click to expand more information">How can I request a new browser?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -190,7 +178,7 @@
           </li>
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="link faq__accordion-title">Is there a mobile app?</h3>
+              <h3 class="link faq__accordion-title" tabindex="0" aria-label="Click to expand more information">Is there a mobile app?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -202,7 +190,7 @@
           </li>
           <li class="faq__accordion-item">
             <div class="faq__accordion-title-wrapper">
-              <h3 class="link faq__accordion-title">What about other Chromium browsers?</h3>
+              <h3 class="link faq__accordion-title" tabindex="0" aria-label="Click to expand more information">What about other Chromium browsers?</h3>
               <svg class="faq__accordion-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
                 <path fill="none" stroke-width="3" d="M1 1l8 8 8-8" />
               </svg>
@@ -234,7 +222,7 @@
   <footer class="footer">
     <div class="container footer__container">
       <div class="footer__block">
-        <a href="#">
+        <a href="#" class="logo-link">
           <img src="./images/logo-bookmark-light.svg" alt="Bookmark light logo">
         </a>
         <nav class="footer__nav">
@@ -246,12 +234,12 @@
         </nav>
       </div>
       <div class="footer__social">
-        <a href="#">
+        <a href="#" class="icon-link" aria-label="Link to Facebook">
           <svg class="social-icon footer__social-icon" width="24" height="24">
             <use href="#fb-icon" />
           </svg>
         </a>
-        <a href="#">
+        <a href="#" class="icon-link" aria-label="Link to Twitter">
           <svg class="social-icon footer__social-icon" width="24" height="24">
             <use href="#twitter-icon" />
           </svg>
@@ -259,20 +247,20 @@
       </div>
     </div>
   </footer>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <symbol id="fb-icon" viewBox="0 0 24 24">
+      <path fill-rule="evenodd"
+        d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
+    </symbol>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
+    <symbol id="twitter-icon" viewBox="0 0 24 20">
+      <path fill-rule="evenodd"
+        d="M24 2.557a9.83 9.83 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337.608a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 0 1 1.671 1.149a4.93 4.93 0 0 0 1.523 6.574 4.903 4.903 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.928 4.928 0 0 0 4.6 3.419A9.9 9.9 0 0 1 0 17.54a13.94 13.94 0 0 0 7.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0 0 24 2.557z" />
+    </symbol>
+  </svg>
+
 </body>
-
 </html>
-
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <symbol id="fb-icon" viewBox="0 0 24 24">
-    <path fill-rule="evenodd"
-      d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z" />
-  </symbol>
-</svg>
-
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
-  <symbol id="twitter-icon" viewBox="0 0 24 20">
-    <path fill-rule="evenodd"
-      d="M24 2.557a9.83 9.83 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337.608a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616.248c-3.179 0-5.515 2.966-4.797 6.045A13.978 13.978 0 0 1 1.671 1.149a4.93 4.93 0 0 0 1.523 6.574 4.903 4.903 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.935 4.935 0 0 1-2.224.084 4.928 4.928 0 0 0 4.6 3.419A9.9 9.9 0 0 1 0 17.54a13.94 13.94 0 0 0 7.548 2.212c9.142 0 14.307-7.721 13.995-14.646A10.025 10.025 0 0 0 24 2.557z" />
-  </symbol>
-</svg>
