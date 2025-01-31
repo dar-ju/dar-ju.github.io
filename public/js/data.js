@@ -1,6 +1,6 @@
 export const data = [
   {
-    "bookmark-landing-page": {
+    "bookmark-landing": {
       "en": {
         "title": "Bookmark landing page",
         "description": "Quite a diverse task in terms of the number of tasks to be solved. Only one page, so only HTML, SCC and JS were used, gsap was used for animation. The layout in Perfect Pixel of the desktop and mobile versions without a Figma layout took a lot of time.",
