@@ -1,5 +1,18 @@
 export const data = [
   {
+    "bookmark-landing-page": {
+      "en": {
+        "title": "Bookmark landing page",
+        "description": "Quite a diverse task in terms of the number of tasks to be solved. Only one page, so only HTML, SCC and JS were used, gsap was used for animation. The layout in Perfect Pixel of the desktop and mobile versions without a Figma layout took a lot of time.",
+      },
+      "ru": {
+        "title": "Лендинг Bookmark",
+        "description": "Довольно разнообразное по количеству решаемых задач задание. Всего одна страница, поэтому обошёлся только HTML, SCC и JS, для анимации использовался gsap. Верстка в Perfect Pixel десктопа и мобильной версии без макета Figma заняло много времени.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/bookmark-landing-page-73ROxtMb12"
+    }
+  },
+  {
     "room-homepage": {
       "en": {
         "title": "Room homepage",
