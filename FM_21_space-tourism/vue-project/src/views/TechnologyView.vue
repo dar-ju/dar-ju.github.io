@@ -1,13 +1,17 @@
 <script setup>
 import HeaderSection from '@/components/HeaderSection.vue'
+import TechnologyComponent from '@/components/TechnologyComponent.vue'
 </script>
 
 <template>
-  <div>
+  <div class="section technology">
     <HeaderSection />
-    <h1>Technology</h1>
+    <TechnologyComponent />
   </div>
 </template>
 
 <style scoped>
+.technology {
+  background-image: url('@/assets/images/technology/background-technology-desktop.jpg');
+}
 </style>

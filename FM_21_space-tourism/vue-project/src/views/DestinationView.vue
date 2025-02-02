@@ -1,13 +1,17 @@
 <script setup>
 import HeaderSection from '@/components/HeaderSection.vue'
+import DestinationComponent from '@/components/DestinationComponent.vue'
 </script>
 
 <template>
-  <div>
+  <div class="section destination">
     <HeaderSection />
-    <h1>Destination</h1>
+    <DestinationComponent />
   </div>
 </template>
 
 <style scoped>
+.destination {
+  background-image: url('@/assets/images/destination/background-destination-desktop.jpg');
+}
 </style>

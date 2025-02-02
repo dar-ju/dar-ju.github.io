@@ -1,13 +1,17 @@
 <script setup>
 import HeaderSection from '@/components/HeaderSection.vue'
+import HomeComponent from '@/components/HomeComponent.vue'
 </script>
 
 <template>
-  <div>
+  <div class="section home">
     <HeaderSection />
-    <h1>Home</h1>
+    <HomeComponent />
   </div>
 </template>
 
 <style scoped>
+.home {
+  background-image: url('@/assets/images/home/background-home-desktop.jpg');
+}
 </style>

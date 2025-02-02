@@ -1,26 +1,110 @@
 /* MAIN */
+html {
+  font-size: 18px;
+}
+
 body {
   min-width: 320px;
-  font-family: "Kumbh Sans", sans-serif;
-  font-size: 1rem;
+  font-family: "Barlow Condensed", sans-serif;
   font-weight: 400;
   background-color: var(--color-white);
-  color: var(--color-dark-grayish-blue);
+  color: var(--color-blue300);
 }
 
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding-left: 165px;
-  padding-right: 165px;
+  /* padding-left: 165px;
+  padding-right: 165px; */
 }
 
 .section {
-  padding-top: 89px;
-  padding-bottom: 89px;
+  padding-top: 40px;
+  /* padding-bottom: 128px; */
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-.btn {
+.title {
+  font-family: "Bellefair", serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.title-1 {
+  font-size: 144px;
+  line-height: 153%;
+}
+
+.title-2 {
+  font-size: 96px;
+  line-height: 114.6%;
+}
+
+.title-3 {
+  font-size: 56px;
+  line-height: 64.2%;
+}
+
+.title-4 {
+  font-size: 32px;
+  line-height: 36.7%;
+}
+
+.title-5 {
+  font-size: 28px;
+  line-height: 32.1%;
+  text-transform: uppercase;
+}
+
+.text-1 {
+  font-size: 28px;
+  line-height: 33.6%;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.text-2 {
+  font-size: 14px;
+  line-height: 16.8%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.text-3 {
+  font-size: 16px;
+  line-height: 19.2%;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.paragraph-1 {
+  font-size: 1.25rem;
+  line-height: 140%;
+}
+
+.paragraph-2 {
+  font-size: 18px;
+  line-height: 180%;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  opacity: 0;
+  background-color: var(--color-white50);
+  transition: opacity ease-in-out 0.5s;
+}
+
+/* .btn {
   display: flex;
   padding: 18px;
   justify-content: center;
@@ -34,30 +118,11 @@ body {
 
 .btn:hover {
   background-color: var(--color-lite-orange);
-}
+} */
 
 @media (max-width: 1200px) {
   .container {
-    padding-left: 85px;
-    padding-right: 85px;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding-left: 35px;
-    padding-right: 35px;
-  }
-}
-
-@media (max-width: 576px) {
-  .container {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .section {
-    padding-top: 19px;
-    padding-bottom: 19px;
+    /* padding-left: 85px;
+    padding-right: 85px; */
   }
 }
