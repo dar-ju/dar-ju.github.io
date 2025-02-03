@@ -1,11 +1,4 @@
-<script setup>
-import HomeView from '@/views/HomeView.vue'
-
-// const props = defineProps({
-//   msg: String,
-// })
-// console.log(msg)
-</script>
+<script setup></script>
 
 <template>
   <div class="header__nav">

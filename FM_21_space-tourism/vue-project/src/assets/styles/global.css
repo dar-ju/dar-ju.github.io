@@ -118,6 +118,16 @@ body {
   opacity: 0;
 }
 
+.fade-destination-enter-active,
+.fade-destination-leave-active {
+  transition: opacity 0.15s;
+}
+
+.fade-destination-enter-from,
+.fade-destination-leave-to {
+  opacity: 0;
+}
+
 /* .btn {
   display: flex;
   padding: 18px;

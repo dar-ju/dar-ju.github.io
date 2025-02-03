@@ -1,6 +1,4 @@
-<script setup>
-import HeaderSection from '@/components/HeaderSection.vue'
-</script>
+<script setup></script>
 
 <template>
   <div class="app">
