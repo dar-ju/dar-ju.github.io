@@ -1,25 +1,44 @@
-<script setup></script>
+<script setup>
+import HomeView from '@/views/HomeView.vue'
+
+// const props = defineProps({
+//   msg: String,
+// })
+// console.log(msg)
+</script>
 
 <template>
   <div class="header__nav">
     <ul class="header__nav-list">
-      <li class="text-3 nav-item header__nav-item header__nav-item_active">
+      <li
+        class="text-3 nav-item header__nav-item"
+        :class="{ 'header__nav-item_active': $route.path === '/' }"
+      >
         <router-link class="link" to="/"
           ><span class="header__nav-item-number">00</span>Home</router-link
         >
       </li>
-      <li class="text-3 nav-item header__nav-item">
-        <router-link class="link" to="destination"
+      <li
+        class="text-3 nav-item header__nav-item"
+        :class="{ 'header__nav-item_active': $route.path === '/destination' }"
+      >
+        <router-link class="link" to="/destination"
           ><span class="header__nav-item-number">01</span>Destination</router-link
         >
       </li>
-      <li class="text-3 nav-item header__nav-item">
-        <router-link class="link" to="crew"
+      <li
+        class="text-3 nav-item header__nav-item"
+        :class="{ 'header__nav-item_active': $route.path === '/crew' }"
+      >
+        <router-link class="link" to="/crew"
           ><span class="header__nav-item-number">02</span>Crew</router-link
         >
       </li>
-      <li class="text-3 nav-item header__nav-item">
-        <router-link class="link" to="technology"
+      <li
+        class="text-3 nav-item header__nav-item"
+        :class="{ 'header__nav-item_active': $route.path === '/technology' }"
+      >
+        <router-link class="link" to="/technology"
           ><span class="header__nav-item-number">03</span>Technology</router-link
         >
       </li>

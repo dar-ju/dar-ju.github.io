@@ -3,7 +3,17 @@ import HeaderSection from '@/components/HeaderSection.vue'
 </script>
 
 <template>
-  <router-view></router-view>
+  <div class="app">
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="in-out">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.app {
+  position: relative;
+}
+</style>

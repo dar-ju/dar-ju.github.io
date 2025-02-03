@@ -1,4 +1,17 @@
-<script setup></script>
+<script setup>
+import { useDataStore } from '@/stores/store'
+
+const dataStore = useDataStore()
+dataStore.getData()
+console.log(dataStore.data)
+
+// import { ref } from 'vue'
+
+// const planet = ref({})
+// const toggleNav = (value) => {
+//   planet.value.image =
+// }
+</script>
 
 <template>
   <div class="destination__wrapper">

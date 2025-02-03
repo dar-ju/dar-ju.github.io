@@ -12,24 +12,12 @@
           truly out of this world experience!
         </p>
       </div>
-      <router-view :key="$route.fullPath" />
-
       <router-link class="title title-4 home__btn" to="/destination">Explore</router-link>
     </div>
   </div>
 </template>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
-
 .home__wrapper {
   padding-top: 428px;
   padding-bottom: 125px;

@@ -19,6 +19,10 @@ body {
 }
 
 .section {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
   padding-top: 40px;
   /* padding-bottom: 128px; */
   background-repeat: no-repeat;
@@ -102,6 +106,16 @@ body {
   opacity: 0;
   background-color: var(--color-white50);
   transition: opacity ease-in-out 0.5s;
+}
+
+/* Animation */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 /* .btn {
