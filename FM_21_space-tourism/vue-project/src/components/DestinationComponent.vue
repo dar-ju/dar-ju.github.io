@@ -1,18 +1,18 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { data } from '../data/data.js'
 
 const destinations = ref({})
 const planet = ref({})
+const titleBlock = ref('')
+const titleParentBlock = ref('')
 destinations.value = data.destinations
 
-// import { useDataStore } from '@/stores/store'
+onMounted(() => {
+  titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+  titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
+})
 
-// const dataStore = useDataStore()
-// dataStore.getData()
-// console.log(dataStore.data)
-
-// import { ref } from 'vue'
 const getImageUrl = (path) => {
   return new URL(path, import.meta.url).href
 }
@@ -20,6 +20,8 @@ const getImageUrl = (path) => {
 const toggleNav = (value) => {
   const index = destinations.value.findIndex((el) => el.name === value)
   planet.value = destinations.value[index]
+  if (titleParentBlock.value)
+    titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
 }
 toggleNav('Moon')
 </script>
@@ -30,43 +32,49 @@ toggleNav('Moon')
       <h1 class="text-1 destination__title">
         <span class="destination__title-number">01</span>Pick your destination
       </h1>
-      <div class="destination__animation-wrapper">
-        <Transition name="fade-destination" mode="in-out">
-          <div :key="planet.name" class="destination__animation-block">
-            <div class="destination__block">
+      <div class="destination__block">
+        <div class="destination__animation-wrapper">
+          <Transition name="fade-destination" mode="in-out">
+            <div :key="planet.name" class="destination__animation-block">
               <img class="destination__image" :src="getImageUrl(planet.images.webp)" alt="" />
-              <!-- @/assets/images/destination/image-moon.webp -->
-              <div class="destination__text-block">
-                <nav class="destination__nav">
-                  <ul class="destination__nav-list">
-                    <li
-                      class="text-3 nav-item destination__nav-item"
-                      :class="{ 'destination__nav-item_active': planet.name === 'Moon' }"
-                    >
-                      <a @click="toggleNav('Moon')" class="link" href="#">Moon</a>
-                    </li>
-                    <li
-                      class="text-3 nav-item destination__nav-item"
-                      :class="{ 'destination__nav-item_active': planet.name === 'Mars' }"
-                    >
-                      <a @click="toggleNav('Mars')" class="link" href="#">Mars</a>
-                    </li>
-                    <li
-                      class="text-3 nav-item destination__nav-item"
-                      :class="{ 'destination__nav-item_active': planet.name === 'Europa' }"
-                    >
-                      <a @click="toggleNav('Europa')" class="link" href="#">Europa</a>
-                    </li>
-                    <li
-                      class="text-3 nav-item destination__nav-item"
-                      :class="{ 'destination__nav-item_active': planet.name === 'Titan' }"
-                    >
-                      <a @click="toggleNav('Titan')" class="link" href="#">Titan</a>
-                    </li>
-                  </ul>
-                </nav>
+            </div>
+          </Transition>
+        </div>
+        <div class="destination__text-block">
+          <nav class="destination__nav">
+            <ul class="destination__nav-list">
+              <li
+                class="text-3 nav-item destination__nav-item"
+                :class="{ 'destination__nav-item_active': planet.name === 'Moon' }"
+              >
+                <a @click="toggleNav('Moon')" class="link" href="#">Moon</a>
+              </li>
+              <li
+                class="text-3 nav-item destination__nav-item"
+                :class="{ 'destination__nav-item_active': planet.name === 'Mars' }"
+              >
+                <a @click="toggleNav('Mars')" class="link" href="#">Mars</a>
+              </li>
+              <li
+                class="text-3 nav-item destination__nav-item"
+                :class="{ 'destination__nav-item_active': planet.name === 'Europa' }"
+              >
+                <a @click="toggleNav('Europa')" class="link" href="#">Europa</a>
+              </li>
+              <li
+                class="text-3 nav-item destination__nav-item"
+                :class="{ 'destination__nav-item_active': planet.name === 'Titan' }"
+              >
+                <a @click="toggleNav('Titan')" class="link" href="#">Titan</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="destination__animation-wrapper" ref="titleParentBlock">
+            <Transition name="fade-destination" mode="in-out">
+              <div :key="planet.name" class="destination__animation-block" ref="titleBlock">
                 <h2 class="title title-2 destination__sutitle">{{ planet.name }}</h2>
                 <p class="paragraph-1 destination__description">{{ planet.description }}</p>
+
                 <div class="destination__data">
                   <div class="destination__data-block">
                     <span class="text-2 destination__distance-title">Avg. distance</span>
@@ -80,11 +88,10 @@ toggleNav('Moon')
                   </div>
                 </div>
               </div>
-            </div>
+            </Transition>
           </div>
-        </Transition>
+        </div>
       </div>
-      <!-- <a class="title title-4 destination__btn" href="#">Explore</a> -->
     </div>
   </div>
 </template>
@@ -98,8 +105,8 @@ toggleNav('Moon')
 .destination__container {
   /* display: flex; */
   /* position: relative; */
-  padding-right: 165px;
-  padding-left: 165px;
+  padding-right: clamp(5px, 10vw, 165px);
+  padding-left: clamp(5px, 10vw, 165px);
   /* padding-bottom: 760px; */
   /* align-items: center;
   justify-content: space-between; */
@@ -118,6 +125,7 @@ toggleNav('Moon')
 }
 .destination__block {
   display: flex;
+  position: relative;
   /* min-height: 760px; */
   padding: 140px 30px;
   gap: 60px;
@@ -125,7 +133,7 @@ toggleNav('Moon')
 }
 .destination__image {
   width: 480px;
-  min-width: 300px;
+  min-width: 350px;
   object-fit: contain;
 }
 .destination__text-block {
@@ -167,12 +175,12 @@ toggleNav('Moon')
 }
 
 .destination__animation-wrapper {
+  display: flex;
   position: relative;
-  padding-bottom: 760px;
+  width: 100%;
 }
 
 .destination__animation-block {
-  width: 100%;
   position: absolute;
 }
 

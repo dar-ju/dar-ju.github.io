@@ -120,7 +120,7 @@ body {
 
 .fade-destination-enter-active,
 .fade-destination-leave-active {
-  transition: opacity 0.15s;
+  transition: opacity 0.2s;
 }
 
 .fade-destination-enter-from,

@@ -1,4 +1,30 @@
-<script setup></script>
+<script setup>
+import { onMounted, ref } from 'vue'
+import { data } from '../data/data.js'
+
+const crew = ref({})
+const member = ref({})
+const titleBlock = ref('')
+const titleParentBlock = ref('')
+crew.value = data.crew
+
+onMounted(() => {
+  // titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+  // titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
+})
+
+const getImageUrl = (path) => {
+  return new URL(path, import.meta.url).href
+}
+
+const toggleNav = (value) => {
+  const index = crew.value.findIndex((el) => el.name === value)
+  member.value = crew.value[index]
+  // if (titleParentBlock.value)
+  //   titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+}
+toggleNav('Douglas Hurley')
+</script>
 
 <template>
   <div class="crew__wrapper">
@@ -7,32 +33,44 @@
       <div class="crew__block">
         <div class="crew__text-block">
           <div class="crew__info">
-            <h2 class="title title-4 crew__subtitle">Commander</h2>
-            <h3 class="title title-3">Douglas Hurley</h3>
-            <p class="paragraph-1 crew__description">
-              Douglas Gerald Hurley is an American engineer, former Marine Corps pilot and former
-              NASA astronaut. He launched into space for the third time as commander of Crew Dragon
-              Demo-2.
-            </p>
+            <h2 class="title title-4 crew__subtitle">{{ member.role }}</h2>
+            <h3 class="title title-3">{{ member.name }}</h3>
+            <p class="paragraph-1 crew__description">{{ member.bio }}</p>
           </div>
           <nav class="crew__nav">
             <ul class="crew__nav-list">
-              <li class="crew__nav-item crew__nav-item_active">
+              <li
+                @click="toggleNav('Douglas Hurley')"
+                class="crew__nav-item"
+                :class="{ 'crew__nav-item_active': member.name === 'Douglas Hurley' }"
+              >
                 <a class="link" href="#"></a>
               </li>
-              <li class="crew__nav-item">
+              <li
+                @click="toggleNav('Mark Shuttleworth')"
+                class="crew__nav-item"
+                :class="{ 'crew__nav-item_active': member.name === 'Mark Shuttleworth' }"
+              >
                 <a class="link" href="#"></a>
               </li>
-              <li class="crew__nav-item">
+              <li
+                @click="toggleNav('Victor Glover')"
+                class="crew__nav-item"
+                :class="{ 'crew__nav-item_active': member.name === 'Victor Glover' }"
+              >
                 <a class="link" href="#"></a>
               </li>
-              <li class="crew__nav-item">
+              <li
+                @click="toggleNav('Anousheh Ansari')"
+                class="crew__nav-item"
+                :class="{ 'crew__nav-item_active': member.name === 'Anousheh Ansari' }"
+              >
                 <a class="link" href="#"></a>
               </li>
             </ul>
           </nav>
         </div>
-        <img class="crew__image" src="@/assets/images/crew/image-douglas-hurley.webp" alt="" />
+        <img class="crew__image" :src="getImageUrl(member.images.webp)" alt="" />
       </div>
       <!-- <a class="title title-4 crew__btn" href="#">Explore</a> -->
     </div>
