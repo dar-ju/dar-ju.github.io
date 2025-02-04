@@ -10,7 +10,7 @@ destinations.value = data.destinations
 
 onMounted(() => {
   titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
-  titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
+  // titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
 })
 
 const getImageUrl = (path) => {
@@ -33,9 +33,9 @@ toggleNav('Moon')
         <span class="destination__title-number">01</span>Pick your destination
       </h1>
       <div class="destination__block">
-        <div class="destination__animation-wrapper">
-          <Transition name="fade-destination" mode="in-out">
-            <div :key="planet.name" class="destination__animation-block">
+        <div class="destination__animation-image-wrapper">
+          <Transition name="fade-destination" mode="default">
+            <div :key="planet.name" class="destination__animation-image-block">
               <img class="destination__image" :src="getImageUrl(planet.images.webp)" alt="" />
             </div>
           </Transition>
@@ -73,7 +73,7 @@ toggleNav('Moon')
             <Transition name="fade-destination" mode="in-out">
               <div :key="planet.name" class="destination__animation-block" ref="titleBlock">
                 <h2 class="title title-2 destination__sutitle">{{ planet.name }}</h2>
-                <p class="paragraph-1 destination__description">{{ planet.description }}</p>
+                <p class="paragraph-2 destination__description">{{ planet.description }}</p>
 
                 <div class="destination__data">
                   <div class="destination__data-block">
@@ -98,15 +98,15 @@ toggleNav('Moon')
 
 <style scoped>
 .destination__wrapper {
-  padding-top: 60px;
+  padding-top: 49px;
   padding-bottom: 48px;
 }
 
 .destination__container {
   /* display: flex; */
   /* position: relative; */
-  padding-right: clamp(5px, 10vw, 165px);
-  padding-left: clamp(5px, 10vw, 165px);
+  padding-right: clamp(5px, 12vw, 165px);
+  padding-left: clamp(5px, 12vw, 165px);
   /* padding-bottom: 760px; */
   /* align-items: center;
   justify-content: space-between; */
@@ -127,7 +127,7 @@ toggleNav('Moon')
   display: flex;
   position: relative;
   /* min-height: 760px; */
-  padding: 140px 30px;
+  padding: 127px 30px;
   gap: 60px;
   justify-content: space-between;
 }
@@ -138,18 +138,21 @@ toggleNav('Moon')
 }
 .destination__text-block {
   /* position: relative; */
-  max-width: 462px;
-  padding: 12px 0;
+  max-width: 445px;
+  padding: 7px 0;
 }
 .destination__nav {
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 .destination__nav-list {
   display: flex;
   gap: 32px;
 }
 .destination__nav-item::after {
-  bottom: -23px;
+  bottom: -13px;
+}
+.destination__nav-item_active {
+  color: var(--color-white);
 }
 .destination__nav-item_active::after {
   opacity: 1;
@@ -159,8 +162,10 @@ toggleNav('Moon')
   margin-bottom: 20px;
 }
 .destination__description {
-  margin-bottom: 47px;
-  padding-bottom: 42px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  /* font-size: 1.3rem;
+  line-height: 1.75rem; */
   border-bottom: 1px solid var(--gray25);
 }
 .destination__data {
@@ -170,18 +175,24 @@ toggleNav('Moon')
 .destination__data-block {
   display: flex;
   width: 227px;
-  gap: 31px;
+  gap: 12px;
   flex-direction: column;
+}
+
+.destination__animation-image-wrapper {
+  width: 480px;
 }
 
 .destination__animation-wrapper {
   display: flex;
   position: relative;
-  width: 100%;
+  width: 445px;
+  align-items: center;
 }
 
 .destination__animation-block {
   position: absolute;
+  width: 445px;
 }
 
 .destination__distance-title {

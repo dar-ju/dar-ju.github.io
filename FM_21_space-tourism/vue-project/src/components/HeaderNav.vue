@@ -43,8 +43,8 @@
 .header__nav {
   display: flex;
   width: 736px;
-  padding-top: 46px;
-  padding-bottom: 46px;
+  padding-top: 39px;
+  padding-bottom: 39px;
   justify-content: flex-end;
   background-color: var(--color-white5);
   backdrop-filter: blur(80px);
@@ -61,7 +61,7 @@
   color: var(--color-white);
 }
 .header__nav-item::after {
-  bottom: -47px;
+  bottom: -39px;
 }
 .header__nav-item_active::after {
   opacity: 1;

@@ -6,7 +6,6 @@ html {
 body {
   min-width: 320px;
   font-family: "Barlow Condensed", sans-serif;
-  font-weight: 400;
   background-color: var(--color-white);
   color: var(--color-blue300);
 }
@@ -31,6 +30,7 @@ body {
 
 .title {
   font-family: "Bellefair", serif;
+  line-height: normal;
   font-weight: 400;
   text-transform: uppercase;
   color: var(--color-white);
@@ -38,57 +38,49 @@ body {
 
 .title-1 {
   font-size: 144px;
-  line-height: 153%;
 }
 
 .title-2 {
   font-size: 96px;
-  line-height: 114.6%;
 }
 
 .title-3 {
   font-size: 56px;
-  line-height: 64.2%;
 }
 
 .title-4 {
   font-size: 32px;
-  line-height: 36.7%;
 }
 
 .title-5 {
   font-size: 28px;
-  line-height: 32.1%;
   text-transform: uppercase;
 }
 
 .text-1 {
   font-size: 28px;
-  line-height: 33.6%;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 .text-2 {
   font-size: 14px;
-  line-height: 16.8%;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .text-3 {
   font-size: 16px;
-  line-height: 19.2%;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .paragraph-1 {
   font-size: 1.25rem;
-  line-height: 140%;
 }
 
 .paragraph-2 {
+  font-family: "Barlow", sans-serif;
   font-size: 18px;
   line-height: 180%;
 }
@@ -111,7 +103,7 @@ body {
 /* Animation */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.3s linear;
 }
 .fade-enter-from,
 .fade-leave-to {
@@ -120,7 +112,7 @@ body {
 
 .fade-destination-enter-active,
 .fade-destination-leave-active {
-  transition: opacity 0.2s;
+  transition: opacity 0.15s linear;
 }
 
 .fade-destination-enter-from,

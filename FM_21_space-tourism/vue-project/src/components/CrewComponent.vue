@@ -35,7 +35,7 @@ toggleNav('Douglas Hurley')
           <div class="crew__info">
             <h2 class="title title-4 crew__subtitle">{{ member.role }}</h2>
             <h3 class="title title-3">{{ member.name }}</h3>
-            <p class="paragraph-1 crew__description">{{ member.bio }}</p>
+            <p class="paragraph-2 crew__description">{{ member.bio }}</p>
           </div>
           <nav class="crew__nav">
             <ul class="crew__nav-list">
@@ -79,8 +79,8 @@ toggleNav('Douglas Hurley')
 
 <style scoped>
 .crew__wrapper {
-  padding-top: 60px;
-  padding-bottom: 48px;
+  padding-top: 49px;
+  padding-bottom: 49px;
 }
 
 .crew__container {
@@ -92,7 +92,7 @@ toggleNav('Douglas Hurley')
 }
 
 .crew__title {
-  margin-bottom: 24px;
+  margin-bottom: 10px;
   font-weight: 400;
   color: var(--color-white);
 }
@@ -108,11 +108,13 @@ toggleNav('Douglas Hurley')
 .crew__block {
   display: flex;
   padding: 45px 0;
-  gap: 30px;
+  gap: 80px;
   justify-content: space-between;
 }
 .crew__image {
-  width: 494px;
+  width: 539px;
+  height: 676px;
+  object-fit: contain;
   mask-image: linear-gradient(var(--gray) 77%, transparent);
 }
 .crew__text-block {
@@ -123,14 +125,17 @@ toggleNav('Douglas Hurley')
 }
 .crew__info {
   display: flex;
-  height: 100%;
-  gap: 40px;
+  height: 84%;
+  gap: 20px;
   flex-direction: column;
   justify-content: center;
 }
 .crew__nav {
-  padding-top: 57px;
-  padding-bottom: 18px;
+  display: flex;
+  min-height: 60px;
+  /* padding-top: 57px;
+  padding-bottom: 18px; */
+  align-items: center;
 }
 .crew__nav-list {
   display: flex;

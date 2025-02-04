@@ -6,7 +6,7 @@
       <div class="home__block">
         <span class="text-1 home__text">So, you want to travel to</span>
         <h1 class="title title-1 home__title">Space</h1>
-        <p class="paragraph-1 home__description">
+        <p class="paragraph-2 home__description">
           Let’s face it; if you want to go to space, you might as well genuinely go to outer space
           and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a
           truly out of this world experience!
@@ -19,7 +19,7 @@
 
 <style scoped>
 .home__wrapper {
-  padding-top: 428px;
+  padding-top: 418px;
   padding-bottom: 125px;
 }
 
@@ -36,12 +36,14 @@
 }
 
 .home__text {
-  /* display: block;
-  margin-bottom: 11px; */
+  display: block;
+  margin-bottom: 25px;
 }
 .home__title {
+  margin-bottom: 22px;
 }
 .home__description {
+  /* line-height: 1.7rem; */
 }
 .home__btn {
   display: flex;
