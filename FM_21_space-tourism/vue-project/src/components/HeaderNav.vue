@@ -74,4 +74,13 @@
   margin-right: 9px;
   font-weight: bold;
 }
+
+@media (max-width: 1200px) {
+  .header__nav {
+    width: 640px;
+  }
+  .header__nav-list {
+    padding-right: 39px;
+  }
+}
 </style>

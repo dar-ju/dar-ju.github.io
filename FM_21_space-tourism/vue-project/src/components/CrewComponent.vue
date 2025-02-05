@@ -186,4 +186,55 @@ toggleNav('Douglas Hurley')
 /* .crew__sutitle {
   margin-bottom: 20px;
 } */
+
+@media (max-width: 1200px) {
+  .crew__wrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow-y: hidden;
+  }
+  .crew__container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .crew__block {
+    gap: 30px;
+    flex-direction: column;
+    /* justify-content: center; */
+    text-align: center;
+  }
+  .crew__info {
+    margin-bottom: 55px;
+  }
+
+  .crew__animation-wrapper {
+    display: flex;
+    position: relative;
+    min-height: 804px;
+    justify-content: center;
+  }
+  .crew__title {
+    margin-bottom: 20px;
+  }
+  .crew__text-block {
+    max-width: 540px;
+  }
+  .crew__nav {
+    min-height: 0;
+    justify-content: center;
+  }
+  .crew__nav-list {
+    gap: 16px;
+  }
+  .crew__nav-item {
+    width: 10px;
+    height: 10px;
+  }
+  .crew__image {
+    width: 447px;
+    height: 560px;
+    margin: auto;
+    object-position: right;
+  }
+}
 </style>

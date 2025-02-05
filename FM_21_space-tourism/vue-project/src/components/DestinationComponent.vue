@@ -133,13 +133,13 @@ toggleNav('Moon')
 }
 .destination__image {
   position: absolute;
-  width: 480px;
+  width: clamp(5px, 34vw, 480px);
   min-width: 350px;
   object-fit: contain;
 }
 .destination__text-block {
   /* position: relative; */
-  max-width: 445px;
+  max-width: clamp(5px, 31vw, 445px);
   padding: 7px 0;
 }
 .destination__nav {
@@ -205,5 +205,61 @@ toggleNav('Moon')
 .destination__time-title {
 }
 .destination__time-value {
+}
+
+@media (max-width: 1200px) {
+  .destination__wrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .destination__container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .destination__block {
+    display: flex;
+    position: relative;
+    /* min-height: 760px; */
+    padding: 44px 0;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .destination__animation-image-wrapper {
+    width: 300px;
+    min-height: 318px;
+  }
+  .destination__animation-wrapper {
+    min-height: 281px;
+  }
+  .destination__animation-block {
+    width: 514px;
+  }
+  .destination__image {
+    width: 300px;
+    min-width: 300px;
+  }
+  .destination__text-block {
+    width: 514px;
+    max-width: 514px;
+    /* padding: 7px 0; */
+  }
+  .destination__nav {
+    margin-bottom: 39px;
+  }
+  .destination__nav-list {
+    justify-content: center;
+  }
+  .destination__sutitle {
+    margin-bottom: 15px;
+  }
+  .destination__description {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+  .destination__data-block {
+    width: 245px;
+  }
 }
 </style>

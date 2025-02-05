@@ -27,6 +27,7 @@
   display: flex;
   padding-right: 165px;
   padding-left: 165px;
+  gap: 66px 30px;
   align-items: center;
   justify-content: space-between;
 }
@@ -48,7 +49,7 @@
 .home__btn {
   display: flex;
   position: relative;
-  width: 272px;
+  min-width: 272px;
   height: 272px;
   border-radius: 50%;
   background-color: var(--color-white);
@@ -74,5 +75,23 @@
 .home__btn:hover {
   opacity: 1;
   color: var(--color-blue90050);
+}
+
+@media (max-width: 1200px) {
+  .home__wrapper {
+    padding-top: 128px;
+    /* padding-bottom: 125px; */
+  }
+  .home__container {
+    padding-right: 128px;
+    padding-left: 128px;
+    flex-direction: column;
+  }
+  .home__block {
+    text-align: center;
+  }
+  .home__title {
+    margin-bottom: 25px;
+  }
 }
 </style>

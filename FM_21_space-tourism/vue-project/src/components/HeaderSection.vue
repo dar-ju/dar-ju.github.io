@@ -26,4 +26,13 @@ import HeaderNav from '@/components/HeaderNav.vue'
   left: 12%;
   background-color: var(--gray25);
 }
+
+@media (max-width: 1200px) {
+  .header {
+    padding-left: 40px;
+  }
+  .header::after {
+    display: none;
+  }
+}
 </style>

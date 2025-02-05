@@ -72,7 +72,10 @@ toggleNav('Launch vehicle')
               <h3 class="title title-3">{{ type.name }}</h3>
               <p class="paragraph-2 technology__description">{{ type.description }}</p>
             </div>
-            <img class="technology__image" :src="getImageUrl(type.images.portrait)" alt="" />
+            <picture class="technology__image-wrapper">
+              <source media="(max-width: 1200px)" :srcset="getImageUrl(type.images.landscape)" />
+              <img class="technology__image" :src="getImageUrl(type.images.portrait)" alt="" />
+            </picture>
             <!-- </div> -->
           </div>
         </transition>
@@ -172,5 +175,64 @@ toggleNav('Launch vehicle')
 .technology__animation-wrapper {
   position: relative;
   min-height: 665px;
+}
+
+@media (max-width: 1200px) {
+  .technology__wrapper {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .technology__container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+  .technology__block {
+    display: flex;
+    position: relative;
+    /* min-height: 760px; */
+    padding: 44px 0;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .technology__animation-image-wrapper {
+    width: 300px;
+    min-height: 318px;
+  }
+  .technology__animation-wrapper {
+    min-height: 281px;
+  }
+  .technology__animation-block {
+    width: 514px;
+  }
+  .technology__image-wrapper {
+    order: -1;
+  }
+  .technology__image {
+    width: 300px;
+    min-width: 300px;
+  }
+  .technology__text-block {
+    width: 514px;
+    max-width: 514px;
+    /* padding: 7px 0; */
+  }
+  .technology__nav {
+    margin-bottom: 39px;
+  }
+  .technology__nav-list {
+    justify-content: center;
+  }
+  .technology__sutitle {
+    margin-bottom: 15px;
+  }
+  .technology__description {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+  .technology__data-block {
+    width: 245px;
+  }
 }
 </style>
