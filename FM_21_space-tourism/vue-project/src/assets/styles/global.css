@@ -110,13 +110,13 @@ body {
   opacity: 0;
 }
 
-.fade-destination-enter-active,
-.fade-destination-leave-active {
+.fade-block-enter-active,
+.fade-block-leave-active {
   transition: opacity 0.15s linear;
 }
 
-.fade-destination-enter-from,
-.fade-destination-leave-to {
+.fade-block-enter-from,
+.fade-block-leave-to {
   opacity: 0;
 }
 

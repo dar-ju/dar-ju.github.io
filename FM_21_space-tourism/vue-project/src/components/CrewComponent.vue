@@ -30,47 +30,52 @@ toggleNav('Douglas Hurley')
   <div class="crew__wrapper">
     <div class="container crew__container">
       <h1 class="text-1 crew__title"><span class="crew__title-number">02</span>Meet your crew</h1>
-      <div class="crew__block">
-        <div class="crew__text-block">
-          <div class="crew__info">
-            <h2 class="title title-4 crew__subtitle">{{ member.role }}</h2>
-            <h3 class="title title-3">{{ member.name }}</h3>
-            <p class="paragraph-2 crew__description">{{ member.bio }}</p>
+      <div class="crew__animation-wrapper">
+        <transition name="fade-block" mode="in-out">
+          <div :key="member.name" class="crew__block">
+            <!-- <div class="crew__block"> -->
+            <div class="crew__text-block">
+              <div class="crew__info">
+                <h2 class="title title-4 crew__subtitle">{{ member.role }}</h2>
+                <h3 class="title title-3">{{ member.name }}</h3>
+                <p class="paragraph-2 crew__description">{{ member.bio }}</p>
+              </div>
+              <nav class="crew__nav">
+                <ul class="crew__nav-list">
+                  <li
+                    @click="toggleNav('Douglas Hurley')"
+                    class="crew__nav-item"
+                    :class="{ 'crew__nav-item_active': member.name === 'Douglas Hurley' }"
+                  >
+                    <a class="link" href="#"></a>
+                  </li>
+                  <li
+                    @click="toggleNav('Mark Shuttleworth')"
+                    class="crew__nav-item"
+                    :class="{ 'crew__nav-item_active': member.name === 'Mark Shuttleworth' }"
+                  >
+                    <a class="link" href="#"></a>
+                  </li>
+                  <li
+                    @click="toggleNav('Victor Glover')"
+                    class="crew__nav-item"
+                    :class="{ 'crew__nav-item_active': member.name === 'Victor Glover' }"
+                  >
+                    <a class="link" href="#"></a>
+                  </li>
+                  <li
+                    @click="toggleNav('Anousheh Ansari')"
+                    class="crew__nav-item"
+                    :class="{ 'crew__nav-item_active': member.name === 'Anousheh Ansari' }"
+                  >
+                    <a class="link" href="#"></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+            <img class="crew__image" :src="getImageUrl(member.images.webp)" alt="" />
           </div>
-          <nav class="crew__nav">
-            <ul class="crew__nav-list">
-              <li
-                @click="toggleNav('Douglas Hurley')"
-                class="crew__nav-item"
-                :class="{ 'crew__nav-item_active': member.name === 'Douglas Hurley' }"
-              >
-                <a class="link" href="#"></a>
-              </li>
-              <li
-                @click="toggleNav('Mark Shuttleworth')"
-                class="crew__nav-item"
-                :class="{ 'crew__nav-item_active': member.name === 'Mark Shuttleworth' }"
-              >
-                <a class="link" href="#"></a>
-              </li>
-              <li
-                @click="toggleNav('Victor Glover')"
-                class="crew__nav-item"
-                :class="{ 'crew__nav-item_active': member.name === 'Victor Glover' }"
-              >
-                <a class="link" href="#"></a>
-              </li>
-              <li
-                @click="toggleNav('Anousheh Ansari')"
-                class="crew__nav-item"
-                :class="{ 'crew__nav-item_active': member.name === 'Anousheh Ansari' }"
-              >
-                <a class="link" href="#"></a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <img class="crew__image" :src="getImageUrl(member.images.webp)" alt="" />
+        </transition>
       </div>
       <!-- <a class="title title-4 crew__btn" href="#">Explore</a> -->
     </div>
@@ -85,6 +90,7 @@ toggleNav('Douglas Hurley')
 
 .crew__container {
   /* display: flex; */
+  /* min-height: 790px; */
   padding-right: 165px;
   padding-left: 165px;
   /* align-items: center;
@@ -107,14 +113,16 @@ toggleNav('Douglas Hurley')
 }
 .crew__block {
   display: flex;
+  position: absolute;
   padding: 45px 0;
-  gap: 80px;
+  gap: 75px;
   justify-content: space-between;
 }
 .crew__image {
   width: 539px;
   height: 676px;
   object-fit: contain;
+  object-position: bottom;
   mask-image: linear-gradient(var(--gray) 77%, transparent);
 }
 .crew__text-block {
@@ -154,6 +162,11 @@ toggleNav('Douglas Hurley')
   background-color: var(--color-white);
 }
 
+.crew__animation-wrapper {
+  position: relative;
+  min-height: 745px;
+}
+
 /* .crew__nav-item::after {
   content: '';
   display: block;
@@ -173,6 +186,4 @@ toggleNav('Douglas Hurley')
 /* .crew__sutitle {
   margin-bottom: 20px;
 } */
-.crew__description {
-}
 </style>

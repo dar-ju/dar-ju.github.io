@@ -34,7 +34,7 @@ toggleNav('Moon')
       </h1>
       <div class="destination__block">
         <div class="destination__animation-image-wrapper">
-          <Transition name="fade-destination" mode="default">
+          <Transition name="fade-block" mode="default">
             <div :key="planet.name" class="destination__animation-image-block">
               <img class="destination__image" :src="getImageUrl(planet.images.webp)" alt="" />
             </div>
@@ -70,7 +70,7 @@ toggleNav('Moon')
             </ul>
           </nav>
           <div class="destination__animation-wrapper" ref="titleParentBlock">
-            <Transition name="fade-destination" mode="in-out">
+            <Transition name="fade-block" mode="in-out">
               <div :key="planet.name" class="destination__animation-block" ref="titleBlock">
                 <h2 class="title title-2 destination__sutitle">{{ planet.name }}</h2>
                 <p class="paragraph-2 destination__description">{{ planet.description }}</p>
@@ -132,6 +132,7 @@ toggleNav('Moon')
   justify-content: space-between;
 }
 .destination__image {
+  position: absolute;
   width: 480px;
   min-width: 350px;
   object-fit: contain;

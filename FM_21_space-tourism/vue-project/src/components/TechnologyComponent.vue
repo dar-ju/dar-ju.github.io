@@ -32,44 +32,50 @@ toggleNav('Launch vehicle')
       <h1 class="text-1 technology__title">
         <span class="technology__title-number">03</span>Space launch 101
       </h1>
-      <div class="technology__block">
-        <nav class="technology__nav">
-          <ul class="technology__nav-list">
-            <li class="title title-4">
-              <a
-                class="link technology__nav-item"
-                href="#"
-                @click="toggleNav('Launch vehicle')"
-                :class="{ 'technology__nav-item_active': type.name === 'Launch vehicle' }"
-                >1</a
-              >
-            </li>
-            <li class="title title-4">
-              <a
-                class="link technology__nav-item"
-                href="#"
-                @click="toggleNav('Spaceport')"
-                :class="{ 'technology__nav-item_active': type.name === 'Spaceport' }"
-                >2</a
-              >
-            </li>
-            <li class="title title-4">
-              <a
-                class="link technology__nav-item"
-                href="#"
-                @click="toggleNav('Space capsule')"
-                :class="{ 'technology__nav-item_active': type.name === 'Space capsule' }"
-                >3</a
-              >
-            </li>
-          </ul>
-        </nav>
-        <div class="technology__text-block">
-          <span class="title title-4 technology__sutitle">The terminology...</span>
-          <h3 class="title title-3">{{ type.name }}</h3>
-          <p class="paragraph-1 technology__description">{{ type.description }}</p>
-        </div>
-        <img class="technology__image" :src="getImageUrl(type.images.portrait)" alt="" />
+      <div class="technology__animation-wrapper">
+        <transition name="fade-block" mode="in-out">
+          <div :key="type.name" class="technology__block">
+            <!-- <div class="technology__block"> -->
+            <nav class="technology__nav">
+              <ul class="technology__nav-list">
+                <li class="title title-4">
+                  <a
+                    class="link technology__nav-item"
+                    href="#"
+                    @click="toggleNav('Launch vehicle')"
+                    :class="{ 'technology__nav-item_active': type.name === 'Launch vehicle' }"
+                    >1</a
+                  >
+                </li>
+                <li class="title title-4">
+                  <a
+                    class="link technology__nav-item"
+                    href="#"
+                    @click="toggleNav('Spaceport')"
+                    :class="{ 'technology__nav-item_active': type.name === 'Spaceport' }"
+                    >2</a
+                  >
+                </li>
+                <li class="title title-4">
+                  <a
+                    class="link technology__nav-item"
+                    href="#"
+                    @click="toggleNav('Space capsule')"
+                    :class="{ 'technology__nav-item_active': type.name === 'Space capsule' }"
+                    >3</a
+                  >
+                </li>
+              </ul>
+            </nav>
+            <div class="technology__text-block">
+              <span class="title title-4 technology__sutitle">The terminology...</span>
+              <h3 class="title title-3">{{ type.name }}</h3>
+              <p class="paragraph-2 technology__description">{{ type.description }}</p>
+            </div>
+            <img class="technology__image" :src="getImageUrl(type.images.portrait)" alt="" />
+            <!-- </div> -->
+          </div>
+        </transition>
       </div>
       <!-- <a class="title title-4 technology__btn" href="#">Explore</a> -->
     </div>
@@ -78,20 +84,20 @@ toggleNav('Launch vehicle')
 
 <style scoped>
 .technology__wrapper {
-  padding-top: 60px;
+  padding-top: 49px;
   padding-bottom: 48px;
 }
 
 .technology__container {
   /* display: flex; */
   padding-right: 0;
-  padding-left: clamp(5px, 10vw, 165px);
+  padding-left: clamp(5px, 12vw, 165px);
   /* align-items: center;
   justify-content: space-between; */
 }
 
 .technology__title {
-  margin-bottom: 105px;
+  margin-bottom: 92px;
   font-weight: 400;
   color: var(--color-white);
 }
@@ -104,6 +110,7 @@ toggleNav('Launch vehicle')
 
 .technology__block {
   display: flex;
+  position: absolute;
 }
 .technology__nav {
   display: flex;
@@ -138,7 +145,7 @@ toggleNav('Launch vehicle')
 .technology__text-block {
   display: flex;
   margin-right: 34px;
-  gap: 38px;
+  gap: 20px;
   flex-direction: column;
   justify-content: center;
 }
@@ -157,5 +164,13 @@ toggleNav('Launch vehicle')
 .technology__description {
 }
 .technology__image {
+  min-width: clamp(100px, 42vw, 608px);
+  min-height: 619px;
+  object-fit: contain;
+}
+
+.technology__animation-wrapper {
+  position: relative;
+  min-height: 665px;
 }
 </style>
