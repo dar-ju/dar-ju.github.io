@@ -14,4 +14,9 @@ import DestinationComponent from '@/components/DestinationComponent.vue'
 .destination {
   background-image: url('@/assets/images/destination/background-destination-desktop.jpg');
 }
+@media (max-width: 1200px) {
+  .destination {
+    background-image: url('@/assets/images/destination/background-destination-tablet.jpg');
+  }
+}
 </style>

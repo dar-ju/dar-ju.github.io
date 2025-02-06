@@ -94,4 +94,7 @@
     margin-bottom: 25px;
   }
 }
+
+@media (max-width: 580px) {
+}
 </style>

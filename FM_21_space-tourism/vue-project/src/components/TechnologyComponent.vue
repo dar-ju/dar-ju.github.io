@@ -9,7 +9,7 @@ const titleParentBlock = ref('')
 technology.value = data.technology
 
 onMounted(() => {
-  // titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+  titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
   // titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
 })
 
@@ -20,8 +20,8 @@ const getImageUrl = (path) => {
 const toggleNav = (value) => {
   const index = technology.value.findIndex((el) => el.name === value)
   type.value = technology.value[index]
-  // if (titleParentBlock.value)
-  //   titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+  if (titleParentBlock.value)
+    titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight + 28}px`
 }
 toggleNav('Launch vehicle')
 </script>
@@ -32,9 +32,9 @@ toggleNav('Launch vehicle')
       <h1 class="text-1 technology__title">
         <span class="technology__title-number">03</span>Space launch 101
       </h1>
-      <div class="technology__animation-wrapper">
+      <div class="technology__animation-wrapper" ref="titleParentBlock">
         <transition name="fade-block" mode="in-out">
-          <div :key="type.name" class="technology__block">
+          <div :key="type.name" class="technology__block" ref="titleBlock">
             <!-- <div class="technology__block"> -->
             <nav class="technology__nav">
               <ul class="technology__nav-list">
@@ -174,26 +174,31 @@ toggleNav('Launch vehicle')
 
 .technology__animation-wrapper {
   position: relative;
-  min-height: 665px;
+  /* min-height: 665px; */
 }
 
 @media (max-width: 1200px) {
   .technology__wrapper {
     padding-top: 40px;
-    padding-bottom: 40px;
+    padding-bottom: 0;
   }
   .technology__container {
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: 0;
+    padding-left: 0;
   }
   .technology__block {
     display: flex;
-    position: relative;
+    /* position: relative; */
     /* min-height: 760px; */
-    padding: 44px 0;
+    padding: 37px 0;
     flex-direction: column;
     text-align: center;
     align-items: center;
+  }
+  .technology__title {
+    margin-bottom: 52px;
+    padding-right: 40px;
+    padding-left: 40px;
   }
 
   .technology__animation-image-wrapper {
@@ -201,38 +206,52 @@ toggleNav('Launch vehicle')
     min-height: 318px;
   }
   .technology__animation-wrapper {
-    min-height: 281px;
+    /* min-height: 814px; */
   }
   .technology__animation-block {
     width: 514px;
   }
   .technology__image-wrapper {
+    width: 100vw;
+    margin-bottom: 32px;
     order: -1;
   }
   .technology__image {
-    width: 300px;
-    min-width: 300px;
+    object-fit: cover;
+    width: 100%;
+    min-height: 355px;
   }
   .technology__text-block {
     width: 514px;
     max-width: 514px;
+    margin-right: 0;
     /* padding: 7px 0; */
   }
   .technology__nav {
+    margin-right: 0;
     margin-bottom: 39px;
   }
   .technology__nav-list {
+    gap: 18px;
+    flex-direction: row;
     justify-content: center;
   }
+  .technology__nav-item {
+    width: 55px;
+    height: 55px;
+  }
   .technology__sutitle {
-    margin-bottom: 15px;
+    margin-bottom: 0;
   }
   .technology__description {
-    margin-bottom: 24px;
-    padding-bottom: 24px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   .technology__data-block {
     width: 245px;
   }
+}
+
+@media (max-width: 580px) {
 }
 </style>

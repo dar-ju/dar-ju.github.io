@@ -14,4 +14,10 @@ import TechnologyComponent from '@/components/TechnologyComponent.vue'
 .technology {
   background-image: url('@/assets/images/technology/background-technology-desktop.jpg');
 }
+
+@media (max-width: 1200px) {
+  .technology {
+    background-image: url('@/assets/images/technology/background-technology-tablet.jpg');
+  }
+}
 </style>

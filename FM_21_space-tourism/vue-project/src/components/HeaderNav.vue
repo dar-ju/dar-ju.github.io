@@ -83,4 +83,9 @@
     padding-right: 39px;
   }
 }
+@media (max-width: 767px) {
+  .header__nav {
+    display: none;
+  }
+}
 </style>

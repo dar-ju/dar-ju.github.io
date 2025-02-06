@@ -14,4 +14,9 @@ import CrewComponent from '@/components/CrewComponent.vue'
 .crew {
   background-image: url('@/assets/images/crew/background-crew-desktop.jpg');
 }
+@media (max-width: 1200px) {
+  .crew {
+    background-image: url('@/assets/images/crew/background-crew-tablet.jpg');
+  }
+}
 </style>

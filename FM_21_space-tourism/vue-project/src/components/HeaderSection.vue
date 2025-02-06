@@ -4,7 +4,12 @@ import HeaderNav from '@/components/HeaderNav.vue'
 
 <template>
   <div class="header container">
-    <img class="header__logo" src="@/assets/images/shared/logo.svg" alt="Space tourism logo" />
+    <div class="header__wrapper">
+      <router-link to="/">
+        <img class="header__logo" src="@/assets/images/shared/logo.svg" alt="Space tourism logo" />
+      </router-link>
+      <img class="header__burger" src="@/assets/images/shared/icon-hamburger.svg" alt="" />
+    </div>
     <HeaderNav />
   </div>
 </template>
@@ -17,7 +22,6 @@ import HeaderNav from '@/components/HeaderNav.vue'
   align-items: center;
   justify-content: space-between;
 }
-
 .header::after {
   content: '';
   position: absolute;
@@ -26,6 +30,9 @@ import HeaderNav from '@/components/HeaderNav.vue'
   left: 12%;
   background-color: var(--gray25);
 }
+.header__burger {
+  display: none;
+}
 
 @media (max-width: 1200px) {
   .header {
@@ -33,6 +40,30 @@ import HeaderNav from '@/components/HeaderNav.vue'
   }
   .header::after {
     display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 580px) {
+  .header__wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header__logo {
+    width: 40px;
+  }
+  .header__burger {
+    display: block;
+    width: 25px;
+    height: 22px;
+    cursor: pointer;
   }
 }
 </style>

@@ -237,4 +237,7 @@ toggleNav('Douglas Hurley')
     object-position: right;
   }
 }
+
+@media (max-width: 580px) {
+}
 </style>

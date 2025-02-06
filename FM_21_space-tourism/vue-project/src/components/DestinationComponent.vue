@@ -262,4 +262,7 @@ toggleNav('Moon')
     width: 245px;
   }
 }
+
+@media (max-width: 580px) {
+}
 </style>
