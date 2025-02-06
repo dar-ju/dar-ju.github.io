@@ -140,7 +140,6 @@ body {
   .section {
     padding-top: 0;
   }
-
   .title-2 {
     font-size: 80px;
   }
@@ -156,5 +155,28 @@ body {
   }
   .paragraph-2 {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 580px) {
+  .title-1 {
+    font-size: 80px;
+  }
+  .title-2 {
+    font-size: 56px;
+  }
+  .title-4 {
+    font-size: 18px;
+  }
+  .text-1 {
+    font-size: 17px;
+    letter-spacing: 2px;
+  }
+  .text-3 {
+    font-size: 14px;
+    /* letter-spacing: 2px; */
+  }
+  .paragraph-2 {
+    font-size: 15px;
   }
 }

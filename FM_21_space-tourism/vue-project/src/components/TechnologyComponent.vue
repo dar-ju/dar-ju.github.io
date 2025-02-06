@@ -225,6 +225,7 @@ toggleNav('Launch vehicle')
     width: 514px;
     max-width: 514px;
     margin-right: 0;
+    gap: 18px;
     /* padding: 7px 0; */
   }
   .technology__nav {

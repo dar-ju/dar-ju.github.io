@@ -19,4 +19,9 @@ import HomeComponent from '@/components/HomeComponent.vue'
     background-image: url('@/assets/images/home/background-home-tablet.jpg');
   }
 }
+@media (max-width: 580px) {
+  .home {
+    background-image: url('@/assets/images/home/background-home-mobile.jpg');
+  }
+}
 </style>

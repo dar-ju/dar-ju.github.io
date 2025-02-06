@@ -264,5 +264,37 @@ toggleNav('Moon')
 }
 
 @media (max-width: 580px) {
+  .destination__wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .destination__container {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  .destination__title {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .destination__block {
+    padding: 50px 0;
+  }
+
+  .destination__animation-image-wrapper {
+    width: 150px;
+    min-height: 142px;
+  }
+  .destination__image {
+    width: 150px;
+    min-width: initial;
+  }
+  .destination__nav {
+    margin-bottom: 25px;
+  }
+  .destination__nav-item {
+  }
+  .destination__nav-item::after {
+    bottom: -15px;
+  }
 }
 </style>

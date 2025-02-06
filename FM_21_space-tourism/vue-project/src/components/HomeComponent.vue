@@ -96,5 +96,18 @@
 }
 
 @media (max-width: 580px) {
+  .home__wrapper {
+    padding-top: 23px;
+    padding-bottom: 143px;
+  }
+  .home__container {
+    padding-right: 24px;
+    padding-left: 24px;
+    row-gap: 118px;
+  }
+  .home__btn {
+    min-width: 144px;
+    height: 144px;
+  }
 }
 </style>
