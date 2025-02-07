@@ -254,5 +254,61 @@ toggleNav('Launch vehicle')
 }
 
 @media (max-width: 580px) {
+  .technology__wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .technology__container {
+    /* padding-right: 24px;
+    padding-left: 24px; */
+  }
+  .technology__title {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  .technology__block {
+    /* padding: 50px 0;
+    padding-bottom: 0; */
+  }
+  .technology__text-block {
+    /* width: initial; */
+  }
+
+  .technology__animation-block {
+    /* max-width: 327px; */
+  }
+  .technology__animation-wrapper {
+    /* width: initial;
+    height: 412px;
+    margin: auto;
+    justify-content: center; */
+  }
+  .technology__animation-image-wrapper {
+    /* width: 150px;
+    min-height: 142px; */
+  }
+  .technology__image-wrapper {
+    width: 100%;
+    /* width: 150px;
+    min-width: initial; */
+  }
+  .technology__image {
+    min-height: 258px;
+    /* width: 150px;
+    min-width: initial; */
+  }
+  .technology__nav {
+    /* margin-bottom: 40px; */
+  }
+  .technology__nav-item {
+  }
+  .technology__nav-item::after {
+    /* bottom: -15px; */
+  }
+  .technology__data {
+    /* gap: 25px;
+    flex-direction: column;
+    align-items: center; */
+  }
 }
 </style>

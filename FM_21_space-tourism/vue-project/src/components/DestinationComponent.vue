@@ -278,8 +278,21 @@ toggleNav('Moon')
   }
   .destination__block {
     padding: 50px 0;
+    padding-bottom: 0;
+  }
+  .destination__text-block {
+    width: initial;
   }
 
+  .destination__animation-block {
+    max-width: 327px;
+  }
+  .destination__animation-wrapper {
+    width: initial;
+    height: 412px;
+    margin: auto;
+    justify-content: center;
+  }
   .destination__animation-image-wrapper {
     width: 150px;
     min-height: 142px;
@@ -289,12 +302,17 @@ toggleNav('Moon')
     min-width: initial;
   }
   .destination__nav {
-    margin-bottom: 25px;
+    margin-bottom: 40px;
   }
   .destination__nav-item {
   }
   .destination__nav-item::after {
     bottom: -15px;
+  }
+  .destination__data {
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>

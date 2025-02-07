@@ -1,5 +1,16 @@
 <script setup>
+import { ref } from 'vue'
 import HeaderNav from '@/components/HeaderNav.vue'
+
+const navOpen = ref('')
+
+const openNav = () => {
+  navOpen.value = 'translateX(0)'
+}
+
+const updateNavOpen = (newTransform) => {
+  navOpen.value = newTransform
+}
 </script>
 
 <template>
@@ -8,9 +19,10 @@ import HeaderNav from '@/components/HeaderNav.vue'
       <router-link to="/">
         <img class="header__logo" src="@/assets/images/shared/logo.svg" alt="Space tourism logo" />
       </router-link>
-      <img class="header__burger" src="@/assets/images/shared/icon-hamburger.svg" alt="" />
+      <button @click="openNav()" class="header__burger"></button>
+      <!-- <img class="header__burger" src="@/assets/images/shared/icon-hamburger.svg" alt="" /> -->
     </div>
-    <HeaderNav />
+    <HeaderNav :navOpen="navOpen" @updateNavOpen="updateNavOpen" />
   </div>
 </template>
 
@@ -21,6 +33,7 @@ import HeaderNav from '@/components/HeaderNav.vue'
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: transform ease-in-out 0.5s;
 }
 .header::after {
   content: '';
@@ -47,23 +60,24 @@ import HeaderNav from '@/components/HeaderNav.vue'
   .header {
     padding: 24px;
   }
-}
-
-@media (max-width: 580px) {
   .header__wrapper {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
   }
-  .header__logo {
-    width: 40px;
-  }
   .header__burger {
     display: block;
     width: 25px;
     height: 22px;
-    cursor: pointer;
+    /* cursor: pointer; */
+    background: url('../assets/images/shared/icon-hamburger.svg') no-repeat;
+  }
+}
+
+@media (max-width: 580px) {
+  .header__logo {
+    width: 40px;
   }
 }
 </style>

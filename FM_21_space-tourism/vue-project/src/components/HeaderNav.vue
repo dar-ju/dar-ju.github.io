@@ -1,7 +1,23 @@
-<script setup></script>
+<script setup>
+import { defineProps, defineEmits } from 'vue'
+
+const emit = defineEmits()
+
+const props = defineProps({
+  navOpen: {
+    type: String,
+    default: 'translateX(0%)',
+  },
+})
+
+const closeNav = () => {
+  emit('updateNavOpen', 'translateX(100%)')
+}
+</script>
 
 <template>
-  <div class="header__nav">
+  <div class="header__nav" :style="{ transform: navOpen }">
+    <button @click="closeNav()" class="header__burger-close"></button>
     <ul class="header__nav-list">
       <li
         class="text-3 nav-item header__nav-item"
@@ -74,6 +90,9 @@
   margin-right: 9px;
   font-weight: bold;
 }
+.header__burger-close {
+  display: none;
+}
 
 @media (max-width: 1200px) {
   .header__nav {
@@ -85,7 +104,43 @@
 }
 @media (max-width: 767px) {
   .header__nav {
-    display: none;
+    display: flex;
+    position: fixed;
+    z-index: 10;
+    transform: translateX(100%);
+    width: 250px;
+    height: 100vh;
+    padding: 0 28px;
+    padding-top: 32px;
+    gap: 64px;
+    right: 0;
+    top: 0;
+    /* padding-top: 0; */
+    flex-direction: column;
+    justify-content: flex-start;
+    backdrop-filter: blur(30px);
+    transition: transform ease-in-out 0.5s;
+  }
+  .header__nav-list {
+    padding-right: 0;
+    gap: 35px;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .header__nav-item::after {
+    width: 3px;
+    height: 115%;
+    top: -3px;
+    right: -28px;
+    left: initial;
+  }
+  .header__burger-close {
+    display: block;
+    padding: 20px 0;
+    width: 20px;
+    height: 21px;
+    align-self: flex-end;
+    background: url('../assets/images/shared/icon-close.svg') no-repeat;
   }
 }
 </style>

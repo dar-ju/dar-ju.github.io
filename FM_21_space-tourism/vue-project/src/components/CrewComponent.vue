@@ -37,7 +37,7 @@ toggleNav('Douglas Hurley')
             <div class="crew__text-block">
               <div class="crew__info">
                 <h2 class="title title-4 crew__subtitle">{{ member.role }}</h2>
-                <h3 class="title title-3">{{ member.name }}</h3>
+                <h3 class="title title-3 crew__subtitle-2">{{ member.name }}</h3>
                 <p class="paragraph-2 crew__description">{{ member.bio }}</p>
               </div>
               <nav class="crew__nav">
@@ -239,5 +239,59 @@ toggleNav('Douglas Hurley')
 }
 
 @media (max-width: 580px) {
+  .crew__wrapper {
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+  .crew__container {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+  .crew__title {
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .crew__block {
+    padding: 63px 0;
+    padding-bottom: 0;
+  }
+  .crew__text-block {
+    width: initial;
+    gap: 23px;
+  }
+  .crew__subtitle-2 {
+    margin-bottom: 18px;
+  }
+  .crew__info {
+    gap: 8px;
+  }
+
+  .crew__animation-block {
+    /* max-width: 327px; */
+  }
+  .crew__animation-wrapper {
+    min-height: 725px;
+  }
+  .crew__animation-image-wrapper {
+    /* width: 150px;
+    min-height: 142px; */
+  }
+  .crew__image {
+    width: 250px;
+    height: 360px;
+  }
+  .crew__nav {
+    /* margin-bottom: 40px; */
+  }
+  .crew__nav-item {
+  }
+  .crew__nav-item::after {
+    /* bottom: -15px; */
+  }
+  .crew__data {
+    /* gap: 25px;
+    flex-direction: column;
+    align-items: center; */
+  }
 }
 </style>
