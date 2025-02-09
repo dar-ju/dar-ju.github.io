@@ -19,6 +19,7 @@ onMounted(async () => {
 })
 
 const lightboxOpen = () => {
+  if (window.innerWidth < 576) return
   productStore.showLightbox = true
 }
 
@@ -57,7 +58,7 @@ const addToCart = () => {
     cartStore.cart[index].quantity = summ
     cartStore.totalInCart = summ
     cartStore.cart[index].total = formatPrice(
-      productStore.product.newPrice * cartStore.cart[index].quantity
+      productStore.product.newPrice * cartStore.cart[index].quantity,
     )
   } else {
     cartStore.cartAdd({
