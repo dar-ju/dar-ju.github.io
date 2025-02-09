@@ -4,10 +4,13 @@
 <head>
   <meta charset="utf-8">
   <script>
-    var redirect = window.location.pathname;
-    if (redirect !== "/" && redirect !== "/index.html") {
-      window.location.replace("/FM_21_space-tourism/" + "?redirect=" + redirect);
-    }
+    (function () {
+      var redirect = window.location.pathname + window.location.search + window.location.hash;
+      if (redirect.startsWith("/FM_21_space-tourism/")) {
+        redirect = redirect.replace("/FM_21_space-tourism", "");
+      }
+      window.location.replace("/FM_21_space-tourism/index.html?redirect=" + encodeURIComponent(redirect));
+    })();
   </script>
 </head>
 
