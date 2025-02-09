@@ -27,11 +27,12 @@ const router = createRouter({
   ],
 })
 
-const params = new URLSearchParams(window.location.search)
-const redirect = params.get('redirect')
-if (redirect) {
-  window.history.replaceState({}, '', redirect)
-  router.replace(redirect)
-}
+router.isReady().then(() => {
+  const redirect = sessionStorage.getItem("redirect")
+  if (redirect) {
+    sessionStorage.removeItem("redirect")
+    router.replace(redirect)
+  }
+});
 
 export default router
