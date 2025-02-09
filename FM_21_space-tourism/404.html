@@ -5,11 +5,12 @@
   <meta charset="utf-8">
   <script>
     (function () {
-      var redirect = window.location.pathname + window.location.search + window.location.hash;
-      if (redirect.includes("404.html")) {
-        return;
+      var redirect = window.location.pathname + window.location.search + window.location.hash
+      if (!redirect.startsWith("/FM_21_space-tourism/")) {
+        redirect = "/FM_21_space-tourism" + redirect
       }
-      window.location.replace("/FM_21_space-tourism/index.html?redirect=" + encodeURIComponent(redirect));
+      sessionStorage.setItem("redirect", redirect)
+      window.location.href = "/FM_21_space-tourism/"
     })();
   </script>
 </head>
