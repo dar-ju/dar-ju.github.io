@@ -6,8 +6,8 @@
   <script>
     (function () {
       var redirect = window.location.pathname + window.location.search + window.location.hash;
-      if (redirect.startsWith("/FM_21_space-tourism/")) {
-        redirect = redirect.replace("/FM_21_space-tourism", "");
+      if (redirect.includes("404.html")) {
+        return;
       }
       window.location.replace("/FM_21_space-tourism/index.html?redirect=" + encodeURIComponent(redirect));
     })();
