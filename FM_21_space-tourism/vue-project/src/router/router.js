@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/FM_21_space-tourism'),
   routes: [
     {
       path: '/',
@@ -26,13 +26,5 @@ const router = createRouter({
     },
   ],
 })
-
-router.isReady().then(() => {
-  const redirect = sessionStorage.getItem("redirect")
-  if (redirect) {
-    sessionStorage.removeItem("redirect")
-    router.replace(redirect)
-  }
-});
 
 export default router
