@@ -16,3 +16,11 @@
 - Mobile-first workflow
 - Perfect Pixel
 - BEM
+
+## Google PageSpeed Desktop Test
+
+![Space tourism website Desktop Test](./desktop-test.jpg)
+
+## Google PageSpeed Mobile Test
+
+![Space tourism website Mobile Test](./mobile-test.jpg)

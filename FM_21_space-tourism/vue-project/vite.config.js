@@ -15,7 +15,7 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
-  base: '/FM_21_space-tourism/',
+  // base: '/FM_21_space-tourism/',
   build: {
     assetsDir: 'assets',
     rollupOptions: {
