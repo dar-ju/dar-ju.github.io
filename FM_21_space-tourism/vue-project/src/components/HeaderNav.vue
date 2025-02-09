@@ -69,7 +69,6 @@ const closeNav = () => {
 }
 .header__nav-list {
   display: flex;
-  max-width: 576px;
   padding-right: 64px;
   gap: 70px 49px;
   flex-wrap: wrap;
