@@ -17,10 +17,14 @@ const updateNavOpen = (newTransform) => {
   <div class="header container">
     <div class="header__wrapper">
       <router-link to="/">
-        <img class="header__logo" src="@/assets/images/shared/logo.svg" alt="Space tourism logo" />
+        <img
+          class="header__logo"
+          src="@/assets/images/shared/logo.svg"
+          alt="Space tourism logo"
+          tabindex="0"
+        />
       </router-link>
-      <button @click="openNav()" class="header__burger"></button>
-      <!-- <img class="header__burger" src="@/assets/images/shared/icon-hamburger.svg" alt="" /> -->
+      <button @click="openNav()" class="header__burger" aria-label="open mobile menu"></button>
     </div>
     <HeaderNav :navOpen="navOpen" @updateNavOpen="updateNavOpen" />
   </div>
@@ -46,6 +50,11 @@ const updateNavOpen = (newTransform) => {
 .header__burger {
   display: none;
 }
+.header__logo:focus {
+  box-shadow: 0 0 0 4px var(--gray);
+  border-radius: 50%;
+  transition: box-shadow ease-in-out 0.3s;
+}
 
 @media (max-width: 1200px) {
   .header {
@@ -70,7 +79,6 @@ const updateNavOpen = (newTransform) => {
     display: block;
     width: 25px;
     height: 22px;
-    /* cursor: pointer; */
     background: url('../assets/images/shared/icon-hamburger.svg') no-repeat;
   }
 }

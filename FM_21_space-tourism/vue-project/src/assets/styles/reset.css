@@ -39,12 +39,6 @@ button {
     background: none;
 }
 
-/* button,
-button:active,
-button:focus {
-    outline: none;
-} */
-
 img {
     display: block;
     max-width: 100%;
@@ -67,4 +61,8 @@ input[type="number"]:hover,
 input[type="number"]:focus {
   appearance: none;
   -moz-appearance: textfield;
+}
+
+:focus-visible {
+  outline: none;
 }

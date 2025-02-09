@@ -4,9 +4,9 @@
   <div class="home__wrapper">
     <div class="container home__container">
       <div class="home__block">
-        <span class="text-1 home__text">So, you want to travel to</span>
-        <h1 class="title title-1 home__title">Space</h1>
-        <p class="paragraph-2 home__description">
+        <h1 class="text-1 home__text">So, you want to travel to</h1>
+        <h2 class="title title-1 home__title">Space</h2>
+        <p class="paragraph-2">
           Let’s face it; if you want to go to space, you might as well genuinely go to outer space
           and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a
           truly out of this world experience!
@@ -22,7 +22,6 @@
   padding-top: 418px;
   padding-bottom: 125px;
 }
-
 .home__container {
   display: flex;
   padding-right: 165px;
@@ -31,20 +30,15 @@
   align-items: center;
   justify-content: space-between;
 }
-
 .home__block {
   max-width: 540px;
 }
-
 .home__text {
   display: block;
   margin-bottom: 25px;
 }
 .home__title {
   margin-bottom: 22px;
-}
-.home__description {
-  /* line-height: 1.7rem; */
 }
 .home__btn {
   display: flex;
@@ -69,7 +63,8 @@
   background-color: var(--color-white10);
   transition: opacity ease-in-out 0.3s;
 }
-.home__btn:hover::after {
+.home__btn:hover::after,
+.home__btn:focus::after {
   opacity: 1;
 }
 .home__btn:hover {
@@ -80,7 +75,6 @@
 @media (max-width: 1200px) {
   .home__wrapper {
     padding-top: 128px;
-    /* padding-bottom: 125px; */
   }
   .home__container {
     padding-right: 128px;
@@ -92,6 +86,13 @@
   }
   .home__title {
     margin-bottom: 25px;
+  }
+  .home__text {
+    font-size: 28px;
+    letter-spacing: 4px;
+  }
+  .home__btn {
+    font-size: 32px;
   }
 }
 
@@ -105,9 +106,18 @@
     padding-left: 24px;
     row-gap: 118px;
   }
+  .home__text {
+    font-size: 17px;
+    letter-spacing: 2px;
+  }
   .home__btn {
     min-width: 144px;
     height: 144px;
+    font-size: 18px;
+  }
+  .home__btn::after {
+    width: 220%;
+    height: 220%;
   }
 }
 </style>

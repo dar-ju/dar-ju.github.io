@@ -1,17 +1,10 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { data } from '../data/data.js'
 
 const crew = ref({})
 const member = ref({})
-const titleBlock = ref('')
-const titleParentBlock = ref('')
 crew.value = data.crew
-
-onMounted(() => {
-  // titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
-  // titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
-})
 
 const getImageUrl = (path) => {
   return new URL(path, import.meta.url).href
@@ -20,8 +13,6 @@ const getImageUrl = (path) => {
 const toggleNav = (value) => {
   const index = crew.value.findIndex((el) => el.name === value)
   member.value = crew.value[index]
-  // if (titleParentBlock.value)
-  //   titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
 }
 toggleNav('Douglas Hurley')
 </script>
@@ -33,19 +24,19 @@ toggleNav('Douglas Hurley')
       <div class="crew__animation-wrapper">
         <transition name="fade-block" mode="in-out">
           <div :key="member.name" class="crew__block">
-            <!-- <div class="crew__block"> -->
             <div class="crew__text-block">
               <div class="crew__info">
                 <h2 class="title title-4 crew__subtitle">{{ member.role }}</h2>
                 <h3 class="title title-3 crew__subtitle-2">{{ member.name }}</h3>
                 <p class="paragraph-2 crew__description">{{ member.bio }}</p>
               </div>
-              <nav class="crew__nav">
-                <ul class="crew__nav-list">
+              <div class="crew__nav">
+                <ul class="crew__nav-list" role="menu">
                   <li
                     @click="toggleNav('Douglas Hurley')"
                     class="crew__nav-item"
                     :class="{ 'crew__nav-item_active': member.name === 'Douglas Hurley' }"
+                    role="menuitem"
                   >
                     <a class="link" href="#"></a>
                   </li>
@@ -53,6 +44,7 @@ toggleNav('Douglas Hurley')
                     @click="toggleNav('Mark Shuttleworth')"
                     class="crew__nav-item"
                     :class="{ 'crew__nav-item_active': member.name === 'Mark Shuttleworth' }"
+                    role="menuitem"
                   >
                     <a class="link" href="#"></a>
                   </li>
@@ -60,6 +52,7 @@ toggleNav('Douglas Hurley')
                     @click="toggleNav('Victor Glover')"
                     class="crew__nav-item"
                     :class="{ 'crew__nav-item_active': member.name === 'Victor Glover' }"
+                    role="menuitem"
                   >
                     <a class="link" href="#"></a>
                   </li>
@@ -67,17 +60,17 @@ toggleNav('Douglas Hurley')
                     @click="toggleNav('Anousheh Ansari')"
                     class="crew__nav-item"
                     :class="{ 'crew__nav-item_active': member.name === 'Anousheh Ansari' }"
+                    role="menuitem"
                   >
                     <a class="link" href="#"></a>
                   </li>
                 </ul>
-              </nav>
+              </div>
             </div>
             <img class="crew__image" :src="getImageUrl(member.images.webp)" alt="" />
           </div>
         </transition>
       </div>
-      <!-- <a class="title title-4 crew__btn" href="#">Explore</a> -->
     </div>
   </div>
 </template>
@@ -87,22 +80,15 @@ toggleNav('Douglas Hurley')
   padding-top: 49px;
   padding-bottom: 49px;
 }
-
 .crew__container {
-  /* display: flex; */
-  /* min-height: 790px; */
   padding-right: 165px;
   padding-left: 165px;
-  /* align-items: center;
-  justify-content: space-between; */
 }
-
 .crew__title {
   margin-bottom: 10px;
   font-weight: 400;
   color: var(--color-white);
 }
-
 .crew__title-number {
   margin-right: 22px;
   font-weight: 600;
@@ -128,6 +114,7 @@ toggleNav('Douglas Hurley')
 .crew__text-block {
   display: flex;
   max-width: 539px;
+  gap: 20px;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -141,8 +128,6 @@ toggleNav('Douglas Hurley')
 .crew__nav {
   display: flex;
   min-height: 60px;
-  /* padding-top: 57px;
-  padding-bottom: 18px; */
   align-items: center;
 }
 .crew__nav-list {
@@ -150,42 +135,25 @@ toggleNav('Douglas Hurley')
   gap: 40px;
   list-style: none;
 }
-
 .crew__nav-item {
   width: 15px;
   height: 15px;
   border-radius: 50%;
   cursor: pointer;
   background-color: var(--color-white25);
+  transition: background-color ease-in-out 0.3s;
+}
+.crew__nav-item:hover,
+.crew__nav-item:has(.link:focus) {
+  background-color: var(--gray);
 }
 .crew__nav-item_active {
   background-color: var(--color-white);
 }
-
 .crew__animation-wrapper {
   position: relative;
   min-height: 745px;
 }
-
-/* .crew__nav-item::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: var(--color-white);
-} */
-/* .crew__nav-item::after {
-  bottom: -23px;
-} */
-/* .crew__nav-item_active::after {
-  opacity: 1;
-  background-color: var(--color-white);
-} */
-/* .crew__sutitle {
-  margin-bottom: 20px;
-} */
 
 @media (max-width: 1200px) {
   .crew__wrapper {
@@ -200,13 +168,8 @@ toggleNav('Douglas Hurley')
   .crew__block {
     gap: 30px;
     flex-direction: column;
-    /* justify-content: center; */
     text-align: center;
   }
-  .crew__info {
-    margin-bottom: 55px;
-  }
-
   .crew__animation-wrapper {
     display: flex;
     position: relative;
@@ -216,8 +179,13 @@ toggleNav('Douglas Hurley')
   .crew__title {
     margin-bottom: 20px;
   }
+  .crew__description {
+    min-height: 87px;
+  }
   .crew__text-block {
     max-width: 540px;
+    min-height: 265px;
+    justify-content: space-between;
   }
   .crew__nav {
     min-height: 0;
@@ -257,41 +225,31 @@ toggleNav('Douglas Hurley')
   }
   .crew__text-block {
     width: initial;
-    gap: 23px;
   }
   .crew__subtitle-2 {
     margin-bottom: 18px;
   }
   .crew__info {
+    margin-bottom: 0;
     gap: 8px;
   }
-
-  .crew__animation-block {
-    /* max-width: 327px; */
+  .crew__description {
+    min-height: 187px;
   }
   .crew__animation-wrapper {
     min-height: 725px;
   }
-  .crew__animation-image-wrapper {
-    /* width: 150px;
-    min-height: 142px; */
-  }
   .crew__image {
-    width: 250px;
-    height: 360px;
+    width: 327px;
+    height: 350px;
+    object-fit: contain;
+    object-position: top;
   }
-  .crew__nav {
-    /* margin-bottom: 40px; */
-  }
-  .crew__nav-item {
-  }
-  .crew__nav-item::after {
-    /* bottom: -15px; */
-  }
-  .crew__data {
-    /* gap: 25px;
-    flex-direction: column;
-    align-items: center; */
+}
+
+@media (max-width: 350px) {
+  .crew__description {
+    min-height: 210px;
   }
 }
 </style>

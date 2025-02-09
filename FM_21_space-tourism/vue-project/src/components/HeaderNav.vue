@@ -1,7 +1,5 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue'
-
-const emit = defineEmits()
+const emit = defineEmits('')
 
 const props = defineProps({
   navOpen: {
@@ -16,8 +14,12 @@ const closeNav = () => {
 </script>
 
 <template>
-  <div class="header__nav" :style="{ transform: navOpen }">
-    <button @click="closeNav()" class="header__burger-close"></button>
+  <nav class="header__nav" :style="{ transform: navOpen }">
+    <button
+      @click="closeNav()"
+      class="header__burger-close"
+      aria-label="close mobile menu"
+    ></button>
     <ul class="header__nav-list">
       <li
         class="text-3 nav-item header__nav-item"
@@ -52,7 +54,7 @@ const closeNav = () => {
         >
       </li>
     </ul>
-  </div>
+  </nav>
 </template>
 
 <style scope>
@@ -102,6 +104,7 @@ const closeNav = () => {
     padding-right: 39px;
   }
 }
+
 @media (max-width: 767px) {
   .header__nav {
     display: flex;
@@ -115,11 +118,10 @@ const closeNav = () => {
     gap: 64px;
     right: 0;
     top: 0;
-    /* padding-top: 0; */
     flex-direction: column;
     justify-content: flex-start;
     backdrop-filter: blur(30px);
-    transition: transform ease-in-out 0.5s;
+    transition: transform ease 1s;
   }
   .header__nav-list {
     padding-right: 0;

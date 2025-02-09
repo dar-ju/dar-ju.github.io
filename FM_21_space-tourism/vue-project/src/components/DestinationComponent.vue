@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch, nextTick } from 'vue'
 import { data } from '../data/data.js'
 
 const destinations = ref({})
@@ -8,10 +8,21 @@ const titleBlock = ref('')
 const titleParentBlock = ref('')
 destinations.value = data.destinations
 
+// adjust the height of the block to the text
 onMounted(() => {
   titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
-  // titleParentBlock.value.style.width = `${titleBlock.value.offsetWidth}px`
 })
+
+// watch the submenu change to set the block height
+watch(
+  () => planet.value.name,
+  async (newName) => {
+    if (newName) {
+      await nextTick()
+      titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+    }
+  },
+)
 
 const getImageUrl = (path) => {
   return new URL(path, import.meta.url).href
@@ -20,8 +31,6 @@ const getImageUrl = (path) => {
 const toggleNav = (value) => {
   const index = destinations.value.findIndex((el) => el.name === value)
   planet.value = destinations.value[index]
-  if (titleParentBlock.value)
-    titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
 }
 toggleNav('Moon')
 </script>
@@ -41,34 +50,40 @@ toggleNav('Moon')
           </Transition>
         </div>
         <div class="destination__text-block">
-          <nav class="destination__nav">
-            <ul class="destination__nav-list">
-              <li
-                class="text-3 nav-item destination__nav-item"
-                :class="{ 'destination__nav-item_active': planet.name === 'Moon' }"
-              >
-                <a @click="toggleNav('Moon')" class="link" href="#">Moon</a>
-              </li>
-              <li
-                class="text-3 nav-item destination__nav-item"
-                :class="{ 'destination__nav-item_active': planet.name === 'Mars' }"
-              >
-                <a @click="toggleNav('Mars')" class="link" href="#">Mars</a>
-              </li>
-              <li
-                class="text-3 nav-item destination__nav-item"
-                :class="{ 'destination__nav-item_active': planet.name === 'Europa' }"
-              >
-                <a @click="toggleNav('Europa')" class="link" href="#">Europa</a>
-              </li>
-              <li
-                class="text-3 nav-item destination__nav-item"
-                :class="{ 'destination__nav-item_active': planet.name === 'Titan' }"
-              >
-                <a @click="toggleNav('Titan')" class="link" href="#">Titan</a>
-              </li>
-            </ul>
-          </nav>
+          <ul class="destination__nav-list" role="menu">
+            <li
+              class="text-3 nav-item destination__nav-item"
+              :class="{ 'destination__nav-item_active': planet.name === 'Moon' }"
+              role="menuitem"
+              tabindex="0"
+            >
+              <a @click="toggleNav('Moon')">Moon</a>
+            </li>
+            <li
+              class="text-3 nav-item destination__nav-item"
+              :class="{ 'destination__nav-item_active': planet.name === 'Mars' }"
+              role="menuitem"
+              tabindex="0"
+            >
+              <a @click="toggleNav('Mars')">Mars</a>
+            </li>
+            <li
+              class="text-3 nav-item destination__nav-item"
+              :class="{ 'destination__nav-item_active': planet.name === 'Europa' }"
+              role="menuitem"
+              tabindex="0"
+            >
+              <a @click="toggleNav('Europa')">Europa</a>
+            </li>
+            <li
+              class="text-3 nav-item destination__nav-item"
+              :class="{ 'destination__nav-item_active': planet.name === 'Titan' }"
+              role="menuitem"
+              tabindex="0"
+            >
+              <a @click="toggleNav('Titan')">Titan</a>
+            </li>
+          </ul>
           <div class="destination__animation-wrapper" ref="titleParentBlock">
             <Transition name="fade-block" mode="in-out">
               <div :key="planet.name" class="destination__animation-block" ref="titleBlock">
@@ -77,14 +92,12 @@ toggleNav('Moon')
 
                 <div class="destination__data">
                   <div class="destination__data-block">
-                    <span class="text-2 destination__distance-title">Avg. distance</span>
-                    <span class="title title-5 destination__distance-value">{{
-                      planet.distance
-                    }}</span>
+                    <span class="text-2">Avg. distance</span>
+                    <span class="title title-5">{{ planet.distance }}</span>
                   </div>
                   <div class="destination__data-block">
-                    <span class="text-2 destination__time-title">Est. travel time</span>
-                    <span class="title title-5 destination__time-value">{{ planet.travel }}</span>
+                    <span class="text-2">Est. travel time</span>
+                    <span class="title title-5">{{ planet.travel }}</span>
                   </div>
                 </div>
               </div>
@@ -101,23 +114,15 @@ toggleNav('Moon')
   padding-top: 49px;
   padding-bottom: 48px;
 }
-
 .destination__container {
-  /* display: flex; */
-  /* position: relative; */
   padding-right: clamp(5px, 12vw, 165px);
   padding-left: clamp(5px, 12vw, 165px);
-  /* padding-bottom: 760px; */
-  /* align-items: center;
-  justify-content: space-between; */
 }
-
 .destination__title {
   margin-bottom: 24px;
   font-weight: 400;
   color: var(--color-white);
 }
-
 .destination__title-number {
   margin-right: 22px;
   font-weight: 600;
@@ -126,7 +131,6 @@ toggleNav('Moon')
 .destination__block {
   display: flex;
   position: relative;
-  /* min-height: 760px; */
   padding: 127px 30px;
   gap: 60px;
   justify-content: space-between;
@@ -138,22 +142,26 @@ toggleNav('Moon')
   object-fit: contain;
 }
 .destination__text-block {
-  /* position: relative; */
   max-width: clamp(5px, 31vw, 445px);
   padding: 7px 0;
 }
-.destination__nav {
-  margin-bottom: 48px;
-}
 .destination__nav-list {
   display: flex;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
   gap: 32px;
+}
+.destination__nav-item {
+  cursor: pointer;
 }
 .destination__nav-item::after {
   bottom: -13px;
 }
 .destination__nav-item_active {
   color: var(--color-white);
+}
+.destination__nav-item:focus::after {
+  opacity: 1;
 }
 .destination__nav-item_active::after {
   opacity: 1;
@@ -165,8 +173,6 @@ toggleNav('Moon')
 .destination__description {
   margin-bottom: 40px;
   padding-bottom: 40px;
-  /* font-size: 1.3rem;
-  line-height: 1.75rem; */
   border-bottom: 1px solid var(--gray25);
 }
 .destination__data {
@@ -179,32 +185,18 @@ toggleNav('Moon')
   gap: 12px;
   flex-direction: column;
 }
-
 .destination__animation-image-wrapper {
   width: 480px;
 }
-
 .destination__animation-wrapper {
   display: flex;
   position: relative;
   width: 445px;
-  align-items: center;
+  align-items: flex-start;
 }
-
 .destination__animation-block {
   position: absolute;
   width: 445px;
-}
-
-.destination__distance-title {
-}
-.destination__distance-value {
-}
-.destination__time-block {
-}
-.destination__time-title {
-}
-.destination__time-value {
 }
 
 @media (max-width: 1200px) {
@@ -219,13 +211,11 @@ toggleNav('Moon')
   .destination__block {
     display: flex;
     position: relative;
-    /* min-height: 760px; */
     padding: 44px 0;
     flex-direction: column;
     text-align: center;
     align-items: center;
   }
-
   .destination__animation-image-wrapper {
     width: 300px;
     min-height: 318px;
@@ -243,12 +233,9 @@ toggleNav('Moon')
   .destination__text-block {
     width: 514px;
     max-width: 514px;
-    /* padding: 7px 0; */
-  }
-  .destination__nav {
-    margin-bottom: 39px;
   }
   .destination__nav-list {
+    margin-bottom: 39px;
     justify-content: center;
   }
   .destination__sutitle {
@@ -283,7 +270,6 @@ toggleNav('Moon')
   .destination__text-block {
     width: initial;
   }
-
   .destination__animation-block {
     max-width: 327px;
   }
@@ -301,10 +287,8 @@ toggleNav('Moon')
     width: 150px;
     min-width: initial;
   }
-  .destination__nav {
+  .destination__nav-list {
     margin-bottom: 40px;
-  }
-  .destination__nav-item {
   }
   .destination__nav-item::after {
     bottom: -15px;
@@ -313,6 +297,13 @@ toggleNav('Moon')
     gap: 25px;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 350px) {
+  .destination__description {
+    padding-right: 24px;
+    padding-left: 24px;
   }
 }
 </style>
