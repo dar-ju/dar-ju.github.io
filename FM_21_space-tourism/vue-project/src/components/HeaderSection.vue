@@ -14,20 +14,15 @@ const updateNavOpen = (newTransform) => {
 </script>
 
 <template>
-  <div class="header container">
+  <header class="header container">
     <div class="header__wrapper">
-      <router-link to="/">
-        <img
-          class="header__logo"
-          src="@/assets/images/shared/logo.svg"
-          alt="Space tourism logo"
-          tabindex="0"
-        />
+      <router-link to="/" class="header__logo-link" tabindex="0">
+        <img class="header__logo" src="@/assets/images/shared/logo.svg" alt="Space tourism logo" />
       </router-link>
       <button @click="openNav()" class="header__burger" aria-label="open mobile menu"></button>
     </div>
     <HeaderNav :navOpen="navOpen" @updateNavOpen="updateNavOpen" />
-  </div>
+  </header>
 </template>
 
 <style scope>
@@ -50,7 +45,9 @@ const updateNavOpen = (newTransform) => {
 .header__burger {
   display: none;
 }
-.header__logo:focus {
+.header__logo-link:focus {
+  display: block;
+  width: 100%;
   box-shadow: 0 0 0 4px var(--gray);
   border-radius: 50%;
   transition: box-shadow ease-in-out 0.3s;

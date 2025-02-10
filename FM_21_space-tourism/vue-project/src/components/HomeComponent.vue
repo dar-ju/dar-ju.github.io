@@ -1,8 +1,8 @@
 <script setup></script>
 
 <template>
-  <div class="home__wrapper">
-    <div class="container home__container">
+  <main class="home__wrapper">
+    <section class="container home__container">
       <div class="home__block">
         <h1 class="text-1 home__text">So, you want to travel to</h1>
         <h2 class="title title-1 home__title">Space</h2>
@@ -13,8 +13,8 @@
         </p>
       </div>
       <router-link class="title title-4 home__btn" to="/destination">Explore</router-link>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>

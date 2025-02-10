@@ -36,8 +36,8 @@ toggleNav('Moon')
 </script>
 
 <template>
-  <div class="destination__wrapper">
-    <div class="container destination__container">
+  <main class="destination__wrapper">
+    <section class="container destination__container">
       <h1 class="text-1 destination__title">
         <span class="destination__title-number">01</span>Pick your destination
       </h1>
@@ -105,8 +105,8 @@ toggleNav('Moon')
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>

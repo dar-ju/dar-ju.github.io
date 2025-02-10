@@ -18,8 +18,8 @@ toggleNav('Douglas Hurley')
 </script>
 
 <template>
-  <div class="crew__wrapper">
-    <div class="container crew__container">
+  <main class="crew__wrapper">
+    <section class="container crew__container">
       <h1 class="text-1 crew__title"><span class="crew__title-number">02</span>Meet your crew</h1>
       <div class="crew__animation-wrapper">
         <transition name="fade-block" mode="in-out">
@@ -71,8 +71,8 @@ toggleNav('Douglas Hurley')
           </div>
         </transition>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>

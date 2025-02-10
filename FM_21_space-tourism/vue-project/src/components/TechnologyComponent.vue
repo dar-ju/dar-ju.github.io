@@ -36,8 +36,8 @@ toggleNav('Launch vehicle')
 </script>
 
 <template>
-  <div class="technology__wrapper">
-    <div class="container technology__container">
+  <main class="technology__wrapper">
+    <section class="container technology__container">
       <h1 class="text-1 technology__title">
         <span class="technology__title-number">03</span>Space launch 101
       </h1>
@@ -88,8 +88,8 @@ toggleNav('Launch vehicle')
           </div>
         </transition>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 
 <style scoped>
