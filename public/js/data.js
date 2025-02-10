@@ -1,5 +1,18 @@
 export const data = [
   {
+    "space-tourism": {
+      "en": {
+        "title": "Space tourism multi-page website",
+        "description": "The site consists of 4 pages, the transition between which is carried out with smooth animation, as well as the blocks inside. For this, it was necessary to use absolute positioning, which greatly complicated the layout in Perfect Pixel. The layout turned out to be as close as possible to the ideas of the designer.",
+      },
+      "ru": {
+        "title": "Сайт космического туризма",
+        "description": "Сайт состоит из 4 страниц, переход между которыми проходит с плавной анимацией, как и блоков внутри. Для этого пришлось использовать абсолютное позиционирование, что сильно усложнило верстку в Perfect Pixel. Верстка получилась максимально близкой к идеям дизайнера.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/space-tourism-multi-page-website-LZAWcBHca_"
+    }
+  },
+  {
     "bookmark-landing": {
       "en": {
         "title": "Bookmark landing page",
