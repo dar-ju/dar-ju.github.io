@@ -14,8 +14,6 @@ body {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  /* padding-left: 165px;
-  padding-right: 165px; */
 }
 
 .section {
@@ -24,7 +22,6 @@ body {
   left: 0;
   top: 0;
   padding-top: 40px;
-  /* padding-bottom: 128px; */
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -38,40 +35,40 @@ body {
 }
 
 .title-1 {
-  font-size: 144px;
+  font-size: 8rem;
 }
 
 .title-2 {
-  font-size: 96px;
+  font-size: 5.33rem;
 }
 
 .title-3 {
-  font-size: 56px;
+  font-size: 3.11rem;
 }
 
 .title-4 {
-  font-size: 32px;
+  font-size: 1.78rem;
 }
 
 .title-5 {
-  font-size: 28px;
+  font-size: 1.56rem;
   text-transform: uppercase;
 }
 
 .text-1 {
-  font-size: 28px;
+  font-size: 1.56rem;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 
 .text-2 {
-  font-size: 14px;
+  font-size: 0.78rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
 
 .text-3 {
-  font-size: 16px;
+  font-size: 0.89rem;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -82,7 +79,7 @@ body {
 
 .paragraph-2 {
   font-family: "Barlow", sans-serif;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 180%;
 }
 
@@ -125,66 +122,49 @@ body {
   opacity: 0;
 }
 
-/* .btn {
-  display: flex;
-  padding: 18px;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-  color: var(--color-very-dark-blue);
-  background-color: var(--color-orange);
-  border-radius: 10px;
-  transition: background-color ease-in-out 0.3s;
-}
-
-.btn:hover {
-  background-color: var(--color-lite-orange);
-} */
-
 @media (max-width: 1200px) {
   .section {
     padding-top: 0;
   }
   .title-2 {
-    font-size: 80px;
+    font-size: 4.44rem;
   }
   .title-3 {
-    font-size: 40px;
+    font-size: 2.22rem;
   }
   .title-4 {
-    font-size: 24px;
+    font-size: 1.33rem;
   }
   .text-1 {
-    font-size: 20px;
+    font-size: 1.11rem;
     letter-spacing: 3px;
   }
   .paragraph-2 {
-    font-size: 16px;
+    font-size: 0.89rem;
   }
 }
 
 @media (max-width: 580px) {
   .title-1 {
-    font-size: 80px;
+    font-size: 4.44rem;
   }
   .title-2 {
-    font-size: 56px;
+    font-size: 3.11rem;
   }
   .title-3 {
-    font-size: 24px;
+    font-size: 1.33rem;
   }
   .title-4 {
-    font-size: 18px;
+    font-size: 1rem;
   }
   .text-1 {
-    font-size: 17px;
+    font-size: 0.94rem;
     letter-spacing: 2px;
   }
   .text-3 {
-    font-size: 14px;
-    /* letter-spacing: 2px; */
+    font-size: 0.78rem;
   }
   .paragraph-2 {
-    font-size: 15px;
+    font-size: 0.83rem;
   }
 }

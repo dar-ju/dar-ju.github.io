@@ -88,11 +88,11 @@
     margin-bottom: 25px;
   }
   .home__text {
-    font-size: 28px;
+    font-size: 1.56rem;
     letter-spacing: 4px;
   }
   .home__btn {
-    font-size: 32px;
+    font-size: 1.78rem;
   }
 }
 
@@ -107,13 +107,13 @@
     row-gap: 118px;
   }
   .home__text {
-    font-size: 17px;
+    font-size: 0.94rem;
     letter-spacing: 2px;
   }
   .home__btn {
     min-width: 144px;
     height: 144px;
-    font-size: 18px;
+    font-size: 1rem;
   }
   .home__btn::after {
     width: 220%;
