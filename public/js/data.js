@@ -16,11 +16,11 @@ export const data = [
     "bookmark-landing": {
       "en": {
         "title": "Bookmark landing page",
-        "description": "Quite a diverse task in terms of the number of tasks to be solved. Only one page, so only HTML, SCC and JS were used, gsap was used for animation. The layout in Perfect Pixel of the desktop and mobile versions without a Figma layout took a lot of time.",
+        "description": "Quite a diverse task in terms of the number of tasks to be solved. Only one page, so only HTML, CSS and JS were used, GSAP was used for animation. The layout in Perfect Pixel of the desktop and mobile versions without a Figma layout took a lot of time.",
       },
       "ru": {
         "title": "Лендинг Bookmark",
-        "description": "Довольно разнообразное по количеству решаемых задач задание. Всего одна страница, поэтому обошёлся только HTML, SCC и JS, для анимации использовался gsap. Верстка в Perfect Pixel десктопа и мобильной версии без макета Figma заняло много времени.",
+        "description": "Довольно разнообразное по количеству решаемых задач задание. Всего одна страница, поэтому обошёлся только HTML, CSS и JS, для анимации использовался GSAP. Верстка в Perfect Pixel десктопа и мобильной версии без макета Figma заняло много времени.",
       },
       "urlFm": "https://www.frontendmentor.io/solutions/bookmark-landing-page-73ROxtMb12"
     }
@@ -71,7 +71,7 @@ export const data = [
         "description": "Product page with elegant lightbox product gallery and dynamic cart functionality. First time making a lightbox, it turned out to be easier than I thought. VUE framework is used in the work.",
       },
       "ru": {
-        "title": "Страница товара",
+        "title": "Страница товара с лайтбоксом",
         "description": "Страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впервые сделал лайтбокс, оказалось это легче, чем я думал. В работе использовать фреймворк VUE.",
       },
       "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
@@ -81,11 +81,11 @@ export const data = [
     "news-homepage": {
       "en": {
         "title": "News homepage",
-        "description": "This news homepage was a great opportunity to practice my CSS Grid skills. There were many challenging decisions and many learning opportunities!",
+        "description": "This news homepage was a great opportunity to practice my CSS Grid skills. I paid special attention to overflow tests because in a dynamic content format, this is the most important thing.",
       },
       "ru": {
         "title": "Домашняя страница сайта новостей",
-        "description": "Эта новостная домашняя страница стала отличной возможностью попрактиковать свои навыки CSS Grid. Было много сложных решений и много возможностей для обучения!",
+        "description": "Эта новостная домашняя страница стала отличной возможностью попрактиковать свои навыки CSS Grid. Особое внимание стоило уделить тестам на переполнение, потому что в формате динамичного контента это наиболее важно.",
       },
       "urlFm": "https://www.frontendmentor.io/solutions/news-homepage-8JaK1hJGlY"
     }
@@ -107,11 +107,11 @@ export const data = [
     "accordion": {
       "en": {
         "title": "FAQ accordion",
-        "description": "This assignment involved creating a FAQ accordion, a common interface template, which provided a great opportunity for practice.",
+        "description": "This assignment involves creating a FAQ accordion, a common interface template, which provided a great opportunity for practice. I decided to do the assignment in CSS without using JS.",
       },
       "ru": {
         "title": "FAQ аккордеон",
-        "description": "В этом задании предполагается создание аккордеона FAQ, распространенного шаблона интерфейса, что дало прекрасную возможность для практики.",
+        "description": "В этом задании предполагается создание аккордеона FAQ, распространенного шаблона интерфейса, что дало прекрасную возможность для практики. Решил сделать задание на CSS без использования JS.",
       },
       "urlFm": "https://www.frontendmentor.io/solutions/faq-accordion-spnKX4fBKt"
     }
