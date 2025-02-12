@@ -46,8 +46,6 @@ async function checkImage(path1, path2) {
 }
 
 async function createSectionCards(item) {
-  loadLang()
-
   const allGroup = document.querySelector('.all__group')
   const latestCard = document.querySelector('.latest__card')
   allGroup.innerHTML = ''
@@ -56,7 +54,9 @@ async function createSectionCards(item) {
   const taskName = Object.keys(item)[0]
   if (taskName === 'commonLang') return
 
-  let taskId = data.length - (data.length - item[taskName].id)
+  const findItemIndex = data.findIndex(el => el[taskName] !== undefined)
+
+  let taskId = data.length - findItemIndex - 1
   taskId = taskId > 9 ? taskId : '0' + taskId
 
   function getImagePath() {
@@ -100,9 +100,10 @@ async function createSectionCards(item) {
     <img class="lazyload latest__img" data-src="${image}" alt="${taskName} challenge image">
   `
 
-  if (data.length - 1 === item[taskName].id) latestCard.insertAdjacentHTML("beforeend", cardLatest)
+  if (data.length - findItemIndex === data.length) latestCard.insertAdjacentHTML("beforeend", cardLatest)
   else allGroup.insertAdjacentHTML("beforeend", cardAll)
 
+  loadLang()
   lazyload()
 }
 
