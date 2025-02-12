@@ -1,6 +1,7 @@
 export const data = [
   {
     "space-tourism": {
+      "id": 21,
       "en": {
         "title": "Space tourism multi-page website",
         "description": "The site consists of 4 pages, the transition between which is carried out with smooth animation, as well as the blocks inside. For this, it was necessary to use absolute positioning, which greatly complicated the layout in Perfect Pixel. The layout turned out to be as close as possible to the ideas of the designer.",
@@ -14,6 +15,7 @@ export const data = [
   },
   {
     "bookmark-landing": {
+      "id": 20,
       "en": {
         "title": "Bookmark landing page",
         "description": "Quite a diverse task in terms of the number of tasks to be solved. Only one page, so only HTML, CSS and JS were used, GSAP was used for animation. The layout in Perfect Pixel of the desktop and mobile versions without a Figma layout took a lot of time.",
@@ -27,6 +29,7 @@ export const data = [
   },
   {
     "room-homepage": {
+      "id": 19,
       "en": {
         "title": "Room homepage",
         "description": "Homepage of a furniture company with a simple layout, but with the ability to experiment with animation. I used the GSAP tool in this project, I think it turned out well.",
@@ -40,6 +43,7 @@ export const data = [
   },
   {
     "loopstudios-landing": {
+      "id": 18,
       "en": {
         "title": "Loopstudios landing page",
         "description": "Landing page with a mobile menu without using JS. Used Webpack bundler and SCSS. I think the layout is not so complicated to use a grid, flex is enough.",
@@ -53,6 +57,7 @@ export const data = [
   },
   {
     "nft-preview-card": {
+      "id": 17,
       "en": {
         "title": "NFT preview card component",
         "description": "A small and fairly easy project to create an NFT card component. For focus, I used box-shadow instead of outline or border, quite a convenient option, but without the ability to make an indent.",
@@ -66,6 +71,7 @@ export const data = [
   },
   {
     "ecommerce-product": {
+      "id": 16,
       "en": {
         "title": "E-commerce product page",
         "description": "Product page with elegant lightbox product gallery and dynamic cart functionality. First time making a lightbox, it turned out to be easier than I thought. VUE framework is used in the work.",
@@ -79,6 +85,7 @@ export const data = [
   },
   {
     "news-homepage": {
+      "id": 15,
       "en": {
         "title": "News homepage",
         "description": "This news homepage was a great opportunity to practice my CSS Grid skills. I paid special attention to overflow tests because in a dynamic content format, this is the most important thing.",
@@ -92,6 +99,7 @@ export const data = [
   },
   {
     "form": {
+      "id": 14,
       "en": {
         "title": "Contact form",
         "description": "Creating accessible forms is an important task for FrontEnd developers. This task helped to practice creating a form with multiple input types and validation.",
@@ -105,6 +113,7 @@ export const data = [
   },
   {
     "accordion": {
+      "id": 13,
       "en": {
         "title": "FAQ accordion",
         "description": "This assignment involves creating a FAQ accordion, a common interface template, which provided a great opportunity for practice. I decided to do the assignment in CSS without using JS.",
@@ -118,6 +127,7 @@ export const data = [
   },
   {
     "rating": {
+      "id": 12,
       "en": {
         "title": "Interactive rating component",
         "description": "This is a nice, small project to practice handling user interactions and updating the DOM. Perfect for anyone who has learned the basics of JavaScript!",
@@ -131,6 +141,7 @@ export const data = [
   },
   {
     "tip-calculator": {
+      "id": 11,
       "en": {
         "title": "Tip calculator app",
         "description": "A simple app designed to help grasp JavaScript fundamentals, featuring calculator functionality as a practical test.",
@@ -144,6 +155,7 @@ export const data = [
   },
   {
     "time-tracking": {
+      "id": 10,
       "en": {
         "title": "Time tracking dashboard",
         "description": "An ideal opportunity to practice CSS Grid skills, with the added option of using a provided JSON data file to enhance data-handling abilities.",
@@ -157,6 +169,7 @@ export const data = [
   },
   {
     "newsletter": {
+      "id": 9,
       "en": {
         "title": "Newsletter sign-up form with success message",
         "description": "This will test your skills with basic form structure, validation, and submission. The success state will also be an excellent opportunity to work with DOM manipulation.",
@@ -170,6 +183,7 @@ export const data = [
   },
   {
     "js-aricle": {
+      "id": 8,
       "en": {
         "title": "Article preview component",
         "description": "Task focuses on improving layout skills with an article preview component while allowing creative exploration of animations for sharing icons.",
@@ -183,6 +197,7 @@ export const data = [
   },
   {
     "testimonials": {
+      "id": 7,
       "en": {
         "title": "Testimonials grid section",
         "description": "The challenge provided an opportunity to practice and test CSS Grid skills, highlighting its versatility and value as a powerful tool in CSS design.",
@@ -196,6 +211,7 @@ export const data = [
   },
   {
     "four-card": {
+      "id": 6,
       "en": {
         "title": "Four card feature section",
         "description": "A nice layout-based challenge for beginners. This will test anyone who is new to multi-column and responsive layouts.",
@@ -209,6 +225,7 @@ export const data = [
   },
   {
     "product": {
+      "id": 5,
       "en": {
         "title": "Product card",
         "description": "This HTML & CSS-only challenge will be perfect starting to build responsive projects.",
@@ -222,6 +239,7 @@ export const data = [
   },
   {
     "recipe": {
+      "id": 4,
       "en": {
         "title": "Recipe page",
         "description": "In this challenge emphasizes writing semantic HTML by selecting the most suitable elements for each piece of content.",
@@ -235,6 +253,7 @@ export const data = [
   },
   {
     "profile": {
+      "id": 3,
       "en": {
         "title": "Social links profile",
         "description": "This small project involves creating a social link-sharing profile. It can be personalized and used to share all social profiles.",
@@ -248,6 +267,7 @@ export const data = [
   },
   {
     "card": {
+      "id": 2,
       "en": {
         "title": "Blog preview card",
         "description": "This HTML & CSS-only challenge is a perfect project for beginners getting up to speed with HTML and CSS fundamentals, like HTML structure and the box model.",
@@ -261,6 +281,7 @@ export const data = [
   },
   {
     "qr": {
+      "id": 1,
       "en": {
         "title": "QR code component",
         "description": "This is a great introductory example for working with HTML and CSS. The card layout remains fixed, making it ideal for those who have not yet learned about building responsive layouts.",
@@ -274,6 +295,7 @@ export const data = [
   },
   {
     "commonLang": {
+      "id": 0,
       "en": {
         "title": "Solutions",
         "heroDescription1": "Frontend Mentor is an online platform to help developers improve their frontend coding skills. It offers real-world projects, from simple layouts to advanced apps using JavaScript frameworks.",
