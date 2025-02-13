@@ -122,16 +122,16 @@ body {
   font-weight: 700;
   background-repeat: no-repeat;
 }
-.summary__item_reaction .summary__item-name {
+.summary__item_Reaction .summary__item-name {
   color: var(--light-red);
 }
-.summary__item_memory .summary__item-name {
+.summary__item_Memory .summary__item-name {
   color: var(--orangey-yellow);
 }
-.summary__item_verbal .summary__item-name {
+.summary__item_Verbal .summary__item-name {
   color: var(--green-teal);
 }
-.summary__item_visual .summary__item-name {
+.summary__item_Visual .summary__item-name {
   color: var(--cobalt-blue);
 }
 
