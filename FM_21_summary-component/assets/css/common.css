@@ -1,0 +1,36 @@
+/* FONTS */
+@font-face {
+  font-family: "Hanken Grotesk";
+  src: local("Hanken Grotesk Thin"),
+    url("../fonts/HankenGrotesk-VariableFont_wght.woff2") format("woff2"),
+    url("../fonts/HankenGrotesk-VariableFont_wght.woff") format("woff");
+  /* font-weight: 500; */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* COLORS */
+:root {
+/* ### Primary */
+--light-red: hsl(0, 100%, 67%);
+--orangey-yellow: hsl(39, 100%, 56%);
+--green-teal: hsl(166, 100%, 37%);
+--cobalt-blue: hsl(234, 85%, 45%);
+
+/* ## Gradients */
+--light-slate-blue-background: hsl(252, 100%, 67%);
+--light-royal-blue-background: hsl(241, 81%, 54%);
+--violet-blue-circle: hsla(256, 72%, 46%, 1);
+--persian-blue-circle: hsla(241, 72%, 46%, 0);
+
+/* ### Neutral */
+--white: hsl(0, 0%, 100%);
+--pale-blue: hsl(221, 100%, 96%);
+--light-lavender: hsl(241, 100%, 89%);
+--dark-gray-blue: hsl(224, 30%, 27%);
+
+--light-red5: hsla(0, 100%, 67%, 0.05);
+--orangey-yellow5: hsla(39, 100%, 56%, 0.05);
+--green-teal5: hsla(166, 100%, 37%, 0.05);
+--cobalt-blue5: hsla(234, 85%, 45%, 0.05);
+}
