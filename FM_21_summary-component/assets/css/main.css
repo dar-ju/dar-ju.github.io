@@ -124,22 +124,19 @@ body {
 }
 .summary__item_reaction .summary__item-name {
   color: var(--light-red);
-  /* background: url('../images/icon-reaction.svg') no-repeat; */
 }
 .summary__item_memory .summary__item-name {
   color: var(--orangey-yellow);
-  /* background: url('../images/icon-memory.svg') no-repeat; */
 }
 .summary__item_verbal .summary__item-name {
   color: var(--green-teal);
-  /* background: url('../images/icon-verbal.svg') no-repeat; */
 }
 .summary__item_visual .summary__item-name {
   color: var(--cobalt-blue);
-  /* background: url('../images/icon-visual.svg') no-repeat; */
 }
 
 .summary__item-result {
+  margin-right: 3px;
   color: var(--dark-gray-blue);
   font-weight: 800;
 }
