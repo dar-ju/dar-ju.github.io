@@ -192,6 +192,10 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+  .summary__btn {
+    width: 315px;
+    align-self: center;
+  }
 }
 
 @media (max-width: 600px) {
@@ -243,9 +247,5 @@ body {
   .summary__item {
     padding: 17px 14px;
     font-size: 0.9rem;
-  }
-  .summary__btn {
-    width: 315px;
-    align-self: center;
   }
 }
