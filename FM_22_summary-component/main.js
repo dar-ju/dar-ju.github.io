@@ -2,7 +2,7 @@
 // fetch data
 async function loadData() {
   try {
-    const response = await fetch('https://dar-ju.github.io/FM_21_summary-component/data.json')
+    const response = await fetch('https://dar-ju.github.io/FM_22_summary-component/data.json')
     // const response = await fetch('./data.json')
     const data = await response.json()
     return data;

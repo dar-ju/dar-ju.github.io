@@ -2,21 +2,21 @@
   {
     "category": "Reaction",
     "score": 80,
-    "icon": "https://dar-ju.github.io/FM_21_summary-component/assets/images/icon-reaction.svg"
+    "icon": "https://dar-ju.github.io/FM_22_summary-component/assets/images/icon-reaction.svg"
   },
   {
     "category": "Memory",
     "score": 92,
-    "icon": "https://dar-ju.github.io/FM_21_summary-component/assets/images/icon-memory.svg"
+    "icon": "https://dar-ju.github.io/FM_22_summary-component/assets/images/icon-memory.svg"
   },
   {
     "category": "Verbal",
     "score": 61,
-    "icon": "https://dar-ju.github.io/FM_21_summary-component/assets/images/icon-verbal.svg"
+    "icon": "https://dar-ju.github.io/FM_22_summary-component/assets/images/icon-verbal.svg"
   },
   {
     "category": "Visual",
     "score": 72,
-    "icon": "https://dar-ju.github.io/FM_21_summary-component/assets/images/icon-visual.svg"
+    "icon": "https://dar-ju.github.io/FM_22_summary-component/assets/images/icon-visual.svg"
   }
 ]
