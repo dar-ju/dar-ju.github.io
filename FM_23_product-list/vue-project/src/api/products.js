@@ -1,6 +1,6 @@
 async function getProducts() {
   try {
-    const response = await fetch('/data.json')
+    const response = await fetch('./data.json')
     const data = response.json()
     return data;
   } catch (err) {
