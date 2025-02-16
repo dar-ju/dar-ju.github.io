@@ -26,7 +26,7 @@ const formatData = (value) => {
           :class="{ product__image_outline: cartStore.findInCart(product.name) }"
           :src="product.image.desktop"
           :alt="`${product.name} image`"
-          width="300"
+          width="360"
           height="200"
         />
       </picture>
