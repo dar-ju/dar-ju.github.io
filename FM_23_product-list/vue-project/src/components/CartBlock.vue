@@ -25,7 +25,7 @@ const confirmOrder = () => {
     <h2 class="cart__title">Your Cart ({{ cartStore.totalInCart() }})</h2>
     <Transition name="fade" mode="out-in">
       <div v-show="!cartStore.cart?.length" class="cart__empty-block">
-        <img src="/assets/images/illustration-empty-cart.svg" alt="" />
+        <img src="/assets/images/illustration-empty-cart.svg" alt="" width="300" height="200" />
         <p class="cart__empty-text">Your added items will appear here</p>
       </div>
     </Transition>
