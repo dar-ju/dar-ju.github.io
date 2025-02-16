@@ -26,6 +26,8 @@ const formatData = (value) => {
           :class="{ product__image_outline: cartStore.findInCart(product.name) }"
           :src="product.image.desktop"
           :alt="`${product.name} image`"
+          width="300"
+          height="200"
         />
       </picture>
       <button
@@ -109,10 +111,12 @@ const formatData = (value) => {
   outline: 1px solid var(--rose400);
   font-size: 0.9rem;
   font-weight: 600;
-  transition: all ease-in-out 0.3s;
+  transition: outline ease-in-out 0.3s;
 }
 .product__btn:hover {
   outline: 1px solid var(--red);
+}
+.product__btn:hover .product__btn-text {
   color: var(--red);
 }
 .product__btn:focus,
@@ -123,6 +127,7 @@ const formatData = (value) => {
   padding-left: 28px;
   color: var(--rose900);
   background: url('/assets/images/icon-add-to-cart.svg') no-repeat;
+  transition: color ease-in-out 0.3s;
 }
 .product__btn_to-add {
   z-index: 2;
