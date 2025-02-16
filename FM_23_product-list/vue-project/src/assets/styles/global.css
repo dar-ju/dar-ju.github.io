@@ -1,0 +1,68 @@
+/* MAIN */
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 400;
+  background-color: var(--rose50);
+  color: var(--rose500);
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 112px;
+  padding-right: 112px;
+}
+
+.section {
+  padding-top: 89px;
+  padding-bottom: 89px;
+}
+
+/* ANIMATION */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --columns: 2;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --columns: 1;
+  }
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .section {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
