@@ -16,3 +16,11 @@
 - Mobile-first workflow
 - Perfect Pixel
 - BEM
+
+## Google PageSpeed Desktop Test
+
+![Product list with cart Desktop Test](./desktop-test.jpg)
+
+## Google PageSpeed Mobile Test
+
+![Product list with cart Mobile Test](./mobile-test.jpg)
