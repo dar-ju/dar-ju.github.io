@@ -1,5 +1,33 @@
 export const data = [
   {
+    "product-list": {
+      "id": 23,
+      "en": {
+        "title": "Product list with cart",
+        "description": "Animation in VUE is very simple and convenient, I hope I did not abuse it. During the final code check, I paid attention to the page speed in Google Pagespeed, and achieved almost 100% result. It is clear that this is not the entire part of the page, but I think the result is good.",
+      },
+      "ru": {
+        "title": "Список товаров с корзиной",
+        "description": "Анимация во VUE очень простая и удобная, надеюсь я ею не злоупотребил. Во время окончательной проверки кода уделил внимание скорости работы страницы в Google Pagespeed, добился практически 100% резульата. Понятно, что это не вся часть страницы, но, думаю, результат хороший.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/product-list-with-cart-CTNjz7GPE7"
+    }
+  },
+  {
+    "summary-component": {
+      "id": 22,
+      "en": {
+        "title": "Results summary component",
+        "description": "A simple card with results, nothing special. Responsive layout, mobile version. Data can be changed in the data.json file. Of interest - hover on the button with a gradient.",
+      },
+      "ru": {
+        "title": "Компонент результатов",
+        "description": "Простая карточка с результатми, ничего особенного. Отзывчивая верстка, мобильная версия. Данные можно менять в файле data.json. Из интересного - ховер на кнопке с градиентом.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/results-summary-component-e7Vav-wMX2"
+    }
+  },
+  {
     "space-tourism": {
       "id": 21,
       "en": {
