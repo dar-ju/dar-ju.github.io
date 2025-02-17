@@ -53,7 +53,7 @@ onMounted(async () => {
 }
 .product-list {
   display: flex;
-  gap: 33px var(--gap);
+  gap: 31px var(--gap);
   flex-wrap: wrap;
 }
 

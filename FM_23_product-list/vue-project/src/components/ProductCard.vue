@@ -163,7 +163,6 @@ const formatData = (value) => {
 }
 .product__name {
   margin-bottom: 7px;
-  font-size: 0.94rem;
   font-weight: 600;
   color: var(--rose900);
 }
