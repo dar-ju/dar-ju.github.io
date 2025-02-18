@@ -11,6 +11,7 @@ destinations.value = data.destinations
 // adjust the height of the block to the text
 onMounted(() => {
   titleParentBlock.value.style.height = `${titleBlock.value.offsetHeight}px`
+  destinations.value.forEach((dest) => (new Image().src = getImageUrl(dest.images.webp)))
 })
 
 // watch the submenu change to set the block height
@@ -45,7 +46,11 @@ toggleNav('Moon')
         <div class="destination__animation-image-wrapper">
           <Transition name="fade-block" mode="default">
             <div :key="planet.name" class="destination__animation-image-block">
-              <img class="destination__image" :src="getImageUrl(planet.images.webp)" alt="" />
+              <img
+                class="destination__image"
+                :src="getImageUrl(planet.images.webp)"
+                :alt="`${planet.name} image`"
+              />
             </div>
           </Transition>
         </div>
