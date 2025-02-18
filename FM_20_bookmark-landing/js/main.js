@@ -13,6 +13,13 @@ const tabTitle = document.querySelector('.features__tab-block-title')
 const tabDescr = document.querySelector('.features__tab-block-description')
 const tabBtn = document.querySelector('.features__tab-block-btn')
 
+// preload tab images
+const images = Object.values(data[0].tab).map(item => item.image)
+images.forEach(src => {
+  const img = new Image();
+  img.src = src;
+});
+
 tabs.forEach(tab => {
   tab.addEventListener('click', (event) => {
     if (tab.classList.contains('tab-active')) return
