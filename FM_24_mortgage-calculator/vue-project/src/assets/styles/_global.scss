@@ -1,0 +1,27 @@
+/* MAIN */
+html {
+  font-size: 16px;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: var(--slate-100);
+  color: var(--slate-700);
+}
+
+.fade-enter-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from {
+  opacity: 0;
+}
+
+@media (max-width: 1200px) {
+  // .section {
+  //   padding-top: 0;
+  // }
+}
