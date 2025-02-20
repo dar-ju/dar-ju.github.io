@@ -1,6 +1,6 @@
 export const data = [
   {
-    "product-list": {
+    "mortgage-calculator": {
       "id": 24,
       "en": {
         "title": "Mortgage Calculator component",
