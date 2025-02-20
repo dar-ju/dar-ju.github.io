@@ -306,6 +306,7 @@ const calculations = () => {
   border-radius: func.rem(24);
   overflow: hidden;
   background-color: var(--white);
+  box-shadow: 0px 30px 30px 5px var(--grey);
 }
 .form {
   width: 100%;
