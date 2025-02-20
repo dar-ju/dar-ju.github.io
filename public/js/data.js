@@ -1,6 +1,20 @@
 export const data = [
   {
     "product-list": {
+      "id": 24,
+      "en": {
+        "title": "Mortgage Calculator component",
+        "description": "A difficult task with redefining a large number of form styles. It was necessary to think through the restrictions when entering data into fields, as well as to write the logic of annuity payments according to the formula. There are many details that should be carefully double-checked.",
+      },
+      "ru": {
+        "title": "Компонент ипотечного калькулятора",
+        "description": "Нелегкое задание с переопределением большого количества стилей формы. Нужно было продумать ограничения при воде данных в поля, а также прописать логику аннуитетных платежей по формуле. Присутствует много деталей, которые следует тщательно перепроверять.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/mortgage-calculator-component-cH6jXeohNX"
+    }
+  },
+  {
+    "product-list": {
       "id": 23,
       "en": {
         "title": "Product list with cart",
