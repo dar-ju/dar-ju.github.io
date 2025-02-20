@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-const minimumRate = 100
-const minimumAmount = 1000
+const minimumRate = 99
+const minimumAmount = 999
 
 const form = ref({
   amount: '',
@@ -61,7 +61,7 @@ const minimumCheck = (val) => {
   const upper = val[0].toUpperCase() + val.slice(1)
   if (!form.value[val] || form.value[val] == 0) return 'This field is required'
   if (val === 'rate' && form.value[val] > minimumRate)
-    return `${upper} should not be more ${minimumRate}`
+    return `${upper} should be less ${minimumRate}`
   if (val === 'amount' && form.value[val] < minimumAmount)
     return `${upper} should be more ${minimumAmount}`
 }
