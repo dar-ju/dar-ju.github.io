@@ -1,16 +1,19 @@
 /* FONTS */
 @font-face {
   font-family: "Alata";
-  src: url("../fonts/Alata-Regular.ttf");
-  font-weight: 400;
+  src: local("Alata"),
+    url("../fonts/Alata-Regular.woff2") format("woff2"),
+    url("../fonts/Alata-Regular.woff") format("woff");
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "JosefinSans-Light";
-  src: url("../fonts/JosefinSans-Light.ttf");
-  font-weight: 300;
+  src: local("JosefinSans-Light"),
+    url("../fonts/JosefinSans-Light.woff2") format("woff2"),
+    url("../fonts/JosefinSans-Light.woff") format("woff");
   font-style: normal;
   font-display: swap;
 }
+
