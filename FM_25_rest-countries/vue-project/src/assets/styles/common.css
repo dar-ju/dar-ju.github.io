@@ -1,0 +1,25 @@
+/* FONTS */
+@font-face {
+  font-family: "NunitoSans";
+  src: local("NunitoSans"),
+    url("@/assets/fonts/NunitoSans.woff2") format("woff2"),
+    url("@/assets/fonts/NunitoSans.woff") format("woff");
+  font-style: normal;
+  font-display: swap;
+}
+
+
+:root {
+  /* COLORS */
+  /* dark mode */
+--dark-dlue-dark: hsl(209, 23%, 22%);
+--very-dark-blue-dark: hsl(207, 26%, 17%);
+
+/* light mode */
+--very-dark-blue-light: hsl(200, 15%, 8%);
+--dark-gray-light-light: hsl(0, 0%, 52%);
+--very-light-gray-light: hsl(0, 0%, 98%);
+
+/* both */
+--white: hsl(0, 0%, 100%);
+}

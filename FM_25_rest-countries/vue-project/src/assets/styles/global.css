@@ -1,0 +1,30 @@
+/* MAIN */
+body {
+  min-width: 320px;
+  /* min-height: 100vh; */
+  font-family: "NunitoSans", sans-serif;
+  font-weight: 300;
+  background-color: var(--white);
+  color: var(--very-dark-blue-light);
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding-left: 112px;
+  padding-right: 112px;
+}
+
+.section {
+  padding-top: 89px;
+  padding-bottom: 89px;
+}
+
+/* ANIMATION */
+
+@media (max-width: 1200px) {
+  .container {
+    /* padding-left: 50px;
+    padding-right: 50px; */
+  }
+}
