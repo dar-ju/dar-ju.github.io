@@ -12,6 +12,7 @@ body {
   font-weight: 400;
   background-color: $white;
   color: $very_dark_gray;
+  overflow-x: hidden;
 }
 
 .container {
@@ -96,6 +97,7 @@ body {
 }
 
 .hero {
+  min-height: 650px;
   padding-top: 225px;
   padding-bottom: 144px;
   background-image: url('../images/desktop/image-hero.jpg');
