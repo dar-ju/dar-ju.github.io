@@ -116,6 +116,7 @@ body {
 }
 
 .testimonials__content {
+  margin: 0;
   color: var(--color-light-gray70);
   line-height: 18px;
 }
