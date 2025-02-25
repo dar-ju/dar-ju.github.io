@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
@@ -11,7 +15,9 @@
     "resolveJsonModule": true,
     "allowJs": true,
     "noImplicitAny": false,
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "isolatedModules": true,
+    "useDefineForClassFields": true
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["node_modules", "dist"]

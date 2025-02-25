@@ -15,6 +15,12 @@ body {
   padding-right: 81px;
 }
 
+.field {
+  min-height: 56px;
+  background-color: var(--white);
+  box-shadow: 0 0 10px -2px var(--very-light-gray-shadow);
+}
+
 .section {
   /* padding-top: 89px;
   padding-bottom: 89px; */
