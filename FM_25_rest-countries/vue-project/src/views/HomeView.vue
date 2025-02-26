@@ -1,5 +1,18 @@
-<script setup lang="ts">
-import CountryCard from './components/CountryCard.vue'
+<script setup>
+import CountryCard from '../components/CountryCard.vue'
+import { useCountriesStore } from '../stores/countryStore'
+import { onMounted, ref } from 'vue'
+
+const countryStore = useCountriesStore()
+const showMenu = ref(false)
+
+onMounted(async () => {
+  await countryStore.getCountries()
+})
+
+const menuToggle = () => {
+  showMenu.value = !showMenu.value
+}
 </script>
 
 <template>
@@ -26,7 +39,7 @@ import CountryCard from './components/CountryCard.vue'
           </svg>
         </div>
         <div class="home__filter">
-          <button class="field home__filter-btn">
+          <button @click="menuToggle()" class="field home__filter-btn">
             <span>Filter by Region</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,16 +55,24 @@ import CountryCard from './components/CountryCard.vue'
               <polyline points="6 9 12 15 18 9" />
             </svg>
           </button>
-          <ul class="field home__filter-list">
-            <li class="home__filter-item"><a href="#">Africa</a></li>
-            <li class="home__filter-item"><a href="#">America</a></li>
-            <li class="home__filter-item"><a href="#">Asia</a></li>
-            <li class="home__filter-item"><a href="#">Europe</a></li>
-            <li class="home__filter-item"><a href="#">Oceania</a></li>
-          </ul>
+          <Transition name="appear">
+            <ul v-show="showMenu" class="field home__filter-list">
+              <li class="home__filter-item"><a href="#">Africa</a></li>
+              <li class="home__filter-item"><a href="#">America</a></li>
+              <li class="home__filter-item"><a href="#">Asia</a></li>
+              <li class="home__filter-item"><a href="#">Europe</a></li>
+              <li class="home__filter-item"><a href="#">Oceania</a></li>
+            </ul>
+          </Transition>
         </div>
       </div>
-      <!-- <h1>home</h1> -->
+      <ul class="home__country-list">
+        <!-- <CountryCard
+          v-for="country in countryStore.countries"
+          :key="country.numericCode"
+          :country="country"
+        /> -->
+      </ul>
     </div>
   </main>
 </template>
@@ -103,11 +124,16 @@ import CountryCard from './components/CountryCard.vue'
     display: flex;
     position: absolute;
     width: 100%;
-    padding: 22px 20px;
+    padding: 17px 20px;
     gap: 12px;
     flex-direction: column;
     font-size: 0.85rem;
     font-weight: 600;
+  }
+  &__country-list {
+    display: flex;
+    gap: 75px;
+    flex-wrap: wrap;
   }
 }
 </style>

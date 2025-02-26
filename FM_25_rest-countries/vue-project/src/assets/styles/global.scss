@@ -21,6 +21,20 @@ body {
   box-shadow: 0 0 10px -2px var(--very-light-gray-shadow);
 }
 
+.appear-enter-active,
+.appear-leave-active {
+  transition: max-height 0.1s ease-out;
+  overflow: hidden;
+}
+.appear-enter-from,
+.appear-leave-to {
+  max-height: 0;
+}
+.appear-enter-to,
+.appear-leave-from {
+  max-height: 160px;
+}
+
 .section {
   /* padding-top: 89px;
   padding-bottom: 89px; */
