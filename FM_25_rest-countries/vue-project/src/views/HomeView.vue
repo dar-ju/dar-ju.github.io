@@ -6,9 +6,22 @@ import { onMounted, ref } from 'vue'
 const countryStore = useCountriesStore()
 const showMenu = ref(false)
 
+const ONPAGE = 20
+
+const loadedCountries = ref([])
+const page = ref(1)
+const isPages = ref(true)
+
 onMounted(async () => {
   await countryStore.getCountries()
+  loadMore()
 })
+
+const loadMore = () => {
+  const firstElement = page.value * ONPAGE - ONPAGE
+  loadedCountries.value[0] = countryStore.countries.slice(0, firstElement + ONPAGE)
+  page.value++
+}
 
 const menuToggle = () => {
   showMenu.value = !showMenu.value
@@ -67,12 +80,13 @@ const menuToggle = () => {
         </div>
       </div>
       <ul class="home__country-list">
-        <!-- <CountryCard
-          v-for="country in countryStore.countries"
+        <CountryCard
+          v-for="country in loadedCountries[0]"
           :key="country.numericCode"
           :country="country"
-        /> -->
+        />
       </ul>
+      <button @click="loadMore()" class="field home__more-btn">Load More</button>
     </div>
   </main>
 </template>
@@ -80,13 +94,14 @@ const menuToggle = () => {
 <style lang="scss" scope>
 .home {
   padding-top: 49px;
+  padding-bottom: 49px;
   background-color: var(--very-light-gray-light);
   &__container {
   }
   &__wrapper {
     display: flex;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 42px;
     justify-content: space-between;
   }
   &__search-wrapper {
@@ -129,11 +144,20 @@ const menuToggle = () => {
     flex-direction: column;
     font-size: 0.85rem;
     font-weight: 600;
+    z-index: 2;
   }
   &__country-list {
     display: flex;
+    margin-bottom: 75px;
     gap: 75px;
     flex-wrap: wrap;
+  }
+  &__more-btn {
+    display: block;
+    width: 180px;
+    margin: 0 auto;
+    padding: 20px;
+    font-weight: 600;
   }
 }
 </style>
