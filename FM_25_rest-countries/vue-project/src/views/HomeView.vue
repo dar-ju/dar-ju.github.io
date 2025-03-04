@@ -52,7 +52,7 @@ watch(
     nextTick(() => {
       searchInput.value?.focus()
     })
-  },
+  }
 )
 
 const setRegion = (val) => {
@@ -157,7 +157,7 @@ watch(searchText, (newValue) => {
 .home {
   padding-top: 49px;
   padding-bottom: 49px;
-  background-color: var(--very-light-gray-light);
+  // background-color: var(--white-veryDarkBlue);
   &__container {
   }
   &__wrapper {
@@ -176,6 +176,12 @@ watch(searchText, (newValue) => {
     padding-left: 72px;
     &::placeholder {
       font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--darkBlue-white);
+      transition: color ease-in-out 0.3s;
+    }
+    &:focus-visible {
+      box-shadow: 0 0 20px 0px var(--veryLightGray-veryDarkBlue);
     }
   }
   &__search-icon {
@@ -196,7 +202,8 @@ watch(searchText, (newValue) => {
     justify-content: space-between;
     text-align: left;
     font-size: 0.85rem;
-    font-weight: 600;
+    color: var(--darkBlue-white);
+    // transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
   }
   &__filter-list {
     display: flex;

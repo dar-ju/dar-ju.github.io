@@ -4,8 +4,13 @@ body {
   /* min-height: 100vh; */
   font-family: "NunitoSans", sans-serif;
   font-weight: 300;
-  background-color: var(--white);
-  color: var(--very-dark-blue-light);
+  background-color: var(--white-veryDarkBlue);
+  color: var(--darkBlue-white);
+  transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+}
+
+.section {
+  transition: background-color ease-in-out 0.3s;
 }
 
 .container {
@@ -17,8 +22,14 @@ body {
 
 .field {
   min-height: 56px;
-  background-color: var(--white);
-  box-shadow: 0 0 10px -2px var(--very-light-gray-shadow);
+  background-color: var(--white-darkBlue);
+  box-shadow: 0 0 10px -2px var(--veryLightGray-veryDarkBlue);
+  transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--darkBlue-white);
+  outline-offset: 1px;
 }
 
 /* ANIMATION */

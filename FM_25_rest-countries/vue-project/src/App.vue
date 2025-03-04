@@ -1,13 +1,43 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
+
+const isDarkTheme = ref(false)
+
+onMounted(() => {
+  const savedTheme = localStorage.getItem('theme')
+  if (savedTheme) {
+    isDarkTheme.value = savedTheme === 'dark'
+  }
+})
+
+const toggleTheme = () => {
+  isDarkTheme.value = !isDarkTheme.value
+  localStorage.setItem('theme', isDarkTheme.value ? 'dark' : 'light')
+  if (isDarkTheme.value) {
+    document.documentElement.style.setProperty('--white-darkBlue', 'hsl(209, 23%, 22%)')
+    document.documentElement.style.setProperty('--white-veryDarkBlue', 'hsl(207, 26%, 17%)')
+    document.documentElement.style.setProperty('--darkBlue-white', 'hsl(0, 0%, 100%)')
+    document.documentElement.style.setProperty('--lightGray-darkBlue', 'hsl(207, 26%, 17%)')
+    document.documentElement.style.setProperty('--veryLightGray-veryDarkBlue', 'hsl(207, 26%, 17%)')
+    // document.documentElement.style.setProperty('--text-color', '#fff');
+  } else {
+    document.documentElement.style.setProperty('--white-darkBlue', 'hsl(0, 0%, 100%)')
+    document.documentElement.style.setProperty('--white-veryDarkBlue', 'hsl(0, 0%, 100%)')
+    document.documentElement.style.setProperty('--darkBlue-white', 'hsl(209, 23%, 22%)')
+    document.documentElement.style.setProperty('--lightGray-darkBlue', 'hsl(0, 0%, 98%)')
+    document.documentElement.style.setProperty('--veryLightGray-veryDarkBlue', 'hsl(0, 0%, 84%)')
+    // document.documentElement.style.setProperty('--very-dark-blue-dark', '#000');
+  }
+}
 </script>
 
 <template>
   <header class="section header">
     <div class="container header__container">
       <h1 class="header__title">Where in the world?</h1>
-      <button class="header__mode-toggle">
+      <button @click="toggleTheme()" class="header__mode-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
           <g id="Moon">
             <path
@@ -27,7 +57,9 @@ import { RouterLink, RouterView } from 'vue-router'
 .header {
   padding-top: 26px;
   padding-bottom: 26px;
-  box-shadow: 0px 1px 7px 0px var(--very-light-gray-shadow);
+  background-color: var(--white-darkBlue);
+  box-shadow: 0px 1px 7px 0px var(--veryLightGray-veryDarkBlue);
+  transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
   &__container {
     display: flex;
     justify-content: space-between;
@@ -40,6 +72,13 @@ import { RouterLink, RouterView } from 'vue-router'
     display: flex;
     align-items: center;
     gap: 12px;
+    color: var(--darkBlue-white);
+    font-weight: 600;
+    transition: color ease-in-out 0.3s;
+    svg {
+      fill: var(--darkBlue-white);
+      transition: fill ease-in-out 0.3s;
+    }
   }
   &__mode-toggle svg {
     width: 15px;
