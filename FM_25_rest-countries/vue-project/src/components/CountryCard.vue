@@ -1,25 +1,45 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { useCountriesStore } from '../stores/countryStore'
+import { ref, defineProps } from 'vue'
+import { useCountriesStore } from '../stores/countryStore.ts'
 
 const countryStore = useCountriesStore()
+const isLoading = ref(true)
 
 const props = defineProps({
+  region: {
+    type: String,
+    required: false,
+  },
   country: {
     type: Object,
     required: false,
   },
 })
+
+const countryFormat = (val: String) => {
+  return val.toLowerCase().replace(/\s+/g, '-')
+}
 </script>
 
 <template>
   <li class="country-card">
-    <a class="country-card__wrapper" href="#">
-      <img
-        class="country-card__image"
-        :src="country?.flags.svg"
-        :alt="`Flag of ${country?.name}`"
-      />
+    <router-link
+      @click="countryStore.setCurrentRegion(region.toLowerCase())"
+      :to="`/${country?.region.toLowerCase()}/${countryFormat(country?.name)}`"
+      class="country-card__wrapper"
+    >
+      <div class="country-card__image-wrapper" :class="{ loading: isLoading }">
+        <img
+          :class="{ 'country-card__image-loaded': !isLoading }"
+          class="country-card__image"
+          :src="country?.flags.svg"
+          :alt="`Flag of ${country?.name}`"
+          @load="isLoading = false"
+          @error="isLoading = false"
+          width="263"
+          height="158"
+        />
+      </div>
       <div class="country-card__block">
         <h2 class="country-card__title">{{ country?.name }}</h2>
         <ul class="country-card__prop-wrap">
@@ -35,25 +55,38 @@ const props = defineProps({
           </li>
         </ul>
       </div>
-    </a>
+    </router-link>
   </li>
 </template>
 
 <style lang="scss" scope>
 .country-card {
-  width: 100%;
-  max-width: 263px;
+  width: calc(100% / var(--columns) - (var(--gap) * (var(--columns) - 1)) / var(--columns));
+  // max-width: 263px;
   box-shadow: 0 0 10px -2px var(--very-light-gray-shadow);
+  transition: box-shadow ease-in-out 0.3s;
+  &:hover {
+    box-shadow: none;
+  }
   &__wrapper {
   }
-  &__image {
+  &__image-wrapper {
     position: relative;
     width: 100%;
     height: 158px;
+  }
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: left center;
+    // object-position: left center;
     box-shadow: 0px 2px 10px -5px var(--very-light-gray-shadow);
-    z-index: 1;
+    opacity: 0;
+    transition: opacity ease-in-out 0.3s;
+  }
+  &__image-loaded {
+    opacity: 1;
   }
   &__block {
     padding: 28px 23px;
@@ -74,6 +107,22 @@ const props = defineProps({
   }
   &__prop-name {
     font-weight: 600;
+  }
+}
+
+@media (max-width: 960px) {
+  .country-card {
+    &__image-wrapper {
+      height: 200px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .country-card {
+    &__image-wrapper {
+      height: 320px;
+    }
   }
 }
 </style>

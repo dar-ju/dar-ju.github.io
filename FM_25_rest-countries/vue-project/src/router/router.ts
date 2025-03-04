@@ -5,12 +5,12 @@ const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '/:id?',
       name: 'home',
       component: HomeView,
     },
     {
-      path: '/country',
+      path: '/:region/:country',
       name: 'country',
       component: () => import('../views/CountryView.vue'),
     },
