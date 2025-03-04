@@ -118,7 +118,7 @@ const countryFormat = (val: String) => {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
   .country-card {
     &__image-wrapper {
       height: 320px;
