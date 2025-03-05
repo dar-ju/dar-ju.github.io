@@ -95,6 +95,7 @@ const regionFilter = () => {
     margin: 0 auto;
     padding: 20px;
     font-weight: 600;
+    color: var(--darkBlue-white);
   }
 }
 </style>

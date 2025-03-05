@@ -12,13 +12,13 @@
 :root {
   /* COLORS */
   /* dark mode */
---dark-dlue-dark: hsl(209, 23%, 22%);
---very-dark-blue-dark: hsl(207, 26%, 17%);
+// --dark-dlue-dark: hsl(209, 23%, 22%);
+// --very-dark-blue-dark: hsl(207, 26%, 17%);
 
 /* light mode */
---very-dark-blue-light: hsl(200, 15%, 8%);
---dark-gray-light-light: hsl(0, 0%, 52%);
---very-light-gray-light: hsl(0, 0%, 98%);
+// --very-dark-blue-light: hsl(200, 15%, 8%);
+// --dark-gray-light-light: hsl(0, 0%, 52%);
+// --very-light-gray-light: hsl(0, 0%, 98%);
 
 
 /* both */
@@ -28,9 +28,11 @@
 --lightGray-darkBlue: hsl(0, 0%, 98%);
 --veryLightGray-veryDarkBlue: hsl(0, 0%, 84%);
 
+--dark-gray: hsl(0, 0%, 52%);
 
 
---very-light-gray-shadow: hsl(0, 0%, 84%);
+
+// --very-light-gray-shadow: hsl(0, 0%, 84%);
 
 /* BLOCKS */
 --gap: 75px;

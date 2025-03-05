@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
+import { themes } from './composables/themeSet.ts'
 // import HelloWorld from './components/HelloWorld.vue'
 
 const isDarkTheme = ref(false)
@@ -14,22 +15,12 @@ onMounted(() => {
 
 const toggleTheme = () => {
   isDarkTheme.value = !isDarkTheme.value
-  localStorage.setItem('theme', isDarkTheme.value ? 'dark' : 'light')
-  if (isDarkTheme.value) {
-    document.documentElement.style.setProperty('--white-darkBlue', 'hsl(209, 23%, 22%)')
-    document.documentElement.style.setProperty('--white-veryDarkBlue', 'hsl(207, 26%, 17%)')
-    document.documentElement.style.setProperty('--darkBlue-white', 'hsl(0, 0%, 100%)')
-    document.documentElement.style.setProperty('--lightGray-darkBlue', 'hsl(207, 26%, 17%)')
-    document.documentElement.style.setProperty('--veryLightGray-veryDarkBlue', 'hsl(207, 26%, 17%)')
-    // document.documentElement.style.setProperty('--text-color', '#fff');
-  } else {
-    document.documentElement.style.setProperty('--white-darkBlue', 'hsl(0, 0%, 100%)')
-    document.documentElement.style.setProperty('--white-veryDarkBlue', 'hsl(0, 0%, 100%)')
-    document.documentElement.style.setProperty('--darkBlue-white', 'hsl(209, 23%, 22%)')
-    document.documentElement.style.setProperty('--lightGray-darkBlue', 'hsl(0, 0%, 98%)')
-    document.documentElement.style.setProperty('--veryLightGray-veryDarkBlue', 'hsl(0, 0%, 84%)')
-    // document.documentElement.style.setProperty('--very-dark-blue-dark', '#000');
-  }
+  const theme = isDarkTheme.value ? 'dark' : 'light'
+  localStorage.setItem('theme', theme)
+
+  Object.entries(themes[theme]).forEach(([key, value]) => {
+    document.documentElement.style.setProperty(key, value)
+  })
 }
 </script>
 
@@ -59,9 +50,12 @@ const toggleTheme = () => {
   padding-bottom: 26px;
   background-color: var(--white-darkBlue);
   box-shadow: 0px 1px 7px 0px var(--veryLightGray-veryDarkBlue);
-  transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
+  transition:
+    background-color ease-in-out 0.3s,
+    box-shadow ease-in-out 0.3s;
   &__container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
   }
   &__title {
@@ -84,6 +78,26 @@ const toggleTheme = () => {
     width: 15px;
     height: 20px;
     transform: rotate(-13deg);
+  }
+}
+
+@media (max-width: 750px) {
+  .header {
+    padding-top: 64px;
+    padding-bottom: 64px;
+    &__title {
+      font-size: 1.72rem;
+    }
+    &__mode-toggle {
+      gap: 22px;
+      span {
+        font-size: 1.5rem;
+      }
+      svg {
+        width: 25px;
+        height: 30px;
+      }
+    }
   }
 }
 </style>

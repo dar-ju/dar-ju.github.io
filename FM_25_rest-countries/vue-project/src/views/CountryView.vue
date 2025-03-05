@@ -18,14 +18,14 @@ onMounted(async () => {
   if (countryStore.countries.length === 0) await countryStore.getCountries()
   // const formatedName = (country as string).replace(/-/g, ' ')
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase()
+    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase(),
   )
   console.log(countryStore.currentRegion)
 })
 
 onBeforeRouteUpdate(async (to, from, next) => {
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase()
+    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase(),
   )
   next()
 })
@@ -197,7 +197,7 @@ const borderFormat = (val: String) => {
   }
   &__item {
     span {
-      font-weight: 700;
+      font-weight: 600;
     }
   }
   &__border-block {

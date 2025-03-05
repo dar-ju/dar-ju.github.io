@@ -28,7 +28,8 @@ body {
 }
 
 *:focus-visible {
-  outline: 2px solid var(--darkBlue-white);
+  transition: outline ease-in-out 0.1s;
+  outline: 2px solid var(--dark-gray);
   outline-offset: 1px;
 }
 
@@ -50,8 +51,9 @@ body {
 
 /* SKELETON */
 .loading {
-  background-color: #E2E2E2;
-
+  background-color: var(--veryLightGray-veryDarkBlue);
+  overflow-x: hidden;
+  transition: background-color ease-in-out 0.3s;
   &::after {
     content: '';
     display: block;
@@ -95,12 +97,12 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
   :root {
     --columns: 1;
   }
   .container {
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }

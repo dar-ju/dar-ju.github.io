@@ -52,7 +52,7 @@ watch(
     nextTick(() => {
       searchInput.value?.focus()
     })
-  }
+  },
 )
 
 const setRegion = (val) => {
@@ -177,7 +177,7 @@ watch(searchText, (newValue) => {
     &::placeholder {
       font-size: 0.88rem;
       font-weight: 300;
-      color: var(--darkBlue-white);
+      color: var(--dark-gray);
       transition: color ease-in-out 0.3s;
     }
     &:focus-visible {
@@ -188,7 +188,7 @@ watch(searchText, (newValue) => {
     position: absolute;
     top: 15px;
     left: 29px;
-    fill: var(--dark-gray-light-light);
+    fill: var(--dark-gray);
   }
   &__filter {
     position: relative;
@@ -204,6 +204,9 @@ watch(searchText, (newValue) => {
     font-size: 0.85rem;
     color: var(--darkBlue-white);
     // transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
+    svg {
+      stroke: var(--darkBlue-white);
+    }
   }
   &__filter-list {
     display: flex;
@@ -229,5 +232,30 @@ watch(searchText, (newValue) => {
   //   padding: 20px;
   //   font-weight: 600;
   // }
+}
+
+@media (max-width: 750px) {
+  .home {
+    &__wrapper {
+      flex-wrap: wrap;
+    }
+    &__search-wrapper {
+      width: 100%;
+    }
+    &__search {
+      min-height: 95px;
+      padding-left: 149px;
+      font-size: 1.5rem;
+      &::placeholder {
+        font-size: 1.5rem;
+      }
+    }
+    &__search-icon {
+      width: 34px;
+      height: 34px;
+      top: 29px;
+      left: 62px;
+    }
+  }
 }
 </style>
