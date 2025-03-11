@@ -1,7 +1,6 @@
 /* MAIN */
 body {
   min-width: 375px;
-  /* min-height: 100vh; */
   font-family: "NunitoSans", sans-serif;
   font-weight: 300;
   background-color: var(--white-veryDarkBlue);
@@ -92,10 +91,6 @@ body {
   :root {
     --columns: 2;
   }
-  .container {
-    // padding-left: 50px;
-    // padding-right: 50px;
-  }
 }
 
 @media (max-width: 750px) {
@@ -109,6 +104,6 @@ body {
   }
 }
 
-@media (max-width: 568px) {
+// @media (max-width: 568px) {
 
-}
+// }

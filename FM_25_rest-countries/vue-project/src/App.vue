@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { RouterLink, RouterView } from 'vue-router'
 import { themes } from './composables/themeSet.ts'
-// import HelloWorld from './components/HelloWorld.vue'
 
 const isDarkTheme = ref(false)
 
@@ -19,7 +17,7 @@ const toggleTheme = () => {
   localStorage.setItem('theme', theme)
 
   Object.entries(themes[theme]).forEach(([key, value]) => {
-    document.documentElement.style.setProperty(key, value)
+    document.documentElement.style.setProperty(key, value as string)
   })
 }
 </script>
@@ -27,7 +25,7 @@ const toggleTheme = () => {
 <template>
   <header class="section header">
     <div class="container header__container">
-      <h1 class="header__title">Where in the world?</h1>
+      <h1 class="header__title"><router-link to="/">Where in the world?</router-link></h1>
       <button @click="toggleTheme()" class="header__mode-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
           <g id="Moon">
@@ -50,9 +48,7 @@ const toggleTheme = () => {
   padding-bottom: 26px;
   background-color: var(--white-darkBlue);
   box-shadow: 0px 1px 7px 0px var(--veryLightGray-veryDarkBlue);
-  transition:
-    background-color ease-in-out 0.3s,
-    box-shadow ease-in-out 0.3s;
+  transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
   &__container {
     display: flex;
     align-items: center;

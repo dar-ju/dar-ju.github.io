@@ -7,8 +7,6 @@ import { ref, onMounted } from 'vue'
 const countryStore = useCountriesStore()
 const countryData = ref<Country | undefined>(undefined)
 const isLoading = ref(true)
-// countryStore.countries
-// val.toLowerCase().replace(/\s+/g, '-')
 
 const route = useRoute()
 const region = route.params.region
@@ -16,16 +14,15 @@ const country = route.params.country
 
 onMounted(async () => {
   if (countryStore.countries.length === 0) await countryStore.getCountries()
-  // const formatedName = (country as string).replace(/-/g, ' ')
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase(),
+    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase()
   )
   console.log(countryStore.currentRegion)
 })
 
 onBeforeRouteUpdate(async (to, from, next) => {
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase(),
+    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase()
   )
   next()
 })
@@ -41,12 +38,9 @@ const formatUrl = (value: string) => {
 }
 
 const listFormat = (arr: Array<string>, name?: string) => {
-  // console.log(arr)
-  // console.log(Array.isArray(arr))
   if (Array.isArray(arr)) {
     const hasObject =
       Array.isArray(arr) && arr.some((item) => typeof item === 'object' && item !== null)
-    // console.log(hasObject)
     if (!hasObject) return arr.join()
     else return arr.map((obj) => obj[name]).join(', ')
   }
@@ -58,8 +52,6 @@ const countryFormat = (val: String) => {
 
 const borderFormat = (val: String) => {
   return countryStore.countries.find((item) => item.alpha3Code === val).name
-
-  // return val.toLowerCase().replace(/\s+/g, '-')
 }
 </script>
 
@@ -157,17 +149,15 @@ const borderFormat = (val: String) => {
   }
   &__wrapper {
     display: flex;
-    // gap: clamp(5px, 9vw, 120px);
-    gap: 50px;
+    gap: 118px;
     justify-content: space-between;
   }
   &__img-wrapper {
     position: relative;
     width: 44%;
+    max-width: 600px;
+    min-width: 500px;
     max-height: 400px;
-    min-width: 400px;
-    // min-width: 560px;
-    // height: 402px;
   }
   &__img {
     position: absolute;
@@ -178,6 +168,7 @@ const borderFormat = (val: String) => {
   &__block {
     width: 100%;
     max-width: 600px;
+    margin: 0 auto;
     padding: 44px 0;
   }
   &__title {
@@ -187,7 +178,8 @@ const borderFormat = (val: String) => {
   &__list-block {
     display: flex;
     margin-bottom: 68px;
-    gap: 20px;
+    gap: 40px;
+    flex-wrap: wrap;
     justify-content: space-between;
   }
   &__list {
@@ -201,13 +193,14 @@ const borderFormat = (val: String) => {
     }
   }
   &__border-block {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    align-items: center;
     span {
       display: block;
       min-width: 135px;
     }
-    display: flex;
-    gap: 18px;
-    align-items: center;
   }
   &__border-list {
     display: flex;
@@ -222,6 +215,36 @@ const borderFormat = (val: String) => {
     a {
       display: block;
       padding: 10px;
+    }
+  }
+}
+
+@media (max-width: 1300px) {
+  .country {
+    &__wrapper {
+      gap: 50px;
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .country {
+    &__wrapper {
+      flex-direction: column;
+    }
+    &__img-wrapper {
+      width: 100%;
+      min-height: 400px;
+      margin: auto;
+    }
+  }
+}
+
+@media (max-width: 568px) {
+  .country {
+    &__img-wrapper {
+      min-width: initial;
+      min-height: 300px;
     }
   }
 }

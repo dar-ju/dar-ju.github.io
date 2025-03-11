@@ -1,8 +1,7 @@
 <script setup>
 import CountryList from '../components/CountryList.vue'
-import CountryCard from '../components/CountryCard.vue'
 import { useCountriesStore } from '../stores/countryStore.ts'
-import { onMounted, ref, watch, watchEffect } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
 const countryStore = useCountriesStore()
@@ -52,7 +51,7 @@ watch(
     nextTick(() => {
       searchInput.value?.focus()
     })
-  },
+  }
 )
 
 const setRegion = (val) => {
@@ -140,14 +139,6 @@ watch(searchText, (newValue) => {
           </Transition>
         </div>
       </div>
-      <!-- <ul class="home__country-list">
-        <CountryCard
-          v-for="country in loadedCountries[0]"
-          :key="country.numericCode"
-          :country="country"
-        />
-      </ul>
-      <button @click="loadMore()" v-show="isPages" class="field home__more-btn">Load More</button> -->
       <CountryList :region="selectedRegion" :country="searchSendText" />
     </div>
   </main>
@@ -157,9 +148,6 @@ watch(searchText, (newValue) => {
 .home {
   padding-top: 49px;
   padding-bottom: 49px;
-  // background-color: var(--white-veryDarkBlue);
-  &__container {
-  }
   &__wrapper {
     display: flex;
     position: relative;
@@ -203,7 +191,6 @@ watch(searchText, (newValue) => {
     text-align: left;
     font-size: 0.85rem;
     color: var(--darkBlue-white);
-    // transition: background-color ease-in-out 0.3s, color ease-in-out 0.3s;
     svg {
       stroke: var(--darkBlue-white);
     }
@@ -219,19 +206,6 @@ watch(searchText, (newValue) => {
     font-weight: 600;
     z-index: 2;
   }
-  // &__country-list {
-  //   display: flex;
-  //   margin-bottom: 75px;
-  //   gap: 75px;
-  //   flex-wrap: wrap;
-  // }
-  // &__more-btn {
-  //   display: block;
-  //   width: 180px;
-  //   margin: 0 auto;
-  //   padding: 20px;
-  //   font-weight: 600;
-  // }
 }
 
 @media (max-width: 750px) {

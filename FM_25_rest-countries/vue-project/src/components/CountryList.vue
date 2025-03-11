@@ -5,7 +5,6 @@ import { onMounted, ref, watch } from 'vue'
 
 const countryStore = useCountriesStore()
 const countryList = ref([])
-const countrySearch = ref([])
 
 const props = defineProps({
   region: {
@@ -39,15 +38,15 @@ const loadMore = () => {
 
 watch(
   () => props.region,
-  (val) => {
+  () => {
     regionFilter()
-  },
+  }
 )
 watch(
   () => props.country,
-  (val) => {
+  () => {
     regionFilter()
-  },
+  }
 )
 
 const regionFilter = () => {
@@ -56,7 +55,7 @@ const regionFilter = () => {
   } else countryList.value = countryStore.countries
   if (props.country) {
     countryList.value = countryList.value.filter((obj) =>
-      obj.name?.toLowerCase().includes(props.country),
+      obj.name?.toLowerCase().includes(props.country)
     )
   }
   page.value = 1

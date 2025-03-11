@@ -24,7 +24,7 @@ const countryFormat = (val: String) => {
 <template>
   <li class="country-card">
     <router-link
-      @click="countryStore.setCurrentRegion(region.toLowerCase())"
+      @click="region ? countryStore.setCurrentRegion(region.toLowerCase()) : null"
       :to="`/${country?.region.toLowerCase()}/${countryFormat(country?.name)}`"
       class="country-card__wrapper"
     >
@@ -62,11 +62,14 @@ const countryFormat = (val: String) => {
 <style lang="scss" scope>
 .country-card {
   width: calc(100% / var(--columns) - (var(--gap) * (var(--columns) - 1)) / var(--columns));
-  // max-width: 263px;
   box-shadow: 0 0 10px -2px var(--veryLightGray-veryDarkBlue);
-  transition: box-shadow ease-in-out 0.3s;
+  transition: box-shadow ease-in-out 0.3s, outline ease-in-out 0.15s;
   &:hover {
     box-shadow: 0 0 20px 0px var(--veryLightGray-veryDarkBlue);
+  }
+  &:focus-within {
+    outline: 2px solid var(--dark-gray);
+    outline-offset: 1px;
   }
   &__wrapper {
   }
@@ -80,12 +83,9 @@ const countryFormat = (val: String) => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    // object-position: left center;
     box-shadow: 0px 2px 10px -5px var(--veryLightGray-veryDarkBlue);
     opacity: 0;
-    transition:
-      opacity ease-in-out 0.3s,
-      box-shadow ease-in-out 0.3s;
+    transition: opacity ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
   }
   &__image-loaded {
     opacity: 1;
