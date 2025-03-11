@@ -1,6 +1,6 @@
 /* MAIN */
 body {
-  min-width: 320px;
+  min-width: 375px;
   /* min-height: 100vh; */
   font-family: "NunitoSans", sans-serif;
   font-weight: 300;
@@ -22,6 +22,7 @@ body {
 
 .field {
   min-height: 56px;
+  border-radius: 10px;
   background-color: var(--white-darkBlue);
   box-shadow: 0 0 10px -2px var(--veryLightGray-veryDarkBlue);
   transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
@@ -100,9 +101,14 @@ body {
 @media (max-width: 750px) {
   :root {
     --columns: 1;
+    --gap: 80px;
   }
   .container {
     padding-left: 32px;
     padding-right: 32px;
   }
+}
+
+@media (max-width: 568px) {
+
 }

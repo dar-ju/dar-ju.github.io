@@ -100,4 +100,13 @@ const toggleTheme = () => {
     }
   }
 }
+
+@media (max-width: 568px) {
+  .header {
+    &__container {
+      gap: 50px;
+      flex-wrap: wrap;
+    }
+  }
+}
 </style>

@@ -98,4 +98,11 @@ const regionFilter = () => {
     color: var(--darkBlue-white);
   }
 }
+
+@media (max-width: 750px) {
+  .countries-block {
+    max-width: 525px;
+    margin: 0 auto;
+  }
+}
 </style>

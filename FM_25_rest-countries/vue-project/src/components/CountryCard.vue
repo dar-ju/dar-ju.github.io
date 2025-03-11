@@ -83,7 +83,9 @@ const countryFormat = (val: String) => {
     // object-position: left center;
     box-shadow: 0px 2px 10px -5px var(--veryLightGray-veryDarkBlue);
     opacity: 0;
-    transition: opacity ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
+    transition:
+      opacity ease-in-out 0.3s,
+      box-shadow ease-in-out 0.3s;
   }
   &__image-loaded {
     opacity: 1;
@@ -121,8 +123,23 @@ const countryFormat = (val: String) => {
 
 @media (max-width: 750px) {
   .country-card {
+    border-radius: 15px;
     &__image-wrapper {
       height: 320px;
+    }
+    &__block {
+      padding: 55px 48px;
+      padding-bottom: 91px;
+    }
+    &__title {
+      margin-bottom: 39px;
+      font-size: 2.2rem;
+    }
+    &__prop-wrap {
+      gap: 16px;
+    }
+    &__prop {
+      font-size: 1.7rem;
     }
   }
 }

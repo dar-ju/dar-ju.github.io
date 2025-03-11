@@ -237,6 +237,8 @@ watch(searchText, (newValue) => {
 @media (max-width: 750px) {
   .home {
     &__wrapper {
+      margin-bottom: 55px;
+      gap: 80px 30px;
       flex-wrap: wrap;
     }
     &__search-wrapper {
@@ -255,6 +257,43 @@ watch(searchText, (newValue) => {
       height: 34px;
       top: 29px;
       left: 62px;
+    }
+    &__filter-btn {
+      width: 400px;
+      margin-bottom: 9px;
+      padding: 34px 48px;
+      padding-right: 36px;
+      gap: 10px;
+      span {
+        font-size: 1.5rem;
+      }
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+    &__filter-list {
+      padding: 34px 47px;
+      gap: 20px;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 568px) {
+  .home {
+    &__search {
+      padding-left: 20px;
+    }
+    &__search-icon {
+      right: 20px;
+      left: initial;
+    }
+    &__filter {
+      width: 100%;
+    }
+    &__filter-btn {
+      width: 100%;
     }
   }
 }
