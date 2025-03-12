@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import CountryList from '../components/CountryList.vue'
-import { useCountriesStore } from '../stores/countryStore.ts'
+import { useCountriesStore } from '../stores/countryStore'
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 

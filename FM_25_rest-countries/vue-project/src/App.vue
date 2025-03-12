@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { themes } from './composables/themeSet.ts'
+import { themes } from './composables/themeSet'
 
 const isDarkTheme = ref(false)
 

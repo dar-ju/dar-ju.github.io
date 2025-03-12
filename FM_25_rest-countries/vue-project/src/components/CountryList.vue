@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 import CountryCard from '../components/CountryCard.vue'
-import { useCountriesStore } from '../stores/countryStore.ts'
+import { useCountriesStore } from '../stores/countryStore'
 import { onMounted, ref, watch } from 'vue'
 
 const countryStore = useCountriesStore()

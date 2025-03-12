@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, defineProps } from 'vue'
-import { useCountriesStore } from '../stores/countryStore.ts'
+import { useCountriesStore } from '../stores/countryStore'
 
 const countryStore = useCountriesStore()
 const isLoading = ref(true)
@@ -70,8 +70,6 @@ const countryFormat = (val: String) => {
   &:focus-within {
     outline: 2px solid var(--dark-gray);
     outline-offset: 1px;
-  }
-  &__wrapper {
   }
   &__image-wrapper {
     position: relative;

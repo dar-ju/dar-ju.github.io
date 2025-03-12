@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onBeforeRouteUpdate, useRoute } from 'vue-router'
-import { useCountriesStore } from '../stores/countryStore.ts'
+import { useCountriesStore } from '../stores/countryStore'
 import type { Country } from '@/types'
 import { ref, onMounted } from 'vue'
 
@@ -17,7 +17,6 @@ onMounted(async () => {
   countryData.value = countryStore.countries.find(
     (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase()
   )
-  console.log(countryStore.currentRegion)
 })
 
 onBeforeRouteUpdate(async (to, from, next) => {
@@ -42,7 +41,7 @@ const listFormat = (arr: Array<string>, name?: string) => {
     const hasObject =
       Array.isArray(arr) && arr.some((item) => typeof item === 'object' && item !== null)
     if (!hasObject) return arr.join()
-    else return arr.map((obj) => obj[name]).join(', ')
+    else return arr.map((obj) => obj[name as string]).join(', ')
   }
 }
 
@@ -51,7 +50,8 @@ const countryFormat = (val: String) => {
 }
 
 const borderFormat = (val: String) => {
-  return countryStore.countries.find((item) => item.alpha3Code === val).name
+  const country = countryStore.countries.find((item: Country) => item.alpha3Code === val)
+  return country ? country.name : 'unknown'
 }
 </script>
 
@@ -91,7 +91,7 @@ const borderFormat = (val: String) => {
                 <span>Native Name: </span> {{ countryData?.nativeName }}
               </li>
               <li class="country__item">
-                <span>Population: </span> {{ formatValue(countryData?.population) }}
+                <span>Population: </span> {{ formatValue(countryData?.population ?? 0) }}
               </li>
               <li class="country__item"><span>Region: </span> {{ countryData?.region }}</li>
               <li class="country__item"><span>Sub Region: </span> {{ countryData?.subregion }}</li>
@@ -99,13 +99,15 @@ const borderFormat = (val: String) => {
             </ul>
             <ul class="country__list">
               <li class="country__item">
-                <span>Top Level Domain: </span> {{ listFormat(countryData?.topLevelDomain) }}
+                <span>Top Level Domain: </span> {{ listFormat(countryData?.topLevelDomain ?? []) }}
               </li>
               <li class="country__item">
-                <span>Currencies: </span> {{ listFormat(countryData?.currencies, 'name') }}
+                <span>Currencies: </span>
+                {{ listFormat(countryData?.currencies?.map((currency) => currency.name) ?? []) }}
               </li>
               <li class="country__item">
-                <span>Languages: </span> {{ listFormat(countryData?.languages, 'name') }}
+                <span>Languages: </span>
+                {{ listFormat(countryData?.languages?.map((language) => language.name) ?? []) }}
               </li>
             </ul>
           </div>
@@ -113,15 +115,14 @@ const borderFormat = (val: String) => {
             <span>Border Countries:</span>
             <ul class="country__border-list">
               <li
-                v-for="border in countryData?.borders"
-                :key="border.index"
+                v-for="(border, index) in countryData?.borders"
+                :key="index"
                 class="field country__border-item"
               >
                 <router-link :to="`/${region}/${countryFormat(borderFormat(border))}`">{{
                   borderFormat(border)
                 }}</router-link>
               </li>
-              <!-- <li class="country__border-item"></li> -->
             </ul>
           </div>
         </div>
