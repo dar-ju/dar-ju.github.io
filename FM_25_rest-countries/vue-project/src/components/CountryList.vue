@@ -93,6 +93,7 @@ const regionFilter = () => {
   &__more-btn {
     display: block;
     width: 180px;
+    min-height: 58px;
     margin: 0 auto;
     padding: 20px;
     font-weight: 600;
