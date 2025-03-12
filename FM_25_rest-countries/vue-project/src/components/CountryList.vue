@@ -1,10 +1,12 @@
 <script setup lang="ts">
+// @ts-ignore
 import CountryCard from '../components/CountryCard.vue'
 import { useCountriesStore } from '../stores/countryStore'
 import { onMounted, ref, watch } from 'vue'
+import type { Country } from '../types'
 
 const countryStore = useCountriesStore()
-const countryList = ref([])
+const countryList = ref<Country[]>([])
 
 const props = defineProps({
   region: {
@@ -19,7 +21,7 @@ const props = defineProps({
 
 const ONPAGE = 20
 
-const loadedCountries = ref([])
+const loadedCountries = ref<Country[][]>([])
 const page = ref(1)
 const isPages = ref(true)
 
@@ -40,13 +42,13 @@ watch(
   () => props.region,
   () => {
     regionFilter()
-  }
+  },
 )
 watch(
   () => props.country,
   () => {
     regionFilter()
-  }
+  },
 )
 
 const regionFilter = () => {
@@ -55,7 +57,7 @@ const regionFilter = () => {
   } else countryList.value = countryStore.countries
   if (props.country) {
     countryList.value = countryList.value.filter((obj) =>
-      obj.name?.toLowerCase().includes(props.country)
+      obj.name?.toLowerCase().includes(props.country as string),
     )
   }
   page.value = 1

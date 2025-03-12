@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeRouteUpdate, useRoute } from 'vue-router'
 import { useCountriesStore } from '../stores/countryStore'
-import type { Country } from '@/types'
+import type { Country } from '../types'
 import { ref, onMounted } from 'vue'
 
 const countryStore = useCountriesStore()
@@ -15,13 +15,13 @@ const country = route.params.country
 onMounted(async () => {
   if (countryStore.countries.length === 0) await countryStore.getCountries()
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase()
+    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase(),
   )
 })
 
 onBeforeRouteUpdate(async (to, from, next) => {
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase()
+    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase(),
   )
   next()
 })

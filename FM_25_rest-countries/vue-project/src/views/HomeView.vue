@@ -1,8 +1,10 @@
 <script setup lang="ts">
+// @ts-ignore
 import CountryList from '../components/CountryList.vue'
 import { useCountriesStore } from '../stores/countryStore'
-import { onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
+import type { Country } from '../types'
 
 const countryStore = useCountriesStore()
 const route = useRoute()
@@ -12,17 +14,18 @@ const selectedRegion = ref('')
 const regionInMenu = ref('Filter by Region')
 
 const ONPAGE = 20
-const loadedCountries = ref([])
+const loadedCountries = ref<Country[][]>([])
 const page = ref(1)
 const isPages = ref(true)
 
 const searchText = ref('')
 const searchSendText = ref('')
-const searchInput = (ref < HTMLInputElement) | (null > null)
+const searchInput = ref<HTMLInputElement | null>(null)
 
 onMounted(async () => {
   await countryStore.getCountries()
-  if (route.params.id) setRegion(route.params.id)
+  const regionId = route.params.id as string
+  if (regionId) setRegion(regionId)
   loadMore()
 })
 
@@ -45,16 +48,14 @@ const selectRegion = (value) => {
 watch(
   () => route.params.id,
   (newId) => {
-    setRegion(newId)
-  },
-  () => {
+    setRegion(newId as string)
     nextTick(() => {
       searchInput.value?.focus()
     })
-  }
+  },
 )
 
-const setRegion = (val) => {
+const setRegion = (val: string) => {
   if (val) {
     selectedRegion.value = val[0].toUpperCase() + val.slice(1)
     val === 'americas'
