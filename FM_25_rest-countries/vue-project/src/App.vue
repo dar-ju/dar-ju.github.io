@@ -26,7 +26,11 @@ const toggleTheme = () => {
   <header class="section header">
     <div class="container header__container">
       <h1 class="header__title"><router-link to="/">Where in the world?</router-link></h1>
-      <button @click="toggleTheme()" class="header__mode-toggle">
+      <button
+        @click="toggleTheme()"
+        class="header__mode-toggle"
+        aria-label="Switch between dark and light theme"
+      >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
           <g id="Moon">
             <path

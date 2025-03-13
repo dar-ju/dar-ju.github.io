@@ -39,16 +39,10 @@ const loadMore = () => {
 }
 
 watch(
-  () => props.region,
+  () => [props.region, props.country],
   () => {
     regionFilter()
-  },
-)
-watch(
-  () => props.country,
-  () => {
-    regionFilter()
-  },
+  }
 )
 
 const regionFilter = () => {
@@ -57,7 +51,7 @@ const regionFilter = () => {
   } else countryList.value = countryStore.countries
   if (props.country) {
     countryList.value = countryList.value.filter((obj) =>
-      obj.name?.toLowerCase().includes(props.country as string),
+      obj.name?.toLowerCase().includes(props.country as string)
     )
   }
   page.value = 1
