@@ -20,12 +20,18 @@ const toggleTheme = () => {
     document.documentElement.style.setProperty(key, value as string)
   })
 }
+
+const reloadPage = () => {
+  window.location.reload()
+}
 </script>
 
 <template>
   <header class="section header">
     <div class="container header__container">
-      <h1 class="header__title"><router-link to="/">Where in the world?</router-link></h1>
+      <h1 @click="reloadPage" class="header__title">
+        <router-link to="/">Where in the world?</router-link>
+      </h1>
       <button @click="toggleTheme()" class="header__mode-toggle">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
           <g id="Moon">
@@ -48,7 +54,9 @@ const toggleTheme = () => {
   padding-bottom: 26px;
   background-color: var(--white-darkBlue);
   box-shadow: 0px 1px 7px 0px var(--veryLightGray-veryDarkBlue);
-  transition: background-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
+  transition:
+    background-color ease-in-out 0.3s,
+    box-shadow ease-in-out 0.3s;
   &__container {
     display: flex;
     align-items: center;
