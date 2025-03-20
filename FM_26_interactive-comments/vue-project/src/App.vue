@@ -11,7 +11,11 @@ import MessagePosted from './components/MessagePosted.vue'
   </header> -->
 
   <main>
-    <MessagePosted />
+    <div class="container">
+      <ul class="messages-list">
+        <MessagePosted />
+      </ul>
+    </div>
   </main>
 </template>
 
