@@ -20,12 +20,18 @@ const toggleTheme = () => {
     document.documentElement.style.setProperty(key, value as string)
   })
 }
+
+const reloadPage = () => {
+  window.location.reload()
+}
 </script>
 
 <template>
   <header class="section header">
     <div class="container header__container">
-      <h1 class="header__title"><router-link to="/">Where in the world?</router-link></h1>
+      <h1 @click="reloadPage" class="header__title">
+        <router-link to="/">Where in the world?</router-link>
+      </h1>
       <button
         @click="toggleTheme()"
         class="header__mode-toggle"
