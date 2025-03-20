@@ -20,4 +20,10 @@ import MessagePosted from './components/MessagePosted.vue'
 </template>
 
 <style scoped>
+.messages-list {
+  display: flex;
+  gap: 22px;
+  flex-direction: column;
+  align-items: flex-end;
+}
 </style>
