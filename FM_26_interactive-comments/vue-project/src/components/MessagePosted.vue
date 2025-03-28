@@ -1,5 +1,13 @@
-
 <script setup>
+// import { useMessagesStore } from '../stores/messagesStore'
+
+// const messagesStore = useMessagesStore()
+
+const props = defineProps({
+  message: {
+    type: Object,
+  },
+})
 </script>
 
 <template>
@@ -70,9 +78,7 @@
           </div>
         </div>
         <p class="message__text">
-          Impressive! Though it seems the drag feature could be improved. But overall it looks
-          incredible. You've nailed the design and the responsiveness at various breakpoints works
-          really well.
+          {{ props.message.content }}
         </p>
       </div>
     </div>

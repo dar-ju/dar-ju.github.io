@@ -1,19 +1,25 @@
 <script setup>
+import { onMounted, ref } from 'vue'
 import MessagePosted from './components/MessagePosted.vue'
-// import TheWelcome from './components/TheWelcome.vue'
+import { useMessagesStore } from './stores/messagesStore'
+
+const messagesStore = useMessagesStore()
+
+onMounted(async () => {
+  await messagesStore.getMessages()
+  console.log(messagesStore.messages)
+})
 </script>
 
 <template>
-  <!-- <header>
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header> -->
-
   <main>
     <div class="container">
       <ul class="messages-list">
-        <MessagePosted />
+        <MessagePosted
+          v-for="message in messagesStore.messages"
+          :key="message.key"
+          :message="message"
+        />
       </ul>
     </div>
   </main>
