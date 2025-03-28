@@ -52,7 +52,7 @@ watch(
     nextTick(() => {
       searchInput.value?.focus()
     })
-  },
+  }
 )
 
 const setRegion = (val: string) => {
@@ -100,7 +100,7 @@ watch(searchText, (newValue) => {
           </svg>
         </div>
         <div class="home__filter">
-          <button @click="menuToggle()" class="field home__filter-btn">
+          <button @click="menuToggle()" class="field home__filter-btn" aria-label="Select region">
             <span>{{ regionInMenu }}</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

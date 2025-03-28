@@ -1,5 +1,19 @@
 export const data = [
   {
+    "rest-countries": {
+      "id": 25,
+      "en": {
+        "title": "REST Countries API",
+        "description": "Multi-page website on countries of the world with search, ability to select regions and switch topics. Links to countries are generated using routes in VUE3. Typrscript is used for data typing. There are basic animation and skeleton. The project took 22 hours to complete.",
+      },
+      "ru": {
+        "title": "API список стран",
+        "description": "Многостраничный сайт по странам мира с поиском, возможностью отбирать регионы и переключать темы. Ссылки на страны генерируются при помощи роутов во VUE3. Использован Typrscript для типизиции данных. Использованы базовая анимация и скелетон. Время работы над проектом - 22 часа.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/rest-countries-api-vue-ts-XrZejzgWZ_"
+    }
+  },
+  {
     "mortgage-calculator": {
       "id": 24,
       "en": {

@@ -15,13 +15,13 @@ const country = route.params.country
 onMounted(async () => {
   if (countryStore.countries.length === 0) await countryStore.getCountries()
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase(),
+    (obj) => obj.name.toLowerCase() === formatUrl(country as string).toLowerCase()
   )
 })
 
 onBeforeRouteUpdate(async (to, from, next) => {
   countryData.value = countryStore.countries.find(
-    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase(),
+    (obj) => obj.name.toLowerCase() === formatUrl(to.params.country as string).toLowerCase()
   )
   next()
 })
@@ -61,6 +61,7 @@ const borderFormat = (val: String) => {
       <router-link
         :to="`/${countryFormat(countryStore.currentRegion)}`"
         class="field country__back-btn"
+        aria-label="Back to region"
       >
         <svg viewBox="0 0 16 9" width="17px" height="11px" xmlns="http://www.w3.org/2000/svg">
           <polygon
