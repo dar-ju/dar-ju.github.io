@@ -18,6 +18,57 @@ body {
   padding: 65px 100px;
 }
 
+.input {
+  width: 100%;
+  padding: 12px 23px;
+  border-radius: 10px;
+  resize: none;
+  color: var(--dark-blue);
+  line-height: 1.5rem;
+  border: 1px solid var(--light-gray);
+  transition: border ease-in-out 0.3s;
+  &:hover {
+    border: 1px solid var(--grayish-blue);
+  }
+  &:focus {
+    border: 1px solid var(--dark-blue);
+  }
+}
+
+.main-btn {
+  max-height: 48px;
+  padding: 15px 32px;
+  border-radius: 10px;
+  color: var(--white);
+  text-transform: uppercase;
+  background-color: var(--moderate-blue);
+  transition: background-color ease-in-out 0.3s;
+  &:hover {
+    background-color: var(--light-grayish-blue);
+  }
+}
+
+/* ANIMATION */
+.expand-enter-active,
+.expand-leave-active {
+  transition: transform 0.3s ease-out, opacity 0.3s, padding 0.3s;
+}
+
+.expand-enter-from,
+.expand-leave-to {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.expand-enter-to,
+.expand-leave-from {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+
+
+
 .field {
   min-height: 56px;
   border-radius: 10px;
@@ -32,7 +83,7 @@ body {
   outline-offset: 1px;
 }
 
-/* ANIMATION */
+
 
 .appear-enter-active,
 .appear-leave-active {

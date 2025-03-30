@@ -1,17 +1,54 @@
 <script setup>
-// import { useMessagesStore } from '../stores/messagesStore'
+import { ref } from 'vue'
+import MessageSend from './MessageSend.vue'
+import { useMessagesStore } from '../stores/messagesStore'
 
-// const messagesStore = useMessagesStore()
+const messagesStore = useMessagesStore()
 
 const props = defineProps({
   message: {
     type: Object,
   },
 })
+
+const isReplyClicked = ref(false)
+const replyToggle = () => {
+  isReplyClicked.value = !isReplyClicked.value
+}
+const isEditClicked = ref(false)
+const textInEditSet = ref('')
+const editToggle = () => {
+  isEditClicked.value = !isEditClicked.value
+  if (props.message.replyingTo)
+    textInEditSet.value = `@${props.message.replyingTo} ${props.message.content}`
+  else textInEditSet.value = props.message.content
+}
+const messageUpdate = () => {
+  if (textInEditSet.value[0] === '@')
+    textInEditSet.value = textInEditSet.value.split(' ').slice(1).join(' ')
+  // console.log(props.message)
+  if (props.message.replyForId)
+    messagesStore.updateMessage(
+      textInEditSet.value,
+      props.message.replyForId,
+      props.message.replyingTo,
+      props.message.id,
+    )
+  else messagesStore.updateMessage(textInEditSet.value, props.message.id)
+  editToggle()
+}
+
+const identUser = () => {
+  return messagesStore.currentUser.username === props.message.user.username ? true : false
+}
+
+const handleCloseWindow = () => {
+  replyToggle()
+}
 </script>
 
 <template>
-  <li class="message">
+  <li class="message" :class="props.message.replyingTo ? 'message_reply' : ''">
     <div class="message__block">
       <div class="message__vote-button-group">
         <button class="message__vote-button">
@@ -22,7 +59,7 @@ const props = defineProps({
             />
           </svg>
         </button>
-        <span class="message__vote-result">12</span>
+        <span class="message__vote-result">{{ props.message.score }}</span>
         <button class="message__vote-button">
           <svg width="11" height="3" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -36,19 +73,27 @@ const props = defineProps({
         <div class="message__header">
           <div class="message__user-block">
             <picture>
-              <source srcset="../assets/images/avatars/image-amyrobson.webp" type="image/webp" />
-              <source srcset="../assets/images/avatars/image-amyrobson.png" type="image/png" />
+              <source :srcset="props.message.user.image.webp" type="image/webp" />
+              <source :srcset="props.message.user.image.png" type="image/png" />
               <img
                 class="message__user-avatar"
-                src="../assets/images/avatars/image-amyrobson.png"
-                alt=""
+                :src="props.message.user.image.png"
+                :alt="`${props.message.user.username} avatar`"
+                width="31"
+                height="31"
               />
             </picture>
-            <span class="message__user-name">amyrobson</span>
-            <span class="message__posted">1 month ago</span>
+            <span class="message__user-name"
+              >{{ props.message.user.username
+              }}<span class="message__user-ident" v-show="identUser()">you</span></span
+            >
+            <span class="message__posted">{{ props.message.createdAt }}</span>
           </div>
           <div class="message__button-group">
-            <!-- <button class="message__action-button message__action-button_delete">
+            <button
+              class="message__action-button message__action-button_delete"
+              v-show="identUser()"
+            >
               <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M1.167 12.448c0 .854.7 1.552 1.555 1.552h6.222c.856 0 1.556-.698 1.556-1.552V3.5H1.167v8.948Zm10.5-11.281H8.75L7.773 0h-3.88l-.976 1.167H0v1.166h11.667V1.167Z"
@@ -56,8 +101,12 @@ const props = defineProps({
                 />
               </svg>
               Delete
-            </button> -->
-            <button class="message__action-button message__action-button_edit-reply">
+            </button>
+            <button
+              class="message__action-button message__action-button_edit-reply"
+              @click="replyToggle()"
+              v-show="!identUser()"
+            >
               <svg width="14" height="13" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M.227 4.316 5.04.16a.657.657 0 0 1 1.085.497v2.189c4.392.05 7.875.93 7.875 5.093 0 1.68-1.082 3.344-2.279 4.214-.373.272-.905-.07-.767-.51 1.24-3.964-.588-5.017-4.829-5.078v2.404c0 .566-.664.86-1.085.496L.227 5.31a.657.657 0 0 1 0-.993Z"
@@ -66,7 +115,11 @@ const props = defineProps({
               </svg>
               Reply
             </button>
-            <!-- <button class="message__action-button message__action-button_edit-reply">
+            <button
+              class="message__action-button message__action-button_edit-reply"
+              @click="editToggle()"
+              v-show="identUser()"
+            >
               <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M13.479 2.872 11.08.474a1.75 1.75 0 0 0-2.327-.06L.879 8.287a1.75 1.75 0 0 0-.5 1.06l-.375 3.648a.875.875 0 0 0 .875.954h.078l3.65-.333c.399-.04.773-.216 1.058-.499l7.875-7.875a1.68 1.68 0 0 0-.061-2.371Zm-2.975 2.923L8.159 3.449 9.865 1.7l2.389 2.39-1.75 1.706Z"
@@ -74,38 +127,62 @@ const props = defineProps({
                 />
               </svg>
               Edit
-            </button> -->
+            </button>
           </div>
         </div>
-        <p class="message__text">
+        <p class="message__text" v-show="!isEditClicked">
+          <span
+            :class="props.message.replyingTo ? 'message__reply-author' : 'message__no-reply-author'"
+            >@{{ props.message.replyingTo }}</span
+          >
           {{ props.message.content }}
         </p>
+        <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageUpdate()">
+          <textarea class="input message__input" rows="4" v-model="textInEditSet"></textarea>
+          <button class="main-btn" type="submit">Update</button>
+        </form>
       </div>
     </div>
+    <transition name="expand">
+      <MessageSend
+        :button="'reply'"
+        :parentPostId="props.message.replyForId ? props.message.replyForId : props.message.id"
+        :repliedTo="props.message.user.username"
+        v-if="isReplyClicked"
+        @closeWindow="handleCloseWindow()"
+      />
+    </transition>
   </li>
 </template>
 
 <style lang="scss" scoped>
 .message {
-  padding: 23px 25px;
-  background-color: var(--white);
-  border-radius: 10px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
   &_reply {
     position: relative;
-    max-width: 642px;
+    padding-left: clamp(1px, 6vw, 87px);
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
     &::before {
       content: '';
       position: absolute;
       width: 2px;
       height: 113%;
-      top: 0;
-      left: -45px;
+      top: -11px;
+      left: 43px;
       background-color: var(--light-gray);
     }
   }
   &__block {
     display: flex;
+    padding: 23px 25px;
     gap: 25px;
+    border-radius: 10px;
+    background-color: var(--white);
   }
   &__header {
     display: flex;
@@ -121,8 +198,24 @@ const props = defineProps({
     width: 31px;
   }
   &__user-name {
+    display: flex;
+    gap: 9px;
+    align-items: center;
     color: var(--dark-blue);
     font-weight: 500;
+  }
+  &__user-ident {
+    display: block;
+    padding: 2px 6px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    border-radius: 2px;
+    background-color: var(--moderate-blue);
+    color: var(--white);
+  }
+  &__button-group {
+    display: flex;
+    gap: 27px;
   }
   &__action-button {
     display: flex;
@@ -140,18 +233,32 @@ const props = defineProps({
   }
   &__body {
     display: flex;
-    flex-direction: column;
+    width: 100%;
     gap: 16px;
+    flex-direction: column;
   }
   &__text {
     line-height: 1.5rem;
+  }
+  &__edit {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px;
+  }
+  &__reply-author {
+    color: var(--moderate-blue);
+    font-weight: 700;
+  }
+  &__no-reply-author {
+    display: none;
   }
   &__vote-button-group {
     display: flex;
     min-width: 39px;
     max-height: 100px;
     padding: 7px 0;
-    gap: 15px;
+    gap: 20px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
