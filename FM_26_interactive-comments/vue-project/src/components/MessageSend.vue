@@ -22,8 +22,6 @@ const postMessage = () => {
   if (messageText.value) {
     if (props.button === 'send') messagesStore.sendNewMessage(messageText)
     if (props.button === 'reply') {
-      // console.log(props)
-
       messagesStore.sendReply(messageText, props.parentPostId, props.repliedTo)
       emit('closeWindow', true)
     }

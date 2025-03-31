@@ -32,7 +32,7 @@ const messageUpdate = () => {
       textInEditSet.value,
       props.message.replyForId,
       props.message.replyingTo,
-      props.message.id,
+      props.message.id
     )
   else messagesStore.updateMessage(textInEditSet.value, props.message.id)
   editToggle()
@@ -93,6 +93,7 @@ const handleCloseWindow = () => {
             <button
               class="message__action-button message__action-button_delete"
               v-show="identUser()"
+              @click="messagesStore.toggleDelWindow"
             >
               <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -130,20 +131,26 @@ const handleCloseWindow = () => {
             </button>
           </div>
         </div>
-        <p class="message__text" v-show="!isEditClicked">
-          <span
-            :class="props.message.replyingTo ? 'message__reply-author' : 'message__no-reply-author'"
-            >@{{ props.message.replyingTo }}</span
-          >
-          {{ props.message.content }}
-        </p>
-        <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageUpdate()">
-          <textarea class="input message__input" rows="4" v-model="textInEditSet"></textarea>
-          <button class="main-btn" type="submit">Update</button>
-        </form>
+        <transition name="appear">
+          <p class="message__text" v-show="!isEditClicked">
+            <span
+              :class="
+                props.message.replyingTo ? 'message__reply-author' : 'message__no-reply-author'
+              "
+              >@{{ props.message.replyingTo }}</span
+            >
+            {{ props.message.content }}
+          </p>
+        </transition>
+        <transition name="appear">
+          <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageUpdate()">
+            <textarea class="input message__input" rows="4" v-model="textInEditSet"></textarea>
+            <button class="main-btn" type="submit">Update</button>
+          </form>
+        </transition>
       </div>
     </div>
-    <transition name="expand">
+    <transition name="appear">
       <MessageSend
         :button="'reply'"
         :parentPostId="props.message.replyForId ? props.message.replyForId : props.message.id"
@@ -256,7 +263,7 @@ const handleCloseWindow = () => {
   &__vote-button-group {
     display: flex;
     min-width: 39px;
-    max-height: 100px;
+    height: 93px;
     padding: 7px 0;
     gap: 20px;
     flex-direction: column;

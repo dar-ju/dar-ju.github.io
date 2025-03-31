@@ -6,6 +6,7 @@ export const useMessagesStore = defineStore('messages', () => {
   const messages = ref({})
   const messagesConverted = ref({})
   const currentUser = ref({})
+  const isDelWindowOpened = ref(false)
   const messagesConverter = () => {
     messagesConverted.value = messages.value.flatMap(comment => [comment, ...comment.replies])
   }
@@ -25,6 +26,7 @@ export const useMessagesStore = defineStore('messages', () => {
     }
     messagesConverter()
   }
+
   const sendNewMessage = (message) => {
     const newId = messagesConverted.value.length + 1
     messages.value.push({
@@ -42,12 +44,11 @@ export const useMessagesStore = defineStore('messages', () => {
     messages.value = JSON.parse(localStorage.getItem('messages'))
     messagesConverter()
   }
+
   const sendReply = (message, replyForId, repliedTo) => {
-    // const messageIndex = messagesConverted.value[messagesConverted.value.findIndex(el => el.replyingTo === replyTo)].id
     const messageIndex = messages.value.findIndex(el => el.id === replyForId)
-    // const
     const newId = messagesConverted.value.length + 1
-    messages.value[messageIndex].replies.pull({
+    messages.value[messageIndex].replies.push({
       id: newId,
       content: message,
       createdAt: 'just now',
@@ -63,22 +64,32 @@ export const useMessagesStore = defineStore('messages', () => {
     messages.value = JSON.parse(localStorage.getItem('messages'))
     messagesConverter()
   }
-  const updateMessage = (message, replyForId, repliedTo, id) => {
-    console.log(message);
-    console.log(replyForId);
-    console.log(repliedTo);
 
+  const updateMessage = (message, replyForId, repliedTo, id) => {
     const messageIndex = messages.value.findIndex(el => el.id === replyForId)
-    // console.log(messageIndex);
     if (repliedTo) {
       const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id)
       messages.value[messageIndex].replies[replyIndex].content = message
     }
     else messages.value[messageIndex].content = message
-
     localStorage.setItem('messages', JSON.stringify(messages.value))
     messages.value = JSON.parse(localStorage.getItem('messages'))
     messagesConverter()
   }
-  return { getData, messages, messagesConverted, currentUser, sendNewMessage, sendReply, updateMessage }
+
+  const toggleDelWindow = () => {
+    isDelWindowOpened.value = !isDelWindowOpened.value
+  }
+
+  return {
+    getData,
+    messages,
+    messagesConverted,
+    currentUser,
+    sendNewMessage,
+    sendReply,
+    updateMessage,
+    isDelWindowOpened,
+    toggleDelWindow,
+  }
 })

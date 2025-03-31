@@ -49,20 +49,16 @@ body {
 }
 
 /* ANIMATION */
-.expand-enter-active,
-.expand-leave-active {
+.appear-enter-active,
+.appear-leave-active {
   transition: transform 0.3s ease-out, opacity 0.3s, padding 0.3s;
 }
-
-.expand-enter-from,
-.expand-leave-to {
-  transform: scaleY(0);
+.appear-enter-from,
+.appear-leave-to {
   opacity: 0;
 }
-
-.expand-enter-to,
-.expand-leave-from {
-  transform: scaleY(1);
+.appear-enter-to,
+.appear-leave-from {
   opacity: 1;
 }
 
