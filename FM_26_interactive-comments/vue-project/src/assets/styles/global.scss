@@ -49,9 +49,23 @@ body {
 }
 
 /* ANIMATION */
+.resize-enter-active,
+.resize-leave-active {
+  transition: max-height 0.1s ease-out;
+  overflow: hidden;
+}
+.resize-enter-from,
+.resize-leave-to {
+  max-height: 0;
+}
+.resize-enter-to,
+.resize-leave-from {
+  max-height: 170px;
+}
+
 .appear-enter-active,
 .appear-leave-active {
-  transition: transform 0.3s ease-out, opacity 0.3s, padding 0.3s;
+  transition: opacity 0.3s ease-out;
 }
 .appear-enter-from,
 .appear-leave-to {
@@ -81,19 +95,6 @@ body {
 
 
 
-.appear-enter-active,
-.appear-leave-active {
-  transition: max-height 0.1s ease-out;
-  overflow: hidden;
-}
-.appear-enter-from,
-.appear-leave-to {
-  max-height: 0;
-}
-.appear-enter-to,
-.appear-leave-from {
-  max-height: 160px;
-}
 
 /* SKELETON */
 .loading {

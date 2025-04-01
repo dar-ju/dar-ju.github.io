@@ -23,11 +23,27 @@ onMounted(async () => {
       </ul>
       <MessageSend :button="'send'" />
     </div>
-    <div class="layout" v-show="messagesStore.isDelWindowOpened"></div>
+    <transition name="appear">
+      <div class="delete" v-show="messagesStore.isDelWindowOpened">
+        <!-- <transition name="resize"> -->
+        <div class="delete__block">
+          <strong class="delete__title">Delete comment</strong>
+          <p class="delete__descr">
+            Are you shure you want to delete this comment? This will remove the comment and can't bu
+            undone.
+          </p>
+          <div class="delete__button-block">
+            <button class="main-btn delete__cancel-btn">No, cancel</button>
+            <button class="main-btn delete__confirm-btn">Yes, delete</button>
+          </div>
+        </div>
+        <!-- </transition> -->
+      </div>
+    </transition>
   </main>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .main {
   position: relative;
 }
@@ -38,12 +54,35 @@ onMounted(async () => {
   flex-direction: column;
   align-items: flex-end;
 }
-.layout {
+.delete {
   position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  &__block {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    padding: 30px;
+    gap: 20px;
+    background-color: var(--white);
+    border-radius: 10px;
+  }
+  &__title {
+    font-size: 1.48rem;
+    color: var(--dark-blue);
+  }
+  &__descr {
+  }
+  &__button-block {
+    display: flex;
+    gap: 15px;
+  }
 }
 </style>

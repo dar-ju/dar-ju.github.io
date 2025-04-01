@@ -32,7 +32,7 @@ const messageUpdate = () => {
       textInEditSet.value,
       props.message.replyForId,
       props.message.replyingTo,
-      props.message.id
+      props.message.id,
     )
   else messagesStore.updateMessage(textInEditSet.value, props.message.id)
   editToggle()
@@ -131,7 +131,7 @@ const handleCloseWindow = () => {
             </button>
           </div>
         </div>
-        <transition name="appear">
+        <transition name="resize">
           <p class="message__text" v-show="!isEditClicked">
             <span
               :class="
@@ -142,7 +142,7 @@ const handleCloseWindow = () => {
             {{ props.message.content }}
           </p>
         </transition>
-        <transition name="appear">
+        <transition name="resize">
           <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageUpdate()">
             <textarea class="input message__input" rows="4" v-model="textInEditSet"></textarea>
             <button class="main-btn" type="submit">Update</button>
@@ -150,7 +150,7 @@ const handleCloseWindow = () => {
         </transition>
       </div>
     </div>
-    <transition name="appear">
+    <transition name="resize">
       <MessageSend
         :button="'reply'"
         :parentPostId="props.message.replyForId ? props.message.replyForId : props.message.id"
