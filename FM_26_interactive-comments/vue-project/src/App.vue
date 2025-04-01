@@ -9,6 +9,10 @@ const messagesStore = useMessagesStore()
 onMounted(async () => {
   await messagesStore.getData()
 })
+
+const deleteMessage = () => {
+  messagesStore.toggleDelWindow()
+}
 </script>
 
 <template>
@@ -33,8 +37,12 @@ onMounted(async () => {
             undone.
           </p>
           <div class="delete__button-block">
-            <button class="main-btn delete__cancel-btn">No, cancel</button>
-            <button class="main-btn delete__confirm-btn">Yes, delete</button>
+            <button class="main-btn delete__cancel-btn" @click="messagesStore.toggleDelWindow()">
+              No, cancel
+            </button>
+            <button class="main-btn delete__confirm-btn" @click="deleteMessage()">
+              Yes, delete
+            </button>
           </div>
         </div>
         <!-- </transition> -->
@@ -69,8 +77,8 @@ onMounted(async () => {
     top: 50%;
     transform: translate(-50%, -50%);
     max-width: 400px;
-    padding: 30px;
-    gap: 20px;
+    padding: 34px 32px;
+    gap: 18px;
     background-color: var(--white);
     border-radius: 10px;
   }
@@ -79,10 +87,24 @@ onMounted(async () => {
     color: var(--dark-blue);
   }
   &__descr {
+    line-height: 1.5rem;
   }
   &__button-block {
     display: flex;
+    justify-content: space-between;
     gap: 15px;
+  }
+  &__cancel-btn {
+    background-color: var(--grayish-blue);
+    &:hover {
+      background-color: var(--grayish-blue-light);
+    }
+  }
+  &__confirm-btn {
+    background-color: var(--soft-red);
+    &:hover {
+      background-color: var(--soft-red-light);
+    }
   }
 }
 </style>
