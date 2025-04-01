@@ -23,18 +23,17 @@ const editToggle = () => {
     textInEditSet.value = `@${props.message.replyingTo} ${props.message.content}`
   else textInEditSet.value = props.message.content
 }
-const messageUpdate = () => {
+const messageEdit = () => {
   if (textInEditSet.value[0] === '@')
     textInEditSet.value = textInEditSet.value.split(' ').slice(1).join(' ')
-  // console.log(props.message)
   if (props.message.replyForId)
-    messagesStore.updateMessage(
+    messagesStore.modifyMessage(
+      props.message.id,
       textInEditSet.value,
       props.message.replyForId,
-      props.message.replyingTo,
-      props.message.id,
+      // props.message.replyingTo,
     )
-  else messagesStore.updateMessage(textInEditSet.value, props.message.id)
+  else messagesStore.modifyMessage(props.message.id, textInEditSet.value)
   editToggle()
 }
 
@@ -42,7 +41,7 @@ const identUser = () => {
   return messagesStore.currentUser.username === props.message.user.username ? true : false
 }
 
-const handleCloseWindow = () => {
+const handleCloseMessageWindow = () => {
   replyToggle()
 }
 </script>
@@ -93,7 +92,7 @@ const handleCloseWindow = () => {
             <button
               class="message__action-button message__action-button_delete"
               v-show="identUser()"
-              @click="messagesStore.toggleDelWindow"
+              @click="messagesStore.idCommentToDelete = props.message.id"
             >
               <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -143,7 +142,7 @@ const handleCloseWindow = () => {
           </p>
         </transition>
         <transition name="resize">
-          <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageUpdate()">
+          <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageEdit()">
             <textarea class="input message__input" rows="4" v-model="textInEditSet"></textarea>
             <button class="main-btn" type="submit">Update</button>
           </form>
@@ -156,7 +155,7 @@ const handleCloseWindow = () => {
         :parentPostId="props.message.replyForId ? props.message.replyForId : props.message.id"
         :repliedTo="props.message.user.username"
         v-if="isReplyClicked"
-        @closeWindow="handleCloseWindow()"
+        @closeWindow="handleCloseMessageWindow()"
       />
     </transition>
   </li>

@@ -11,7 +11,8 @@ onMounted(async () => {
 })
 
 const deleteMessage = () => {
-  messagesStore.toggleDelWindow()
+  messagesStore.modifyMessage(messagesStore.idCommentToDelete)
+  messagesStore.idCommentToDelete = -1
 }
 </script>
 
@@ -28,7 +29,7 @@ const deleteMessage = () => {
       <MessageSend :button="'send'" />
     </div>
     <transition name="appear">
-      <div class="delete" v-show="messagesStore.isDelWindowOpened">
+      <div class="delete" v-show="messagesStore.idCommentToDelete > 0">
         <!-- <transition name="resize"> -->
         <div class="delete__block">
           <strong class="delete__title">Delete comment</strong>
@@ -37,7 +38,10 @@ const deleteMessage = () => {
             undone.
           </p>
           <div class="delete__button-block">
-            <button class="main-btn delete__cancel-btn" @click="messagesStore.toggleDelWindow()">
+            <button
+              class="main-btn delete__cancel-btn"
+              @click="messagesStore.idCommentToDelete = -1"
+            >
               No, cancel
             </button>
             <button class="main-btn delete__confirm-btn" @click="deleteMessage()">

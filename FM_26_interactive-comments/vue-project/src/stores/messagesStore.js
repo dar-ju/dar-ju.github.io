@@ -6,7 +6,7 @@ export const useMessagesStore = defineStore('messages', () => {
   const messages = ref({})
   const messagesConverted = ref({})
   const currentUser = ref({})
-  const isDelWindowOpened = ref(false)
+  const idCommentToDelete = ref(-1)
   const messagesConverter = () => {
     messagesConverted.value = messages.value.flatMap(comment => [comment, ...comment.replies])
   }
@@ -65,21 +65,30 @@ export const useMessagesStore = defineStore('messages', () => {
     messagesConverter()
   }
 
-  const updateMessage = (message, replyForId, repliedTo, id) => {
-    const messageIndex = messages.value.findIndex(el => el.id === replyForId)
-    if (repliedTo) {
-      const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id)
-      messages.value[messageIndex].replies[replyIndex].content = message
+  const modifyMessage = (id, message, replyForId) => {
+    if (message) {
+      if (replyForId) {
+        const messageIndex = messages.value.findIndex(el => el.id === replyForId)
+        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id)
+        messages.value[messageIndex].replies[replyIndex].content = message
+      }
+      else {
+        const messageIndex = messages.value.findIndex(el => el.id === id)
+        messages.value[messageIndex].content = message
+      }
     }
-    else messages.value[messageIndex].content = message
+    else {
+      console.log(idCommentToDelete.value);
+
+    }
     localStorage.setItem('messages', JSON.stringify(messages.value))
     messages.value = JSON.parse(localStorage.getItem('messages'))
     messagesConverter()
   }
 
-  const toggleDelWindow = () => {
-    isDelWindowOpened.value = !isDelWindowOpened.value
-  }
+  // const toggleDelWindow = () => {
+  //   isDelWindowOpened.value = !isDelWindowOpened.value
+  // }
 
   return {
     getData,
@@ -88,8 +97,9 @@ export const useMessagesStore = defineStore('messages', () => {
     currentUser,
     sendNewMessage,
     sendReply,
-    updateMessage,
-    isDelWindowOpened,
-    toggleDelWindow,
+    modifyMessage,
+    idCommentToDelete,
+    // isDelWindowOpened,
+    // toggleDelWindow,
   }
 })

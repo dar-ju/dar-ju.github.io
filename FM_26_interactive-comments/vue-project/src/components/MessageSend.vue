@@ -25,10 +25,6 @@ const postMessage = () => {
       messagesStore.sendReply(messageText, props.parentPostId, props.repliedTo)
       emit('closeWindow', true)
     }
-    // if (props.button === 'update') {
-    //   messagesStore.updateMessage(messageText, props.parentPostId, props.repliedTo )
-    // console.log('test')
-    // }
     messageText.value = ''
   }
 }
