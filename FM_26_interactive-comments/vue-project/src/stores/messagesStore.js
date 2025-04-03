@@ -34,6 +34,7 @@ export const useMessagesStore = defineStore('messages', () => {
       id: newId,
       replies: [],
       score: 0,
+      voters: [],
       user: {
         image: currentUser.value.image,
         username: currentUser.value.username,
@@ -51,6 +52,7 @@ export const useMessagesStore = defineStore('messages', () => {
       content: message,
       createdAt: 'just now',
       score: 0,
+      voters: [],
       replyingTo: repliedTo,
       replyForId: replyForId,
       user: {
@@ -62,30 +64,55 @@ export const useMessagesStore = defineStore('messages', () => {
   }
 
   // edit or delete message
-  const modifyMessage = (id, message = null, replyForId = null) => {
+  const modifyMessage = (postId, message = null, replyForId = null) => {
     const findMessageIndex = (messageId) => messages.value.findIndex(el => el.id === messageId);
     // if message edited
     if (message) {
       if (replyForId) {
         const messageIndex = findMessageIndex(replyForId);
-        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id);
+        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === postId);
         messages.value[messageIndex].replies[replyIndex].content = message;
       } else {
-        const messageIndex = findMessageIndex(id);
+        const messageIndex = findMessageIndex(postId);
         messages.value[messageIndex].content = message;
       }
     } else { // if message to delete
       if (replyForId) {
         const messageIndex = findMessageIndex(replyForId);
-        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id);
+        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === postId);
         messages.value[messageIndex].replies.splice(replyIndex, 1);
       } else {
-        const messageIndex = findMessageIndex(id);
+        const messageIndex = findMessageIndex(postId);
         messages.value.splice(messageIndex, 1);
       }
     }
     saveData()
   };
+
+  // vote for message
+  const vote = (value, user, postId, replyForId) => {
+    console.log(value);
+    console.log(user);
+    console.log(postId);
+    console.log(replyForId);
+
+
+
+    if (replyForId) {
+      const messageIndex = messages.value.findIndex(el => el.id === replyForId);
+      const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === postId);
+      console.log(messages.value[messageIndex].replies[replyIndex]);
+      messages.value[messageIndex].replies[replyIndex].voters.push(user)
+      messages.value[messageIndex].replies[replyIndex].score += value
+      // messages.value[messageIndex].replies.splice(replyIndex, 1);
+    } else {
+      const messageIndex = messages.value.findIndex(el => el.id === postId);
+      messages.value[messageIndex].voters.push(user)
+      messages.value[messageIndex].score += value
+      // messages.value.splice(messageIndex, 1);
+    }
+    saveData()
+  }
 
   // auxiliary converter of data
   const messagesConverter = () => {
@@ -108,5 +135,6 @@ export const useMessagesStore = defineStore('messages', () => {
     sendReply,
     modifyMessage,
     idCommentToDelete,
+    vote,
   }
 })
