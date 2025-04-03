@@ -37,7 +37,7 @@ const messageEdit = () => {
     messagesStore.modifyMessage(
       props.message.id,
       textInEditSet.value,
-      props.message.replyForId
+      props.message.replyForId,
       // props.message.replyingTo,
     )
   else messagesStore.modifyMessage(props.message.id, textInEditSet.value)
@@ -62,7 +62,7 @@ const voteCast = (value) => {
     value,
     messagesStore.currentUser.username,
     props.message.id,
-    props.message.replyForId
+    props.message.replyForId,
   )
   isVoteDisabled.value = true
 }
@@ -205,10 +205,10 @@ const voteCast = (value) => {
   gap: 10px;
   &_reply {
     position: relative;
-    padding-left: clamp(1px, 6vw, 87px);
     &:not(:last-child) {
       margin-bottom: 4px;
     }
+    padding-left: clamp(1px, 6vw, 87px);
     &::before {
       content: '';
       position: absolute;
@@ -314,7 +314,7 @@ const voteCast = (value) => {
   &__vote-button-group {
     display: flex;
     min-width: 39px;
-    height: 93px;
+    height: 100px;
     padding: 7px 0;
     gap: 20px;
     flex-direction: column;
@@ -344,6 +344,49 @@ const voteCast = (value) => {
     font-weight: 700;
     &_disabled {
       color: var(--moderate-blue-light);
+    }
+  }
+}
+
+@media (max-width: 820px) {
+  .message {
+    &__block {
+      position: relative;
+      padding: 16px;
+      gap: 17px;
+      flex-direction: column;
+    }
+    &__vote-button-group {
+      max-width: 100px;
+      height: 40px;
+      gap: 16px;
+      order: 1;
+      flex-direction: row;
+    }
+    &__button-group {
+      position: absolute;
+      right: 35px;
+      bottom: 26px;
+    }
+    &__vote-button {
+      padding: 10px 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .message {
+    &__button-group {
+      right: 18px;
+    }
+    &_reply {
+      padding-left: 18px;
+      &:not(:last-child) {
+        margin-bottom: initial;
+      }
+    }
+    &::before {
+      left: 0;
     }
   }
 }

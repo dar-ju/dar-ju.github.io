@@ -14,7 +14,7 @@ const deleteMessage = () => {
   messagesStore.modifyMessage(
     messagesStore.idCommentToDelete[0],
     undefined,
-    messagesStore.idCommentToDelete[1]
+    messagesStore.idCommentToDelete[1],
   )
   messagesStore.idCommentToDelete = []
 }
@@ -113,6 +113,12 @@ const deleteMessage = () => {
     &:hover {
       background-color: var(--soft-red-light);
     }
+  }
+}
+
+@media (max-width: 820px) {
+  .messages-list {
+    gap: 16px;
   }
 }
 </style>

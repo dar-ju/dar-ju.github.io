@@ -48,7 +48,7 @@ const postMessage = () => {
         v-model="messageText"
         class="input"
         placeholder="Add a comment..."
-        rows="4"
+        rows="3"
       ></textarea>
       <button v-show="props.button === 'send'" class="main-btn" type="submit">Send</button>
       <button v-show="props.button === 'reply'" class="main-btn" type="submit">Reply</button>
