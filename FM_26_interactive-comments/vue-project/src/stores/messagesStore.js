@@ -6,10 +6,9 @@ export const useMessagesStore = defineStore('messages', () => {
   const messages = ref({})
   const messagesConverted = ref({})
   const currentUser = ref({})
-  const idCommentToDelete = ref(-1)
-  const messagesConverter = () => {
-    messagesConverted.value = messages.value.flatMap(comment => [comment, ...comment.replies])
-  }
+  const idCommentToDelete = ref([])
+
+  // get data function
   const getData = async () => {
     if (localStorage.getItem('messages')) {
       messages.value = JSON.parse(localStorage.getItem('messages'))
@@ -17,7 +16,6 @@ export const useMessagesStore = defineStore('messages', () => {
     } else {
       const response = await getMessagesApi()
       const comments = response.comments
-      // const comments = response['comments'].flatMap(comment => [comment, ...comment.replies])
       messages.value = comments
       localStorage.setItem('messages', JSON.stringify(comments))
       const user = response.currentUser
@@ -27,6 +25,7 @@ export const useMessagesStore = defineStore('messages', () => {
     messagesConverter()
   }
 
+  // create new message
   const sendNewMessage = (message) => {
     const newId = messagesConverted.value.length + 1
     messages.value.push({
@@ -40,11 +39,10 @@ export const useMessagesStore = defineStore('messages', () => {
         username: currentUser.value.username,
       }
     })
-    localStorage.setItem('messages', JSON.stringify(messages.value))
-    messages.value = JSON.parse(localStorage.getItem('messages'))
-    messagesConverter()
+    saveData()
   }
 
+  // send reply to existing message
   const sendReply = (message, replyForId, repliedTo) => {
     const messageIndex = messages.value.findIndex(el => el.id === replyForId)
     const newId = messagesConverted.value.length + 1
@@ -60,35 +58,46 @@ export const useMessagesStore = defineStore('messages', () => {
         username: currentUser.value.username,
       }
     })
-    localStorage.setItem('messages', JSON.stringify(messages.value))
-    messages.value = JSON.parse(localStorage.getItem('messages'))
-    messagesConverter()
+    saveData()
   }
 
-  const modifyMessage = (id, message, replyForId) => {
+  // edit or delete message
+  const modifyMessage = (id, message = null, replyForId = null) => {
+    const findMessageIndex = (messageId) => messages.value.findIndex(el => el.id === messageId);
+    // if message edited
     if (message) {
       if (replyForId) {
-        const messageIndex = messages.value.findIndex(el => el.id === replyForId)
-        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id)
-        messages.value[messageIndex].replies[replyIndex].content = message
+        const messageIndex = findMessageIndex(replyForId);
+        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id);
+        messages.value[messageIndex].replies[replyIndex].content = message;
+      } else {
+        const messageIndex = findMessageIndex(id);
+        messages.value[messageIndex].content = message;
       }
-      else {
-        const messageIndex = messages.value.findIndex(el => el.id === id)
-        messages.value[messageIndex].content = message
+    } else { // if message to delete
+      if (replyForId) {
+        const messageIndex = findMessageIndex(replyForId);
+        const replyIndex = messages.value[messageIndex].replies.findIndex(el => el.id === id);
+        messages.value[messageIndex].replies.splice(replyIndex, 1);
+      } else {
+        const messageIndex = findMessageIndex(id);
+        messages.value.splice(messageIndex, 1);
       }
     }
-    else {
-      console.log(idCommentToDelete.value);
+    saveData()
+  };
 
-    }
+  // auxiliary converter of data
+  const messagesConverter = () => {
+    messagesConverted.value = messages.value.flatMap(comment => [comment, ...comment.replies])
+  }
+
+  // save data to localstorage, refresh of ref and convert
+  const saveData = () => {
     localStorage.setItem('messages', JSON.stringify(messages.value))
     messages.value = JSON.parse(localStorage.getItem('messages'))
     messagesConverter()
   }
-
-  // const toggleDelWindow = () => {
-  //   isDelWindowOpened.value = !isDelWindowOpened.value
-  // }
 
   return {
     getData,
@@ -99,7 +108,5 @@ export const useMessagesStore = defineStore('messages', () => {
     sendReply,
     modifyMessage,
     idCommentToDelete,
-    // isDelWindowOpened,
-    // toggleDelWindow,
   }
 })

@@ -11,8 +11,12 @@ onMounted(async () => {
 })
 
 const deleteMessage = () => {
-  messagesStore.modifyMessage(messagesStore.idCommentToDelete)
-  messagesStore.idCommentToDelete = -1
+  messagesStore.modifyMessage(
+    messagesStore.idCommentToDelete[0],
+    undefined,
+    messagesStore.idCommentToDelete[1]
+  )
+  messagesStore.idCommentToDelete = []
 }
 </script>
 
@@ -29,7 +33,7 @@ const deleteMessage = () => {
       <MessageSend :button="'send'" />
     </div>
     <transition name="appear">
-      <div class="delete" v-show="messagesStore.idCommentToDelete > 0">
+      <div class="delete" v-show="messagesStore.idCommentToDelete.length > 0">
         <!-- <transition name="resize"> -->
         <div class="delete__block">
           <strong class="delete__title">Delete comment</strong>
@@ -40,7 +44,7 @@ const deleteMessage = () => {
           <div class="delete__button-block">
             <button
               class="main-btn delete__cancel-btn"
-              @click="messagesStore.idCommentToDelete = -1"
+              @click="messagesStore.idCommentToDelete = []"
             >
               No, cancel
             </button>

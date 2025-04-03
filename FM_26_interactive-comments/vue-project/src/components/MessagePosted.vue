@@ -12,6 +12,9 @@ const props = defineProps({
 })
 
 const isReplyClicked = ref(false)
+const deleteToggle = () => {
+  messagesStore.idCommentToDelete = [props.message.id, props.message.replyForId]
+}
 const replyToggle = () => {
   isReplyClicked.value = !isReplyClicked.value
 }
@@ -30,7 +33,7 @@ const messageEdit = () => {
     messagesStore.modifyMessage(
       props.message.id,
       textInEditSet.value,
-      props.message.replyForId,
+      props.message.replyForId
       // props.message.replyingTo,
     )
   else messagesStore.modifyMessage(props.message.id, textInEditSet.value)
@@ -92,7 +95,7 @@ const handleCloseMessageWindow = () => {
             <button
               class="message__action-button message__action-button_delete"
               v-show="identUser()"
-              @click="messagesStore.idCommentToDelete = props.message.id"
+              @click="deleteToggle()"
             >
               <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -228,11 +231,27 @@ const handleCloseMessageWindow = () => {
     gap: 7px;
     align-items: center;
     font-weight: 500;
+    transition: color ease-in-out 0.3s;
+    & svg path {
+      transition: fill ease-in-out 0.3s;
+    }
     &_edit-reply {
       color: var(--moderate-blue);
+      &:hover {
+        color: var(--light-grayish-blue);
+      }
+      &:hover svg path {
+        fill: var(--light-grayish-blue);
+      }
     }
     &_delete {
       color: var(--soft-red);
+      &:hover {
+        color: var(--soft-red-light);
+      }
+      &:hover svg path {
+        fill: var(--soft-red-light);
+      }
     }
   }
   &__message-delete-button {
@@ -274,6 +293,12 @@ const handleCloseMessageWindow = () => {
   &__vote-button {
     display: flex;
     min-height: 10px;
+    & svg path {
+      transition: fill ease-in-out 0.3s;
+    }
+    &:hover svg path {
+      fill: var(--dark-blue);
+    }
   }
   &__vote-result {
     color: var(--moderate-blue);
