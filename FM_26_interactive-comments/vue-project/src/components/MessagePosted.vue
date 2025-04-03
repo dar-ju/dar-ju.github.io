@@ -378,6 +378,7 @@ const voteCast = (value) => {
   .message {
     &__button-group {
       right: 18px;
+      gap: 18px;
     }
     &_reply {
       padding-left: 18px;
