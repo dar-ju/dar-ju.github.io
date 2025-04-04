@@ -14,7 +14,7 @@ const deleteMessage = () => {
   messagesStore.modifyMessage(
     messagesStore.idCommentToDelete[0],
     undefined,
-    messagesStore.idCommentToDelete[1],
+    messagesStore.idCommentToDelete[1]
   )
   messagesStore.idCommentToDelete = []
 }
@@ -33,27 +33,36 @@ const deleteMessage = () => {
       <MessageSend :button="'send'" />
     </div>
     <transition name="appear">
-      <div class="delete" v-show="messagesStore.idCommentToDelete.length > 0">
-        <!-- <transition name="resize"> -->
+      <div
+        class="delete"
+        v-show="messagesStore.idCommentToDelete.length > 0"
+        role="dialog"
+        aria-labelledby="deleteTitle"
+        aria-describedby="deleteDescription"
+      >
         <div class="delete__block">
-          <strong class="delete__title">Delete comment</strong>
-          <p class="delete__descr">
+          <strong class="delete__title" id="deleteTitle">Delete comment</strong>
+          <p class="delete__descr" id="deleteDescription">
             Are you shure you want to delete this comment? This will remove the comment and can't bu
             undone.
           </p>
           <div class="delete__button-block">
             <button
-              class="main-btn delete__cancel-btn"
+              class="main-btn delete__btn delete__cancel-btn"
               @click="messagesStore.idCommentToDelete = []"
+              aria-label="Cancel the delete action"
             >
               No, cancel
             </button>
-            <button class="main-btn delete__confirm-btn" @click="deleteMessage()">
+            <button
+              class="main-btn delete__btn delete__confirm-btn"
+              @click="deleteMessage()"
+              aria-label="Confirm the delete action"
+            >
               Yes, delete
             </button>
           </div>
         </div>
-        <!-- </transition> -->
       </div>
     </transition>
   </main>
@@ -118,7 +127,24 @@ const deleteMessage = () => {
 
 @media (max-width: 820px) {
   .messages-list {
+    margin-bottom: 16px;
     gap: 16px;
+  }
+  .delete {
+    &__block {
+      width: 343px;
+      padding: 22px 28px;
+    }
+    &__title {
+      font-size: 1.2rem;
+    }
+    &__button-block {
+      gap: 10px;
+    }
+    &__btn {
+      padding: 15px;
+      width: 138px;
+    }
   }
 }
 </style>

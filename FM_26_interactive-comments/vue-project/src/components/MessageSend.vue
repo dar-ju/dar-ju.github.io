@@ -32,7 +32,7 @@ const postMessage = () => {
 
 <template>
   <div class="send">
-    <picture>
+    <picture class="send__picture-wrapper">
       <source :srcset="messagesStore.currentUser?.image?.webp" type="image/webp" />
       <source :srcset="messagesStore.currentUser?.image?.png" type="image/png" />
       <img
@@ -50,9 +50,22 @@ const postMessage = () => {
         placeholder="Add a comment..."
         rows="3"
       ></textarea>
-      <button v-show="props.button === 'send'" class="main-btn" type="submit">Send</button>
-      <button v-show="props.button === 'reply'" class="main-btn" type="submit">Reply</button>
-      <!-- <button v-show="props.button === 'update'" class="main-btn" type="submit">Update</button> -->
+      <button
+        v-show="props.button === 'send'"
+        class="main-btn send__btn"
+        type="submit"
+        aria-label="Click to send message"
+      >
+        Send
+      </button>
+      <button
+        v-show="props.button === 'reply'"
+        class="main-btn send__btn"
+        type="submit"
+        aria-label="Click to reply message"
+      >
+        Reply
+      </button>
     </form>
   </div>
 </template>
@@ -71,6 +84,22 @@ const postMessage = () => {
     display: flex;
     width: 100%;
     gap: 15px;
+  }
+}
+
+@media (max-width: 820px) {
+  .send {
+    position: relative;
+    padding: 15px;
+    flex-direction: column;
+    &__picture-wrapper {
+      order: 1;
+    }
+    &__btn {
+      position: absolute;
+      right: 16px;
+      bottom: 8px;
+    }
   }
 }
 </style>

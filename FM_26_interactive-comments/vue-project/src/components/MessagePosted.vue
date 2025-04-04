@@ -19,9 +19,11 @@ const isReplyClicked = ref(false)
 const deleteToggle = () => {
   messagesStore.idCommentToDelete = [props.message.id, props.message.replyForId]
 }
+
 const replyToggle = () => {
   isReplyClicked.value = !isReplyClicked.value
 }
+
 const isEditClicked = ref(false)
 const textInEditSet = ref('')
 const editToggle = () => {
@@ -30,16 +32,12 @@ const editToggle = () => {
     textInEditSet.value = `@${props.message.replyingTo} ${props.message.content}`
   else textInEditSet.value = props.message.content
 }
+
 const messageEdit = () => {
   if (textInEditSet.value[0] === '@')
     textInEditSet.value = textInEditSet.value.split(' ').slice(1).join(' ')
   if (props.message.replyForId)
-    messagesStore.modifyMessage(
-      props.message.id,
-      textInEditSet.value,
-      props.message.replyForId,
-      // props.message.replyingTo,
-    )
+    messagesStore.modifyMessage(props.message.id, textInEditSet.value, props.message.replyForId)
   else messagesStore.modifyMessage(props.message.id, textInEditSet.value)
   editToggle()
 }
@@ -57,12 +55,13 @@ const voteCheck = () => {
   if (messagesStore.currentUser.username === props.message.user.username)
     isVoteDisabled.value = true
 }
+
 const voteCast = (value) => {
   messagesStore.vote(
     value,
     messagesStore.currentUser.username,
     props.message.id,
-    props.message.replyForId,
+    props.message.replyForId
   )
   isVoteDisabled.value = true
 }
@@ -77,6 +76,7 @@ const voteCast = (value) => {
           :disabled="isVoteDisabled"
           :class="isVoteDisabled ? 'message__vote-button_disabled' : ''"
           @click="voteCast(1)"
+          aria-label="Click to upvote"
         >
           <svg width="11" height="11" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -95,6 +95,7 @@ const voteCast = (value) => {
           :disabled="isVoteDisabled"
           :class="isVoteDisabled ? 'message__vote-button_disabled' : ''"
           @click="voteCast(-1)"
+          aria-label="Click to downvote"
         >
           <svg width="11" height="3" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -129,6 +130,7 @@ const voteCast = (value) => {
               class="message__action-button message__action-button_delete"
               v-show="identUser()"
               @click="deleteToggle()"
+              aria-label="Click to delete message"
             >
               <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -142,6 +144,7 @@ const voteCast = (value) => {
               class="message__action-button message__action-button_edit-reply"
               @click="replyToggle()"
               v-show="!identUser()"
+              aria-label="Click to reply message"
             >
               <svg width="14" height="13" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -155,6 +158,7 @@ const voteCast = (value) => {
               class="message__action-button message__action-button_edit-reply"
               @click="editToggle()"
               v-show="identUser()"
+              aria-label="Click to edit your message"
             >
               <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -264,7 +268,7 @@ const voteCast = (value) => {
     gap: 7px;
     align-items: center;
     font-weight: 500;
-    transition: color ease-in-out 0.3s;
+    transition: color ease-in-out 0.3s, outline ease-in-out 0.3s;
     & svg path {
       transition: fill ease-in-out 0.3s;
     }
@@ -286,8 +290,9 @@ const voteCast = (value) => {
         fill: var(--soft-red-light);
       }
     }
-  }
-  &__message-delete-button {
+    &:focus-visible {
+      outline: 1px solid var(--grayish-blue-light);
+    }
   }
   &__body {
     display: flex;
@@ -316,7 +321,7 @@ const voteCast = (value) => {
     min-width: 39px;
     height: 100px;
     padding: 7px 0;
-    gap: 20px;
+    gap: 18px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -326,6 +331,10 @@ const voteCast = (value) => {
   &__vote-button {
     display: flex;
     min-height: 10px;
+    transition: outline ease-in-out 0.3s;
+    & svg {
+      align-self: center;
+    }
     & svg path {
       transition: fill ease-in-out 0.3s;
     }
@@ -338,10 +347,13 @@ const voteCast = (value) => {
         fill: none;
       }
     }
+    &:focus-visible {
+      outline: 1px solid var(--grayish-blue-light);
+    }
   }
   &__vote-result {
     color: var(--moderate-blue);
-    font-weight: 700;
+    font-weight: 500;
     &_disabled {
       color: var(--moderate-blue-light);
     }
