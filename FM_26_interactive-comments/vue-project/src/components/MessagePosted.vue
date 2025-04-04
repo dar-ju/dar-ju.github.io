@@ -34,12 +34,17 @@ const editToggle = () => {
 }
 
 const messageEdit = () => {
+  clearingEnteredText()
   if (textInEditSet.value[0] === '@')
     textInEditSet.value = textInEditSet.value.split(' ').slice(1).join(' ')
   if (props.message.replyForId)
     messagesStore.modifyMessage(props.message.id, textInEditSet.value, props.message.replyForId)
   else messagesStore.modifyMessage(props.message.id, textInEditSet.value)
   editToggle()
+}
+
+const clearingEnteredText = () => {
+  textInEditSet.value = textInEditSet.value.replace(/<[^>]*>/g, '').trim()
 }
 
 const identUser = () => {
@@ -61,7 +66,7 @@ const voteCast = (value) => {
     value,
     messagesStore.currentUser.username,
     props.message.id,
-    props.message.replyForId
+    props.message.replyForId,
   )
   isVoteDisabled.value = true
 }
@@ -183,7 +188,12 @@ const voteCast = (value) => {
         </transition>
         <transition name="resize">
           <form class="message__edit" v-show="isEditClicked" @submit.prevent="messageEdit()">
-            <textarea class="input message__input" rows="4" v-model="textInEditSet"></textarea>
+            <textarea
+              class="input message__input"
+              rows="4"
+              v-model="textInEditSet"
+              maxlength="2000"
+            ></textarea>
             <button class="main-btn" type="submit">Update</button>
           </form>
         </transition>
@@ -268,7 +278,9 @@ const voteCast = (value) => {
     gap: 7px;
     align-items: center;
     font-weight: 500;
-    transition: color ease-in-out 0.3s, outline ease-in-out 0.3s;
+    transition:
+      color ease-in-out 0.3s,
+      outline ease-in-out 0.3s;
     & svg path {
       transition: fill ease-in-out 0.3s;
     }
@@ -330,7 +342,7 @@ const voteCast = (value) => {
   }
   &__vote-button {
     display: flex;
-    min-height: 10px;
+    height: 11px;
     transition: outline ease-in-out 0.3s;
     & svg {
       align-self: center;

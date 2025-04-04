@@ -31,8 +31,9 @@ body {
 }
 
 .main-btn {
+  min-width: 104px;
   max-height: 48px;
-  padding: 15px 32px;
+  padding: 15px;
   border-radius: 10px;
   color: var(--white);
   text-transform: uppercase;

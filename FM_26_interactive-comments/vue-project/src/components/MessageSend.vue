@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, defineEmits } from 'vue'
+import { ref, defineEmits } from 'vue'
 import { useMessagesStore } from '../stores/messagesStore'
 
 const emit = defineEmits(['closeWindow'])
@@ -19,6 +19,7 @@ const props = defineProps({
 })
 
 const postMessage = () => {
+  clearingEnteredText()
   if (messageText.value) {
     if (props.button === 'send') messagesStore.sendNewMessage(messageText)
     if (props.button === 'reply') {
@@ -27,6 +28,10 @@ const postMessage = () => {
     }
     messageText.value = ''
   }
+}
+
+const clearingEnteredText = () => {
+  messageText.value = messageText.value.replace(/<[^>]*>/g, '').trim()
 }
 </script>
 
@@ -49,6 +54,7 @@ const postMessage = () => {
         class="input"
         placeholder="Add a comment..."
         rows="3"
+        maxlength="2000"
       ></textarea>
       <button
         v-show="props.button === 'send'"

@@ -1,6 +1,6 @@
 async function getMessages() {
   try {
-    const response = await fetch('/data.json');
+    const response = await fetch('/assets/data.json');
     const data = response.json();
     return data;
   }

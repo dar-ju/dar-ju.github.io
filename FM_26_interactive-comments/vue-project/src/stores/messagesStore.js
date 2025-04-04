@@ -112,6 +112,7 @@ export const useMessagesStore = defineStore('messages', () => {
 
   // save data to localstorage, refresh of ref and convert
   const saveData = () => {
+    if (messages.value.length > 2000) return
     localStorage.setItem('messages', JSON.stringify(messages.value))
     messages.value = JSON.parse(localStorage.getItem('messages'))
     messagesConverter()

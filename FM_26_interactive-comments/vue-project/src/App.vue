@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import MessagePosted from './components/MessagePosted.vue'
 import MessageSend from './components/MessageSend.vue'
 import { useMessagesStore } from './stores/messagesStore'
@@ -14,7 +14,7 @@ const deleteMessage = () => {
   messagesStore.modifyMessage(
     messagesStore.idCommentToDelete[0],
     undefined,
-    messagesStore.idCommentToDelete[1]
+    messagesStore.idCommentToDelete[1],
   )
   messagesStore.idCommentToDelete = []
 }
