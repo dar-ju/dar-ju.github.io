@@ -251,7 +251,9 @@ const voteCast = (value) => {
     gap: 16px;
   }
   &__user-avatar {
-    width: 31px;
+    min-width: 31px;
+    min-height: 31px;
+    object-fit: cover;
   }
   &__user-name {
     display: flex;

@@ -85,6 +85,8 @@ const clearingEnteredText = () => {
   background-color: var(--white);
   &__user-avatar {
     min-width: 41px;
+    min-height: 41px;
+    object-fit: cover;
   }
   &__form {
     display: flex;
