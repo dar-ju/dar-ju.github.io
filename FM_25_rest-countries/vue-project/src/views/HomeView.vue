@@ -52,7 +52,7 @@ watch(
     nextTick(() => {
       searchInput.value?.focus()
     })
-  }
+  },
 )
 
 const setRegion = (val: string) => {
@@ -79,7 +79,7 @@ watch(searchText, (newValue) => {
   <main class="section home">
     <div class="container home__container">
       <div class="home__wrapper">
-        <div class="home__search-wrapper">
+        <form class="home__search-wrapper">
           <input
             v-model="searchText"
             type="text"
@@ -98,7 +98,7 @@ watch(searchText, (newValue) => {
               d="M 10 2 C 5.5935644 2 2 5.5935677 2 10 C 2 14.406432 5.5935644 18 10 18 C 11.844022 18 13.540969 17.365427 14.896484 16.310547 L 20.292969 21.707031 A 1.0001 1.0001 0 1 0 21.707031 20.292969 L 16.310547 14.896484 C 17.365427 13.540969 18 11.844021 18 10 C 18 5.5935677 14.406436 2 10 2 z M 10 4 C 13.325556 4 16 6.674446 16 10 C 16 13.325554 13.325556 16 10 16 C 6.6744439 16 4 13.325554 4 10 C 4 6.674446 6.6744439 4 10 4 z"
             ></path>
           </svg>
-        </div>
+        </form>
         <div class="home__filter">
           <button @click="menuToggle()" class="field home__filter-btn" aria-label="Select region">
             <span>{{ regionInMenu }}</span>
