@@ -111,6 +111,9 @@ const deleteMessage = () => {
     justify-content: space-between;
     gap: 15px;
   }
+  &__btn {
+    width: 200px;
+  }
   &__cancel-btn {
     background-color: var(--grayish-blue);
     &:hover {
