@@ -253,6 +253,7 @@ const voteCast = (value) => {
   &__user-avatar {
     min-width: 31px;
     min-height: 31px;
+    aspect-ratio: 1/1;
     object-fit: cover;
   }
   &__user-name {

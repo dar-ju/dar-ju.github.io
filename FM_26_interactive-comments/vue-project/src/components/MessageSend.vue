@@ -86,6 +86,7 @@ const clearingEnteredText = () => {
   &__user-avatar {
     min-width: 41px;
     min-height: 41px;
+    aspect-ratio: 1/1;
     object-fit: cover;
   }
   &__form {
