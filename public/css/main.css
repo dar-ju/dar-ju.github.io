@@ -43,7 +43,7 @@ body {
   color: var(--color-blue);
 }
 
-.link:focus {
+.link:focus-visible {
   outline: 1px solid var(--color-dark-blue);
   outline-offset: 2px;
 }
@@ -294,7 +294,7 @@ body {
   fill: var(--color-blue);
 }
 
-.footer__link:focus, .footer__link-fm:focus {
+.footer__link:focus-visible, .footer__link-fm:focus-visible {
   outline: 2px solid var(--color-lite-blue);
   outline-offset: 2px;
 }
