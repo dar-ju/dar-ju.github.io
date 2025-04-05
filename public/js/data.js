@@ -1,5 +1,19 @@
 export const data = [
   {
+    "interactive-comments": {
+      "id": 26,
+      "en": {
+        "title": "Interactive comments section",
+        "description": "The task differs in many approaches to the solution. Sometimes it seemed that I chose the wrong way. Comments work and there is an opportunity for expansion, however, it seems to me that there is a more correct and simpler way of implementation. Additionally, I made it possible to give only 1 vote per message. The time of work on the project is 22 hours.",
+      },
+      "ru": {
+        "title": "Раздел интерактивных комментариев",
+        "description": "Задание отличается множеством подходов к решению. Иногда казалось, что я выбрал неверный путь. Комментарии работают и есть возможность для расширения, тем не менее мне кажется есть более правильный и простой способ реализации. Дополнительно сделал возможность отдать только 1 голос за сообщение. Время работы над проектом 22 часа.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/interactive-comments-section-6mGcWjrpcp"
+    }
+  },
+  {
     "rest-countries": {
       "id": 25,
       "en": {
