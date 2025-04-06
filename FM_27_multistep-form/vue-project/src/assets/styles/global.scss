@@ -1,0 +1,95 @@
+/* MAIN */
+body {
+  min-width: 320px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  background-color: var(--magnolia);
+  color: var(--grayish-blue);
+}
+
+.section {
+  padding-top: 105px;
+  padding-bottom: 105px;
+}
+
+.container {
+  max-width: 930px;
+  margin: 0 auto;
+  padding: 65px 100px;
+}
+
+/* // .input {
+//   width: 100%;
+//   padding: 12px 23px;
+//   border-radius: 10px;
+//   resize: none;
+//   color: var(--dark-blue);
+//   line-height: 1.5rem;
+//   border: 1px solid var(--light-gray);
+//   transition: border ease-in-out 0.3s;
+//   &:hover {
+//     border: 1px solid var(--grayish-blue);
+//   }
+//   &:focus {
+//     border: 1px solid var(--dark-blue);
+//   }
+// }
+
+// .main-btn {
+//   min-width: 104px;
+//   max-height: 48px;
+//   padding: 15px;
+//   border-radius: 10px;
+//   color: var(--white);
+//   text-transform: uppercase;
+//   background-color: var(--moderate-blue);
+//   transition: background-color ease-in-out 0.3s;
+//   &:hover {
+//     background-color: var(--light-grayish-blue);
+//   }
+//   &:focus-visible {
+//     outline: 1px solid var(--grayish-blue-light);
+//     outline-offset: 2px;
+//   }
+// }
+
+// /* ANIMATION */
+/* // .resize-enter-active,
+// .resize-leave-active {
+//   transition: max-height 0.1s ease-out;
+//   overflow: hidden;
+// }
+// .resize-enter-from,
+// .resize-leave-to {
+//   max-height: 0;
+// }
+// .resize-enter-to,
+// .resize-leave-from {
+//   max-height: 170px;
+// }
+
+// .appear-enter-active,
+// .appear-leave-active {
+//   transition: opacity 0.3s ease-out;
+// }
+// .appear-enter-from,
+// .appear-leave-to {
+//   opacity: 0;
+// }
+// .appear-enter-to,
+// .appear-leave-from {
+//   opacity: 1;
+// }
+
+// /* MEDIA */
+/* // @media (max-width: 820px) {
+//   .container {
+//     padding: 65px 40px;
+//   }
+// }
+
+// @media (max-width: 480px) {
+//   .container {
+//     padding: 32px 16px;
+//   }
+// } */
