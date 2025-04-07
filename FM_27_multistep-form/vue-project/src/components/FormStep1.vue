@@ -1,8 +1,10 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, defineEmits } from 'vue'
 import { zodResolver } from '@primevue/forms/resolvers/zod'
 // import { useToast } from "primevue/usetoast";
 import { z } from 'zod'
+
+const emit = defineEmits('')
 
 // const toast = useToast();
 const initialValues = ref({
@@ -20,15 +22,30 @@ const resolver = ref(
         .min(1, { message: 'Email is required.' })
         .email({ message: 'Invalid email address.' }),
       phone: z.string().min(1, { message: 'This field is required.' }),
-    }),
-  ),
+    })
+  )
 )
 
 const onFormSubmit = ({ valid }) => {
   if (valid) {
+    const step1 = {
+      name: username.value,
+      email: email.value,
+      phone: phone.value,
+    }
+    localStorage.setItem('multiForm', JSON.stringify(step1))
+    emit('formStep1Done')
     // toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
   }
 }
+
+onMounted(() => {
+  if (localStorage.getItem('multiForm')) {
+    username.value = JSON.parse(localStorage.getItem('multiForm')).name
+    email.value = JSON.parse(localStorage.getItem('multiForm')).email
+    phone.value = JSON.parse(localStorage.getItem('multiForm')).phone
+  }
+})
 </script>
 
 <template>
@@ -43,7 +60,12 @@ const onFormSubmit = ({ valid }) => {
       class="step1__form"
     >
       <div class="step1__form-item">
-        <label class="step1__form-label" for="username">Name</label>
+        <div class="step1__form-wrapper">
+          <label class="step1__form-label" for="username">Name</label>
+          <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{
+            $form.username.error?.message
+          }}</Message>
+        </div>
         <InputText
           class="step1__form-input"
           id="username"
@@ -52,12 +74,14 @@ const onFormSubmit = ({ valid }) => {
           placeholder="e.g. Stephen King"
           fluid
         />
-        <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{
-          $form.username.error?.message
-        }}</Message>
       </div>
       <div class="step1__form-item">
-        <label class="step1__form-label" for="email">Email Address</label>
+        <div class="step1__form-wrapper">
+          <label class="step1__form-label" for="email">Email Address</label>
+          <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
+            $form.email.error?.message
+          }}</Message>
+        </div>
         <InputText
           class="step1__form-input"
           id="email"
@@ -66,12 +90,14 @@ const onFormSubmit = ({ valid }) => {
           placeholder="e.g. stephenking@lorem.com"
           fluid
         />
-        <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
-          $form.email.error?.message
-        }}</Message>
       </div>
       <div class="step1__form-item">
-        <label class="step1__form-label" for="phone">Phone Number</label>
+        <div class="step1__form-wrapper">
+          <label class="step1__form-label" for="phone">Phone Number</label>
+          <Message v-if="$form.phone?.invalid" severity="error" size="small" variant="simple">{{
+            $form.phone.error?.message
+          }}</Message>
+        </div>
         <InputMask
           class="step1__form-input"
           id="phone"
@@ -79,9 +105,6 @@ const onFormSubmit = ({ valid }) => {
           mask="+9 999 999 999"
           placeholder="e.g. +1 234 567 890"
         />
-        <Message v-if="$form.phone?.invalid" severity="error" size="small" variant="simple">{{
-          $form.phone.error?.message
-        }}</Message>
       </div>
       <Button type="submit" severity="secondary" label="Next Step" />
     </Form>
@@ -110,6 +133,10 @@ const onFormSubmit = ({ valid }) => {
     display: flex;
     gap: 9px;
     flex-direction: column;
+  }
+  &__form-wrapper {
+    display: flex;
+    justify-content: space-between;
   }
   &__form-label {
     font-size: 0.87rem;
