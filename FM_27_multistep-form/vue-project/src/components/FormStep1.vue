@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, defineEmits } from 'vue'
+import { onBeforeMount, ref, defineEmits } from 'vue'
 import { zodResolver } from '@primevue/forms/resolvers/zod'
 // import { useToast } from "primevue/usetoast";
 import { z } from 'zod'
@@ -16,14 +16,14 @@ const initialValues = ref({
 const resolver = ref(
   zodResolver(
     z.object({
-      username: z.string().min(1, { message: 'This field is required.' }),
+      username: z.string().min(1, { message: 'This field is required' }),
       email: z
         .string()
-        .min(1, { message: 'Email is required.' })
-        .email({ message: 'Invalid email address.' }),
-      phone: z.string().min(1, { message: 'This field is required.' }),
-    })
-  )
+        .min(1, { message: 'Email is required' })
+        .email({ message: 'Invalid email address' }),
+      phone: z.string().min(1, { message: 'This field is required' }),
+    }),
+  ),
 )
 
 const onFormSubmit = ({ valid }) => {
@@ -34,17 +34,16 @@ const onFormSubmit = ({ valid }) => {
       phone: phone.value,
     }
     localStorage.setItem('multiForm', JSON.stringify(step1))
-    emit('formStep1Done')
+    emit('formStepDone')
     // toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
   }
 }
 
-onMounted(() => {
-  if (localStorage.getItem('multiForm')) {
-    username.value = JSON.parse(localStorage.getItem('multiForm')).name
-    email.value = JSON.parse(localStorage.getItem('multiForm')).email
-    phone.value = JSON.parse(localStorage.getItem('multiForm')).phone
-  }
+onBeforeMount(() => {
+  const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
+  initialValues.value.username = local.name || ''
+  initialValues.value.email = local.email || ''
+  initialValues.value.phone = local.phone || ''
 })
 </script>
 
@@ -54,67 +53,73 @@ onMounted(() => {
     <p class="step1__descr">Please provide your name, email address, and phone number.</p>
     <Form
       v-slot="$form"
-      :resolver="resolver"
       :initialValues="initialValues"
+      :resolver="resolver"
       @submit="onFormSubmit"
       class="step1__form"
     >
-      <div class="step1__form-item">
-        <div class="step1__form-wrapper">
-          <label class="step1__form-label" for="username">Name</label>
-          <Message v-if="$form.username?.invalid" severity="error" size="small" variant="simple">{{
-            $form.username.error?.message
-          }}</Message>
+      <div class="step1__form-fields">
+        <div class="step1__form-item">
+          <div class="step1__form-wrapper">
+            <label class="step1__form-label" for="username">Name</label>
+            <Message
+              v-if="$form.username?.invalid"
+              severity="error"
+              size="small"
+              variant="simple"
+              >{{ $form.username.error?.message }}</Message
+            >
+          </div>
+          <InputText
+            class="step1__form-input"
+            id="username"
+            name="username"
+            type="text"
+            placeholder="e.g. Stephen King"
+          />
         </div>
-        <InputText
-          class="step1__form-input"
-          id="username"
-          name="username"
-          type="text"
-          placeholder="e.g. Stephen King"
-          fluid
-        />
-      </div>
-      <div class="step1__form-item">
-        <div class="step1__form-wrapper">
-          <label class="step1__form-label" for="email">Email Address</label>
-          <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
-            $form.email.error?.message
-          }}</Message>
+        <div class="step1__form-item">
+          <div class="step1__form-wrapper">
+            <label class="step1__form-label" for="email">Email Address</label>
+            <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
+              $form.email.error?.message
+            }}</Message>
+          </div>
+          <InputText
+            class="step1__form-input"
+            id="email"
+            name="email"
+            type="text"
+            placeholder="e.g. stephenking@lorem.com"
+          />
         </div>
-        <InputText
-          class="step1__form-input"
-          id="email"
-          name="email"
-          type="text"
-          placeholder="e.g. stephenking@lorem.com"
-          fluid
-        />
-      </div>
-      <div class="step1__form-item">
-        <div class="step1__form-wrapper">
-          <label class="step1__form-label" for="phone">Phone Number</label>
-          <Message v-if="$form.phone?.invalid" severity="error" size="small" variant="simple">{{
-            $form.phone.error?.message
-          }}</Message>
+        <div class="step1__form-item">
+          <div class="step1__form-wrapper">
+            <label class="step1__form-label" for="phone">Phone Number</label>
+            <Message v-if="$form.phone?.invalid" severity="error" size="small" variant="simple">{{
+              $form.phone.error?.message
+            }}</Message>
+          </div>
+          <InputMask
+            class="step1__form-input"
+            id="phone"
+            name="phone"
+            mask="+9 999 999 999"
+            placeholder="e.g. +1 234 567 890"
+          />
         </div>
-        <InputMask
-          class="step1__form-input"
-          id="phone"
-          name="phone"
-          mask="+9 999 999 999"
-          placeholder="e.g. +1 234 567 890"
-        />
       </div>
-      <Button type="submit" severity="secondary" label="Next Step" />
+      <Button class="step1__form-submit-btn" type="submit" label="Next Step" />
     </Form>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .step1 {
+  display: flex;
   width: 450px;
-  padding: 40px 0;
+  padding: 40px 0 16px;
+  flex-direction: column;
   &__title {
     margin-bottom: 12px;
     font-size: 2rem;
@@ -125,7 +130,17 @@ onMounted(() => {
   }
   &__form {
     display: flex;
-    width: 100%;
+    // height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    // & > div:last-of-type {
+    //   margin-bottom: 55px;
+    // }
+  }
+  &__form-fields {
+    display: flex;
+    // height: 100%;
     flex-direction: column;
     gap: 23px;
   }
@@ -148,6 +163,14 @@ onMounted(() => {
       font-size: 1.05rem;
       color: var(--cool-gray);
     }
+  }
+  &__form-submit-btn {
+    min-width: 124px;
+    height: 50px;
+    justify-self: flex-end;
+    align-self: flex-end;
+    // color: var(--white);
+    // background-color: var(--marine-blue);
   }
 }
 </style>

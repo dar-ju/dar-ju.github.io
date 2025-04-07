@@ -17,9 +17,9 @@ const stageChange = () => {
   <main>
     <section class="form section">
       <div class="form__container">
-        <FormNav :active="1" />
-        <FormStep1 @formStep1Done="stageChange()" v-show="currentStage === 1" />
-        <FormStep2 @formStep2Done="stageChange()" v-show="currentStage === 2" />
+        <FormNav :active="currentStage" />
+        <FormStep1 @formStepDone="stageChange()" v-show="currentStage === 1" />
+        <FormStep2 @formStepDone="stageChange()" v-show="currentStage === 2" />
         <!-- <h1>TEST</h1> -->
       </div>
     </section>
