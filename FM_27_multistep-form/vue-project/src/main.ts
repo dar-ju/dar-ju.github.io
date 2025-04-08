@@ -25,11 +25,15 @@ const FormPrest = definePreset(Aura, {
   },
   components: {
     inputtext: {
+      focusBorderColor: 'var(--purple)',
       invalidBorderColor: 'var(--strawberry-red)',
       invalidPlaceholderColor: 'var(--cool-gray)',
     },
-    button: {
-      // primaryColor: 'var(--white)',
+    toggleswitch: {
+      width: '40px',
+      height: '20px',
+      handleSize: '12px',
+      background: 'var(--strawberry-red)',
       // primaryBackground: 'var(--marine-blue)',
     },
   },
