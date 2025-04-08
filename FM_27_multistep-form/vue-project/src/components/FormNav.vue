@@ -7,7 +7,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <aside class="nav">
+  <nav class="nav">
     <ul class="nav__list">
       <li class="nav__item">
         <span class="nav__number" :class="props.active === 1 ? 'nav__active' : ''">1</span>
@@ -38,17 +38,19 @@ const props = defineProps({
         </div>
       </li>
     </ul>
-  </aside>
+  </nav>
 </template>
 
 <style lang="scss" scoped>
 .nav {
   width: 274px;
+  min-width: 218px;
   min-height: 568px;
   padding: 40px 32px;
   background: url('./src/assets/images/bg-sidebar-desktop.svg') no-repeat;
   text-transform: uppercase;
   color: var(--white);
+  border-radius: 10px;
   &__list {
     display: flex;
     flex-direction: column;

@@ -17,10 +17,12 @@ const stageChange = () => {
   <main>
     <section class="form section">
       <div class="form__container">
-        <FormNav :active="currentStage" />
-        <FormStep1 @formStepDone="stageChange()" v-show="currentStage === 1" />
-        <FormStep2 @formStepDone="stageChange()" v-show="currentStage === 2" />
-        <!-- <h1>TEST</h1> -->
+        <div class="form__wrapper">
+          <FormNav :active="currentStage" />
+          <FormStep1 @formStepDone="stageChange()" v-show="currentStage === 1" />
+          <FormStep2 @formStepDone="stageChange()" v-show="currentStage === 2" />
+          <!-- <h1>TEST</h1> -->
+        </div>
       </div>
     </section>
   </main>
@@ -29,11 +31,14 @@ const stageChange = () => {
 <style lang="scss" scoped>
 .form {
   &__container {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  &__wrapper {
     display: flex;
     max-width: 940px;
     margin: 0 auto;
     padding: 16px;
-    gap: clamp(1px, 9vw, 100px);
     background-color: var(--white);
     border-radius: 16px;
   }

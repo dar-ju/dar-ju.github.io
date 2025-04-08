@@ -18,6 +18,24 @@ body {
   padding: 65px 100px;
 }
 
+.step {
+  display: flex;
+  width: 530px;
+  margin: 0 auto;
+  padding: 40px 40px 16px;
+  flex-direction: column;
+  &__title {
+    margin-bottom: 12px;
+    font-size: 2rem;
+    color: var(--marine-blue);
+  }
+  &__descr {
+    margin-bottom: 40px;
+    color: var(--cool-gray);
+  }
+}
+
+
 /* // .input {
 //   width: 100%;
 //   padding: 12px 23px;
