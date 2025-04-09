@@ -35,6 +35,17 @@ body {
   }
 }
 
+.submit-btn {
+  min-width: 124px;
+  height: 50px;
+  justify-self: flex-end;
+  align-self: flex-end;
+}
+
+.cancel-btn {
+  background-color: none !important;
+}
+
 
 /* // .input {
 //   width: 100%;

@@ -36,6 +36,24 @@ const FormPrest = definePreset(Aura, {
       background: 'var(--strawberry-red)',
       // primaryBackground: 'var(--marine-blue)',
     },
+    button: {
+      colorScheme: {
+        light: {
+          root: {
+            secondary: {
+              background: 'transparent',
+            },
+          },
+        },
+        dark: {
+          root: {
+            secondary: {
+              background: 'transparent',
+            },
+          },
+        },
+      },
+    },
   },
 })
 

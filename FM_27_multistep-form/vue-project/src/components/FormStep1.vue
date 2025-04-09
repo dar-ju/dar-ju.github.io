@@ -109,7 +109,7 @@ onBeforeMount(() => {
           />
         </div>
       </div>
-      <Button class="step1-form__submit-btn" type="submit" label="Next Step" />
+      <Button class="submit-btn" type="submit" label="Next Step" />
     </Form>
   </section>
 </template>
@@ -147,10 +147,10 @@ onBeforeMount(() => {
     }
   }
   &__submit-btn {
-    min-width: 124px;
-    height: 50px;
-    justify-self: flex-end;
-    align-self: flex-end;
+    // min-width: 124px;
+    // height: 50px;
+    // justify-self: flex-end;
+    // align-self: flex-end;
     // color: var(--white);
     // background-color: var(--marine-blue);
   }

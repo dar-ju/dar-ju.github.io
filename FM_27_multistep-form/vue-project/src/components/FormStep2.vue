@@ -31,47 +31,52 @@ const selectPlan = (value) => {
       @submit="onFormSubmit"
       class="step2-form"
     >
-      <ul class="step2-form__plan-list">
-        <li
-          class="step2-form__plan-item step2-form__plan-item_arcade"
-          :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
-          @click="selectPlan('arcade')"
-        >
-          <div class="step2-form__plan-block">
-            <h3 class="step2-form__plan-title">Arcade</h3>
-            <span class="step2-form__plan-price">$9/mo</span>
-            <!-- <span class="step2-form__plan-period-free" >2 months free</span> -->
-          </div>
-        </li>
-        <li
-          class="step2-form__plan-item step2-form__plan-item_advanced"
-          :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
-          @click="selectPlan('advanced')"
-        >
-          <div class="step2-form__plan-block">
-            <h3 class="step2-form__plan-title">Advanced</h3>
-            <span class="step2-form__plan-price">$12/mo</span>
-            <!-- <span class="step2-form__plan-period-free" >2 months free</span> -->
-          </div>
-        </li>
-        <li
-          class="step2-form__plan-item step2-form__plan-item_pro"
-          @click="selectPlan('pro')"
-          :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
-        >
-          <div class="step2-form__plan-block">
-            <h3 class="step2-form__plan-title">Pro</h3>
-            <span class="step2-form__plan-price">$15/mo</span>
-            <!-- <span class="step2-form__plan-period-free" >2 months free</span> -->
-          </div>
-        </li>
-      </ul>
-      <div class="step2-form__toggle-wrapper">
-        <span>Monthly</span>
-        <ToggleSwitch class="step2-form__toggle" name="activation" />
-        <span>Yearly</span>
+      <div class="step2-form__wrapper">
+        <ul class="step2-form__plan-list">
+          <li
+            class="step2-form__plan-item step2-form__plan-item_arcade"
+            :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
+            @click="selectPlan('arcade')"
+          >
+            <div class="step2-form__plan-block">
+              <h3 class="step2-form__plan-title">Arcade</h3>
+              <span class="step2-form__plan-price">$9/mo</span>
+              <!-- <span class="step2-form__plan-period-free" >2 months free</span> -->
+            </div>
+          </li>
+          <li
+            class="step2-form__plan-item step2-form__plan-item_advanced"
+            :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
+            @click="selectPlan('advanced')"
+          >
+            <div class="step2-form__plan-block">
+              <h3 class="step2-form__plan-title">Advanced</h3>
+              <span class="step2-form__plan-price">$12/mo</span>
+              <!-- <span class="step2-form__plan-period-free" >2 months free</span> -->
+            </div>
+          </li>
+          <li
+            class="step2-form__plan-item step2-form__plan-item_pro"
+            @click="selectPlan('pro')"
+            :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
+          >
+            <div class="step2-form__plan-block">
+              <h3 class="step2-form__plan-title">Pro</h3>
+              <span class="step2-form__plan-price">$15/mo</span>
+              <!-- <span class="step2-form__plan-period-free" >2 months free</span> -->
+            </div>
+          </li>
+        </ul>
+        <div class="step2-form__toggle-wrapper">
+          <span>Monthly</span>
+          <ToggleSwitch class="step2-form__toggle" name="activation" />
+          <span>Yearly</span>
+        </div>
       </div>
-      <Button type="submit" severity="secondary" label="Submit" />
+      <div class="step2-form__btn-wrapper">
+        <Button class="cancel-btn" type="submit" severity="secondary" label="Submit" />
+        <Button class="submit-btn step2-form__submit-btn" type="submit" label="Next Step" />
+      </div>
     </Form>
   </section>
 </template>
@@ -81,6 +86,10 @@ const selectPlan = (value) => {
   padding: 40px 33px 16px 47px;
 }
 .step2-form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   &__plan-list {
     display: flex;
     margin-bottom: 30px;
@@ -95,9 +104,7 @@ const selectPlan = (value) => {
     border-radius: 10px;
     background-repeat: no-repeat;
     background-position: top 20px left 16px;
-    transition:
-      border ease-in-out 0.3s,
-      background-color ease-in-out 0.3s;
+    transition: border ease-in-out 0.3s, background-color ease-in-out 0.3s;
     cursor: pointer;
     &_arcade {
       background-image: url('./src/assets/images/icon-arcade.svg');
@@ -147,6 +154,13 @@ const selectPlan = (value) => {
   }
   &__toggle .p-toggleswitch-slider {
     background-color: var(--marine-blue) !important;
+  }
+  &__btn-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__submit-btn {
+    align-self: flex-end;
   }
 }
 </style>
