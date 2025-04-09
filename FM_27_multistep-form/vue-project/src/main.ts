@@ -37,11 +37,15 @@ const FormPrest = definePreset(Aura, {
       // primaryBackground: 'var(--marine-blue)',
     },
     button: {
+      secondaryBorderColor: 'transparent',
       colorScheme: {
         light: {
           root: {
             secondary: {
               background: 'transparent',
+              hoverBackground: 'transparent',
+              // borderColor: 'none',
+              // hoverBorder: 'none',
             },
           },
         },

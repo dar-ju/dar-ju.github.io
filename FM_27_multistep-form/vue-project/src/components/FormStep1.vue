@@ -22,8 +22,8 @@ const resolver = ref(
         .min(1, { message: 'Email is required' })
         .email({ message: 'Invalid email address' }),
       phone: z.string().min(1, { message: 'This field is required' }),
-    })
-  )
+    }),
+  ),
 )
 
 const onFormSubmit = ({ valid }) => {
@@ -34,7 +34,7 @@ const onFormSubmit = ({ valid }) => {
       phone: phone.value,
     }
     localStorage.setItem('multiForm', JSON.stringify(step1))
-    emit('formStepDone')
+    emit('step', 1)
     // toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
   }
 }

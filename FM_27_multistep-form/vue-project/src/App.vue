@@ -8,8 +8,8 @@ import FormStep2 from './components/FormStep2.vue'
 // import FormThank from './components/FormThank.vue'
 
 const currentStage = ref(1)
-const stageChange = () => {
-  currentStage.value += 1
+const stageChange = (data) => {
+  currentStage.value += data
 }
 </script>
 
@@ -19,8 +19,8 @@ const stageChange = () => {
       <div class="form__container">
         <div class="form__wrapper">
           <FormNav :active="currentStage" />
-          <FormStep1 @formStepDone="stageChange()" v-show="currentStage === 1" />
-          <FormStep2 @formStepDone="stageChange()" v-show="currentStage === 2" />
+          <FormStep1 @step="stageChange" v-show="currentStage === 1" />
+          <FormStep2 @step="stageChange" v-show="currentStage === 2" />
           <!-- <h1>TEST</h1> -->
         </div>
       </div>

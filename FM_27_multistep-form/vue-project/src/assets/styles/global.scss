@@ -43,8 +43,15 @@ body {
 }
 
 .cancel-btn {
-  background-color: none !important;
+  cursor: pointer;
+  color: var(--cool-gray);
+  font-weight: 500;
+  transition: color ease-in-out 0.3s;
+  &:hover {
+    color: var(--marine-blue);
+  }
 }
+
 
 
 /* // .input {
