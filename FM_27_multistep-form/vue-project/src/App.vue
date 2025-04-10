@@ -7,9 +7,32 @@ import FormStep2 from './components/FormStep2.vue'
 // import FormStep4 from './components/FormStep4.vue'
 // import FormThank from './components/FormThank.vue'
 
+const formData = ref({
+  step1: {},
+  step2: {},
+  step3: {},
+  step4: {},
+  billing: {
+    monthly: {
+      arcade: 9,
+      advanced: 12,
+      pro: 12,
+    },
+    yearly: {
+      arcade: 90,
+      advanced: 120,
+      pro: 120,
+    },
+  },
+  addOns: {},
+})
+
 const currentStage = ref(1)
-const stageChange = (data) => {
-  currentStage.value += data
+const getData = (data, direction, step) => {
+  if (direction === 'next') currentStage.value += 1
+  if (direction === 'prev') currentStage.value += -1
+  formData.value[step] = data
+  localStorage.setItem('multiForm', JSON.stringify(formData.value))
 }
 </script>
 
@@ -19,8 +42,8 @@ const stageChange = (data) => {
       <div class="form__container">
         <div class="form__wrapper">
           <FormNav :active="currentStage" />
-          <FormStep1 @step="stageChange" v-show="currentStage === 1" />
-          <FormStep2 @step="stageChange" v-show="currentStage === 2" />
+          <FormStep1 @data="getData" v-show="currentStage === 1" />
+          <FormStep2 @data="getData" v-show="currentStage === 2" />
           <!-- <h1>TEST</h1> -->
         </div>
       </div>

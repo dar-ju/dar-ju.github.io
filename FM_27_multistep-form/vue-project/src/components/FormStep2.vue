@@ -1,17 +1,44 @@
 <script setup>
-import { ref, watch, computed } from 'vue'
+import { ref, onBeforeMount, computed, watch } from 'vue'
 
 const emit = defineEmits('')
 
 const periodCheck = ref(false)
 
 const plan = ref('arcade')
+const period = ref('monthly')
 const selectPlan = (value) => {
   plan.value = value
 }
 
-const period = computed(() => (periodCheck.value ? 'yearly' : 'monthly'))
+watch(periodCheck, (newVal) => {
+  console.log(periodCheck)
+
+  period.value = newVal ? 'monthly' : 'yearly'
+})
+
+// const period = computed(() => (periodCheck.value ? 'yearly' : 'monthly'))
 const minHeight = computed(() => ({ minHeight: periodCheck.value ? '182px' : '162px' }))
+
+const submit = (direction) => {
+  emit(
+    'data',
+    {
+      plan: plan.value,
+      period: period.value,
+    },
+    direction,
+    'step2'
+  )
+}
+
+onBeforeMount(() => {
+  const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
+  plan.value = local.step2.plan || ''
+  period.value = local.step2.period || ''
+  // initialValues.value.email = local.email || ''
+  // initialValues.value.phone = local.phone || ''
+})
 </script>
 
 <template>
@@ -68,8 +95,13 @@ const minHeight = computed(() => ({ minHeight: periodCheck.value ? '182px' : '16
         </div>
       </div>
       <div class="step2-form__btn-wrapper">
-        <a class="cancel-btn" @click="emit('step', -1)">Go Back</a>
-        <Button class="submit-btn step2-form__submit-btn" type="submit" label="Next Step" />
+        <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
+        <Button
+          class="submit-btn step2-form__submit-btn"
+          type="button"
+          label="Next Step"
+          @click="submit('next')"
+        />
       </div>
     </Form>
   </section>
@@ -98,9 +130,7 @@ const minHeight = computed(() => ({ minHeight: periodCheck.value ? '182px' : '16
     border-radius: 10px;
     background-repeat: no-repeat;
     background-position: top 20px left 16px;
-    transition:
-      border ease-in-out 0.3s,
-      background-color ease-in-out 0.3s;
+    transition: border ease-in-out 0.3s, background-color ease-in-out 0.3s;
     cursor: pointer;
     &_arcade {
       background-image: url('./src/assets/images/icon-arcade.svg');

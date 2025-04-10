@@ -22,28 +22,30 @@ const resolver = ref(
         .min(1, { message: 'Email is required' })
         .email({ message: 'Invalid email address' }),
       phone: z.string().min(1, { message: 'This field is required' }),
-    }),
-  ),
+    })
+  )
 )
 
 const onFormSubmit = ({ valid }) => {
   if (valid) {
-    const step1 = {
-      name: username.value,
-      email: email.value,
-      phone: phone.value,
-    }
-    localStorage.setItem('multiForm', JSON.stringify(step1))
-    emit('step', 1)
-    // toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 });
+    emit(
+      'data',
+      {
+        name: username.value,
+        email: email.value,
+        phone: phone.value,
+      },
+      'next',
+      'step1'
+    )
   }
 }
 
 onBeforeMount(() => {
   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-  initialValues.value.username = local.name || ''
-  initialValues.value.email = local.email || ''
-  initialValues.value.phone = local.phone || ''
+  initialValues.value.username = local.step1.name || ''
+  initialValues.value.email = local.step1.email || ''
+  initialValues.value.phone = local.step1.phone || ''
 })
 </script>
 
