@@ -5,16 +5,17 @@ const emit = defineEmits('')
 
 const periodCheck = ref(false)
 
-const plan = ref('arcade')
-const period = ref('monthly')
+const plan = ref('')
+const period = ref('')
 const selectPlan = (value) => {
   plan.value = value
 }
 
 watch(periodCheck, (newVal) => {
-  console.log(periodCheck)
+  console.log(newVal)
 
-  period.value = newVal ? 'monthly' : 'yearly'
+  period.value = newVal ? 'yearly' : 'monthly'
+  console.log(period.value)
 })
 
 // const period = computed(() => (periodCheck.value ? 'yearly' : 'monthly'))
@@ -28,16 +29,17 @@ const submit = (direction) => {
       period: period.value,
     },
     direction,
-    'step2'
+    'step2',
   )
 }
 
 onBeforeMount(() => {
   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-  plan.value = local.step2.plan || ''
-  period.value = local.step2.period || ''
+  plan.value = local.step2?.plan || 'arcade'
+  period.value = local.step2?.period || 'monthly'
   // initialValues.value.email = local.email || ''
   // initialValues.value.phone = local.phone || ''
+  console.log(plan.value)
 })
 </script>
 
@@ -130,7 +132,9 @@ onBeforeMount(() => {
     border-radius: 10px;
     background-repeat: no-repeat;
     background-position: top 20px left 16px;
-    transition: border ease-in-out 0.3s, background-color ease-in-out 0.3s;
+    transition:
+      border ease-in-out 0.3s,
+      background-color ease-in-out 0.3s;
     cursor: pointer;
     &_arcade {
       background-image: url('./src/assets/images/icon-arcade.svg');

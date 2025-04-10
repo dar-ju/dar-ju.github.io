@@ -8,10 +8,10 @@ import FormStep2 from './components/FormStep2.vue'
 // import FormThank from './components/FormThank.vue'
 
 const formData = ref({
-  step1: {},
-  step2: {},
-  step3: {},
-  step4: {},
+  // step1: {},
+  // step2: {},
+  // step3: {},
+  // step4: {},
   billing: {
     monthly: {
       arcade: 9,
@@ -32,6 +32,8 @@ const getData = (data, direction, step) => {
   if (direction === 'next') currentStage.value += 1
   if (direction === 'prev') currentStage.value += -1
   formData.value[step] = data
+  console.log(data)
+
   localStorage.setItem('multiForm', JSON.stringify(formData.value))
 }
 </script>

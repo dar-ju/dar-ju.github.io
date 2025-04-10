@@ -22,8 +22,8 @@ const resolver = ref(
         .min(1, { message: 'Email is required' })
         .email({ message: 'Invalid email address' }),
       phone: z.string().min(1, { message: 'This field is required' }),
-    })
-  )
+    }),
+  ),
 )
 
 const onFormSubmit = ({ valid }) => {
@@ -36,16 +36,16 @@ const onFormSubmit = ({ valid }) => {
         phone: phone.value,
       },
       'next',
-      'step1'
+      'step1',
     )
   }
 }
 
 onBeforeMount(() => {
   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-  initialValues.value.username = local.step1.name || ''
-  initialValues.value.email = local.step1.email || ''
-  initialValues.value.phone = local.step1.phone || ''
+  initialValues.value.username = local.step1?.name || ''
+  initialValues.value.email = local.step1?.email || ''
+  initialValues.value.phone = local.step1?.phone || ''
 })
 </script>
 
