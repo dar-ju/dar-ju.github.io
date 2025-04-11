@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import FormNav from './components/FormNav.vue'
 import FormStep1 from './components/FormStep1.vue'
 import FormStep2 from './components/FormStep2.vue'
-// import FormStep3 from './components/FormStep3.vue'
+import FormStep3 from './components/FormStep3.vue'
 // import FormStep4 from './components/FormStep4.vue'
 // import FormThank from './components/FormThank.vue'
 
@@ -46,6 +46,7 @@ const getData = (data, direction, step) => {
           <FormNav :active="currentStage" />
           <FormStep1 @data="getData" v-show="currentStage === 1" />
           <FormStep2 @data="getData" v-show="currentStage === 2" />
+          <FormStep3 @data="getData" v-show="currentStage === 3" />
           <!-- <h1>TEST</h1> -->
         </div>
       </div>
