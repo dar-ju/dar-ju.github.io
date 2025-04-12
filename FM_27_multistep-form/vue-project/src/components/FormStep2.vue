@@ -99,14 +99,9 @@ onBeforeMount(() => {
           <span :class="{ 'step2-form__period-selected': period === 'yearly' }">Yearly</span>
         </div>
       </div>
-      <div class="step2-form__btn-wrapper">
+      <div class="btn-wrapper">
         <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
-        <Button
-          class="submit-btn step2-form__submit-btn"
-          type="button"
-          label="Next Step"
-          @click="submit('next')"
-        />
+        <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
       </div>
     </Form>
   </section>
@@ -194,14 +189,6 @@ onBeforeMount(() => {
   &__period-selected {
     color: var(--marine-blue);
     transition: color ease-in-out 0.3s;
-  }
-  &__btn-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  &__submit-btn {
-    align-self: flex-end;
   }
 }
 </style>

@@ -35,6 +35,12 @@ body {
   }
 }
 
+.btn-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .submit-btn {
   min-width: 124px;
   height: 50px;

@@ -39,56 +39,51 @@ onBeforeMount(() => {
     <Form class="step3-form">
       <CheckboxGroup v-model="selected" name="options" class="step3-form__wrapper">
         <label
-          :class="{ 'step3-form__item_active': selected.includes('sevice') }"
+          :class="{ 'step3-form__item_active': selected.includes('Online service') }"
           class="step3-form__item"
-          for="sevice"
+          for="service"
         >
-          <Checkbox class="step3-form__check" inputId="sevice" value="sevice" />
+          <Checkbox class="step3-form__check" inputId="service" value="Online service" />
           <div class="step3-form__label">
             <div class="step3-form__wrap">
               <h3 class="step3-form__name">Online service</h3>
               <span class="step3-form__descr">Access to multiplayer games</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('service') }}</span>
+            <span class="step3-form__cost">{{ billingSet('Online service') }}</span>
           </div>
         </label>
         <label
           class="step3-form__item"
-          :class="{ 'step3-form__item_active': selected.includes('storage') }"
+          :class="{ 'step3-form__item_active': selected.includes('Larger storage') }"
           for="storage"
         >
-          <Checkbox class="step3-form__check" inputId="storage" value="storage" />
+          <Checkbox class="step3-form__check" inputId="storage" value="Larger storage" />
           <div class="step3-form__label">
             <div class="step3-form__wrap">
               <h3 class="step3-form__name">Larger storage</h3>
               <span class="step3-form__descr">Extra 1TB of cloud save</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('storage') }}</span>
+            <span class="step3-form__cost">{{ billingSet('Larger storage') }}</span>
           </div>
         </label>
         <label
           class="step3-form__item"
-          :class="{ 'step3-form__item_active': selected.includes('profile') }"
+          :class="{ 'step3-form__item_active': selected.includes('Customizable Profile') }"
           for="profile"
         >
-          <Checkbox class="step3-form__check" inputId="profile" value="profile" />
+          <Checkbox class="step3-form__check" inputId="profile" value="Customizable Profile" />
           <div class="step3-form__label">
             <div class="step3-form__wrap">
               <h3 class="step3-form__name">Customizable Profile</h3>
               <span class="step3-form__descr">Custom theme on your profile</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('profile') }}</span>
+            <span class="step3-form__cost">{{ billingSet('Customizable Profile') }}</span>
           </div>
         </label>
       </CheckboxGroup>
-      <div class="step2-form__btn-wrapper">
+      <div class="btn-wrapper">
         <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
-        <Button
-          class="submit-btn step2-form__submit-btn"
-          type="button"
-          label="Next Step"
-          @click="submit('next')"
-        />
+        <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
       </div>
     </Form>
   </section>

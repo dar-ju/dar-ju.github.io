@@ -4,7 +4,7 @@ import FormNav from './components/FormNav.vue'
 import FormStep1 from './components/FormStep1.vue'
 import FormStep2 from './components/FormStep2.vue'
 import FormStep3 from './components/FormStep3.vue'
-// import FormStep4 from './components/FormStep4.vue'
+import FormStep4 from './components/FormStep4.vue'
 // import FormThank from './components/FormThank.vue'
 
 const formData = ref({
@@ -20,7 +20,7 @@ const formData = ref({
   step3: {
     options: [],
   },
-  step4: {},
+  // step4: {},
   billing: {
     monthly: {
       arcade: 9,
@@ -35,14 +35,14 @@ const formData = ref({
   },
   addOns: {
     monthly: {
-      service: 1,
-      storage: 2,
-      profile: 2,
+      'Online service': 1,
+      'Larger storage': 2,
+      'Customizable Profile': 2,
     },
     yearly: {
-      service: 10,
-      storage: 20,
-      profile: 20,
+      'Online service': 10,
+      'Larger storage': 20,
+      'Customizable Profile': 20,
     },
   },
 })
@@ -66,7 +66,7 @@ onBeforeMount(() => {
   formData.value.step1.phone = local.step1?.phone || ''
   formData.value.step2.plan = local.step2?.plan || 'arcade'
   formData.value.step2.period = local.step2?.period || 'monthly'
-  formData.value.step3.options = local.step3?.options || ''
+  formData.value.step3.options = local.step3?.options || []
 })
 </script>
 
@@ -79,6 +79,7 @@ onBeforeMount(() => {
           <FormStep1 @data="getData" v-show="currentStage === 1" :formData="formData" />
           <FormStep2 @data="getData" v-show="currentStage === 2" :formData="formData" />
           <FormStep3 @data="getData" v-show="currentStage === 3" :formData="formData" />
+          <FormStep4 @data="getData" v-show="currentStage === 4" :formData="formData" />
           <!-- <h1>TEST</h1> -->
         </div>
       </div>
