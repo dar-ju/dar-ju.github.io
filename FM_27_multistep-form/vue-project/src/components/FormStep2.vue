@@ -1,7 +1,11 @@
 <script setup>
-import { ref, onBeforeMount, computed, watch } from 'vue'
+import { ref, onBeforeMount, computed, watch, onMounted } from 'vue'
 
 const emit = defineEmits('')
+
+const props = defineProps({
+  formData: {},
+})
 
 const periodCheck = ref(false)
 
@@ -12,13 +16,14 @@ const selectPlan = (value) => {
 }
 
 watch(periodCheck, (newVal) => {
-  console.log(newVal)
-
   period.value = newVal ? 'yearly' : 'monthly'
-  console.log(period.value)
 })
 
-// const period = computed(() => (periodCheck.value ? 'yearly' : 'monthly'))
+const billingSet = (item) => {
+  if (period.value === 'monthly') return `$${props.formData.billing.monthly[item]}/mo`
+  if (period.value === 'yearly') return `$${props.formData.billing.yearly[item]}/yr`
+}
+
 const minHeight = computed(() => ({ minHeight: periodCheck.value ? '182px' : '162px' }))
 
 const submit = (direction) => {
@@ -34,25 +39,23 @@ const submit = (direction) => {
 }
 
 onBeforeMount(() => {
-  const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-  plan.value = local.step2?.plan || 'arcade'
-  period.value = local.step2?.period || 'monthly'
-  // initialValues.value.email = local.email || ''
-  // initialValues.value.phone = local.phone || ''
-  console.log(plan.value)
+  plan.value = props.formData.step2.plan || 'arcade'
+  period.value = props.formData.step2.period || 'monthly'
+  periodCheck.value = props.formData.step2.period === 'yearly' // toggle set
 })
+// onBeforeMount(() => {
+// const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
+// plan.value = local.step2?.plan || 'arcade'
+// period.value = local.step2?.period || 'monthly'
+// periodCheck.value = local.step2?.period === 'yearly' // toggle set
+// })
 </script>
 
 <template>
-  <section class="step step2">
+  <section v-if="props" class="step step2">
     <h2 class="step__title">Select your plan</h2>
     <p class="step__descr">You have the option of monthly or yearly billing.</p>
-    <Form
-      :resolver="resolver"
-      :initialValues="initialValues"
-      @submit="onFormSubmit"
-      class="step2-form"
-    >
+    <Form class="step2-form">
       <div class="step2-form__wrapper">
         <ul class="step2-form__plan-list">
           <li
@@ -63,7 +66,7 @@ onBeforeMount(() => {
           >
             <div class="step2-form__plan-block">
               <h3 class="step2-form__plan-title">Arcade</h3>
-              <span class="step2-form__plan-price">$9/mo</span>
+              <span class="step2-form__plan-price">{{ billingSet('arcade') }}</span>
               <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
             </div>
           </li>
@@ -74,7 +77,7 @@ onBeforeMount(() => {
           >
             <div class="step2-form__plan-block">
               <h3 class="step2-form__plan-title">Advanced</h3>
-              <span class="step2-form__plan-price">$12/mo</span>
+              <span class="step2-form__plan-price">{{ billingSet('advanced') }}</span>
               <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
             </div>
           </li>
@@ -85,7 +88,7 @@ onBeforeMount(() => {
           >
             <div class="step2-form__plan-block">
               <h3 class="step2-form__plan-title">Pro</h3>
-              <span class="step2-form__plan-price">$15/mo</span>
+              <span class="step2-form__plan-price">{{ billingSet('pro') }}</span>
               <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
             </div>
           </li>

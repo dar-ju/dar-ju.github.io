@@ -1,10 +1,14 @@
 <script setup>
-import { onBeforeMount, ref, defineEmits } from 'vue'
+import { onBeforeMount, ref, defineEmits, onMounted } from 'vue'
 import { zodResolver } from '@primevue/forms/resolvers/zod'
 // import { useToast } from "primevue/usetoast";
 import { z } from 'zod'
 
 const emit = defineEmits('')
+
+const props = defineProps({
+  formData: {},
+})
 
 // const toast = useToast();
 const initialValues = ref({
@@ -42,11 +46,16 @@ const onFormSubmit = ({ valid }) => {
 }
 
 onBeforeMount(() => {
-  const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-  initialValues.value.username = local.step1?.name || ''
-  initialValues.value.email = local.step1?.email || ''
-  initialValues.value.phone = local.step1?.phone || ''
+  initialValues.value.username = props.formData.step1.name || ''
+  initialValues.value.email = props.formData.step1.email || ''
+  initialValues.value.phone = props.formData.step1.phone || ''
 })
+// onBeforeMount(() => {
+//   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
+//   initialValues.value.username = local.step1?.name || ''
+//   initialValues.value.email = local.step1?.email || ''
+//   initialValues.value.phone = local.step1?.phone || ''
+// })
 </script>
 
 <template>

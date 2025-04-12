@@ -1,45 +1,140 @@
 <script setup>
-import { ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 
-const initialValues = ref({
-  ingredient: [],
+const emit = defineEmits('')
+
+const props = defineProps({
+  formData: {},
 })
 
-const onFormSubmit = () => {}
+const selected = ref([])
+
+const billingSet = (item) => {
+  if (props.formData.step2.period === 'monthly')
+    return `+$${props.formData.addOns.monthly[item]}/mo`
+  if (props.formData.step2.period === 'yearly') return `+$${props.formData.addOns.yearly[item]}/yr`
+}
+
+const submit = (direction) => {
+  emit(
+    'data',
+    {
+      options: selected.value,
+    },
+    direction,
+    'step3',
+  )
+}
+
+onBeforeMount(() => {
+  // const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
+  selected.value = props.formData.step3.options || ''
+})
 </script>
 
 <template>
   <section class="step step3">
-    <Form
-      :initialValues="initialValues"
-      @submit="onFormSubmit"
-      class="flex justify-center flex-col gap-4"
-    >
-      <div class="flex flex-col gap-2">
-        <CheckboxGroup name="ingredient" class="flex flex-wrap gap-4">
-          <div class="flex items-center gap-2">
-            <Checkbox inputId="cheese" value="Cheese" />
-            <label for="cheese"> Cheese </label>
-          </div>
-          <div class="flex items-center gap-2">
-            <Checkbox inputId="mushroom" value="Mushroom" />
-            <label for="mushroom"> Mushroom </label>
-          </div>
-          <div class="flex items-center gap-2">
-            <Checkbox inputId="pepper" value="Pepper" />
-            <label for="pepper"> Pepper </label>
-          </div>
-          <div class="flex items-center gap-2">
-            <Checkbox inputId="onion" value="Onion" />
-            <label for="onion"> Onion </label>
-          </div>
-        </CheckboxGroup>
+    <h2 class="step__title">Pick add-ons</h2>
+    <p class="step__descr">Add-ons help enhance your gaming experience.</p>
+    <Form class="step3-form">
+      <CheckboxGroup v-model="selected" name="options" class="step3-form__wrapper">
+        <div class="step3-form__item">
+          <Checkbox class="step3-form__check" inputId="sevice" value="sevice" />
+          <label class="step3-form__label" for="sevice">
+            <div class="step3-form__wrap">
+              <h3 class="step3-form__name">Online service</h3>
+              <span class="step3-form__descr">Access to multiplayer games</span>
+            </div>
+            <span class="step3-form__cost">{{ billingSet('service') }}</span>
+          </label>
+        </div>
+        <div class="step3-form__item">
+          <Checkbox class="step3-form__check" inputId="storage" value="storage" />
+          <label class="step3-form__label" for="storage">
+            <div class="step3-form__wrap">
+              <h3 class="step3-form__name">Larger storage</h3>
+              <span class="step3-form__descr">Extra 1TB of cloud save</span>
+            </div>
+            <span class="step3-form__cost">{{ billingSet('storage') }}</span>
+          </label>
+        </div>
+        <div class="step3-form__item">
+          <Checkbox class="step3-form__check" inputId="profile" value="profile" />
+          <label class="step3-form__label" for="profile">
+            <div class="step3-form__wrap">
+              <h3 class="step3-form__name">Customizable Profile</h3>
+              <span class="step3-form__descr">Custom theme on your profile</span>
+            </div>
+            <span class="step3-form__cost">{{ billingSet('profile') }}</span>
+          </label>
+        </div>
+      </CheckboxGroup>
+      <div class="step2-form__btn-wrapper">
+        <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
+        <Button
+          class="submit-btn step2-form__submit-btn"
+          type="button"
+          label="Next Step"
+          @click="submit('next')"
+        />
       </div>
-      <Button type="submit" severity="secondary" label="Submit" />
     </Form>
   </section>
 </template>
 
-
 <style lang="scss" scope>
+.step3 {
+  padding: 40px 32px 16px 47px;
+}
+
+.step3-form {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  &__wrapper {
+    display: flex;
+    gap: 13px;
+    flex-direction: column;
+  }
+  &__item {
+    display: flex;
+    padding: 21px 24px;
+    align-items: center;
+    border: 1px solid var(--cool-gray);
+    border-radius: 10px;
+    transition:
+      border ease-in-out 0.3s,
+      background-color ease-in-out 0.3s;
+    cursor: pointer;
+    &:hover {
+      border: 1px solid var(--purple);
+    }
+  }
+  &__check {
+    margin-right: 24px;
+  }
+  &__label {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  &__name {
+    margin-bottom: 3px;
+    font-size: 0.99rem;
+    font-weight: 500;
+    color: var(--marine-blue);
+  }
+  &__descr {
+    font-size: 0.88rem;
+    color: var(--cool-gray);
+  }
+  &__cost {
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--purplish-blue);
+  }
+}
 </style>
