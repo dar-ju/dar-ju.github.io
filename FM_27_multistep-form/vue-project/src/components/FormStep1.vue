@@ -23,7 +23,7 @@ const resolver = ref(
       username: z.string().min(1, { message: 'This field is required' }),
       email: z
         .string()
-        .min(1, { message: 'Email is required' })
+        .min(1, { message: 'This field is required' })
         .email({ message: 'Invalid email address' }),
       phone: z.string().min(1, { message: 'This field is required' }),
     }),

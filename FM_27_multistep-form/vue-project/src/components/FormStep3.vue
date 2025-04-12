@@ -38,36 +38,48 @@ onBeforeMount(() => {
     <p class="step__descr">Add-ons help enhance your gaming experience.</p>
     <Form class="step3-form">
       <CheckboxGroup v-model="selected" name="options" class="step3-form__wrapper">
-        <div class="step3-form__item">
+        <label
+          :class="{ 'step3-form__item_active': selected.includes('sevice') }"
+          class="step3-form__item"
+          for="sevice"
+        >
           <Checkbox class="step3-form__check" inputId="sevice" value="sevice" />
-          <label class="step3-form__label" for="sevice">
+          <div class="step3-form__label">
             <div class="step3-form__wrap">
               <h3 class="step3-form__name">Online service</h3>
               <span class="step3-form__descr">Access to multiplayer games</span>
             </div>
             <span class="step3-form__cost">{{ billingSet('service') }}</span>
-          </label>
-        </div>
-        <div class="step3-form__item">
+          </div>
+        </label>
+        <label
+          class="step3-form__item"
+          :class="{ 'step3-form__item_active': selected.includes('storage') }"
+          for="storage"
+        >
           <Checkbox class="step3-form__check" inputId="storage" value="storage" />
-          <label class="step3-form__label" for="storage">
+          <div class="step3-form__label">
             <div class="step3-form__wrap">
               <h3 class="step3-form__name">Larger storage</h3>
               <span class="step3-form__descr">Extra 1TB of cloud save</span>
             </div>
             <span class="step3-form__cost">{{ billingSet('storage') }}</span>
-          </label>
-        </div>
-        <div class="step3-form__item">
+          </div>
+        </label>
+        <label
+          class="step3-form__item"
+          :class="{ 'step3-form__item_active': selected.includes('profile') }"
+          for="profile"
+        >
           <Checkbox class="step3-form__check" inputId="profile" value="profile" />
-          <label class="step3-form__label" for="profile">
+          <div class="step3-form__label">
             <div class="step3-form__wrap">
               <h3 class="step3-form__name">Customizable Profile</h3>
               <span class="step3-form__descr">Custom theme on your profile</span>
             </div>
             <span class="step3-form__cost">{{ billingSet('profile') }}</span>
-          </label>
-        </div>
+          </div>
+        </label>
       </CheckboxGroup>
       <div class="step2-form__btn-wrapper">
         <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
@@ -107,6 +119,10 @@ onBeforeMount(() => {
       border ease-in-out 0.3s,
       background-color ease-in-out 0.3s;
     cursor: pointer;
+    &_active {
+      background-color: var(--magnolia);
+      border: 1px solid var(--purple);
+    }
     &:hover {
       border: 1px solid var(--purple);
     }
