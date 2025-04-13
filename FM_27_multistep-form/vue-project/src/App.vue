@@ -5,7 +5,7 @@ import FormStep1 from './components/FormStep1.vue'
 import FormStep2 from './components/FormStep2.vue'
 import FormStep3 from './components/FormStep3.vue'
 import FormStep4 from './components/FormStep4.vue'
-// import FormThank from './components/FormThank.vue'
+import FormThank from './components/FormThank.vue'
 
 const formData = ref({
   step1: {
@@ -76,11 +76,11 @@ onBeforeMount(() => {
       <div class="form__container">
         <div class="form__wrapper">
           <FormNav :active="currentStage" />
-          <FormStep1 @data="getData" v-show="currentStage === 1" :formData="formData" />
-          <FormStep2 @data="getData" v-show="currentStage === 2" :formData="formData" />
-          <FormStep3 @data="getData" v-show="currentStage === 3" :formData="formData" />
-          <FormStep4 @data="getData" v-show="currentStage === 4" :formData="formData" />
-          <!-- <h1>TEST</h1> -->
+          <FormStep1 v-show="currentStage === 1" @data="getData" :formData="formData" />
+          <FormStep2 v-show="currentStage === 2" @data="getData" :formData="formData" />
+          <FormStep3 v-show="currentStage === 3" @data="getData" :formData="formData" />
+          <FormStep4 v-show="currentStage === 4" @data="getData" :formData="formData" />
+          <FormThank v-show="currentStage === 5" />
         </div>
       </div>
     </section>

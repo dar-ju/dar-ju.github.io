@@ -31,7 +31,11 @@ const props = defineProps({
         </div>
       </li>
       <li class="nav__item">
-        <span class="nav__number" :class="props.active === 4 ? 'nav__active' : ''">4</span>
+        <span
+          class="nav__number"
+          :class="props.active === 4 || props.active === 5 ? 'nav__active' : ''"
+          >4</span
+        >
         <div class="nav__block">
           <span class="nav__step">Step 4</span>
           <span class="nav__step-name">Summary</span>
