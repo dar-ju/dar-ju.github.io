@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from 'vue'
+<script setup>
+import { onBeforeMount, ref } from 'vue'
 import FormNav from './components/FormNav.vue'
 import FormStep1 from './components/FormStep1.vue'
 import FormStep2 from './components/FormStep2.vue'
@@ -7,7 +7,7 @@ import FormStep3 from './components/FormStep3.vue'
 import FormStep4 from './components/FormStep4.vue'
 import FormThank from './components/FormThank.vue'
 
-const formData = ref({
+const formDataDefault = {
   step1: {
     name: '',
     email: '',
@@ -20,7 +20,6 @@ const formData = ref({
   step3: {
     options: [],
   },
-  // step4: {},
   billing: {
     monthly: {
       arcade: 9,
@@ -37,15 +36,16 @@ const formData = ref({
     monthly: {
       'Online service': 1,
       'Larger storage': 2,
-      'Customizable Profile': 2,
+      'Customizable profile': 2,
     },
     yearly: {
       'Online service': 10,
       'Larger storage': 20,
-      'Customizable Profile': 20,
+      'Customizable profile': 20,
     },
   },
-})
+}
+const formData = ref({})
 
 const currentStage = ref(1)
 const getData = (data, direction, step) => {
@@ -53,13 +53,14 @@ const getData = (data, direction, step) => {
   if (direction === 'prev') currentStage.value += -1
   formData.value[step] = data
   localStorage.setItem('multiForm', JSON.stringify(formData.value))
+  if (direction === 'next' && step === 'step4') {
+    localStorage.removeItem('multiForm')
+    formData.value = formDataDefault
+  }
 }
 
-// onMounted(() => {
-//   console.log(formData.value)
-// })
-
 onBeforeMount(() => {
+  formData.value = formDataDefault
   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
   formData.value.step1.name = local.step1?.name || ''
   formData.value.step1.email = local.step1?.email || ''

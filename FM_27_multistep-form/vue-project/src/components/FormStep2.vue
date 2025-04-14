@@ -43,12 +43,6 @@ onBeforeMount(() => {
   period.value = props.formData.step2.period || 'monthly'
   periodCheck.value = props.formData.step2.period === 'yearly' // toggle set
 })
-// onBeforeMount(() => {
-// const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-// plan.value = local.step2?.plan || 'arcade'
-// period.value = local.step2?.period || 'monthly'
-// periodCheck.value = local.step2?.period === 'yearly' // toggle set
-// })
 </script>
 
 <template>
@@ -94,9 +88,17 @@ onBeforeMount(() => {
           </li>
         </ul>
         <div class="step2-form__toggle-wrapper">
-          <span :class="{ 'step2-form__period-selected': period === 'monthly' }">Monthly</span>
+          <span
+            class="step2-form__period"
+            :class="{ 'step2-form__period-selected': period === 'monthly' }"
+            >Monthly</span
+          >
           <ToggleSwitch class="step2-form__toggle" v-model="periodCheck" />
-          <span :class="{ 'step2-form__period-selected': period === 'yearly' }">Yearly</span>
+          <span
+            class="step2-form__period"
+            :class="{ 'step2-form__period-selected': period === 'yearly' }"
+            >Yearly</span
+          >
         </div>
       </div>
       <div class="btn-wrapper">
@@ -109,7 +111,7 @@ onBeforeMount(() => {
 
 <style lang="scss" scope>
 .step2 {
-  padding: 40px 33px 16px 47px;
+  padding: 40px 41px 16px 56px;
 }
 .step2-form {
   height: 100%;
@@ -171,6 +173,9 @@ onBeforeMount(() => {
     font-size: 0.75rem;
     color: var(--marine-blue);
     font-weight: 500;
+  }
+  &__period {
+    font-size: 0.9rem;
   }
   &__toggle-wrapper {
     display: flex;

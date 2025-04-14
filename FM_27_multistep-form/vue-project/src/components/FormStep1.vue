@@ -1,7 +1,6 @@
 <script setup>
-import { onBeforeMount, ref, defineEmits, onMounted } from 'vue'
+import { onBeforeMount, ref, defineEmits } from 'vue'
 import { zodResolver } from '@primevue/forms/resolvers/zod'
-// import { useToast } from "primevue/usetoast";
 import { z } from 'zod'
 
 const emit = defineEmits('')
@@ -10,7 +9,6 @@ const props = defineProps({
   formData: {},
 })
 
-// const toast = useToast();
 const initialValues = ref({
   username: '',
   email: '',
@@ -50,12 +48,6 @@ onBeforeMount(() => {
   initialValues.value.email = props.formData.step1.email || ''
   initialValues.value.phone = props.formData.step1.phone || ''
 })
-// onBeforeMount(() => {
-//   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
-//   initialValues.value.username = local.step1?.name || ''
-//   initialValues.value.email = local.step1?.email || ''
-//   initialValues.value.phone = local.step1?.phone || ''
-// })
 </script>
 
 <template>
@@ -133,7 +125,6 @@ onBeforeMount(() => {
   flex-grow: 1;
   &__fields {
     display: flex;
-    // height: 100%;
     flex-direction: column;
     gap: 23px;
   }
@@ -152,18 +143,12 @@ onBeforeMount(() => {
   }
   &__input {
     min-height: 48px;
+    color: var(--marine-blue);
+    font-weight: 500;
     &::placeholder {
       font-size: 1.05rem;
       color: var(--cool-gray);
     }
-  }
-  &__submit-btn {
-    // min-width: 124px;
-    // height: 50px;
-    // justify-self: flex-end;
-    // align-self: flex-end;
-    // color: var(--white);
-    // background-color: var(--marine-blue);
   }
 }
 </style>

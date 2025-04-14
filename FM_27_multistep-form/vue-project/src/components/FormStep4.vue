@@ -1,6 +1,4 @@
 <script setup>
-import { onBeforeMount, ref } from 'vue'
-
 const emit = defineEmits('')
 
 const props = defineProps({
@@ -86,7 +84,7 @@ const capitalLetter = (val) => {
 
 <style lang="scss" scoped>
 .step4 {
-  padding: 40px 32px 16px 47px;
+  padding: 40px 41px 16px 55px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

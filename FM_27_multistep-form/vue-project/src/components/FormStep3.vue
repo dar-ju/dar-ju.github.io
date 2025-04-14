@@ -27,7 +27,6 @@ const submit = (direction) => {
 }
 
 onBeforeMount(() => {
-  // const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
   selected.value = props.formData.step3.options || ''
 })
 </script>
@@ -68,16 +67,16 @@ onBeforeMount(() => {
         </label>
         <label
           class="step3-form__item"
-          :class="{ 'step3-form__item_active': selected.includes('Customizable Profile') }"
+          :class="{ 'step3-form__item_active': selected.includes('Customizable profile') }"
           for="profile"
         >
-          <Checkbox class="step3-form__check" inputId="profile" value="Customizable Profile" />
+          <Checkbox class="step3-form__check" inputId="profile" value="Customizable profile" />
           <div class="step3-form__label">
             <div class="step3-form__wrap">
-              <h3 class="step3-form__name">Customizable Profile</h3>
+              <h3 class="step3-form__name">Customizable profile</h3>
               <span class="step3-form__descr">Custom theme on your profile</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('Customizable Profile') }}</span>
+            <span class="step3-form__cost">{{ billingSet('Customizable profile') }}</span>
           </div>
         </label>
       </CheckboxGroup>
@@ -91,7 +90,7 @@ onBeforeMount(() => {
 
 <style lang="scss" scope>
 .step3 {
-  padding: 40px 32px 16px 47px;
+  padding: 40px 41px 16px 55px;
 }
 
 .step3-form {
