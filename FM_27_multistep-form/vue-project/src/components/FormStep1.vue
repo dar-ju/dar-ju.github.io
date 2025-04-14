@@ -112,7 +112,9 @@ onBeforeMount(() => {
           />
         </div>
       </div>
-      <Button class="submit-btn" type="submit" label="Next Step" />
+      <div class="step1-form__btn-wrapper">
+        <Button class="submit-btn" type="submit" label="Next Step" />
+      </div>
     </Form>
   </section>
 </template>
@@ -148,6 +150,41 @@ onBeforeMount(() => {
     &::placeholder {
       font-size: 1.05rem;
       color: var(--cool-gray);
+    }
+  }
+  &__btn-wrapper {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .step1-form {
+    gap: 14px;
+    &__fields {
+      gap: 15px;
+    }
+    &__item {
+      gap: 4px;
+    }
+    &__label {
+      font-size: 0.74rem;
+      font-weight: 500;
+    }
+    &__input {
+      min-height: 40px;
+      &::placeholder {
+        font-size: 0.95rem;
+      }
+    }
+    &__btn-wrapper {
+      position: absolute;
+      display: flex;
+      width: 100vw;
+      padding: 15px;
+      left: -18px;
+      bottom: -193px;
+      justify-content: flex-end;
+      background-color: var(--white);
     }
   }
 }

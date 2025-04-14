@@ -6,10 +6,8 @@
     <h2 class="thank__title">Thank you!</h2>
     <p class="thank__descr">
       Thanks for confirming your subscription! We&nbsp;hope you have fun using our platform.
-      If&nbsp;you ever need support, please feel free to&nbsp;email&nbsp;us at&nbsp;<a
-        href="mailto:support@loremgaming.com"
-        >support@loremgaming.com</a
-      >.
+      If&nbsp;you ever need support, please feel free to&nbsp;email&nbsp;us at
+      <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>.
     </p>
   </section>
 </template>
@@ -31,6 +29,25 @@
     text-align: center;
     line-height: 1.5rem;
     color: var(--cool-gray);
+  }
+}
+
+@media (max-width: 768px) {
+  .thank {
+    padding: 80px 24px;
+    &__image {
+      width: 55px;
+      margin-bottom: 23px;
+    }
+    &__title {
+      margin-bottom: 12px;
+      font-size: 1.5rem;
+    }
+    &__descr {
+      line-height: 1.55rem;
+    }
+  }
+  .step4-form {
   }
 }
 </style>

@@ -70,7 +70,7 @@ const capitalLetter = (val) => {
         <span class="step4-form__total-cost">{{ total() }}</span>
       </div>
     </div>
-    <div class="btn-wrapper">
+    <div class="btn-wrapper step4-form__btn-wrapper">
       <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
       <Button
         class="submit-btn step4-form__submit-btn"
@@ -152,6 +152,45 @@ const capitalLetter = (val) => {
   }
   &__submit-btn {
     background-color: var(--purplish-blue);
+  }
+}
+
+@media (max-width: 768px) {
+  .step4 {
+    padding: 31px 24px;
+    padding-bottom: 12px;
+  }
+  .step4-form {
+    &__summary {
+      padding: 20px 15px;
+    }
+    &__plan-total {
+      margin-bottom: 15px;
+      padding-bottom: 13px;
+    }
+    &__title {
+      margin-bottom: 0;
+      font-size: 0.87rem;
+    }
+    &__cost {
+      font-size: 0.88rem;
+    }
+    &__list {
+      margin-bottom: 0px;
+      gap: 16px;
+    }
+    &__total {
+      padding: 19px 15px;
+    }
+    &__total-name {
+      font-size: 0.89rem;
+    }
+    &__total-cost {
+      font-size: 1rem;
+    }
+    &__btn-wrapper {
+      bottom: -232px;
+    }
   }
 }
 </style>

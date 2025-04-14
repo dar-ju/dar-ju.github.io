@@ -103,4 +103,19 @@ onBeforeMount(() => {
     border-radius: 16px;
   }
 }
+
+@media (max-width: 768px) {
+  .form {
+    padding-top: 0;
+    &__container {
+      padding: 0;
+    }
+    &__wrapper {
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      border-radius: initial;
+    }
+  }
+}
 </style>

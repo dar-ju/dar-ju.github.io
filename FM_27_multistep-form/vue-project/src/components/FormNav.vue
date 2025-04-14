@@ -1,9 +1,11 @@
-<script setup lang="ts">
-import { defineProps } from 'vue'
+<script setup>
+import { defineProps, ref } from 'vue'
 
 const props = defineProps({
   active: Number,
 })
+
+// const screenWidth = ref(window.innerWidth)
 </script>
 
 <template>
@@ -93,6 +95,24 @@ const props = defineProps({
     background-color: var(--light-blue);
     color: initial;
     border: 1px solid var(--light-blue);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav {
+    width: 100%;
+    min-height: 172px;
+    padding: 32px;
+    background: top/cover no-repeat url('./src/assets/images/bg-sidebar-mobile.svg');
+    border-radius: initial;
+    &__block {
+      display: none;
+    }
+    &__list {
+      gap: 16px;
+      flex-direction: row;
+      justify-content: center;
+    }
   }
 }
 </style>

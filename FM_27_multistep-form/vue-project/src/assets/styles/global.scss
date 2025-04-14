@@ -58,6 +58,48 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  body {
+    min-height: 665px;
+  }
+  .step {
+    position: absolute;
+    width: 91%;
+    padding: 31px 23px;
+    top: 99px;
+    background-color: var(--white);
+    border-radius: 10px;
+    &__title {
+      font-size: 1.5rem;
+    }
+    &__descr {
+      margin-bottom: 22px;
+      line-height: 1.5rem;
+    }
+  }
+  .btn-wrapper {
+    position: absolute;
+    display: flex;
+    width: 100vw;
+    padding: 15px;
+    left: -18px;
+    bottom: -95px;
+    justify-content: space-between;
+    background-color: var(--white);
+  }
+  .cancel-btn {
+    font-size: 0.9rem;
+  }
+  .submit-btn {
+    min-width: 97px;
+    height: 41px;
+    border-radius: 5px;
+  }
+  .submit-btn span {
+    font-size: 0.9rem;
+  }
+}
+
 
 /* // .input {
 //   width: 100%;

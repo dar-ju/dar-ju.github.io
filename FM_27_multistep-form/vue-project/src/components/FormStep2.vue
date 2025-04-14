@@ -24,7 +24,9 @@ const billingSet = (item) => {
   if (period.value === 'yearly') return `$${props.formData.billing.yearly[item]}/yr`
 }
 
-const minHeight = computed(() => ({ minHeight: periodCheck.value ? '182px' : '162px' }))
+const minHeight = computed(() =>
+  window.innerWidth > 768 ? { minHeight: periodCheck.value ? '182px' : '162px' } : {},
+)
 
 const submit = (direction) => {
   emit(
@@ -194,6 +196,34 @@ onBeforeMount(() => {
   &__period-selected {
     color: var(--marine-blue);
     transition: color ease-in-out 0.3s;
+  }
+}
+
+@media (max-width: 768px) {
+  .step2 {
+    padding: 31px 24px;
+  }
+  .step2-form {
+    &__plan-list {
+      margin-bottom: 23px;
+      gap: 11px;
+      flex-direction: column;
+    }
+    &__plan-item {
+      min-height: 78px;
+      width: 100%;
+      background-position: top 17px left 14px;
+    }
+    &__plan-block {
+      padding-left: 53px;
+      justify-content: flex-start;
+    }
+    &__toggle-wrapper {
+      gap: 24px;
+    }
+    &__period {
+      font-size: 0.85rem;
+    }
   }
 }
 </style>

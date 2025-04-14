@@ -80,7 +80,7 @@ onBeforeMount(() => {
           </div>
         </label>
       </CheckboxGroup>
-      <div class="btn-wrapper">
+      <div class="btn-wrapper step3-form__btn-wrapper">
         <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
         <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
       </div>
@@ -145,6 +145,36 @@ onBeforeMount(() => {
     font-size: 0.86rem;
     font-weight: 500;
     color: var(--purplish-blue);
+  }
+}
+
+@media (max-width: 768px) {
+  .step3 {
+    padding: 31px 24px;
+  }
+  .step3-form {
+    &__wrapper {
+      gap: 10px;
+    }
+    &__item {
+      padding: 14px;
+    }
+    &__check {
+      margin-right: 16px;
+    }
+    &__name {
+      margin-bottom: 0;
+      font-size: 0.87rem;
+    }
+    &__descr {
+      font-size: 0.75rem;
+    }
+    &__cost {
+      font-size: 0.75rem;
+    }
+    &__btn-wrapper {
+      bottom: -210px;
+    }
   }
 }
 </style>
