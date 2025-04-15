@@ -100,6 +100,7 @@ onBeforeMount(() => {
     max-width: 940px;
     margin: 0 auto;
     padding: 16px;
+    gap: clamp(1px, 5vw, 37px);
     background-color: var(--white);
     border-radius: 16px;
   }

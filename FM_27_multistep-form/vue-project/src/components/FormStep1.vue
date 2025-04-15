@@ -52,70 +52,75 @@ onBeforeMount(() => {
 
 <template>
   <section class="step">
-    <h2 class="step__title">Personal info</h2>
-    <p class="step__descr">Please provide your name, email address, and phone number.</p>
-    <Form
-      v-slot="$form"
-      :initialValues="initialValues"
-      :resolver="resolver"
-      @submit="onFormSubmit"
-      class="step1-form"
-    >
-      <div class="step1-form__fields">
-        <div class="step1-form__item">
-          <div class="step1-form__wrapper">
-            <label class="step1-form__label" for="username">Name</label>
-            <Message
-              v-if="$form.username?.invalid"
-              severity="error"
-              size="small"
-              variant="simple"
-              >{{ $form.username.error?.message }}</Message
-            >
+    <div class="step__wrapper">
+      <h2 class="step__title">Personal info</h2>
+      <p class="step__descr">Please provide your name, email address, and phone number.</p>
+      <Form
+        v-slot="$form"
+        :initialValues="initialValues"
+        :resolver="resolver"
+        @submit="onFormSubmit"
+        class="step1-form"
+      >
+        <div class="step1-form__fields">
+          <div class="step1-form__item">
+            <div class="step1-form__wrapper">
+              <label class="step1-form__label" for="username">Name</label>
+              <Message
+                v-if="$form.username?.invalid"
+                severity="error"
+                size="small"
+                variant="simple"
+                >{{ $form.username.error?.message }}</Message
+              >
+            </div>
+            <InputText
+              class="step1-form__input"
+              id="username"
+              name="username"
+              type="text"
+              placeholder="e.g. Stephen King"
+            />
           </div>
-          <InputText
-            class="step1-form__input"
-            id="username"
-            name="username"
-            type="text"
-            placeholder="e.g. Stephen King"
-          />
-        </div>
-        <div class="step1-form__item">
-          <div class="step1-form__wrapper">
-            <label class="step1-form__label" for="email">Email Address</label>
-            <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
-              $form.email.error?.message
-            }}</Message>
+          <div class="step1-form__item">
+            <div class="step1-form__wrapper">
+              <label class="step1-form__label" for="email">Email Address</label>
+              <Message v-if="$form.email?.invalid" severity="error" size="small" variant="simple">{{
+                $form.email.error?.message
+              }}</Message>
+            </div>
+            <InputText
+              class="step1-form__input"
+              id="email"
+              name="email"
+              type="text"
+              placeholder="e.g. stephenking@lorem.com"
+            />
           </div>
-          <InputText
-            class="step1-form__input"
-            id="email"
-            name="email"
-            type="text"
-            placeholder="e.g. stephenking@lorem.com"
-          />
-        </div>
-        <div class="step1-form__item">
-          <div class="step1-form__wrapper">
-            <label class="step1-form__label" for="phone">Phone Number</label>
-            <Message v-if="$form.phone?.invalid" severity="error" size="small" variant="simple">{{
-              $form.phone.error?.message
-            }}</Message>
+          <div class="step1-form__item">
+            <div class="step1-form__wrapper">
+              <label class="step1-form__label" for="phone">Phone Number</label>
+              <Message v-if="$form.phone?.invalid" severity="error" size="small" variant="simple">{{
+                $form.phone.error?.message
+              }}</Message>
+            </div>
+            <InputMask
+              class="step1-form__input"
+              id="phone"
+              name="phone"
+              mask="+9 999 999 999"
+              placeholder="e.g. +1 234 567 890"
+            />
           </div>
-          <InputMask
-            class="step1-form__input"
-            id="phone"
-            name="phone"
-            mask="+9 999 999 999"
-            placeholder="e.g. +1 234 567 890"
-          />
         </div>
-      </div>
-      <div class="btn-wrapper step1-form__btn-wrapper">
-        <Button class="submit-btn" type="submit" label="Next Step" />
-      </div>
-    </Form>
+        <div class="btn-wrapper step1-form__btn-wrapper">
+          <Button class="submit-btn" type="submit" label="Next Step" />
+        </div>
+      </Form>
+    </div>
+    <div class="btn-wrapper step1-form__btn-wrapper-mobile">
+      <Button class="submit-btn" type="submit" label="Next Step" />
+    </div>
   </section>
 </template>
 
@@ -124,7 +129,7 @@ onBeforeMount(() => {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
+  gap: 91px;
   &__fields {
     display: flex;
     flex-direction: column;
@@ -153,7 +158,11 @@ onBeforeMount(() => {
     }
   }
   &__btn-wrapper {
+    display: flex;
     align-self: flex-end;
+  }
+  &__btn-wrapper-mobile {
+    display: none;
   }
 }
 
@@ -176,16 +185,22 @@ onBeforeMount(() => {
         font-size: 0.95rem;
       }
     }
-    // &__btn-wrapper {
-    //   position: absolute;
-    //   display: flex;
-    //   width: 100vw;
-    //   padding: 15px;
-    //   left: -18px;
-    //   bottom: -193px;
-    //   justify-content: flex-end;
-    //   background-color: var(--white);
-    // }
+    &__btn-wrapper {
+      display: none;
+      justify-content: flex-end;
+      //   position: absolute;
+      //   display: flex;
+      //   width: 100vw;
+      //   padding: 15px;
+      //   left: -18px;
+      //   bottom: -193px;
+      //   justify-content: flex-end;
+      //   background-color: var(--white);
+    }
+    &__btn-wrapper-mobile {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }
 </style>

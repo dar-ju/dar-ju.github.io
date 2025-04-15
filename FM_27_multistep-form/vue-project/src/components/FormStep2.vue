@@ -49,65 +49,67 @@ onBeforeMount(() => {
 
 <template>
   <section v-if="props" class="step step2">
-    <h2 class="step__title">Select your plan</h2>
-    <p class="step__descr">You have the option of monthly or yearly billing.</p>
-    <Form class="step2-form">
-      <div class="step2-form__wrapper">
-        <ul class="step2-form__plan-list">
-          <li
-            class="step2-form__plan-item step2-form__plan-item_arcade"
-            :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
-            :style="minHeight"
-            @click="selectPlan('arcade')"
-          >
-            <div class="step2-form__plan-block">
-              <h3 class="step2-form__plan-title">Arcade</h3>
-              <span class="step2-form__plan-price">{{ billingSet('arcade') }}</span>
-              <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
-            </div>
-          </li>
-          <li
-            class="step2-form__plan-item step2-form__plan-item_advanced"
-            :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
-            @click="selectPlan('advanced')"
-          >
-            <div class="step2-form__plan-block">
-              <h3 class="step2-form__plan-title">Advanced</h3>
-              <span class="step2-form__plan-price">{{ billingSet('advanced') }}</span>
-              <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
-            </div>
-          </li>
-          <li
-            class="step2-form__plan-item step2-form__plan-item_pro"
-            @click="selectPlan('pro')"
-            :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
-          >
-            <div class="step2-form__plan-block">
-              <h3 class="step2-form__plan-title">Pro</h3>
-              <span class="step2-form__plan-price">{{ billingSet('pro') }}</span>
-              <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
-            </div>
-          </li>
-        </ul>
-        <div class="step2-form__toggle-wrapper">
-          <span
-            class="step2-form__period"
-            :class="{ 'step2-form__period-selected': period === 'monthly' }"
-            >Monthly</span
-          >
-          <ToggleSwitch class="step2-form__toggle" v-model="periodCheck" />
-          <span
-            class="step2-form__period"
-            :class="{ 'step2-form__period-selected': period === 'yearly' }"
-            >Yearly</span
-          >
+    <div class="step__wrapper">
+      <h2 class="step__title">Select your plan</h2>
+      <p class="step__descr">You have the option of monthly or yearly billing.</p>
+      <Form class="step2-form">
+        <div class="step2-form__wrapper">
+          <ul class="step2-form__plan-list">
+            <li
+              class="step2-form__plan-item step2-form__plan-item_arcade"
+              :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
+              :style="minHeight"
+              @click="selectPlan('arcade')"
+            >
+              <div class="step2-form__plan-block">
+                <h3 class="step2-form__plan-title">Arcade</h3>
+                <span class="step2-form__plan-price">{{ billingSet('arcade') }}</span>
+                <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
+              </div>
+            </li>
+            <li
+              class="step2-form__plan-item step2-form__plan-item_advanced"
+              :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
+              @click="selectPlan('advanced')"
+            >
+              <div class="step2-form__plan-block">
+                <h3 class="step2-form__plan-title">Advanced</h3>
+                <span class="step2-form__plan-price">{{ billingSet('advanced') }}</span>
+                <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
+              </div>
+            </li>
+            <li
+              class="step2-form__plan-item step2-form__plan-item_pro"
+              @click="selectPlan('pro')"
+              :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
+            >
+              <div class="step2-form__plan-block">
+                <h3 class="step2-form__plan-title">Pro</h3>
+                <span class="step2-form__plan-price">{{ billingSet('pro') }}</span>
+                <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
+              </div>
+            </li>
+          </ul>
+          <div class="step2-form__toggle-wrapper">
+            <span
+              class="step2-form__period"
+              :class="{ 'step2-form__period-selected': period === 'monthly' }"
+              >Monthly</span
+            >
+            <ToggleSwitch class="step2-form__toggle" v-model="periodCheck" />
+            <span
+              class="step2-form__period"
+              :class="{ 'step2-form__period-selected': period === 'yearly' }"
+              >Yearly</span
+            >
+          </div>
         </div>
-      </div>
-      <div class="btn-wrapper">
-        <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
-        <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
-      </div>
-    </Form>
+        <div class="btn-wrapper">
+          <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
+          <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
+        </div>
+      </Form>
+    </div>
   </section>
 </template>
 
