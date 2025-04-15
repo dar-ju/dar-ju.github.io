@@ -106,6 +106,9 @@ onBeforeMount(() => {
 
 @media (max-width: 768px) {
   .form {
+    // min-height: 597px;
+    min-height: 695px;
+
     padding-top: 0;
     &__container {
       padding: 0;

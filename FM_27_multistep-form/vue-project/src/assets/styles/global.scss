@@ -3,13 +3,15 @@ body {
   min-width: 320px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
-  background-color: var(--magnolia);
+  background-color: var(--white);
   color: var(--grayish-blue);
 }
 
 .section {
+  min-height: 543px;
   padding-top: 105px;
   padding-bottom: 105px;
+  background-color: var(--magnolia);
 }
 
 .container {
@@ -20,9 +22,10 @@ body {
 
 .step {
   display: flex;
-  width: 547px;
+  width: 100%;
+  max-width: 501px;
   margin: 0 auto;
-  padding: 40px 41px 16px 57px;
+  padding: 40px 17px 16px 33px;
   flex-direction: column;
   &__title {
     margin-bottom: 12px;
@@ -64,11 +67,10 @@ body {
   }
   .step {
     position: absolute;
-    width: 91%;
-    padding: 31px 23px;
+    padding: 0;
+    width: 100%;
     top: 99px;
-    background-color: var(--white);
-    border-radius: 10px;
+    align-items: center;
     &__title {
       font-size: 1.5rem;
     }
@@ -78,14 +80,17 @@ body {
     }
   }
   .btn-wrapper {
-    position: absolute;
     display: flex;
-    width: 100vw;
+    height: 150px;
+    min-width: 100vw;
+    width: 100%;
     padding: 15px;
-    left: -18px;
-    bottom: -95px;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: flex-end;
     background-color: var(--white);
+    & button {
+      align-self: flex-start;
+    }
   }
   .cancel-btn {
     font-size: 0.9rem;

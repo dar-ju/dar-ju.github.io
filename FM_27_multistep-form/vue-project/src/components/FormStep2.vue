@@ -49,61 +49,63 @@ onBeforeMount(() => {
 
 <template>
   <section v-if="props" class="step step2">
-    <h2 class="step__title">Select your plan</h2>
-    <p class="step__descr">You have the option of monthly or yearly billing.</p>
     <Form class="step2-form">
-      <div class="step2-form__wrapper">
-        <ul class="step2-form__plan-list">
-          <li
-            class="step2-form__plan-item step2-form__plan-item_arcade"
-            :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
-            :style="minHeight"
-            @click="selectPlan('arcade')"
-          >
-            <div class="step2-form__plan-block">
-              <h3 class="step2-form__plan-title">Arcade</h3>
-              <span class="step2-form__plan-price">{{ billingSet('arcade') }}</span>
-              <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
-            </div>
-          </li>
-          <li
-            class="step2-form__plan-item step2-form__plan-item_advanced"
-            :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
-            @click="selectPlan('advanced')"
-          >
-            <div class="step2-form__plan-block">
-              <h3 class="step2-form__plan-title">Advanced</h3>
-              <span class="step2-form__plan-price">{{ billingSet('advanced') }}</span>
-              <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
-            </div>
-          </li>
-          <li
-            class="step2-form__plan-item step2-form__plan-item_pro"
-            @click="selectPlan('pro')"
-            :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
-          >
-            <div class="step2-form__plan-block">
-              <h3 class="step2-form__plan-title">Pro</h3>
-              <span class="step2-form__plan-price">{{ billingSet('pro') }}</span>
-              <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
-            </div>
-          </li>
-        </ul>
-        <div class="step2-form__toggle-wrapper">
-          <span
-            class="step2-form__period"
-            :class="{ 'step2-form__period-selected': period === 'monthly' }"
-            >Monthly</span
-          >
-          <ToggleSwitch class="step2-form__toggle" v-model="periodCheck" />
-          <span
-            class="step2-form__period"
-            :class="{ 'step2-form__period-selected': period === 'yearly' }"
-            >Yearly</span
-          >
+      <div class="step2-form__fields">
+        <h2 class="step__title">Select your plan</h2>
+        <p class="step__descr">You have the option of monthly or yearly billing.</p>
+        <div class="step2-form__wrapper">
+          <ul class="step2-form__plan-list">
+            <li
+              class="step2-form__plan-item step2-form__plan-item_arcade"
+              :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
+              :style="minHeight"
+              @click="selectPlan('arcade')"
+            >
+              <div class="step2-form__plan-block">
+                <h3 class="step2-form__plan-title">Arcade</h3>
+                <span class="step2-form__plan-price">{{ billingSet('arcade') }}</span>
+                <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
+              </div>
+            </li>
+            <li
+              class="step2-form__plan-item step2-form__plan-item_advanced"
+              :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
+              @click="selectPlan('advanced')"
+            >
+              <div class="step2-form__plan-block">
+                <h3 class="step2-form__plan-title">Advanced</h3>
+                <span class="step2-form__plan-price">{{ billingSet('advanced') }}</span>
+                <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
+              </div>
+            </li>
+            <li
+              class="step2-form__plan-item step2-form__plan-item_pro"
+              @click="selectPlan('pro')"
+              :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
+            >
+              <div class="step2-form__plan-block">
+                <h3 class="step2-form__plan-title">Pro</h3>
+                <span class="step2-form__plan-price">{{ billingSet('pro') }}</span>
+                <span class="step2-form__plan-period-free" v-show="periodCheck">2 months free</span>
+              </div>
+            </li>
+          </ul>
+          <div class="step2-form__toggle-wrapper">
+            <span
+              class="step2-form__period"
+              :class="{ 'step2-form__period-selected': period === 'monthly' }"
+              >Monthly</span
+            >
+            <ToggleSwitch class="step2-form__toggle" v-model="periodCheck" />
+            <span
+              class="step2-form__period"
+              :class="{ 'step2-form__period-selected': period === 'yearly' }"
+              >Yearly</span
+            >
+          </div>
         </div>
       </div>
-      <div class="btn-wrapper">
+      <div class="btn-wrapper step2-form__btn-wrapper">
         <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
         <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
       </div>
@@ -113,13 +115,19 @@ onBeforeMount(() => {
 
 <style lang="scss" scope>
 .step2 {
-  padding: 40px 41px 16px 56px;
+  max-width: 524px;
+  padding: 40px 29px 15px 45px;
 }
 .step2-form {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  &__fields {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
   &__plan-list {
     display: flex;
     margin-bottom: 30px;
@@ -157,9 +165,9 @@ onBeforeMount(() => {
   }
   &__plan-block {
     display: flex;
+    padding-top: 87px;
     gap: 6px;
     flex-direction: column;
-    justify-content: flex-end;
   }
   &__plan-title {
     font-size: 1rem;
@@ -201,9 +209,17 @@ onBeforeMount(() => {
 
 @media (max-width: 768px) {
   .step2 {
-    padding: 31px 24px;
+    padding: 0;
   }
   .step2-form {
+    gap: 22px;
+    align-items: center;
+    &__fields {
+      max-width: clamp(342px, 70vw, 500px);
+      padding: 32px 23px;
+      border-radius: 10px;
+      background-color: var(--white);
+    }
     &__plan-list {
       margin-bottom: 23px;
       gap: 11px;
@@ -215,6 +231,7 @@ onBeforeMount(() => {
       background-position: top 17px left 14px;
     }
     &__plan-block {
+      padding-top: 0;
       padding-left: 53px;
       justify-content: flex-start;
     }
@@ -223,6 +240,9 @@ onBeforeMount(() => {
     }
     &__period {
       font-size: 0.85rem;
+    }
+    &__btn-wrapper {
+      justify-content: space-between;
     }
   }
 }
