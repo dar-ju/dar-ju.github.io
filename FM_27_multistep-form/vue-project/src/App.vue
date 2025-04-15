@@ -72,7 +72,8 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <main>
+  <main class="main">
+    <!-- <div class="overlay"></div> -->
     <section class="form section">
       <div class="form__container">
         <div class="form__wrapper">
