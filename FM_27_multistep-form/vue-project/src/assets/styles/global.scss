@@ -1,9 +1,9 @@
 /* MAIN */
 body {
-  min-width: 320px;
+  min-width: 342px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
-  background-color: var(--white);
+  background-color: var(--magnolia);
   color: var(--grayish-blue);
 }
 
@@ -18,6 +18,22 @@ body {
   max-width: 930px;
   margin: 0 auto;
   padding: 65px 100px;
+}
+
+.form {
+  &__container {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+  &__wrapper {
+    display: flex;
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 16px;
+    background-color: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 15px 37px -10px var(--light-gray);
+  }
 }
 
 .step {
@@ -35,6 +51,16 @@ body {
   &__descr {
     margin-bottom: 40px;
     color: var(--cool-gray);
+  }
+}
+
+.step-form {
+  display: flex;
+  flex-direction: column;
+  &__fields {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   }
 }
 
@@ -64,11 +90,26 @@ body {
 @media (max-width: 768px) {
   body {
     min-height: 665px;
+    background-color: var(--white);
   }
+
+  .form {
+    min-height: 695px;
+    padding-top: 0;
+    &__container {
+      padding: 0;
+    }
+    &__wrapper {
+      padding: 0;
+      flex-direction: column;
+      align-items: center;
+      border-radius: initial;
+    }
+  }
+
   .step {
     position: absolute;
     padding: 0;
-    width: 100%;
     top: 99px;
     align-items: center;
     &__title {
@@ -79,6 +120,16 @@ body {
       line-height: 1.5rem;
     }
   }
+
+  .step-form {
+    &__fields {
+      width: clamp(342px, 70vw, 500px);
+      padding: 32px 23px;
+      border-radius: 10px;
+      background-color: var(--white);
+    }
+  }
+
   .btn-wrapper {
     display: flex;
     height: 150px;
@@ -92,14 +143,18 @@ body {
       align-self: flex-start;
     }
   }
+
   .cancel-btn {
+    padding: 13px 0;
     font-size: 0.9rem;
   }
+
   .submit-btn {
     min-width: 97px;
     height: 41px;
     border-radius: 5px;
   }
+
   .submit-btn span {
     font-size: 0.9rem;
   }

@@ -6,7 +6,8 @@ const props = defineProps({
 })
 
 const submit = (direction) => {
-  emit('data', null, direction, 'step4')
+  emit('data', {}, direction, 'step4')
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 const billingSet = (item) => {
@@ -14,6 +15,7 @@ const billingSet = (item) => {
     return `$${props.formData.billing.monthly[item]}/mo`
   if (props.formData.step2.period === 'yearly') return `$${props.formData.billing.yearly[item]}/yr`
 }
+
 const addOnsSet = (item) => {
   if (props.formData.step2.period === 'monthly')
     return `+$${props.formData.addOns.monthly[item]}/mo`
@@ -32,8 +34,8 @@ const total = () => {
   const addOns = props.formData.step3.options
   const addOnsBilling = addOns.reduce((acc, val) => acc + props.formData.addOns[period][val], 0)
   const summ = planBilling + addOnsBilling
-  if (period === 'monthly') return `+$${summ}/mo`
-  if (period === 'yearly') return `+$${summ}/yr`
+  if (period === 'monthly') return `$${summ}/mo`
+  if (period === 'yearly') return `$${summ}/yr`
 }
 
 const capitalLetter = (val) => {
@@ -43,7 +45,7 @@ const capitalLetter = (val) => {
 
 <template>
   <section class="step step4">
-    <div>
+    <div class="step-form__fields step4-form__fields">
       <h2 class="step__title">Finishing up</h2>
       <p class="step__descr">Double-check everything looks OK before confirming.</p>
       <div class="step4-form__summary">
@@ -54,7 +56,7 @@ const capitalLetter = (val) => {
                 `${capitalLetter(props.formData.step2.plan)} (${capitalLetter(props.formData.step2.period)})`
               }}
             </h3>
-            <a class="step4-form__change">Change</a>
+            <a class="step4-form__change" @click="submit('change')">Change</a>
           </div>
           <span class="step4-form__cost">{{ billingSet(props.formData.step2.plan) }}</span>
         </div>
@@ -84,7 +86,8 @@ const capitalLetter = (val) => {
 
 <style lang="scss" scoped>
 .step4 {
-  padding: 40px 41px 16px 55px;
+  max-width: 524px;
+  padding: 40px 29px 15px 45px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -94,7 +97,7 @@ const capitalLetter = (val) => {
   &__summary {
     margin-bottom: 4px;
     padding: 20px 25px;
-    background-color: var(--magnolia);
+    background-color: var(--alabaster);
     border-radius: 10px;
   }
   &__plan-total {
@@ -115,6 +118,7 @@ const capitalLetter = (val) => {
     font-size: 0.85rem;
     text-decoration: underline;
     color: var(--cool-gray);
+    cursor: pointer;
   }
   &__cost {
     font-weight: 500;
@@ -157,10 +161,13 @@ const capitalLetter = (val) => {
 
 @media (max-width: 768px) {
   .step4 {
-    padding: 31px 24px;
-    padding-bottom: 12px;
+    padding: 0;
+    gap: 159px;
   }
   .step4-form {
+    &__fields {
+      padding-bottom: 13px;
+    }
     &__summary {
       padding: 20px 15px;
     }
@@ -189,7 +196,7 @@ const capitalLetter = (val) => {
       font-size: 1rem;
     }
     &__btn-wrapper {
-      bottom: -232px;
+      justify-content: space-between;
     }
   }
 }

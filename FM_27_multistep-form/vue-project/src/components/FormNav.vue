@@ -1,11 +1,10 @@
 <script setup>
 import { defineProps, ref } from 'vue'
 
+// get step number from app
 const props = defineProps({
   active: Number,
 })
-
-// const screenWidth = ref(window.innerWidth)
 </script>
 
 <template>
@@ -53,7 +52,7 @@ const props = defineProps({
   min-width: 218px;
   min-height: 568px;
   padding: 40px 32px;
-  background: url('./src/assets/images/bg-sidebar-desktop.svg') no-repeat;
+  background: url('/assets/images/bg-sidebar-desktop.svg') no-repeat;
   text-transform: uppercase;
   color: var(--white);
   border-radius: 10px;
@@ -103,7 +102,7 @@ const props = defineProps({
     width: 100%;
     min-height: 172px;
     padding: 32px;
-    background: top/cover no-repeat url('./src/assets/images/bg-sidebar-mobile.svg');
+    background: top/cover no-repeat url('/assets/images/bg-sidebar-mobile.svg');
     border-radius: initial;
     &__block {
       display: none;

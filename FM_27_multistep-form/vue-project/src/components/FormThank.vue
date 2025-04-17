@@ -2,21 +2,20 @@
 
 <template>
   <section class="step thank">
-    <img class="thank__image" src="../assets/images/icon-thank-you.svg" alt="" />
-    <h2 class="thank__title">Thank you!</h2>
-    <p class="thank__descr">
-      Thanks for confirming your subscription! We&nbsp;hope you have fun using our platform.
-      If&nbsp;you ever need support, please feel free to&nbsp;email&nbsp;us at
-      <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>.
-    </p>
+    <div class="step-form__fields step5-form__fields">
+      <img class="thank__image" src="/assets/images/icon-thank-you.svg" alt="" />
+      <h2 class="thank__title">Thank you!</h2>
+      <p class="thank__descr">
+        Thanks for confirming your subscription! We&nbsp;hope you have fun using our platform.
+        If&nbsp;you ever need support, please feel free to&nbsp;email&nbsp;us at
+        <a href="mailto:support@loremgaming.com">support@loremgaming.com</a>.
+      </p>
+    </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .thank {
-  margin: auto;
-  padding: 0 39px 0 50px;
-  align-items: center;
   &__image {
     margin-bottom: 30px;
   }
@@ -32,9 +31,17 @@
   }
 }
 
+.step5-form {
+  &__fields {
+    margin: auto;
+    padding: 80px 20px;
+    align-items: center;
+  }
+}
+
 @media (max-width: 768px) {
   .thank {
-    padding: 80px 24px;
+    padding: 0 15px;
     &__image {
       width: 55px;
       margin-bottom: 23px;
@@ -46,8 +53,6 @@
     &__descr {
       line-height: 1.55rem;
     }
-  }
-  .step4-form {
   }
 }
 </style>

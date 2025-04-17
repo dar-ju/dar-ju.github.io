@@ -15,6 +15,7 @@ const billingSet = (item) => {
   if (props.formData.step2.period === 'yearly') return `+$${props.formData.addOns.yearly[item]}/yr`
 }
 
+// send data to app
 const submit = (direction) => {
   emit(
     'data',
@@ -24,6 +25,7 @@ const submit = (direction) => {
     direction,
     'step3',
   )
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 onBeforeMount(() => {
@@ -33,53 +35,55 @@ onBeforeMount(() => {
 
 <template>
   <section class="step step3">
-    <h2 class="step__title">Pick add-ons</h2>
-    <p class="step__descr">Add-ons help enhance your gaming experience.</p>
-    <Form class="step3-form">
-      <CheckboxGroup v-model="selected" name="options" class="step3-form__wrapper">
-        <label
-          :class="{ 'step3-form__item_active': selected.includes('Online service') }"
-          class="step3-form__item"
-          for="service"
-        >
-          <Checkbox class="step3-form__check" inputId="service" value="Online service" />
-          <div class="step3-form__label">
-            <div class="step3-form__wrap">
-              <h3 class="step3-form__name">Online service</h3>
-              <span class="step3-form__descr">Access to multiplayer games</span>
+    <Form class="step-form step3-form">
+      <div class="step-form__fields">
+        <h2 class="step__title">Pick add-ons</h2>
+        <p class="step__descr">Add-ons help enhance your gaming experience.</p>
+        <CheckboxGroup v-model="selected" name="options" class="step3-form__wrapper">
+          <label
+            :class="{ 'step3-form__item_active': selected.includes('Online service') }"
+            class="step3-form__item"
+            for="service"
+          >
+            <Checkbox class="step3-form__check" inputId="service" value="Online service" />
+            <div class="step3-form__label">
+              <div class="step3-form__wrap">
+                <h3 class="step3-form__name">Online service</h3>
+                <span class="step3-form__descr">Access to multiplayer games</span>
+              </div>
+              <span class="step3-form__cost">{{ billingSet('Online service') }}</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('Online service') }}</span>
-          </div>
-        </label>
-        <label
-          class="step3-form__item"
-          :class="{ 'step3-form__item_active': selected.includes('Larger storage') }"
-          for="storage"
-        >
-          <Checkbox class="step3-form__check" inputId="storage" value="Larger storage" />
-          <div class="step3-form__label">
-            <div class="step3-form__wrap">
-              <h3 class="step3-form__name">Larger storage</h3>
-              <span class="step3-form__descr">Extra 1TB of cloud save</span>
+          </label>
+          <label
+            class="step3-form__item"
+            :class="{ 'step3-form__item_active': selected.includes('Larger storage') }"
+            for="storage"
+          >
+            <Checkbox class="step3-form__check" inputId="storage" value="Larger storage" />
+            <div class="step3-form__label">
+              <div class="step3-form__wrap">
+                <h3 class="step3-form__name">Larger storage</h3>
+                <span class="step3-form__descr">Extra 1TB of cloud save</span>
+              </div>
+              <span class="step3-form__cost">{{ billingSet('Larger storage') }}</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('Larger storage') }}</span>
-          </div>
-        </label>
-        <label
-          class="step3-form__item"
-          :class="{ 'step3-form__item_active': selected.includes('Customizable profile') }"
-          for="profile"
-        >
-          <Checkbox class="step3-form__check" inputId="profile" value="Customizable profile" />
-          <div class="step3-form__label">
-            <div class="step3-form__wrap">
-              <h3 class="step3-form__name">Customizable profile</h3>
-              <span class="step3-form__descr">Custom theme on your profile</span>
+          </label>
+          <label
+            class="step3-form__item"
+            :class="{ 'step3-form__item_active': selected.includes('Customizable profile') }"
+            for="profile"
+          >
+            <Checkbox class="step3-form__check" inputId="profile" value="Customizable profile" />
+            <div class="step3-form__label">
+              <div class="step3-form__wrap">
+                <h3 class="step3-form__name">Customizable profile</h3>
+                <span class="step3-form__descr">Custom theme on your profile</span>
+              </div>
+              <span class="step3-form__cost">{{ billingSet('Customizable profile') }}</span>
             </div>
-            <span class="step3-form__cost">{{ billingSet('Customizable profile') }}</span>
-          </div>
-        </label>
-      </CheckboxGroup>
+          </label>
+        </CheckboxGroup>
+      </div>
       <div class="btn-wrapper step3-form__btn-wrapper">
         <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
         <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
@@ -90,13 +94,12 @@ onBeforeMount(() => {
 
 <style lang="scss" scope>
 .step3 {
-  padding: 40px 41px 16px 55px;
+  max-width: 524px;
+  padding: 40px 29px 15px 45px;
 }
 
 .step3-form {
-  display: flex;
   height: 100%;
-  flex-direction: column;
   justify-content: space-between;
   &__wrapper {
     display: flex;
@@ -114,7 +117,7 @@ onBeforeMount(() => {
       background-color ease-in-out 0.3s;
     cursor: pointer;
     &_active {
-      background-color: var(--magnolia);
+      background-color: var(--alabaster);
       border: 1px solid var(--purple);
     }
     &:hover {
@@ -150,9 +153,12 @@ onBeforeMount(() => {
 
 @media (max-width: 768px) {
   .step3 {
-    padding: 31px 24px;
+    padding: 0;
   }
   .step3-form {
+    gap: 137px;
+    align-items: center;
+    padding: 0;
     &__wrapper {
       gap: 10px;
     }
@@ -173,7 +179,7 @@ onBeforeMount(() => {
       font-size: 0.75rem;
     }
     &__btn-wrapper {
-      bottom: -210px;
+      justify-content: space-between;
     }
   }
 }

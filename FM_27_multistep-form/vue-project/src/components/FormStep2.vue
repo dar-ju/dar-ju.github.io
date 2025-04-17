@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onBeforeMount, computed, watch, onMounted } from 'vue'
+import { ref, onBeforeMount, watch } from 'vue'
 
 const emit = defineEmits('')
 
@@ -24,10 +24,7 @@ const billingSet = (item) => {
   if (period.value === 'yearly') return `$${props.formData.billing.yearly[item]}/yr`
 }
 
-const minHeight = computed(() =>
-  window.innerWidth > 768 ? { minHeight: periodCheck.value ? '182px' : '162px' } : {},
-)
-
+// send data to app
 const submit = (direction) => {
   emit(
     'data',
@@ -38,6 +35,7 @@ const submit = (direction) => {
     direction,
     'step2',
   )
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
 onBeforeMount(() => {
@@ -49,8 +47,8 @@ onBeforeMount(() => {
 
 <template>
   <section v-if="props" class="step step2">
-    <Form class="step2-form">
-      <div class="step2-form__fields">
+    <Form class="step-form step2-form">
+      <div class="step-form__fields">
         <h2 class="step__title">Select your plan</h2>
         <p class="step__descr">You have the option of monthly or yearly billing.</p>
         <div class="step2-form__wrapper">
@@ -120,14 +118,7 @@ onBeforeMount(() => {
 }
 .step2-form {
   height: 100%;
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  &__fields {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
   &__plan-list {
     display: flex;
     margin-bottom: 30px;
@@ -147,16 +138,16 @@ onBeforeMount(() => {
       background-color ease-in-out 0.3s;
     cursor: pointer;
     &_arcade {
-      background-image: url('./src/assets/images/icon-arcade.svg');
+      background-image: url('/assets/images/icon-arcade.svg');
     }
     &_advanced {
-      background-image: url('./src/assets/images/icon-advanced.svg');
+      background-image: url('/assets/images/icon-advanced.svg');
     }
     &_pro {
-      background-image: url('./src/assets/images/icon-pro.svg');
+      background-image: url('/assets/images/icon-pro.svg');
     }
     &_selected {
-      background-color: var(--magnolia);
+      background-color: var(--alabaster);
       border: 1px solid var(--purple);
     }
     &:hover {
@@ -214,12 +205,6 @@ onBeforeMount(() => {
   .step2-form {
     gap: 22px;
     align-items: center;
-    &__fields {
-      max-width: clamp(342px, 70vw, 500px);
-      padding: 32px 23px;
-      border-radius: 10px;
-      background-color: var(--white);
-    }
     &__plan-list {
       margin-bottom: 23px;
       gap: 11px;

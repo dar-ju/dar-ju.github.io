@@ -15,6 +15,7 @@ const initialValues = ref({
   phone: '',
 })
 
+// fields check
 const resolver = ref(
   zodResolver(
     z.object({
@@ -28,6 +29,7 @@ const resolver = ref(
   ),
 )
 
+// send data to app
 const onFormSubmit = ({ valid }) => {
   if (valid) {
     emit(
@@ -40,6 +42,7 @@ const onFormSubmit = ({ valid }) => {
       'next',
       'step1',
     )
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
 
@@ -57,9 +60,9 @@ onBeforeMount(() => {
       :initialValues="initialValues"
       :resolver="resolver"
       @submit="onFormSubmit"
-      class="step1-form"
+      class="step-form step1-form"
     >
-      <div class="step1-form__fields">
+      <div class="step-form__fields">
         <h2 class="step__title">Personal info</h2>
         <p class="step__descr">Please provide your name, email address, and phone number.</p>
         <div class="step1-form__items-wrapper">
@@ -123,18 +126,11 @@ onBeforeMount(() => {
 
 <style lang="scss" scoped>
 .step1-form {
-  display: flex;
   gap: 91px;
-  flex-direction: column;
   align-items: center;
   &__items-wrapper {
     display: flex;
     gap: 23px;
-    flex-direction: column;
-  }
-  &__fields {
-    display: flex;
-    width: 100%;
     flex-direction: column;
   }
   &__item {
@@ -167,12 +163,6 @@ onBeforeMount(() => {
 @media (max-width: 768px) {
   .step1-form {
     gap: 120px;
-    &__fields {
-      max-width: clamp(342px, 70vw, 500px);
-      padding: 32px 23px;
-      border-radius: 10px;
-      background-color: var(--white);
-    }
     &__items-wrapper {
       gap: 15px;
     }

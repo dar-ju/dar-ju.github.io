@@ -34,7 +34,9 @@ const FormPrest = definePreset(Aura, {
       height: '20px',
       handleSize: '12px',
       background: 'var(--strawberry-red)',
-      // primaryBackground: 'var(--marine-blue)',
+    },
+    checkbox: {
+      'checked.background': 'var(--purplish-blue)',
     },
     button: {
       secondaryBorderColor: 'transparent',
@@ -44,8 +46,6 @@ const FormPrest = definePreset(Aura, {
             secondary: {
               background: 'transparent',
               hoverBackground: 'transparent',
-              // borderColor: 'none',
-              // hoverBorder: 'none',
             },
           },
         },

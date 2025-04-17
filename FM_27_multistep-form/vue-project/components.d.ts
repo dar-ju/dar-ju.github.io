@@ -12,7 +12,6 @@ declare module 'vue' {
     Checkbox: typeof import('primevue/checkbox')['default']
     CheckboxGroup: typeof import('primevue/checkboxgroup')['default']
     Form: typeof import('@primevue/forms/form')['default']
-    FormField: typeof import('@primevue/forms/formfield')['default']
     FormNav: typeof import('./src/components/FormNav.vue')['default']
     FormStep1: typeof import('./src/components/FormStep1.vue')['default']
     FormStep2: typeof import('./src/components/FormStep2.vue')['default']
@@ -20,13 +19,8 @@ declare module 'vue' {
     FormStep4: typeof import('./src/components/FormStep4.vue')['default']
     FormThank: typeof import('./src/components/FormThank.vue')['default']
     InputMask: typeof import('primevue/inputmask')['default']
-    InputNumber: typeof import('primevue/inputnumber')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Message: typeof import('primevue/message')['default']
-    RadioButton: typeof import('primevue/radiobutton')['default']
-    TabPanel: typeof import('primevue/tabpanel')['default']
-    TabView: typeof import('primevue/tabview')['default']
-    Toast: typeof import('primevue/toast')['default']
     ToggleSwitch: typeof import('primevue/toggleswitch')['default']
   }
 }

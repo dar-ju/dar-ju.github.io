@@ -7,6 +7,7 @@ import FormStep3 from './components/FormStep3.vue'
 import FormStep4 from './components/FormStep4.vue'
 import FormThank from './components/FormThank.vue'
 
+// default data, you can change price here
 const formDataDefault = {
   step1: {
     name: '',
@@ -47,10 +48,12 @@ const formDataDefault = {
 }
 const formData = ref({})
 
+// step control & data accum
 const currentStage = ref(1)
 const getData = (data, direction, step) => {
   if (direction === 'next') currentStage.value += 1
   if (direction === 'prev') currentStage.value += -1
+  if (direction === 'change') currentStage.value += -2
   formData.value[step] = data
   localStorage.setItem('multiForm', JSON.stringify(formData.value))
   if (direction === 'next' && step === 'step4') {
@@ -59,6 +62,7 @@ const getData = (data, direction, step) => {
   }
 }
 
+// get data from localstorage if exist
 onBeforeMount(() => {
   formData.value = formDataDefault
   const local = JSON.parse(localStorage.getItem('multiForm') || '{}')
@@ -88,37 +92,4 @@ onBeforeMount(() => {
   </main>
 </template>
 
-<style lang="scss" scoped>
-.form {
-  &__container {
-    padding-right: 50px;
-    padding-left: 50px;
-  }
-  &__wrapper {
-    display: flex;
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 16px;
-    background-color: var(--white);
-    border-radius: 16px;
-  }
-}
-
-@media (max-width: 768px) {
-  .form {
-    // min-height: 597px;
-    min-height: 695px;
-
-    padding-top: 0;
-    &__container {
-      padding: 0;
-    }
-    &__wrapper {
-      padding: 0;
-      flex-direction: column;
-      align-items: center;
-      border-radius: initial;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>
