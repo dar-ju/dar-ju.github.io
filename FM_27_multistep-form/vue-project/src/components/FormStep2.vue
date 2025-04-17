@@ -56,7 +56,8 @@ onBeforeMount(() => {
             <li
               class="step2-form__plan-item step2-form__plan-item_arcade"
               :class="{ 'step2-form__plan-item_selected': plan === 'arcade' }"
-              :style="minHeight"
+              tabindex="0"
+              @keydown.space="selectPlan('arcade')"
               @click="selectPlan('arcade')"
             >
               <div class="step2-form__plan-block">
@@ -68,6 +69,8 @@ onBeforeMount(() => {
             <li
               class="step2-form__plan-item step2-form__plan-item_advanced"
               :class="{ 'step2-form__plan-item_selected': plan === 'advanced' }"
+              tabindex="0"
+              @keydown.space="selectPlan('advanced')"
               @click="selectPlan('advanced')"
             >
               <div class="step2-form__plan-block">
@@ -78,6 +81,8 @@ onBeforeMount(() => {
             </li>
             <li
               class="step2-form__plan-item step2-form__plan-item_pro"
+              tabindex="0"
+              @keydown.space="selectPlan('pro')"
               @click="selectPlan('pro')"
               :class="{ 'step2-form__plan-item_selected': plan === 'pro' }"
             >
@@ -104,7 +109,14 @@ onBeforeMount(() => {
         </div>
       </div>
       <div class="btn-wrapper step2-form__btn-wrapper">
-        <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
+        <a
+          class="cancel-btn"
+          type="button"
+          tabindex="0"
+          @keydown.space="submit('prev')"
+          @click="submit('prev')"
+          >Go Back</a
+        >
         <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
       </div>
     </Form>
@@ -149,6 +161,9 @@ onBeforeMount(() => {
     &_selected {
       background-color: var(--alabaster);
       border: 1px solid var(--purple);
+    }
+    &:focus-visible {
+      outline: 1px solid var(--marine-blue);
     }
     &:hover {
       border: 1px solid var(--purple);

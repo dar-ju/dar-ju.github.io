@@ -73,7 +73,14 @@ const capitalLetter = (val) => {
       </div>
     </div>
     <div class="btn-wrapper step4-form__btn-wrapper">
-      <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
+      <a
+        class="cancel-btn"
+        type="button"
+        tabindex="0"
+        @keydown.space="submit('prev')"
+        @click="submit('prev')"
+        >Go Back</a
+      >
       <Button
         class="submit-btn step4-form__submit-btn"
         type="button"

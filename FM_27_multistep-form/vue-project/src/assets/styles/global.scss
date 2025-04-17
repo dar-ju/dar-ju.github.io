@@ -81,6 +81,9 @@ body {
   color: var(--cool-gray);
   font-weight: 500;
   transition: color ease-in-out 0.3s;
+  &:focus-visible {
+    outline: 1px solid var(--marine-blue);
+  }
   &:hover {
     color: var(--marine-blue);
   }

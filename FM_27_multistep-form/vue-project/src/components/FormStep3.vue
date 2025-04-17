@@ -85,7 +85,14 @@ onBeforeMount(() => {
         </CheckboxGroup>
       </div>
       <div class="btn-wrapper step3-form__btn-wrapper">
-        <a class="cancel-btn" type="button" @click="submit('prev')">Go Back</a>
+        <a
+          class="cancel-btn"
+          type="button"
+          tabindex="0"
+          @keydown.space="submit('prev')"
+          @click="submit('prev')"
+          >Go Back</a
+        >
         <Button class="submit-btn" type="button" label="Next Step" @click="submit('next')" />
       </div>
     </Form>
