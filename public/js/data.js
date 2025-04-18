@@ -1,5 +1,19 @@
 export const data = [
   {
+    "multistep-form": {
+      "id": 27,
+      "en": {
+        "title": "Multi-step form",
+        "description": "The task is difficult in terms of layout. The mobile version is very different, the difficulty is not to break the form structure. I used the Primevue library, you need to figure it out and then it will become a good assistant. The work took 32 hours.",
+      },
+      "ru": {
+        "title": "Многоступенчатая форма",
+        "description": "Задание сложное относительно верстки. Мобильная версия сильно отличается, трудность в том, чтобы не нарушить структуру формы. Использовал библиотеку Primevue, с ней нужно разобраться и тогда она станет хорошим помощником. Работа заняла 32 часа.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/multi-step-form-with-primevue--kJUTpzzrM"
+    }
+  },
+  {
     "interactive-comments": {
       "id": 26,
       "en": {
