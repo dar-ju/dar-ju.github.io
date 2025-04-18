@@ -159,7 +159,7 @@ onBeforeMount(() => {
       background-image: url('/assets/images/icon-pro.svg');
     }
     &_selected {
-      background-color: var(--alabaster);
+      background-color: var(--magnolia);
       border: 1px solid var(--purple);
     }
     &:focus-visible {

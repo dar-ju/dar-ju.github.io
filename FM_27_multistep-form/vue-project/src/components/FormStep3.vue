@@ -124,7 +124,7 @@ onBeforeMount(() => {
       background-color ease-in-out 0.3s;
     cursor: pointer;
     &_active {
-      background-color: var(--alabaster);
+      background-color: var(--magnolia);
       border: 1px solid var(--purple);
     }
     &:hover {

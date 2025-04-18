@@ -38,6 +38,7 @@ body {
 
 .step {
   display: flex;
+  width: 100%;
   max-width: 501px;
   margin: 0 auto;
   padding: 40px 17px 16px 33px;
@@ -60,6 +61,7 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
+    box-shadow: 0 15px 37px -10px var(--light-gray);
   }
 }
 

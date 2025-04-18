@@ -53,6 +53,7 @@ const props = defineProps({
   min-height: 568px;
   padding: 40px 32px;
   background: url('/assets/images/bg-sidebar-desktop.svg') no-repeat;
+  background-size: cover;
   text-transform: uppercase;
   color: var(--white);
   border-radius: 10px;
