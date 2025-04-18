@@ -61,7 +61,6 @@ body {
     display: flex;
     width: 100%;
     flex-direction: column;
-    box-shadow: 0 15px 37px -10px var(--light-gray);
   }
 }
 
@@ -131,6 +130,7 @@ body {
       padding: 32px 23px;
       border-radius: 10px;
       background-color: var(--white);
+      box-shadow: 0 15px 37px -10px var(--light-gray);
     }
   }
 
