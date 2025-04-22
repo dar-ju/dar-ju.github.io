@@ -2,6 +2,8 @@
 import Header from '../components/headerComponent.vue'
 import Hero from '../components/heroComponent.vue'
 import About from '../components/aboutComponent.vue'
+import Reviews from '../components/reviewsComponent.vue'
+import Action from '../components/actionComponent.vue'
 </script>
 
 <template>
@@ -10,6 +12,8 @@ import About from '../components/aboutComponent.vue'
     <main class="main">
       <Hero />
       <About />
+      <Reviews />
+      <Action />
     </main>
   </div>
 </template>
@@ -18,6 +22,6 @@ import About from '../components/aboutComponent.vue'
 .main {
   background-image: url('/assets/images/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
-  background-position: bottom left;
+  background-position: left -504px bottom 542px;
 }
 </style>
