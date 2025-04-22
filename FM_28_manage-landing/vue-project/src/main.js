@@ -26,6 +26,12 @@ const MyPrest = definePreset(Aura, {
   components: {
     button: {
       primaryHoverBorderColor: 'var(--bright-red-light)',
+      paddingX: '14px',
+      paddingY: '14px',
+      borderRadius: '20px',
+      label: {
+        fontWeight: '900',
+      }
     },
   },
 })

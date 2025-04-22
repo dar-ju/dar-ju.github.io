@@ -11,36 +11,44 @@
         </p>
         <Button class="main-btn" label="Get Started" />
       </div>
-      <img
-        class="hero__img"
-        src="/assets/images/illustration-intro.svg"
-        alt="Manage intro illustration"
-      />
+      <picture class="hero__img">
+        <img src="/assets/images/illustration-intro.svg" alt="Manage intro illustration" />
+      </picture>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .hero {
+  padding-top: 53px;
+  padding-bottom: 53px;
   &__container {
     display: flex;
-    align-items: center;
+    padding-right: 146px;
+    gap: 20px;
+    justify-content: space-between;
   }
   &__wrapper {
     display: flex;
-    gap: 30px;
+    max-width: 530px;
+    padding: 64px 0;
     flex-direction: column;
   }
   &__title {
+    margin-bottom: 28px;
     font-size: 2.85rem;
+    line-height: 3.6rem;
     color: var(--dark-blue);
   }
   &__descr {
+    margin-bottom: 36px;
     max-width: 340px;
     font-size: 0.87rem;
     line-height: 1.5rem;
   }
   &__img {
+    align-self: center;
+    min-width: 450px;
   }
 }
 </style>

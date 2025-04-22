@@ -46,4 +46,11 @@
     }
   }
 }
+
+.main-btn {
+  // padding: 14px 30px;
+  // border-radius: 20px;
+  // font-size: 0.7rem;
+  // box-shadow: 0 10px 20px -8px var(--bright-red);
+}
 </style>
