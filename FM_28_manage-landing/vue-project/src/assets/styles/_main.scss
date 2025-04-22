@@ -5,11 +5,26 @@ body {
   font-weight: 400;
   background-color: var(--very-light-gray);
   color: var(--dark-grayish-blue);
+  background-image: url('/assets/images/bg-tablet-pattern.svg');
+  background-repeat: no-repeat;
+  background-position: top -154px right -145px;
+}
+
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .container {
   max-width: 1440px;
   margin: auto;
-  padding-left: 165px;
-  padding-right: 165px;
+  padding-left: 166px;
+  padding-right: 166px;
+}
+
+.main-btn {
+  padding: 14px 30px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  box-shadow: 0 10px 20px -8px var(--bright-red);
 }

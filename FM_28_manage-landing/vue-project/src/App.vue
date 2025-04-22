@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import MainPage from './views/mainPage.vue'
+</script>
 
 <template>
-  <h1>test</h1>
+  <MainPage />
 </template>
 
 <style lang="scss" scoped></style>
