@@ -11,9 +11,9 @@
         </p>
       </div>
       <ul class="about__list">
-        <li class="about__item about__item_1">
+        <li class="about__item">
           <!-- <div class="about__item-block"> -->
-          <h3 class="about__item-title">Track company-wide progress</h3>
+          <h3 class="about__item-title about__item-title_1">Track company-wide progress</h3>
           <p class="about__item-descr">
             See how your day-to-day tasks fit into the wider vision. Go from tracking progress at
             the milestone level all the way done to the smallest of details. Never lose sight of the
@@ -21,9 +21,9 @@
           </p>
           <!-- </div> -->
         </li>
-        <li class="about__item about__item_2">
+        <li class="about__item">
           <!-- <div class="about__item-block"> -->
-          <h3 class="about__item-title">Advanced built-in reports</h3>
+          <h3 class="about__item-title about__item-title_2">Advanced built-in reports</h3>
           <p class="about__item-descr">
             Set internal delivery estimates and track progress toward company goals. Our
             customisable dashboard helps you build out the reports you need to keep key stakeholders
@@ -31,9 +31,9 @@
           </p>
           <!-- </div> -->
         </li>
-        <li class="about__item about__item_3">
+        <li class="about__item">
           <!-- <div class="about__item-block"> -->
-          <h3 class="about__item-title">Everything you need in one place</h3>
+          <h3 class="about__item-title about__item-title_3">Everything you need in one place</h3>
           <p class="about__item-descr">
             Stop jumping from one service to another to communicate, store files, track tasks and
             share documents. Manage offers an all-in-one team productivity solution.
@@ -51,11 +51,14 @@
   padding-bottom: 59px;
   &__container {
     display: flex;
+    padding-right: 171px;
+    gap: 110px;
     justify-content: space-between;
-    gap: 50px;
+  }
+  &__info {
+    width: 430px;
   }
   &__title {
-    width: 430px;
     margin-bottom: 31px;
     font-size: 2.06rem;
     color: var(--dark-blue);
@@ -66,13 +69,17 @@
     line-height: 1.4rem;
   }
   &__list {
-    width: 445px;
     display: flex;
     gap: 50px;
     flex-direction: column;
   }
   &__item {
     position: relative;
+  }
+  &__item-title {
+    margin-bottom: 25px;
+    font-size: 0.81rem;
+    color: var(--dark-blue);
     &::before {
       // content: '01';
       display: flex;
@@ -105,15 +112,71 @@
       }
     }
   }
-  &__item-title {
-    margin-bottom: 25px;
-    font-size: 0.81rem;
-    color: var(--dark-blue);
-  }
   &__item-descr {
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     font-size: 0.87rem;
     line-height: 1.4rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .about {
+    &__container {
+      padding-right: 80px;
+    }
+    &__descr {
+      width: 300px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding-bottom: 35px;
+    &__container {
+      padding-right: 16px;
+      padding-left: 16px;
+      max-width: 100%;
+      width: 100%;
+      gap: 52px;
+      align-items: center;
+      flex-direction: column;
+    }
+    &__info {
+      max-width: 290px;
+    }
+    &__title {
+      margin-bottom: 12px;
+      font-size: 1.57rem;
+      line-height: 2.6rem;
+      text-align: center;
+    }
+    &__descr {
+      font-size: 0.77rem;
+      line-height: 1.55rem;
+      text-align: center;
+    }
+    &__list {
+      gap: 46px;
+    }
+    &__item-title {
+      margin-bottom: 11px;
+      padding-left: 81px;
+      background-color: var(--very-pale-red);
+      line-height: 2.2rem;
+      width: 105%;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+      &::before {
+        top: 0;
+        left: 0;
+      }
+    }
+    &__item-descr {
+      font-size: 0.75rem;
+      line-height: 1.52rem;
+    }
   }
 }
 </style>

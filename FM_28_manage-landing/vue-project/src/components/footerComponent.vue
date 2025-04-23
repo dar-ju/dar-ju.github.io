@@ -40,29 +40,29 @@ const onFormSubmit = ({ valid }) => {
             /></a>
             <ul class="footer__social-list">
               <li class="footer__social-item">
-                <a href="#"
-                  ><img src="/assets/images/icon-facebook.svg" alt="Facebook social link"
-                /></a>
+                <button>
+                  <img src="/assets/images/icon-facebook.svg" alt="Facebook" />
+                </button>
               </li>
               <li class="footer__social-item">
-                <a href="#"
-                  ><img src="/assets/images/icon-youtube.svg" alt="Youtube social link"
-                /></a>
+                <button>
+                  <img src="/assets/images/icon-youtube.svg" alt="Youtube" />
+                </button>
               </li>
               <li class="footer__social-item">
-                <a href="#"
-                  ><img src="/assets/images/icon-twitter.svg" alt="Twitter social link"
-                /></a>
+                <button>
+                  <img src="/assets/images/icon-twitter.svg" alt="Twitter" />
+                </button>
               </li>
               <li class="footer__social-item">
-                <a href="#"
-                  ><img src="/assets/images/icon-pinterest.svg" alt="Pinterest social link"
-                /></a>
+                <button>
+                  <img src="/assets/images/icon-pinterest.svg" alt="Pinterest" />
+                </button>
               </li>
               <li class="footer__social-item">
-                <a href="#"
-                  ><img src="/assets/images/icon-instagram.svg" alt="Instagram social link"
-                /></a>
+                <button>
+                  <img src="/assets/images/icon-instagram.svg" alt="Instagram" />
+                </button>
               </li>
             </ul>
           </div>
@@ -108,10 +108,9 @@ const onFormSubmit = ({ valid }) => {
             </div>
             <Button class="footer__btn" type="submit" label="Go" />
           </Form>
-          <span class="footer__copy">Copyright 2020. All Rights Reserved</span>
+          <span class="footer__copy footer__copy_desktop">Copyright 2020. All Rights Reserved</span>
         </div>
-        <!-- <h2 class="footer__title">Simplify how your team works today.</h2>
-        <Button class="main-btn footer__btn" label="Get Started" /> -->
+        <span class="footer__copy footer__copy_mobile">Copyright 2020. All Rights Reserved</span>
       </div>
     </div>
     <Toast />
@@ -123,7 +122,9 @@ const onFormSubmit = ({ valid }) => {
   padding: 0;
   &__container {
     max-width: 100%;
-    padding: 63px 0;
+    padding: 0;
+    padding-top: 63px;
+    padding-bottom: 57px;
     background-color: var(--very-dark-blue);
   }
   &__wrapper {
@@ -159,6 +160,10 @@ const onFormSubmit = ({ valid }) => {
       filter: brightness(0) saturate(100%) invert(56%) sepia(28%) saturate(6790%) hue-rotate(337deg)
         brightness(96%) contrast(97%);
     }
+    & button:focus-visible {
+      outline: 1px solid var(--bright-red-light);
+      outline-offset: 2px;
+    }
   }
   &__menu {
     display: flex;
@@ -178,6 +183,10 @@ const onFormSubmit = ({ valid }) => {
     transition: color ease-in-out 0.2s;
     &:hover {
       color: var(--bright-red);
+    }
+    & a:focus-visible {
+      outline: 1px solid var(--bright-red-light);
+      outline-offset: 2px;
     }
   }
   &__subscribe-block {
@@ -213,6 +222,93 @@ const onFormSubmit = ({ valid }) => {
   &__copy {
     font-size: 0.67rem;
     text-align: end;
+    &_mobile {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .footer {
+    &__wrapper {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer {
+    &__wrapper {
+      flex-direction: column;
+    }
+    &__menu {
+      max-width: 310px;
+    }
+    &__subscribe-block {
+      order: -1;
+      align-self: center;
+      gap: 0;
+    }
+    &__copy {
+      &_mobile {
+        display: block;
+      }
+      &_desktop {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    &__container {
+      padding-top: 51px;
+      padding-bottom: 26px;
+    }
+    &__wrapper {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    &__link-block {
+      width: 100%;
+      gap: 55px;
+      flex-direction: column;
+    }
+    &__form {
+      justify-content: space-between;
+    }
+    &__input-block {
+      width: 100%;
+    }
+    &__btn {
+      min-width: 80px;
+    }
+    &__menu {
+      width: 100%;
+      padding-left: 39px;
+      padding-right: 6px;
+      order: -1;
+      justify-content: space-between;
+    }
+    &__contact {
+      display: flex;
+      gap: 61px;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__social-list {
+      order: -1;
+      gap: 45px;
+    }
+    &__social-item {
+      scale: 1.6;
+    }
+    &__logo {
+      scale: 1.1;
+      margin: 0;
+    }
   }
 }
 </style>

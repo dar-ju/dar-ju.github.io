@@ -99,4 +99,33 @@
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .action {
+    &__wrapper {
+      padding-left: 80px;
+      padding-right: 80px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .action {
+    padding-top: 21px;
+    &__container {
+      padding-top: 95px;
+      padding-bottom: 89px;
+    }
+    &__wrapper {
+      padding: 0 30px;
+      gap: 24px;
+      flex-direction: column;
+    }
+    &__title {
+      width: 100%;
+      text-align: center;
+      line-height: 2.8rem;
+    }
+  }
+}
 </style>

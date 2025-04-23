@@ -5,6 +5,7 @@ import { createApp } from 'vue'
 import PrimeVue from 'primevue/config';
 import { definePreset } from '@primeuix/themes';
 import ToastService from 'primevue/toastservice';
+// import AnimateOnScroll from 'primevue/animateonscroll';
 import Aura from '@primeuix/themes/aura';
 import App from './App.vue'
 
@@ -41,6 +42,14 @@ const MyPrest = definePreset(Aura, {
     message: {
       textSmFontSize: '0.67rem',
       errorColor: 'var(--bright-red)',
+    },
+    carousel: {
+      indicatorWidth: '9px',
+      indicatorListGap: '3px',
+      itemWidth: '300px',
+    },
+    toast: {
+      width: '320px',
     }
   },
 })
@@ -51,6 +60,7 @@ app.use(PrimeVue, {
     preset: MyPrest
   }
 });
+// app.directive('animateonscroll', AnimateOnScroll);
 app.use(ToastService);
 
 app.mount('#app')

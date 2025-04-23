@@ -33,21 +33,19 @@ const reviews = [
 ]
 
 onMounted(() => {
-  products.value = reviews.slice(0, 9)
+  const visible = 2
+  const isMobile = window.innerWidth <= 767
+  const reviewsClone = [...reviews]
+  if (isMobile) {
+    products.value = [...reviewsClone]
+  } else {
+    const startClone = reviews.slice(0, visible)
+    products.value = [...reviewsClone, ...startClone]
+  }
 })
 
-const products = ref()
+const products = ref(reviews)
 const responsiveOptions = ref([
-  {
-    breakpoint: '1400px',
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: '1199px',
-    numVisible: 3,
-    numScroll: 1,
-  },
   {
     breakpoint: '767px',
     numVisible: 2,
@@ -66,6 +64,7 @@ const responsiveOptions = ref([
     <div class="container reviews__container">
       <h2 class="reviews__title">What they’ve said</h2>
       <Carousel
+        class="reviews__carousel"
         :value="products"
         :numVisible="3"
         :numScroll="1"
@@ -79,8 +78,10 @@ const responsiveOptions = ref([
               <div class="reviews__avatar">
                 <img :src="slotProps.data.avatar" :alt="slotProps.data.author" />
               </div>
-              <div class="reviews__author">{{ slotProps.data.author }}</div>
-              <div class="reviews__review">{{ slotProps.data.review }}</div>
+              <div class="reviews__block">
+                <h3 class="reviews__author">{{ slotProps.data.author }}</h3>
+                <blockquote class="reviews__review">{{ slotProps.data.review }}</blockquote>
+              </div>
             </div>
           </div>
         </template>
@@ -101,15 +102,19 @@ const responsiveOptions = ref([
     align-items: center;
   }
   &__title {
-    margin-bottom: 60px;
+    margin-bottom: 27px;
     font-size: 2.06rem;
     color: var(--dark-blue);
   }
-
+  &__carousel {
+    max-width: 1800px;
+    margin-bottom: 10px;
+  }
   &__wrapper {
     display: flex;
     position: relative;
-    min-height: 266px;
+    min-height: 220px;
+    height: 100%;
     margin-bottom: 15px;
     padding-right: 15px;
     padding-left: 15px;
@@ -117,20 +122,28 @@ const responsiveOptions = ref([
   &__card {
     display: flex;
     width: 100%;
-    padding: 65px 18px 38px 18px;
-    padding-top: 60px;
-    align-self: flex-end;
+    height: 100%;
+    padding-top: 80px;
+    align-self: flex-start;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__avatar {
+    position: absolute;
+    top: 45px;
+    width: 73px;
+  }
+  &__block {
+    display: flex;
+    height: 100%;
+    padding-top: 64px;
+    padding-bottom: 12px;
+    gap: 7px;
     flex-direction: column;
     align-items: center;
     background-color: var(--light-gray);
   }
-  &__avatar {
-    position: absolute;
-    top: 12px;
-    width: 73px;
-  }
   &__author {
-    margin-bottom: 20px;
     font-size: 0.88rem;
     font-weight: 500;
     color: var(--dark-blue);
@@ -140,6 +153,49 @@ const responsiveOptions = ref([
     text-align: center;
     font-size: 0.88rem;
     line-height: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews {
+    padding-top: 35px;
+    padding-bottom: 21px;
+    &__carousel {
+      margin-bottom: 27px;
+    }
+    &__title {
+      margin-bottom: 29px;
+      font-size: 1.66rem;
+    }
+    &__carousel {
+      max-width: 630px;
+    }
+    &__wrapper {
+      min-height: 297px;
+      margin-bottom: 8px;
+    }
+    &__card {
+      padding: 70px 18px 12px 18px;
+    }
+    &__avatar {
+      top: 34px;
+    }
+    &__author {
+      margin-bottom: 0;
+    }
+    &__review {
+      max-width: 285px;
+      font-size: 0.77rem;
+      line-height: 1.48rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .reviews {
+    &__carousel {
+      max-width: 505px;
+    }
   }
 }
 </style>

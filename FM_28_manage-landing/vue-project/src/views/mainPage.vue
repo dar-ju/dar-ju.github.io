@@ -27,4 +27,11 @@ import Footer from '../components/footerComponent.vue'
   background-position: left -504px bottom 542px;
   overflow: hidden;
 }
+
+@media (max-width: 768px) {
+  .main {
+    background-position: right -189px top 404px;
+    background-size: 86%;
+  }
+}
 </style>
