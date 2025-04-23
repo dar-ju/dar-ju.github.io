@@ -4,6 +4,7 @@ import Hero from '../components/heroComponent.vue'
 import About from '../components/aboutComponent.vue'
 import Reviews from '../components/reviewsComponent.vue'
 import Action from '../components/actionComponent.vue'
+import Footer from '../components/footerComponent.vue'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import Action from '../components/actionComponent.vue'
       <Reviews />
       <Action />
     </main>
+    <Footer />
   </div>
 </template>
 
@@ -23,5 +25,6 @@ import Action from '../components/actionComponent.vue'
   background-image: url('/assets/images/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
   background-position: left -504px bottom 542px;
+  overflow: hidden;
 }
 </style>

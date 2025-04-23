@@ -4,6 +4,7 @@ import 'primeicons/primeicons.css'
 import { createApp } from 'vue'
 import PrimeVue from 'primevue/config';
 import { definePreset } from '@primeuix/themes';
+import ToastService from 'primevue/toastservice';
 import Aura from '@primeuix/themes/aura';
 import App from './App.vue'
 
@@ -33,6 +34,14 @@ const MyPrest = definePreset(Aura, {
         fontWeight: '900',
       }
     },
+    inputtext: {
+      paddingY: '11px',
+      borderRadius: '20px',
+    },
+    message: {
+      textSmFontSize: '0.67rem',
+      errorColor: 'var(--bright-red)',
+    }
   },
 })
 
@@ -42,5 +51,6 @@ app.use(PrimeVue, {
     preset: MyPrest
   }
 });
+app.use(ToastService);
 
 app.mount('#app')

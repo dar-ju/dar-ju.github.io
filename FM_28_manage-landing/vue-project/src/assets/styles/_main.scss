@@ -31,6 +31,12 @@ body {
   font-size: 0.7rem;
 }
 
+.p-message-text {
+  color: var(--bright-red);
+  font-style: italic;
+  font-weight: 400;
+}
+
 .p-carousel-indicator {
   display: none;
 }

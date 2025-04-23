@@ -22,7 +22,7 @@
       </svg>
       <div class="action__wrapper">
         <h2 class="action__title">Simplify how your team works today.</h2>
-        <Button class="main-btn action__btn" label="Get Started" />
+        <Button class="main-btn action__btn" severity="secondary" label="Get Started" />
       </div>
       <svg
         class="action__bg action__bg_2"
@@ -48,32 +48,18 @@
 <style lang="scss" scoped>
 .action {
   padding-top: 87px;
-  padding-bottom: 87px;
+  padding-bottom: 0;
   &__container {
     position: relative;
     max-width: 100%;
     padding: 68px 0;
     background-color: var(--bright-red);
-    // background-image: url('/assets/images/bg-tablet-pattern.svg');
-    // background-repeat: no-repeat;
-    // background-position: bottom 93% left -16%;
-    // &::before,
-    // ::after {
-    //   content: '';
-    //   position: absolute;
-    //   width: 100px;
-    //   height: 100px;
-    //   background:
-    //     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
-    //     url('/assets/images/bg-tablet-pattern.svg');
-    //   background-size: cover;
-    //   background-position: center;
-    //   background-blend-mode: overlay;
-    //   opacity: 0.5;
-    // }
+    overflow: hidden;
   }
   &__wrapper {
     display: flex;
+    max-width: 1440px;
+    margin: auto;
     align-items: center;
     justify-content: space-between;
     padding-left: 165px;
@@ -88,6 +74,15 @@
     max-height: 48px;
     background-color: var(--very-light-gray);
     color: var(--bright-red);
+    z-index: 1;
+    &:hover {
+      background-color: var(--very-light-gray) !important;
+      color: var(--bright-red-light) !important;
+    }
+    // &:active {
+    //   background-color: var(--very-light-gray);
+    //   color: var(--bright-red-light);
+    // }
   }
   &__bg {
     position: absolute;
