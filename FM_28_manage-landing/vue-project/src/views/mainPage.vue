@@ -9,14 +9,18 @@ import Footer from '../components/footerBlock.vue'
 
 <template>
   <div>
-    <Header />
+    <head>
+      <Header />
+    </head>
     <main class="main">
       <Hero />
       <About />
       <Reviews />
       <Action />
     </main>
-    <Footer />
+    <footer>
+      <Footer />
+    </footer>
   </div>
 </template>
 
