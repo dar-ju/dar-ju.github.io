@@ -5,7 +5,6 @@ import { createApp } from 'vue'
 import PrimeVue from 'primevue/config';
 import { definePreset } from '@primeuix/themes';
 import ToastService from 'primevue/toastservice';
-// import AnimateOnScroll from 'primevue/animateonscroll';
 import Aura from '@primeuix/themes/aura';
 import App from './App.vue'
 
@@ -60,7 +59,6 @@ app.use(PrimeVue, {
     preset: MyPrest
   }
 });
-// app.directive('animateonscroll', AnimateOnScroll);
 app.use(ToastService);
 
 app.mount('#app')

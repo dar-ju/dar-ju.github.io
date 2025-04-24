@@ -97,13 +97,6 @@ const navItems = [
   }
 }
 
-.main-btn {
-  // padding: 14px 30px;
-  // border-radius: 20px;
-  // font-size: 0.7rem;
-  // box-shadow: 0 10px 20px -8px var(--bright-red);
-}
-
 @media (max-width: 1024px) {
   .header {
     &__container {
@@ -132,7 +125,6 @@ const navItems = [
     }
     &__burger {
       display: block;
-      // min-height: 22px;
     }
     &__burger-close {
       position: absolute;
@@ -141,7 +133,6 @@ const navItems = [
       z-index: 1;
     }
     &__overlay {
-      // display: none;
       position: fixed;
       width: 100%;
       height: 100%;

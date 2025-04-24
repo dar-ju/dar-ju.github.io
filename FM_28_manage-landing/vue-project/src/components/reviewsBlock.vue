@@ -47,7 +47,7 @@ onMounted(() => {
 const products = ref(reviews)
 const responsiveOptions = ref([
   {
-    breakpoint: '767px',
+    breakpoint: '768px',
     numVisible: 2,
     numScroll: 1,
   },

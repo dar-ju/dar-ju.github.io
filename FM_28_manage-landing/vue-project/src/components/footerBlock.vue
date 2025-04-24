@@ -141,7 +141,6 @@ const onFormSubmit = ({ valid }) => {
     display: flex;
     width: 660px;
     gap: 80px;
-    // flex-grow: 1;
     justify-content: space-between;
   }
   &__contact {
@@ -287,9 +286,10 @@ const onFormSubmit = ({ valid }) => {
     }
     &__menu {
       width: 100%;
-      padding-left: 39px;
-      padding-right: 6px;
+      padding-left: 31px;
+      padding-right: 14px;
       order: -1;
+      align-self: center;
       justify-content: space-between;
     }
     &__contact {

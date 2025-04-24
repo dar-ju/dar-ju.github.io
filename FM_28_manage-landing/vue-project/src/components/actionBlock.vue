@@ -79,10 +79,6 @@
       background-color: var(--very-light-gray) !important;
       color: var(--bright-red-light) !important;
     }
-    // &:active {
-    //   background-color: var(--very-light-gray);
-    //   color: var(--bright-red-light);
-    // }
   }
   &__bg {
     position: absolute;

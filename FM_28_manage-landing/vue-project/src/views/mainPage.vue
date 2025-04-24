@@ -1,10 +1,10 @@
 <script setup>
-import Header from '../components/headerComponent.vue'
-import Hero from '../components/heroComponent.vue'
-import About from '../components/aboutComponent.vue'
-import Reviews from '../components/reviewsComponent.vue'
-import Action from '../components/actionComponent.vue'
-import Footer from '../components/footerComponent.vue'
+import Header from '../components/headerBlock.vue'
+import Hero from '../components/heroBlock.vue'
+import About from '../components/aboutBlock.vue'
+import Reviews from '../components/reviewsBlock.vue'
+import Action from '../components/actionBlock.vue'
+import Footer from '../components/footerBlock.vue'
 </script>
 
 <template>

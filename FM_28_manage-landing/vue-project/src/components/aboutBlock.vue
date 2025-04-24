@@ -12,33 +12,27 @@
       </div>
       <ul class="about__list">
         <li class="about__item">
-          <!-- <div class="about__item-block"> -->
           <h3 class="about__item-title about__item-title_1">Track company-wide progress</h3>
           <p class="about__item-descr">
             See how your day-to-day tasks fit into the wider vision. Go from tracking progress at
             the milestone level all the way done to the smallest of details. Never lose sight of the
             bigger picture again.
           </p>
-          <!-- </div> -->
         </li>
         <li class="about__item">
-          <!-- <div class="about__item-block"> -->
           <h3 class="about__item-title about__item-title_2">Advanced built-in reports</h3>
           <p class="about__item-descr">
             Set internal delivery estimates and track progress toward company goals. Our
             customisable dashboard helps you build out the reports you need to keep key stakeholders
             informed.
           </p>
-          <!-- </div> -->
         </li>
         <li class="about__item">
-          <!-- <div class="about__item-block"> -->
           <h3 class="about__item-title about__item-title_3">Everything you need in one place</h3>
           <p class="about__item-descr">
             Stop jumping from one service to another to communicate, store files, track tasks and
             share documents. Manage offers an all-in-one team productivity solution.
           </p>
-          <!-- </div> -->
         </li>
       </ul>
     </div>
@@ -81,7 +75,6 @@
     font-size: 0.81rem;
     color: var(--dark-blue);
     &::before {
-      // content: '01';
       display: flex;
       position: absolute;
       width: 66px;
@@ -144,7 +137,9 @@
       flex-direction: column;
     }
     &__info {
-      max-width: 290px;
+      width: initial;
+      max-width: 500px;
+      padding: 0 24px;
     }
     &__title {
       margin-bottom: 12px;
@@ -153,6 +148,7 @@
       text-align: center;
     }
     &__descr {
+      width: initial;
       font-size: 0.77rem;
       line-height: 1.55rem;
       text-align: center;
