@@ -24,7 +24,7 @@ import Footer from '../components/footerBlock.vue'
 .main {
   background-image: url('/assets/images/bg-tablet-pattern.svg');
   background-repeat: no-repeat;
-  background-position: left -504px bottom 542px;
+  background-position: left -504px bottom 454px;
   overflow: hidden;
 }
 

@@ -143,7 +143,7 @@ const onFormSubmit = ({ valid }) => {
     max-width: 100%;
     padding: 0;
     padding-top: 63px;
-    padding-bottom: 57px;
+    padding-bottom: 53px;
     background-color: var(--very-dark-blue);
   }
   &__wrapper {
