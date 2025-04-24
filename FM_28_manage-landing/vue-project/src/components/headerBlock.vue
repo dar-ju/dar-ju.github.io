@@ -19,7 +19,9 @@ const navItems = [
 <template>
   <header class="section header">
     <div class="container header__container">
-      <a class="header__logo" href="#"><img src="/assets/images/logo.svg" alt="Manage logo" /></a>
+      <a class="header__logo" href="#"
+        ><img src="/assets/images/logo.svg" alt="Manage logo" width="146" height="24"
+      /></a>
       <nav class="header__nav-wrapper header__desktop-nav">
         <ul class="header__nav-list">
           <li v-for="item in navItems" :key="item.label" class="header__nav-item">
@@ -40,14 +42,20 @@ const navItems = [
             class="header__burger-close"
             @click="toggleMobileMenu()"
             v-show="isMobileMenuOpened"
+            aria-label="Close mobile menu"
           >
-            <img src="/assets/images/icon-close.svg" alt="" />
+            <img src="/assets/images/icon-close.svg" alt="" width="21" height="22" />
           </button>
         </div>
       </Transition>
       <Button class="main-btn header__btn" label="Get Started" />
-      <button class="header__burger" @click="toggleMobileMenu()" v-show="!isMobileMenuOpened">
-        <img src="/assets/images/icon-hamburger.svg" alt="" />
+      <button
+        class="header__burger"
+        @click="toggleMobileMenu()"
+        v-show="!isMobileMenuOpened"
+        aria-label="Open mobile menu"
+      >
+        <img src="/assets/images/icon-hamburger.svg" alt="" width="25" height="18" />
       </button>
     </div>
   </header>

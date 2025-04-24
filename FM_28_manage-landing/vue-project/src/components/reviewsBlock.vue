@@ -76,7 +76,12 @@ const responsiveOptions = ref([
           <div class="reviews__wrapper">
             <div class="reviews__card">
               <div class="reviews__avatar">
-                <img :src="slotProps.data.avatar" :alt="slotProps.data.author" />
+                <img
+                  :src="slotProps.data.avatar"
+                  :alt="slotProps.data.author"
+                  width="73"
+                  height="73"
+                />
               </div>
               <div class="reviews__block">
                 <h3 class="reviews__author">{{ slotProps.data.author }}</h3>

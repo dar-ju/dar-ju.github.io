@@ -36,32 +36,51 @@ const onFormSubmit = ({ valid }) => {
         <div class="footer__link-block">
           <div class="footer__contact">
             <a class="footer__logo" href="#"
-              ><img src="/assets/images/logo-light.svg" alt="Manage light logo"
+              ><img
+                src="/assets/images/logo-light.svg"
+                alt="Manage light logo"
+                width="146"
+                height="24"
             /></a>
             <ul class="footer__social-list">
               <li class="footer__social-item">
                 <button>
-                  <img src="/assets/images/icon-facebook.svg" alt="Facebook" />
+                  <img
+                    src="/assets/images/icon-facebook.svg"
+                    alt="Facebook"
+                    width="20"
+                    height="20"
+                  />
                 </button>
               </li>
               <li class="footer__social-item">
                 <button>
-                  <img src="/assets/images/icon-youtube.svg" alt="Youtube" />
+                  <img src="/assets/images/icon-youtube.svg" alt="Youtube" width="20" height="20" />
                 </button>
               </li>
               <li class="footer__social-item">
                 <button>
-                  <img src="/assets/images/icon-twitter.svg" alt="Twitter" />
+                  <img src="/assets/images/icon-twitter.svg" alt="Twitter" width="20" height="20" />
                 </button>
               </li>
               <li class="footer__social-item">
                 <button>
-                  <img src="/assets/images/icon-pinterest.svg" alt="Pinterest" />
+                  <img
+                    src="/assets/images/icon-pinterest.svg"
+                    alt="Pinterest"
+                    width="20"
+                    height="20"
+                  />
                 </button>
               </li>
               <li class="footer__social-item">
                 <button>
-                  <img src="/assets/images/icon-instagram.svg" alt="Instagram" />
+                  <img
+                    src="/assets/images/icon-instagram.svg"
+                    alt="Instagram"
+                    width="20"
+                    height="20"
+                  />
                 </button>
               </li>
             </ul>

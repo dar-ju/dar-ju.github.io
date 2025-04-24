@@ -12,7 +12,12 @@
         <Button class="main-btn" label="Get Started" />
       </div>
       <picture class="hero__img">
-        <img src="/assets/images/illustration-intro.svg" alt="Manage intro illustration" />
+        <img
+          src="/assets/images/illustration-intro.svg"
+          alt="Manage intro illustration"
+          width="579"
+          height="524"
+        />
       </picture>
     </div>
   </section>
