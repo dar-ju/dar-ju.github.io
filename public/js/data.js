@@ -1,5 +1,19 @@
 export const data = [
   {
+    "manage-landing": {
+      "id": 28,
+      "en": {
+        "title": "Manage landing page",
+        "description": "This task helped to better consolidate the practice with PrimeVUE, although it does not particularly require the use of libraries. Of interest is the carousel, I do not know what takes longer to write it yourself or customize it from the library. I think I would not have been able to do it so beautifully. Time on the project - 17 hours.",
+      },
+      "ru": {
+        "title": "Лендинг Manage",
+        "description": "Данное задание помогло лучше закрепить практику с PrimeVUE, хоть тут особо и не требуется использование библиотек. Из интересного - карусель, не знаю что дольше писать её с нуля самому или кастомизировать из библиотеки. Думаю, у меня так красиво сделать не получилось бы. Время над проектом - 17 часов.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/manage-landing-page-0zzVMIjgQd"
+    }
+  },
+  {
     "multistep-form": {
       "id": 27,
       "en": {
