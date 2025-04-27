@@ -14,8 +14,9 @@ const resultTotal = document.getElementById('resultTotal')
 // Reset
 const resetButton = document.getElementById('reset')
 
-// Setup default focus
-billTotal.focus();
+const billLimit = 1000000
+const percentLimit = 99
+const peopleLimit = 1000
 
 // Prevent form submit
 allFields.addEventListener('submit', (event) => {
@@ -39,6 +40,20 @@ function colorReset() {
     element.classList.remove('splitter__tip-item_pushed')
   })
 }
+
+// Restrictions
+billTotal.addEventListener('input', (event) => {
+  const value = event.target.value
+  event.target.value = value > billLimit ? billLimit : value
+})
+customField.addEventListener('input', (event) => {
+  const value = event.target.value
+  event.target.value = value > percentLimit ? percentLimit : value
+})
+numberOfPeople.addEventListener('input', (event) => {
+  const value = event.target.value
+  event.target.value = value > peopleLimit ? peopleLimit : value
+})
 
 // Tip buttons check
 tipVariations.forEach(element => {
@@ -71,7 +86,7 @@ function peopleCheck() {
 
 // Data format function
 function formatData(value) {
-  return new Intl.NumberFormat("en", {style: "currency", currency: "USD"}).format(value);
+  return new Intl.NumberFormat("en", { style: "currency", currency: "USD" }).format(value);
 }
 
 // Tip calculations & get result

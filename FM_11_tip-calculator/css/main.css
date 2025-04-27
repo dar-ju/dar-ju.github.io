@@ -119,6 +119,11 @@ body {
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+.splitter__tip-item_custom {
+  background-color: var(--color-very-light-grayish-cyan);
+  color: var(--color-grayish-cyan);
+}
+
 .splitter__tip-item_pushed {
   background-color: var(--color-strong-cyan);
   color: var(--color-very-dark-cyan);
@@ -129,6 +134,7 @@ body {
   padding: 0;
   background-color: transparent;
 }
+
 .splitter__input_tip {
   width: 100%;
   border-radius: 3px;
