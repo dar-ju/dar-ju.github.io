@@ -10,7 +10,8 @@ export const data = [
         "title": "Лендинг Manage",
         "description": "Данное задание помогло лучше закрепить практику с PrimeVUE, хоть тут особо и не требуется использование библиотек. Из интересного - карусель, не знаю что дольше писать её с нуля самому или кастомизировать из библиотеки. Думаю, у меня так красиво сделать не получилось бы. Время над проектом - 17 часов.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/manage-landing-page-0zzVMIjgQd"
+      "urlFm": "https://www.frontendmentor.io/solutions/manage-landing-page-0zzVMIjgQd",
+      "stack": ['vue', 'primevue', 'sass/scss', 'bem', 'zod']
     }
   },
   {
@@ -24,7 +25,8 @@ export const data = [
         "title": "Многоступенчатая форма",
         "description": "Задание сложное относительно верстки. Мобильная версия сильно отличается, трудность в том, чтобы не нарушить структуру формы. Использовал библиотеку Primevue, с ней нужно разобраться и тогда она станет хорошим помощником. Работа заняла 32 часа.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/multi-step-form-with-primevue--kJUTpzzrM"
+      "urlFm": "https://www.frontendmentor.io/solutions/multi-step-form-with-primevue--kJUTpzzrM",
+      "stack": ['vue', 'primevue', 'pinia', 'sass/scss', 'bem', 'zod', 'localstorage']
     }
   },
   {
@@ -38,7 +40,8 @@ export const data = [
         "title": "Раздел интерактивных комментариев",
         "description": "Задание отличается множеством подходов к решению. Иногда казалось, что я выбрал неверный путь. Комментарии работают и есть возможность для расширения, тем не менее мне кажется есть более правильный и простой способ реализации. Дополнительно сделал возможность отдать только 1 голос за сообщение. Время работы над проектом 22 часа.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/interactive-comments-section-6mGcWjrpcp"
+      "urlFm": "https://www.frontendmentor.io/solutions/interactive-comments-section-6mGcWjrpcp",
+      "stack": ['vue', 'pinia', 'sass/scss', 'bem', 'localstorage']
     }
   },
   {
@@ -52,7 +55,8 @@ export const data = [
         "title": "API список стран",
         "description": "Многостраничный сайт по странам мира с поиском, возможностью отбирать регионы и переключать темы. Ссылки на страны генерируются при помощи роутов во VUE3. Использован Typrscript для типизиции данных. Использованы базовая анимация и скелетон. Время работы над проектом - 22 часа.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/rest-countries-api-vue-ts-XrZejzgWZ_"
+      "urlFm": "https://www.frontendmentor.io/solutions/rest-countries-api-vue-ts-XrZejzgWZ_",
+      "stack": ['vue', 'vue-router', 'pinia', 'sass/scss', 'bem', 'typescript']
     }
   },
   {
@@ -66,7 +70,8 @@ export const data = [
         "title": "Компонент ипотечного калькулятора",
         "description": "Нелегкое задание с переопределением большого количества стилей формы. Нужно было продумать ограничения при воде данных в поля, а также прописать логику аннуитетных платежей по формуле. Присутствует много деталей, которые следует тщательно перепроверять.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/mortgage-calculator-component-cH6jXeohNX"
+      "urlFm": "https://www.frontendmentor.io/solutions/mortgage-calculator-component-cH6jXeohNX",
+      "stack": ['vue', 'sass/scss', 'bem']
     }
   },
   {
@@ -80,7 +85,8 @@ export const data = [
         "title": "Список товаров с корзиной",
         "description": "Анимация во VUE очень простая и удобная, надеюсь я ею не злоупотребил. Во время окончательной проверки кода уделил внимание скорости работы страницы в Google Pagespeed, добился практически 100% резульата. Понятно, что это не вся часть страницы, но, думаю, результат хороший.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/product-list-with-cart-CTNjz7GPE7"
+      "urlFm": "https://www.frontendmentor.io/solutions/product-list-with-cart-CTNjz7GPE7",
+      "stack": ['vue', 'pinia', 'css', 'localstorage', 'animation']
     }
   },
   {
@@ -94,7 +100,8 @@ export const data = [
         "title": "Компонент результатов",
         "description": "Простая карточка с результатми, ничего особенного. Отзывчивая верстка, мобильная версия. Данные можно менять в файле data.json. Из интересного - ховер на кнопке с градиентом.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/results-summary-component-e7Vav-wMX2"
+      "urlFm": "https://www.frontendmentor.io/solutions/results-summary-component-e7Vav-wMX2",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -108,7 +115,8 @@ export const data = [
         "title": "Сайт космического туризма",
         "description": "Сайт состоит из 4 страниц, переход между которыми проходит с плавной анимацией, как и блоков внутри. Для этого пришлось использовать абсолютное позиционирование, что сильно усложнило верстку в Perfect Pixel. Верстка получилась максимально близкой к идеям дизайнера.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/space-tourism-multi-page-website-LZAWcBHca_"
+      "urlFm": "https://www.frontendmentor.io/solutions/space-tourism-multi-page-website-LZAWcBHca_",
+      "stack": ['vue', 'pinia', 'vue-router', 'css', 'animation']
     }
   },
   {
@@ -122,7 +130,8 @@ export const data = [
         "title": "Лендинг Bookmark",
         "description": "Довольно разнообразное по количеству решаемых задач задание. Всего одна страница, поэтому обошёлся только HTML, CSS и JS, для анимации использовался GSAP. Верстка в Perfect Pixel десктопа и мобильной версии без макета Figma заняло много времени.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/bookmark-landing-page-73ROxtMb12"
+      "urlFm": "https://www.frontendmentor.io/solutions/bookmark-landing-page-73ROxtMb12",
+      "stack": ['html', 'sass/scss', 'bem', 'js', 'gsap', 'animation']
     }
   },
   {
@@ -136,7 +145,8 @@ export const data = [
         "title": "Страница компании Room",
         "description": "Главная страница мебельной компании с простой версткой, но с возможностью поэксперементировать с анимацией. Использовал инструмент GSAP в данном проекте, думаю, получилось неплохо.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/animated-room-homepage-OeLQrZAEtq"
+      "urlFm": "https://www.frontendmentor.io/solutions/animated-room-homepage-OeLQrZAEtq",
+      "stack": ['html', 'sass/scss', 'bem', 'js', 'gsap', 'animation']
     }
   },
   {
@@ -150,7 +160,8 @@ export const data = [
         "title": "Лендинг Loopstudios",
         "description": "Лендинг с мобильным меню без JS. Использовал бандлер Webpack и SCSS. Считаю, что макет не на столько сложный, чтобы применять сетку, достаточно флексов.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/loopstudios-landing-page-with-css-mobile-menu-t6owMky-h3"
+      "urlFm": "https://www.frontendmentor.io/solutions/loopstudios-landing-page-with-css-mobile-menu-t6owMky-h3",
+      "stack": ['html', 'webpack', 'sass/scss', 'bem']
     }
   },
   {
@@ -164,7 +175,8 @@ export const data = [
         "title": "Компонент карточки NFT",
         "description": "Небольшой и довольно легкий проект по созданию компонента карточки NFT. Для фокуса использовал box-shadow вместо outline или border, вполне удобный вариант, но без возможности сделать отступ.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/nft-preview-card-component-VTov_a7B19"
+      "urlFm": "https://www.frontendmentor.io/solutions/nft-preview-card-component-VTov_a7B19",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -178,7 +190,8 @@ export const data = [
         "title": "Страница товара с лайтбоксом",
         "description": "Страница продукта с элегантной галереей продуктов в виде лайтбокса и динамической функциональностью корзины. Впервые сделал лайтбокс, оказалось это легче, чем я думал. В работе использовать фреймворк VUE.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP"
+      "urlFm": "https://www.frontendmentor.io/solutions/e-commerce-product-page-vue-5iPlSQITWP",
+      "stack": ['vue', 'pinia', 'vue-router', 'css']
     }
   },
   {
@@ -192,7 +205,8 @@ export const data = [
         "title": "Домашняя страница сайта новостей",
         "description": "Эта новостная домашняя страница стала отличной возможностью попрактиковать свои навыки CSS Grid. Особое внимание стоило уделить тестам на переполнение, потому что в формате динамичного контента это наиболее важно.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/news-homepage-8JaK1hJGlY"
+      "urlFm": "https://www.frontendmentor.io/solutions/news-homepage-8JaK1hJGlY",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -206,7 +220,8 @@ export const data = [
         "title": "Контактная форма",
         "description": "Создание доступных форм — важная задача для FrontEnd разработчиков. Эта задача помогла попрактиковаться в создании формы с несколькими типами ввода и проверкой.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/contact-form-BEClvqbx_z"
+      "urlFm": "https://www.frontendmentor.io/solutions/contact-form-BEClvqbx_z",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -220,7 +235,8 @@ export const data = [
         "title": "FAQ аккордеон",
         "description": "В этом задании предполагается создание аккордеона FAQ, распространенного шаблона интерфейса, что дало прекрасную возможность для практики. Решил сделать задание на CSS без использования JS.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/faq-accordion-spnKX4fBKt"
+      "urlFm": "https://www.frontendmentor.io/solutions/faq-accordion-spnKX4fBKt",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -234,7 +250,8 @@ export const data = [
         "title": "Интерактивный компонент рейтинга",
         "description": "Это хороший, небольшой проект для практики обработки взаимодействия с пользователем и обновления DOM. Идеально подходит для тех, кто изучил основы JavaScript!",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/rating-component-d0p1yN7S37"
+      "urlFm": "https://www.frontendmentor.io/solutions/rating-component-d0p1yN7S37",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -248,7 +265,8 @@ export const data = [
         "title": "Приложение для расчета чаевых",
         "description": "Простое приложение, призванное помочь освоить основы JavaScript, включающее в себя функциональность калькулятора в качестве практического теста.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/tip-calculator-iASjBMcYHy"
+      "urlFm": "https://www.frontendmentor.io/solutions/tip-calculator-iASjBMcYHy",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -262,7 +280,8 @@ export const data = [
         "title": "Панель отслеживаниея времени",
         "description": "Идеальная возможность попрактиковаться в работе с CSS Grid с дополнительной возможностью использования предоставленного файла JSON для улучшения навыка обработки данных.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/time-tracking-dash-ZZ0twPiIzt"
+      "urlFm": "https://www.frontendmentor.io/solutions/time-tracking-dash-ZZ0twPiIzt",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -276,7 +295,8 @@ export const data = [
         "title": "Форма подписки на рассылку с сообщением об успешном завершении",
         "description": "Задание проверяет навыки работы с базовой структурой формы, проверкой и отправкой. Состояние успеха также является отличной возможностью поработать с DOM.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/newsletter-sign-up-form-XjJJFKYwpA"
+      "urlFm": "https://www.frontendmentor.io/solutions/newsletter-sign-up-form-XjJJFKYwpA",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -290,7 +310,8 @@ export const data = [
         "title": "Компонент статьи",
         "description": "Задача направлена ​​на улучшение навыков верстки с помощью компонента статьи, а также на творческий подход к созданию анимаций для иконок профиля.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/article-card-aj796wU0fb"
+      "urlFm": "https://www.frontendmentor.io/solutions/article-card-aj796wU0fb",
+      "stack": ['html', 'css', 'js']
     }
   },
   {
@@ -304,7 +325,8 @@ export const data = [
         "title": "Раздел отзывов по сетке",
         "description": "Задание предоставило возможность попрактиковаться и проверить навыки работы с CSS Grid, подчеркивая их универсальность и ценность как мощного инструмента в дизайне CSS.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/testimonials-grid-page-2UN6G5TJDl"
+      "urlFm": "https://www.frontendmentor.io/solutions/testimonials-grid-page-2UN6G5TJDl",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -318,7 +340,8 @@ export const data = [
         "title": "Раздел с четырьмя секциями",
         "description": "Хорошая задача по работе с макетом. Это проверит любого, кто новичок в многоколоночных и адаптивных макетах.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/four-card-adaptive-zWDhvnCGKe"
+      "urlFm": "https://www.frontendmentor.io/solutions/four-card-adaptive-zWDhvnCGKe",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -332,7 +355,8 @@ export const data = [
         "title": "Карточка товара",
         "description": "Это задание, посвященное только HTML и CSS - идеальное начало для создания адаптивных проектов.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/product-card-without-figma-ZzvSFsAS3r"
+      "urlFm": "https://www.frontendmentor.io/solutions/product-card-without-figma-ZzvSFsAS3r",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -346,7 +370,8 @@ export const data = [
         "title": "Страница рецептов",
         "description": "В этом задании особое внимание уделяется написанию семантического HTML-кода путем выбора наиболее подходящих элементов для каждой части контента.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/recipe-page-BCT67jz4_O"
+      "urlFm": "https://www.frontendmentor.io/solutions/recipe-page-BCT67jz4_O",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -360,7 +385,8 @@ export const data = [
         "title": "Профиль ссылок на социальные сети",
         "description": "Этот небольшой проект включает в себя создание профиля для обмена социальными ссылками. Его можно персонализировать и использовать для обмена всеми социальными профилями.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/flexing-social-links-profile-bNmpzr6YpL"
+      "urlFm": "https://www.frontendmentor.io/solutions/flexing-social-links-profile-bNmpzr6YpL",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -374,7 +400,8 @@ export const data = [
         "title": "Карточка блога",
         "description": "Это задание, посвященное только HTML и CSS, идеально подойдет новичкам, которые хотят быстро освоить основы HTML и CSS, такие как структура HTML и блочная модель.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/blog-preview-card-1Vl5ErQuld"
+      "urlFm": "https://www.frontendmentor.io/solutions/blog-preview-card-1Vl5ErQuld",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -388,7 +415,8 @@ export const data = [
         "title": "Компонент QR-кода",
         "description": "Отличный вводный пример для работы с HTML и CSS. Макет карточки остается фиксированным, что делает его идеальным для тех, кто еще не научился создавать адаптивные макеты.",
       },
-      "urlFm": "https://www.frontendmentor.io/solutions/fm01qr-E_iuILoOSx"
+      "urlFm": "https://www.frontendmentor.io/solutions/fm01qr-E_iuILoOSx",
+      "stack": ['html', 'css']
     }
   },
   {
@@ -402,9 +430,11 @@ export const data = [
         "heroDescription4": "<strong>For me personally</strong>, this platform is a useful tool for improving my skills. At first glance, the tasks seem easy, but during development, a large number of details become visible. It is the details that are one of the most important parts of development, and by focusing on them, you can get a truly high-quality product.",
         "subtitle1": "My Latest",
         "subtitle2": "All Solutions",
+        "filter": "Tools filter",
+        "btnClear": "Clear",
         "btnLive": "live site",
         "btnFm": "FM page",
-        "technologies": "Used technologies",
+        "technologies": "All used tools and technologies",
         "thank": "I hope you enjoyed it",
       },
       "ru": {
@@ -415,9 +445,11 @@ export const data = [
         "heroDescription4": "<strong>Лично для меня</strong> эта платформа является полезным инструментом для повышения своих навыков. На первый взгляд задания кажутся легкими, но в процессе разработки становится видно большое количество деталей. Именно детали являются одной из важнейших частей разработки, и, сосредоточившись на них, можно получить действительно качественный продукт.",
         "subtitle1": "Мое Последнее",
         "subtitle2": "Все Решения",
+        "filter": "Фильтр инструментов",
+        "btnClear": "Очистить",
         "btnLive": "страница",
         "btnFm": "страница FM",
-        "technologies": "Примененные технологии",
+        "technologies": "Все примененные инструменты и технологии",
         "thank": "Надеюсь вам понравилось",
       }
     }
