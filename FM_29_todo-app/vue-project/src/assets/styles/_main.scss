@@ -11,20 +11,34 @@ body {
   color: var(--very-dark-grayish-blue);
   background-image: url('/images/bg-desktop-light.jpg');
   background-repeat: no-repeat;
-  background-position: top -154px right -145px;
+  background-size: 100%;
 }
 
 .section {
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 74px;
+  padding-bottom: 74px;
 }
 
-// .container {
-//   max-width: 1440px;
-//   margin: auto;
-//   padding-left: 165px;
-//   padding-right: 165px;
-// }
+.container {
+  max-width: 740px;
+  margin: auto;
+  padding-left: 100px;
+  padding-right: 100px;
+  color: var(--white);
+}
+
+.check-circle {
+  &::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    top: 20px;
+    left: 126px;
+    border-radius: 50%;
+    border: 1px solid var(--very-light-grayish-blue);
+  }
+}
 
 // .main-btn {
 //   width: 100%;
