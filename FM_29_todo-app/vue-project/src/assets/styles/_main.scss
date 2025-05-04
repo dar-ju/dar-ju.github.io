@@ -1,0 +1,73 @@
+/* MAIN */
+html {
+  font-size: 18px;
+}
+
+body {
+  min-width: 320px;
+  font-family: "JosefinSans", sans-serif;
+  font-weight: 400;
+  background-color: var(--very-light-gray);
+  color: var(--very-dark-grayish-blue);
+  background-image: url('/images/bg-desktop-light.jpg');
+  background-repeat: no-repeat;
+  background-position: top -154px right -145px;
+}
+
+.section {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+// .container {
+//   max-width: 1440px;
+//   margin: auto;
+//   padding-left: 165px;
+//   padding-right: 165px;
+// }
+
+// .main-btn {
+//   width: 100%;
+//   max-width: 137px;
+//   height: 45px;
+//   box-shadow: 0 10px 20px -8px var(--bright-red);
+// }
+
+// .p-button-label {
+//   font-size: 0.7rem;
+// }
+
+// .p-message-text {
+//   color: var(--bright-red);
+//   font-style: italic;
+//   font-weight: 400;
+// }
+
+// .p-carousel-indicator {
+//   display: none;
+// }
+
+// .p-carousel-next-button, .p-carousel-prev-button {
+//   display: none !important;
+// }
+
+// .fade-enter-active,
+// .fade-leave-active {
+//   transition: opacity 0.5s;
+// }
+
+// .fade-enter-from,
+// .fade-leave-to {
+//   opacity: 0;
+// }
+
+@media (max-width: 768px) {
+  // body {
+  //   background-position: top -113px right -136px;
+  //     background-size: 121%;
+  // }
+
+  // .p-carousel-indicator {
+  //   display: block;
+  // }
+}
