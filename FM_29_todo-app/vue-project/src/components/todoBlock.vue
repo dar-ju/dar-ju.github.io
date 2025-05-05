@@ -4,7 +4,7 @@ import TodoList from './todoItem.vue'
 
 <template>
   <div class="todo container">
-    <form class="check-circle todo__form">
+    <form class="todo__form">
       <input class="todo__input" type="text" placeholder="Create a new todo..." />
     </form>
     <div class="todo__wrapper">
@@ -29,7 +29,19 @@ import TodoList from './todoItem.vue'
 .todo {
   position: relative;
   &__form {
+    width: 100%;
+    height: 64px;
     margin-bottom: 24px;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 20px;
+      left: 126px;
+      border-radius: 50%;
+      border: 1px solid var(--very-light-grayish-blue);
+    }
   }
   &__wrapper {
     margin-bottom: 50px;

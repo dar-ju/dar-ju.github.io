@@ -27,19 +27,6 @@ body {
   color: var(--white);
 }
 
-.check-circle {
-  &::before {
-    content: '';
-    position: absolute;
-    width: 22px;
-    height: 22px;
-    top: 20px;
-    left: 126px;
-    border-radius: 50%;
-    border: 1px solid var(--very-light-grayish-blue);
-  }
-}
-
 // .main-btn {
 //   width: 100%;
 //   max-width: 137px;
