@@ -47,6 +47,7 @@ app.post("/api/todos", async (req, res) => {
   // const user = req.user.username
   const user = 'test'
   await createTodo(todo, user)
+  res.status(200).json({ message: "Todo created" })
 })
 
 // toggle done todo
