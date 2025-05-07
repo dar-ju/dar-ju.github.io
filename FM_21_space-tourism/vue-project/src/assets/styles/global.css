@@ -7,7 +7,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   font-family: "Barlow Condensed", sans-serif;
-  background-color: var(--color-white);
+  background-color: var(--color-blue900);
   color: var(--color-blue300);
 }
 
