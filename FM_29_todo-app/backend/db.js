@@ -1,7 +1,8 @@
-require("dotenv").config()
-const { nanoid } = require('nanoid')
-const { MongoClient, ObjectId } = require('mongodb');
-const client = new MongoClient(process.env.DB_URI);
+import dotenv from 'dotenv'
+dotenv.config()
+import { nanoid } from 'nanoid'
+import { MongoClient, ObjectId } from 'mongodb'
+const client = new MongoClient(process.env.MONGO_URI);
 
 let db
 
@@ -146,7 +147,8 @@ const updateTodo = async (id, done) => {
   db = await getDb();
   try {
     const todo = await getTodoById(id)
-    await db.collection('todos').updateOne({ _id: new ObjectId(id) }, { done })
+    const result = todo.done ? false : true
+    await db.collection('todos').updateOne({ _id: new ObjectId(id) }, { $set: { done: result } })
   } catch (err) {
     console.error(`Update todo with ID ${id} error:`, err)
     throw err
@@ -164,7 +166,7 @@ const deleteTodo = async (id) => {
   }
 }
 
-module.exports = {
+export {
   getDb,
   getAllUserTodos,
   createTodo,

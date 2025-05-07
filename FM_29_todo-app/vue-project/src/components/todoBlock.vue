@@ -1,5 +1,18 @@
 <script setup>
-import TodoList from './todoItem.vue'
+import { onMounted, ref } from 'vue'
+import TodoItem from './todoItem.vue'
+
+const todos = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/todos')
+    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    todos.value = await response.json()
+  } catch (error) {
+    console.error('Ошибка загрузки todos:', error)
+  }
+})
 </script>
 
 <template>
@@ -9,7 +22,7 @@ import TodoList from './todoItem.vue'
     </form>
     <div class="todo__wrapper">
       <ul class="todo__list">
-        <TodoList />
+        <TodoItem v-for="todo in todos" :key="todo._id" :todo="todo" />
       </ul>
       <div class="todo__operate">
         <span class="left">5 items left</span>

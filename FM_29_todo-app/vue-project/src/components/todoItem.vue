@@ -2,8 +2,27 @@
 import { ref } from 'vue'
 
 const item = ref(false)
-const toggleItem = () => {
-  item.value = !item.value
+
+const props = defineProps({
+  todo: {
+    type: Object,
+    required: false,
+  },
+})
+
+const toggleItem = async (id) => {
+  try {
+    const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/done`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    item.value = !item.value
+  } catch (error) {
+    console.error('Error load todos:', error)
+  }
 }
 </script>
 
@@ -11,13 +30,13 @@ const toggleItem = () => {
   <li class="todo-item">
     <div
       class="todo-item__wrapper"
-      @click="toggleItem"
+      @click="toggleItem(props.todo._id)"
       :class="{ 'todo-item__wrapper_hover': !item }"
     >
       <button class="todo-item__check" :class="{ 'checked-btn': item }"></button>
-      <span class="todo-item__task-name" :class="{ 'checked-task-name': item }"
-        >Complete online JavaScript course</span
-      >
+      <span class="todo-item__task-name" :class="{ 'checked-task-name': item }">{{
+        props.todo.todo
+      }}</span>
     </div>
     <button class="todo-item__delete">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
@@ -29,7 +48,7 @@ const toggleItem = () => {
       </svg>
     </button>
   </li>
-  <li class="todo-item">
+  <!-- <li class="todo-item">
     <div class="todo-item__wrapper">
       <button
         class="todo-item__check"
@@ -65,7 +84,7 @@ const toggleItem = () => {
   <li class="todo-item">
     <button class="todo-item__check"></button>
     <span class="todo-item__task-name">Jog around the park 3x</span>
-  </li>
+  </li> -->
 </template>
 
 <style lang="scss" scoped>
