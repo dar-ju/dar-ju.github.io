@@ -5,6 +5,7 @@ import { useTodoStore } from '@/stores/todoStore'
 
 const todoStore = useTodoStore()
 const todoText = ref('')
+const loadingDone = ref(false)
 // const todos = ref([])
 
 onMounted(async () => {
@@ -13,13 +14,19 @@ onMounted(async () => {
 })
 
 const addNewTodo = async (todo, user) => {
+  loadingDone.value = true
   await todoStore.createTodo(todo, user)
+  todoText.value = ''
+  loadingDone.value = false
 }
 </script>
 
 <template>
   <div class="todo container">
     <form class="todo__form" @submit.prevent="addNewTodo(todoText, 'test')">
+      <div class="loading todo__loading" v-show="loadingDone">
+        <div class="loading-circles"></div>
+      </div>
       <input
         class="todo__input"
         type="text"
@@ -108,6 +115,10 @@ const addNewTodo = async (todo, user) => {
     text-align: center;
     font-size: 0.76rem;
     color: var(--light-grayish-blue);
+  }
+  &__loading {
+    top: 32px;
+    left: 126px;
   }
 }
 </style>

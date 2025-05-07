@@ -27,6 +27,59 @@ body {
   color: var(--white);
 }
 
+
+// ANIMATION
+// Done loading
+.loading {
+  position: absolute;
+  top: 50%;
+  transform: translate(-2px, -50%);
+}
+.loading-circles {
+  width: 29px;
+  height: 29px;
+  margin: 0 auto;
+  border: 3px double;
+  border-radius: 50%;
+  border-color: transparent rgb(137 162 250) rgb(180 102 245);
+  animation: cssload-spin 990ms infinite linear;
+  -o-animation: cssload-spin 990ms infinite linear;
+  -ms-animation: cssload-spin 990ms infinite linear;
+  -webkit-animation: cssload-spin 990ms infinite linear;
+  -moz-animation: cssload-spin 990ms infinite linear;
+}
+@keyframes cssload-spin {
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes cssload-spin {
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes cssload-spin {
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes cssload-spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes cssload-spin {
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
 // .main-btn {
 //   width: 100%;
 //   max-width: 137px;

@@ -4,7 +4,8 @@ import { useTodoStore } from '@/stores/todoStore'
 
 const todoStore = useTodoStore()
 
-const item = ref(false)
+// const item = ref(false)
+const loadingDone = ref(false)
 
 const props = defineProps({
   todo: {
@@ -14,12 +15,17 @@ const props = defineProps({
 })
 
 const toggleItem = async (id) => {
+  loadingDone.value = true
   await todoStore.toggleTodo(id)
-  item.value = !item.value
+  loadingDone.value = false
+  // item.value = !item.value
+  // item.value = todoStore.todos.done
 }
 
 const deleteItem = async (id) => {
+  loadingDone.value = true
   await todoStore.deleteTodo(id)
+  loadingDone.value = false
 }
 </script>
 
@@ -30,8 +36,11 @@ const deleteItem = async (id) => {
       @click="toggleItem(props.todo._id)"
       :class="{ 'todo-item__wrapper_hover': !item }"
     >
-      <button class="todo-item__check" :class="{ 'checked-btn': item }"></button>
-      <span class="todo-item__task-name" :class="{ 'checked-task-name': item }">{{
+      <div class="loading" v-show="loadingDone">
+        <div class="loading-circles"></div>
+      </div>
+      <button class="todo-item__check" :class="{ 'checked-btn': props.todo.done }"></button>
+      <span class="todo-item__task-name" :class="{ 'checked-task-name': props.todo.done }">{{
         props.todo.todo
       }}</span>
     </div>
@@ -87,21 +96,22 @@ const deleteItem = async (id) => {
 <style lang="scss" scoped>
 .todo-item {
   display: flex;
-  max-height: 64px;
-  padding: 20px 25px;
+  min-height: 64px;
+  padding: 19px 25px;
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
   border-bottom: 1px solid var(--very-light-grayish-blue);
   &__wrapper {
+    position: relative;
     display: flex;
     align-items: flex-end;
     gap: 20px;
     cursor: pointer;
     &_hover {
-      &:hover button {
+      &:hover button:not(.checked-btn) {
         background: var(--check-background);
-        &::before {
+        &:not(.checked-btn)::before {
           content: '';
           position: absolute;
           width: 21px;
@@ -116,8 +126,9 @@ const deleteItem = async (id) => {
   }
   &__check {
     position: relative;
-    width: 25px;
+    min-width: 25px;
     height: 25px;
+    align-self: center;
     border-radius: 50%;
     border: 1px solid var(--very-light-grayish-blue);
     transition: border ease-in-out 0.3s;
@@ -128,7 +139,6 @@ const deleteItem = async (id) => {
     color: var(--very-dark-grayish-blue);
   }
   &__delete {
-    align-self: flex-end;
     line-height: 0;
   }
 }
