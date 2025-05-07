@@ -90,6 +90,10 @@ body {
   }
 }
 
+.p-form-field {
+  background: var(--white) !important;
+}
+
 @media (max-width: 768px) {
   body {
     min-height: 665px;

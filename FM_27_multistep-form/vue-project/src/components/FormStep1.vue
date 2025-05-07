@@ -150,6 +150,7 @@ onBeforeMount(() => {
     min-height: 48px;
     color: var(--marine-blue);
     font-weight: 500;
+    background-color: var(--white);
     &::placeholder {
       font-size: 1.05rem;
       color: var(--cool-gray);

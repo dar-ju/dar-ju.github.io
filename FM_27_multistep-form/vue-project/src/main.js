@@ -37,6 +37,7 @@ const FormPrest = definePreset(Aura, {
     },
     checkbox: {
       'checked.background': 'var(--purplish-blue)',
+      background: 'var(--white)',
     },
     button: {
       secondaryBorderColor: 'transparent',
