@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import { useTodoStore } from '@/stores/todoStore'
+
+const todoStore = useTodoStore()
 
 const item = ref(false)
 
@@ -11,33 +14,12 @@ const props = defineProps({
 })
 
 const toggleItem = async (id) => {
-  try {
-    const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/done`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    if (!response.ok) throw new Error(`Error: ${response.status}`)
-    item.value = !item.value
-  } catch (error) {
-    console.error('Error load todos:', error)
-  }
+  await todoStore.toggleTodo(id)
+  item.value = !item.value
 }
 
 const deleteItem = async (id) => {
-  try {
-    const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/delete`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    if (!response.ok) throw new Error(`Error: ${response.status}`)
-    item.value = !item.value
-  } catch (error) {
-    console.error('Error load todos:', error)
-  }
+  await todoStore.deleteTodo(id)
 }
 </script>
 

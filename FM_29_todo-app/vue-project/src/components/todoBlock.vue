@@ -1,28 +1,35 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import TodoItem from './todoItem.vue'
+import { useTodoStore } from '@/stores/todoStore'
 
-const todos = ref([])
+const todoStore = useTodoStore()
+const todoText = ref('')
+// const todos = ref([])
 
 onMounted(async () => {
-  try {
-    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/todos')
-    if (!response.ok) throw new Error(`Error: ${response.status}`)
-    todos.value = await response.json()
-  } catch (error) {
-    console.error('Ошибка загрузки todos:', error)
-  }
+  await todoStore.getTodos()
+  // todos.value = todoStore.todos
 })
+
+const addNewTodo = async (todo, user) => {
+  await todoStore.createTodo(todo, user)
+}
 </script>
 
 <template>
   <div class="todo container">
-    <form class="todo__form">
-      <input class="todo__input" type="text" placeholder="Create a new todo..." />
+    <form class="todo__form" @submit.prevent="addNewTodo(todoText, 'test')">
+      <input
+        class="todo__input"
+        type="text"
+        placeholder="Create a new todo..."
+        v-model="todoText"
+      />
     </form>
     <div class="todo__wrapper">
       <ul class="todo__list">
-        <TodoItem v-for="todo in todos" :key="todo._id" :todo="todo" />
+        <TodoItem v-for="todo in todoStore.todos" :key="todo._id" :todo="todo" />
       </ul>
       <div class="todo__operate">
         <span class="left">5 items left</span>

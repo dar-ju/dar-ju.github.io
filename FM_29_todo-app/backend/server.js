@@ -44,7 +44,8 @@ app.get('/api/todos', async (req, res) => {
 // create new todo
 app.post("/api/todos", async (req, res) => {
   const { todo } = req.body
-  const user = req.user.username
+  // const user = req.user.username
+  const user = 'test'
   await createTodo(todo, user)
 })
 

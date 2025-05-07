@@ -120,7 +120,7 @@ const createTodo = async (todo, user) => {
   if (todo) {
     db = await getDb();
     try {
-      await db.collection('todos').insertOne({ user, done: true, todo })
+      await db.collection('todos').insertOne({ user, done: false, todo })
     } catch (err) {
       console.error(`Creation todo "${todo}" error:`, err)
       throw err
