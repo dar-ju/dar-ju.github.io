@@ -32,6 +32,7 @@ function langToggle() {
     lang = 'en'
   }
   loadFilteredData()
+  createLatestCard()
 }
 
 // all used tools list create
