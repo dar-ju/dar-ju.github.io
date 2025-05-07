@@ -55,6 +55,13 @@ app.post("/api/todos/:id/done", async (req, res) => {
   res.status(200).json({ message: "Todo status changed" })
 })
 
+// delete todo
+app.post("/api/todos/:id/delete", async (req, res) => {
+  const { id } = req.params
+  await deleteTodo(id)
+  res.status(200).json({ message: "Todo deleted" })
+})
+
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`)
 })

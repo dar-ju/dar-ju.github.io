@@ -24,6 +24,21 @@ const toggleItem = async (id) => {
     console.error('Error load todos:', error)
   }
 }
+
+const deleteItem = async (id) => {
+  try {
+    const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/delete`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    item.value = !item.value
+  } catch (error) {
+    console.error('Error load todos:', error)
+  }
+}
 </script>
 
 <template>
@@ -38,7 +53,7 @@ const toggleItem = async (id) => {
         props.todo.todo
       }}</span>
     </div>
-    <button class="todo-item__delete">
+    <button class="todo-item__delete" @click="deleteItem(props.todo._id)">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
         <path
           fill="#494C6B"
