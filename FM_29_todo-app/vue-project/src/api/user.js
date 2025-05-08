@@ -1,6 +1,7 @@
 export async function getSessionApi() {
   try {
     const response = await fetch('https://todo-backend-3ew1.onrender.com/api/me')
+    if (response.status === 401) return null
     if (!response.ok) throw new Error(`Error: ${response.status}`)
     const data = await response.json()
     return data
@@ -9,20 +10,36 @@ export async function getSessionApi() {
   }
 }
 
-// export const createTodoApi = async (todo, user) => {
-//   try {
-//     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos`, {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ todo, user: 'test' })
-//     })
-//     if (!response.ok) throw new Error(`Error: ${response.status}`)
-//   } catch (error) {
-//     console.error('Error load todos:', error)
-//   }
-// }
+export const loginUserApi = async (username, password) => {
+  try {
+    const response = await fetch(`https://todo-backend-3ew1.onrender.com/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password })
+    })
+    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    return await response.json()
+  } catch (error) {
+    console.error('Login error:', error)
+  }
+}
+
+export const registerUserApi = async (username, password) => {
+  try {
+    const response = await fetch(`https://todo-backend-3ew1.onrender.com/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password })
+    })
+    if (!response.ok) throw new Error(`Error: ${response.status}`)
+  } catch (error) {
+    console.error('Signup error:', error)
+  }
+}
 
 // export const toggleTodoApi = async (id) => {
 //   try {

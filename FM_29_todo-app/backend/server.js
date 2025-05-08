@@ -66,6 +66,8 @@ async function userLogin(username, password, res) {
   const userDataFromDB = await findUserByUsername(username)
   const hashPsw = userDataFromDB.password
   const match = await bcrypt.compare(password, hashPsw)
+  console.log(match);
+
   if (match) {
     const user = await loginUser(username, hashPsw)
     const sessionId = await createSession(user._id)
@@ -80,7 +82,8 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body
     await userLogin(username, password, res)
   } catch (err) {
-    res.redirect('/')
+    console.error('Login server error:', err)
+    res.status(500).json({ error: 'Login failed' })
   }
 })
 
