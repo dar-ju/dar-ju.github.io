@@ -35,7 +35,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // local dev domen
 const corsOptions = {
-  origin: 'http://192.168.0.100:5173/',
+  origin: 'http://localhost:5173',
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type'],
