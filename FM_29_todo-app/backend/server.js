@@ -110,7 +110,7 @@ app.post("/logout", async (req, res) => {
       await deleteSession(sessionId)
       res.clearCookie('sessionId')
     }
-    res.status(200).send('Logged out')
+    res.status(200).json({ message: 'Logged out' })
   } catch (err) {
     console.error('Logout error:', err)
     res.status(500).send('Server error')
