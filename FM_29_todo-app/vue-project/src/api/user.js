@@ -14,6 +14,7 @@ export const loginUserApi = async (username, password) => {
   try {
     const response = await fetch(`https://todo-backend-3ew1.onrender.com/login`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

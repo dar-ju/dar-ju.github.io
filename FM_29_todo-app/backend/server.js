@@ -69,10 +69,10 @@ async function userLogin(username, password, res) {
   if (match) {
     const user = await loginUser(username, hashPsw)
     const sessionId = await createSession(user._id)
-    res.cookie('sessionId', sessionId)
+    res.cookie('sessionId', sessionId, { httpOnly: true })
   }
   else console.error('Wrong password');
-  res.redirect('/')
+  return res.json({ message: 'Login successful' })
 }
 
 app.post("/login", async (req, res) => {
