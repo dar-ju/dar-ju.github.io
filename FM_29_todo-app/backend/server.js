@@ -23,7 +23,7 @@ import {
 dotenv.config()
 
 const app = express()
-app.use(cors())
+// app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
@@ -34,16 +34,22 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error(err))
 
 // local dev domen
-app.use(cors({
+const corsOptions = {
   origin: 'http://localhost:5173',
-  credentials: true
-}))
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}
 
 // production build domen
-// app.use(cors({
+// const corsOptions = {
 //   origin: 'https://dar-ju.github.io',
-//   credentials: true
-// }))
+//   credentials: true,
+//   methods: ['GET', 'POST', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type'],
+// }
+
+app.use(cors(corsOptions))
 
 // const Todo = mongoose.model('Todo', { title: String, content: String }, 'todos');
 
