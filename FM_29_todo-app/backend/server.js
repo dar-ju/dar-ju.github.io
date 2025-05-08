@@ -33,6 +33,18 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Mongo connected'))
   .catch(err => console.error(err))
 
+// local dev domen
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}))
+
+// production build domen
+// app.use(cors({
+//   origin: 'https://dar-ju.github.io',
+//   credentials: true
+// }))
+
 // const Todo = mongoose.model('Todo', { title: String, content: String }, 'todos');
 
 // SESSIONS
