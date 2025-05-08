@@ -54,7 +54,7 @@ app.use(async (req, res, next) => {
 
 app.get('/api/me', (req, res) => {
   if (req.user) {
-    res.json({ user: req.user })
+    res.send(req.user.name)
   } else {
     res.status(401).json({ user: null })
   }
