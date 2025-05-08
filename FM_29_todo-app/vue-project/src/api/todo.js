@@ -16,7 +16,7 @@ export const createTodoApi = async (todo, user) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ todo, user: 'test' })
+      body: JSON.stringify({ todo, user })
     })
     if (!response.ok) throw new Error(`Error: ${response.status}`)
   } catch (error) {
