@@ -35,6 +35,23 @@ mongoose.connect(process.env.MONGO_URI)
 
 // const Todo = mongoose.model('Todo', { title: String, content: String }, 'todos');
 
+// SESSIONS
+app.use(async (req, res, next) => {
+  const sessionId = req.cookies.sessionId
+  if (sessionId) {
+    try {
+      const session = await getSession(sessionId)
+      if (session) {
+        const user = await findUserBySessionId(sessionId)
+        if (user) req.user = user
+      }
+    } catch (err) {
+      console.error('Error processing session:', err)
+    }
+  }
+  next()
+})
+
 // USERS
 async function userLogin(username, password, res) {
   const userDataFromDB = await findUserByUsername(username)
