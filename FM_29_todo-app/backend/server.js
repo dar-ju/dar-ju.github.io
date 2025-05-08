@@ -148,9 +148,9 @@ app.get("/", (req, res) => {
 // TODOS
 // get all tdos
 app.get('/api/todos', async (req, res) => {
-  // const { username } = req.body
-  const username = req.user?.username
-  if (!username) return res.status(401).json({ error: 'Unauthorized' })
+  console.log(req.body);
+
+  const { username } = req.body
   const todos = await getAllUserTodos(username);
   res.json(todos);
 });
