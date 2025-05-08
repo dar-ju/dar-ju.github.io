@@ -34,20 +34,20 @@ mongoose.connect(process.env.MONGO_URI)
   .catch(err => console.error(err))
 
 // local dev domen
-const corsOptions = {
-  origin: 'http://localhost:5173',
-  credentials: true,
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type'],
-}
-
-// production build domen
 // const corsOptions = {
-//   origin: 'https://dar-ju.github.io',
+//   origin: 'http://localhost:5173',
 //   credentials: true,
 //   methods: ['GET', 'POST', 'OPTIONS'],
 //   allowedHeaders: ['Content-Type'],
 // }
+
+// production build domen
+const corsOptions = {
+  origin: 'https://dar-ju.github.io',
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type'],
+}
 
 app.use(cors(corsOptions))
 
@@ -148,9 +148,8 @@ app.get("/", (req, res) => {
 // TODOS
 // get all tdos
 app.get('/api/todos', async (req, res) => {
-  console.log(req.body);
-
-  const { username } = req.body
+  // const { username } = req.body
+  const username = req.user.username
   const todos = await getAllUserTodos(username);
   res.json(todos);
 });
@@ -158,7 +157,7 @@ app.get('/api/todos', async (req, res) => {
 // create new todo
 app.post("/api/todos", async (req, res) => {
   const { todo } = req.body
-  console.log(req.user)
+  // console.log(req.user)
   const user = req.user.username
   // const user = req.user.username
   // const user = 'test'
