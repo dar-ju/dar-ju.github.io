@@ -34,7 +34,7 @@ const deleteItem = async (id) => {
     <div
       class="todo-item__wrapper"
       @click="toggleItem(props.todo._id)"
-      :class="{ 'todo-item__wrapper_hover': !item }"
+      :class="{ 'todo-item__wrapper_hover': !loadingDone }"
     >
       <div class="loading" v-show="loadingDone">
         <div class="loading-circles"></div>

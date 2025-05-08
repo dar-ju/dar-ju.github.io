@@ -1,8 +1,14 @@
-<script setup></script>
+<script setup>
+import { useUserStore } from '@/stores/userStore'
+import { ref } from 'vue'
+
+const userStore = useUserStore()
+</script>
 
 <template>
   <div class="header container">
     <h1 class="header__title">todo</h1>
+    <span class="header__user">{{ `${userStore.user}'s todos` }}</span>
     <button>
       <img src="/images/icon-moon.svg" alt="" />
     </button>

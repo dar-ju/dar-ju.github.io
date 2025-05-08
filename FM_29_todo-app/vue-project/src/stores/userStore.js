@@ -12,12 +12,14 @@ export const useUserStore = defineStore('user', () => {
 
   const loginUser = async (username, password) => {
     const response = await loginUserApi(username, password)
-    return response
+    user.value = response
+    console.log(user.value);
+
   }
 
   const registerUser = async (username, password) => {
     const response = await registerUserApi(username, password)
-    return response
+    user.value = response
   }
 
   // const createTodo = async (todo, user) => {

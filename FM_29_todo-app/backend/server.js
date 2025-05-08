@@ -88,9 +88,9 @@ async function userLogin(username, password, res) {
     const user = await loginUser(username, hashPsw)
     const sessionId = await createSession(user._id)
     res.cookie('sessionId', sessionId, { httpOnly: true })
+    return res.send(user.username)
   }
   else console.error('Wrong password');
-  return res.json({ message: 'Login successful' })
 }
 
 app.post("/login", async (req, res) => {

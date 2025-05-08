@@ -3,7 +3,7 @@ import HeaderBlock from '../components/headerBlock.vue'
 import TodoBlock from '../components/todoBlock.vue'
 import AuthBlock from '../components/authBlock.vue'
 import { useUserStore } from '@/stores/userStore'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 
 const userStore = useUserStore()
 
@@ -13,6 +13,13 @@ onMounted(async () => {
   await userStore.getUser()
   isSession.value = userStore.user ? true : false
 })
+
+watch(
+  () => userStore.user,
+  (newValue) => {
+    isSession.value = newValue ? true : false
+  },
+)
 </script>
 
 <template>
