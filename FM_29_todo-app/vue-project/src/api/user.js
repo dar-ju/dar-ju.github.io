@@ -44,6 +44,18 @@ export const registerUserApi = async (username, password) => {
   }
 }
 
+export const logoutUserApi = async () => {
+  try {
+    const response = await fetch(`https://todo-backend-3ew1.onrender.com/logout`, {
+      method: 'POST',
+    })
+    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    return await response.json()
+  } catch (error) {
+    console.error('Logout error:', error)
+  }
+}
+
 // export const toggleTodoApi = async (id) => {
 //   try {
 //     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/done`, {

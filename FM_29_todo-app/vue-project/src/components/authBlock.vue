@@ -110,7 +110,7 @@ const register = async (username, password) => {
   flex-direction: column;
   align-items: center;
   &__title {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
     text-align: center;
   }
   &__block {

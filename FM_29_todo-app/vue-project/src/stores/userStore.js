@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getSessionApi, loginUserApi, registerUserApi } from '@/api/user.js'
+import { getSessionApi, loginUserApi, registerUserApi, logoutUserApi } from '@/api/user.js'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref('')
@@ -22,6 +22,11 @@ export const useUserStore = defineStore('user', () => {
     user.value = response
   }
 
+  const logoutUser = async () => {
+    await logoutUserApi()
+    user.value = ''
+  }
+
   // const createTodo = async (todo, user) => {
   //   await createTodoApi(todo, user)
   //   await getTodos()
@@ -37,5 +42,5 @@ export const useUserStore = defineStore('user', () => {
   //   await getTodos()
   // }
 
-  return { user, getUser, loginUser, registerUser }
+  return { user, getUser, loginUser, registerUser, logoutUser }
 })
