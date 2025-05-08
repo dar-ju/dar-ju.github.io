@@ -89,8 +89,11 @@ async function userLogin(username, password, res) {
     const sessionId = await createSession(user._id)
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
-      sameSite: 'None',
-      secure: true
+      sameSite: 'Lax',
+      secure: false
+      // sameSite: 'None', //PROD
+      // secure: true
+
     })
     // res.cookie('sessionId', sessionId, { httpOnly: true })
     return res.json({ user: user.username })
@@ -156,8 +159,9 @@ app.get('/api/todos', async (req, res) => {
 app.post("/api/todos", async (req, res) => {
   const { todo } = req.body
   console.log(req.user)
+  const user = req.user.username
   // const user = req.user.username
-  const user = 'test'
+  // const user = 'test'
   await createTodo(todo, user)
   res.status(200).json({ message: "Todo created" })
 })
