@@ -1,6 +1,5 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
-import { ref } from 'vue'
 
 const userStore = useUserStore()
 </script>
