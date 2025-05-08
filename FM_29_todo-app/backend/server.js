@@ -35,6 +35,58 @@ mongoose.connect(process.env.MONGO_URI)
 
 // const Todo = mongoose.model('Todo', { title: String, content: String }, 'todos');
 
+// USERS
+async function userLogin(username, password, res) {
+  const userDataFromDB = await findUserByUsername(username)
+  const hashPsw = userDataFromDB.password
+  const match = await bcrypt.compare(password, hashPsw)
+  if (match) {
+    const user = await loginUser(username, hashPsw)
+    const sessionId = await createSession(user._id)
+    res.cookie('sessionId', sessionId, { httpOnly: true })
+  }
+  else console.error('Wrong password');
+  res.redirect('/')
+}
+
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body
+    await userLogin(username, password, res)
+  } catch (err) {
+    res.redirect('/')
+  }
+})
+
+app.post("/logout", async (req, res) => {
+  try {
+    const sessionId = req.cookies.sessionId
+    await deleteSession(sessionId)
+    res.clearCookie('sessionId')
+    res.redirect('/')
+  } catch (err) {
+    res.redirect('/')
+  }
+})
+
+app.post("/signup", async (req, res) => {
+  const { username, password } = req.body
+  const hashPsw = await bcrypt.hash(password, 10)
+  await createUser(username, hashPsw)
+  await userLogin(username, password, res)
+})
+
+app.get("/", (req, res) => {
+  res.render("index", {
+    user: req.user,
+    authError: req.query.authError === "true" ? "Wrong username or password" : req.query.authError,
+  })
+})
+
+
+
+
+// TODOS
 // get all tdos
 app.get('/api/todos', async (req, res) => {
   const todos = await getAllUserTodos('test');

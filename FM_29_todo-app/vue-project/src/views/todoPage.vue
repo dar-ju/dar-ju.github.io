@@ -1,6 +1,7 @@
 <script setup>
 import HeaderBlock from '../components/headerBlock.vue'
 import TodoBlock from '../components/todoBlock.vue'
+import AuthBlock from '../components/authBlock.vue'
 </script>
 
 <template>
