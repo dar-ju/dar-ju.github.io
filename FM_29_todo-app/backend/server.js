@@ -105,12 +105,15 @@ app.post("/login", async (req, res) => {
 
 app.post("/logout", async (req, res) => {
   try {
-    const sessionId = req.cookies.sessionId
-    await deleteSession(sessionId)
-    res.clearCookie('sessionId')
-    res.redirect('/')
+    const sessionId = req.cookies?.sessionId
+    if (sessionId) {
+      await deleteSession(sessionId)
+      res.clearCookie('sessionId')
+    }
+    res.status(200).send('Logged out')
   } catch (err) {
-    res.redirect('/')
+    console.error('Logout error:', err)
+    res.status(500).send('Server error')
   }
 })
 
