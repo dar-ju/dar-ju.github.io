@@ -52,6 +52,15 @@ app.use(async (req, res, next) => {
   next()
 })
 
+app.get('/api/me', (req, res) => {
+  if (req.user) {
+    res.json({ user: req.user })
+  } else {
+    res.status(401).json({ user: null })
+  }
+})
+
+
 // USERS
 async function userLogin(username, password, res) {
   const userDataFromDB = await findUserByUsername(username)

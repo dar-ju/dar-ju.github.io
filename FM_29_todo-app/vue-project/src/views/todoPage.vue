@@ -2,6 +2,7 @@
 import HeaderBlock from '../components/headerBlock.vue'
 import TodoBlock from '../components/todoBlock.vue'
 import AuthBlock from '../components/authBlock.vue'
+import { useUserStore } from '@/stores/userStore'
 </script>
 
 <template>
