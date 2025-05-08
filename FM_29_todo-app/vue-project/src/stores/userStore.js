@@ -13,8 +13,6 @@ export const useUserStore = defineStore('user', () => {
   const loginUser = async (username, password) => {
     const response = await loginUserApi(username, password)
     user.value = response
-    console.log(user.value);
-
   }
 
   const registerUser = async (username, password) => {

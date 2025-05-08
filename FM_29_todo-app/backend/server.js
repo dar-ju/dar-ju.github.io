@@ -147,16 +147,16 @@ app.get("/", (req, res) => {
 // TODOS
 // get all tdos
 app.get('/api/todos', async (req, res) => {
-  const todos = await getAllUserTodos('test');
+  const { username } = req.body
+  const todos = await getAllUserTodos(username);
   res.json(todos);
 });
 
 // create new todo
 app.post("/api/todos", async (req, res) => {
-  const { todo } = req.body
+  const { todo, username } = req.body
   // const user = req.user.username
-  const user = 'test'
-  await createTodo(todo, user)
+  await createTodo(todo, username)
   res.status(200).json({ message: "Todo created" })
 })
 
