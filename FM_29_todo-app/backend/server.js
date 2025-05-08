@@ -87,7 +87,12 @@ async function userLogin(username, password, res) {
   if (match) {
     const user = await loginUser(username, hashPsw)
     const sessionId = await createSession(user._id)
-    res.cookie('sessionId', sessionId, { httpOnly: true })
+    res.cookie('sessionId', sessionId, {
+      httpOnly: true,
+      sameSite: 'None',
+      secure: true
+    })
+    // res.cookie('sessionId', sessionId, { httpOnly: true })
     return res.json({ user: user.username })
   }
   else console.error('Wrong password');
