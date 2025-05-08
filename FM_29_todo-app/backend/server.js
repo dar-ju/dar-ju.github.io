@@ -66,12 +66,10 @@ async function userLogin(username, password, res) {
   const userDataFromDB = await findUserByUsername(username)
   const hashPsw = userDataFromDB.password
   const match = await bcrypt.compare(password, hashPsw)
-  console.log(match);
-
   if (match) {
     const user = await loginUser(username, hashPsw)
     const sessionId = await createSession(user._id)
-    res.cookie('sessionId', sessionId, { httpOnly: true })
+    res.cookie('sessionId', sessionId)
   }
   else console.error('Wrong password');
   res.redirect('/')
