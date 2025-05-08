@@ -113,7 +113,12 @@ app.post("/logout", async (req, res) => {
     const sessionId = req.cookies?.sessionId
     if (sessionId) {
       await deleteSession(sessionId)
-      res.clearCookie('sessionId')
+      res.clearCookie('sessionId', {
+        httpOnly: true,
+        sameSite: 'None',
+        secure: true,
+        path: '/',
+      })
     }
     res.status(200).json({ message: 'Logged out' })
   } catch (err) {
