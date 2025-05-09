@@ -60,8 +60,9 @@ app.use(async (req, res, next) => {
     try {
       const session = await getSession(sessionId)
       if (session) {
-        const user = await findUserBySessionId(sessionId)
-        if (user) req.user = user
+        // const user = await findUserBySessionId(sessionId)
+        // if (user) req.user = user
+        req.user = user.username
       }
     } catch (err) {
       console.error('Error processing session:', err)
@@ -86,7 +87,7 @@ async function userLogin(username, password, res) {
   const match = await bcrypt.compare(password, hashPsw)
   if (match) {
     const user = await loginUser(username, hashPsw)
-    const sessionId = await createSession(user._id)
+    const sessionId = await createSession(user._id, username)
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
       sameSite: 'Lax',
