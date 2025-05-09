@@ -120,7 +120,7 @@ const createTodo = async (todo, user) => {
   if (todo) {
     db = await getDb();
     try {
-      const lastTodo = await db.findOne({ user }).sort({ order: -1 }).limit(1);
+      const lastTodo = await db.collection('todos').findOne({ user }).sort({ order: -1 }).limit(1);
       const nextOrder = lastTodo ? lastTodo.order + 1 : 0;
       await db.collection('todos').insertOne({ user, done: false, todo, order: nextOrder })
     } catch (err) {
