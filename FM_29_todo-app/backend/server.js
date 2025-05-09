@@ -105,7 +105,7 @@ async function userLogin(username, password, res) {
 
     })
     // res.cookie('sessionId', sessionId, { httpOnly: true })
-    console.log(user.username)
+    // console.log(user.username)
     return res.json({ user: user.username })
   }
   else console.error('Wrong password');
@@ -160,7 +160,7 @@ app.get("/", (req, res) => {
 app.get('/api/todos', async (req, res) => {
   // const { username } = req.body
   // const username = req.user.username
-  console.log(req.user)
+  console.log(req)
   const todos = await getAllUserTodos('test');
   res.json(todos);
 });
