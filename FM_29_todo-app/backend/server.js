@@ -178,7 +178,7 @@ app.post("/api/todos/:id/done", async (req, res) => {
 })
 
 // change todo order
-app.post("/api/todos/:id/update-order", async (req, res) => {
+app.put("/api/todos/:id/update-order", async (req, res) => {
   const { id } = req.params
   const { order } = req.body;
   await orderTodo(id, order)
