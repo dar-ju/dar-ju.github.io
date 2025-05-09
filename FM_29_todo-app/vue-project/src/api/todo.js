@@ -16,6 +16,7 @@ export const createTodoApi = async (todo, user) => {
   try {
     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -31,6 +32,7 @@ export const toggleTodoApi = async (id) => {
   try {
     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/done`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -45,6 +47,7 @@ export const deleteTodoApi = async (id) => {
   try {
     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/delete`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },

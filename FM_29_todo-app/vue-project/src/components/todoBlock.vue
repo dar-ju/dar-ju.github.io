@@ -2,8 +2,11 @@
 import { onMounted, ref } from 'vue'
 import TodoItem from './todoItem.vue'
 import { useTodoStore } from '@/stores/todoStore'
+import { useUserStore } from '@/stores/userStore'
+import { VueDraggable } from 'vue-draggable-plus'
 
 const todoStore = useTodoStore()
+const userStore = useUserStore()
 const todoText = ref('')
 const loadingDone = ref(false)
 // const todos = ref([])
@@ -23,7 +26,7 @@ const addNewTodo = async (todo, user) => {
 
 <template>
   <div class="todo container">
-    <form class="todo__form" @submit.prevent="addNewTodo(todoText, 'test')">
+    <form class="todo__form" @submit.prevent="addNewTodo(todoText, userStore.user.user)">
       <div class="loading todo__loading" v-show="loadingDone">
         <div class="loading-circles"></div>
       </div>
@@ -35,9 +38,9 @@ const addNewTodo = async (todo, user) => {
       />
     </form>
     <div class="todo__wrapper">
-      <ul class="todo__list">
+      <VueDraggable class="todo__list" ref="el" v-model="todoStore.todos">
         <TodoItem v-for="todo in todoStore.todos" :key="todo._id" :todo="todo" />
-      </ul>
+      </VueDraggable>
       <div class="todo__operate">
         <span class="left">5 items left</span>
         <ul class="todo__select">

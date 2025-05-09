@@ -56,7 +56,6 @@ app.use(cors(corsOptions))
 // SESSIONS
 app.use(async (req, res, next) => {
   const sessionId = req.cookies.sessionId
-  console.log('Cookies:', sessionId)
   if (sessionId) {
     try {
       const session = await getSession(sessionId)
@@ -67,7 +66,6 @@ app.use(async (req, res, next) => {
           _id: session.userId,
           username: session.username
         }
-        console.log('Cookies:', sessionId)
       }
     } catch (err) {
       console.error('Error processing session:', err)
@@ -165,10 +163,10 @@ app.get('/api/todos', async (req, res) => {
 app.post("/api/todos", async (req, res) => {
   const { todo } = req.body
   // console.log(req.user)
-  const user = req.user.username
+  const username = req.user.username
   // const user = req.user.username
   // const user = 'test'
-  await createTodo(todo, user)
+  await createTodo(todo, username)
   res.status(200).json({ message: "Todo created" })
 })
 

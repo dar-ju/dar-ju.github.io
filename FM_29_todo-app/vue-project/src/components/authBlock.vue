@@ -143,6 +143,7 @@ const register = async (username, password) => {
   &__rigester-block {
     display: flex;
     gap: 15px;
+    justify-content: space-between;
     color: var(--light-grayish-blue);
   }
 }
