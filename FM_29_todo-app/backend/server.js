@@ -96,10 +96,8 @@ async function userLogin(username, password, res) {
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
       sameSite: 'Lax',
-      secure: false
+      secure: true
       // sameSite: 'None', //PROD
-      // secure: true
-
     })
     // res.cookie('sessionId', sessionId, { httpOnly: true })
     return res.json({ user: user.username })
