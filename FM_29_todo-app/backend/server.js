@@ -159,7 +159,7 @@ app.get("/", (req, res) => {
 // get all tdos
 app.get('/api/todos', async (req, res) => {
   // const { username } = req.body
-  const username = req.user.username
+  // const username = req.user.username
   console.log(req.user)
   const todos = await getAllUserTodos('test');
   res.json(todos);
