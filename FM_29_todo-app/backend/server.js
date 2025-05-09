@@ -56,6 +56,7 @@ app.use(cors(corsOptions))
 // SESSIONS
 app.use(async (req, res, next) => {
   const sessionId = req.cookies.sessionId
+  console.log('Cookies:', req.cookies)
   if (sessionId) {
     try {
       const session = await getSession(sessionId)
@@ -66,6 +67,7 @@ app.use(async (req, res, next) => {
           _id: session.userId,
           username: session.username
         }
+        console.log('Cookies:', req.cookies)
       }
     } catch (err) {
       console.error('Error processing session:', err)

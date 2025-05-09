@@ -1,6 +1,9 @@
 export async function getTodosApi() {
   try {
-    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/todos')
+    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/todos', {
+      method: 'GET',
+      credentials: 'include'
+    })
     if (!response.ok) throw new Error(`Error: ${response.status}`)
     const data = await response.json()
     return data
