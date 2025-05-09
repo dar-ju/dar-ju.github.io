@@ -97,7 +97,6 @@ async function userLogin(username, password, res) {
       maxAge: 3600000,
       httpOnly: true,
       path: '/',
-      domain: 'localhost',
       secure: false,
       sameSite: 'Lax',
       // sameSite: 'None', //PROD
