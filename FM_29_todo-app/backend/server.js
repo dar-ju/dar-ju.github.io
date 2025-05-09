@@ -105,6 +105,7 @@ async function userLogin(username, password, res) {
 
     })
     // res.cookie('sessionId', sessionId, { httpOnly: true })
+    console.log(user.username)
     return res.json({ user: user.username })
   }
   else console.error('Wrong password');
