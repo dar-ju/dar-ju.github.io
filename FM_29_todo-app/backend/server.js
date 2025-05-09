@@ -97,11 +97,8 @@ async function userLogin(username, password, res) {
       maxAge: 3600000,
       httpOnly: true,
       path: '/',
-      secure: false,
-      // sameSite: 'Lax',
-      sameSite: 'None', //PROD
-      // secure: true
-
+      secure: true,
+      sameSite: 'None'
     })
     // res.cookie('sessionId', sessionId, { httpOnly: true })
     // console.log(user.username)
