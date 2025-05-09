@@ -74,11 +74,11 @@ const findUserBySessionId = async (sessionId) => {
 }
 
 // SESSIONS
-const createSession = async (userId, user) => {
+const createSession = async (userId, username) => {
   db = await getDb();
   try {
     const sessionId = nanoid()
-    await db.collection('sessions').insertOne({ userId, user, sessionId })
+    await db.collection('sessions').insertOne({ userId, username, sessionId })
     return sessionId
   } catch (err) {
     console.error(`Session was not created:`, err)
