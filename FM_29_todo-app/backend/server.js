@@ -62,7 +62,10 @@ app.use(async (req, res, next) => {
       if (session) {
         // const user = await findUserBySessionId(sessionId)
         // if (user) req.user = user
-        req.user = user.username
+        req.user = {
+          _id: session.userId,
+          username: session.username
+        }
       }
     } catch (err) {
       console.error('Error processing session:', err)
