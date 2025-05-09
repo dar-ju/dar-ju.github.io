@@ -157,6 +157,17 @@ const updateTodo = async (id, done) => {
   }
 }
 
+const orderTodo = async (id, order) => {
+  db = await getDb();
+  try {
+    const todo = await getTodoById(id)
+    await db.collection('todos').updateOne({ _id: new ObjectId(id) }, { $set: { order } })
+  } catch (err) {
+    console.error(`Order change todo with ID ${id} error:`, err)
+    throw err
+  }
+}
+
 const deleteTodo = async (id) => {
   db = await getDb();
   try {
@@ -174,6 +185,7 @@ export {
   createTodo,
   getTodoById,
   updateTodo,
+  orderTodo,
   deleteTodo,
   createUser,
   loginUser,

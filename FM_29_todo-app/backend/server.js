@@ -177,6 +177,14 @@ app.post("/api/todos/:id/done", async (req, res) => {
   res.status(200).json({ message: "Todo status changed" })
 })
 
+// change todo order
+app.post("/api/todos/:id/update-order", async (req, res) => {
+  const { id } = req.params
+  const { order } = req.body;
+  await orderTodo(id, order)
+  res.status(200).json({ message: "Todo order changed" })
+})
+
 // delete todo
 app.post("/api/todos/:id/delete", async (req, res) => {
   const { id } = req.params
