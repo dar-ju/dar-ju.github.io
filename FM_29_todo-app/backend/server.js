@@ -57,24 +57,27 @@ app.use(cors(corsOptions))
 app.use(async (req, res, next) => {
   const sessionId = req.cookies.sessionId
   console.log('Cookies:', req.cookies)
+  console.log('Session ID:', sessionId)
+
   if (sessionId) {
     try {
       const session = await getSession(sessionId)
       if (session) {
-        // const user = await findUserBySessionId(sessionId)
-        // if (user) req.user = user
         req.user = {
           _id: session.userId,
           username: session.username
         }
-        console.log('Cookies:', req.cookies)
+        console.log('Session found:', req.user)
       }
     } catch (err) {
       console.error('Error processing session:', err)
     }
+  } else {
+    console.log('No session ID found')
   }
   next()
 })
+
 
 app.get('/api/me', (req, res) => {
   if (req.user) {
@@ -96,8 +99,11 @@ async function userLogin(username, password, res) {
     res.cookie('sessionId', sessionId, {
       httpOnly: true,
       sameSite: 'Lax',
-      secure: true
+      secure: false,
+      path: '/'
       // sameSite: 'None', //PROD
+      // secure: true
+
     })
     // res.cookie('sessionId', sessionId, { httpOnly: true })
     return res.json({ user: user.username })

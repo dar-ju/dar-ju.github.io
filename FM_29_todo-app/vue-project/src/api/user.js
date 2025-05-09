@@ -1,6 +1,9 @@
 export async function getSessionApi() {
   try {
-    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/me')
+    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/me', {
+      method: 'GET',
+      credentials: 'include'
+    })
     if (response.status === 401) return null
     if (!response.ok) throw new Error(`Error: ${response.status}`)
     const data = await response.json()
