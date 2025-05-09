@@ -98,8 +98,8 @@ async function userLogin(username, password, res) {
       httpOnly: true,
       path: '/',
       secure: false,
-      sameSite: 'Lax',
-      // sameSite: 'None', //PROD
+      // sameSite: 'Lax',
+      sameSite: 'None', //PROD
       // secure: true
 
     })
