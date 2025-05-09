@@ -47,6 +47,7 @@ export const updateTodoOrderApi = async (todoId, newOrder) => {
   try {
     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${todoId}/update-order`, {
       method: 'PUT',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
