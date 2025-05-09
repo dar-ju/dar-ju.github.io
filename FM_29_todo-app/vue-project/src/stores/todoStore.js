@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getTodosApi, createTodoApi, toggleTodoApi, deleteTodoApi } from '@/api/todo.js'
+import { getTodosApi, createTodoApi, toggleTodoApi, updateTodoOrderApi, deleteTodoApi } from '@/api/todo.js'
 
 export const useTodoStore = defineStore('todo', () => {
   const todos = ref([])
@@ -20,10 +20,15 @@ export const useTodoStore = defineStore('todo', () => {
     await getTodos()
   }
 
+  const orderTodo = async (todoId, newOrder) => {
+    await updateTodoOrderApi(todoId, newOrder)
+    await getTodos()
+  }
+
   const deleteTodo = async (id) => {
     await deleteTodoApi(id)
     await getTodos()
   }
 
-  return { todos, getTodos, createTodo, toggleTodo, deleteTodo }
+  return { todos, getTodos, createTodo, toggleTodo, orderTodo, deleteTodo }
 })

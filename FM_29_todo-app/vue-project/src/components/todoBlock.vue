@@ -22,6 +22,38 @@ const addNewTodo = async (todo, user) => {
   todoText.value = ''
   loadingDone.value = false
 }
+
+const onOrderChange = async (event) => {
+  if (event.moved) {
+    const movedElement = todoStore.todos[event.moved.newIndex]
+    const oldIndex = event.moved.oldIndex
+    const newIndex = event.moved.newIndex
+
+    console.log(`Элемент "${movedElement.todo}" перемещен с индекса ${oldIndex} на ${newIndex}`)
+
+    // Получаем ID перемещенного элемента
+    const movedItemId = movedElement._id
+
+    // Определяем ID элемента, с которым произошел обмен позиции
+    const targetItemId = todoStore.todos[oldIndex]._id
+
+    // Получаем текущие order обоих элементов
+    const movedItemOrder = movedElement.order
+    const targetItemOrder = todoStore.todos[oldIndex].order
+
+    // Обновляем order в локальном массиве (это необходимо для UI)
+    movedElement.order = targetItemOrder
+    todoStore.todos[oldIndex].order = movedItemOrder
+
+    // Отправляем на сервер запрос на обновление order только для этих двух элементов
+    await todoStore.orderTodo(movedItemId, targetItemOrder)
+    await todoStore.orderTodo(targetItemId, movedItemOrder)
+  }
+}
+
+// const fetchTodosWithOrder = async () => {
+//   await todoStore.getTodos({ sortBy: 'order', sortDirection: 'asc' }); // Запрашиваем с сортировкой по полю order
+// };
 </script>
 
 <template>
@@ -38,7 +70,7 @@ const addNewTodo = async (todo, user) => {
       />
     </form>
     <div class="todo__wrapper">
-      <VueDraggable class="todo__list" ref="el" v-model="todoStore.todos">
+      <VueDraggable class="todo__list" ref="el" v-model="todoStore.todos" @change="onOrderChange">
         <TodoItem v-for="todo in todoStore.todos" :key="todo._id" :todo="todo" />
       </VueDraggable>
       <div class="todo__operate">

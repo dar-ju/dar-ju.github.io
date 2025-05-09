@@ -43,6 +43,23 @@ export const toggleTodoApi = async (id) => {
   }
 }
 
+export const updateTodoOrderApi = async (todoId, newOrder) => {
+  try {
+    const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${todoId}/update-order`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ order: newOrder }),
+    });
+    if (!response.ok) {
+      console.error(`Failed to update todo ${todoId} order:`, await response.text());
+    }
+  } catch (error) {
+    console.error(`Error updating todo ${todoId} order:`, error);
+  }
+};
+
 export const deleteTodoApi = async (id) => {
   try {
     const response = await fetch(`https://todo-backend-3ew1.onrender.com/api/todos/${id}/delete`, {
