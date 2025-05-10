@@ -4,7 +4,6 @@ import { useTodoStore } from '@/stores/todoStore'
 
 const todoStore = useTodoStore()
 
-// const item = ref(false)
 const loadingDone = ref(false)
 
 const props = defineProps({
@@ -37,12 +36,20 @@ const deleteItem = async (id) => {
       <div class="loading todo-item__loading" v-show="loadingDone">
         <div class="loading-circles"></div>
       </div>
-      <button class="todo-item__check" :class="{ 'checked-btn': props.todo.done }"></button>
+      <button
+        class="todo-item__check"
+        :class="{ 'checked-btn': props.todo.done }"
+        aria-label="Change status"
+      ></button>
       <span class="todo-item__task-name" :class="{ 'checked-task-name': props.todo.done }">{{
         props.todo.todo
       }}</span>
     </div>
-    <button class="todo-item__delete" @click="deleteItem(props.todo._id)">
+    <button
+      class="todo-item__delete"
+      @click="deleteItem(props.todo._id)"
+      aria-label="Delete todo item"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
         <path
           fill="#494C6B"

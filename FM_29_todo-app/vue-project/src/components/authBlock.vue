@@ -69,7 +69,7 @@ const register = async (username, password) => {
           <button
             class="auth__toggle"
             type="button"
-            aria-label="Register for a new account"
+            aria-label="Toggle to Register mode"
             @click="formToggle"
           >
             Register
@@ -118,7 +118,7 @@ const register = async (username, password) => {
           <button
             class="auth__toggle"
             type="button"
-            aria-label="Register for a new account"
+            aria-label="Toggle to Log In mode"
             @click="formToggle"
           >
             Log In

@@ -89,7 +89,13 @@ watch(todoText, (newVal, oldVal) => {
       />
     </form>
     <div class="todo__wrapper">
-      <VueDraggable class="todo__list" ref="el" v-model="todoStore.todos" @change="onOrderChange">
+      <VueDraggable
+        class="todo__list"
+        ref="el"
+        tag="ul"
+        v-model="todoStore.todos"
+        @change="onOrderChange"
+      >
         <TodoItem v-for="todo in todoStore.todos" :key="todo._id" :todo="todo" />
       </VueDraggable>
       <div class="todo__operate">
@@ -100,6 +106,7 @@ watch(todoText, (newVal, oldVal) => {
               class="todo__select-item"
               @click="selectAllList()"
               :class="{ 'todo__select-item_active': selectedList === 'All' }"
+              aria-label="Select all tasks"
             >
               All
             </button>
@@ -114,6 +121,7 @@ watch(todoText, (newVal, oldVal) => {
                 }
               "
               :class="{ 'todo__select-item_active': selectedList === 'Active' }"
+              aria-label="Select active tasks"
             >
               Active
             </button>
@@ -128,12 +136,15 @@ watch(todoText, (newVal, oldVal) => {
                 }
               "
               :class="{ 'todo__select-item_active': selectedList === 'Completed' }"
+              aria-label="Select completed tasks"
             >
               Completed
             </button>
           </li>
         </ul>
-        <button class="todo__clear" @click="clearComplited">Clear Completed</button>
+        <button class="todo__clear" @click="clearComplited" aria-label="Clear completed tasks">
+          Clear Completed
+        </button>
       </div>
     </div>
     <p class="todo__notice">Drag and drop to reorder list</p>
@@ -233,7 +244,6 @@ watch(todoText, (newVal, oldVal) => {
 @media (max-width: 660px) {
   .todo {
     &__form {
-      // margin-bottom: 0;
       &::before {
         width: 25px;
         height: 25px;

@@ -1,7 +1,7 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
 import { useThemeStore } from '@/stores/themeStore'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const userStore = useUserStore()
 const themeStore = useThemeStore()
@@ -16,10 +16,6 @@ const logout = async () => {
   await userStore.logoutUser()
   loading.value = false
 }
-
-// onMounted(async () => {
-//   await userStore.getUser()
-// })
 </script>
 
 <template>
@@ -36,6 +32,7 @@ const logout = async () => {
       class="header__theme-toggle"
       :class="themeStore.isDark ? 'header__theme-toggle_dark' : 'header__theme-toggle_light'"
       @click="themeChange()"
+      aria-label="Toggle theme mode"
     ></button>
   </div>
 </template>
