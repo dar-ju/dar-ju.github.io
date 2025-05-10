@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import TodoItem from './todoItem.vue'
 import { useTodoStore } from '@/stores/todoStore'
 import { useUserStore } from '@/stores/userStore'
@@ -57,6 +57,17 @@ const clearComplited = () => {
     }
   })
 }
+
+function clearInput(value) {
+  return value.replace(/[<>"'/\\&]/g, '')
+}
+
+watch(todoText, (newVal, oldVal) => {
+  const clear = clearInput(newVal)
+  if (clear !== newVal) {
+    todoText.value = clear
+  }
+})
 </script>
 
 <template>
@@ -70,6 +81,7 @@ const clearComplited = () => {
         type="text"
         placeholder="Create a new todo..."
         v-model="todoText"
+        maxlength="150"
       />
     </form>
     <div class="todo__wrapper">
@@ -188,11 +200,19 @@ const clearComplited = () => {
     &:hover {
       color: var(--bottom-menu-color-hover);
     }
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
+    }
   }
   &__clear {
     color: var(--bottom-menu-color);
     &:hover {
       color: var(--bottom-menu-color-hover);
+    }
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
     }
   }
   &__notice {

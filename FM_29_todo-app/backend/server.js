@@ -103,7 +103,10 @@ async function userLogin(username, password, res) {
     // console.log(user.username)
     return res.json({ user: user.username })
   }
-  else console.error('Wrong password');
+  else {
+    console.error('Wrong password');
+    res.status(401).json({ error: 'User does not exist or wrong password' })
+  }
 }
 
 app.post("/login", async (req, res) => {

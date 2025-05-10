@@ -1,10 +1,11 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
 import { useThemeStore } from '@/stores/themeStore'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
 const userStore = useUserStore()
 const themeStore = useThemeStore()
+const loading = ref(false)
 
 // const isDark = ref(window.matchMedia('(prefers-color-scheme: dark)').matches)
 
@@ -12,6 +13,11 @@ const themeChange = () => {
   themeStore.themeToggle()
 }
 
+const logout = async () => {
+  loading.value = true
+  await userStore.logoutUser()
+  loading.value = false
+}
 // onMounted(() => {
 //   isDark ?
 
@@ -27,7 +33,10 @@ const themeChange = () => {
     <div class="header__user" v-show="userStore.user?.user">
       <span class="header__user-name">{{ `${userStore.user?.user}'s todos` }}</span>
       <!-- <form action="/logout" method="POST"> -->
-      <button class="header__btn" @click="userStore.logoutUser()">(log out)</button>
+      <button class="header__logout-btn" @click="logout()">(log out)</button>
+      <div class="loading header__loading" v-show="loading">
+        <div class="loading-circles"></div>
+      </div>
       <!-- </form> -->
     </div>
     <button
@@ -52,11 +61,17 @@ const themeChange = () => {
   }
   &__user {
     display: flex;
+    position: relative;
+    margin-right: 20px;
     gap: 10px;
   }
-  &__btn {
+  &__logout-btn {
     color: var(--white);
     text-decoration: underline;
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
+    }
   }
   &__theme-toggle {
     width: 26px;
@@ -67,6 +82,17 @@ const themeChange = () => {
     }
     &_dark {
       background-image: url('/assets/images/icon-sun.svg');
+    }
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
+    }
+  }
+  &__loading {
+    right: -37px;
+    transform: translate(0, -50%);
+    & div {
+      border-color: transparent var(--white) var(--gray);
     }
   }
 }

@@ -4,6 +4,7 @@ import { getSessionApi, loginUserApi, registerUserApi, logoutUserApi } from '@/a
 
 export const useUserStore = defineStore('user', () => {
   const user = ref('')
+  const error = ref('')
 
   const getUser = async () => {
     const response = await getSessionApi()
@@ -11,8 +12,12 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const loginUser = async (username, password) => {
-    const response = await loginUserApi(username, password)
-    user.value = response
+    try {
+      const response = await loginUserApi(username, password)
+      user.value = response
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
   const registerUser = async (username, password) => {
@@ -40,5 +45,5 @@ export const useUserStore = defineStore('user', () => {
   //   await getTodos()
   // }
 
-  return { user, getUser, loginUser, registerUser, logoutUser }
+  return { user, error, getUser, loginUser, registerUser, logoutUser }
 })

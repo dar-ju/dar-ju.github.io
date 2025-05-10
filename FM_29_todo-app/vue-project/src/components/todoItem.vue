@@ -99,6 +99,10 @@ const deleteItem = async (id) => {
     border-radius: 50%;
     border: 1px solid var(--item-border);
     transition: border ease-in-out 0.3s;
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
+    }
   }
   &__task-name {
     font-size: 0.97rem;
@@ -110,6 +114,11 @@ const deleteItem = async (id) => {
     pointer-events: none;
     line-height: 0;
     transition: opacity ease-in-out 0.3s;
+    &:focus-visible {
+      opacity: 1;
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
+    }
   }
 }
 

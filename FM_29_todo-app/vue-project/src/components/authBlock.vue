@@ -7,17 +7,22 @@ const userStore = useUserStore()
 const loginForm = ref(true)
 const name = ref('')
 const password = ref('')
+const loading = ref(false)
 
 const formToggle = () => {
   loginForm.value = !loginForm.value
 }
 
 const login = async (username, password) => {
+  loading.value = true
   await userStore.loginUser(username, password)
+  loading.value = false
 }
 
 const register = async (username, password) => {
+  loading.value = true
   await userStore.registerUser(username, password)
+  loading.value = false
 }
 </script>
 
@@ -51,11 +56,22 @@ const register = async (username, password) => {
             required
             v-model="password"
           />
-          <button class="auth__btn" type="submit">Login</button>
+          <button class="auth__btn" type="submit">
+            <span>Login</span>
+            <span class="loading auth__loading" v-show="loading">
+              <div class="loading-circles"></div>
+            </span>
+          </button>
+          <span class="auth__message" v-show="userStore.error">{{ userStore.error }}</span>
         </form>
         <div class="auth__rigester-block">
-          <span>Don't have an account?</span>
-          <button type="button" aria-label="Register for a new account" @click="formToggle">
+          <span class="auth__note">Don't have an account?</span>
+          <button
+            class="auth__toggle"
+            type="button"
+            aria-label="Register for a new account"
+            @click="formToggle"
+          >
             Register
           </button>
         </div>
@@ -90,11 +106,21 @@ const register = async (username, password) => {
             required
             v-model="password"
           />
-          <button class="auth__btn" type="submit">Register</button>
+          <button class="auth__btn" type="submit">
+            <span>Register</span>
+            <span class="loading auth__loading" v-show="loading">
+              <div class="loading-circles"></div>
+            </span>
+          </button>
         </form>
         <div class="auth__rigester-block">
-          <span>Have an account?</span>
-          <button type="button" aria-label="Register for a new account" @click="formToggle">
+          <span class="auth__note">Have an account?</span>
+          <button
+            class="auth__toggle"
+            type="button"
+            aria-label="Register for a new account"
+            @click="formToggle"
+          >
             Log In
           </button>
         </div>
@@ -106,18 +132,19 @@ const register = async (username, password) => {
 <style lang="scss" scoped>
 .auth {
   display: flex;
-  padding: 40px 0;
+  padding: 20px 0;
   flex-direction: column;
   align-items: center;
   &__title {
-    margin-bottom: 70px;
+    margin-bottom: 40px;
     text-align: center;
   }
   &__block {
     padding: 50px;
     border-radius: 5px;
-    border: 1px solid var(--very-light-grayish-blue);
-    box-shadow: 0 25px 40px -10px var(--very-light-grayish-blue);
+    border: 1px solid var(--item-border);
+    background-color: var(--block-background);
+    box-shadow: 0 25px 40px -10px var(--box-shadow);
   }
   &__form {
     display: flex;
@@ -132,19 +159,62 @@ const register = async (username, password) => {
     min-height: 40px;
     padding: 0 20px;
     border-radius: 5px;
-    border: 1px solid var(--light-grayish-blue);
+    border: 1px solid var(--item-border);
+    color: var(--body-color);
+    background-color: var(--block-background);
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+    }
   }
   &__btn {
+    position: relative;
     min-width: 100px;
     padding: 7px;
     border-radius: 5px;
-    border: 1px solid var(--light-grayish-blue);
+    border: 1px solid var(--item-border);
+    color: var(--body-color);
+    &:hover {
+      color: var(--block-background);
+      background-color: var(--bottom-menu-color-hover);
+    }
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+    }
+  }
+  &__message {
+    font-size: 0.7rem;
+    color: var(--red);
+    font-style: italic;
   }
   &__rigester-block {
     display: flex;
     gap: 15px;
     justify-content: space-between;
-    color: var(--light-grayish-blue);
+    color: var(--item-border);
+  }
+  &__note {
+    color: var(--bottom-menu-color);
+  }
+  &__toggle {
+    color: var(--body-color);
+    &:hover {
+      color: var(--bottom-menu-color-hover);
+    }
+    &:focus-visible {
+      outline: 1px solid var(--gray);
+      outline-offset: 3px;
+    }
+  }
+  &__loading {
+    right: -45px;
+  }
+}
+
+@media (max-width: 520px) {
+  .auth {
+    &__form {
+      width: initial;
+    }
   }
 }
 </style>

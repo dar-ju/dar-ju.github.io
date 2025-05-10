@@ -27,6 +27,7 @@ export const loginUserApi = async (username, password) => {
     return await response.json()
   } catch (error) {
     console.error('Login error:', error)
+    throw error
   }
 }
 
