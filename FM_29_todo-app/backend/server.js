@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // local dev domen
 const corsOptions = {
-  origin: 'https://dar-ju.github.io/FM_29_todo-app/',
+  origin: 'https://dar-ju.github.io',
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS', 'PUT'],
   allowedHeaders: ['Content-Type'],
@@ -139,7 +139,13 @@ app.post("/signup", async (req, res) => {
 // TODOS
 // get all user tdos
 app.get('/api/todos', async (req, res) => {
-  const username = req.user.username
+  console.log('GET /api/todos - Cookies:', req.cookies);
+  console.log('GET /api/todos - req.user:', req.user);
+  if (!req.user || !req.user.username) {
+    console.error('GET /api/todos - req.user is undefined!');
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  const username = req.user.username;
   try {
     const todos = await getAllUserTodos(username);
     res.json(todos);
