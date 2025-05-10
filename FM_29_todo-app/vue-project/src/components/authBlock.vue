@@ -62,7 +62,7 @@ const register = async (username, password) => {
               <div class="loading-circles"></div>
             </span>
           </button>
-          <span class="auth__message" v-show="userStore.error">{{ userStore.error }}</span>
+          <span class="error-message" v-show="userStore.error">{{ userStore.error }}</span>
         </form>
         <div class="auth__rigester-block">
           <span class="auth__note">Don't have an account?</span>
@@ -180,11 +180,6 @@ const register = async (username, password) => {
     &:focus-visible {
       outline: 1px solid var(--gray);
     }
-  }
-  &__message {
-    font-size: 0.7rem;
-    color: var(--red);
-    font-style: italic;
   }
   &__rigester-block {
     display: flex;

@@ -18,8 +18,6 @@ const toggleItem = async (id) => {
   loadingDone.value = true
   await todoStore.toggleTodo(id)
   loadingDone.value = false
-  // item.value = !item.value
-  // item.value = todoStore.todos.done
 }
 
 const deleteItem = async (id) => {

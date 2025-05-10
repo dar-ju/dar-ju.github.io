@@ -64,7 +64,7 @@ app.use(async (req, res, next) => {
 
 app.get('/api/me', (req, res) => {
   if (req.user) {
-    res.json({ name: req.user.name })
+    res.json({ username: req.user.name })
   } else {
     res.status(401).json({ user: 'User not authenticated' })
   }

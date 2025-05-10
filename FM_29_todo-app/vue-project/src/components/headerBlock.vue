@@ -1,13 +1,11 @@
 <script setup>
 import { useUserStore } from '@/stores/userStore'
 import { useThemeStore } from '@/stores/themeStore'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const userStore = useUserStore()
 const themeStore = useThemeStore()
 const loading = ref(false)
-
-// const isDark = ref(window.matchMedia('(prefers-color-scheme: dark)').matches)
 
 const themeChange = () => {
   themeStore.themeToggle()
@@ -18,13 +16,11 @@ const logout = async () => {
   await userStore.logoutUser()
   loading.value = false
 }
-// onMounted(() => {
-//   isDark ?
 
-//   // const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-//   // updateTheme()
-//   // mediaQuery.addEventListener('change', updateTheme)
-// })
+onMounted(async () => {
+  await userStore.getUser()
+  console.log(userStore.user)
+})
 </script>
 
 <template>
@@ -32,12 +28,10 @@ const logout = async () => {
     <h1 class="header__title">todo</h1>
     <div class="header__user" v-show="userStore.user?.user">
       <span class="header__user-name">{{ `${userStore.user?.user}'s todos` }}</span>
-      <!-- <form action="/logout" method="POST"> -->
       <button class="header__logout-btn" @click="logout()">(log out)</button>
       <div class="loading header__loading" v-show="loading">
         <div class="loading-circles"></div>
       </div>
-      <!-- </form> -->
     </div>
     <button
       class="header__theme-toggle"

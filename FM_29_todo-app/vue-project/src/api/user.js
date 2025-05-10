@@ -7,6 +7,8 @@ export async function getSessionApi() {
     if (response.status === 401) return null
     if (!response.ok) throw new Error(`Error: ${response.status}`)
     const data = await response.json()
+    console.log(data);
+
     return data
   } catch (err) {
     console.error('Session load error:', err)
