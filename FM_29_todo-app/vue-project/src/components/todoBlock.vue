@@ -23,32 +23,23 @@ const addNewTodo = async (todo, user) => {
 }
 
 const onOrderChange = async (event) => {
-  if (event.oldIndex !== undefined && event.newIndex !== undefined) {
-    const movedElement = todoStore.todos[event.newIndex]
-    const oldIndex = event.oldIndex
-    const movedItemId = movedElement._id
-    const targetItemId = todoStore.todos[oldIndex]._id
-    const movedItemOrder = movedElement.order
-    const targetItemOrder = todoStore.todos[oldIndex].order
-    movedElement.order = targetItemOrder
-    todoStore.todos[oldIndex].order = movedItemOrder
-
-    await todoStore.orderTodo(movedItemId, targetItemOrder)
-    await todoStore.orderTodo(targetItemId, movedItemOrder)
-
-    const updatePromises = todoStore.todos.map((todo, index) => {
-      todo.order = index
-      return todoStore.orderTodo(todo._id, index)
-    })
-    await Promise.all(updatePromises)
+  if (event.oldDraggableIndex !== undefined && event.newDraggableIndex !== undefined) {
+    const oldIndex = event.oldDraggableIndex
+    const newIndex = event.newDraggableIndex
+    const movedItem = todoStore.todos[oldIndex]
+    const targetItem = todoStore.todos[newIndex]
+    movedItem.order = newIndex
+    targetItem.order = oldIndex
+    await todoStore.orderTodo(movedItem._id, newIndex)
+    await todoStore.orderTodo(targetItem._id, oldIndex)
   }
 }
 
-const selectAllList = async () => {
+const updateList = async (val) => {
   loadingDone.value = true
   await todoStore.getTodos()
   loadingDone.value = false
-  selectedList.value = 'All'
+  selectedList.value = val
 }
 
 const clearComplited = () => {
@@ -104,7 +95,7 @@ watch(todoText, (newVal, oldVal) => {
           <li>
             <button
               class="todo__select-item"
-              @click="selectAllList()"
+              @click="updateList('All')"
               :class="{ 'todo__select-item_active': selectedList === 'All' }"
               aria-label="Select all tasks"
             >
@@ -114,12 +105,7 @@ watch(todoText, (newVal, oldVal) => {
           <li>
             <button
               class="todo__select-item"
-              @click="
-                () => {
-                  todoStore.getActiveTodos()
-                  selectedList = 'Active'
-                }
-              "
+              @click="updateList('Active')"
               :class="{ 'todo__select-item_active': selectedList === 'Active' }"
               aria-label="Select active tasks"
             >
@@ -129,12 +115,7 @@ watch(todoText, (newVal, oldVal) => {
           <li>
             <button
               class="todo__select-item"
-              @click="
-                () => {
-                  todoStore.getCompletedTodos()
-                  selectedList = 'Completed'
-                }
-              "
+              @click="updateList('Completed')"
               :class="{ 'todo__select-item_active': selectedList === 'Completed' }"
               aria-label="Select completed tasks"
             >
