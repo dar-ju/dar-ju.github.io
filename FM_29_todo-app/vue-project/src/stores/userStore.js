@@ -32,20 +32,5 @@ export const useUserStore = defineStore('user', () => {
     user.value = ''
   }
 
-  // const createTodo = async (todo, user) => {
-  //   await createTodoApi(todo, user)
-  //   await getTodos()
-  // }
-
-  // const toggleTodo = async (id) => {
-  //   await toggleTodoApi(id)
-  //   await getTodos()
-  // }
-
-  // const deleteTodo = async (id) => {
-  //   await deleteTodoApi(id)
-  //   await getTodos()
-  // }
-
   return { user, error, getUser, loginUser, registerUser, logoutUser }
 })

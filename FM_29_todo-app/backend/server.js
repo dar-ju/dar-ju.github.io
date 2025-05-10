@@ -52,7 +52,7 @@ app.use(async (req, res, next) => {
       if (session) {
         req.user = {
           _id: session.userId,
-          user: session.username
+          username: session.username
         }
       }
     } catch (err) {
@@ -64,7 +64,7 @@ app.use(async (req, res, next) => {
 
 app.get('/api/me', (req, res) => {
   if (req.user) {
-    res.json({ user: req.user.user })
+    res.json({ username: req.user.username })
   } else {
     res.status(401).json({ user: 'User not authenticated' })
   }
@@ -133,13 +133,6 @@ app.post("/signup", async (req, res) => {
     res.status(500).json({ error: 'Server error. Try to register later.' })
   }
   await userLogin(username, password, res)
-})
-
-app.get("/", (req, res) => {
-  res.render("index", {
-    user: req.user,
-    authError: req.query.authError === "true" ? "Wrong username or password" : req.query.authError,
-  })
 })
 
 
