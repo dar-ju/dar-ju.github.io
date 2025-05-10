@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // local dev domen
 const corsOptions = {
-  origin: 'http://localhost:5173',
+  origin: 'https://dar-ju.github.io',
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS', 'PUT'],
   allowedHeaders: ['Content-Type'],

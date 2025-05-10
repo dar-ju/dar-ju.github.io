@@ -171,7 +171,6 @@ const orderTodo = async (id, order) => {
 const deleteTodo = async (id) => {
   db = await getDb();
   try {
-    // const todo = await getTodoById(id)
     await db.collection('todos').deleteOne({ _id: new ObjectId(id) })
   } catch (err) {
     console.error(`Delete todo with ID ${id} error:`, err)

@@ -22,7 +22,7 @@
 :root {
   /* COLORS */
   // ### Primary
-  --bright-blue: hsl(220, 98%, 61%);
+  --blue: hsl(219, 71%, 55%);
   --check-background: linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
   --white: hsl(0, 0%, 100%);
   --gray: hsl(236, 9%, 61%);
@@ -41,13 +41,6 @@
   --bottom-menu-color-hover: hsl(235, 19%, 35%);
   --box-shadow: hsl(236, 33%, 92%);
   --input-placeholder: hsl(234, 39%, 85%);
-  // --very-light-gray: hsl(0, 0%, 98%);
-  --light-grayish-blue: hsl(233, 11%, 84%);
-  --dark-grayish-blue: hsl(236, 9%, 61%);
-  --very-dark-grayish-blue: hsl(235, 19%, 35%);
-  --blue: hsl(219, 71%, 55%);
-
-  // transition: color ease-in-out 0.3s, background-color ease-in-out 0.3s;
 }
 
 .dark {
@@ -63,13 +56,4 @@
   --bottom-menu-color-hover: hsl(236, 33%, 92%);
   --box-shadow: hsl(235, 22%, 7%);
   --input-placeholder: hsl(233, 14%, 35%);
-  // --very-light-gray: hsl(235, 21%, 11%);
-  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
-  --light-grayish-blue: hsl(234, 39%, 85%);
-  --light-grayish-blue-hover: hsl(236, 33%, 92%);
-  --dark-grayish-blue: hsl(234, 11%, 52%);
-  --very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --very-dark-grayish-blue: hsl(237, 14%, 26%);
-
-  // transition: color ease-in-out 0.3s, backgroung-color ease-in-out 0.3s;
 }
