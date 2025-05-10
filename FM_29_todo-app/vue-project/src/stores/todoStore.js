@@ -4,10 +4,26 @@ import { getTodosApi, createTodoApi, toggleTodoApi, updateTodoOrderApi, deleteTo
 
 export const useTodoStore = defineStore('todo', () => {
   const todos = ref([])
+  const todosActive = ref([])
+  const todosCompleted = ref([])
+  const todosLength = ref(0)
 
   const getTodos = async () => {
     const response = await getTodosApi()
-    todos.value = response
+    const sortList = response.sort((a, b) => a.order - b.order);
+    todos.value = sortList
+    // todosLength.value = todos.value.filter((item) => item.done === false).length
+    todosActive.value = todos.value.filter((item) => item.done === false)
+    todosCompleted.value = todos.value.filter((item) => item.done === true)
+    todosLength.value = todosActive.value.length
+  }
+
+  const getActiveTodos = () => {
+    todos.value = todosActive.value
+  }
+
+  const getCompletedTodos = () => {
+    todos.value = todosCompleted.value
   }
 
   const createTodo = async (todo, user) => {
@@ -22,7 +38,7 @@ export const useTodoStore = defineStore('todo', () => {
 
   const orderTodo = async (todoId, newOrder) => {
     await updateTodoOrderApi(todoId, newOrder)
-    await getTodos()
+    // await getTodos()
   }
 
   const deleteTodo = async (id) => {
@@ -30,5 +46,5 @@ export const useTodoStore = defineStore('todo', () => {
     await getTodos()
   }
 
-  return { todos, getTodos, createTodo, toggleTodo, orderTodo, deleteTodo }
+  return { todos, todosLength, getActiveTodos, getCompletedTodos, getTodos, createTodo, toggleTodo, orderTodo, deleteTodo }
 })

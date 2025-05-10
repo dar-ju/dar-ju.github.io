@@ -28,18 +28,46 @@
 
   // ### Neutral
   // ### Light Theme
-  --very-light-gray: hsl(0, 0%, 98%);
-  --very-light-grayish-blue: hsl(236, 33%, 92%);
+  --backgroung-image: url('/assets/images/bg-desktop-light.jpg');
+  --body-background: hsl(0, 0%, 98%);
+  --body-color: hsl(235, 19%, 35%);
+  --block-background: hsl(0, 0%, 100%);
+  --item-border: hsl(236, 33%, 92%);
+  --item-color: hsl(233, 14%, 35%);
+  --item-color-checked: hsl(234, 39%, 85%);
+  --bottom-menu-color: hsl(236, 9%, 61%);
+  --bottom-menu-color-hover: hsl(235, 19%, 35%);
+  --box-shadow: hsl(236, 33%, 92%);
+  --input-placeholder: hsl(234, 39%, 85%);
+  // --very-light-gray: hsl(0, 0%, 98%);
   --light-grayish-blue: hsl(233, 11%, 84%);
   --dark-grayish-blue: hsl(236, 9%, 61%);
   --very-dark-grayish-blue: hsl(235, 19%, 35%);
+  --blue: hsl(219, 71%, 55%);
 
-  // ### Dark Theme
-  --very-dark-blue: hsl(235, 21%, 11%);
+  // transition: color ease-in-out 0.3s, background-color ease-in-out 0.3s;
+}
+
+.dark {
+// ### Dark Theme
+  --backgroung-image: url('/assets/images/bg-desktop-dark.jpg');
+  --body-background: hsl(235, 21%, 11%);
+  --body-color: hsl(234, 39%, 85%);
+  --block-background: hsl(235, 24%, 19%);
+  --item-border: hsl(237, 14%, 26%);
+  --item-color: hsl(234, 39%, 85%);
+  --item-color-checked: hsl(233, 14%, 35%);
+  --bottom-menu-color: hsl(234, 11%, 52%);
+  --bottom-menu-color-hover: hsl(236, 33%, 92%);
+  --box-shadow: hsl(235, 22%, 7%);
+  --input-placeholder: hsl(233, 14%, 35%);
+  // --very-light-gray: hsl(235, 21%, 11%);
   --very-dark-desaturated-blue: hsl(235, 24%, 19%);
   --light-grayish-blue: hsl(234, 39%, 85%);
   --light-grayish-blue-hover: hsl(236, 33%, 92%);
   --dark-grayish-blue: hsl(234, 11%, 52%);
   --very-dark-grayish-blue: hsl(233, 14%, 35%);
   --very-dark-grayish-blue: hsl(237, 14%, 26%);
+
+  // transition: color ease-in-out 0.3s, backgroung-color ease-in-out 0.3s;
 }

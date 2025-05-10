@@ -36,7 +36,7 @@ const deleteItem = async (id) => {
       @click="toggleItem(props.todo._id)"
       :class="{ 'todo-item__wrapper_hover': !loadingDone }"
     >
-      <div class="loading" v-show="loadingDone">
+      <div class="loading todo-item__loading" v-show="loadingDone">
         <div class="loading-circles"></div>
       </div>
       <button class="todo-item__check" :class="{ 'checked-btn': props.todo.done }"></button>
@@ -54,43 +54,6 @@ const deleteItem = async (id) => {
       </svg>
     </button>
   </li>
-  <!-- <li class="todo-item">
-    <div class="todo-item__wrapper">
-      <button
-        class="todo-item__check"
-        @click="toggleItem"
-        :class="{ 'checked-btn': item }"
-      ></button>
-      <span class="todo-item__task-name" :class="{ 'checked-task-name': item }"
-        >Complete online JavaScript course</span
-      >
-    </div>
-    <button class="todo-item__delete">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18">
-        <path
-          fill="#494C6B"
-          fill-rule="evenodd"
-          d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"
-        />
-      </svg>
-    </button>
-  </li>
-  <li class="todo-item">
-    <button class="todo-item__check"></button>
-    <span class="todo-item__task-name">Complete online JavaScript course</span>
-  </li>
-  <li class="todo-item">
-    <button class="todo-item__check"></button>
-    <span class="todo-item__task-name">Jog around the park 3x</span>
-  </li>
-  <li class="todo-item">
-    <button class="todo-item__check"></button>
-    <span class="todo-item__task-name">Complete online JavaScript course</span>
-  </li>
-  <li class="todo-item">
-    <button class="todo-item__check"></button>
-    <span class="todo-item__task-name">Jog around the park 3x</span>
-  </li> -->
 </template>
 
 <style lang="scss" scoped>
@@ -101,7 +64,11 @@ const deleteItem = async (id) => {
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
-  border-bottom: 1px solid var(--very-light-grayish-blue);
+  border-bottom: 1px solid var(--item-border);
+  &:hover button {
+    opacity: 1;
+    pointer-events: initial;
+  }
   &__wrapper {
     position: relative;
     display: flex;
@@ -119,7 +86,7 @@ const deleteItem = async (id) => {
           top: 1px;
           left: 1px;
           border-radius: 50%;
-          background-color: var(--white);
+          background-color: var(--block-background);
         }
       }
     }
@@ -130,27 +97,73 @@ const deleteItem = async (id) => {
     height: 25px;
     align-self: center;
     border-radius: 50%;
-    border: 1px solid var(--very-light-grayish-blue);
+    border: 1px solid var(--item-border);
     transition: border ease-in-out 0.3s;
   }
   &__task-name {
     font-size: 0.97rem;
     line-height: 1.2rem;
-    color: var(--very-dark-grayish-blue);
+    color: var(--item-color);
   }
   &__delete {
+    opacity: 0;
+    pointer-events: none;
     line-height: 0;
+    transition: opacity ease-in-out 0.3s;
   }
 }
 
 .checked-btn {
   background:
-    url('/images/icon-check.svg') no-repeat center,
+    url('/assets/images/icon-check.svg') no-repeat center,
     var(--check-background);
 }
 
 .checked-task-name {
-  color: var(--light-grayish-blue);
+  color: var(--item-color-checked);
   text-decoration: line-through;
+}
+
+@media (max-width: 768px) {
+  .todo-item {
+    &__delete {
+      opacity: 1;
+      scale: 0.75;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .todo-item {
+    min-height: 53px;
+    padding: 15px 19px;
+    &__wrapper {
+      gap: 10px;
+    }
+    &__check {
+      min-width: 22px;
+      height: 22px;
+    }
+    &__task-name {
+      font-size: 0.65rem;
+    }
+    &__loading {
+      top: 9px;
+      left: -2px;
+      scale: 0.85;
+    }
+    &__wrapper {
+      &_hover {
+        &:hover button:not(.checked-btn) {
+          &:not(.checked-btn)::before {
+            width: 18px;
+            height: 18px;
+            top: 1px;
+            left: 1px;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
