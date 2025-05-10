@@ -83,8 +83,9 @@ async function userLogin(username, password, res) {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
       path: '/',
-      secure: false,
-      sameSite: 'None'
+      secure: true,
+      sameSite: 'None',
+      partitioned: true
     })
     return res.json({ username: user.username })
   }
