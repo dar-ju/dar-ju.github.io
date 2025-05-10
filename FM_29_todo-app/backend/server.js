@@ -86,7 +86,7 @@ async function userLogin(username, password, res) {
       secure: true,
       sameSite: 'None'
     })
-    return res.json({ user: user.username })
+    return res.json({ username: user.username })
   }
   else {
     console.error('Wrong password');
