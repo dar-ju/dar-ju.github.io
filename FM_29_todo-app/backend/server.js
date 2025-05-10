@@ -77,9 +77,9 @@ app.use(async (req, res, next) => {
 
 app.get('/api/me', (req, res) => {
   if (req.user) {
-    res.send(req.user.name)
+    res.json({ name: req.user.name })
   } else {
-    res.status(401).json({ user: null })
+    res.status(401).json({ user: 'User not authenticated' })
   }
 })
 
@@ -115,7 +115,7 @@ app.post("/login", async (req, res) => {
     await userLogin(username, password, res)
   } catch (err) {
     console.error('Login server error:', err)
-    res.status(500).json({ error: 'Login failed' })
+    res.status(401).json({ error: 'User does not exist or wrong password' })
   }
 })
 

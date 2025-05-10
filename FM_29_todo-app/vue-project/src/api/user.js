@@ -23,10 +23,15 @@ export const loginUserApi = async (username, password) => {
       },
       body: JSON.stringify({ username, password })
     })
-    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    if (!response.ok) {
+      const { error } = await response.json()
+      throw new Error(error)
+    }
     return await response.json()
   } catch (error) {
-    console.error('Login error:', error)
+    if (error.message === 'Failed to fetch') {
+      throw new Error('No connection to server')
+    }
     throw error
   }
 }
