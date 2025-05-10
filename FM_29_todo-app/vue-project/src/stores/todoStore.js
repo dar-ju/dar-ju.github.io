@@ -9,12 +9,6 @@ export const useTodoStore = defineStore('todo', () => {
   const todosLength = ref(0)
   const error = ref('')
 
-  const clearErrorMessage = () => {
-    setTimeout(() => {
-      error.value = ''
-    }, 4000);
-  }
-
   const getTodos = async () => {
     try {
       const response = await getTodosApi()
@@ -25,7 +19,6 @@ export const useTodoStore = defineStore('todo', () => {
       todosLength.value = todosActive.value.length
     } catch (err) {
       error.value = err.message
-      clearErrorMessage()
     }
   }
 
@@ -42,7 +35,6 @@ export const useTodoStore = defineStore('todo', () => {
       await createTodoApi(todo, user)
     } catch (err) {
       error.value = err.message
-      clearErrorMessage()
     }
     await getTodos()
   }
@@ -52,7 +44,6 @@ export const useTodoStore = defineStore('todo', () => {
       await toggleTodoApi(id)
     } catch (err) {
       error.value = err.message
-      clearErrorMessage()
     }
     await getTodos()
   }
@@ -66,7 +57,6 @@ export const useTodoStore = defineStore('todo', () => {
       await deleteTodoApi(id)
     } catch (err) {
       error.value = err.message
-      clearErrorMessage()
     }
     await getTodos()
   }

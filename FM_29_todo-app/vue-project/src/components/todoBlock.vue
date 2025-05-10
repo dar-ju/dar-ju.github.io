@@ -37,7 +37,9 @@ const onOrderChange = async (event) => {
 
 const updateList = async (val) => {
   loadingDone.value = true
-  await todoStore.getTodos()
+  if (val === 'All') await todoStore.getTodos()
+  if (val === 'Active') await todoStore.getActiveTodos()
+  if (val === 'Completed') await todoStore.getCompletedTodos()
   loadingDone.value = false
   selectedList.value = val
 }
