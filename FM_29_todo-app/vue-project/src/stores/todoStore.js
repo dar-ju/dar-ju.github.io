@@ -7,15 +7,26 @@ export const useTodoStore = defineStore('todo', () => {
   const todosActive = ref([])
   const todosCompleted = ref([])
   const todosLength = ref(0)
+  const error = ref('')
+
+  const clearErrorMessage = () => {
+    setTimeout(() => {
+      error.value = ''
+    }, 4000);
+  }
 
   const getTodos = async () => {
-    const response = await getTodosApi()
-    const sortList = response.sort((a, b) => a.order - b.order);
-    todos.value = sortList
-    // todosLength.value = todos.value.filter((item) => item.done === false).length
-    todosActive.value = todos.value.filter((item) => item.done === false)
-    todosCompleted.value = todos.value.filter((item) => item.done === true)
-    todosLength.value = todosActive.value.length
+    try {
+      const response = await getTodosApi()
+      const sortList = response.sort((a, b) => a.order - b.order);
+      todos.value = sortList
+      todosActive.value = todos.value.filter((item) => item.done === false)
+      todosCompleted.value = todos.value.filter((item) => item.done === true)
+      todosLength.value = todosActive.value.length
+    } catch (err) {
+      error.value = err.message
+      clearErrorMessage()
+    }
   }
 
   const getActiveTodos = () => {
@@ -27,24 +38,38 @@ export const useTodoStore = defineStore('todo', () => {
   }
 
   const createTodo = async (todo, user) => {
-    await createTodoApi(todo, user)
+    try {
+      await createTodoApi(todo, user)
+    } catch (err) {
+      error.value = err.message
+      clearErrorMessage()
+    }
     await getTodos()
   }
 
   const toggleTodo = async (id) => {
-    await toggleTodoApi(id)
+    try {
+      await toggleTodoApi(id)
+    } catch (err) {
+      error.value = err.message
+      clearErrorMessage()
+    }
     await getTodos()
   }
 
   const orderTodo = async (todoId, newOrder) => {
     await updateTodoOrderApi(todoId, newOrder)
-    // await getTodos()
   }
 
   const deleteTodo = async (id) => {
-    await deleteTodoApi(id)
+    try {
+      await deleteTodoApi(id)
+    } catch (err) {
+      error.value = err.message
+      clearErrorMessage()
+    }
     await getTodos()
   }
 
-  return { todos, todosLength, getActiveTodos, getCompletedTodos, getTodos, createTodo, toggleTodo, orderTodo, deleteTodo }
+  return { todos, todosLength, error, getActiveTodos, getCompletedTodos, getTodos, createTodo, toggleTodo, orderTodo, deleteTodo }
 })

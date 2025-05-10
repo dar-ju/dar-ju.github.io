@@ -24,11 +24,9 @@ import {
 dotenv.config()
 
 const app = express()
-// app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('Mongo connected'))
@@ -42,17 +40,8 @@ const corsOptions = {
   allowedHeaders: ['Content-Type'],
 }
 
-// production build domen
-// const corsOptions = {
-//   origin: 'https://dar-ju.github.io',
-//   credentials: true,
-//   methods: ['GET', 'POST', 'OPTIONS'],
-//   allowedHeaders: ['Content-Type'],
-// }
-
 app.use(cors(corsOptions))
 
-// const Todo = mongoose.model('Todo', { title: String, content: String }, 'todos');
 
 // SESSIONS
 app.use(async (req, res, next) => {
@@ -61,8 +50,6 @@ app.use(async (req, res, next) => {
     try {
       const session = await getSession(sessionId)
       if (session) {
-        // const user = await findUserBySessionId(sessionId)
-        // if (user) req.user = user
         req.user = {
           _id: session.userId,
           username: session.username
@@ -84,7 +71,7 @@ app.get('/api/me', (req, res) => {
 })
 
 
-// USERS
+// USER
 async function userLogin(username, password, res) {
   const userDataFromDB = await findUserByUsername(username)
   const hashPsw = userDataFromDB.password
@@ -93,14 +80,12 @@ async function userLogin(username, password, res) {
     const user = await loginUser(username, hashPsw)
     const sessionId = await createSession(user._id, username)
     res.cookie('sessionId', sessionId, {
-      maxAge: 3600000,
+      maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: true,
       path: '/',
       secure: true,
       sameSite: 'None'
     })
-    // res.cookie('sessionId', sessionId, { httpOnly: true })
-    // console.log(user.username)
     return res.json({ user: user.username })
   }
   else {
@@ -134,14 +119,19 @@ app.post("/logout", async (req, res) => {
     res.status(200).json({ message: 'Logged out' })
   } catch (err) {
     console.error('Logout error:', err)
-    res.status(500).send('Server error')
+    res.status(500).json({ error: 'Server error. Try logout later.' })
   }
 })
 
 app.post("/signup", async (req, res) => {
   const { username, password } = req.body
   const hashPsw = await bcrypt.hash(password, 10)
-  await createUser(username, hashPsw)
+  try {
+    await createUser(username, hashPsw)
+  } catch (err) {
+    console.error('Register error:', err)
+    res.status(500).json({ error: 'Server error. Try to register later.' })
+  }
   await userLogin(username, password, res)
 })
 
@@ -154,47 +144,68 @@ app.get("/", (req, res) => {
 
 
 // TODOS
-// get all tdos
+// get all user tdos
 app.get('/api/todos', async (req, res) => {
-  // const { username } = req.body
   const username = req.user.username
-  // console.log(req)
-  const todos = await getAllUserTodos(username);
-  res.json(todos);
+  try {
+    const todos = await getAllUserTodos(username);
+    res.json(todos);
+  } catch (err) {
+    console.error('Get todos error:', err)
+    res.status(500).json({ error: 'Server error. Try later.' })
+  }
 });
 
 // create new todo
 app.post("/api/todos", async (req, res) => {
   const { todo } = req.body
-  // console.log(req.user)
   const username = req.user.username
-  // const user = req.user.username
-  // const user = 'test'
-  await createTodo(todo, username)
-  res.status(200).json({ message: "Todo created" })
+  try {
+    await createTodo(todo, username)
+    res.status(200).json({ message: "Todo created" })
+  } catch (err) {
+    console.error('Add new todo error:', err)
+    res.status(500).json({ error: 'Server error. Try add todo later.' })
+  }
 })
 
 // toggle done todo
 app.post("/api/todos/:id/done", async (req, res) => {
   const { id } = req.params
-  await updateTodo(id, 'toggle')
-  res.status(200).json({ message: "Todo status changed" })
+  try {
+    await updateTodo(id, 'toggle')
+    res.status(200).json({ message: "Todo status changed" })
+  } catch (err) {
+    console.error('Toogle todo status error:', err)
+    res.status(500).json({ error: 'Server error. Try to change status later.' })
+  }
 })
 
-// change todo order
+// change todo order in list
 app.put("/api/todos/:id/update-order", async (req, res) => {
   const { id } = req.params
   const { order } = req.body;
-  await orderTodo(id, order)
-  res.status(200).json({ message: "Todo order changed" })
+  try {
+    await orderTodo(id, order)
+    res.status(200).json({ message: "Todo order changed" })
+  } catch (err) {
+    console.error('Change order error:', err)
+    res.status(500).json({ error: 'Server error. Try to change order later.' })
+  }
 })
 
 // delete todo
 app.post("/api/todos/:id/delete", async (req, res) => {
   const { id } = req.params
-  await deleteTodo(id)
-  res.status(200).json({ message: "Todo deleted" })
+  try {
+    await deleteTodo(id)
+    res.status(200).json({ message: "Todo deleted" })
+  } catch (err) {
+    console.error('Delete todo error:', err)
+    res.status(500).json({ error: 'Server error. Try to delete todo later.' })
+  }
 })
+
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT || 3000}`)
