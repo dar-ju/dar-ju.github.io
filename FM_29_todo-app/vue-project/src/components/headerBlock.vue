@@ -17,10 +17,9 @@ const logout = async () => {
   loading.value = false
 }
 
-onMounted(async () => {
-  await userStore.getUser()
-  console.log(userStore.user)
-})
+// onMounted(async () => {
+//   await userStore.getUser()
+// })
 </script>
 
 <template>

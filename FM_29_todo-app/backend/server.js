@@ -52,7 +52,7 @@ app.use(async (req, res, next) => {
       if (session) {
         req.user = {
           _id: session.userId,
-          username: session.username
+          user: session.username
         }
       }
     } catch (err) {
@@ -64,7 +64,7 @@ app.use(async (req, res, next) => {
 
 app.get('/api/me', (req, res) => {
   if (req.user) {
-    res.json({ username: req.user.username })
+    res.json({ user: req.user.user })
   } else {
     res.status(401).json({ user: 'User not authenticated' })
   }
