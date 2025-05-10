@@ -15,8 +15,6 @@ export const useUserStore = defineStore('user', () => {
     try {
       const response = await loginUserApi(username, password)
       user.value = response
-      console.log(response);
-
     } catch (err) {
       error.value = err.message
     }

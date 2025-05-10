@@ -35,8 +35,12 @@ const onOrderChange = async (event) => {
 
     await todoStore.orderTodo(movedItemId, targetItemOrder)
     await todoStore.orderTodo(targetItemId, movedItemOrder)
-  } else {
-    console.log('No movement info')
+
+    const updatePromises = todoStore.todos.map((todo, index) => {
+      todo.order = index
+      return todoStore.orderTodo(todo._id, index)
+    })
+    await Promise.all(updatePromises)
   }
 }
 
