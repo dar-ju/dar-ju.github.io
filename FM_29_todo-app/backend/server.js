@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // local dev domen
 const corsOptions = {
-  origin: 'https://dar-ju.github.io',
+  origin: 'https://dar-ju.github.io/FM_29_todo-app/',
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS', 'PUT'],
   allowedHeaders: ['Content-Type'],
