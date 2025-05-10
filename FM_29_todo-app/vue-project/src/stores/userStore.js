@@ -7,8 +7,12 @@ export const useUserStore = defineStore('user', () => {
   const error = ref('')
 
   const getUser = async () => {
-    const response = await getSessionApi()
-    user.value = response
+    try {
+      const response = await getSessionApi()
+      user.value = response
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
   const loginUser = async (username, password) => {
@@ -21,13 +25,21 @@ export const useUserStore = defineStore('user', () => {
   }
 
   const registerUser = async (username, password) => {
-    const response = await registerUserApi(username, password)
-    user.value = response
+    try {
+      const response = await registerUserApi(username, password)
+      user.value = response
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
   const logoutUser = async () => {
-    await logoutUserApi()
-    user.value = ''
+    try {
+      await logoutUserApi()
+      user.value = ''
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
   return { user, error, getUser, loginUser, registerUser, logoutUser }

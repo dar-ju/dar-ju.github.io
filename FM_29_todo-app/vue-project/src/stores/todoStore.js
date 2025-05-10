@@ -22,12 +22,22 @@ export const useTodoStore = defineStore('todo', () => {
     }
   }
 
-  const getActiveTodos = () => {
-    todos.value = todosActive.value
+  const getActiveTodos = async () => {
+    try {
+      await getTodos()
+      todos.value = todosActive.value
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
-  const getCompletedTodos = () => {
-    todos.value = todosCompleted.value
+  const getCompletedTodos = async () => {
+    try {
+      await getTodos()
+      todos.value = todosCompleted.value
+    } catch (err) {
+      error.value = err.message
+    }
   }
 
   const createTodo = async (todo, user) => {
