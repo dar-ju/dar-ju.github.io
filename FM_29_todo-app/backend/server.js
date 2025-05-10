@@ -140,13 +140,7 @@ app.post("/signup", async (req, res) => {
 // TODOS
 // get all user tdos
 app.get('/api/todos', async (req, res) => {
-  console.log('GET /api/todos - Cookies:', req.cookies);
-  console.log('GET /api/todos - req.user:', req.user);
-  if (!req.user || !req.user.username) {
-    console.error('GET /api/todos - req.user is undefined!');
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
-  const username = req.user.username;
+  const username = req.user.username
   try {
     const todos = await getAllUserTodos(username);
     res.json(todos);
