@@ -82,14 +82,10 @@ watch(todoText, (newVal, oldVal) => {
       />
     </form>
     <div class="todo__wrapper">
-      <VueDraggable
-        class="todo__list"
-        ref="el"
-        tag="ul"
-        v-model="todoStore.todos"
-        @change="onOrderChange"
-      >
-        <TodoItem v-for="todo in todoStore.todos" :key="todo._id" :todo="todo" />
+      <VueDraggable ref="el" v-model="todoStore.todos" @change="onOrderChange">
+        <TransitionGroup class="todo__list" name="fade" tag="ul">
+          <TodoItem v-for="todo in todoStore.todos" :key="todo._id" :todo="todo" />
+        </TransitionGroup>
       </VueDraggable>
       <div class="todo__operate">
         <span class="todo__left">{{ todoStore.todosLength }} items left</span>
