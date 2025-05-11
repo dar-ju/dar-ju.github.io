@@ -1,5 +1,20 @@
 export const data = [
   {
+    "todo-app": {
+      "id": 29,
+      "en": {
+        "title": "Full-stack Todo app",
+        "description": "My first 'combat' experience with backend. As always - more practice and it becomes clearer each time. Here I used a bundle of GitHub Pages (front), Render (back) and MongoDB (db). The last two are on free plans, so the application does not work quickly. Understanding cookies and cors was the most difficult. The project took 28 hours of work.",
+      },
+      "ru": {
+        "title": "Список дел (full-stack)",
+        "description": "Мой первый 'боевой' опыт работы с backend. Как всегда - больше практики и оно становится понятнее с каждым разом. Здесь использовалась свзяка GitHub Pages (front), Render (back) and MongoDB (db). Последние два на бесплатных тарифах, поэтому приложение работает не быстро. Разобраться с cookies и cors было самым сложным. Проект занял 28 часов работы.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/full-stack-todo-app-WkaVxD2Qth",
+      "stack": ['vue', 'mongodb', 'express', 'pinia', 'sass/scss', 'bem']
+    }
+  },
+  {
     "manage-landing": {
       "id": 28,
       "en": {
