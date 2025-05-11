@@ -64,7 +64,7 @@ const deleteItem = async (id) => {
 <style lang="scss" scoped>
 .todo-item {
   display: flex;
-  min-height: 64px;
+  min-height: 65px;
   padding: 19px 25px;
   justify-content: space-between;
   align-items: baseline;

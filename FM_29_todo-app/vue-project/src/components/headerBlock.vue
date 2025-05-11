@@ -21,7 +21,7 @@ const logout = async () => {
 <template>
   <div class="header container">
     <h1 class="header__title">todo</h1>
-    <div class="header__user" v-show="userStore.user?.username">
+    <div class="header__user" v-show="userStore.user.user">
       <span class="header__user-name">{{ `${userStore.user?.username}'s todos` }}</span>
       <button class="header__logout-btn" @click="logout()">(log out)</button>
       <div class="loading header__loading" v-show="loading">

@@ -10,6 +10,7 @@ const userStore = useUserStore()
 const isSession = ref(false)
 
 onMounted(async () => {
+  await userStore.loginUser('test', 123)
   await userStore.getUser()
   isSession.value = userStore.user ? true : false
 })
