@@ -15,7 +15,13 @@ const props = defineProps({
   <li>
     <article class="job__item" :class="{ 'job__item--side-border': job.featured }">
       <div class="job__main-block">
-        <img class="job__logo-img" :src="job.logo" :alt="`${job.company} logo`" />
+        <img
+          class="job__logo-img"
+          :src="job.logo"
+          :alt="`${job.company} logo`"
+          width="88"
+          height="88"
+        />
         <div class="job__block">
           <div class="job__company-block">
             <span class="job__company">{{ job.company }}</span>
