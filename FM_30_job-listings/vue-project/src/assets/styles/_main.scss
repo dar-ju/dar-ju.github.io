@@ -1,0 +1,49 @@
+/* MAIN */
+html {
+  font-size: 15px;
+}
+
+body {
+  min-width: 320px;
+  font-family: "LeagueSpartan", sans-serif;
+  font-weight: 400;
+  background-color: var(--light-grayish-cyan-bckg);
+  color: var(--very-dark-grayish-cyan);
+}
+
+.section {
+  padding-bottom: 100px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding-left: 165px;
+  padding-right: 165px;
+}
+
+/* ANIMATION */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-right: 60px;
+    padding-left: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
+}
+

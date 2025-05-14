@@ -1,0 +1,32 @@
+/* FONTS */
+@font-face {
+  font-family: "LeagueSpartan";
+  src: local("LeagueSpartan"),
+    url("@/assets/fonts/LeagueSpartan-Medium.woff2") format("woff2"),
+    url("@/assets/fonts/LeagueSpartan-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LeagueSpartan";
+  src: local("LeagueSpartan"),
+    url("@/assets/fonts/LeagueSpartan-Bold.woff2") format("woff2"),
+    url("@/assets/fonts/LeagueSpartan-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* COLORS */
+  /* Primary */
+  --desaturated-dark-cyan: hsl(180, 29%, 50%);
+  --white: hsl(0, 0%, 100%);
+  /* Neutral */
+  --light-grayish-cyan-bckg: hsl(180, 52%, 96%);
+  --light-grayish-cyan-filter: hsl(180, 31%, 95%);
+  --dark-grayish-cyan: hsl(180, 8%, 52%);
+  --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+}
