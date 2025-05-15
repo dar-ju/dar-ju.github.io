@@ -40,9 +40,7 @@ const props = defineProps({
           </h2>
           <div class="job__additional-block">
             <span>{{ job.postedAt }}</span>
-            <span>∙</span>
             <span>{{ job.contract }}</span>
-            <span>∙</span>
             <span>{{ job.location }}</span>
           </div>
         </div>
@@ -99,8 +97,13 @@ const props = defineProps({
   &__block {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
     font-weight: 700;
+  }
+  &__company-block {
+    display: flex;
+    min-height: 28px;
+    align-items: center;
   }
   &__company {
     margin-right: 16px;
@@ -108,8 +111,8 @@ const props = defineProps({
     color: var(--desaturated-dark-cyan);
   }
   &__badge {
-    padding: 4px 7px;
-    padding-top: 7px;
+    padding: 3px 7px;
+    padding-top: 4px;
     text-transform: uppercase;
     border-radius: 15px;
     color: var(--white);
@@ -132,9 +135,14 @@ const props = defineProps({
   &__additional-block {
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
     color: var(--dark-grayish-cyan);
     font-size: 1.15rem;
     font-weight: 500;
+    & span:not(:last-child)::after {
+      content: '•';
+      margin: 0 0.5em;
+    }
   }
   &__stack-block {
     display: flex;
@@ -188,7 +196,7 @@ const props = defineProps({
 @media (max-width: 620px) {
   .job {
     &__item {
-      padding: 37px 24px;
+      padding: 32px 24px;
       padding-bottom: 25px;
       gap: 0;
     }
@@ -199,13 +207,13 @@ const props = defineProps({
       border-bottom: 1px solid var(--dark-grayish-cyan);
     }
     &__block {
-      gap: 15px;
+      gap: 12px;
     }
     &__logo-img {
       position: absolute;
       width: 48px;
       height: 48px;
-      top: -60px;
+      top: -55px;
     }
     &__company {
       font-size: 1rem;
@@ -215,7 +223,7 @@ const props = defineProps({
       font-size: 1rem;
     }
     &__additional-block {
-      gap: 9px;
+      gap: 4px;
       font-size: 1rem;
     }
     &__stack-block {
