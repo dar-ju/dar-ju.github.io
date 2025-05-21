@@ -66,6 +66,15 @@ const audiophilePreset = definePreset(Aura, {
     },
     skeleton: {
       background: 'var(--grey) !important',
+    },
+    radiobutton: {
+      icon: {
+        checkedColor: 'var(--orange)',
+        size: '10px',
+      },
+      borderColor: 'var(--grey-medium)',
+      checkedBackground: 'transparent',
+      checkedBorderColor: 'var(--grey-medium)',
     }
   },
 })

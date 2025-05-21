@@ -445,6 +445,7 @@ const getQuantityFromCart = (item) => {
 
 .summary {
   width: 350px;
+  height: fit-content;
   padding: 32px;
   &__title {
     margin-bottom: 31px;
