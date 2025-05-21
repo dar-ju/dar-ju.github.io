@@ -1,6 +1,9 @@
 <script setup>
 import { useCartStore } from '@/stores/cart'
 import { useFormatPrice } from '@/composables/useFormatPrice'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const cartStore = useCartStore()
 
@@ -11,6 +14,11 @@ const getQuantityFromCart = (item) => {
 
 const removeCart = () => {
   cartStore.cart = []
+}
+
+const checkOut = () => {
+  router.push('/checkout')
+  cartStore.toggleCart()
 }
 </script>
 
@@ -50,7 +58,7 @@ const removeCart = () => {
                 >&dollar; {{ useFormatPrice(cartStore.getCartSumm()) }}</span
               >
             </div>
-            <Button class="btn cart__btn" label="Checkout" />
+            <Button class="btn cart__btn" label="Checkout" @click.prevent="checkOut()" />
           </div>
         </div>
       </div>

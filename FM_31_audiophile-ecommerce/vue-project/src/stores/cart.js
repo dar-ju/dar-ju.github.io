@@ -6,6 +6,8 @@ export const useCartStore = defineStore('cart', () => {
   const cart = ref([])
   const isCartOpened = ref(false)
   const currentQuantity = ref(0)
+  const SHIPPING = 50
+  const VAT = 20
   // const loading = ref(true)
 
   const addToCart = (product, name, image, price, quantity) => {
@@ -40,5 +42,28 @@ export const useCartStore = defineStore('cart', () => {
     }
   }
 
-  return { cart, isCartOpened, currentQuantity, addToCart, toggleCart, changeQuantity, getCartSumm }
+  const getVat = () => {
+    if (cart.value.length) {
+      return Math.round(getCartSumm() / 100 * VAT)
+    }
+  }
+
+  const getGrandTotal = () => {
+    if (cart.value.length) {
+      return getCartSumm() + SHIPPING
+    }
+  }
+
+  return {
+    cart,
+    isCartOpened,
+    currentQuantity,
+    SHIPPING,
+    addToCart,
+    toggleCart,
+    changeQuantity,
+    getCartSumm,
+    getVat,
+    getGrandTotal,
+  }
 })
