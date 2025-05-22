@@ -28,6 +28,7 @@
   padding-bottom: 160px;
   &__container {
     display: flex;
+    gap: 50px;
     align-items: center;
     justify-content: space-between;
   }
@@ -48,6 +49,7 @@
     line-height: 1.667rem;
   }
   &__img {
+    width: clamp(20%, 36rem, 49%);
     border-radius: 8px;
   }
 }

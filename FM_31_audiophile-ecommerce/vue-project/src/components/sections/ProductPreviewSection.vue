@@ -55,8 +55,9 @@ const props = defineProps({
     gap: 125px;
   }
   &__img-wrapper {
-    min-width: 540px;
-    height: 560px;
+    display: flex;
+    width: 100%;
+    align-items: center;
     &--reverse {
       order: 1;
     }
@@ -66,6 +67,7 @@ const props = defineProps({
   }
   &__info-block {
     display: flex;
+    width: 82%;
     gap: 34px;
     flex-direction: column;
     justify-content: center;

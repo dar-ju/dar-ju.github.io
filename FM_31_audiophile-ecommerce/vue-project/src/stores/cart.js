@@ -5,6 +5,7 @@ import { defineStore } from 'pinia'
 export const useCartStore = defineStore('cart', () => {
   const cart = ref([])
   const isCartOpened = ref(false)
+  const isOrderedOpened = ref(false)
   const currentQuantity = ref(0)
   const SHIPPING = 50
   const VAT = 20
@@ -21,6 +22,10 @@ export const useCartStore = defineStore('cart', () => {
 
   const toggleCart = () => {
     isCartOpened.value = !isCartOpened.value
+  }
+
+  const toggleOrdered = () => {
+    isOrderedOpened.value = !isOrderedOpened.value
   }
 
   const changeQuantity = (product, quantity) => {
@@ -57,10 +62,12 @@ export const useCartStore = defineStore('cart', () => {
   return {
     cart,
     isCartOpened,
+    isOrderedOpened,
     currentQuantity,
     SHIPPING,
     addToCart,
     toggleCart,
+    toggleOrdered,
     changeQuantity,
     getCartSumm,
     getVat,

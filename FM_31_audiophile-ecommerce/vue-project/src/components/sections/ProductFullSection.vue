@@ -99,30 +99,30 @@ const showSuccess = (name, quantity) => {
 
 <template>
   <section class="product">
-    <div v-show="productStore.loading" class="skeleton">
-      <div class="container skeleton__container">
-        <Skeleton width="36rem" height="37rem"></Skeleton>
-        <div>
-          <div>
-            <Skeleton width="10rem" height="1rem" class="skeleton__margin"></Skeleton>
-            <Skeleton width="23rem" height="4rem" class="skeleton__margin"></Skeleton>
-          </div>
-          <div>
-            <Skeleton width="10rem" class="skeleton__margin15"></Skeleton>
-            <Skeleton width="25rem" class="skeleton__margin15"></Skeleton>
-            <Skeleton width="20rem" class="skeleton__margin15"></Skeleton>
-            <Skeleton width="15rem" class="skeleton__margin"></Skeleton>
-            <Skeleton width="8rem" height="3rem"></Skeleton>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- <p>Current width: {{ width }}</p>
     <p v-if="isMobile()">Mobile</p>
     <p v-else-if="isTablet()">Tablet</p>
     <p v-else>Desktop</p> -->
     <div class="container product__container">
       <a href="#" @click.prevent="goBack()" class="product__back">Go Back</a>
+      <div v-show="productStore.loading" class="skeleton">
+        <div class="skeleton__container">
+          <Skeleton width="36rem" height="37rem"></Skeleton>
+          <div>
+            <div>
+              <Skeleton width="10rem" height="1rem" class="skeleton__margin"></Skeleton>
+              <Skeleton width="23rem" height="4rem" class="skeleton__margin"></Skeleton>
+            </div>
+            <div>
+              <Skeleton width="10rem" class="skeleton__margin15"></Skeleton>
+              <Skeleton width="25rem" class="skeleton__margin15"></Skeleton>
+              <Skeleton width="20rem" class="skeleton__margin15"></Skeleton>
+              <Skeleton width="15rem" class="skeleton__margin"></Skeleton>
+              <Skeleton width="8rem" height="3rem"></Skeleton>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="product__card">
         <img
           class="product__img"
@@ -172,7 +172,7 @@ const showSuccess = (name, quantity) => {
               @update="(val) => (quantity = val)"
             />
             <Button class="btn product__btn" label="Add to cart" @click="addToCartHandle()" />
-            <Toast />
+            <Toast position="bottom-right" />
           </div>
         </div>
       </div>

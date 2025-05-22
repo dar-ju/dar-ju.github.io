@@ -24,8 +24,8 @@ const checkOut = () => {
 
 <template>
   <Transition name="fade">
-    <div class="cart" v-if="cartStore.isCartOpened" @click="cartStore.toggleCart">
-      <div class="container cart__container" @click.stop>
+    <div class="modal cart" v-if="cartStore.isCartOpened" @click="cartStore.toggleCart">
+      <div class="container modal__container" @click.stop>
         <div class="cart__window">
           <div class="cart__header" v-show="cartStore.cart.length">
             <h2 class="cart__title">Cart ({{ cartStore.cart.length }})</h2>
@@ -68,24 +68,12 @@ const checkOut = () => {
 
 <style lang="scss" scoped>
 .cart {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding-top: 130px;
-  z-index: 100;
-  background-color: var(--black40);
-  &__container {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-  }
   &__window {
     position: absolute;
     width: 377px;
     padding: 31px 33px;
     background-color: var(--white);
+    border-radius: 8px;
   }
   &__header {
     display: flex;

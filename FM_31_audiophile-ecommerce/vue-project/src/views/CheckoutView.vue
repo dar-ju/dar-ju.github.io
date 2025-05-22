@@ -4,6 +4,7 @@ import { useFormatPrice } from '@/composables/useFormatPrice'
 import { ref, watch } from 'vue'
 import { zodResolver } from '@primevue/forms/resolvers/zod'
 import { z } from 'zod'
+import CartContain from '@/components/common/CartContain.vue'
 // import { useToast } from 'primevue/usetoast'
 
 // const toast = useToast()
@@ -24,7 +25,8 @@ const resolver = zodResolver(
 )
 
 const onFormSubmit = ({ valid }) => {
-  if (valid) {
+  cartStore.toggleOrdered() // переместить
+  if (!valid) {
     // toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 })
   }
 }
@@ -51,7 +53,11 @@ const getQuantityFromCart = (item) => {
       <Form :resolver @submit="onFormSubmit" class="checkout__wrapper">
         <div class="checkout__block checkout__block--checkout">
           <h1 class="checkout__title">Checkout</h1>
-          <div class="card flex justify-center">
+          <div v-show="!cartStore.cart.length" class="checkout__empty-block">
+            <p class="checkout__empty-info">You don't have any items in your cart yet.</p>
+            <router-link to="/" class="checkout__empty-link">Go to shopping</router-link>
+          </div>
+          <div v-show="cartStore.cart.length" class="card flex justify-center">
             <!-- <Form :resolver @submit="onFormSubmit"> -->
             <fieldset class="checkout__fieldset checkout__fieldset--billing">
               <legend class="checkout__fieldset-title">Billing Details</legend>
@@ -266,24 +272,9 @@ const getQuantityFromCart = (item) => {
             <!-- </Form> -->
           </div>
         </div>
-        <div class="checkout__block summary">
+        <div v-show="cartStore.cart.length" class="checkout__block summary">
           <h2 class="summary__title">Summary</h2>
-          <ul class="summary__cart-list">
-            <li class="summary__cart-item" v-for="item in cartStore.cart" :key="item.slug">
-              <div class="summary__cart-item-block">
-                <img class="summary__item-img" :src="item.image" alt="" />
-                <div class="summary__item-product-block">
-                  <div class="summary__item-name-block">
-                    <h3 class="summary__item-name">{{ item.name }}</h3>
-                    <span class="summary__item-quantity"
-                      >x{{ getQuantityFromCart(item.slug) }}</span
-                    >
-                  </div>
-                  <span class="summary__item-price">&dollar; {{ useFormatPrice(item.price) }}</span>
-                </div>
-              </div>
-            </li>
-          </ul>
+          <CartContain :isFirstEl="false" />
           <ul class="summary__total-list">
             <li class="summary__total-item">
               <span class="summary__total-name">Total</span>
@@ -343,6 +334,13 @@ const getQuantityFromCart = (item) => {
     font-size: 2.133rem;
     text-transform: uppercase;
     letter-spacing: 0.08rem;
+  }
+  &__empty-info {
+    margin-bottom: 20px;
+  }
+  &__empty-link {
+    color: var(--orange);
+    font-weight: 700;
   }
   &__field-block {
     display: flex;
@@ -427,6 +425,7 @@ const getQuantityFromCart = (item) => {
   }
   &__cash-warning-block {
     display: flex;
+    min-height: 80px;
     gap: 32px;
     align-items: center;
     grid-column: 1 / 3;

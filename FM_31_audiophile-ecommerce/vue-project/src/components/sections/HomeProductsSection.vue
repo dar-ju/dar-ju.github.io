@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import router from '@/router'
+</script>
 
 <template>
   <section class="products">
@@ -16,13 +18,25 @@
               Upgrade to premium speakers that are phenomenally built to deliver truly remarkable
               sound.
             </p>
-            <Button class="btn" label="See product" severity="secondary" />
+            <Button
+              @click="router.push('/speakers/zx9-speaker')"
+              class="btn"
+              label="See product"
+              severity="secondary"
+              aria-role="link"
+            />
           </div>
         </li>
         <li class="products__ZX7">
           <div class="products__ZX7-wrapper">
             <h2 class="title products__ZX7-title">ZX7 speaker</h2>
-            <Button class="btn" label="See product" severity="contrast" />
+            <Button
+              @click="router.push('/speakers/zx7-speaker')"
+              class="btn"
+              label="See product"
+              severity="contrast"
+              aria-role="link"
+            />
           </div>
         </li>
         <li class="products__YX1">
@@ -34,7 +48,13 @@
           />
           <div class="products__YX1-block">
             <h2 class="title products__YX1-title">YX1 earphones</h2>
-            <Button class="btn" label="See product" severity="contrast" />
+            <Button
+              @click="router.push('/earphones/yx1-wireless-earphones')"
+              class="btn"
+              label="See product"
+              severity="contrast"
+              aria-role="link"
+            />
           </div>
           <!-- </div> -->
         </li>
@@ -60,8 +80,9 @@
   &__ZX9 {
     display: flex;
     width: 100%;
-    padding-left: 139px;
+    padding-left: clamp(12.5%, 6rem, 139px);
     padding-right: 95px;
+    gap: 60px;
     justify-content: space-between;
     background-color: var(--orange);
     border-radius: 8px;
@@ -69,15 +90,17 @@
   }
   &__ZX9-image {
     max-width: 378px;
-    margin-bottom: -128px;
+    margin-bottom: -10px;
     object-fit: contain;
+    align-self: flex-end;
     // position: absolute;
   }
   &__ZX9-wrapper {
     display: flex;
+    min-width: 260px;
     max-width: 350px;
     padding-top: 132px;
-    padding-bottom: 124px;
+    padding-bottom: 125px;
     gap: 24px;
     flex-direction: column;
   }

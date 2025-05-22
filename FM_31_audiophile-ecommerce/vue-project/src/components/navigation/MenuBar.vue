@@ -19,7 +19,9 @@
 .nav {
   display: flex;
   gap: 20px 38px;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   &__item {
     font-size: 0.813rem;
     font-weight: 700;

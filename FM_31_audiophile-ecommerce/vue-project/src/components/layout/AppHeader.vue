@@ -57,7 +57,7 @@ const cartStore = useCartStore()
     justify-content: flex-start;
   }
   &__logo {
-    width: 120px;
+    min-width: 120px;
   }
   &__logo-link {
     transition: outline ease-in-out 0.3s;
@@ -67,6 +67,7 @@ const cartStore = useCartStore()
     }
   }
   &__menu {
+    min-width: 530px;
     justify-content: center;
   }
   &__cart {

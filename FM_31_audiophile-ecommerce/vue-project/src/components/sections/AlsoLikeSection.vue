@@ -64,14 +64,16 @@ const seeProductHandle = (category, product) => {
       <h2 class="also__title">You may also like</h2>
       <ul class="also__list">
         <li class="also__item" v-for="(item, index) in alsoList" :key="index">
-          <div class="also__block">
-            <img
-              class="also__image"
-              :src="item.acf.category_images.desktop_image"
-              alt="XX99 Mark I Headphones"
-            />
+          <div class="also__wrapper">
+            <div class="also__block">
+              <img
+                class="also__image"
+                :src="item.acf.category_images.desktop_image"
+                alt="XX99 Mark I Headphones"
+              />
+            </div>
+            <h3 class="also__subtitle">{{ item.acf.short_name }}</h3>
           </div>
-          <h3 class="also__subtitle">{{ item.acf.short_name }}</h3>
           <Button
             class="btn also__btn"
             label="See product"
@@ -103,6 +105,7 @@ const seeProductHandle = (category, product) => {
   &__item {
     display: flex;
     width: 100%;
+    justify-content: space-between;
     flex-direction: column;
     align-items: center;
   }

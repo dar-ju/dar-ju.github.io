@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import router from '@/router'
+</script>
 
 <template>
   <section class="section hero">
@@ -11,7 +13,12 @@
             Experience natural, lifelike audio and exceptional build quality made for the passionate
             music enthusiast.
           </p>
-          <Button class="btn" label="See product" />
+          <Button
+            @click="router.push('/headphones/xx99-mark-ii-headphones')"
+            class="btn"
+            label="See product"
+            aria-role="link"
+          />
         </div>
         <img
           class="hero__image"
@@ -24,6 +31,7 @@
 </template>
 
 <style lang="scss">
+@import '@/assets/styles/breakpoints';
 .hero {
   padding-bottom: 24px;
   color: var(--white);
@@ -63,11 +71,27 @@
   }
   &__image {
     position: absolute;
-    width: 710px;
+    width: clamp(20%, 48rem, 64%);
     height: 729px;
     top: -96px;
     right: -46px;
     z-index: -1;
+    object-fit: cover;
+  }
+
+  // MEDIA QUERY
+  @include media-query-lg {
+    &__wrapper {
+      justify-content: center;
+      text-align: center;
+    }
+    &__info-block {
+      align-items: center;
+    }
+    &__image {
+      right: 50%;
+      transform: translateX(50%);
+    }
   }
 }
 </style>
