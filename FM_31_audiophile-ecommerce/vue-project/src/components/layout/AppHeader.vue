@@ -1,13 +1,26 @@
 <script setup>
 import MenuBar from '@/components/navigation/MenuBar.vue'
+import CategoriesSection from '@/components/sections/CategoriesSection.vue'
 import { useCartStore } from '@/stores/cart'
+import { ref } from 'vue'
 
 const cartStore = useCartStore()
+
+const isMobileMenu = ref(false)
+
+const toggleMobileMenu = () => {
+  isMobileMenu.value = !isMobileMenu.value
+}
 </script>
 
 <template>
   <header class="container header">
     <div class="header__block">
+      <button @click="toggleMobileMenu()" class="header__burger">
+        <div class="header__burger-line"></div>
+        <div class="header__burger-line"></div>
+        <div class="header__burger-line"></div>
+      </button>
       <div class="header__logo">
         <router-link to="/" class="header__logo-link">
           <img src="/assets/images/logo.svg" alt="Audiophile logo" width="143" height="25" />
@@ -35,11 +48,18 @@ const cartStore = useCartStore()
         </button>
       </div>
     </div>
+    <transition name="fade">
+      <nav v-show="isMobileMenu" class="header__mobile-menu">
+        <CategoriesSection />
+      </nav>
+    </transition>
   </header>
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .header {
+  position: relative;
   &__block {
     display: flex;
     gap: 55px;
@@ -47,6 +67,18 @@ const cartStore = useCartStore()
     padding-top: 35px;
     padding-bottom: 35px;
     border-bottom: 1px solid var(--white20);
+  }
+  &__burger {
+    display: none;
+    width: 16px;
+    height: 15px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__burger-line {
+    width: 100%;
+    height: 3px;
+    background-color: var(--white);
   }
   &__logo,
   &__menu,
@@ -71,6 +103,15 @@ const cartStore = useCartStore()
     min-width: 430px;
     justify-content: center;
   }
+  &__mobile-menu {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: var(--white);
+    z-index: 10;
+  }
   &__cart {
     justify-content: flex-end;
     align-self: baseline;
@@ -80,6 +121,17 @@ const cartStore = useCartStore()
     &:focus-visible {
       outline: 1px solid var(--white);
       outline-offset: 6px;
+    }
+  }
+  @include media-query-md {
+    &__block {
+      gap: 42px;
+    }
+    &__burger {
+      display: flex;
+    }
+    &__menu {
+      display: none;
     }
   }
 }

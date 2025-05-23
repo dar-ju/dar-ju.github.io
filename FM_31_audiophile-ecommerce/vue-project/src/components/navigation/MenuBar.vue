@@ -16,6 +16,7 @@
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .nav {
   display: flex;
   gap: 20px 38px;
