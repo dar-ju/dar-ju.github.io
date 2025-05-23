@@ -1,6 +1,9 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 // import { getProductFullDataApi } from '@/api/product'
+import { useProductStore } from '@/stores/product'
+
+// const productStore = useProductStore()
 
 export const useCartStore = defineStore('cart', () => {
   const cart = ref([])
@@ -10,14 +13,38 @@ export const useCartStore = defineStore('cart', () => {
   const SHIPPING = 50
   const VAT = 20
   // const loading = ref(true)
+  const local = JSON.parse(localStorage.getItem('AudiophileCart'))
+
+  const fillCartFromLocalStorage = () => {
+    if (local.length) {
+      const productStore = useProductStore()
+      local.forEach(async element => {
+        await productStore.getData(element.slug)
+        const store = productStore.product
+        addToCart(store.slug, store.acf.short_name, store.acf.product_images.desktop_gallery[0].metadata.thumbnail.file_url,
+          store.acf.price, element.quantity)
+      });
+    }
+  }
+  fillCartFromLocalStorage()
+
+  const updateLocalStorage = () => {
+    localStorage.setItem('AudiophileCart', JSON.stringify(cart.value.map(item => ({
+      slug: item.slug,
+      quantity: item.quantity,
+    }))))
+  }
 
   const addToCart = (product, name, image, price, quantity) => {
+    // console.log(cart.value);
     const index = cart.value.findIndex(el => el.slug === product)
     if (index >= 0) {
       cart.value[index].quantity += quantity
     }
-    else cart.value.push({ slug: product, name: name, image: image, price: price, quantity: quantity })
-    console.log(cart.value);
+    else {
+      cart.value.push({ slug: product, name: name, image: image, price: price, quantity: quantity })
+    }
+    updateLocalStorage()
   }
 
   const toggleCart = () => {
@@ -30,14 +57,14 @@ export const useCartStore = defineStore('cart', () => {
 
   const changeQuantity = (product, quantity) => {
     const index = cart.value.findIndex(el => el.slug === product)
-    console.log(quantity);
-
     if (quantity === 0) {
       cart.value.splice(index, 1)
+      updateLocalStorage()
       return
     }
     if (index >= 0) {
       cart.value[index].quantity = quantity
+      updateLocalStorage()
     }
   }
 
@@ -72,5 +99,6 @@ export const useCartStore = defineStore('cart', () => {
     getCartSumm,
     getVat,
     getGrandTotal,
+    updateLocalStorage,
   }
 })

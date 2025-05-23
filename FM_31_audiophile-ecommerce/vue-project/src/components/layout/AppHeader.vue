@@ -42,7 +42,7 @@ const cartStore = useCartStore()
 .header {
   &__block {
     display: flex;
-    gap: 40px;
+    gap: 55px;
     align-items: center;
     padding-top: 35px;
     padding-bottom: 35px;
@@ -67,7 +67,8 @@ const cartStore = useCartStore()
     }
   }
   &__menu {
-    min-width: 530px;
+    width: 530px;
+    min-width: 430px;
     justify-content: center;
   }
   &__cart {

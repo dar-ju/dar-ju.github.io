@@ -47,6 +47,7 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .product-preview {
   padding-top: 80px;
   padding-bottom: 80px;
@@ -93,6 +94,16 @@ const props = defineProps({
   }
   &__btn {
     font-weight: 700;
+  }
+  @include media-query-lg {
+    &__container {
+      gap: 60px;
+    }
+  }
+  @include media-query-md {
+    &__container {
+      flex-direction: column;
+    }
   }
 }
 </style>

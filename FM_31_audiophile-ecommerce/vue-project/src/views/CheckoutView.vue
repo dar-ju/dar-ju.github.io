@@ -51,7 +51,9 @@ const onFormSubmit = async ({ valid, values }) => {
       }
       await postOrderApi(dataToSend)
       // cartStore.toggleOrdered()
-      // console.log(dataToSend)
+      // cartStore.cart = []
+      // cartStore.updateLocalStorage()
+      console.log(dataToSend)
     } catch (err) {
       toast.add({ severity: 'error', summary: 'Ошибка', detail: err.message, life: 4000 })
     }

@@ -100,11 +100,12 @@ const seeProductHandle = (category, product) => {
   }
   &__list {
     display: flex;
-    gap: 30px;
+    gap: 60px var(--catBlocksGap);
+    flex-wrap: wrap;
   }
   &__item {
     display: flex;
-    width: 100%;
+    width: calc((100% - var(--catBlocksGap) * (var(--catBlocksInRow) - 1)) / var(--catBlocksInRow));
     justify-content: space-between;
     flex-direction: column;
     align-items: center;

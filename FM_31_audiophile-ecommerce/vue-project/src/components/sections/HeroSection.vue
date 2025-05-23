@@ -89,6 +89,7 @@ import router from '@/router'
       align-items: center;
     }
     &__image {
+      width: 90%;
       right: 50%;
       transform: translateX(50%);
     }

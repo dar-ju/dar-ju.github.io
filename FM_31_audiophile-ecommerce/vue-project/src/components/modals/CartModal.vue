@@ -14,6 +14,7 @@ const getQuantityFromCart = (item) => {
 
 const removeCart = () => {
   cartStore.cart = []
+  cartStore.updateLocalStorage()
 }
 
 const checkOut = () => {
@@ -69,11 +70,13 @@ const checkOut = () => {
 <style lang="scss" scoped>
 .cart {
   &__window {
-    position: absolute;
+    position: fixed;
     width: 377px;
+    max-height: 600px;
     padding: 31px 33px;
     background-color: var(--white);
     border-radius: 8px;
+    overflow-y: auto;
   }
   &__header {
     display: flex;

@@ -223,6 +223,7 @@ const showSuccess = (name, quantity) => {
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .product {
   padding-top: 45px;
   padding-bottom: 80px;
@@ -332,6 +333,7 @@ const showSuccess = (name, quantity) => {
     }
   }
   &__contain {
+    // min-width: 200px;
   }
   &__contain-list {
     display: flex;
@@ -370,6 +372,22 @@ const showSuccess = (name, quantity) => {
     //   grid-column: 2 / 3;
     //   grid-row: 1 / 3;
     // }
+  }
+  @include media-query-lg {
+    &__card {
+      gap: 60px;
+    }
+    &__img-wrapper {
+      min-width: 380px;
+    }
+    &__info {
+      gap: 80px;
+    }
+  }
+  @include media-query-l {
+    &__card {
+      gap: 40px;
+    }
   }
 }
 </style>

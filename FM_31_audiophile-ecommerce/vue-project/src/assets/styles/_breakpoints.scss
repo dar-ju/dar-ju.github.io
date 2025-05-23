@@ -1,15 +1,22 @@
 $breakpoint-sm: 600px;
 $breakpoint-md: 768px;
+$breakpoint-l: 1024px;
 $breakpoint-lg: 1200px;
 
-@mixin respond-sm {
+@mixin media-query-sm {
   @media (max-width: $breakpoint-sm) {
     @content;
   }
 }
 
-@mixin respond-md {
+@mixin media-query-md {
   @media (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin media-query-l {
+  @media (max-width: $breakpoint-l) {
     @content;
   }
 }

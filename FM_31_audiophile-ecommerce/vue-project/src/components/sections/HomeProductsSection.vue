@@ -64,6 +64,7 @@ import router from '@/router'
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .products {
   padding-top: 84px;
   padding-bottom: 100px;
@@ -80,6 +81,7 @@ import router from '@/router'
   &__ZX9 {
     display: flex;
     width: 100%;
+    min-height: 562px;
     padding-left: clamp(12.5%, 6rem, 139px);
     padding-right: 95px;
     gap: 60px;
@@ -90,6 +92,7 @@ import router from '@/router'
   }
   &__ZX9-image {
     max-width: 378px;
+    min-width: 240px;
     margin-bottom: -10px;
     object-fit: contain;
     align-self: flex-end;
@@ -99,10 +102,11 @@ import router from '@/router'
     display: flex;
     min-width: 260px;
     max-width: 350px;
-    padding-top: 132px;
-    padding-bottom: 125px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     gap: 24px;
     flex-direction: column;
+    align-self: center;
   }
   &__ZX9-title {
     color: var(--white);
@@ -121,6 +125,7 @@ import router from '@/router'
     align-items: center;
     background: url('/assets/images/home-products-section/desktop/image-speaker-zx7.jpg') no-repeat
       100%;
+    background-position: center;
     border-radius: 8px;
   }
   &__ZX7-wrapper {
@@ -142,13 +147,18 @@ import router from '@/router'
   // &__YX1-wrapper {
   // }
   &__YX1-img {
+    width: 100%;
+    min-width: 300px;
+    max-width: 540px;
     border-radius: 8px;
+    object-fit: cover;
   }
   &__YX1-block {
     display: flex;
-    width: 100%;
+    // width: 100%;
     gap: 20px;
-    padding: 0 94px;
+    padding: 40px 94px;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: center;
     border-radius: 8px;
@@ -157,6 +167,14 @@ import router from '@/router'
   &__YX1-title {
     font-size: 1.867rem;
     letter-spacing: 0.133rem;
+  }
+
+  //MEDIA QUERIES
+  @include media-query-lg {
+    &__ZX9 {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
   }
 }
 

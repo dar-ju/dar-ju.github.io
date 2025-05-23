@@ -50,10 +50,11 @@
   }
   &__list {
     display: flex;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 80px var(--catBlocksGap);
   }
   &__item {
-    width: 100%;
+    width: calc((100% - var(--catBlocksGap) * (var(--catBlocksInRow) - 1)) / var(--catBlocksInRow));
   }
   &__block {
     display: flex;
@@ -74,6 +75,7 @@
     width: 217px;
     height: 203px;
     top: -61px;
+    object-fit: cover;
     &--headphones {
       width: 222px;
       height: 212px;
