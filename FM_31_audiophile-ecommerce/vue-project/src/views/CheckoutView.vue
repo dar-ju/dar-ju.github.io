@@ -5,9 +5,10 @@ import { ref, watch } from 'vue'
 import { zodResolver } from '@primevue/forms/resolvers/zod'
 import { z } from 'zod'
 import CartContain from '@/components/common/CartContain.vue'
-// import { useToast } from 'primevue/usetoast'
+import { postOrderApi } from '@/api/order.js'
+import { useToast } from 'primevue/usetoast'
 
-// const toast = useToast()
+const toast = useToast()
 
 const cartStore = useCartStore()
 
@@ -17,17 +18,43 @@ const paymentType = ref('eMoney-radio')
 const buttonLabel = ref('Continue & Pay')
 
 const resolver = zodResolver(
-  z.object({
-    username: z.string().min(1, { message: 'Name is required.' }),
-    email: z.string().min(1, { message: 'Email is required.' }),
-    phone: z.string().min(1, { message: 'Phone number is required.' }),
-  }),
+  z
+    .object({
+      username: z.string().min(1, { message: 'Name is required.' }),
+      email: z
+        .string()
+        .min(1, { message: 'This field is required' })
+        .email({ message: 'Wrong format' }),
+      phone: z.string().min(1, { message: 'Phone number is required.' }),
+    })
+    .passthrough(),
 )
 
-const onFormSubmit = ({ valid }) => {
-  cartStore.toggleOrdered() // переместить
-  if (!valid) {
-    // toast.add({ severity: 'success', summary: 'Form is submitted.', life: 3000 })
+const onFormSubmit = async ({ valid, values }) => {
+  if (valid) {
+    try {
+      const hiddenFields = {
+        _wpcf7: '6',
+        _wpcf7_unit_tag: 'wpcf7-f6-p85-o1',
+        _wpcf7_container_post: '85',
+      }
+      const dataToSend = {
+        ...values,
+        payment: paymentType.value,
+        order: cartStore.cart
+          .map(
+            (item) =>
+              `${item.name} — ${item.quantity}x × ${item.price}$ = ${item.quantity * item.price}$`,
+          )
+          .join('\n'),
+        ...hiddenFields,
+      }
+      await postOrderApi(dataToSend)
+      // cartStore.toggleOrdered()
+      // console.log(dataToSend)
+    } catch (err) {
+      toast.add({ severity: 'error', summary: 'Ошибка', detail: err.message, life: 4000 })
+    }
   }
 }
 
@@ -38,12 +65,8 @@ watch(
     isCash.value = newVal === 'cash-radio' ? true : false
     buttonLabel.value = newVal === 'eMoney-radio' ? 'Continue & Pay' : 'Continue'
   },
+  { immediate: true },
 )
-
-const getQuantityFromCart = (item) => {
-  const found = cartStore.cart.find((element) => element.slug === item)
-  return found ? found.quantity : 0
-}
 </script>
 
 <template>
@@ -58,7 +81,6 @@ const getQuantityFromCart = (item) => {
             <router-link to="/" class="checkout__empty-link">Go to shopping</router-link>
           </div>
           <div v-show="cartStore.cart.length" class="card flex justify-center">
-            <!-- <Form :resolver @submit="onFormSubmit"> -->
             <fieldset class="checkout__fieldset checkout__fieldset--billing">
               <legend class="checkout__fieldset-title">Billing Details</legend>
               <FormField
@@ -221,7 +243,7 @@ const getQuantityFromCart = (item) => {
                 as="section"
                 name="eMoney"
                 initialValue=""
-                v-show="iseMoney"
+                v-if="iseMoney"
                 class="checkout__field-block"
               >
                 <label for="eMoney" class="checkout__label">e-Money Number</label>
@@ -241,7 +263,7 @@ const getQuantityFromCart = (item) => {
                 as="section"
                 name="eMoneyPin"
                 initialValue=""
-                v-show="iseMoney"
+                v-if="iseMoney"
                 class="checkout__field-block"
               >
                 <label for="eMoneyPin" class="checkout__label">e-Money PIN</label>
@@ -269,7 +291,6 @@ const getQuantityFromCart = (item) => {
                 </p>
               </div>
             </fieldset>
-            <!-- </Form> -->
           </div>
         </div>
         <div v-show="cartStore.cart.length" class="checkout__block summary">

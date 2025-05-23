@@ -124,14 +124,18 @@ const showSuccess = (name, quantity) => {
         </div>
       </div>
       <div class="product__card">
-        <img
-          class="product__img"
-          v-if="gallery"
-          :src="productStore.product?.acf?.product_images.desktop_gallery[0].metadata.full.file_url"
-          alt=""
-          width="540"
-          height="560"
-        />
+        <picture class="product__img-wrapper">
+          <img
+            class="product__img"
+            v-if="gallery"
+            :src="
+              productStore.product?.acf?.product_images.desktop_gallery[0].metadata.full.file_url
+            "
+            alt=""
+            width="540"
+            height="560"
+          />
+        </picture>
         <div class="product__info-block">
           <div class="product__title-block">
             <!-- <span class="product__new" v-show="product.acf.new_product">New product</span> -->
@@ -234,14 +238,20 @@ const showSuccess = (name, quantity) => {
     margin-bottom: 155px;
     gap: 125px;
   }
-  &__img {
+  &__img-wrapper {
+    width: 100%;
     max-width: 540px;
+    min-width: 450px;
+  }
+  &__img {
+    width: 100%;
     &--reverse {
       order: 1;
     }
   }
   &__info-block {
     display: flex;
+    max-width: 445px;
     gap: 38px;
     flex-direction: column;
     justify-content: center;
