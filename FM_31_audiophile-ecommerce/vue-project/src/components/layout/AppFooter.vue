@@ -72,13 +72,24 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .footer {
-  padding-top: 80px;
-  padding-bottom: 54px;
+  position: relative;
+  padding-top: 75px;
+  padding-bottom: 50px;
+  &::before {
+    content: '';
+    position: absolute;
+    left: var(--containerPadding);
+    top: 0;
+    width: 101px;
+    height: 4px;
+    background-color: var(--orange);
+  }
   &__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 30px;
+    gap: 31px;
     justify-content: space-between;
   }
   &__logo {
@@ -89,7 +100,7 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     display: flex;
-    gap: 30px;
+    gap: 38px;
     justify-self: flex-end;
   }
   &__menu-item {
@@ -127,6 +138,55 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
     grid-row: 3 / 4;
     color: var(--white50);
     font-weight: 700;
+    line-height: 1.667rem;
+  }
+  //MEDIA QUERIES
+  @include media-query-l {
+    padding-top: 60px;
+    &__container {
+      gap: 40px;
+    }
+    &__menu {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      justify-self: flex-start;
+    }
+    &__description {
+      grid-row: 3 / 4;
+      grid-column: 1 / 3;
+    }
+    &__social {
+      grid-row: 4 / 5;
+    }
+    &__copyright {
+      grid-row: 4 / 5;
+    }
+  }
+  @include media-query-sm {
+    padding-top: 52px;
+    padding-bottom: 34px;
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 51px;
+      text-align: center;
+    }
+    &__menu {
+      gap: 27px;
+      flex-direction: column;
+      justify-content: center;
+    }
+    &__description {
+      margin-bottom: 0;
+    }
+    &__social {
+      order: 1;
+    }
   }
 }
 

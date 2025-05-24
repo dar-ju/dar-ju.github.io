@@ -123,15 +123,34 @@ const toggleMobileMenu = () => {
       outline-offset: 6px;
     }
   }
-  @include media-query-md {
+  @include media-query-l {
     &__block {
       gap: 42px;
+      padding-top: 32px;
+      padding-bottom: 32px;
     }
     &__burger {
       display: flex;
     }
     &__menu {
       display: none;
+    }
+  }
+  @include media-query-md {
+    &__block {
+      justify-content: space-between;
+    }
+    &__logo {
+      flex: initial;
+    }
+    &__cart {
+      flex: initial;
+    }
+  }
+  @include media-query-sm {
+    border-bottom: 1px solid var(--white20);
+    &__block {
+      border: none;
     }
   }
 }

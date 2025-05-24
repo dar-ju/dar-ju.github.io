@@ -43,9 +43,10 @@
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .categories {
   padding-top: 160px;
-  padding-bottom: 84px;
+  padding-bottom: 60px;
   &__container {
   }
   &__list {
@@ -112,6 +113,56 @@
       outline-offset: 6px;
     }
   }
+
+  //MEDIA QUERIES
+  @include media-query-l {
+    padding-top: 100px;
+    &__block {
+      min-height: 165px;
+      padding: 22px;
+    }
+    &__image {
+      width: 140px;
+      &--headphones {
+        height: 137px;
+        top: -51px;
+      }
+      &--speakers {
+        height: 141px;
+        top: -52px;
+      }
+      &--earphones {
+        height: 157px;
+        top: -53px;
+      }
+    }
+    &__title {
+      font-size: 0.95rem;
+    }
+  }
+
+  @include media-query-md {
+    &__list {
+      flex-direction: column;
+      align-items: center;
+    }
+    &__item {
+      width: 100%;
+    }
+  }
+
+  @include media-query-sm {
+    padding-top: 52px;
+    &__list {
+      gap: 69px var(--catBlocksGap);
+    }
+  }
+  // @include media-query-l {
+  //   &__image {
+  // width: 191px;
+  // top: -70px;
+  // }
+  // }
 }
 
 @media (hover: hover) {

@@ -330,7 +330,7 @@ watch(
 <style lang="scss" scoped>
 .checkout {
   padding-top: 83px;
-  padding-bottom: 83px;
+  padding-bottom: 135px;
   background-color: var(--grey);
   &__container {
   }

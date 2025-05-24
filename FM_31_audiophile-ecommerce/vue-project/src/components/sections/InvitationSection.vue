@@ -13,16 +13,26 @@
           best place to buy your portable audio equipment.
         </p>
       </div>
-      <img
-        class="invite__img"
-        src="/assets/images/invite-section/desktop/image-best-gear.jpg"
-        alt="customer in the audiophile store"
-      />
+      <picture class="invite__img">
+        <source
+          media="(min-width:1024px)"
+          srcset="/assets/images/invite-section/desktop/image-best-gear.jpg"
+        />
+        <source
+          media="(min-width:768px)"
+          srcset="/assets/images/invite-section/tablet/image-best-gear.jpg"
+        />
+        <img
+          src="/assets/images/invite-section/mobile/image-best-gear.jpg"
+          alt="customer in the audiophile store"
+        />
+      </picture>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .invite {
   padding-top: 100px;
   padding-bottom: 160px;
@@ -49,8 +59,44 @@
     line-height: 1.667rem;
   }
   &__img {
-    width: clamp(20%, 36rem, 49%);
+    max-width: 540px;
+    min-width: 350px;
+    width: 100%;
     border-radius: 8px;
+    overflow: hidden;
+  }
+
+  //MEDIA QUERIES
+  @include media-query-l {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &__container {
+      gap: 60px;
+      flex-direction: column;
+      text-align: center;
+    }
+    &__img {
+      width: 100%;
+      max-width: initial;
+    }
+    &__wrapper {
+      max-width: 573px;
+      order: 1;
+    }
+  }
+
+  @include media-query-sm {
+    padding-bottom: 82px;
+    &__container {
+      gap: 41px;
+    }
+    &__img {
+      min-width: initial;
+    }
+    &__title {
+      font-size: 1.8rem;
+      line-height: 2.5rem;
+    }
   }
 }
 </style>

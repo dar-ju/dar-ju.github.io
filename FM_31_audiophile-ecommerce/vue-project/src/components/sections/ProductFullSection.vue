@@ -125,11 +125,23 @@ const showSuccess = (name, quantity) => {
       </div>
       <div class="product__card">
         <picture class="product__img-wrapper">
+          <source
+            media="(min-width:1024px)"
+            :srcset="
+              productStore.product?.acf?.product_images.desktop_gallery[0].metadata.full.file_url
+            "
+          />
+          <source
+            media="(min-width:768px)"
+            :srcset="
+              productStore.product?.acf?.product_images.tablet_gallery[0].metadata.full.file_url
+            "
+          />
           <img
             class="product__img"
             v-if="gallery"
             :src="
-              productStore.product?.acf?.product_images.desktop_gallery[0].metadata.full.file_url
+              productStore.product?.acf?.product_images.mobile_gallery[0].metadata.full.file_url
             "
             alt=""
             width="540"
@@ -138,13 +150,10 @@ const showSuccess = (name, quantity) => {
         </picture>
         <div class="product__info-block">
           <div class="product__title-block">
-            <!-- <span class="product__new" v-show="product.acf.new_product">New product</span> -->
             <span class="product__new" v-show="productStore.product?.acf?.new_product"
               >New product</span
             >
-            <!-- <span class="product__new">New product</span> -->
             <h1 class="product__title">{{ productStore.product?.title?.rendered }}</h1>
-            <!-- <h1 class="product__title">XX99 Mark II Headphones</h1> -->
           </div>
           <p class="product__short-description">
             {{ productStore.product?.acf?.short_description }}
@@ -153,23 +162,6 @@ const showSuccess = (name, quantity) => {
             >&dollar; {{ useFormatPrice(productStore.product?.acf?.price) }}</span
           >
           <div class="product__add-block">
-            <!-- <div class="product__input-wrapper">
-              <InputNumber
-                v-model="amount"
-                inputId="integeronly"
-                showButtons
-                buttonLayout="horizontal"
-                :min="1"
-                fluid
-              >
-                <template #incrementbuttonicon>
-                  <span class="product__icon-wrapper">+</span>
-                </template>
-                <template #decrementbuttonicon
-                  ><span class="product__icon-wrapper">-</span></template
-                >
-              </InputNumber>
-            </div> -->
             <QuantityInput
               :key="quantity"
               :quantity="quantity"
@@ -243,6 +235,8 @@ const showSuccess = (name, quantity) => {
     width: 100%;
     max-width: 540px;
     min-width: 450px;
+    border-radius: 8px;
+    overflow: hidden;
   }
   &__img {
     width: 100%;
@@ -289,27 +283,6 @@ const showSuccess = (name, quantity) => {
     display: flex;
     gap: 16px;
   }
-  // &__input-wrapper {
-  //   max-width: 120px;
-  //   height: 48px;
-  //   background-color: var(--grey);
-  //   & span {
-  //     height: 100%;
-  //   }
-  // }
-  // &__icon-wrapper {
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   height: 100%;
-  //   width: 100%;
-  //   border: none;
-  //   & .pi {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-  // }
   &__info {
     display: flex;
     margin-bottom: 160px;
@@ -385,8 +358,77 @@ const showSuccess = (name, quantity) => {
     }
   }
   @include media-query-l {
+    padding-top: 0;
+    padding-bottom: 60px;
+    &__back {
+      margin-bottom: 25px;
+    }
     &__card {
-      gap: 40px;
+      margin-bottom: 119px;
+      gap: clamp(20px, 5rem, 70px);
+    }
+    &__img-wrapper {
+      min-width: 280px;
+    }
+    &__info-block {
+      max-width: 337px;
+      gap: 32px;
+    }
+    &__new {
+      font-size: 0.8rem;
+      letter-spacing: 0.57rem;
+    }
+    &__title {
+      font-size: 1.83rem;
+      line-height: 2.1rem;
+    }
+    &__price {
+      font-size: 1.28rem;
+    }
+    &__subtitle {
+      margin-bottom: 32px;
+    }
+    &__info {
+      margin-bottom: 126px;
+      gap: 120px;
+      flex-direction: column;
+    }
+    &__features {
+      max-width: 100%;
+    }
+    &__contain {
+      display: flex;
+      gap: 22px;
+      justify-content: flex-start;
+    }
+    &__contain-list {
+      margin: 0 auto;
+    }
+    &__gallery {
+      gap: 18px;
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+    }
+  }
+  @include media-query-md {
+    &__card {
+      flex-direction: column;
+    }
+    &__img-wrapper {
+      max-width: initial;
+    }
+    &__contain {
+      gap: 24px;
+      flex-direction: column;
+    }
+    &__contain-list {
+      margin: initial;
+    }
+    &__gallery {
+      display: flex;
+      flex-direction: column;
+      & picture:nth-child(2) {
+        order: 1;
+      }
     }
   }
 }

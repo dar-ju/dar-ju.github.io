@@ -1,3 +1,5 @@
+@import '@/assets/styles/breakpoints';
+
 /* FONTS */
 @font-face {
   font-family: "Manrope";
@@ -52,4 +54,19 @@
   /* Indents */
   --catBlocksGap: 30px;
   --catBlocksInRow: 3;
+  --containerPadding: 165px;
+
+  /* Media */
+  @include media-query-l {
+    --black-bckg: #191919;
+    --containerPadding: 40px;
+    --catBlocksGap: 10px;
+  }
+  @include media-query-md {
+    --black-bckg: #1a1a1a;
+  }
+  @include media-query-sm {
+    --containerPadding: 24px;
+  }
 }
+

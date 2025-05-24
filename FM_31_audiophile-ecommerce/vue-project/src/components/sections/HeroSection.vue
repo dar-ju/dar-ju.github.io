@@ -20,11 +20,20 @@ import router from '@/router'
             aria-role="link"
           />
         </div>
-        <img
-          class="hero__image"
-          src="/assets/images/hero-section/desktop/image-hero.jpg"
-          alt="XX99 Mark II Headphones"
-        />
+        <picture class="hero__image">
+          <source
+            media="(min-width:1024px)"
+            srcset="/assets/images/hero-section/desktop/image-hero.jpg"
+          />
+          <source
+            media="(min-width:768px)"
+            srcset="/assets/images/hero-section/tablet/image-hero.jpg"
+          />
+          <img
+            src="/assets/images/hero-section/mobile/image-hero.jpg"
+            alt="XX99 Mark II Headphones"
+          />
+        </picture>
       </div>
     </div>
   </section>
@@ -50,8 +59,8 @@ import router from '@/router'
     position: relative;
     width: 100%;
     max-width: 400px;
-    padding-top: 132px;
-    padding-bottom: 132px;
+    padding-top: 129px;
+    padding-bottom: 135px;
     gap: 29px;
     flex-direction: column;
   }
@@ -70,17 +79,20 @@ import router from '@/router'
     line-height: 1.563rem;
   }
   &__image {
+    display: flex;
     position: absolute;
     width: clamp(20%, 48rem, 64%);
     height: 729px;
     top: -96px;
     right: -46px;
     z-index: -1;
+    align-items: center;
     object-fit: cover;
   }
 
   // MEDIA QUERY
   @include media-query-lg {
+    padding-bottom: 31px;
     &__wrapper {
       justify-content: center;
       text-align: center;
@@ -89,9 +101,39 @@ import router from '@/router'
       align-items: center;
     }
     &__image {
-      width: 90%;
+      width: 100%;
       right: 50%;
       transform: translateX(50%);
+      justify-content: center;
+    }
+  }
+  @include media-query-l {
+    &__image {
+      max-width: 843px;
+    }
+  }
+  @include media-query-md {
+    &__image {
+      max-width: 513px;
+    }
+  }
+  @include media-query-sm {
+    &__wrapper {
+      position: initial;
+    }
+    &__info-block {
+      padding-top: 111px;
+      padding-bottom: 80px;
+      gap: 20px;
+    }
+    &__title {
+      font-size: 2.15rem;
+      line-height: 2.7rem;
+      letter-spacing: 0.23rem;
+    }
+    &__image {
+      max-width: 410px;
+      top: -65px;
     }
   }
 }

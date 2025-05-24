@@ -8,14 +8,28 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 <template>
   <main>
     <div class="main-wrapper">
-      <div>
+      <div class="product">
         <ProductFullSection />
         <AlsoLikeSection />
         <CategoriesSection />
-        <InvitationSection />
+        <InvitationSection class="product__invitation" />
       </div>
     </div>
   </main>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
+.product {
+  &__invitation {
+    padding-bottom: 115px;
+  }
+
+  // MEDIA QUERIES
+  @include media-query-l {
+    &__invitation {
+      padding-bottom: 85px;
+    }
+  }
+}
+</style>

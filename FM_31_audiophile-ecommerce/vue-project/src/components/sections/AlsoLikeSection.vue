@@ -65,13 +65,15 @@ const seeProductHandle = (category, product) => {
       <ul class="also__list">
         <li class="also__item" v-for="(item, index) in alsoList" :key="index">
           <div class="also__wrapper">
-            <div class="also__block">
+            <picture class="also__block">
+              <source media="(min-width:1024px)" :srcset="item.acf.category_images.desktop_image" />
+              <source media="(min-width:768px)" :srcset="item.acf.category_images.tablet_image" />
               <img
                 class="also__image"
-                :src="item.acf.category_images.desktop_image"
+                :src="item.acf.category_images.mobile_image"
                 alt="XX99 Mark I Headphones"
               />
-            </div>
+            </picture>
             <h3 class="also__subtitle">{{ item.acf.short_name }}</h3>
           </div>
           <Button
@@ -86,6 +88,7 @@ const seeProductHandle = (category, product) => {
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .also {
   padding-top: 80px;
   padding-bottom: 84px;
@@ -173,6 +176,29 @@ const seeProductHandle = (category, product) => {
   }
   &__btn {
     width: 160px;
+  }
+
+  //MEDIA QUERIES
+  @include media-query-l {
+    padding-top: 60px;
+    padding-bottom: 73px;
+    &__title {
+      margin-bottom: 57px;
+    }
+    &__block {
+      padding: 0;
+    }
+  }
+  @include media-query-md {
+    &__list {
+      flex-direction: column;
+    }
+    &__item {
+      width: 100%;
+    }
+    &__image {
+      object-fit: contain;
+    }
   }
 }
 </style>

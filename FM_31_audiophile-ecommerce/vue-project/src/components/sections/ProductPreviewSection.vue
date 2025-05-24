@@ -1,4 +1,6 @@
 <script setup>
+import { onMounted, ref } from 'vue'
+
 const props = defineProps({
   product: {
     type: Object,
@@ -9,18 +11,30 @@ const props = defineProps({
     required: false,
   },
 })
+
+const isMobileScreen = ref(false)
+
+onMounted(() => {
+  const mediaQuery = window.matchMedia('(max-width: 1024px)')
+  isMobileScreen.value = mediaQuery.matches
+  mediaQuery.addEventListener('change', (e) => {
+    isMobileScreen.value = e.matches
+  })
+})
 </script>
 
 <template>
-  <section class="product-preview">
-    <div class="container product-preview__container">
+  <li class="product-preview">
+    <article class="container product-preview__container">
       <picture
         class="product-preview__img-wrapper"
-        :class="{ 'product-preview__img-wrapper--reverse': index % 2 !== 0 }"
+        :class="{ 'product-preview__img-wrapper--reverse': index % 2 !== 0 && !isMobileScreen }"
       >
+        <source media="(min-width:1024px)" :srcset="product.acf.category_images.desktop_image" />
+        <source media="(min-width:768px)" :srcset="product.acf.category_images.tablet_image" />
         <img
           class="product-preview__img"
-          v-lazy="{ src: product.acf.category_images.desktop_image }"
+          v-lazy="{ src: product.acf.category_images.mobile_image }"
           alt=""
           width="540"
           height="560"
@@ -42,8 +56,8 @@ const props = defineProps({
         </Button>
         <!-- <Button class="btn" label="See product" /> -->
       </div>
-    </div>
-  </section>
+    </article>
+  </li>
 </template>
 
 <style lang="scss" scoped>
@@ -59,6 +73,8 @@ const props = defineProps({
     display: flex;
     width: 100%;
     align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
     &--reverse {
       order: 1;
     }
@@ -95,14 +111,56 @@ const props = defineProps({
   &__btn {
     font-weight: 700;
   }
+
+  //MEDIA QUERIES
   @include media-query-lg {
     &__container {
       gap: 60px;
     }
   }
-  @include media-query-md {
+  @include media-query-l {
+    padding-top: 40px;
+    padding-bottom: 75px;
     &__container {
+      gap: 55px;
       flex-direction: column;
+      align-items: center;
+    }
+    &__img {
+      width: 100%;
+    }
+    &__info-block {
+      width: 100%;
+      max-width: 570px;
+      gap: 29px;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  @include media-query-md {
+    // &__container {
+    //   flex-direction: column;
+    // }
+  }
+  @include media-query-sm {
+    padding-top: 59px;
+    &__list {
+      gap: 25px;
+    }
+    &__ZX9-wrapper {
+      padding-top: 10px;
+      padding-bottom: 30px;
+    }
+    &__ZX9-image {
+      max-width: 160px;
+      min-width: 147px;
+    }
+    &__ZX9-title {
+      font-size: 2.42rem;
+      line-height: 2.7rem;
+    }
+    &__ZX9-descr {
+      margin-bottom: 0px;
     }
   }
 }

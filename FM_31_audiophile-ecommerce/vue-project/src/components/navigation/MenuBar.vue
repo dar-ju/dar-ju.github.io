@@ -39,6 +39,11 @@
       outline-offset: 6px;
     }
   }
+  @include media-query-sm {
+    &__menu {
+      flex-direction: column;
+    }
+  }
 }
 
 @media (hover: hover) {
