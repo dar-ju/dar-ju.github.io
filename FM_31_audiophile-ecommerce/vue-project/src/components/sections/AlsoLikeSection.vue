@@ -1,21 +1,21 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category'
+import { useProductStore } from '@/stores/product'
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
 
-const categoryStore = useCategoryStore()
+const productStore = useProductStore()
 const alsoList = ref(null)
 
 onMounted(async () => {
-  await categoryStore.getProductData()
+  await productStore.getAlsoData()
   alsoListCreate()
 })
 
 // const alsoListCreate = () => {
-//   const arr = categoryStore.product
+//   const arr = productStore.product
 //   const newArr = []
 //   for (let i = arr.length - 1; i >= 0; i--) {
 //   const item = arr.value[i]
@@ -24,7 +24,7 @@ onMounted(async () => {
 //     arr.value.splice(i, 1)
 //   }
 // }
-// const getCategory = categoryStore.product.filter(
+// const getCategory = productStore.product.filter(
 //   (item) => item.acf.category.slug === route.params.category,
 // )
 // const excludeCurrent = getCategory.filter((item) => item.slug !== route.params.name)
@@ -33,7 +33,7 @@ onMounted(async () => {
 // }
 
 function alsoListCreate() {
-  const allProducts = categoryStore.product
+  const allProducts = productStore.alsoProduct
   const currentProduct = allProducts.find((p) => p.slug === route.params.name)
   if (!currentProduct) return []
   const categorySlug = currentProduct.acf.category.slug
@@ -66,11 +66,11 @@ const seeProductHandle = (category, product) => {
         <li class="also__item" v-for="(item, index) in alsoList" :key="index">
           <div class="also__wrapper">
             <picture class="also__block">
-              <source media="(min-width:1024px)" :srcset="item.acf.category_images.desktop_image" />
-              <source media="(min-width:768px)" :srcset="item.acf.category_images.tablet_image" />
+              <source media="(min-width:1024px)" :srcset="item.acf.also_images.desktop_image" />
+              <source media="(min-width:768px)" :srcset="item.acf.also_images.tablet_image" />
               <img
                 class="also__image"
-                :src="item.acf.category_images.mobile_image"
+                :src="item.acf.also_images.mobile_image"
                 alt="XX99 Mark I Headphones"
               />
             </picture>

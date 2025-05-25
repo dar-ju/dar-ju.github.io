@@ -1,10 +1,11 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getCategoryTitleApi, getProductDataForCategoryApi } from '@/api/sections'
+import { getCategoryTitleApi, getAllCategoriesApi, getProductDataForCategoryApi } from '@/api/categories'
 
 export const useCategoryStore = defineStore('category', () => {
   const title = ref([])
   const product = ref([])
+  const categories = ref([])
   const loading = ref(true)
 
   const getData = async (category) => {
@@ -22,5 +23,12 @@ export const useCategoryStore = defineStore('category', () => {
     const productData = await getProductDataForCategoryApi()
     product.value = productData
   }
-  return { title, product, loading, getData, getProductData }
+
+  const getCategoriesData = async () => {
+    const categoriesData = await getAllCategoriesApi()
+    const sortData = categoriesData.sort((a, b) => a.id - b.id)
+    categories.value = sortData
+  }
+
+  return { title, product, categories, loading, getData, getProductData, getCategoriesData }
 })

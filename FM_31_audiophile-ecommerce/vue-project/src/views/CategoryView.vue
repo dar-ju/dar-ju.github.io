@@ -61,7 +61,7 @@ watch(
               </div>
             </div>
           </div>
-          <TransitionGroup name="fade" tag="ul">
+          <TransitionGroup name="fade" tag="ul" class="category__products-list">
             <ProductPreviewSection
               v-for="(product, index) in categoryStore.product"
               :key="product.id"
@@ -107,6 +107,28 @@ watch(
     }
     &__invitation {
       padding-bottom: 82px;
+    }
+  }
+  @include media-query-sm {
+    padding-top: 35px;
+    &__container {
+      margin-bottom: 35px;
+    }
+    &__title {
+      font-size: 1.867rem;
+    }
+    &__products-section {
+      padding-top: 24px;
+      // padding-bottom: 40px;
+    }
+    &__products-list {
+      display: flex;
+      padding-bottom: 114px;
+      gap: 119px;
+      flex-direction: column;
+    }
+    &__invitation {
+      padding-top: 71px;
     }
   }
 }

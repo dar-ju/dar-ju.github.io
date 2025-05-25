@@ -143,10 +143,25 @@ onMounted(() => {
     // }
   }
   @include media-query-sm {
-    padding-top: 59px;
+    padding: 0;
+    &__container {
+      gap: 33px;
+    }
     &__list {
       gap: 25px;
     }
+    &__info-block {
+      gap: 24px;
+    }
+    &__new {
+      margin-bottom: 24px;
+    }
+    &__title {
+      max-width: 270px;
+      font-size: 1.867rem;
+      line-height: 2.6rem;
+    }
+
     &__ZX9-wrapper {
       padding-top: 10px;
       padding-bottom: 30px;

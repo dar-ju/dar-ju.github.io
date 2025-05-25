@@ -254,7 +254,7 @@ import router from '@/router'
     }
   }
   @include media-query-sm {
-    padding-top: 59px;
+    padding-top: 71px;
     padding-bottom: 60px;
     &__list {
       gap: 25px;
