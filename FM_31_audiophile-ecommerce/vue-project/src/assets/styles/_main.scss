@@ -69,7 +69,6 @@ body {
   &__container {
     display: flex;
     gap: 125px;
-    justify-self: center;
     align-items: center;
   }
   &__img {
@@ -78,6 +77,9 @@ body {
     height: 100%;
     max-height: 37rem;
     aspect-ratio: 36 / 37;
+  }
+  &__block {
+    max-width: 41%;
   }
   &__margin {
     background: var(--grey);
@@ -90,6 +92,12 @@ body {
   @include media-query-lg {
     &__container {
       gap: 60px;
+    }
+  }
+  @include media-query-sm {
+    &__block {
+      max-width: 300px;
+      overflow: hidden;
     }
   }
 }

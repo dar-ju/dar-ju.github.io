@@ -106,14 +106,14 @@ const showSuccess = (name, quantity) => {
     <div class="container product__container">
       <a href="#" @click.prevent="goBack()" class="product__back">Go Back</a>
       <div v-show="productStore.loading" class="skeleton">
-        <div class="skeleton__container">
-          <Skeleton width="36rem" height="37rem"></Skeleton>
-          <div>
-            <div>
+        <div class="skeleton__container product__skeleton-container">
+          <Skeleton class="skeleton__img product__skeleton-img" height="100%"></Skeleton>
+          <div class="skeleton__block product__skeleton-block">
+            <div class="product__skeleton-block2">
               <Skeleton width="10rem" height="1rem" class="skeleton__margin"></Skeleton>
               <Skeleton width="23rem" height="4rem" class="skeleton__margin"></Skeleton>
             </div>
-            <div>
+            <div class="product__skeleton-block3">
               <Skeleton width="10rem" class="skeleton__margin15"></Skeleton>
               <Skeleton width="25rem" class="skeleton__margin15"></Skeleton>
               <Skeleton width="20rem" class="skeleton__margin15"></Skeleton>
@@ -360,6 +360,13 @@ const showSuccess = (name, quantity) => {
   @include media-query-l {
     padding-top: 0;
     padding-bottom: 60px;
+    &__skeleton-img {
+      max-height: 70rem;
+      aspect-ratio: 5 / 8;
+    }
+    &__skeleton-block {
+      max-width: 50%;
+    }
     &__back {
       margin-bottom: 25px;
     }
@@ -410,6 +417,18 @@ const showSuccess = (name, quantity) => {
     }
   }
   @include media-query-md {
+    &__skeleton-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    &__skeleton-img {
+      min-width: 100%;
+      max-height: 37rem;
+      aspect-ratio: 1 / 1;
+    }
+    &__skeleton-block {
+      max-width: 300px;
+    }
     &__card {
       flex-direction: column;
     }

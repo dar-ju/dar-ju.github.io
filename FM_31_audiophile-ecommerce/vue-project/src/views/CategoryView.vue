@@ -43,15 +43,15 @@ watch(
 
       <div class="main-wrapper">
         <div class="category__products-section">
-          <div v-show="categoryStore.loading" class="skeleton">
-            <div class="container skeleton__container">
-              <Skeleton class="skeleton__img" height="100%"></Skeleton>
-              <div>
-                <div>
+          <div v-show="categoryStore.loading" class="skeleton category__skeleton">
+            <div class="container skeleton__container category__skeleton-container">
+              <Skeleton class="skeleton__img category__skeleton-img" height="100%"></Skeleton>
+              <div class="skeleton__block">
+                <div class="category__skeleton-block2">
                   <Skeleton width="10rem" height="1rem" class="skeleton__margin"></Skeleton>
                   <Skeleton width="23rem" height="4rem" class="skeleton__margin"></Skeleton>
                 </div>
-                <div>
+                <div class="category__skeleton-block3">
                   <Skeleton width="10rem" class="skeleton__margin15"></Skeleton>
                   <Skeleton width="25rem" class="skeleton__margin15"></Skeleton>
                   <Skeleton width="20rem" class="skeleton__margin15"></Skeleton>
@@ -102,6 +102,19 @@ watch(
 
   //MEDIA QUERIES
   @include media-query-l {
+    &__skeleton-container {
+      flex-direction: column;
+    }
+    &__skeleton-img {
+      min-width: 100%;
+      aspect-ratio: 16 / 8;
+    }
+    &__skeleton-block2,
+    &__skeleton-block3 {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
     &__container {
       margin-bottom: 100px;
     }
@@ -109,8 +122,16 @@ watch(
       padding-bottom: 82px;
     }
   }
+  @include media-query-md {
+    &__skeleton-img {
+      aspect-ratio: 1 / 1;
+    }
+  }
   @include media-query-sm {
     padding-top: 35px;
+    &__skeleton-img {
+      aspect-ratio: 4 / 3;
+    }
     &__container {
       margin-bottom: 35px;
     }
