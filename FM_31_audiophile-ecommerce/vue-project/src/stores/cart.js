@@ -6,13 +6,14 @@ export const useCartStore = defineStore('cart', () => {
   const cart = ref([])
   const isCartOpened = ref(false)
   const isOrderedOpened = ref(false)
+  const isMobileMenuOpened = ref(false)
   const currentQuantity = ref(0)
   const SHIPPING = 50
   const VAT = 20
   const local = JSON.parse(localStorage.getItem('AudiophileCart'))
 
   const fillCartFromLocalStorage = () => {
-    if (local.length) {
+    if (local && local.length) {
       const productStore = useProductStore()
       local.forEach(async element => {
         await productStore.getData(element.slug)
@@ -50,6 +51,10 @@ export const useCartStore = defineStore('cart', () => {
     isOrderedOpened.value = !isOrderedOpened.value
   }
 
+  const toggleMenu = () => {
+    isMobileMenuOpened.value = !isMobileMenuOpened.value
+  }
+
   const changeQuantity = (product, quantity) => {
     const index = cart.value.findIndex(el => el.slug === product)
     if (quantity === 0) {
@@ -85,11 +90,13 @@ export const useCartStore = defineStore('cart', () => {
     cart,
     isCartOpened,
     isOrderedOpened,
+    isMobileMenuOpened,
     currentQuantity,
     SHIPPING,
     addToCart,
     toggleCart,
     toggleOrdered,
+    toggleMenu,
     changeQuantity,
     getCartSumm,
     getVat,

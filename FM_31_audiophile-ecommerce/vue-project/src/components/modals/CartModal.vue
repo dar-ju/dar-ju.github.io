@@ -86,11 +86,11 @@ const checkOut = () => {
   &__window {
     position: fixed;
     width: 377px;
-    max-height: 600px;
+    max-height: 90vh;
     padding: 31px 33px;
     background-color: var(--white);
     border-radius: 8px;
-    overflow-y: auto;
+    overflow: auto;
   }
   &__header {
     display: flex;

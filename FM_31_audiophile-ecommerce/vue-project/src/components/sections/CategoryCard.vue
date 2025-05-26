@@ -1,16 +1,25 @@
 <script setup>
+import { useCartStore } from '@/stores/cart'
+
+const cartStore = useCartStore()
+
 const props = defineProps({
   category: {
     type: Object,
     required: false,
   },
 })
+
+const mobileMenuCheck = () => {
+  if (cartStore.isMobileMenuOpened) cartStore.isMobileMenuOpened = false
+}
 </script>
 
 <template>
   <li class="categories__item">
     <router-link
       :to="`/${props.category.slug}`"
+      @click="mobileMenuCheck()"
       class="categories__block"
       :aria-label="`go to ${props.category.name} category page`"
     >

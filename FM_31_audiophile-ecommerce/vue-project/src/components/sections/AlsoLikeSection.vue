@@ -99,6 +99,7 @@ const seeProductHandle = (category, product) => {
     padding: 33px;
     background-color: var(--grey);
     border-radius: 8px;
+    overflow: hidden;
   }
   &__image {
     object-fit: cover;
@@ -159,8 +160,17 @@ const seeProductHandle = (category, product) => {
   }
 
   @include media-query-sm {
+    padding-bottom: 80px;
     &__list {
       max-width: 100%;
+      gap: 54px var(--catBlocksGap);
+    }
+    &__title {
+      margin-bottom: 46px;
+      font-size: 1.55rem;
+    }
+    &__block {
+      margin-bottom: 35px;
     }
   }
 }

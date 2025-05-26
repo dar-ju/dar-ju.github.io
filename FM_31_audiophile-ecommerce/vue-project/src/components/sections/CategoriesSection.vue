@@ -49,7 +49,7 @@ onMounted(async () => {
   }
 
   @include media-query-sm {
-    padding-top: 52px;
+    padding-top: 93px;
     &__list {
       max-width: 100%;
       gap: 68px var(--catBlocksGap);

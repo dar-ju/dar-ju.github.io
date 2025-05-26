@@ -445,5 +445,27 @@ const showSuccess = (name, quantity) => {
       width: 100%;
     }
   }
+
+  @include media-query-md {
+    padding-bottom: 64px;
+    &__card {
+      margin-bottom: 92px;
+      gap: 36px;
+    }
+    &__info {
+      margin-bottom: 91px;
+      gap: 92px;
+    }
+    &__subtitle {
+      margin-bottom: 29px;
+      font-size: 1.55rem;
+    }
+    &__contain {
+      gap: 33px;
+    }
+    &__gallery {
+      gap: 20px;
+    }
+  }
 }
 </style>

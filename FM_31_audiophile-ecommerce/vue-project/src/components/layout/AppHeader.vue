@@ -2,22 +2,15 @@
 import MenuBar from '@/components/navigation/MenuBar.vue'
 import CategoriesSection from '@/components/sections/CategoriesSection.vue'
 import { useCartStore } from '@/stores/cart'
-import { ref } from 'vue'
 
 const cartStore = useCartStore()
-
-const isMobileMenu = ref(false)
-
-const toggleMobileMenu = () => {
-  isMobileMenu.value = !isMobileMenu.value
-}
 </script>
 
 <template>
   <header class="container header">
     <div class="header__block">
       <button
-        @click="toggleMobileMenu()"
+        @click="cartStore.toggleMenu()"
         class="header__burger"
         aria-label="toggle navigation menu"
       >
@@ -59,7 +52,11 @@ const toggleMobileMenu = () => {
       </div>
     </div>
     <transition name="fade">
-      <nav v-show="isMobileMenu" class="header__mobile-menu" aria-label="mobile categories">
+      <nav
+        v-show="cartStore.isMobileMenuOpened"
+        class="header__mobile-menu"
+        aria-label="mobile categories"
+      >
         <CategoriesSection />
       </nav>
     </transition>

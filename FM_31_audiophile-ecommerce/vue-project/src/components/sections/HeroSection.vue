@@ -22,7 +22,7 @@ import router from '@/router'
         </div>
         <picture class="hero__image">
           <source
-            media="(min-width:1024px)"
+            media="(min-width:1025px)"
             srcset="/assets/images/hero-section/desktop/image-hero.jpg"
           />
           <source

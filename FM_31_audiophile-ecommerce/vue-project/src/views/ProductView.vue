@@ -8,7 +8,7 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 <template>
   <main>
     <div class="main-wrapper">
-      <div class="product">
+      <div class="product-wrapper">
         <ProductFullSection />
         <AlsoLikeSection />
         <CategoriesSection />
@@ -20,7 +20,7 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 
 <style lang="scss" scoped>
 @use '@/assets/styles/breakpoints' as *;
-.product {
+.product-wrapper {
   &__invitation {
     padding-bottom: 115px;
   }
@@ -29,6 +29,13 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
   @include media-query-l {
     &__invitation {
       padding-bottom: 85px;
+    }
+  }
+
+  @include media-query-sm {
+    padding-top: 21px;
+    &__invitation {
+      padding-top: 70px;
     }
   }
 }

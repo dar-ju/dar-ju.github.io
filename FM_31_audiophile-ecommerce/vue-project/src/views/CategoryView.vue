@@ -138,11 +138,11 @@ watch(
       font-size: 1.867rem;
     }
     &__products-section {
-      padding-top: 24px;
+      padding-top: 64px;
     }
     &__products-list {
       display: flex;
-      padding-bottom: 114px;
+      padding-bottom: 75px;
       gap: 119px;
       flex-direction: column;
     }

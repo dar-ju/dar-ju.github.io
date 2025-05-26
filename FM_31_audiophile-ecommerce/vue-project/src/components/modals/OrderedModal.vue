@@ -71,16 +71,19 @@ const goHome = () => {
 @use '@/assets/styles/breakpoints' as *;
 .ordered {
   &__container {
-    padding-top: 92px;
+    padding-top: 40px;
   }
   &__window {
-    position: absolute;
+    position: fixed;
     width: 540px;
+    max-height: 90vh;
     padding: 48px;
     left: 50%;
-    transform: translate(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     background-color: var(--white);
     border-radius: 8px;
+    overflow: auto;
   }
   &__img {
     margin-bottom: 33px;
