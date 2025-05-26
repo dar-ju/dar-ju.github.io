@@ -204,7 +204,7 @@ const showSuccess = (name, quantity) => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .product {
   padding-top: 45px;
   padding-bottom: 80px;

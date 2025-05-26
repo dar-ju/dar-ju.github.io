@@ -1,4 +1,4 @@
-// const baseUrl = import.meta.env.VITE_API_BASE_URL
+const baseUrl = import.meta.env.VITE_BASE_URL
 
 export const postOrderApi = async (val) => {
   try {
@@ -8,18 +8,18 @@ export const postOrderApi = async (val) => {
         formData.append(key, val[key])
       }
     }
-    const response = await fetch('http://wp-adm-audio.host1438437.hostland.pro/wp-json/contact-form-7/v1/contact-forms/6/feedback', {
+    const response = await fetch(`${baseUrl}/wp-json/contact-form-7/v1/contact-forms/6/feedback`, {
       method: 'POST',
       body: formData
     })
     if (!response.ok) {
       const errorData = await response.json()
-      throw new Error(errorData.message || 'Post data error')
+      throw new Error(errorData.message || 'Post order data error')
     }
     const successData = await response.json()
     return successData
   } catch (err) {
-    console.error('Post error:', err)
+    console.error('Post order error:', err)
     throw err
   }
 }

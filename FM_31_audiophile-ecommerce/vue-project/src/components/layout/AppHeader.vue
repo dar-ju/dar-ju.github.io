@@ -67,7 +67,7 @@ const toggleMobileMenu = () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .header {
   position: relative;
   &__block {
@@ -133,6 +133,8 @@ const toggleMobileMenu = () => {
       outline-offset: 6px;
     }
   }
+
+  //MEDIA QUERIES
   @include media-query-l {
     &__block {
       gap: 42px;
@@ -146,6 +148,7 @@ const toggleMobileMenu = () => {
       display: none;
     }
   }
+
   @include media-query-md {
     &__block {
       justify-content: space-between;
@@ -157,6 +160,7 @@ const toggleMobileMenu = () => {
       flex: initial;
     }
   }
+
   @include media-query-sm {
     border-bottom: 1px solid var(--white20);
     &__block {

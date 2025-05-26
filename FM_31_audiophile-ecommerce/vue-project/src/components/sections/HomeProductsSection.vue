@@ -89,7 +89,7 @@ import router from '@/router'
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .products {
   padding-top: 109px;
   padding-bottom: 100px;

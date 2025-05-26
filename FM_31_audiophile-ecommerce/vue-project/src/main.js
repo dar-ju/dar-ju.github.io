@@ -55,13 +55,6 @@ const audiophilePreset = definePreset(Aura, {
             },
           },
         },
-        // dark: {
-        //   root: {
-        //     primary: {
-        //       background: '{orange.500}',
-        //     },
-        //   },
-        // },
       }
     },
     skeleton: {

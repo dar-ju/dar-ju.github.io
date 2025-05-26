@@ -16,8 +16,6 @@ export const getProductAlsoDataApi = async () => {
     const response = await fetchResponse.json()
     return response
   } catch (err) {
-    throw new Error(`products response was not ok: ${err}`)
+    throw new Error(`also section products response was not ok: ${err}`)
   }
 }
-
-// http://wp-adm-audio.host1438437.hostland.pro/wp-json/wp/v2/products?acf_format=standard&_fields=id,title,slug,acf.new_product,acf.short_description,acf.price,acf.full_description,acf.contents,acf.product_images&slug=xx59-headphones

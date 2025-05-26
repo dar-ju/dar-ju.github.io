@@ -1,20 +1,20 @@
-<script setup></script>
+<script setup>
+import { useCategoryStore } from '@/stores/category'
+
+const categoryStore = useCategoryStore()
+</script>
 
 <template>
   <ul class="nav">
     <li class="nav__item"><router-link to="/" class="nav__link">Home</router-link></li>
-    <li class="nav__item">
-      <router-link to="/headphones" class="nav__link">Headphones</router-link>
-    </li>
-    <li class="nav__item"><router-link to="/speakers" class="nav__link">Speakers</router-link></li>
-    <li class="nav__item">
-      <router-link to="/earphones" class="nav__link">Earphones</router-link>
+    <li v-for="item in categoryStore.categories" :key="item.key" class="nav__item">
+      <router-link :to="item?.slug" class="nav__link">{{ item?.name }}</router-link>
     </li>
   </ul>
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .nav {
   display: flex;
   gap: 20px 38px;
@@ -37,6 +37,8 @@
       outline-offset: 6px;
     }
   }
+
+  //MEDIA QUERIES
   @include media-query-sm {
     &__menu {
       flex-direction: column;

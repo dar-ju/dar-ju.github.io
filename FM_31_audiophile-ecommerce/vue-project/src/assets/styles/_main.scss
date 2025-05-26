@@ -1,4 +1,4 @@
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 
 /* MAIN */
 html {
@@ -12,10 +12,6 @@ body {
   background-color: var(--black-bckg);
   color: var(--black);
 }
-
-// .section {
-
-// }
 
 .container {
   max-width: 1920px;
@@ -128,18 +124,3 @@ body {
 .fade-leave-to {
   opacity: 0;
 }
-
-@media (max-width: 1200px) {
-  // .container {
-  //   padding-right: 60px;
-  //   padding-left: 60px;
-  // }
-}
-
-@media (max-width: 768px) {
-  // .container {
-  //   padding-right: 24px;
-  //   padding-left: 24px;
-  // }
-}
-

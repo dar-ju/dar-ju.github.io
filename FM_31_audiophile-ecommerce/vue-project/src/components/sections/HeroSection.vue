@@ -42,7 +42,7 @@ import router from '@/router'
 </template>
 
 <style lang="scss">
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .hero {
   padding-bottom: 24px;
   color: var(--white);

@@ -56,10 +56,8 @@ const onFormSubmit = async ({ valid, values }) => {
         ...hiddenFields,
       }
       await postOrderApi(dataToSend)
-      // cartStore.toggleOrdered()
-      // cartStore.cart = []
-      // cartStore.updateLocalStorage()
-      console.log(dataToSend)
+      cartStore.toggleOrdered()
+      cartStore.updateLocalStorage()
     } catch (err) {
       toast.add({ severity: 'error', summary: 'Ошибка', detail: err.message, life: 4000 })
     }
@@ -334,7 +332,7 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .checkout {
   padding-top: 83px;
   padding-bottom: 135px;
@@ -354,7 +352,6 @@ watch(
   &__wrapper {
     display: flex;
     gap: 30px;
-    // min-height: 500px;
   }
   &__block {
     background-color: var(--white);
@@ -390,7 +387,6 @@ watch(
     font-weight: 700;
     &--payment {
       position: absolute;
-      // margin-bottom: 20px;
       left: 0;
     }
   }
@@ -430,7 +426,6 @@ watch(
     display: flex;
     width: 49%;
     gap: 18px;
-    // grid-column: 2 / 3;
     flex-direction: column;
   }
   &__radio {
@@ -443,13 +438,6 @@ watch(
       border ease-in-out 0.3s,
       background-color ease-in-out 0.3s;
     cursor: pointer;
-    // &_active {
-    // background-color: var(--magnolia);
-    // border: 1px solid var(--purple);
-    // }
-    // &:hover {
-    // border: 1px solid var(--purple);
-    // }
   }
   &__radio-label {
     width: 100%;
@@ -464,8 +452,6 @@ watch(
     gap: 32px;
     align-items: center;
     grid-column: 1 / 3;
-  }
-  &__cash-warning-img {
   }
   &__cash-warning {
     line-height: 1.667rem;

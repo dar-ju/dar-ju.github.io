@@ -37,7 +37,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .invite {
   padding-top: 100px;
   padding-bottom: 160px;

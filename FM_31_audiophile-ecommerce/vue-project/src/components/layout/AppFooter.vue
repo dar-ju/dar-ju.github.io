@@ -76,7 +76,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .footer {
   position: relative;
   padding-top: 75px;
@@ -137,8 +137,6 @@ onMounted(async () => {
     flex-wrap: wrap;
     justify-content: flex-end;
   }
-  &__social-item {
-  }
   &__social-link {
     transition: outline ease-in-out 0.3s;
     &:focus-visible {
@@ -153,6 +151,7 @@ onMounted(async () => {
     font-weight: 700;
     line-height: 1.667rem;
   }
+
   //MEDIA QUERIES
   @include media-query-l {
     padding-top: 60px;
@@ -176,6 +175,7 @@ onMounted(async () => {
       grid-row: 4 / 5;
     }
   }
+
   @include media-query-sm {
     padding-top: 52px;
     padding-bottom: 34px;

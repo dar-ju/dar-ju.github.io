@@ -1,9 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-// import { getProductFullDataApi } from '@/api/product'
 import { useProductStore } from '@/stores/product'
-
-// const productStore = useProductStore()
 
 export const useCartStore = defineStore('cart', () => {
   const cart = ref([])
@@ -12,7 +9,6 @@ export const useCartStore = defineStore('cart', () => {
   const currentQuantity = ref(0)
   const SHIPPING = 50
   const VAT = 20
-  // const loading = ref(true)
   const local = JSON.parse(localStorage.getItem('AudiophileCart'))
 
   const fillCartFromLocalStorage = () => {
@@ -36,7 +32,6 @@ export const useCartStore = defineStore('cart', () => {
   }
 
   const addToCart = (product, name, image, price, quantity) => {
-    // console.log(cart.value);
     const index = cart.value.findIndex(el => el.slug === product)
     if (index >= 0) {
       cart.value[index].quantity += quantity

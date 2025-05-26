@@ -14,24 +14,6 @@ onMounted(async () => {
   alsoListCreate()
 })
 
-// const alsoListCreate = () => {
-//   const arr = productStore.product
-//   const newArr = []
-//   for (let i = arr.length - 1; i >= 0; i--) {
-//   const item = arr.value[i]
-//   if (условие) {
-//     newArr.value.push(item)
-//     arr.value.splice(i, 1)
-//   }
-// }
-// const getCategory = productStore.product.filter(
-//   (item) => item.acf.category.slug === route.params.category,
-// )
-// const excludeCurrent = getCategory.filter((item) => item.slug !== route.params.name)
-// alsoList.value = [...excludeCurrent]
-// console.log(alsoList.value)
-// }
-
 function alsoListCreate() {
   const allProducts = productStore.alsoProduct
   const currentProduct = allProducts.find((p) => p.slug === route.params.name)
@@ -48,7 +30,6 @@ function alsoListCreate() {
     if (result.length >= 3) break
     result.push(item)
   }
-  // return result.slice(0, 3)
   alsoList.value = result.slice(0, 3)
 }
 
@@ -88,12 +69,10 @@ const seeProductHandle = (category, product) => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .also {
   padding-top: 80px;
   padding-bottom: 84px;
-  &__container {
-  }
   &__title {
     margin-bottom: 64px;
     text-align: center;
@@ -116,38 +95,13 @@ const seeProductHandle = (category, product) => {
   &__block {
     display: flex;
     max-height: 315px;
-    // position: relative;
-    // width: 100%;
-    // min-height: 316px;
     margin-bottom: 44px;
     padding: 33px;
-    // gap: 20px;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: flex-end;
     background-color: var(--grey);
     border-radius: 8px;
-    // text-transform: uppercase;
-    // font-weight: 700;
   }
   &__image {
     object-fit: cover;
-    // position: absolute;
-    // width: 217px;
-    // height: 203px;
-    // top: -61px;
-    // &--headphones {
-    //   width: 222px;
-    //   height: 212px;
-    //   top: -81px;
-    // }
-    // &--speakers {
-    //   top: -74px;
-    // }
-    // &--earphones {
-    //   width: 220px;
-    //   height: 194px;
-    // }
   }
   &__subtitle {
     margin-bottom: 35px;

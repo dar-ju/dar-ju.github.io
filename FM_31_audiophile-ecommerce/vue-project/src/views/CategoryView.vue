@@ -37,7 +37,6 @@ watch(
   <main>
     <section class="section category">
       <div class="container category__container">
-        <!-- <h1 class="category__title">{{ categoryStore.title.name }}</h1> -->
         <h1 class="category__title">{{ categoryStore.title.name }}</h1>
       </div>
 
@@ -78,7 +77,7 @@ watch(
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .category {
   padding-top: 100px;
   &__container {
@@ -93,7 +92,6 @@ watch(
   }
   &__products-section {
     padding-top: 40px;
-    // padding-bottom: 40px;
   }
   &__invitation {
     padding-bottom: 120px;
@@ -121,11 +119,13 @@ watch(
       padding-bottom: 82px;
     }
   }
+
   @include media-query-md {
     &__skeleton-img {
       aspect-ratio: 1 / 1;
     }
   }
+
   @include media-query-sm {
     padding-top: 35px;
     &__skeleton-img {
@@ -139,7 +139,6 @@ watch(
     }
     &__products-section {
       padding-top: 24px;
-      // padding-bottom: 40px;
     }
     &__products-list {
       display: flex;

@@ -28,7 +28,7 @@ const props = defineProps({
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .categories {
   &__item {
     width: calc((100% - var(--catBlocksGap) * (var(--catBlocksInRow) - 1)) / var(--catBlocksInRow));

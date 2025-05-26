@@ -68,7 +68,7 @@ const goHome = () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .ordered {
   &__container {
     padding-top: 92px;

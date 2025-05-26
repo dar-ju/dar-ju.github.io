@@ -25,7 +25,7 @@ onMounted(async () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .categories {
   padding-top: 160px;
   padding-bottom: 60px;

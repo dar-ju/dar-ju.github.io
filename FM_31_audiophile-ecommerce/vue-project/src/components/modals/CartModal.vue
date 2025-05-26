@@ -81,7 +81,7 @@ const checkOut = () => {
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .cart {
   &__window {
     position: fixed;

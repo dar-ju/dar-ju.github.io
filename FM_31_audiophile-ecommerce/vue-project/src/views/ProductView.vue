@@ -19,7 +19,7 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints';
+@use '@/assets/styles/breakpoints' as *;
 .product {
   &__invitation {
     padding-bottom: 115px;

@@ -6,7 +6,7 @@ export const getFooterDataApi = async () => {
     const response = await fetchResponse.json()
     return response
   } catch (err) {
-    throw new Error(`favorites response was not ok: ${err}`)
+    throw new Error(`footer data response was not ok: ${err}`)
   }
 }
 
@@ -16,6 +16,6 @@ export const getInvitationDataApi = async () => {
     const response = await fetchResponse.json()
     return response
   } catch (err) {
-    throw new Error(`favorites response was not ok: ${err}`)
+    throw new Error(`invitation data response was not ok: ${err}`)
   }
 }
