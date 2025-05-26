@@ -55,12 +55,7 @@ const goHome = () => {
               >
             </div>
           </div>
-          <Button
-            @click="goHome()"
-            label="Back to home"
-            class="btn ordered__btn"
-            aria-role="link"
-          />
+          <Button @click="goHome()" label="Back to home" class="btn ordered__btn" role="link" />
         </div>
       </div>
     </div>

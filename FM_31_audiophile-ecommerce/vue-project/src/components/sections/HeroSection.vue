@@ -17,7 +17,7 @@ import router from '@/router'
             @click="router.push('/headphones/xx99-mark-ii-headphones')"
             class="btn"
             label="See product"
-            aria-role="link"
+            role="link"
           />
         </div>
         <picture class="hero__image">

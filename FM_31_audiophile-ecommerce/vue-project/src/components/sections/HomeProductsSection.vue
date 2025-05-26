@@ -35,7 +35,7 @@ import router from '@/router'
                 class="btn"
                 label="See product"
                 severity="secondary"
-                aria-role="link"
+                role="link"
                 aria-label="go to ZX9 speaker page"
               />
             </div>
@@ -49,7 +49,7 @@ import router from '@/router'
               class="btn"
               label="See product"
               severity="contrast"
-              aria-role="link"
+              role="link"
               aria-label="go to ZX7 speaker page"
             />
           </div>
@@ -78,7 +78,7 @@ import router from '@/router'
               class="btn"
               label="See product"
               severity="contrast"
-              aria-role="link"
+              role="link"
               aria-label="go to YX1 earphones page"
             />
           </div>
