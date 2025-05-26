@@ -7,8 +7,10 @@ import { z } from 'zod'
 import CartContain from '@/components/common/CartContain.vue'
 import { postOrderApi } from '@/api/order.js'
 import { useToast } from 'primevue/usetoast'
+import { useRouter } from 'vue-router'
 
 const toast = useToast()
+const router = useRouter()
 
 const cartStore = useCartStore()
 
@@ -16,6 +18,10 @@ const iseMoney = ref(true)
 const isCash = ref(false)
 const paymentType = ref('eMoney-radio')
 const buttonLabel = ref('Continue & Pay')
+
+const goBack = () => {
+  router.back()
+}
 
 const resolver = zodResolver(
   z
@@ -114,7 +120,7 @@ watch(
                 <InputText
                   type="text"
                   id="email"
-                  placeholder="alexei@mail.com"
+                  placeholder="alexeiward@mail.com"
                   class="checkout__input"
                 />
                 <Message v-if="$field?.invalid" severity="error" size="small" variant="simple">{{
@@ -328,6 +334,7 @@ watch(
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .checkout {
   padding-top: 83px;
   padding-bottom: 135px;
@@ -338,6 +345,11 @@ watch(
     display: block;
     margin-bottom: 43px;
     color: var(--black50);
+    transition: outline ease-in-out 0.3s;
+    &:focus-visible {
+      outline: 1px solid var(--black);
+      outline-offset: 6px;
+    }
   }
   &__wrapper {
     display: flex;
@@ -463,12 +475,84 @@ watch(
     width: 100%;
     max-width: 100%;
   }
+
+  //MEDIA QUERIES
+  @include media-query-lg {
+    &__container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+  }
+
+  @include media-query-l {
+    padding-top: 52px;
+    padding-bottom: 116px;
+    &__back {
+      margin-bottom: 28px;
+    }
+    &__wrapper {
+      flex-direction: column;
+      gap: 33px;
+    }
+    &__block {
+      width: 100%;
+      padding: 30px 27px;
+    }
+  }
+
+  @include media-query-md {
+    &__container {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  @include media-query-sm {
+    padding-top: 20px;
+    padding-bottom: 95px;
+    &__wrapper {
+      gap: 37px;
+    }
+    &__block {
+      padding: 27px 25px;
+    }
+    &__title {
+      margin-bottom: 40px;
+      font-size: 1.83rem;
+    }
+    &__fieldset {
+      flex-direction: column;
+      grid-template-columns: auto;
+      &--billing {
+        margin-bottom: 37px;
+      }
+      &--shipping {
+        margin-bottom: 34px;
+      }
+      &--payment {
+        margin-bottom: 10px;
+      }
+    }
+    &__field-block {
+      grid-column: 1 / 3;
+    }
+    &__label {
+      &--payment {
+        position: initial;
+        margin-bottom: 16px;
+      }
+    }
+    &__radio-wrapper {
+      width: 100%;
+    }
+  }
 }
 
 .summary {
   width: 350px;
   height: fit-content;
   padding: 32px;
+  flex-grow: 1;
   &__title {
     margin-bottom: 31px;
     font-size: 1.3rem;
@@ -537,6 +621,16 @@ watch(
     &--grand {
       color: var(--orange);
     }
+  }
+
+  @include media-query-l {
+    max-width: 689px;
+    width: 100%;
+    align-self: center;
+  }
+
+  @include media-query-sm {
+    padding: 33px 24px;
   }
 }
 </style>

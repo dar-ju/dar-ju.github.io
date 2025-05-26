@@ -2,10 +2,23 @@
 import { useCartStore } from '@/stores/cart'
 import { useFormatPrice } from '@/composables/useFormatPrice'
 import { useRouter } from 'vue-router'
+import { nextTick, ref, watch } from 'vue'
 
 const router = useRouter()
 
 const cartStore = useCartStore()
+
+const focus = ref(null)
+
+watch(
+  () => cartStore.isCartOpened,
+  async (isOpened) => {
+    if (isOpened && cartStore.cart.length) {
+      await nextTick()
+      focus.value?.focus()
+    }
+  },
+)
 
 const getQuantityFromCart = (item) => {
   const found = cartStore.cart.find((element) => element.slug === item)
@@ -28,9 +41,9 @@ const checkOut = () => {
     <div class="modal cart" v-if="cartStore.isCartOpened" @click="cartStore.toggleCart">
       <div class="container modal__container" @click.stop>
         <div class="cart__window">
-          <div class="cart__header" v-show="cartStore.cart.length">
+          <div class="cart__header" v-if="cartStore.cart.length">
             <h2 class="cart__title">Cart ({{ cartStore.cart.length }})</h2>
-            <button class="cart__remove-all" @click="removeCart()">Remove all</button>
+            <button class="cart__remove-all" @click="removeCart()" ref="focus">Remove all</button>
           </div>
           <div class="cart__empty-header" v-show="!cartStore.cart.length">
             <h2 class="cart__empty-title">Cart</h2>
@@ -68,6 +81,7 @@ const checkOut = () => {
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .cart {
   &__window {
     position: fixed;
@@ -96,6 +110,11 @@ const checkOut = () => {
   &__remove-all {
     color: var(--black50);
     text-decoration: underline;
+    transition: outline ease-in-out 0.3s;
+    &:focus-visible {
+      outline: 1px solid var(--black);
+      outline-offset: 6px;
+    }
   }
   &__list {
     display: flex;
@@ -154,6 +173,14 @@ const checkOut = () => {
     max-width: 100%;
     font-size: 0.867rem;
     letter-spacing: 0.1rem;
+  }
+
+  //MEDIA QUERIES
+  @include media-query-sm {
+    &__window {
+      width: 88%;
+      max-width: 327px;
+    }
   }
 }
 </style>

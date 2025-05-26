@@ -30,31 +30,39 @@ onMounted(() => {
         class="product-preview__img-wrapper"
         :class="{ 'product-preview__img-wrapper--reverse': index % 2 !== 0 && !isMobileScreen }"
       >
-        <source media="(min-width:1024px)" :srcset="product.acf.category_images.desktop_image" />
-        <source media="(min-width:768px)" :srcset="product.acf.category_images.tablet_image" />
+        <source
+          media="(min-width:1024px)"
+          :srcset="props.product.acf.category_images.desktop_image"
+        />
+        <source
+          media="(min-width:768px)"
+          :srcset="props.product.acf.category_images.tablet_image"
+        />
         <img
           class="product-preview__img"
-          v-lazy="{ src: product.acf.category_images.mobile_image }"
-          alt=""
+          v-lazy="{ src: props.product.acf.category_images.mobile_image }"
+          :alt="props.product.title.rendered"
           width="540"
           height="560"
         />
       </picture>
       <div class="product-preview__info-block">
         <div class="product-preview__title-block">
-          <span class="product-preview__new" v-show="product.acf.new_product">New product</span>
-          <h2 class="product-preview__title">{{ product.title.rendered }}</h2>
+          <span class="product-preview__new" v-show="props.product.acf.new_product"
+            >New product</span
+          >
+          <h2 class="product-preview__title">{{ props.product.title.rendered }}</h2>
         </div>
-        <p class="product-preview__description">{{ product.acf.short_description }}</p>
+        <p class="product-preview__description">{{ props.product.acf.short_description }}</p>
         <Button asChild v-slot="slotProps">
           <RouterLink
-            :to="`/${product.acf.category.slug}/${product.slug}`"
+            :to="`/${props.product.acf.category.slug}/${props.product.slug}`"
             class="btn product-preview__btn"
             :class="slotProps.class"
+            :aria-label="`see more details about ${props.product.title.rendered}`"
             >See product</RouterLink
           >
         </Button>
-        <!-- <Button class="btn" label="See product" /> -->
       </div>
     </article>
   </li>
@@ -67,6 +75,7 @@ onMounted(() => {
   padding-bottom: 80px;
   &__container {
     display: flex;
+    max-width: 1600px;
     gap: 125px;
   }
   &__img-wrapper {
@@ -77,10 +86,8 @@ onMounted(() => {
     overflow: hidden;
     &--reverse {
       order: 1;
+      justify-content: flex-end;
     }
-  }
-  &__img {
-    // max-width: 540px;
   }
   &__info-block {
     display: flex;
@@ -118,6 +125,7 @@ onMounted(() => {
       gap: 60px;
     }
   }
+
   @include media-query-l {
     padding-top: 40px;
     padding-bottom: 75px;
@@ -137,11 +145,7 @@ onMounted(() => {
       text-align: center;
     }
   }
-  @include media-query-md {
-    // &__container {
-    //   flex-direction: column;
-    // }
-  }
+
   @include media-query-sm {
     padding: 0;
     &__container {
@@ -161,7 +165,6 @@ onMounted(() => {
       font-size: 1.867rem;
       line-height: 2.6rem;
     }
-
     &__ZX9-wrapper {
       padding-top: 10px;
       padding-bottom: 30px;

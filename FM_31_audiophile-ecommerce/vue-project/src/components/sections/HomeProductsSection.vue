@@ -7,33 +7,38 @@ import router from '@/router'
     <div class="container products__container">
       <ul class="products__list">
         <li class="products__ZX9">
-          <picture class="products__ZX9-image">
-            <source
-              media="(min-width:1024px)"
-              srcset="/assets/images/home-products-section/desktop/image-speaker-zx9.png"
-            />
-            <source
-              media="(min-width:768px)"
-              srcset="/assets/images/home-products-section/tablet/image-speaker-zx9.png"
-            />
-            <img
-              src="/assets/images/home-products-section/mobile/image-speaker-zx9.png"
-              alt="ZX9 speaker"
-            />
-          </picture>
-          <div class="products__ZX9-wrapper">
-            <h2 class="title products__ZX9-title">ZX9 speaker</h2>
-            <p class="products__ZX9-descr">
-              Upgrade to premium speakers that are phenomenally built to deliver truly remarkable
-              sound.
-            </p>
-            <Button
-              @click="router.push('/speakers/zx9-speaker')"
-              class="btn"
-              label="See product"
-              severity="secondary"
-              aria-role="link"
-            />
+          <div class="products__ZX9-block">
+            <picture class="products__ZX9-image">
+              <source
+                media="(min-width:1024px)"
+                srcset="/assets/images/home-products-section/desktop/image-speaker-zx9.png"
+              />
+              <source
+                media="(min-width:768px)"
+                srcset="/assets/images/home-products-section/tablet/image-speaker-zx9.png"
+              />
+              <img
+                src="/assets/images/home-products-section/mobile/image-speaker-zx9.png"
+                alt="ZX9 speaker"
+                width="378"
+                height="459"
+              />
+            </picture>
+            <div class="products__ZX9-wrapper">
+              <h2 class="title products__ZX9-title">ZX9 speaker</h2>
+              <p class="products__ZX9-descr">
+                Upgrade to premium speakers that are phenomenally built to deliver truly remarkable
+                sound.
+              </p>
+              <Button
+                @click="router.push('/speakers/zx9-speaker')"
+                class="btn"
+                label="See product"
+                severity="secondary"
+                aria-role="link"
+                aria-label="go to ZX9 speaker page"
+              />
+            </div>
           </div>
         </li>
         <li class="products__ZX7">
@@ -45,12 +50,11 @@ import router from '@/router'
               label="See product"
               severity="contrast"
               aria-role="link"
+              aria-label="go to ZX7 speaker page"
             />
           </div>
         </li>
         <li class="products__YX1">
-          <!-- <div class="products__YX1-wrapper"> -->
-
           <picture class="products__YX1-img">
             <source
               media="(min-width:1024px)"
@@ -63,6 +67,8 @@ import router from '@/router'
             <img
               src="/assets/images/home-products-section/mobile/image-earphones-yx1.jpg"
               alt="YX1 earphones"
+              width="540"
+              height="320"
             />
           </picture>
           <div class="products__YX1-block">
@@ -73,9 +79,9 @@ import router from '@/router'
               label="See product"
               severity="contrast"
               aria-role="link"
+              aria-label="go to YX1 earphones page"
             />
           </div>
-          <!-- </div> -->
         </li>
       </ul>
     </div>
@@ -88,16 +94,21 @@ import router from '@/router'
   padding-top: 109px;
   padding-bottom: 100px;
   &__container {
+    max-width: 1600px;
   }
   &__list {
     display: flex;
     gap: 47px;
     flex-direction: column;
   }
-  // &__item {
-  //   // grid-column: 2;
-  // }
   &__ZX9 {
+    background-color: var(--orange);
+    border-radius: 8px;
+    background-image: url('/assets/images/home-products-section/desktop/pattern-circles.svg');
+    background-repeat: no-repeat;
+    overflow: hidden;
+  }
+  &__ZX9-block {
     display: flex;
     width: 100%;
     min-height: 562px;
@@ -105,11 +116,6 @@ import router from '@/router'
     padding-right: 95px;
     gap: 60px;
     justify-content: space-between;
-    background-color: var(--orange);
-    border-radius: 8px;
-    background-image: url('/assets/images/home-products-section/desktop/pattern-circles.svg');
-    background-repeat: no-repeat;
-    background-position-x: center;
   }
   &__ZX9-image {
     max-width: 378px;
@@ -117,7 +123,6 @@ import router from '@/router'
     margin-bottom: -10px;
     object-fit: contain;
     align-self: flex-end;
-    // position: absolute;
   }
   &__ZX9-wrapper {
     display: flex;
@@ -147,6 +152,7 @@ import router from '@/router'
     background: url('/assets/images/home-products-section/desktop/image-speaker-zx7.jpg') no-repeat
       100%;
     background-position: center;
+    background-size: cover;
     border-radius: 8px;
   }
   &__ZX7-wrapper {
@@ -159,14 +165,10 @@ import router from '@/router'
     font-size: 1.867rem;
     letter-spacing: 0.133rem;
   }
-  &__ZX7-image {
-  }
   &__YX1 {
     display: flex;
     gap: 30px;
   }
-  // &__YX1-wrapper {
-  // }
   &__YX1-img {
     width: 100%;
     min-width: 300px;
@@ -180,7 +182,6 @@ import router from '@/router'
   }
   &__YX1-block {
     display: flex;
-    // width: 100%;
     gap: 20px;
     padding: 40px 94px;
     flex-grow: 1;
@@ -196,11 +197,12 @@ import router from '@/router'
 
   //MEDIA QUERIES
   @include media-query-lg {
-    &__ZX9 {
+    &__ZX9-block {
       padding-left: 60px;
       padding-right: 60px;
     }
   }
+
   @include media-query-l {
     padding-top: 44px;
     padding-bottom: 38px;
@@ -208,12 +210,15 @@ import router from '@/router'
       gap: 31px;
     }
     &__ZX9 {
+      background-image: url('/assets/images/home-products-section/tablet/pattern-circles.svg');
+      background-position: top;
+    }
+    &__ZX9-block {
       padding: 60px;
       padding-bottom: 24px;
       gap: 30px;
       flex-direction: column;
       text-align: center;
-      background-image: url('/assets/images/home-products-section/tablet/pattern-circles.svg');
     }
     &__ZX9-wrapper {
       align-items: center;
@@ -241,10 +246,10 @@ import router from '@/router'
       padding: 70px 40px;
     }
   }
+
   @include media-query-md {
     &__ZX7 {
       background-image: url('/assets/images/home-products-section/mobile/image-speaker-zx7.jpg');
-      // background-size: cover;
     }
     &__YX1-img {
       min-width: 200px;
@@ -253,6 +258,7 @@ import router from '@/router'
       padding: 40px;
     }
   }
+
   @include media-query-sm {
     padding-top: 71px;
     padding-bottom: 60px;
@@ -292,15 +298,4 @@ import router from '@/router'
     }
   }
 }
-
-// @media (hover: hover) {
-//   .products {
-//     &__secondary-btn {
-//       &:hover {
-//         color: var(--white);
-//         background-color: var(--grey-dark);
-//       }
-//     }
-//   }
-// }
 </style>

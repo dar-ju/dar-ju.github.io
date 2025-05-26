@@ -5,10 +5,10 @@ import { useBreakpoints } from '@/composables/useBreakpoints'
 import { useFormatPrice } from '@/composables/useFormatPrice'
 import { useToast } from 'primevue/usetoast'
 import QuantityInput from '@/components/common/QuantityInput.vue'
-import { ref, onMounted, watch, onUnmounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 
-const { isMobile, isTablet, isDesktop, width } = useBreakpoints()
+const { isTablet, isDesktop } = useBreakpoints()
 
 const route = useRoute()
 const router = useRouter()
@@ -17,7 +17,6 @@ const toast = useToast()
 
 const paragraphs = ref('')
 const gallery = ref(null)
-// const screenWidth = ref(window.innerWidth)
 
 const productStore = useProductStore()
 const cartStore = useCartStore()
@@ -32,8 +31,7 @@ const goBack = () => {
 const getData = async (val) => {
   try {
     await productStore.getData(val)
-    // console.log(productStore.product)
-    if (!productStore.product.slug) throw new Error('Not found')
+    if (!productStore.product.slug) throw new Error('not found')
   } catch (err) {
     router.replace({ name: 'not-found' })
   }
@@ -42,9 +40,6 @@ onMounted(async () => {
   await getData(route.params.name)
   updateFunction()
 })
-// onUnmounted(() => {
-//   window.removeEventListener('resize', updateWidth)
-// })
 
 watch(
   () => route.params.name,
@@ -59,12 +54,6 @@ const updateFunction = () => {
   paragraphs.value = rawDescription.split(/\r?\n\r?\n/)
   useGallery()
 }
-
-// Price number format
-// const formatValue = (value) => {
-//   if (!value) return ''
-//   return new Intl.NumberFormat('en-US').format(value)
-// }
 
 const useGallery = () => {
   if (isDesktop()) gallery.value = productStore.product?.acf?.product_images.desktop_gallery
@@ -99,10 +88,6 @@ const showSuccess = (name, quantity) => {
 
 <template>
   <section class="product">
-    <!-- <p>Current width: {{ width }}</p>
-    <p v-if="isMobile()">Mobile</p>
-    <p v-else-if="isTablet()">Tablet</p>
-    <p v-else>Desktop</p> -->
     <div class="container product__container">
       <a href="#" @click.prevent="goBack()" class="product__back">Go Back</a>
       <div v-show="productStore.loading" class="skeleton">
@@ -143,7 +128,7 @@ const showSuccess = (name, quantity) => {
             :src="
               productStore.product?.acf?.product_images.mobile_gallery[0].metadata.full.file_url
             "
-            alt=""
+            :alt="productStore.product?.title?.rendered"
             width="540"
             height="560"
           />
@@ -206,7 +191,11 @@ const showSuccess = (name, quantity) => {
       <div class="product__gallery">
         <template v-for="(image, index) in gallery">
           <picture v-if="index > 0" :key="index">
-            <img class="product__gallery-image" :src="image.metadata.full.file_url" alt="" />
+            <img
+              class="product__gallery-image"
+              :src="image.metadata.full.file_url"
+              :alt="`${productStore.product?.title?.rendered} image ${index}`"
+            />
           </picture>
         </template>
       </div>
@@ -220,11 +209,17 @@ const showSuccess = (name, quantity) => {
   padding-top: 45px;
   padding-bottom: 80px;
   &__container {
+    max-width: 1440px;
   }
   &__back {
-    display: block;
+    display: inline-block;
     margin-bottom: 60px;
     color: var(--black50);
+    transition: outline ease-in-out 0.3s;
+    &:focus-visible {
+      outline: 1px solid var(--black50);
+      outline-offset: 6px;
+    }
   }
   &__card {
     display: flex;
@@ -277,7 +272,6 @@ const showSuccess = (name, quantity) => {
   &__btn {
     width: 160px;
     font-weight: 500;
-    // text-transform: uppercase;
   }
   &__add-block {
     display: flex;
@@ -305,9 +299,6 @@ const showSuccess = (name, quantity) => {
       margin-bottom: 25px;
     }
   }
-  &__contain {
-    // min-width: 200px;
-  }
   &__contain-list {
     display: flex;
     gap: 16px;
@@ -329,11 +320,9 @@ const showSuccess = (name, quantity) => {
     gap: 30px;
     grid-template-columns: auto auto;
     & picture:first-child {
-      // grid-column: 2 / 3;
       grid-row: 1 / 1;
     }
     & picture:nth-child(2) {
-      // grid-column: 2 / 3;
       grid-row: 1 / 3;
     }
   }
@@ -341,11 +330,9 @@ const showSuccess = (name, quantity) => {
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
-    // &:nth-child(2) {
-    //   grid-column: 2 / 3;
-    //   grid-row: 1 / 3;
-    // }
   }
+
+  //MEDIA QUERIES
   @include media-query-lg {
     &__card {
       gap: 60px;
@@ -357,6 +344,7 @@ const showSuccess = (name, quantity) => {
       gap: 80px;
     }
   }
+
   @include media-query-l {
     padding-top: 0;
     padding-bottom: 60px;
@@ -416,6 +404,7 @@ const showSuccess = (name, quantity) => {
       grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
     }
   }
+
   @include media-query-md {
     &__skeleton-container {
       flex-direction: column;
@@ -435,6 +424,9 @@ const showSuccess = (name, quantity) => {
     &__img-wrapper {
       max-width: initial;
     }
+    &__info-block {
+      max-width: 100%;
+    }
     &__contain {
       gap: 24px;
       flex-direction: column;
@@ -448,6 +440,9 @@ const showSuccess = (name, quantity) => {
       & picture:nth-child(2) {
         order: 1;
       }
+    }
+    &__gallery-image {
+      width: 100%;
     }
   }
 }

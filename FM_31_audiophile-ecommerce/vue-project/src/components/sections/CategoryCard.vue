@@ -9,13 +9,19 @@ const props = defineProps({
 
 <template>
   <li class="categories__item">
-    <router-link :to="`/${category.slug}`" class="categories__block">
-      <span class="categories__title">{{ category.name }}</span>
+    <router-link
+      :to="`/${props.category.slug}`"
+      class="categories__block"
+      :aria-label="`go to ${props.category.name} category page`"
+    >
+      <span class="categories__title">{{ props.category.name }}</span>
       <span class="categories__shop">Shop</span>
       <img
         class="categories__image categories__image--headphones"
-        :src="category.acf.category_preview"
-        alt=""
+        :src="props.category.acf.category_preview"
+        :alt="`preview image for ${props.category.name}`"
+        width="205"
+        height="205"
       />
     </router-link>
   </li>
@@ -30,8 +36,10 @@ const props = defineProps({
   &__block {
     display: flex;
     position: relative;
+    height: 100%;
     min-height: 204px;
     padding: 33px;
+    padding-top: 90px;
     gap: 20px;
     flex-direction: column;
     align-items: center;
@@ -40,29 +48,21 @@ const props = defineProps({
     border-radius: 8px;
     text-transform: uppercase;
     font-weight: 700;
+    text-align: center;
+    &:focus-visible .categories__shop {
+      outline: 1px solid var(--black);
+      outline-offset: 6px;
+    }
   }
   &__image {
     position: absolute;
-    width: 220px;
-    height: 183px;
-    top: -58px;
+    width: 205px;
+    height: 205px;
+    top: -67px;
     object-fit: cover;
-    // &--headphones {
-    //   width: 222px;
-    //   height: 212px;
-    //   top: -81px;
-    // }
-    // &--speakers {
-    //   top: -74px;
-    // }
-    // &--earphones {
-    //   width: 220px;
-    //   height: 194px;
-    // }
   }
   &__title {
     font-size: 1.2rem;
-
     letter-spacing: 0.1rem;
   }
   &__shop {
@@ -83,12 +83,14 @@ const props = defineProps({
       outline-offset: 6px;
     }
   }
+
   //MEDIA QUERIES
   @include media-query-l {
     padding-top: 100px;
     &__block {
       min-height: 174px;
       padding: 22px;
+      padding-top: 75px;
     }
     &__image {
       width: 140px;

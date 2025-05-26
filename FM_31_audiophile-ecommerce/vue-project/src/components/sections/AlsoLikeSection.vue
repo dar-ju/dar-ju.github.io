@@ -189,8 +189,11 @@ const seeProductHandle = (category, product) => {
       padding: 0;
     }
   }
+
   @include media-query-md {
     &__list {
+      max-width: 80%;
+      margin: 0 auto;
       flex-direction: column;
     }
     &__item {
@@ -198,6 +201,12 @@ const seeProductHandle = (category, product) => {
     }
     &__image {
       object-fit: contain;
+    }
+  }
+
+  @include media-query-sm {
+    &__list {
+      max-width: 100%;
     }
   }
 }

@@ -16,27 +16,37 @@ const toggleMobileMenu = () => {
 <template>
   <header class="container header">
     <div class="header__block">
-      <button @click="toggleMobileMenu()" class="header__burger">
+      <button
+        @click="toggleMobileMenu()"
+        class="header__burger"
+        aria-label="toggle navigation menu"
+      >
         <div class="header__burger-line"></div>
         <div class="header__burger-line"></div>
         <div class="header__burger-line"></div>
       </button>
       <div class="header__logo">
-        <router-link to="/" class="header__logo-link">
+        <router-link to="/" class="header__logo-link" aria-label="пo to homepage">
           <img src="/assets/images/logo.svg" alt="Audiophile logo" width="143" height="25" />
         </router-link>
       </div>
-      <nav class="header__menu">
+      <nav class="header__menu" aria-label="main navigation">
         <MenuBar />
       </nav>
       <div class="header__cart">
-        <button class="header__cart-btn" @click="cartStore.toggleCart">
+        <button
+          class="header__cart-btn"
+          @click="cartStore.toggleCart"
+          aria-label="toggle cart window"
+        >
           <svg
             width="24"
             height="20"
             viewBox="0 0 24 20"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            aria-hidden="true"
           >
             <path
               fill-rule="evenodd"
@@ -49,7 +59,7 @@ const toggleMobileMenu = () => {
       </div>
     </div>
     <transition name="fade">
-      <nav v-show="isMobileMenu" class="header__mobile-menu">
+      <nav v-show="isMobileMenu" class="header__mobile-menu" aria-label="mobile categories">
         <CategoriesSection />
       </nav>
     </transition>

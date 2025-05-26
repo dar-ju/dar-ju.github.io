@@ -1,22 +1,26 @@
 <script setup>
 import MenuBar from '@/components/navigation/MenuBar.vue'
+import { useSectionStore } from '@/stores/section'
+import { onMounted } from 'vue'
+
+const sectionStore = useSectionStore()
+
+onMounted(async () => {
+  await sectionStore.getFooterData()
+})
 </script>
 
 <template>
   <footer class="footer">
     <div class="container footer__container">
-      <router-link to="/" class="footer__logo">
+      <router-link to="/" class="footer__logo" aria-label="пo to homepage">
         <img src="/assets/images/logo.svg" alt="Audiophile logo" width="143" height="25" />
       </router-link>
       <MenuBar class="footer__menu" />
-      <p class="footer__description">
-        Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music
-        lovers and sound specialists who are devoted to helping you get the most out of personal
-        audio. Come and visit our demo facility - we’re open 7 days a week.
-      </p>
+      <p class="footer__description">{{ sectionStore.footer?.acf?.main_description }}</p>
       <ul class="footer__social">
         <li class="footer__social-item">
-          <a href="#" class="footer__social-link">
+          <a href="#" class="footer__social-link" aria-label="go to Facebook social">
             <svg
               width="24"
               height="24"
@@ -32,7 +36,7 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
           </a>
         </li>
         <li class="footer__social-item">
-          <a href="#" class="footer__social-link">
+          <a href="#" class="footer__social-link" aria-label="go to Twitter social">
             <svg
               width="24"
               height="20"
@@ -48,7 +52,7 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
           </a>
         </li>
         <li class="footer__social-item">
-          <a href="#" class="footer__social-link">
+          <a href="#" class="footer__social-link" aria-label="go to Instagram social">
             <svg
               width="24"
               height="24"
@@ -66,7 +70,7 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
           </a>
         </li>
       </ul>
-      <p class="footer__copyright">Copyright 2021. All Rights Reserved</p>
+      <p class="footer__copyright">{{ sectionStore.footer?.acf?.additional_description_1 }}</p>
     </div>
   </footer>
 </template>
@@ -93,8 +97,15 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
     justify-content: space-between;
   }
   &__logo {
+    max-width: 143px;
+    max-height: 25px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    transition: outline ease-in-out 0.3s;
+    &:focus-visible {
+      outline: 1px solid var(--white);
+      outline-offset: 6px;
+    }
   }
   &__menu {
     grid-column: 2 / 3;
@@ -123,13 +134,15 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
     gap: 15px;
     justify-self: flex-end;
     align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   &__social-item {
   }
   &__social-link {
     transition: outline ease-in-out 0.3s;
     &:focus-visible {
-      outline: 1px solid var(--white50);
+      outline: 1px solid var(--white);
       outline-offset: 4px;
     }
   }
@@ -150,6 +163,7 @@ import MenuBar from '@/components/navigation/MenuBar.vue'
       grid-column: 1 / 3;
       grid-row: 2 / 3;
       justify-self: flex-start;
+      justify-content: flex-start;
     }
     &__description {
       grid-row: 3 / 4;

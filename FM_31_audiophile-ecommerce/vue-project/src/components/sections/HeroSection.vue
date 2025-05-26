@@ -32,6 +32,8 @@ import router from '@/router'
           <img
             src="/assets/images/hero-section/mobile/image-hero.jpg"
             alt="XX99 Mark II Headphones"
+            width="704"
+            height="729"
           />
         </picture>
       </div>
@@ -46,6 +48,7 @@ import router from '@/router'
   color: var(--white);
   &__container {
     display: flex;
+    max-width: 1440px;
     justify-content: space-between;
     align-items: center;
   }
@@ -69,8 +72,6 @@ import router from '@/router'
     color: var(--white50);
     text-transform: uppercase;
     letter-spacing: 0.7rem;
-  }
-  &__title {
   }
   &__description {
     max-width: 350px;
@@ -107,16 +108,19 @@ import router from '@/router'
       justify-content: center;
     }
   }
+
   @include media-query-l {
     &__image {
       max-width: 843px;
     }
   }
+
   @include media-query-md {
     &__image {
       max-width: 513px;
     }
   }
+
   @include media-query-sm {
     &__wrapper {
       position: initial;
@@ -134,6 +138,8 @@ import router from '@/router'
     &__image {
       max-width: 410px;
       top: -65px;
+      right: initial;
+      transform: initial;
     }
   }
 }

@@ -1,7 +1,6 @@
 <script setup></script>
 
 <template>
-  <!-- <nav> -->
   <ul class="nav">
     <li class="nav__item"><router-link to="/" class="nav__link">Home</router-link></li>
     <li class="nav__item">
@@ -12,7 +11,6 @@
       <router-link to="/earphones" class="nav__link">Earphones</router-link>
     </li>
   </ul>
-  <!-- </nav> -->
 </template>
 
 <style lang="scss" scoped>

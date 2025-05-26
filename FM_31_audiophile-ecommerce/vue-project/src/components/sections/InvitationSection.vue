@@ -1,17 +1,20 @@
-<script setup></script>
+<script setup>
+import { useSectionStore } from '@/stores/section'
+import { onMounted } from 'vue'
+
+const sectionStore = useSectionStore()
+
+onMounted(async () => {
+  await sectionStore.getInvitationData()
+})
+</script>
 
 <template>
   <section class="invite">
     <div class="container invite__container">
       <div class="invite__wrapper">
         <h2 class="title invite__title">Bringing you the <span>best</span> audio gear</h2>
-        <p class="invite__description">
-          Located at the heart of New York City, Audiophile is the premier store for high end
-          headphones, earphones, speakers, and audio accessories. We have a large showroom and
-          luxury demonstration rooms available for you to browse and experience a wide range of our
-          products. Stop by our store to meet some of the fantastic people who make Audiophile the
-          best place to buy your portable audio equipment.
-        </p>
+        <p class="invite__description">{{ sectionStore.invitation?.acf?.main_description }}</p>
       </div>
       <picture class="invite__img">
         <source
@@ -25,6 +28,8 @@
         <img
           src="/assets/images/invite-section/mobile/image-best-gear.jpg"
           alt="customer in the audiophile store"
+          width="540"
+          height="588"
         />
       </picture>
     </div>
@@ -38,6 +43,7 @@
   padding-bottom: 160px;
   &__container {
     display: flex;
+    max-width: 1600px;
     gap: 50px;
     align-items: center;
     justify-content: space-between;
@@ -76,8 +82,10 @@
       text-align: center;
     }
     &__img {
-      width: 100%;
       max-width: initial;
+      & img {
+        width: 100%;
+      }
     }
     &__wrapper {
       max-width: 573px;

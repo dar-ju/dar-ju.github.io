@@ -68,6 +68,7 @@ const goHome = () => {
 </template>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/breakpoints';
 .ordered {
   &__container {
     padding-top: 92px;
@@ -142,6 +143,34 @@ const goHome = () => {
   &__btn {
     width: 100%;
     max-width: 100%;
+  }
+
+  //MEDIA QUERIES
+  @include media-query-sm {
+    &__window {
+      width: 88%;
+      max-width: 327px;
+      padding: 32px;
+    }
+    &__img {
+      margin-bottom: 23px;
+    }
+    &__block {
+      margin-bottom: 23px;
+      flex-direction: column;
+    }
+    &__title {
+      margin-bottom: 17px;
+      font-size: 1.55rem;
+      line-height: 2rem;
+    }
+    &__message {
+      margin-bottom: 26px;
+      line-height: 1.5rem;
+    }
+    &__total {
+      padding: 20px 24px;
+    }
   }
 }
 </style>

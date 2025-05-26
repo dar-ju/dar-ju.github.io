@@ -6,7 +6,7 @@ html {
 }
 
 body {
-  min-width: 320px;
+  min-width: 375px;
   font-family: "Manrope", sans-serif;
   font-weight: 400;
   background-color: var(--black-bckg);
@@ -18,7 +18,7 @@ body {
 // }
 
 .container {
-  max-width: 1440px;
+  max-width: 1920px;
   margin: auto;
   padding-left: var(--containerPadding);
   padding-right: var(--containerPadding);

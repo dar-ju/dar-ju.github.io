@@ -29,6 +29,3 @@ export const getProductDataForCategoryApi = async () => {
     throw new Error(`categories response was not ok: ${err}`)
   }
 }
-
-// http://wp-adm-audio.host1438437.hostland.pro/wp-json/wp/v2/product-category?acf_format=standard&_fields=id,name,slug&slug=headphones
-// http://wp-adm-audio.host1438437.hostland.pro/wp-json/wp/v2/products?acf_format=standard&_fields=title,acf.short_description,acf.new_product&acf.category.0.slug=headphones

@@ -69,7 +69,6 @@ watch(
               :index="index"
             />
           </TransitionGroup>
-          <!-- набор товаров -->
         </div>
         <CategoriesSection />
         <InvitationSection class="category__invitation" />
