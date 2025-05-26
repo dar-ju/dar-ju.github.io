@@ -90,7 +90,7 @@ const showSuccess = (name, quantity) => {
   <section class="product">
     <div class="container product__container">
       <a href="#" @click.prevent="goBack()" class="product__back">Go Back</a>
-      <div v-show="productStore.loading" class="skeleton">
+      <div v-if="productStore.loading" class="skeleton">
         <div class="skeleton__container product__skeleton-container">
           <Skeleton class="skeleton__img product__skeleton-img" height="100%"></Skeleton>
           <div class="skeleton__block product__skeleton-block">
@@ -194,8 +194,7 @@ const showSuccess = (name, quantity) => {
               class="product__gallery-image"
               :src="image.metadata.full.file_url"
               :alt="`${productStore.product?.title?.rendered} image ${index}`"
-              width="440"
-              height="590"
+              :style="`aspect-ratio: ${image.metadata.full.width} / ${image.metadata.full.height}`"
             />
           </picture>
         </template>
@@ -240,6 +239,7 @@ const showSuccess = (name, quantity) => {
     height: auto;
     display: block;
     aspect-ratio: 540 / 560;
+    object-fit: cover;
     &--reverse {
       order: 1;
     }

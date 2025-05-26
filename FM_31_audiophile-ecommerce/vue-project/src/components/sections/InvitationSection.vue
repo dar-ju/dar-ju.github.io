@@ -65,6 +65,7 @@ onMounted(async () => {
     line-height: 1.667rem;
   }
   &__img {
+    aspect-ratio: 540 / 588;
     max-width: 540px;
     min-width: 350px;
     width: 100%;
