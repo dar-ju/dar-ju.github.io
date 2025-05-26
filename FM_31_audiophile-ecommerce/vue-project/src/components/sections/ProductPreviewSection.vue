@@ -40,6 +40,16 @@ onMounted(() => {
         />
         <img
           class="product-preview__img"
+          :src="index === 0 ? props.product.acf.category_images.mobile_image : undefined"
+          v-if="index === 0"
+          :alt="props.product.title.rendered"
+          width="540"
+          height="560"
+          fetchpriority="high"
+        />
+        <img
+          v-else
+          class="product-preview__img"
           v-lazy="{ src: props.product.acf.category_images.mobile_image }"
           :alt="props.product.title.rendered"
           width="540"

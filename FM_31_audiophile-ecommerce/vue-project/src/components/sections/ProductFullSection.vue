@@ -109,7 +109,7 @@ const showSuccess = (name, quantity) => {
         </div>
       </div>
       <div class="product__card">
-        <picture class="product__img-wrapper">
+        <picture v-if="gallery && gallery.length" class="product__img-wrapper">
           <source
             media="(min-width:1024px)"
             :srcset="
@@ -124,7 +124,6 @@ const showSuccess = (name, quantity) => {
           />
           <img
             class="product__img"
-            v-if="gallery"
             :src="
               productStore.product?.acf?.product_images.mobile_gallery[0].metadata.full.file_url
             "
@@ -195,6 +194,8 @@ const showSuccess = (name, quantity) => {
               class="product__gallery-image"
               :src="image.metadata.full.file_url"
               :alt="`${productStore.product?.title?.rendered} image ${index}`"
+              width="440"
+              height="590"
             />
           </picture>
         </template>
@@ -227,6 +228,7 @@ const showSuccess = (name, quantity) => {
     gap: 125px;
   }
   &__img-wrapper {
+    aspect-ratio: 540 / 560;
     width: 100%;
     max-width: 540px;
     min-width: 450px;
@@ -235,6 +237,9 @@ const showSuccess = (name, quantity) => {
   }
   &__img {
     width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 540 / 560;
     &--reverse {
       order: 1;
     }
