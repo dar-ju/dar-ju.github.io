@@ -256,13 +256,14 @@ import router from '@/router'
       flex-direction: column;
     }
     &__YX1-block {
-      min-width: 327px;
+      min-width: initial;
       min-height: 200px;
       padding: 33px 25px;
       justify-content: flex-start;
     }
     &__YX1-img {
       max-width: initial;
+      min-width: initial;
       & img {
         width: 100%;
       }

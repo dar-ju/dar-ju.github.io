@@ -14,7 +14,6 @@ const toggleCollapse = () => {
 
 const goHome = () => {
   router.push('/')
-  cartStore.cart = []
   cartStore.isOrderedOpened = false
 }
 </script>

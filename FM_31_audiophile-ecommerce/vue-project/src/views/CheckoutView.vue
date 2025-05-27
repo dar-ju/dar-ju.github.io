@@ -56,6 +56,7 @@ const onFormSubmit = async ({ valid, values }) => {
         ...hiddenFields,
       }
       await postOrderApi(dataToSend)
+      cartStore.cart = []
       cartStore.toggleOrdered()
       cartStore.updateLocalStorage()
     } catch (err) {

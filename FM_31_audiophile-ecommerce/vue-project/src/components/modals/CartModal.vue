@@ -180,6 +180,10 @@ const checkOut = () => {
     &__window {
       width: 88%;
       max-width: 327px;
+      padding: 32px 20px;
+    }
+    &__item-name {
+      max-width: 76px;
     }
   }
 }
