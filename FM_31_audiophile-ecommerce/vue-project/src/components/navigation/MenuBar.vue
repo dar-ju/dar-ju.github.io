@@ -8,7 +8,7 @@ const categoryStore = useCategoryStore()
   <ul class="nav">
     <li class="nav__item"><router-link to="/" class="nav__link">Home</router-link></li>
     <li v-for="item in categoryStore.categories" :key="item.key" class="nav__item">
-      <router-link :to="item?.slug" class="nav__link">{{ item?.name }}</router-link>
+      <router-link :to="`/${item?.slug}`" class="nav__link">{{ item?.name }}</router-link>
     </li>
   </ul>
 </template>
