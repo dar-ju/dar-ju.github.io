@@ -20,6 +20,7 @@ watch(
 
 <template>
   <div class="quantity-input">
+    <label for="integeronly" class="quantity-input__label">Quantity</label>
     <InputNumber
       v-model="amount"
       inputId="integeronly"
@@ -31,7 +32,6 @@ watch(
         inputmode: 'numeric',
         name: 'quantity',
         autocomplete: 'off',
-        'aria-label': 'Количество',
       }"
     >
       <template #incrementbuttonicon>
@@ -62,6 +62,17 @@ watch(
       align-items: center;
       justify-content: center;
     }
+  }
+  &__label {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 }
 </style>
