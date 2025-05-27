@@ -90,7 +90,7 @@ const showSuccess = (name, quantity) => {
   <section class="product">
     <div class="container product__container">
       <a href="#" @click.prevent="goBack()" class="product__back">Go Back</a>
-      <div v-if="productStore.loading" class="skeleton">
+      <div v-show="productStore.loading" class="skeleton product__skeleton">
         <div class="skeleton__container product__skeleton-container">
           <Skeleton class="skeleton__img product__skeleton-img" height="100%"></Skeleton>
           <div class="skeleton__block product__skeleton-block">
@@ -108,30 +108,32 @@ const showSuccess = (name, quantity) => {
           </div>
         </div>
       </div>
-      <div class="product__card">
-        <picture v-if="gallery && gallery.length" class="product__img-wrapper">
-          <source
-            media="(min-width:1024px)"
-            :srcset="
-              productStore.product?.acf?.product_images.desktop_gallery[0].metadata.full.file_url
-            "
-          />
-          <source
-            media="(min-width:768px)"
-            :srcset="
-              productStore.product?.acf?.product_images.tablet_gallery[0].metadata.full.file_url
-            "
-          />
-          <img
-            class="product__img"
-            :src="
-              productStore.product?.acf?.product_images.mobile_gallery[0].metadata.full.file_url
-            "
-            :alt="productStore.product?.title?.rendered"
-            width="540"
-            height="560"
-          />
-        </picture>
+      <div v-show="!productStore.loading" class="product__card">
+        <div class="product__img-wrapper">
+          <picture v-if="gallery && gallery.length">
+            <source
+              media="(min-width:1024px)"
+              :srcset="
+                productStore.product?.acf?.product_images.desktop_gallery[0].metadata.full.file_url
+              "
+            />
+            <source
+              media="(min-width:768px)"
+              :srcset="
+                productStore.product?.acf?.product_images.tablet_gallery[0].metadata.full.file_url
+              "
+            />
+            <img
+              class="product__img"
+              :src="
+                productStore.product?.acf?.product_images.mobile_gallery[0].metadata.full.file_url
+              "
+              :alt="productStore.product?.title?.rendered"
+              width="540"
+              height="560"
+            />
+          </picture>
+        </div>
         <div class="product__info-block">
           <div class="product__title-block">
             <span class="product__new" v-show="productStore.product?.acf?.new_product"
@@ -211,6 +213,11 @@ const showSuccess = (name, quantity) => {
   &__container {
     max-width: 1440px;
   }
+  &__skeleton {
+    min-height: 560px;
+    padding: 0;
+    padding-bottom: 92px;
+  }
   &__back {
     display: inline-block;
     margin-bottom: 60px;
@@ -223,8 +230,12 @@ const showSuccess = (name, quantity) => {
   }
   &__card {
     display: flex;
+    width: 100%;
+    min-height: 560px;
     margin-bottom: 155px;
     gap: 125px;
+    align-items: center;
+    justify-content: space-between;
   }
   &__img-wrapper {
     aspect-ratio: 540 / 560;
@@ -235,10 +246,10 @@ const showSuccess = (name, quantity) => {
     overflow: hidden;
   }
   &__img {
+    aspect-ratio: 540 / 560;
     width: 100%;
     height: auto;
     display: block;
-    aspect-ratio: 540 / 560;
     object-fit: cover;
     &--reverse {
       order: 1;
@@ -323,7 +334,8 @@ const showSuccess = (name, quantity) => {
   &__gallery {
     display: grid;
     gap: 30px;
-    grid-template-columns: auto auto;
+    grid-template-columns: 40% auto;
+    grid-template-rows: 280px 280px;
     & picture:first-child {
       grid-row: 1 / 1;
     }
@@ -332,6 +344,7 @@ const showSuccess = (name, quantity) => {
     }
   }
   &__gallery-image {
+    width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
@@ -343,6 +356,7 @@ const showSuccess = (name, quantity) => {
       gap: 60px;
     }
     &__img-wrapper {
+      aspect-ratio: 380 / 400;
       min-width: 380px;
     }
     &__info {
@@ -355,7 +369,6 @@ const showSuccess = (name, quantity) => {
     padding-bottom: 60px;
     &__skeleton-img {
       max-height: 70rem;
-      aspect-ratio: 5 / 8;
     }
     &__skeleton-block {
       max-width: 50%;
@@ -364,11 +377,17 @@ const showSuccess = (name, quantity) => {
       margin-bottom: 25px;
     }
     &__card {
+      min-height: initial;
       margin-bottom: 119px;
       gap: clamp(20px, 5rem, 70px);
     }
     &__img-wrapper {
+      aspect-ratio: 280 / 480;
       min-width: 280px;
+      min-height: initial;
+    }
+    &__img {
+      aspect-ratio: 280 / 480;
     }
     &__info-block {
       max-width: 337px;
@@ -406,11 +425,12 @@ const showSuccess = (name, quantity) => {
     }
     &__gallery {
       gap: 18px;
-      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+      grid-template-rows: 174px 174px;
     }
   }
 
   @include media-query-md {
+    padding-bottom: 64px;
     &__skeleton-container {
       flex-direction: column;
       align-items: flex-start;
@@ -424,16 +444,37 @@ const showSuccess = (name, quantity) => {
       max-width: 300px;
     }
     &__card {
+      margin-bottom: 92px;
+      gap: 36px;
       flex-direction: column;
     }
     &__img-wrapper {
-      max-width: initial;
-    }
-    &__info-block {
+      aspect-ratio: 327 / 327;
       max-width: 100%;
     }
+    &__img {
+      aspect-ratio: 327 / 327;
+    }
+    &__info-block {
+      gap: 27px;
+      max-width: 100%;
+    }
+    &__info {
+      margin-bottom: 91px;
+      gap: 92px;
+    }
+    &__new {
+      margin-bottom: 28px;
+    }
+    &__title {
+      line-height: 2.5rem;
+    }
+    &__subtitle {
+      margin-bottom: 29px;
+      font-size: 1.55rem;
+    }
     &__contain {
-      gap: 24px;
+      gap: 5px;
       flex-direction: column;
     }
     &__contain-list {
@@ -441,6 +482,7 @@ const showSuccess = (name, quantity) => {
     }
     &__gallery {
       display: flex;
+      gap: 20px;
       flex-direction: column;
       & picture:nth-child(2) {
         order: 1;
@@ -448,28 +490,6 @@ const showSuccess = (name, quantity) => {
     }
     &__gallery-image {
       width: 100%;
-    }
-  }
-
-  @include media-query-md {
-    padding-bottom: 64px;
-    &__card {
-      margin-bottom: 92px;
-      gap: 36px;
-    }
-    &__info {
-      margin-bottom: 91px;
-      gap: 92px;
-    }
-    &__subtitle {
-      margin-bottom: 29px;
-      font-size: 1.55rem;
-    }
-    &__contain {
-      gap: 33px;
-    }
-    &__gallery {
-      gap: 20px;
     }
   }
 }

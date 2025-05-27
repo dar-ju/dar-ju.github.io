@@ -20,6 +20,12 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 
 <style lang="scss" scoped>
 @use '@/assets/styles/breakpoints' as *;
+.main-wrapper {
+  padding-bottom: 0;
+  @include media-query-l {
+    padding-bottom: 66px;
+  }
+}
 .product-wrapper {
   &__invitation {
     padding-bottom: 115px;
@@ -34,6 +40,7 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 
   @include media-query-sm {
     padding-top: 21px;
+
     &__invitation {
       padding-top: 70px;
     }

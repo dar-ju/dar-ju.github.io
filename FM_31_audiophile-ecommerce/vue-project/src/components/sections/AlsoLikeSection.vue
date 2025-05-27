@@ -45,18 +45,20 @@ const seeProductHandle = (category, product) => {
       <h2 class="also__title">You may also like</h2>
       <ul class="also__list">
         <li class="also__item" v-for="(item, index) in alsoList" :key="index">
-          <div class="also__wrapper">
-            <picture class="also__block">
-              <source media="(min-width:1024px)" :srcset="item.acf.also_images.desktop_image" />
-              <source media="(min-width:768px)" :srcset="item.acf.also_images.tablet_image" />
-              <img
-                class="also__image"
-                :src="item.acf.also_images.mobile_image"
-                alt="XX99 Mark I Headphones"
-              />
-            </picture>
-            <h3 class="also__subtitle">{{ item.acf.short_name }}</h3>
-          </div>
+          <!-- <div class="also__wrapper"> -->
+          <picture class="also__block">
+            <source media="(min-width:1024px)" :srcset="item.acf.also_images.desktop_image" />
+            <source media="(min-width:768px)" :srcset="item.acf.also_images.tablet_image" />
+            <img
+              class="also__image"
+              :src="item.acf.also_images.mobile_image"
+              alt="XX99 Mark I Headphones"
+              width="284"
+              height="249"
+            />
+          </picture>
+          <h3 class="also__subtitle">{{ item.acf.short_name }}</h3>
+          <!-- </div> -->
           <Button
             class="btn also__btn"
             label="See product"
@@ -154,8 +156,13 @@ const seeProductHandle = (category, product) => {
     &__item {
       width: 100%;
     }
+    &__block {
+      width: 100%;
+      min-height: 170px;
+      justify-content: center;
+    }
     &__image {
-      object-fit: contain;
+      object-fit: cover;
     }
   }
 
@@ -165,12 +172,20 @@ const seeProductHandle = (category, product) => {
       max-width: 100%;
       gap: 54px var(--catBlocksGap);
     }
+    &__wrapper {
+      width: 100%;
+    }
     &__title {
       margin-bottom: 46px;
       font-size: 1.55rem;
     }
     &__block {
+      min-height: 120px;
       margin-bottom: 35px;
+      justify-content: center;
+    }
+    &__image {
+      object-fit: contain;
     }
   }
 }

@@ -83,6 +83,7 @@ onMounted(async () => {
       text-align: center;
     }
     &__img {
+      aspect-ratio: 689 / 300;
       max-width: initial;
       & img {
         width: 100%;
@@ -91,6 +92,12 @@ onMounted(async () => {
     &__wrapper {
       max-width: 573px;
       order: 1;
+    }
+  }
+
+  @include media-query-md {
+    &__img {
+      aspect-ratio: 327 / 300;
     }
   }
 

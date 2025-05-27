@@ -251,11 +251,21 @@ import router from '@/router'
     &__ZX7 {
       background-image: url('/assets/images/home-products-section/mobile/image-speaker-zx7.jpg');
     }
-    &__YX1-img {
-      min-width: 200px;
+    &__YX1 {
+      gap: 22px;
+      flex-direction: column;
     }
     &__YX1-block {
-      padding: 40px;
+      min-width: 327px;
+      min-height: 200px;
+      padding: 33px 25px;
+      justify-content: flex-start;
+    }
+    &__YX1-img {
+      max-width: initial;
+      & img {
+        width: 100%;
+      }
     }
   }
 
@@ -285,16 +295,6 @@ import router from '@/router'
     }
     &__ZX7-wrapper {
       padding: 0 24px;
-    }
-    &__YX1 {
-      gap: 22px;
-      flex-direction: column;
-    }
-    &__YX1-block {
-      min-width: 327px;
-      min-height: 200px;
-      padding: 33px 25px;
-      justify-content: flex-start;
     }
   }
 }
