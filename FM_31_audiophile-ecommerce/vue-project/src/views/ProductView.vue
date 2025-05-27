@@ -12,7 +12,7 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
         <ProductFullSection />
         <AlsoLikeSection />
         <CategoriesSection />
-        <InvitationSection class="product__invitation" />
+        <InvitationSection class="product-wrapper__invitation" />
       </div>
     </div>
   </main>
@@ -23,26 +23,25 @@ import InvitationSection from '@/components/sections/InvitationSection.vue'
 .main-wrapper {
   padding-bottom: 0;
   @include media-query-l {
-    padding-bottom: 66px;
+    padding-bottom: 61px;
   }
 }
 .product-wrapper {
   &__invitation {
-    padding-bottom: 115px;
+    // padding-bottom: 115px;
   }
 
   // MEDIA QUERIES
   @include media-query-l {
     &__invitation {
-      padding-bottom: 85px;
+      // padding-bottom: 85px;
     }
   }
 
   @include media-query-sm {
-    padding-top: 21px;
-
     &__invitation {
-      padding-top: 70px;
+      // padding-top: 70px;
+      padding-bottom: 60px;
     }
   }
 }

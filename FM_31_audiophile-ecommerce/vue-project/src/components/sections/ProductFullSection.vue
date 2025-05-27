@@ -295,7 +295,7 @@ const showSuccess = (name, quantity) => {
   }
   &__info {
     display: flex;
-    margin-bottom: 160px;
+    margin-bottom: 153px;
     gap: 138px;
   }
   &__features {
@@ -431,6 +431,7 @@ const showSuccess = (name, quantity) => {
   }
 
   @include media-query-md {
+    padding-top: 16px;
     padding-bottom: 64px;
     &__skeleton-container {
       flex-direction: column;

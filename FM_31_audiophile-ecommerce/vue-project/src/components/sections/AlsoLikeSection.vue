@@ -138,7 +138,7 @@ const seeProductHandle = (category, product) => {
   //MEDIA QUERIES
   @include media-query-l {
     padding-top: 60px;
-    padding-bottom: 73px;
+    padding-bottom: 60px;
     &__title {
       margin-bottom: 57px;
     }

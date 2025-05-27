@@ -27,12 +27,8 @@ watch(
       showButtons
       buttonLayout="horizontal"
       :min="0"
+      :max="999"
       fluid
-      :inputProps="{
-        inputmode: 'numeric',
-        name: 'quantity',
-        autocomplete: 'off',
-      }"
     >
       <template #incrementbuttonicon>
         <span class="quantity-input__icon">+</span>

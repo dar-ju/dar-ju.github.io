@@ -44,7 +44,7 @@ import router from '@/router'
 <style lang="scss">
 @use '@/assets/styles/breakpoints' as *;
 .hero {
-  padding-bottom: 24px;
+  padding-bottom: 21px;
   color: var(--white);
   &__container {
     display: flex;
@@ -110,6 +110,10 @@ import router from '@/router'
   }
 
   @include media-query-l {
+    &__info-block {
+      padding-top: 119px;
+      gap: 31px;
+    }
     &__image {
       max-width: 843px;
     }
@@ -122,13 +126,14 @@ import router from '@/router'
   }
 
   @include media-query-sm {
+    padding-bottom: 33px;
     &__wrapper {
       position: initial;
     }
     &__info-block {
-      padding-top: 111px;
+      padding-top: 103px;
       padding-bottom: 80px;
-      gap: 20px;
+      gap: 21px;
     }
     &__title {
       font-size: 2.15rem;

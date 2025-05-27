@@ -79,7 +79,7 @@ watch(
 <style lang="scss" scoped>
 @use '@/assets/styles/breakpoints' as *;
 .category {
-  padding-top: 100px;
+  padding-top: 95px;
   &__container {
     margin-bottom: 94px;
   }
@@ -147,7 +147,7 @@ watch(
       flex-direction: column;
     }
     &__invitation {
-      padding-top: 71px;
+      padding-top: 60px;
     }
   }
 }

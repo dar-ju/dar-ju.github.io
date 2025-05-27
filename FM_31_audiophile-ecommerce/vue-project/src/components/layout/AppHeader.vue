@@ -96,10 +96,10 @@ const cartStore = useCartStore()
     justify-content: flex-start;
   }
   &__logo {
-    aspect-ratio: 120 / 25;
     min-width: 120px;
   }
   &__logo-link {
+    aspect-ratio: 120 / 25;
     transition: outline ease-in-out 0.3s;
     &:focus-visible {
       outline: 1px solid var(--white);

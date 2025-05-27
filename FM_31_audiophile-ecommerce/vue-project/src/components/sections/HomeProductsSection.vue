@@ -204,7 +204,7 @@ import router from '@/router'
   }
 
   @include media-query-l {
-    padding-top: 44px;
+    padding-top: 35px;
     padding-bottom: 38px;
     &__list {
       gap: 31px;
@@ -270,10 +270,10 @@ import router from '@/router'
   }
 
   @include media-query-sm {
-    padding-top: 71px;
+    padding-top: 60px;
     padding-bottom: 60px;
     &__list {
-      gap: 25px;
+      gap: 23px;
     }
     &__ZX9 {
       background-image: url('/assets/images/home-products-section/mobile/pattern-circles.svg');
