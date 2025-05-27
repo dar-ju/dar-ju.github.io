@@ -299,6 +299,7 @@ const showSuccess = (name, quantity) => {
     gap: 138px;
   }
   &__features {
+    width: 100%;
     max-width: 56%;
   }
   &__subtitle {

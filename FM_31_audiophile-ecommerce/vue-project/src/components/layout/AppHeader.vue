@@ -96,6 +96,7 @@ const cartStore = useCartStore()
     justify-content: flex-start;
   }
   &__logo {
+    aspect-ratio: 120 / 25;
     min-width: 120px;
   }
   &__logo-link {

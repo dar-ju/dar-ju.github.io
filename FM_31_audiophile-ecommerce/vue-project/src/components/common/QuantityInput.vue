@@ -27,6 +27,12 @@ watch(
       buttonLayout="horizontal"
       :min="0"
       fluid
+      :inputProps="{
+        inputmode: 'numeric',
+        name: 'quantity',
+        autocomplete: 'off',
+        'aria-label': 'Количество',
+      }"
     >
       <template #incrementbuttonicon>
         <span class="quantity-input__icon">+</span>
