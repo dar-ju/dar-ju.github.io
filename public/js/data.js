@@ -1,6 +1,6 @@
 export const data = [
   {
-    "todo-app": {
+    "job-listings": {
       "id": 30,
       "en": {
         "title": "Job listings with filtering",
