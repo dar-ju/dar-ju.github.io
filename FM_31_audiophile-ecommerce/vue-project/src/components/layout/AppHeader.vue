@@ -72,7 +72,7 @@ const cartStore = useCartStore()
     gap: 55px;
     align-items: center;
     padding-top: 35px;
-    padding-bottom: 35px;
+    padding-bottom: 31px;
     border-bottom: 1px solid var(--white20);
   }
   &__burger {
@@ -137,7 +137,7 @@ const cartStore = useCartStore()
     &__block {
       gap: 42px;
       padding-top: 32px;
-      padding-bottom: 32px;
+      padding-bottom: 27px;
     }
     &__burger {
       display: flex;

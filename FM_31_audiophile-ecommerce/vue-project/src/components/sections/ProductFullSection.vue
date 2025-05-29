@@ -208,7 +208,7 @@ const showSuccess = (name, quantity) => {
 <style lang="scss" scoped>
 @use '@/assets/styles/breakpoints' as *;
 .product {
-  padding-top: 45px;
+  padding-top: 39px;
   padding-bottom: 80px;
   &__container {
     max-width: 1440px;
@@ -232,7 +232,7 @@ const showSuccess = (name, quantity) => {
     display: flex;
     width: 100%;
     min-height: 560px;
-    margin-bottom: 155px;
+    margin-bottom: 159px;
     gap: 125px;
     align-items: center;
     justify-content: space-between;
@@ -295,7 +295,7 @@ const showSuccess = (name, quantity) => {
   }
   &__info {
     display: flex;
-    margin-bottom: 153px;
+    margin-bottom: 158px;
     gap: 138px;
   }
   &__features {
@@ -303,7 +303,7 @@ const showSuccess = (name, quantity) => {
     max-width: 56%;
   }
   &__subtitle {
-    margin-bottom: 36px;
+    margin-bottom: 34px;
     font-size: 2.133rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -431,7 +431,7 @@ const showSuccess = (name, quantity) => {
   }
 
   @include media-query-md {
-    padding-top: 16px;
+    padding-top: 20px;
     padding-bottom: 64px;
     &__skeleton-container {
       flex-direction: column;
@@ -450,6 +450,9 @@ const showSuccess = (name, quantity) => {
       gap: 36px;
       flex-direction: column;
     }
+    &__back {
+      margin-bottom: 28px;
+    }
     &__img-wrapper {
       aspect-ratio: 327 / 327;
       max-width: 100%;
@@ -458,7 +461,7 @@ const showSuccess = (name, quantity) => {
       aspect-ratio: 327 / 327;
     }
     &__info-block {
-      gap: 27px;
+      gap: 25px;
       max-width: 100%;
     }
     &__info {
@@ -466,10 +469,14 @@ const showSuccess = (name, quantity) => {
       gap: 92px;
     }
     &__new {
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
     &__title {
       line-height: 2.5rem;
+    }
+    &__price {
+      margin-bottom: 6px;
+      font-size: 1.33rem;
     }
     &__subtitle {
       margin-bottom: 29px;

@@ -131,7 +131,7 @@ onMounted(async () => {
     grid-column: 2 / 3;
     grid-row: 2 / 4;
     display: flex;
-    gap: 15px;
+    gap: 16px;
     justify-self: flex-end;
     align-items: center;
     flex-wrap: wrap;
@@ -155,8 +155,9 @@ onMounted(async () => {
   //MEDIA QUERIES
   @include media-query-l {
     padding-top: 60px;
+    padding-bottom: 42px;
     &__container {
-      gap: 40px;
+      gap: 37px;
     }
     &__menu {
       grid-column: 1 / 3;
@@ -167,6 +168,7 @@ onMounted(async () => {
     &__description {
       grid-row: 3 / 4;
       grid-column: 1 / 3;
+      margin-bottom: 45px;
     }
     &__social {
       grid-row: 4 / 5;

@@ -63,7 +63,7 @@ import router from '@/router'
     width: 100%;
     max-width: 400px;
     padding-top: 129px;
-    padding-bottom: 135px;
+    padding-bottom: 136px;
     gap: 29px;
     flex-direction: column;
   }
@@ -75,7 +75,7 @@ import router from '@/router'
   }
   &__description {
     max-width: 350px;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     color: var(--white75);
     line-height: 1.563rem;
   }
@@ -111,11 +111,17 @@ import router from '@/router'
 
   @include media-query-l {
     &__info-block {
-      padding-top: 119px;
-      gap: 31px;
+      padding-top: 127px;
+      padding-bottom: 135px;
+      gap: 29px;
     }
     &__image {
-      max-width: 843px;
+      width: 768px;
+      top: -90px;
+      & img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 
@@ -126,25 +132,27 @@ import router from '@/router'
   }
 
   @include media-query-sm {
-    padding-bottom: 33px;
+    padding-bottom: 31px;
     &__wrapper {
       position: initial;
     }
     &__info-block {
-      padding-top: 103px;
+      padding-top: 109px;
       padding-bottom: 80px;
-      gap: 21px;
+      gap: 19px;
     }
     &__title {
+      margin-bottom: 4px;
       font-size: 2.15rem;
       line-height: 2.7rem;
       letter-spacing: 0.23rem;
     }
     &__image {
-      max-width: 410px;
+      max-width: 375px;
       top: -65px;
       right: initial;
       transform: initial;
+      width: initial;
     }
   }
 }

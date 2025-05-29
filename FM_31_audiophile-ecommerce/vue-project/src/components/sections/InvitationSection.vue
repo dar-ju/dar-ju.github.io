@@ -76,9 +76,9 @@ onMounted(async () => {
   //MEDIA QUERIES
   @include media-query-l {
     padding-top: 60px;
-    padding-bottom: 60px;
+    padding-bottom: 58px;
     &__container {
-      gap: 60px;
+      gap: 63px;
       flex-direction: column;
       text-align: center;
     }

@@ -83,6 +83,13 @@ watch(
   &__container {
     margin-bottom: 94px;
   }
+  &__products-list {
+    display: flex;
+    padding-top: 80px;
+    padding-bottom: 83px;
+    gap: 159px;
+    flex-direction: column;
+  }
   &__title {
     font-size: 2.667rem;
     color: var(--white);
@@ -99,6 +106,7 @@ watch(
 
   //MEDIA QUERIES
   @include media-query-l {
+    padding-top: 104px;
     &__skeleton-container {
       flex-direction: column;
     }
@@ -113,7 +121,12 @@ watch(
       flex-direction: column;
     }
     &__container {
-      margin-bottom: 100px;
+      margin-bottom: 96px;
+    }
+    &__products-list {
+      padding-top: 40px;
+      padding-bottom: 62px;
+      gap: 116px;
     }
     &__invitation {
       padding-bottom: 82px;
@@ -138,7 +151,7 @@ watch(
       font-size: 1.867rem;
     }
     &__products-section {
-      padding-top: 64px;
+      padding-top: 24px;
     }
     &__products-list {
       display: flex;

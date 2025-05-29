@@ -111,7 +111,7 @@ import router from '@/router'
   &__ZX9-block {
     display: flex;
     width: 100%;
-    min-height: 562px;
+    min-height: 560px;
     padding-left: clamp(12.5%, 6rem, 139px);
     padding-right: 95px;
     gap: 60px;
@@ -128,7 +128,7 @@ import router from '@/router'
     display: flex;
     min-width: 260px;
     max-width: 350px;
-    padding-top: 40px;
+    padding-top: 46px;
     padding-bottom: 40px;
     gap: 24px;
     flex-direction: column;
@@ -159,10 +159,11 @@ import router from '@/router'
     display: flex;
     flex-direction: column;
     padding: 0 95px;
-    gap: 20px;
+    gap: 30px;
   }
   &__ZX7-title {
     font-size: 1.867rem;
+    line-height: 2.7rem;
     letter-spacing: 0.133rem;
   }
   &__YX1 {
@@ -182,7 +183,7 @@ import router from '@/router'
   }
   &__YX1-block {
     display: flex;
-    gap: 20px;
+    gap: 30px;
     padding: 40px 94px;
     flex-grow: 1;
     flex-direction: column;
@@ -192,6 +193,7 @@ import router from '@/router'
   }
   &__YX1-title {
     font-size: 1.867rem;
+    line-height: 2.7rem;
     letter-spacing: 0.133rem;
   }
 
@@ -221,6 +223,7 @@ import router from '@/router'
       text-align: center;
     }
     &__ZX9-wrapper {
+      padding-top: 41px;
       align-items: center;
     }
     &__ZX9-image {
@@ -235,7 +238,7 @@ import router from '@/router'
     }
     &__ZX7-wrapper {
       padding: 0 62px;
-      gap: 23px;
+      gap: 32px;
     }
     &__YX1 {
       gap: 10px;
@@ -258,7 +261,7 @@ import router from '@/router'
     &__YX1-block {
       min-width: initial;
       min-height: 200px;
-      padding: 33px 25px;
+      padding: 42px 25px;
       justify-content: flex-start;
     }
     &__YX1-img {

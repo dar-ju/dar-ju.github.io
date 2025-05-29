@@ -26,7 +26,11 @@ const mobileMenuCheck = () => {
       <span class="categories__title">{{ props.category.name }}</span>
       <span class="categories__shop">Shop</span>
       <img
-        class="categories__image categories__image--headphones"
+        class="categories__image"
+        :class="{
+          'categories__image--speakers': props.category.slug === 'speakers',
+          'categories__image--earphones': props.category.slug === 'earphones',
+        }"
         :src="props.category.acf.category_preview"
         :alt="`preview image for ${props.category.name}`"
         width="205"
@@ -67,8 +71,16 @@ const mobileMenuCheck = () => {
     position: absolute;
     width: 205px;
     height: 205px;
-    top: -67px;
+    top: -79px;
     object-fit: cover;
+    &--speakers {
+      top: -73px;
+    }
+    &--earphones {
+      width: 190px;
+      height: 190px;
+      top: -59px;
+    }
   }
   &__title {
     font-size: 1.2rem;
@@ -97,14 +109,23 @@ const mobileMenuCheck = () => {
   @include media-query-l {
     padding-top: 100px;
     &__block {
-      min-height: 174px;
+      min-height: 166px;
       padding: 22px;
+      padding-bottom: 24px;
       padding-top: 75px;
     }
     &__image {
       width: 140px;
-      height: 151px;
-      top: -55px;
+      height: 137px;
+      top: -51px;
+      &--speakers {
+        height: 141px;
+        top: -51px;
+      }
+      &--earphones {
+        height: 158px;
+        top: -52px;
+      }
     }
     &__title {
       font-size: 0.95rem;
@@ -122,7 +143,7 @@ const mobileMenuCheck = () => {
       gap: 69px var(--catBlocksGap);
     }
     &__image {
-      top: -50px;
+      top: -53px;
     }
     &__block {
       min-height: 165px;

@@ -81,8 +81,6 @@ onMounted(() => {
 <style lang="scss" scoped>
 @use '@/assets/styles/breakpoints' as *;
 .product-preview {
-  padding-top: 80px;
-  padding-bottom: 80px;
   &__container {
     display: flex;
     max-width: 1600px;
@@ -137,8 +135,6 @@ onMounted(() => {
   }
 
   @include media-query-l {
-    padding-top: 40px;
-    padding-bottom: 75px;
     &__container {
       gap: 55px;
       flex-direction: column;
