@@ -1,6 +1,21 @@
 export const data = [
   {
     "todo-app": {
+      "id": 30,
+      "en": {
+        "title": "Job listings with filtering",
+        "description": "Job listings with the ability to filter by skills. It was not difficult for me, since I have recently implemented something similar on this page in the 'All Solutions' section. So here, without an emphasis on anything new. I completed the work in 8 hours.",
+      },
+      "ru": {
+        "title": "Список вакансий с фильтрацией",
+        "description": "Список вакансий с возможностью фильтровать по скиллам. Для меня это не было сложно, так как подобное я уже недавно реализовывал как раз на этой страничке в разделе 'Все Решения'. Так что здесь без акцента на чём-то новом. Работу выполнил за 8 часов.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/job-listings-with-filtering-i884SJZOEI",
+      "stack": ['vue', 'pinia', 'sass/scss', 'bem']
+    }
+  },
+  {
+    "todo-app": {
       "id": 29,
       "en": {
         "title": "Full-stack Todo app",
