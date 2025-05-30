@@ -60,7 +60,7 @@ const onFormSubmit = async ({ valid, values }) => {
       cartStore.toggleOrdered()
       cartStore.updateLocalStorage()
     } catch (err) {
-      toast.add({ severity: 'error', summary: 'Ошибка', detail: err.message, life: 4000 })
+      toast.add({ severity: 'error', summary: 'Error', detail: err.message, life: 4000 })
     }
   }
 }

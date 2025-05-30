@@ -38,7 +38,6 @@ onMounted(async () => {
   //MEDIA QUERIES
   @include media-query-l {
     padding-top: 107px;
-    // padding-bottom: 50px;
   }
 
   @include media-query-md {
