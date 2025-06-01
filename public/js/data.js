@@ -1,5 +1,20 @@
 export const data = [
   {
+    "audiophile-ecommerce": {
+      "id": 31,
+      "en": {
+        "title": "Audiophile e-commerce website",
+        "description": "The combination of frontend VUE.js and backend Headless Wordpress allows to create a site that is as fast and functional as possible. It is possible to add new categories and products, as well as change some content on the pages from the admin panel in a matter of minutes. Lazy loading of images is implemented, as well as skeleton loading to wait for data to load from the server. Particular attention is paid to the speed of the site and Perfect Pixel layout.",
+      },
+      "ru": {
+        "title": "Интернет-магазин Audiophile",
+        "description": "Сочетание frontend VUE.js и backend Headless Wordpress позволяет создать сайт максимально быстрым и функциональным. Есть возможность добавлять новые категории и товары, а также менять некоторый контент на страницах из админ панели в считанные минуты. Реализована ленивая загрузка изображений, а также skeleton loading для ожидания загрузки данных с сервера. Особое внимание уделено скорости работы сайта и Perfect Pixel верстке.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/audiophile-website-using-headless-wordpress-X0awbAXhlb",
+      "stack": ['wordpress', 'vue', 'pinia', 'sass/scss', 'bem']
+    }
+  },
+  {
     "job-listings": {
       "id": 30,
       "en": {
