@@ -1,583 +1,233 @@
-import dotenv from 'dotenv'
-dotenv.config()
+import knex from 'knex'
 import { nanoid } from 'nanoid'
-import mysql from 'mysql2/promise'
+import config from './knexfile.js'
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT || 3306,
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-});
+const db = knex(config.development)
+
+const TOKEN_VALIDITY_PERIOD = 1000 * 60 * 60 * 24 * 7
+
 
 // USERS
-const getAllUsers = async () => { // РАБОЧИЙ
-  let connection
-  try {
-    connection = await pool.getConnection()
-    const [rows] = await connection.execute('SELECT * FROM users')
-    return rows
-  } catch (err) {
-    console.error('Getting all users error:', err)
-    throw err
-  } finally {
-    if (connection) connection.release()
-  }
-}
-
-const createUser = async (username, password) => { // РАБОЧИЙ
-  let connection
-  try {
-    connection = await pool.getConnection()
-    await connection.execute(`
-      INSERT INTO users (username, password)
-      VALUES (?, ?)`, [username, password]
-    );
-  } catch (err) {
-    console.error('Create user error:', err)
-    throw err
-  } finally {
-    if (connection) connection.release()
-  }
-}
-
-
-const loginUser = async (username, password) => { // РАБОЧИЙ (не проверен)
+const createUser = async (username, password) => {
   if (username && password) {
     try {
       const getUser = await findUserByUsername(username)
       if (!getUser) {
-        console.error('User not found')
+        const [newUser] = await db("users").insert({ username, password })
+        await createNote(newUser, demoNote.title, demoNote.text)
+        return newUser
+      }
+    } catch (err) {
+      console.error(`User ${username} not created, error (knex):`, err)
+    }
+  }
+}
+
+const loginUser = async (username, password) => {
+  if (username && password) {
+    try {
+      const getUser = await findUserByUsername(username)
+      if (!getUser) {
+        console.error("User not found")
+        return
+      }
+      if (getUser.google_id) {
+        console.error("This user is registered via Google")
         return
       }
       if (getUser.username === username && getUser.password === password) return getUser
       else {
-        console.error('Incorrect password')
+        console.error("User does not exist or password is incorrect")
         return
       }
     } catch (err) {
-      console.error(`User ${username} does not exist or incorrect password:`, err)
+      console.error(`User ${username} does not exist or password is incorrect, error (knex):`, err)
     }
   }
 }
 
-const findUserBySessionId = async (sessionId) => { // РАБОЧИЙ (null возвращает)
-  let connection
+const findUserByUsername = async (username) => {
   try {
-    connection = await pool.getConnection()
-    const [rows] = await connection.execute('SELECT * FROM sessions WHERE session_id = ?', [sessionId])
-    if (rows.length > 0) {
-      return rows[0]
-    } else {
-      return null;
-    }
+    const [user] = await db("users").select().where({ username }).limit(1)
+    return user
   } catch (err) {
-    console.error(`Getting user error with session id ${sessionId}:`, err)
-    throw err
-  } finally {
-    if (connection) connection.release()
+    console.error(`User ${username} not found, error (knex):`, err)
   }
 }
 
-const getUserById = async (id) => { // РАБОЧИЙ
-  let connection
+const findUserBySessionId = async (sessionToken) => {
   try {
-    connection = await pool.getConnection()
-    const [rows] = await connection.execute('SELECT * FROM users WHERE id = ?', [id])
-    if (rows.length > 0) {
-      return rows[0]
-    } else {
-      return null;
-    }
+    const session = await db("sessions")
+      .select("user_id")
+      .where({ session_token: sessionToken })
+      .limit(1)
+      .then((results) => results[0])
+    if (!session) return
+    return db("users")
+      .select()
+      .where({ id: session.user_id })
+      .limit(1)
+      .then((results) => results[0])
   } catch (err) {
-    console.error(`Getting user error with id ${id}:`, err)
-    throw err
-  } finally {
-    if (connection) connection.release()
+    console.error(`User for session ${sessionToken} not found, error (knex):`, err)
   }
 }
 
-const findUserByUsername = async (username) => { // РАБОЧИЙ
-  let connection
-  try {
-    connection = await pool.getConnection()
-    const [rows] = await connection.execute('SELECT * FROM users WHERE username = ?', [username])
-    if (rows.length > 0) {
-      console.log(rows[0]);
-
-      return rows[0]
-    } else {
-      return null;
-    }
-  } catch (err) {
-    console.error(`Getting user error with username ${username}:`, err)
-    throw err
-  } finally {
-    if (connection) connection.release()
-  }
-}
-
-// // SESSIONS
+// SESSIONS
 const createSession = async (userId) => {
-  let connection
   try {
-    connection = await pool.getConnection()
-    const sessionId = nanoid()
-    await connection.execute(`
-      INSERT INTO sessions (user_id, session_id)
-      VALUES (?, ?)`, [userId, sessionId]
-    );
+    const sessionToken = nanoid()
+    await db("sessions").insert({ user_id: userId, session_token: sessionToken, expires_at: Date.now() + TOKEN_VALIDITY_PERIOD })
+    return sessionToken
   } catch (err) {
-    console.error('Create user error:', err)
-    throw err
-  } finally {
-    if (connection) connection.release()
+    console.error(`Session was not created, error (knex):`, err)
   }
 }
 
 const getSession = async (session) => {
-  let connection
   try {
-    connection = await pool.getConnection()
-    const [rows] = await connection.execute('SELECT * FROM sessions WHERE session_id = ?', [session])
-    if (rows.length > 0) {
-      return rows[0]
-    } else {
-      return null;
-    }
+    const sessionToken = await db("sessions").where({ session_token: session }).first()
+    return sessionToken
   } catch (err) {
-    console.error(`Getting session error with ${session}:`, err)
-    throw err
-  } finally {
-    if (connection) connection.release()
+    console.error(`Session ${session} not found, error (knex):`, err)
   }
 }
 
-const deleteSession = async (sessionId) => {
-  let connection;
+const deleteSession = async (sessionToken) => {
   try {
-    connection = await pool.getConnection();
-    const [result] = await connection.execute('DELETE FROM sessions WHERE session_id = ?', [sessionId])
-    if (result.affectedRows > 0) {
-      console.log(`Сессия ${sessionId} удалена.`);
-      return true;
-    } else {
-      console.log(`Сессия ${sessionId} не найдена.`);
-      return false;
-    }
+    await db("sessions").where({ session_token: sessionToken }).delete()
   } catch (err) {
-    console.error(`Ошибка при удалении сессии ${sessionId}:`, err);
-    throw err;
-  } finally {
-    if (connection) connection.release();
+    console.error(`Session ${sessionToken} not deleted, error (knex):`, err)
   }
 }
 
-export {
-  getAllUsers,
-  createUser,
-  loginUser,
-  findUserBySessionId,
-  getUserById,
-  findUserByUsername,
-  createSession,
-  getSession,
-  deleteSession,
-}
-
-
-// const loginUser = async (username, password) => {
-//   if (username && password) {
-//     db = await getDb();
-//     try {
-//       const getUser = await findUserByUsername(username)
-//       if (!getUser) {
-//         console.error('User not found')
-//         return
-//       }
-//       if (getUser.username === username && getUser.password === password) return getUser
-//       else {
-//         console.error('Incorrect password')
-//         return
-//       }
-//     } catch (err) {
-//       console.error(`User ${username} does not exist or incorrect password:`, err)
+// NOTES
+// const getNotes = async (user_id, isArchived = 0, page = 1, period = 'alltime', search = '') => {
+//   try {
+//     const block = (page - 1) * NUMBER_NOTES_ON_PAGE
+//     const notesQuery = db('notes')
+//       .where({ user_id, isArchived })
+//       .andWhere('title', 'like', `%${search}%`)
+//       .orderBy('created', 'desc')
+//       .limit(NUMBER_NOTES_ON_PAGE)
+//       .offset(block)
+//     if (period !== 'alltime') {
+//       notesQuery.andWhere('created', '>=', db.raw(`NOW() - INTERVAL ${period}`))
 //     }
-//   }
-// }
+//     const notes = await notesQuery
 
-// const findUserByUsername = async (username) => {
-//   db = await getDb();
-//   try {
-//     const user = await db.collection('users').findOne({ username })
-//     return user
-//   } catch (err) {
-//     console.error(`User ${username} not found:`, err)
-//   }
-// }
-
-// const findUserBySessionId = async (sessionId) => {
-//   db = await getDb();
-//   try {
-//     const session = await db.collection('sessions').findOne({ sessionId }, { projection: { userId: 1 } })
-//     if (!session) return
-//     return await db.collection('users').findOne({ _id: session.userId })
-//   } catch (err) {
-//     console.error(`User by session ${sessionId} not found:`, err)
-//   }
-// }
-
-// // SESSIONS
-// const createSession = async (userId, username) => {
-//   db = await getDb();
-//   try {
-//     const sessionId = nanoid()
-//     await db.collection('sessions').insertOne({ userId, username, sessionId })
-//     return sessionId
-//   } catch (err) {
-//     console.error(`Session was not created:`, err)
-//   }
-// }
-
-// const getSession = async (session) => {
-//   db = await getDb();
-//   try {
-//     const sessionId = await db.collection('sessions').findOne({ sessionId: session })
-//     return sessionId
-//   } catch (err) {
-//     console.error(`Session ${session} not found:`, err)
-//   }
-// }
-
-// const deleteSession = async (sessionId) => {
-//   db = await getDb();
-//   try {
-//     await db.collection('sessions').deleteOne({ sessionId })
-//   } catch (err) {
-//     console.error(`Session ${sessionId} not deleted:`, err)
-//   }
-// }
-
-
-
-
-// import dotenv from 'dotenv'
-// dotenv.config()
-// import mysql from 'mysql2/promise';
-
-// async function main() {
-//   const conn = await mysql.createConnection({
-//     host: process.env.DB_HOST,
-//     port: process.env.DB_PORT || 3306,
-//     database: process.env.DB_NAME,
-//     user: process.env.DB_USER,
-//     password: process.env.DB_PASSWORD,
-//     ssl: { rejectUnauthorized: false },
-//   });
-
-//   await conn.execute(`
-//     CREATE TABLE IF NOT EXISTS users (
-//       id INT AUTO_INCREMENT PRIMARY KEY,
-//       username VARCHAR(50) UNIQUE NOT NULL,
-//       password VARCHAR(100) NOT NULL,
-//       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-//     );
-//   `);
-
-//   await conn.execute(`
-//     INSERT INTO users (username, password)
-//     VALUES (?, ?)`, ['test', '123']
-//   );
-
-//   console.log('✅ Данные успешно добавлены');
-//   await conn.end();
-// }
-
-// main().catch(console.error);
-
-
-
-
-// import dotenv from 'dotenv'
-// dotenv.config()
-// import mysql from 'mysql2/promise'
-
-// const pool = mysql.createPool({ // Используем пул соединений
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT || 3306, // 3306 - стандартный порт MySQL
-//   database: process.env.DB_NAME,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   waitForConnections: true,
-//   connectionLimit: 10, // Максимальное количество соединений в пуле
-//   queueLimit: 0
-// });
-
-// const getAllUsers = async () => {
-//   let connection;
-//   try {
-//     connection = await pool.getConnection();
-//     const [rows] = await connection.execute('SELECT * FROM users');
-//     console.log('Все пользователи:', rows);
-//     return rows;
-//   } catch (err) {
-//     console.error('Ошибка при получении всех пользователей:', err);
-//     throw err;
-//   } finally {
-//     if (connection) connection.release();
-//   }
-// };
-
-// const getUserById = async (id) => {
-//   let connection;
-//   try {
-//     connection = await pool.getConnection();
-//     const [rows] = await connection.execute('SELECT * FROM users WHERE id = ?', [id]);
-//     if (rows.length > 0) {
-//       console.log(`Пользователь с ID ${id}:`, rows[0]);
-//       return rows[0];
-//     } else {
-//       console.log(`Пользователь с ID ${id} не найден.`);
-//       return null;
+//     // number of notes for pagination
+//     const allNotesQuery = db('notes')
+//       .where({ user_id, isArchived })
+//     if (period !== 'alltime') {
+//       allNotesQuery.andWhere('created', '>=', db.raw(`NOW() - INTERVAL ${period}`))
 //     }
-//   } catch (err) {
-//     console.error(`Ошибка при получении пользователя с ID ${id}:`, err);
-//     throw err;
-//   } finally {
-//     if (connection) connection.release();
-//   }
-// };
+//     const allNotes = await allNotesQuery
+//     let hasMore = true
+//     if (NUMBER_NOTES_ON_PAGE * page >= allNotes.length) hasMore = false
 
-// // Пример использования:
-// getAllUsers();
-// getUserById(2);
-// getUserById(99); // Несуществующий ID
-
-
-
-// import dotenv from 'dotenv'
-// dotenv.config()
-// import mysql from 'mysql2/promise'
-
-// const pool = mysql.createPool({ // Используем пул соединений
-//   host: process.env.DB_HOST,
-//   port: process.env.DB_PORT || 3306, // 3306 - стандартный порт MySQL
-//   database: process.env.DB_NAME,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   waitForConnections: true,
-//   connectionLimit: 10, // Максимальное количество соединений в пуле
-//   queueLimit: 0
-// });
-
-// (async () => {
-//   let connection;
-//   try {
-//     connection = await pool.getConnection(); // Получаем соединение из пула
-//     const [rows, fields] = await connection.execute('SELECT * FROM users');
-//     console.log(rows);
-//   } catch (err) {
-//     console.error('Ошибка при запросе:', err);
-//   } finally {
-//     if (connection) connection.release(); // Освобождаем соединение обратно в пул
-//   }
-// })();
-
-
-
-
-
-// let db
-
-// async function getDb() {
-//   if (db) return db
-//   try {
-//     await client.connect()
-//     db = client.db('FM-todo')
-//     return db
-//   } catch (err) {
-//     console.err(`Error connection to mongo:`, err)
-//   }
-// }
-
-// // USERS
-// const createUser = async (username, password) => {
-//   if (username && password) {
-//     db = await getDb();
-//     try {
-//       const getUser = await findUserByUsername(username)
-//       if (!getUser) {
-//         await db.collection('users').insertOne({ username, password })
-//       }
-//     } catch (err) {
-//       console.error(`User ${username} did't created:`, err)
+//     // search highlite
+//     if (search.length) {
+//       notes.forEach(element => {
+//         const regex = new RegExp(`(${search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi')
+//         element.title = element.title.replace(regex, '<mark>$1</mark>')
+//       })
 //     }
-//   }
-// }
-
-// const loginUser = async (username, password) => {
-//   if (username && password) {
-//     db = await getDb();
-//     try {
-//       const getUser = await findUserByUsername(username)
-//       if (!getUser) {
-//         console.error('User not found')
-//         return
-//       }
-//       if (getUser.username === username && getUser.password === password) return getUser
-//       else {
-//         console.error('Incorrect password')
-//         return
-//       }
-//     } catch (err) {
-//       console.error(`User ${username} does not exist or incorrect password:`, err)
-//     }
-//   }
-// }
-
-// const findUserByUsername = async (username) => {
-//   db = await getDb();
-//   try {
-//     const user = await db.collection('users').findOne({ username })
-//     return user
+//     return { notes, hasMore }
 //   } catch (err) {
-//     console.error(`User ${username} not found:`, err)
-//   }
-// }
-
-// const findUserBySessionId = async (sessionId) => {
-//   db = await getDb();
-//   try {
-//     const session = await db.collection('sessions').findOne({ sessionId }, { projection: { userId: 1 } })
-//     if (!session) return
-//     return await db.collection('users').findOne({ _id: session.userId })
-//   } catch (err) {
-//     console.error(`User by session ${sessionId} not found:`, err)
-//   }
-// }
-
-// // SESSIONS
-// const createSession = async (userId, username) => {
-//   db = await getDb();
-//   try {
-//     const sessionId = nanoid()
-//     await db.collection('sessions').insertOne({ userId, username, sessionId })
-//     return sessionId
-//   } catch (err) {
-//     console.error(`Session was not created:`, err)
-//   }
-// }
-
-// const getSession = async (session) => {
-//   db = await getDb();
-//   try {
-//     const sessionId = await db.collection('sessions').findOne({ sessionId: session })
-//     return sessionId
-//   } catch (err) {
-//     console.error(`Session ${session} not found:`, err)
-//   }
-// }
-
-// const deleteSession = async (sessionId) => {
-//   db = await getDb();
-//   try {
-//     await db.collection('sessions').deleteOne({ sessionId })
-//   } catch (err) {
-//     console.error(`Session ${sessionId} not deleted:`, err)
-//   }
-// }
-
-// // TODOS
-// const getAllUserTodos = async (user) => {
-//   db = await getDb();
-//   try {
-//     const todos = await db.collection('todos').find({ user }).toArray();
-//     if (todos) return todos
-//   } catch (err) {
-//     console.error('Get todos error:', err)
+//     console.error(`Ошибка при получении заметок за период ${period} (knex):`, err)
 //     throw err
 //   }
 // }
 
-// const createTodo = async (todo, user) => {
-//   if (todo) {
-//     db = await getDb();
-//     try {
-//       const lastTodo = await db.collection('todos').find({ user }).sort({ order: -1 }).limit(1).toArray();
-//       const nextOrder = lastTodo.length > 0 ? lastTodo[0].order + 1 : 0
-//       await db.collection('todos').insertOne({ user, done: false, todo, order: nextOrder })
-//     } catch (err) {
-//       console.error(`Creation todo "${todo}" error:`, err)
-//       throw err
-//     }
-//   }
-// }
-
-// const getTodoById = async (id) => {
-//   db = await getDb();
+// const getNoteById = async (id) => {
 //   try {
-//     const todo = await db.collection('todos').findOne({ _id: new ObjectId(id) })
-//     if (todo) return todo
+//     const note = await db("notes").where({ id }).select("*").first()
+//     if (note) return note
 //     else {
-//       console.log(`Todo with ID ${id} not found.`)
+//       console.log(`Заметка с ID ${id} не найдена (knex).`)
 //       return
 //     }
 //   } catch (err) {
-//     console.error(`Get todo with ID ${id} error:`, err)
+//     console.error(`Ошибка при получении заметки с ID ${id} (knex):`, err)
 //     throw err
 //   }
 // }
 
-// const updateTodo = async (id, done) => {
-//   db = await getDb();
+// const createNote = async (user, title, html) => {
 //   try {
-//     const todo = await getTodoById(id)
-//     const result = todo.done ? false : true
-//     await db.collection('todos').updateOne({ _id: new ObjectId(id) }, { $set: { done: result } })
+//     const [id] = await db('notes').insert({ user_id: user, title, html })
+//     return id
 //   } catch (err) {
-//     console.error(`Update todo with ID ${id} error:`, err)
+//     console.error(`Ошибка при создании заметки "${title}" (knex):`, err)
 //     throw err
 //   }
 // }
 
-// const orderTodo = async (id, order) => {
-//   db = await getDb();
+// const editNote = async (id, title, html) => {
 //   try {
-//     const todo = await getTodoById(id)
-//     await db.collection('todos').updateOne({ _id: new ObjectId(id) }, { $set: { order } })
+//     await db('notes').where({ id }).update({ title, html, updated: new Date() })
 //   } catch (err) {
-//     console.error(`Order change todo with ID ${id} error:`, err)
+//     console.error(`Ошибка при изменении заметки с ID ${id} (knex):`, err)
 //     throw err
 //   }
 // }
 
-// const deleteTodo = async (id) => {
-//   db = await getDb();
+// const archiveToggleNote = async (id, isArchived) => {
 //   try {
-//     await db.collection('todos').deleteOne({ _id: new ObjectId(id) })
+//     await db('notes').where({ id }).update({ isArchived })
 //   } catch (err) {
-//     console.error(`Delete todo with ID ${id} error:`, err)
+//     console.error(`Ошибка при изменении заметки с ID ${id} (knex):`, err)
 //     throw err
 //   }
 // }
 
-// export {
-//   getDb,
-//   getAllUserTodos,
-//   createTodo,
-//   getTodoById,
-//   updateTodo,
-//   orderTodo,
-//   deleteTodo,
-//   createUser,
-//   loginUser,
-//   createSession,
-//   findUserBySessionId,
-//   findUserByUsername,
-//   getSession,
-//   deleteSession
+// const deleteArchivedNote = async (id) => {
+//   try {
+//     await db('notes').where({ id }).del()
+//   } catch (err) {
+//     console.error(`Ошибка при удалении заметки (knex):`, err)
+//     throw err
+//   }
 // }
+
+// const deleteAllArchivedNotes = async () => {
+//   try {
+//     await db('notes').where({ isArchived: 1 }).del()
+//   } catch (err) {
+//     console.error(`Ошибка при удалении всех заметок (knex):`, err)
+//     throw err
+//   }
+// }
+
+// // GOOGLE auth
+// const findUserByGoogleId = async (google_id) => {
+//   try {
+//     const [user] = await db('users').select().where({ google_id }).limit(1)
+//     return user.id
+//   } catch (err) {
+//     console.error(`Пользователь с Google ID ${google_id} не найден, ошибка (knex):`, err)
+//   }
+// }
+
+// const createGoogleUser = async ({ google_id, name }) => {
+//   try {
+//     const [user] = await db('users')
+//       .insert({ google_id, username: name, password: 'oauth-google' })
+//     await createNote(user, demoNote.title, demoNote.text)
+//     return user
+//   } catch (err) {
+//     console.error(`Ошибка при создании Google-пользователя ${name} (knex):`, err)
+//   }
+// }
+
+
+export default {
+  createUser,
+  loginUser,
+  createSession,
+  findUserBySessionId,
+  findUserByUsername,
+  getSession,
+  deleteSession,
+}

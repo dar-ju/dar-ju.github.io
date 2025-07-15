@@ -1,15 +1,10 @@
-import express from 'express'
 import dotenv from 'dotenv'
+import express from 'express'
+import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import bcrypt from 'bcrypt'
-import {
-  getAllUsers,
-  createUser,
-  loginUser,
-  findUserBySessionId,
-  getUserById,
-  findUserByUsername,
-} from './db.js'
+import db from './db.js'
+import './auth/google.js'
 
 dotenv.config()
 
@@ -17,32 +12,21 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-
-// mongoose.connect(process.env.MONGO_URI)
-//   .then(() => console.log('Mongo connected'))
-//   .catch(err => console.error(err))
-
-// local dev domen
-// const corsOptions = {
-//   origin: 'https://dar-ju.github.io',
-//   credentials: true,
-//   methods: ['GET', 'POST', 'OPTIONS', 'PUT'],
-//   allowedHeaders: ['Content-Type'],
-// }
-
-// app.use(cors(corsOptions))
+app.use(express.static('public'))
 
 
-// SESSIONS
+app.use(passport.initialize())
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }))
+
 app.use(async (req, res, next) => {
-  const sessionId = req.cookies.sessionId
+  const sessionId = req.cookies.sessionId || req.cookies.session
   if (sessionId) {
     try {
-      const session = await getSession(sessionId)
+      const session = await db.getSession(sessionId)
       if (session) {
-        req.user = {
-          _id: session.userId,
-          username: session.username
+        const user = await db.findUserBySessionId(sessionId)
+        if (user) {
+          req.user = user
         }
       }
     } catch (err) {
@@ -52,36 +36,19 @@ app.use(async (req, res, next) => {
   next()
 })
 
-app.get('/api/me', (req, res) => {
-  if (req.user) {
-    res.json({ username: req.user.username })
-  } else {
-    res.status(401).json({ user: 'User not authenticated' })
-  }
-})
-
-
-// USER
 async function userLogin(username, password, res) {
-  const userDataFromDB = await findUserByUsername(username)
+  const userDataFromDB = await db.findUserByUsername(username)
   const hashPsw = userDataFromDB.password
   const match = await bcrypt.compare(password, hashPsw)
   if (match) {
-    const user = await loginUser(username, hashPsw)
-    const sessionId = await createSession(user._id, username)
-    res.cookie('sessionId', sessionId, {
-      maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true,
-      path: '/',
-      secure: true,
-      sameSite: 'None',
-      partitioned: true
-    })
-    return res.json({ username: user.username })
+    const user = await db.loginUser(username, hashPsw)
+    const sessionId = await db.createSession(user.id)
+    res.cookie('sessionId', sessionId, { httpOnly: true })
+    res.redirect('/dashboard')
   }
   else {
-    console.error('Wrong password');
-    res.status(401).json({ error: 'User does not exist or wrong password' })
+    console.error('Wrong password')
+    res.redirect('/')
   }
 }
 
@@ -90,109 +57,141 @@ app.post("/login", async (req, res) => {
     const { username, password } = req.body
     await userLogin(username, password, res)
   } catch (err) {
-    console.error('Login server error:', err)
-    res.status(401).json({ error: 'User does not exist or wrong password' })
+    res.redirect('/')
   }
 })
 
-app.post("/logout", async (req, res) => {
+app.get("/logout", async (req, res) => {
   try {
-    const sessionId = req.cookies?.sessionId
-    if (sessionId) {
-      await deleteSession(sessionId)
-      res.clearCookie('sessionId', {
-        httpOnly: true,
-        sameSite: 'None',
-        secure: true,
-        path: '/',
-      })
-    }
-    res.status(200).json({ message: 'Logged out' })
+    const sessionId = req.cookies.sessionId
+    await db.deleteSession(sessionId)
+    res.clearCookie('sessionId')
+    res.redirect('/')
   } catch (err) {
-    console.error('Logout error:', err)
-    res.status(500).json({ error: 'Server error. Try logout later.' })
+    res.redirect('/')
   }
 })
 
 app.post("/signup", async (req, res) => {
   const { username, password } = req.body
   const hashPsw = await bcrypt.hash(password, 10)
-  try {
-    await createUser(username, hashPsw)
-  } catch (err) {
-    console.error('Register error:', err)
-    res.status(500).json({ error: 'Server error. Try to register later.' })
-  }
+  await db.createUser(username, hashPsw)
   await userLogin(username, password, res)
 })
 
-
-// TODOS
-// get all user tdos
-// app.get('/api/todos', async (req, res) => {
-//   const username = req.user.username
+// app.get("/api/notes", async (req, res) => {
+//   if (!req.user) return res.status(401).json({ error: "User is not authorized" })
 //   try {
-//     const todos = await getAllUserTodos(username);
-//     res.json(todos);
-//   } catch (err) {
-//     console.error('Get todos error:', err)
-//     res.status(500).json({ error: 'Server error. Try later.' })
-//   }
-// });
+//     const { age, search, page } = JSON.parse(req.query.filter)
+//     const userId = req.user.id
+//     let allNotes
+//     if (age === 'archive') allNotes = await db.getNotes(userId, 1, page, 'alltime', search)
+//     else if (age === '1month') allNotes = await db.getNotes(userId, 0, page, '1 MONTH', search)
+//     else if (age === '3months') allNotes = await db.getNotes(userId, 0, page, '3 MONTH', search)
+//     else allNotes = await db.getNotes(userId, 0, page, 'alltime', search)
 
-// // create new todo
-// app.post("/api/todos", async (req, res) => {
-//   const { todo } = req.body
-//   const username = req.user.username
-//   try {
-//     await createTodo(todo, username)
-//     res.status(200).json({ message: "Todo created" })
+//     res.json({ data: allNotes.notes || [], hasMore: allNotes.hasMore })
 //   } catch (err) {
-//     console.error('Add new todo error:', err)
-//     res.status(500).json({ error: 'Server error. Try add todo later.' })
-//   }
-// })
-
-// // toggle done todo
-// app.post("/api/todos/:id/done", async (req, res) => {
-//   const { id } = req.params
-//   try {
-//     await updateTodo(id, 'toggle')
-//     res.status(200).json({ message: "Todo status changed" })
-//   } catch (err) {
-//     console.error('Toogle todo status error:', err)
-//     res.status(500).json({ error: 'Server error. Try to change status later.' })
-//   }
-// })
-
-// // change todo order in list
-// app.put("/api/todos/:id/update-order", async (req, res) => {
-//   const { id } = req.params
-//   const { order } = req.body;
-//   try {
-//     await orderTodo(id, order)
-//     res.status(200).json({ message: "Todo order changed" })
-//   } catch (err) {
-//     console.error('Change order error:', err)
-//     res.status(500).json({ error: 'Server error. Try to change order later.' })
-//   }
-// })
-
-// // delete todo
-// app.post("/api/todos/:id/delete", async (req, res) => {
-//   const { id } = req.params
-//   try {
-//     await deleteTodo(id)
-//     res.status(200).json({ message: "Todo deleted" })
-//   } catch (err) {
-//     console.error('Delete todo error:', err)
-//     res.status(500).json({ error: 'Server error. Try to delete todo later.' })
+//     console.error("Ошибка при получении заметок:", err)
+//     res.status(500).json({ error: "Ошибка сервера" })
 //   }
 // })
 
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log(`Server is running on port ${process.env.PORT || 3000}`)
+// app.get("/api/note/:id", async (req, res) => {
+//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
+//   try {
+//     const noteId = req.params.id
+//     const note = await db.getNoteById(noteId)
+//     res.json(note)
+//   } catch (err) {
+//     console.error("Ошибка при получении заметки:", err)
+//     res.status(500).json({ error: "Ошибка сервера" })
+//   }
+// })
+
+// app.post("/api/note/new", async (req, res) => {
+//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
+//   try {
+//     const { title, html } = req.body
+//     const noteId = await db.createNote(req.user.id, title, html)
+//     res.json({ id: noteId })
+//   } catch (err) {
+//     console.error("Ошибка при создании заметки:", err)
+//     res.status(500).json({ error: "Ошибка сервера" })
+//   }
+// })
+
+// app.put("/api/note/:id/edit", async (req, res) => {
+//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
+//   try {
+//     if ('isArchived' in req.body) {
+//       const { id, isArchived } = req.body
+//       if (isArchived === true) await db.archiveToggleNote(id, 1)
+//       else await db.archiveToggleNote(id, 0)
+//     } else {
+//       const { id, title, html } = req.body
+//       await db.editNote(id, title, html)
+//     }
+//     const notes = await db.getNotes(req.user.id)
+//     res.json({ data: notes })
+//   } catch (err) {
+//     console.error("Ошибка при изменении заметки:", err)
+//     res.status(500).json({ error: "Ошибка сервера" })
+//   }
+// })
+
+// app.delete('/api/note/:id/delete', async (req, res) => {
+//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
+//   try {
+//     const { id } = req.params
+//     await db.deleteArchivedNote(id)
+//     res.json({ success: true })
+//   } catch (err) {
+//     console.error("Ошибка при удалении заметки:", err)
+//     res.status(500).json({ error: "Ошибка сервера" })
+//   }
+// })
+
+// app.delete('/api/notes/delete', async (req, res) => {
+//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
+//   try {
+//     await db.deleteAllArchivedNotes()
+//     res.json({ success: true })
+//   } catch (err) {
+//     console.error("Ошибка при удалении всех заметок:", err)
+//     res.status(500).json({ error: "Ошибка сервера" })
+//   }
+// })
+
+app.get('/auth/google/callback', passport.authenticate('google', { session: false }), async (req, res) => {
+  const userId = req.user
+  const sessionToken = await db.createSession(userId)
+  res.cookie('sessionId', sessionToken, {
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7
+  })
+  res.redirect('/')
 })
 
-console.log('🟢 Программа дошла до конца и не упала')
+
+app.get("/", (req, res) => {
+  if (req.user) {
+    res.redirect('/dashboard')
+  } else res.render('index')
+})
+
+// app.get('/dashboard', (req, res) => {
+//   if (req.user) res.render('dashboard', { username: req.user.username })
+//   else res.redirect('/')
+// })
+
+app.use((req, res) => {
+  res.send('Page not found')
+})
+
+const port = process.env.PORT || 3000
+
+app.listen(port, () => {
+  console.log(`  Listening on http://localhost:${port}`)
+})
