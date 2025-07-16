@@ -11,21 +11,23 @@ const handleToggleForm = (val: boolean) => {
 </script>
 
 <template>
-  <div class="section login">
-    <div class="container login__container">
-      <img
-        class="login__logo"
-        src="/assets/images/logo.svg"
-        alt="Mood app logo"
-        width="178"
-        height="40"
-      />
-      <Transition name="fade" mode="out-in">
-        <LoginForm v-if="isLoginForm" @isLoginForm="handleToggleForm" />
-        <RegisterForm v-else @isLoginForm="handleToggleForm" />
-      </Transition>
+  <main>
+    <div class="section login">
+      <div class="container login__container">
+        <img
+          class="login__logo"
+          src="/assets/images/logo.svg"
+          alt="Mood app logo"
+          width="178"
+          height="40"
+        />
+        <Transition name="fade" mode="out-in">
+          <LoginForm v-if="isLoginForm" @isLoginForm="handleToggleForm" />
+          <RegisterForm v-else @isLoginForm="handleToggleForm" />
+        </Transition>
+      </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <style lang="scss" scoped>

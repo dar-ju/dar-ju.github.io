@@ -2,85 +2,89 @@
 
 /* FONTS */
 @font-face {
-  font-family: "RedditSans";
-  src: local("RedditSans"),
-    url("@/assets/fonts/RedditSans-Regular.woff2") format("woff2"),
-    url("@/assets/fonts/RedditSans-Regular.woff") format("woff");
+  font-family: 'RedditSans';
+  src:
+    local('RedditSans'),
+    url('@/assets/fonts/RedditSans-Regular.woff2') format('woff2'),
+    url('@/assets/fonts/RedditSans-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RedditSans";
-  src: local("RedditSans"),
-    url("@/assets/fonts/RedditSans-Medium.woff2") format("woff2"),
-    url("@/assets/fonts/RedditSans-Medium.woff") format("woff");
+  font-family: 'RedditSans';
+  src:
+    local('RedditSans'),
+    url('@/assets/fonts/RedditSans-Medium.woff2') format('woff2'),
+    url('@/assets/fonts/RedditSans-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RedditSans";
-  src: local("RedditSans"),
-    url("@/assets/fonts/RedditSans-MediumItalic.woff2") format("woff2"),
-    url("@/assets/fonts/RedditSans-MediumItalic.woff") format("woff");
+  font-family: 'RedditSans';
+  src:
+    local('RedditSans'),
+    url('@/assets/fonts/RedditSans-MediumItalic.woff2') format('woff2'),
+    url('@/assets/fonts/RedditSans-MediumItalic.woff') format('woff');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RedditSans";
-  src: local("RedditSans"),
-    url("@/assets/fonts/RedditSans-SemiBold.woff2") format("woff2"),
-    url("@/assets/fonts/RedditSans-SemiBold.woff") format("woff");
+  font-family: 'RedditSans';
+  src:
+    local('RedditSans'),
+    url('@/assets/fonts/RedditSans-SemiBold.woff2') format('woff2'),
+    url('@/assets/fonts/RedditSans-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "RedditSans";
-  src: local("RedditSans"),
-    url("@/assets/fonts/RedditSans-Bold.woff2") format("woff2"),
-    url("@/assets/fonts/RedditSans-Bold.woff") format("woff");
+  font-family: 'RedditSans';
+  src:
+    local('RedditSans'),
+    url('@/assets/fonts/RedditSans-Bold.woff2') format('woff2'),
+    url('@/assets/fonts/RedditSans-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 /* Bootstrap Customize */
-$primary: #4865DB;
-@import "bootstrap/scss/bootstrap";
+$primary: #4865db;
+@import 'bootstrap/scss/bootstrap';
 
 :root {
   /* COLORS */
   /* Neutral */
-  --neutral-900: #21214D;
-  --neutral-600: #57577B;
-  --neutral-300: #9393B7;
-  --neutral-200: #CBCDD0;
-  --neutral-0: #FFFFFF;
+  --neutral-900: #21214d;
+  --neutral-600: #57577b;
+  --neutral-300: #9393b7;
+  --neutral-200: #cbcdd0;
+  --neutral-0: #ffffff;
   /* Blue */
-  --blue-700: #2A4CD5;
-  --blue-600: #4865DB;
-  --blue-200: #C7D3F7;
-  --blue-100: #E0E6FA;
+  --blue-700: #2a4cd5;
+  --blue-600: #4865db;
+  --blue-200: #c7d3f7;
+  --blue-100: #e0e6fa;
   /* Red */
-  --red-700: #E60013;
+  --red-700: #e60013;
   /* Other */
-  --other-red-300: #FF9B99;
-  --other-indigo-200: #B8B1FF;
-  --other-blue-300: #89CAFF;
-  --other-green-300: #89E780;
-  --other-amber-300: #FFC97C;
+  --other-red-300: #ff9b99;
+  --other-indigo-200: #b8b1ff;
+  --other-blue-300: #89caff;
+  --other-green-300: #89e780;
+  --other-amber-300: #ffc97c;
   --shadow: #20252914;
 
   /* INDENTS */
-  --containerPadding: 165px;
-
+  --containerPadding: 135px;
 
   /* Media */
   @include media-query-l {

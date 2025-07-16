@@ -3,9 +3,7 @@
 </script>
 
 <template>
-  <main>
-    <RouterView />
-  </main>
+  <RouterView />
   <!-- <h1 class="text-gray-500 dark:text-gray-400">test</h1> -->
 </template>
 
