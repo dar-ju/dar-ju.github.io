@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import LoginForm from '@/components/forms/LoginForm.vue'
 import RegisterForm from '@/components/forms/RegisterForm.vue'
-
 const isLoginForm = ref(true)
 
 const handleToggleForm = (val: boolean) => {

@@ -11,7 +11,7 @@ const toggleLogin = () => {
 
 // form check
 const form = ref<HTMLFormElement | null>(null)
-const onSubmit = (event: Event) => {
+const handleSubmit = (event: Event) => {
   const currentForm = form.value
   if (!currentForm) return
   if (!currentForm.checkValidity()) {
@@ -24,9 +24,9 @@ const onSubmit = (event: Event) => {
 
 <template>
   <div class="login__wrapper">
-    <h1 class="title login__title">Create an&nbsp;account</h1>
-    <p class="login__descr">Join to track your daily mood and sleep with ease.</p>
-    <form class="login__form" ref="form" novalidate @submit.prevent="onSubmit">
+    <h1 class="title login__title">Welcome back!</h1>
+    <p class="login__descr">Log in to continue tracking your mood and sleep.</p>
+    <form class="login__form" ref="form" novalidate @submit.prevent="(e) => handleSubmit(e)">
       <div class="login__email-wrapper">
         <label for="email" class="form-label login__email-label">Email address</label>
         <input
@@ -35,7 +35,6 @@ const onSubmit = (event: Event) => {
           id="email"
           placeholder="name@mail.com"
           aria-describedby="emailHelp"
-          required
         />
         <div class="invalid-feedback">
           <div class="login__invalid-wrapper">
@@ -59,10 +58,10 @@ const onSubmit = (event: Event) => {
         <label for="password" class="form-label login__password-label">Password</label>
         <input type="password" class="form-control login__input" id="password" />
       </div>
-      <button type="submit" class="btn btn-primary login__btn">Sign Up</button>
+      <button type="submit" class="btn btn-primary login__btn">Log In</button>
     </form>
     <p class="login__toggle">
-      Already got an account? <a @click="toggleLogin()" class="login__login">Log&nbsp;in.</a>
+      Haven't got an account? <a @click="toggleLogin()" class="login__login">Sign&nbsp;up.</a>
     </p>
   </div>
 </template>
@@ -71,11 +70,6 @@ const onSubmit = (event: Event) => {
 @use '@/assets/styles/breakpoints' as *;
 @use '@/assets/styles/_typography' as *;
 .login {
-  &__container {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-  }
   &__wrapper {
     width: 100%;
     max-width: 530px;
