@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProfilePopover from '@/components/modals/ProfilePopover.vue'
+import ProfilePopover from '@/components/modals/profile/ProfilePopover.vue'
 import { ref } from 'vue'
 
 const isPopoverVisible = ref(false)

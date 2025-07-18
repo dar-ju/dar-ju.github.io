@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import LoginForm from '@/components/forms/LoginForm.vue'
 import RegisterForm from '@/components/forms/RegisterForm.vue'
+import PersonalizeForm from '@/components/forms/PersonalizeForm.vue'
 const isLoginForm = ref(true)
 
 const handleToggleForm = (val: boolean) => {
@@ -20,10 +21,11 @@ const handleToggleForm = (val: boolean) => {
           width="178"
           height="40"
         />
-        <Transition name="fade" mode="out-in">
+        <!-- <Transition name="fade" mode="out-in">
           <LoginForm v-if="isLoginForm" @isLoginForm="handleToggleForm" />
           <RegisterForm v-else @isLoginForm="handleToggleForm" />
-        </Transition>
+        </Transition> -->
+        <PersonalizeForm />
       </div>
     </div>
   </main>

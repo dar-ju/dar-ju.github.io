@@ -1,5 +1,14 @@
 <script setup lang="ts">
-defineProps<{ onClose: () => void }>()
+import { useModalStore } from '@/stores/modals'
+
+const props = defineProps<{ onClose: () => void }>()
+
+const modal = useModalStore()
+
+const handleClick = () => {
+  props.onClose()
+  modal.isSettingsModalActive = true
+}
 </script>
 
 <template>
@@ -9,7 +18,7 @@ defineProps<{ onClose: () => void }>()
       <p class="profile-popover__name">Lisa Maria</p>
       <p class="profile-popover__email">lisa@mail.com</p>
       <div class="profile-popover__link-block">
-        <div class="profile-popover__link">
+        <div @click="handleClick" class="profile-popover__link">
           <img
             class="profile-popover__link-img"
             src="/assets/images/icon-settings.svg"

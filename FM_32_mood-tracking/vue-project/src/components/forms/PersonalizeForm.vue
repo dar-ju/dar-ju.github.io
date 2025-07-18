@@ -1,19 +1,26 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useFileCheck } from '@/composables/useFileCheck.ts'
 
 const router = useRouter()
+const correctFile = ref(true)
 
 // form check
 const form = ref<HTMLFormElement | null>(null)
 const handleSubmit = (event: Event) => {
   const currentForm = form.value
   if (!currentForm) return
-  if (!currentForm.checkValidity()) {
+  if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
   } else router.push('/dashboard')
   currentForm.classList.add('was-validated')
+}
+
+// file check
+const handleFile = (e: Event) => {
+  correctFile.value = useFileCheck(e)
 }
 </script>
 
@@ -46,9 +53,39 @@ const handleSubmit = (event: Event) => {
           <span class="personal__upload-title">Upload Image</span>
           <span class="personal__upload-descr">Max 250KB, PNG or JPEG</span>
           <div class="personal__upload-btn">
-            <input type="file" id="file" style="display: none" />
-            <label class="btn btn-secondary personal__upload-btn-label" for="file">Upload</label>
-            <div class="invalid-feedback">Example invalid form file feedback</div>
+            <input
+              type="file"
+              id="file"
+              accept="image/png, image/jpeg"
+              @change="handleFile"
+              style="display: none"
+            />
+            <label
+              :class="[
+                'btn btn-secondary personal__upload-btn-label',
+                { 'is-invalid': !correctFile },
+              ]"
+              for="file"
+            >
+              Upload
+            </label>
+            <div v-if="!correctFile" class="invalid-feedback">
+              <div class="personal__invalid-wrapper">
+                <svg
+                  width="12"
+                  height="13"
+                  viewBox="0 0 12 13"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M5.8125 0.6875C9 0.6875 11.625 3.3125 11.625 6.5C11.625 9.71094 9 12.3125 5.8125 12.3125C2.60156 12.3125 0 9.71094 0 6.5C0 3.3125 2.60156 0.6875 5.8125 0.6875ZM5.8125 3.26562C5.25 3.26562 4.82812 3.71094 4.82812 4.25C4.82812 4.8125 5.25 5.23438 5.8125 5.23438C6.35156 5.23438 6.79688 4.8125 6.79688 4.25C6.79688 3.71094 6.35156 3.26562 5.8125 3.26562ZM7.125 9.21875V8.65625C7.125 8.51562 6.98438 8.375 6.84375 8.375H6.5625V6.03125C6.5625 5.89062 6.42188 5.75 6.28125 5.75H4.78125C4.61719 5.75 4.5 5.89062 4.5 6.03125V6.59375C4.5 6.75781 4.61719 6.875 4.78125 6.875H5.0625V8.375H4.78125C4.61719 8.375 4.5 8.51562 4.5 8.65625V9.21875C4.5 9.38281 4.61719 9.5 4.78125 9.5H6.84375C6.98438 9.5 7.125 9.38281 7.125 9.21875Z"
+                    fill="#E60013"
+                  />
+                </svg>
+                <span>Unsupported file type. Please upload a PNG or JPEG</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -65,7 +102,7 @@ const handleSubmit = (event: Event) => {
     width: 100%;
     max-width: 530px;
     padding: 40px 32px;
-    background-color: var(--white);
+    background-color: var(--neutral-0);
     border-radius: 16px;
     box-shadow: 0px 8px 16px 0px var(--shadow);
   }
@@ -109,10 +146,10 @@ const handleSubmit = (event: Event) => {
     @include text-preset(preset7);
   }
   &__upload-btn {
-    max-width: 91px;
     cursor: pointer;
   }
   &__upload-btn-label {
+    margin: 0;
     border-radius: 8px;
     border-color: var(--neutral-300);
     color: var(--neutral-900);
@@ -122,6 +159,12 @@ const handleSubmit = (event: Event) => {
     width: 100%;
     border-radius: 10px;
     @include text-preset(preset5);
+  }
+  &__invalid-wrapper {
+    display: flex;
+    padding-top: 6px;
+    gap: 6px;
+    @include text-preset(preset9);
   }
 
   /* Media */

@@ -102,8 +102,6 @@ const handleSubmit = (event: Event) => {
   }
   &__btn {
     width: 100%;
-    border-radius: 10px;
-    @include text-preset(preset5);
   }
 
   &__toggle {
