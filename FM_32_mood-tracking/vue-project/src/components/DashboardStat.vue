@@ -1,12 +1,69 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useDataStore } from '@/stores/moodData'
 
-onMounted(() => {
-  const el = document.querySelector('.stat__trends-bars')
-  if (el) {
-    el.scrollLeft = el.scrollWidth
+const mood = useDataStore()
+
+const BARS = 11
+const limitData = ref({})
+const scrollRef = ref(null)
+
+const scrollToEnd = () => {
+  const el = scrollRef.value
+  if (!el) return
+  const target = el.scrollWidth - el.clientWidth
+  el.scrollLeft = target
+  if (el.scrollLeft !== target) {
+    setTimeout(scrollToEnd, 100)
   }
+}
+
+onMounted(async () => {
+  await mood.getdata()
+  console.log(mood.data)
+  limitData.value = mood.data.moodEntries.slice(0, BARS)
+  console.log(limitData.value)
+
+  setTimeout(scrollToEnd, 100)
 })
+
+function getDate(dateStr) {
+  const date = new Date(dateStr)
+  const day = date.getUTCDate()
+  const month = date.toLocaleString('en-EN', { month: 'long' })
+  return { day: day, month: month }
+}
+
+const moodMap = {
+  '2': {
+    img: '/assets/images/icon-very-happy-white.svg',
+    color: 'var(--other-amber-300)',
+  },
+  '1': {
+    img: '/assets/images/icon-happy-white.svg',
+    color: 'var(--other-green-300)',
+  },
+  '0': {
+    img: '/assets/images/icon-neutral-white.svg',
+    color: 'var(--other-blue-300)',
+  },
+  '-1': {
+    img: '/assets/images/icon-sad-white.svg',
+    color: 'var(--other-indigo-200)',
+  },
+  '-2': {
+    img: '/assets/images/icon-very-sad-white.svg',
+    color: 'var(--other-red-300)',
+  },
+}
+
+const sleepMap = {
+  '9': '100%',
+  '7.5': '214px',
+  '5.5': '165px',
+  '3.5': '104px',
+  '1.5': '50px',
+}
 </script>
 
 <template>
@@ -89,11 +146,26 @@ onMounted(() => {
               <span class="stat__trends-hour-text">0-2 hours</span>
             </li>
           </ul>
-          <ul class="stat__trends-bars">
-            <li v-for="item in 11" :key="item" class="stat__trends-bar">
+          <ul ref="scrollRef" class="stat__trends-bars">
+            <li v-for="item in limitData" :key="item.createdAt" class="stat__trends-bar">
+              <div
+                class="stat__trends-bar-column"
+                :style="{
+                  backgroundColor: moodMap[item.mood].color,
+                  maxHeight: sleepMap[item.sleepHours],
+                }"
+              >
+                <img
+                  class="stat__trends-bar-img"
+                  :src="moodMap[item.mood].img"
+                  alt=""
+                  width="30"
+                  height="30"
+                />
+              </div>
               <div class="stat__trends-bar-date">
-                <span class="stat__trends-bar-month">April</span>
-                <span class="stat__trends-bar-number">{{ item }}</span>
+                <span class="stat__trends-bar-month">{{ getDate(item.createdAt).month }}</span>
+                <span class="stat__trends-bar-number">{{ getDate(item.createdAt).day }}</span>
               </div>
             </li>
           </ul>
@@ -149,7 +221,7 @@ onMounted(() => {
   }
   &__average-block {
     display: flex;
-    padding: 42px 20px;
+    padding: 28px 20px;
     gap: 12px;
     flex-direction: column;
     border-radius: 16px;
@@ -173,7 +245,7 @@ onMounted(() => {
     display: flex;
     max-width: 768px;
     width: 100%;
-    padding: 32px;
+    padding: 26px;
     gap: 32px;
     border-radius: 16px;
     background-color: var(--neutral-0);
@@ -181,6 +253,7 @@ onMounted(() => {
     flex-direction: column;
   }
   &__trends-title {
+    margin: 0;
     @include text-preset(preset3);
     color: var(--neutral-900);
   }
@@ -221,21 +294,37 @@ onMounted(() => {
   &__trends-bars {
     position: absolute;
     display: flex;
+    height: 100%;
+    max-height: 314px;
     max-width: 626px;
     width: calc(100% - 84px);
-    padding-bottom: 10px;
+    margin: 0;
     gap: 18px;
     right: 0;
     bottom: 0;
     overflow-x: auto;
     overflow-y: hidden;
+    margin-left: auto;
   }
   &__trends-bar {
     display: flex;
     min-width: 40px;
-    min-height: 307px;
+    gap: 11px;
     flex-direction: column;
     justify-content: flex-end;
+  }
+  &__trends-bar-column {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--other-amber-300);
+    border-radius: 40px;
+  }
+  &__trends-bar-img {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   &__trends-bar-date {
     display: flex;

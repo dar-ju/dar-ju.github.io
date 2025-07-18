@@ -11,7 +11,7 @@ const modal = useModalStore()
 const isLast = computed(() => modal.currentLogStage === 4)
 
 const next = () => {
-  if (modal.currentLogStage === 1 && !modal.moodLevel) {
+  if (modal.currentLogStage === 1 && modal.moodLevel === null) {
     modal.isWarnVisible = true
     return
   }

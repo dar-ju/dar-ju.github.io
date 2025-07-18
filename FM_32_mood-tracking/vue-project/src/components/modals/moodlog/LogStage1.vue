@@ -15,13 +15,13 @@ const moodList = [
   {
     id: 1,
     title: 'Very Happy',
-    value: 'very-happy',
+    value: 2,
     img: '/assets/images/icon-very-happy-color.svg',
   },
-  { id: 2, title: 'Happy', value: 'happy', img: '/assets/images/icon-happy-color.svg' },
-  { id: 3, title: 'Neutral', value: 'neutral', img: '/assets/images/icon-neutral-color.svg' },
-  { id: 4, title: 'Sad', value: 'sad', img: '/assets/images/icon-sad-color.svg' },
-  { id: 5, title: 'Very Sad', value: 'very-sad', img: '/assets/images/icon-very-sad-color.svg' },
+  { id: 2, value: 1, title: 'Happy', img: '/assets/images/icon-happy-color.svg' },
+  { id: 3, value: 0, title: 'Neutral', img: '/assets/images/icon-neutral-color.svg' },
+  { id: 4, value: -1, title: 'Sad', img: '/assets/images/icon-sad-color.svg' },
+  { id: 5, value: -2, title: 'Very Sad', img: '/assets/images/icon-very-sad-color.svg' },
 ]
 </script>
 
@@ -33,14 +33,14 @@ const moodList = [
         <label
           class="log__mood-block"
           :class="{ 'log__mood-block--selected': modal.moodLevel === item.value }"
-          :for="item.value"
+          :for="item.title"
         >
           <div class="form-check log__mood">
             <input
               class="form-check-input log__mood-input"
               type="radio"
               name="mood"
-              :id="item.value"
+              :id="item.title"
               :value="item.value"
               v-model="modal.moodLevel"
             />
