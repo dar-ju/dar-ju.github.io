@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import HeaderMood from '@/components/HeaderMood.vue'
-import DashboardHello from '@/components/DashboardHello.vue'
-import DashboardStat from '@/components/DashboardStat.vue'
+import HeaderMood from '@/components/dashboard/HeaderMood.vue'
+import DashboardHello from '@/components/dashboard/DashboardHello.vue'
+import DashboardStat from '@/components/dashboard/DashboardStat.vue'
 import ProfileSettings from '@/components/modals/profile/ProfileSettings.vue'
 import LogMain from '@/components/modals/moodlog/LogMain.vue'
 import { useModalStore } from '@/stores/modals'

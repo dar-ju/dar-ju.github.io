@@ -173,3 +173,13 @@ body::before {
 .fade-leave-to {
   opacity: 0;
 }
+
+@keyframes increaseHeight {
+  0% {
+    height: 0;
+    transform: scaleY(0.8);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
