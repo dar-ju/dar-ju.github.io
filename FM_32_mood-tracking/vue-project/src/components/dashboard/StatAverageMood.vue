@@ -26,8 +26,8 @@ watch(
       averageData.value.title = moodMap[average].title
       averageData.value.titleImg = moodMap[average].img
       averageData.value.bckgColor = moodMap[average].color
-      console.log(lastNMoods)
-      console.log(average)
+      // console.log(lastNMoods)
+      // console.log(average)
       if (moods.length >= CHECKINS && moods.length < CHECKINS * 2) {
         averageData.value.descr = `Log another ${CHECKINS} check‑ins to see your progress mood.`
       } else {

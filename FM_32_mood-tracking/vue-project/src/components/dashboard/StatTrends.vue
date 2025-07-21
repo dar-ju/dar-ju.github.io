@@ -109,7 +109,7 @@ function getDate(dateStr) {
             class="stat__trends-bar-column"
             :style="{
               backgroundColor: moodMap[item.mood]?.color,
-              height: sleepMap[item.sleepHours],
+              height: sleepMap[item.sleepHours].height,
             }"
           >
             <img

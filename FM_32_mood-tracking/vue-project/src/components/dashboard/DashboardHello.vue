@@ -29,7 +29,7 @@ const today: Date = new Date()
 @use '@/assets/styles/_typography' as *;
 .mood {
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 48px;
   &__container {
     display: flex;
     gap: 10px;

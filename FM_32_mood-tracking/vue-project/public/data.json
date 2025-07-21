@@ -104,6 +104,13 @@
       "feelings": ["Grateful", "Optimistic"],
       "journalEntry": "Woke up early and finally tackled a big project!",
       "sleepHours": 9
+    },
+    {
+      "createdAt": "2025-07-21T11:00:00Z",
+      "mood": 2,
+      "feelings": ["Grateful", "Optimistic"],
+      "journalEntry": "Woke up early and finally tackled a big project!",
+      "sleepHours": 9
     }
   ],
   "moodQuotes": {
