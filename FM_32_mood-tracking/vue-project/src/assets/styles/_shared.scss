@@ -46,6 +46,7 @@
     margin-right: 16px;
   }
   &__average-title {
+    margin-right: 5px;
     margin-bottom: 0;
     @include text-preset(preset5);
     color: var(--neutral-900);
@@ -77,8 +78,8 @@
     color: var(--neutral-900);
   }
   &__average-info-descr {
-    max-width: 240px;
     margin: 0;
+    max-width: 240px;
     @include text-preset(preset7);
     // color: var(--neutral-600);
   }

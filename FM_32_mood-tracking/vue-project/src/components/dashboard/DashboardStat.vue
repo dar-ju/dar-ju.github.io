@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import { useDataStore } from '@/stores/moodData'
 import StatTrends from '@/components/dashboard/StatTrends.vue'
 import StatAverageMood from '@/components/dashboard/StatAverageMood.vue'
+import StatAverageSleep from '@/components/dashboard/StatAverageSleep.vue'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap, sleepMap } = useMoodMap()
 
@@ -19,7 +20,9 @@ onMounted(async () => {
     <div class="container stat__container">
       <div class="stat__average">
         <StatAverageMood />
-        <div class="stat__average-wrapper stat__average-sleep">
+        <StatAverageSleep />
+
+        <!-- <div class="stat__average-wrapper stat__average-sleep">
           <div class="stat__average-title-block">
             <h2 class="stat__average-title">Average Sleep</h2>
             <span class="stat__average-note">(Last 5 Check-ins)</span>
@@ -28,7 +31,7 @@ onMounted(async () => {
             <h3 class="stat__average-info-title">Not enough data yet!</h3>
             <p class="stat__average-info-descr">Track 5 nights to view average sleep.</p>
           </div>
-        </div>
+        </div> -->
       </div>
       <StatTrends v-if="mood.data?.moodEntries?.length" />
     </div>

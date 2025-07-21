@@ -21,7 +21,7 @@ const scrollToEnd = () => {
 }
 
 onMounted(async () => {
-  limitData.value = mood.data?.moodEntries.slice(0, BARS)
+  limitData.value = mood.data?.moodEntries.slice(-BARS)
   if (limitData.value.length < BARS) {
     const lastDate = new Date(limitData.value[0].createdAt)
     for (let i = limitData.value.length; i < BARS; i++) {

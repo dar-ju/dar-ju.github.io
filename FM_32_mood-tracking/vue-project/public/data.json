@@ -96,11 +96,11 @@
       "mood": -2,
       "feelings": ["Down", "Tired"],
       "journalEntry": "Rough night of sleep. Need support and rest.",
-      "sleepHours": 3.5
+      "sleepHours": 5.5
     },
     {
       "createdAt": "2025-07-17T11:00:00Z",
-      "mood": -2,
+      "mood": 2,
       "feelings": ["Grateful", "Optimistic"],
       "journalEntry": "Woke up early and finally tackled a big project!",
       "sleepHours": 9

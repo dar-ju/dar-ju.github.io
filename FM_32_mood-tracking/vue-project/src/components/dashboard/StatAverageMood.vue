@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useDataStore } from '@/stores/moodData'
 import { useMoodMap } from '@/composables/useMoodMap'
-const { moodMap, sleepMap } = useMoodMap()
+const { moodMap } = useMoodMap()
 
 const mood = useDataStore()
 
@@ -19,8 +19,6 @@ const averageData = ref({
 watch(
   () => mood.data,
   () => {
-    // console.log(Object.values(mood.data.moodEntries.mood))
-    // console.log(mood.data.moodEntries.map((item) => item.mood))
     const moods = mood.data.moodEntries.map((item) => item.mood)
     if (moods.length >= CHECKINS) {
       const lastNMoods = moods.slice(-CHECKINS)
@@ -88,7 +86,4 @@ watch(
   </div>
 </template>
 
-<style lang="scss" scoped>
-@use '@/assets/styles/breakpoints' as *;
-@use '@/assets/styles/_typography' as *;
-</style>
+<style lang="scss" scoped></style>
