@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue'
 import { useDataStore } from '@/stores/moodData'
 import { useMoodMap } from '@/composables/useMoodMap'
+import MoodPopover from '@/components/modals/MoodPopover.vue'
 const { moodMap, sleepMap } = useMoodMap()
 
 const mood = useDataStore()
@@ -44,6 +45,22 @@ function getDate(dateStr) {
   const day = date.getUTCDate()
   const month = date.toLocaleString('en-EN', { month: 'long' })
   return { day: day, month: month }
+}
+
+const hoveredItem = ref(null)
+const popoverStyle = ref({ top: '0px', left: '0px' })
+
+const showPopover = (el, item) => {
+  const rect = el.getBoundingClientRect()
+  hoveredItem.value = item.createdAt
+  popoverStyle.value = {
+    top: `${rect.top + window.scrollY - 10}px`,
+    left: `${rect.left + window.scrollX - 190}px`,
+  }
+}
+
+const hidePopover = () => {
+  hoveredItem.value = null
 }
 </script>
 
@@ -105,12 +122,19 @@ function getDate(dateStr) {
       </ul>
       <ul ref="scrollRef" class="stat__trends-bars">
         <li v-for="item in limitData" :key="item.createdAt" class="stat__trends-bar">
+          <teleport to="body">
+            <Transition name="fade">
+              <MoodPopover v-if="hoveredItem === item.createdAt" :style="popoverStyle" />
+            </Transition>
+          </teleport>
           <div
             class="stat__trends-bar-column"
             :style="{
               backgroundColor: moodMap[item.mood]?.color,
               height: sleepMap[item.sleepHours].height,
             }"
+            @mouseenter="(e) => showPopover(e.currentTarget, item)"
+            @mouseleave="hidePopover"
           >
             <img
               v-if="moodMap[item.mood]?.img"
@@ -203,6 +227,7 @@ function getDate(dateStr) {
   }
   &__trends-bar {
     display: flex;
+    position: relative;
     min-width: 40px;
     gap: 11px;
     flex-direction: column;
@@ -218,6 +243,7 @@ function getDate(dateStr) {
     // overflow: hidden;
     animation: increaseHeight 0.6s forwards;
     animation-delay: var(--delay, 0ms);
+    // cursor: pointer;
   }
   &__trends-bar-img {
     position: absolute;
