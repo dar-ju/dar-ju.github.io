@@ -306,6 +306,9 @@ const hidePopover = () => {
     // --containerPadding: 80px;
   }
   @include media-query-sm {
+    &__trends {
+      padding: 20px 16px;
+    }
     &__trends-title {
       @include text-preset(preset3mob);
     }

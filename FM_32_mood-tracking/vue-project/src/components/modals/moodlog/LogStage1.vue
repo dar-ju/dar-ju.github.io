@@ -85,7 +85,6 @@ const moodList = [
     margin-bottom: 32px;
     gap: 12px;
     flex-direction: column;
-    background-color: var(--neutral-0);
   }
   &__mood-block {
     display: flex;
@@ -95,6 +94,7 @@ const moodList = [
     justify-content: space-between;
     border-radius: 10px;
     border: 2px solid var(--blue-100);
+    background-color: var(--neutral-0);
     cursor: pointer;
     &--selected {
       border: 2px solid var(--blue-600);

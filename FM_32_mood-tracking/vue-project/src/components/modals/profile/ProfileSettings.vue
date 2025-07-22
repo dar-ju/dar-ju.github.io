@@ -43,7 +43,6 @@ const handleFile = (e: Event) => {
                 type="text"
                 class="form-control personal__input"
                 id="name"
-                placeholder="name@mail.com"
                 required
                 maxlength="100"
               />

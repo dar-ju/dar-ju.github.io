@@ -51,7 +51,6 @@ const sleepList = ['9+ hours', '7-8 hours', '5-6 hours', '3-4 hours', '0-2 hours
     margin-bottom: 32px;
     gap: 12px;
     flex-direction: column;
-    background-color: var(--neutral-0);
   }
   &__sleep-block {
     display: flex;
@@ -61,6 +60,7 @@ const sleepList = ['9+ hours', '7-8 hours', '5-6 hours', '3-4 hours', '0-2 hours
     justify-content: space-between;
     border-radius: 10px;
     border: 2px solid var(--blue-100);
+    background-color: var(--neutral-0);
     cursor: pointer;
     &--selected {
       border: 2px solid var(--blue-600);
