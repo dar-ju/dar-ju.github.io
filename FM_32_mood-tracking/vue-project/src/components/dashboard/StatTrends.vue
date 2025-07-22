@@ -124,7 +124,11 @@ const hidePopover = () => {
         <li v-for="item in limitData" :key="item.createdAt" class="stat__trends-bar">
           <teleport to="body">
             <Transition name="fade">
-              <MoodPopover v-if="hoveredItem === item.createdAt" :style="popoverStyle" />
+              <MoodPopover
+                v-if="hoveredItem === item.createdAt"
+                :style="popoverStyle"
+                :item="item"
+              />
             </Transition>
           </teleport>
           <div

@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
-import { useDataStore } from '@/stores/moodData'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap, sleepMap } = useMoodMap()
 
-defineProps({
+const props = defineProps({
   style: Object,
+  item: Object,
 })
-// const props = defineProps<{ onClose: () => void }>()
-
-const modal = useModalStore()
-const mood = useDataStore()
-
-// const handleClick = () => {
-//   props.onClose()
-//   modal.isSettingsModalActive = true
-// }
 </script>
 
 <template>
@@ -23,36 +13,27 @@ const mood = useDataStore()
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Mood</h3>
       <div class="mood-popover__mood-wrapper">
-        <!-- <img
-          class="current__img"
-          :src="moodMap[lastLoggedDay.mood].imgColor"
-          alt=""
-          width="16"
-          height="16"
-        /> -->
         <img
           class="current__img"
-          src="/assets/images/icon-very-happy-color.svg"
+          :src="moodMap[props.item.mood].imgColor"
           alt=""
           width="16"
           height="16"
         />
-        <span class="mood-popover__text-primary">Very Happy</span>
+        <span class="mood-popover__text-primary">{{ moodMap[props.item.mood].title }}</span>
       </div>
     </div>
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Sleep</h3>
-      <span class="mood-popover__text-primary">9+ hours</span>
+      <span class="mood-popover__text-primary">{{ sleepMap[props.item.sleepHours].title }}</span>
     </div>
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Reflection</h3>
-      <span class="mood-popover__text-secondary"
-        >Slept well and woke up ready to tackle new challenges.</span
-      >
+      <span class="mood-popover__text-secondary">{{ props.item.journalEntry }}</span>
     </div>
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Tags</h3>
-      <span class="mood-popover__text-secondary">Joyful, Excited, Grateful</span>
+      <span class="mood-popover__text-secondary">{{ props.item.feelings.join(', ') }}</span>
     </div>
   </div>
 </template>
