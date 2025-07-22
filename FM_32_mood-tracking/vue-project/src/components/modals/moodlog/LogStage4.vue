@@ -82,5 +82,16 @@ const sleepList = ['9+ hours', '7-8 hours', '5-6 hours', '3-4 hours', '0-2 hours
     @include text-preset(preset5);
     color: var(--neutral-900);
   }
+
+  /* Media */
+  @include media-query-sm {
+    &__sleep-wrapper {
+      margin-bottom: 24px;
+    }
+    &__sleep-title {
+      margin-bottom: 24px;
+      @include text-preset(preset3mob);
+    }
+  }
 }
 </style>

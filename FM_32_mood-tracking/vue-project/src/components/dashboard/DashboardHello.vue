@@ -54,6 +54,7 @@ const today: Date = new Date()
   &__title {
     @include text-preset(preset1);
     color: var(--neutral-900);
+    text-align: center;
   }
   &__date {
     @include text-preset(preset6);
@@ -62,6 +63,25 @@ const today: Date = new Date()
   &__btn {
     margin-bottom: 16px;
     padding: 16px 32px;
+  }
+
+  /* Media */
+  @include media-query-l {
+    &__container {
+      gap: 48px;
+    }
+  }
+  @include media-query-sm {
+    padding-bottom: 24px;
+    &__wrapper {
+      gap: 16px;
+    }
+    &__hello {
+      @include text-preset(preset3mob);
+    }
+    &__title {
+      @include text-preset(preset1mob);
+    }
   }
 }
 </style>

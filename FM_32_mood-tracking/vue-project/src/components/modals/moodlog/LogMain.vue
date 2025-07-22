@@ -125,5 +125,20 @@ const handleNavigate = (level) => {
     border-radius: 10px;
     @include text-preset(preset4);
   }
+
+  /* Media */
+  @include media-query-sm {
+    &__form {
+      padding: 20px;
+      padding-bottom: 32px;
+    }
+    &__title {
+      margin-bottom: 24px;
+      @include text-preset(preset3);
+    }
+    &__stage {
+      margin-bottom: 24px;
+    }
+  }
 }
 </style>

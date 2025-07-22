@@ -127,7 +127,7 @@ const handleFile = (e: Event) => {
     width: 100%;
     max-width: 530px;
     margin: 0 auto;
-    padding: 40px 32px;
+    padding: 48px 32px;
     background-color: var(--neutral-0);
     border-radius: 16px;
     box-shadow: 0px 8px 16px 0px var(--shadow);
@@ -191,7 +191,7 @@ const handleFile = (e: Event) => {
   }
   &__close-btn {
     position: absolute;
-    top: 0;
+    top: -18px;
     right: 0;
     line-height: 0;
   }
@@ -203,16 +203,26 @@ const handleFile = (e: Event) => {
   }
 
   /* Media */
-  @include media-query-l {
-    // --black-bckg: #191919;
-    // --containerPadding: 40px;
-    // --catBlocksGap: 10px;
-  }
-  @include media-query-md {
-    // --black-bckg: #1a1a1a;
-  }
   @include media-query-sm {
-    // --containerPadding: 24px;
+    &__wrapper {
+      max-width: 335px;
+      padding: 40px 20px;
+    }
+    &__close-btn {
+      top: -13px;
+      & svg {
+        width: 10px;
+        height: 10px;
+      }
+      // top: 0;
+      // right: 0;
+    }
+    &__descr {
+      margin-bottom: 24px;
+    }
+    &__img-wrapper {
+      margin-bottom: 24px;
+    }
   }
 }
 </style>

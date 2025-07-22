@@ -38,7 +38,7 @@ export const useMoodMap = () => {
       title: '9+ hours',
     },
     '7.5': {
-      height: '68%',
+      height: '69%',
       title: '7-8 hours',
     },
     '5.5': {
@@ -46,7 +46,7 @@ export const useMoodMap = () => {
       title: '5-6 hours',
     },
     '3.5': {
-      height: '34%',
+      height: '33%',
       title: '3-4 hours',
     },
     '1.5': {

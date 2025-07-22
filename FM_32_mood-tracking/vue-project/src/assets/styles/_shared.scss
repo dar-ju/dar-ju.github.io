@@ -2,24 +2,6 @@
 @use '@/assets/styles/_typography' as *;
 
 .stat {
-  padding-top: 40px;
-  padding-bottom: 80px;
-  &__container {
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-  }
-  &__average {
-    display: flex;
-    max-width: 370px;
-    width: 100%;
-    padding: 24px;
-    gap: 24px;
-    border-radius: 16px;
-    background-color: var(--neutral-0);
-    outline: 1px solid var(--blue-100);
-    flex-direction: column;
-  }
   &__average-wrapper {
     display: flex;
     gap: 12px;
@@ -82,5 +64,25 @@
     max-width: 240px;
     @include text-preset(preset7);
     // color: var(--neutral-600);
+  }
+
+  /* Media */
+  @include media-query-l {
+    &__average-block {
+      background-size: 35%;
+      background-position: right -175px center;
+    }
+    &__average-info-descr {
+      max-width: initial;
+    }
+  }
+  @include media-query-sm {
+    &__average-block {
+      background-size: 85%;
+      background-position: right -200px center;
+    }
+    &__average-info-descr {
+      max-width: 207px;
+    }
   }
 }

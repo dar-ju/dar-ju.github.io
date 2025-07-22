@@ -134,5 +134,18 @@ const feeliings = [
       color: var(--neutral-300);
     }
   }
+
+  /* Media */
+  @include media-query-sm {
+    &__feel-title {
+      @include text-preset(preset3mob);
+    }
+    &__feel-descr {
+      margin-bottom: 24px;
+    }
+    &__feel-list {
+      margin-bottom: 24px;
+    }
+  }
 }
 </style>

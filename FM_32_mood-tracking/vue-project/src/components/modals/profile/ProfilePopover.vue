@@ -26,7 +26,13 @@ const handleClick = () => {
             width="16"
             height="16"
           />
-          <span class="profile-popover__link-text">Settings</span>
+          <span
+            class="profile-popover__link-text"
+            tabindex="0"
+            @keydown.space.prevent="handleClick"
+            @keydown.enter.prevent="handleClick"
+            >Settings</span
+          >
         </div>
         <div class="profile-popover__link">
           <img
@@ -36,7 +42,7 @@ const handleClick = () => {
             width="16"
             height="16"
           />
-          <span class="profile-popover__link-text">Logout</span>
+          <span class="profile-popover__link-text" tabindex="0">Logout</span>
         </div>
       </div>
     </div>
@@ -91,12 +97,23 @@ const handleClick = () => {
   &__link-text {
     color: var(--neutral-900);
     @include text-preset(preset7);
+    &:focus-visible {
+      outline: 1px solid var(--neutral-600);
+      outline-style: auto;
+      outline-offset: 3px;
+    }
   }
   &__overlay {
     position: fixed;
     inset: 0;
     z-index: 999;
     background: transparent;
+  }
+
+  /* Media */
+  @include media-query-sm {
+    width: 100%;
+    max-width: 343px;
   }
 }
 </style>

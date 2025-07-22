@@ -5,11 +5,16 @@ const { moodMap, sleepMap } = useMoodMap()
 const props = defineProps({
   style: Object,
   item: Object,
+  side: Boolean,
 })
 </script>
 
 <template>
-  <div class="mood-popover" :style="style">
+  <div
+    class="mood-popover"
+    :style="style"
+    :class="props.side ? 'mood-popover-right' : 'mood-popover-left'"
+  >
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Mood</h3>
       <div class="mood-popover__mood-wrapper">
@@ -55,17 +60,27 @@ const props = defineProps({
   box-shadow: 0px 4px 9px 6px var(--shadow);
   stroke: 1px solid var(--blue-100);
   z-index: 1000;
+  &-right {
+    &::after {
+      left: -10px;
+      transform: rotate(-225deg);
+    }
+  }
+  &-left {
+    &::after {
+      right: -10px;
+      transform: rotate(-46deg);
+    }
+  }
   &::after {
     content: '';
     position: absolute;
     top: 27px;
-    right: -10px;
     width: 16px;
     height: 16px;
     background: var(--neutral-0);
     clip-path: polygon(50% 0%, 0% 50%, 100% 100%);
     border-radius: 10px;
-    transform: rotate(-46deg);
   }
   &__wrapper {
     display: flex;

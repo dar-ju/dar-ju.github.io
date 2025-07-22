@@ -48,48 +48,24 @@ onMounted(async () => {
     outline: 1px solid var(--blue-100);
     flex-direction: column;
   }
-  &__average-wrapper {
-    display: flex;
-    gap: 12px;
-    flex-direction: column;
+
+  /* Media */
+  @include media-query-lg {
+    // --containerPadding: 80px;
   }
-  &__average-mood {
+  @include media-query-l {
+    &__container {
+      flex-direction: column;
+    }
+    &__average {
+      max-width: initial;
+    }
   }
-  &__average-sleep {
+  @include media-query-md {
+    // --containerPadding: 80px;
   }
-  &__average-title-block {
-    display: flex;
-    gap: 5px;
-    align-items: flex-end;
-  }
-  &__average-title {
-    margin-bottom: 0;
-    @include text-preset(preset5);
-    color: var(--neutral-900);
-  }
-  &__average-note {
-    @include text-preset(preset7);
-  }
-  &__average-block {
-    display: flex;
-    padding: 28px 20px;
-    gap: 12px;
-    flex-direction: column;
-    border-radius: 16px;
-    background-image: url('/assets/images/bg-pattern-averages.svg');
-    background-repeat: no-repeat;
-    background-position-x: 260px;
-    background-position-y: -70px;
-    background-size: 100%;
-    background-color: var(--blue-100);
-  }
-  &__average-info-title {
-    @include text-preset(preset4);
-    color: var(--neutral-900);
-  }
-  &__average-info-descr {
-    @include text-preset(preset7);
-    color: var(--neutral-600);
+  @include media-query-sm {
+    // --containerPadding: 16px;
   }
 }
 </style>

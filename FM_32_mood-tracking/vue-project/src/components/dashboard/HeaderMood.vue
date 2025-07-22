@@ -23,7 +23,13 @@ const closePopover = () => {
         width="178"
         height="40"
       />
-      <div @click="popoverToggle()" class="header__user">
+      <div
+        @click="popoverToggle()"
+        class="header__user"
+        tabindex="0"
+        @keydown.space.prevent="popoverToggle()"
+        @keydown.enter.prevent="popoverToggle()"
+      >
         <img
           class="header__user-img"
           src="/assets/images/avatar-lisa.jpg"
@@ -49,6 +55,7 @@ const closePopover = () => {
 </template>
 
 <style lang="scss" scoped>
+@use '@/assets/styles/breakpoints' as *;
 .header {
   padding-top: 40px;
   padding-bottom: 40px;
@@ -63,11 +70,21 @@ const closePopover = () => {
     gap: 10px;
     align-items: center;
     cursor: pointer;
+    &:focus-visible {
+      outline: 1px solid var(--neutral-600);
+      outline-style: auto;
+      outline-offset: 2px;
+    }
   }
   &__user-img {
     border-radius: 50%;
   }
   &__dropdown {
+  }
+
+  /* Media */
+  @include media-query-sm {
+    padding-bottom: 24px;
   }
 }
 </style>

@@ -207,5 +207,54 @@ watch(
     color: var(--neutral-600);
     font-style: italic;
   }
+
+  /* Media */
+  @include media-query-lg {
+    &__feeling-block {
+      min-width: 500px;
+    }
+    &__img {
+      right: -30px;
+    }
+  }
+  @include media-query-l {
+    &__container {
+      flex-direction: column;
+    }
+    &__block {
+      width: 100%;
+      // max-width: initial;
+    }
+    &__img {
+      right: 40px;
+    }
+    &__additional-block {
+      max-width: initial;
+    }
+  }
+  @include media-query-md {
+    &__img {
+      right: -30px;
+    }
+  }
+  @include media-query-sm {
+    padding-top: 24px;
+    &__feeling-block {
+      min-width: initial;
+      padding: 32px 16px;
+      gap: 32px;
+      align-items: center;
+      text-align: center;
+    }
+    &__img {
+      position: initial;
+      width: 200px;
+      height: 200px;
+    }
+    &__quote-img {
+      margin: auto;
+      margin-bottom: 16px;
+    }
+  }
 }
 </style>

@@ -58,6 +58,7 @@
 
 /* Bootstrap Customize */
 $primary: #4865db;
+$primary-hover: #2a4cd5;
 $secondary: #ffffff00;
 @import 'bootstrap/scss/bootstrap';
 
@@ -89,14 +90,15 @@ $secondary: #ffffff00;
   --containerPadding: 135px;
 
   /* Media */
-  @include media-query-l {
-    // --black-bckg: #191919;
-    // --containerPadding: 40px;
-    // --catBlocksGap: 10px;
-  }
-  @include media-query-md {
+  @include media-query-lg {
     --containerPadding: 80px;
   }
+  @include media-query-l {
+    --containerPadding: 32px;
+  }
+  // @include media-query-md {
+  //   --containerPadding: 80px;
+  // }
   @include media-query-sm {
     --containerPadding: 16px;
   }

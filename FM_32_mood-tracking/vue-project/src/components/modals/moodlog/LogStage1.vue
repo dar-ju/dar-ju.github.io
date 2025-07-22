@@ -119,5 +119,16 @@ const moodList = [
     @include text-preset(preset5);
     color: var(--neutral-900);
   }
+
+  /* Media */
+  @include media-query-sm {
+    &__mood-title {
+      margin-bottom: 24px;
+      @include text-preset(preset3mob);
+    }
+    &__mood-list {
+      margin-bottom: 24px;
+    }
+  }
 }
 </style>

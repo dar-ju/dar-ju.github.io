@@ -15,6 +15,7 @@ const mood = useDataStore()
 function handleKeyDown(e: KeyboardEvent) {
   if (e.key === 'Escape') {
     modal.isLogModalActive = false
+    modal.isSettingsModalActive = false
     modal.currentLogStage = 1
   }
 }

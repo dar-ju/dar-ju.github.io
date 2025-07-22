@@ -16,9 +16,9 @@ const scrollToEnd = () => {
   if (!el) return
   const target = el.scrollWidth - el.clientWidth
   el.scrollLeft = target
-  if (el.scrollLeft !== target) {
-    setTimeout(scrollToEnd, 100)
-  }
+  // if (el.scrollLeft !== target) {
+  //   setTimeout(scrollToEnd, 100)
+  // }
 }
 
 onMounted(async () => {
@@ -49,13 +49,19 @@ function getDate(dateStr) {
 
 const hoveredItem = ref(null)
 const popoverStyle = ref({ top: '0px', left: '0px' })
+const dialogSide = ref(false)
 
 const showPopover = (el, item) => {
   const rect = el.getBoundingClientRect()
   hoveredItem.value = item.createdAt
+  let left = rect.left + window.scrollX - 190
+  if (left < 0) {
+    left = 245 + left
+    dialogSide.value = true
+  } else dialogSide.value = false
   popoverStyle.value = {
     top: `${rect.top + window.scrollY - 10}px`,
-    left: `${rect.left + window.scrollX - 190}px`,
+    left: `${left}px`,
   }
 }
 
@@ -128,6 +134,7 @@ const hidePopover = () => {
                 v-if="hoveredItem === item.createdAt"
                 :style="popoverStyle"
                 :item="item"
+                :side="dialogSide"
               />
             </Transition>
           </teleport>
@@ -189,7 +196,7 @@ const hidePopover = () => {
   }
   &__trends-hours {
     display: flex;
-    // max-width: 68px;
+    margin: 0;
     gap: 40px;
     flex-direction: column;
     // background-color: var(--neutral-300);
@@ -228,6 +235,11 @@ const hidePopover = () => {
     overflow-x: auto;
     overflow-y: hidden;
     margin-left: auto;
+    &:focus-visible {
+      outline: 1px solid var(--neutral-600);
+      outline-style: auto;
+      outline-offset: 6px;
+    }
   }
   &__trends-bar {
     display: flex;
@@ -268,6 +280,42 @@ const hidePopover = () => {
   &__trends-bar-number {
     @include text-preset(preset8);
     color: var(--neutral-900);
+  }
+
+  /* Media */
+  @include media-query-lg {
+    // --containerPadding: 80px;
+  }
+  @include media-query-l {
+    &__trends {
+      max-width: initial;
+      min-height: 437px;
+    }
+    &__trends-block {
+      flex-grow: 1;
+    }
+    &__trends-bars {
+      max-height: 300px;
+      gap: 15px;
+    }
+    &__trends-hours {
+      gap: 36px;
+    }
+  }
+  @include media-query-md {
+    // --containerPadding: 80px;
+  }
+  @include media-query-sm {
+    &__trends-title {
+      @include text-preset(preset3mob);
+    }
+    &__trends-bars {
+      max-height: 308px;
+      // gap: 15px;
+    }
+    &__trends-hours {
+      gap: 38px;
+    }
   }
 }
 </style>

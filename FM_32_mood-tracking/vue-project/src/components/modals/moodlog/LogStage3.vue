@@ -71,5 +71,16 @@ const TEXTLIMIT = 150
     @include text-preset(preset8);
     align-self: flex-end;
   }
+
+  /* Media */
+  @include media-query-sm {
+    &__about-wrapper {
+      margin-bottom: 24px;
+    }
+    &__about-title {
+      margin-bottom: 24px;
+      @include text-preset(preset3mob);
+    }
+  }
 }
 </style>
