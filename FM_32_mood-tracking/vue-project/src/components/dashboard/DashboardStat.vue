@@ -14,7 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="section stat">
+  <section class="section stat">
     <div class="container stat__container">
       <div class="stat__average">
         <StatAverageMood />
@@ -22,7 +22,7 @@ onMounted(async () => {
       </div>
       <StatTrends v-if="mood.data?.moodEntries?.length" />
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>

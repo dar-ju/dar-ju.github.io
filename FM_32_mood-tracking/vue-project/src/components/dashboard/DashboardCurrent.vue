@@ -1,26 +1,38 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useDataStore } from '@/stores/moodData'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap, sleepMap } = useMoodMap()
 
 const mood = useDataStore()
+const quote = ref(null)
+const lastLoggedDay = ref(null)
 
-const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntries).length - 1])
+watch(
+  () => mood.data,
+  (data) => {
+    if (data?.moodEntries) {
+      const keys = Object.keys(data.moodEntries)
+      const lastKey = keys[keys.length - 1]
+      lastLoggedDay.value = data.moodEntries[lastKey]
 
-// onMounted(async () => {
-//   await mood.getdata()
-//   console.log(mood.data)
-// })
+      // случайная цитата
+      const values = Object.values(data.moodQuotes[data.moodEntries[lastKey].mood])
+      const random = values[Math.floor(Math.random() * values.length)]
+      quote.value = random
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
-  <div class="section current">
+  <section class="section current">
     <div class="container current__container">
       <div class="current__block current__feeling-block">
         <div>
           <span class="current__text">I’m feeling</span>
-          <h2 class="current__title">{{ moodMap[lastLoggedDay.mood].title }}</h2>
+          <h2 class="title current__title">{{ moodMap[lastLoggedDay.mood].title }}</h2>
         </div>
         <img
           class="current__img"
@@ -37,7 +49,9 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
             width="24"
             height="24"
           />
-          <p class="current__quote">“When your heart is full, share your light with the world.”</p>
+          <p class="current__quote">
+            {{ `“${quote}”` }}
+          </p>
         </div>
       </div>
       <div class="current__additional-block">
@@ -52,18 +66,31 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
             />
             <span class="current__sleep-text">Sleep</span>
           </div>
-          <h3 class="current__sleep-title">{{ sleepMap[lastLoggedDay.sleepHours].title }}</h3>
+          <h3 class="title current__sleep-title">{{ sleepMap[lastLoggedDay.sleepHours].title }}</h3>
         </div>
-        <div class="current__block current__reflection-block"></div>
+        <div class="current__block current__reflection-block">
+          <div class="current__reflection-wrapper">
+            <div class="current__reflection-title-block">
+              <img
+                class="current__reflection-img"
+                src="/assets/images/icon-reflection.svg"
+                alt=""
+                width="22"
+                height="22"
+              />
+              <span class="current__reflection-title">Reflection of the day</span>
+            </div>
+            <p class="current__reflection-text">{{ lastLoggedDay.journalEntry }}</p>
+          </div>
+          <ul class="current__reflection-hash-list">
+            <li v-for="item in lastLoggedDay.feelings" :key="item" class="current__reflection-hash">
+              {{ `#${item}` }}
+            </li>
+          </ul>
+        </div>
       </div>
-
-      <!-- <div class="current__average">
-        <StatAverageMood />
-        <StatAverageSleep />
-      </div>
-      <StatTrends v-if="mood.data?.moodEntries?.length" /> -->
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
@@ -71,7 +98,7 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
 @use '@/assets/styles/_typography' as *;
 
 .current {
-  padding-top: 16px;
+  padding-top: 32px;
   padding-bottom: 16px;
   &__container {
     display: flex;
@@ -88,17 +115,20 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
   &__feeling-block {
     position: relative;
     width: 670px;
+    min-width: 600px;
     min-height: 340px;
     padding: 32px;
     justify-content: space-between;
     overflow: hidden;
+    & div {
+      z-index: 1;
+    }
   }
   &__text {
     @include text-preset(preset3);
     color: rgba(var(--neutral-900), 0.5);
   }
   &__title {
-    margin: 0;
     @include text-preset(preset2);
     color: var(--neutral-900);
   }
@@ -118,8 +148,11 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
     font-style: italic;
   }
   &__additional-block {
+    display: flex;
     max-width: 468px;
     width: 100%;
+    gap: 20px;
+    flex-direction: column;
   }
   &__sleep-block {
     padding: 20px;
@@ -131,7 +164,6 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
     align-items: center;
   }
   &__sleep-img {
-    // margin-bottom: 12px;
   }
   &__sleep-text {
     @include text-preset(preset6);
@@ -139,10 +171,41 @@ const lastLoggedDay = ref(mood.data.moodEntries[Object.keys(mood.data?.moodEntri
   }
   &__sleep-title {
     @include text-preset(preset3);
-    color: var(--neutral-900);
   }
 
   &__reflection-block {
+    min-height: 197px;
+    height: 100%;
+    padding: 20px;
+    justify-content: space-between;
+  }
+  &__reflection-wrapper {
+  }
+  &__reflection-title-block {
+    display: flex;
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  &__reflection-img {
+  }
+  &__reflection-title {
+    @include text-preset(preset6);
+    color: var(--neutral-600);
+  }
+  &__reflection-text {
+    @include text-preset(preset6);
+    color: var(--neutral-900);
+  }
+  &__reflection-hash-list {
+    display: flex;
+    margin: 0;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  &__reflection-hash {
+    @include text-preset(preset6it);
+    color: var(--neutral-600);
+    font-style: italic;
   }
 }
 </style>

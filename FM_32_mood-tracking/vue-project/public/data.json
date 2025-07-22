@@ -107,7 +107,7 @@
     },
     {
       "createdAt": "2025-07-21T11:00:00Z",
-      "mood": 2,
+      "mood": 0,
       "feelings": ["Grateful", "Optimistic"],
       "journalEntry": "Woke up early and finally tackled a big project!",
       "sleepHours": 9

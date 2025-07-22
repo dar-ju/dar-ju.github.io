@@ -12,8 +12,6 @@ import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 const modal = useModalStore()
 const mood = useDataStore()
 
-const isTodayLogged = ref(false)
-
 function handleKeyDown(e: KeyboardEvent) {
   if (e.key === 'Escape') {
     modal.isLogModalActive = false
@@ -37,7 +35,7 @@ watch(
     const lastLoggedDay = mood.data.moodEntries[totalDays - 1].createdAt.split('T')[0]
     const today = new Date()
     const formattedToday = today.toISOString().split('T')[0]
-    if (lastLoggedDay === formattedToday) isTodayLogged.value = true
+    if (lastLoggedDay === formattedToday) mood.isTodayLogged = true
   },
 )
 </script>
@@ -46,7 +44,7 @@ watch(
   <HeaderMood />
   <DashboardHello />
   <Transition name="fade">
-    <DashboardCurrent v-if="isTodayLogged" />
+    <DashboardCurrent v-if="mood.isTodayLogged" />
   </Transition>
   <DashboardStat />
   <ProfileSettings />
