@@ -1,4 +1,6 @@
-export const getDataApi = async () => {
+import type { MoodData } from '@/types/mood'
+
+export const getDataApi = async (): Promise<MoodData> => {
   try {
     const fetchResponse = await fetch('/data.json')
     const response = await fetchResponse.json()

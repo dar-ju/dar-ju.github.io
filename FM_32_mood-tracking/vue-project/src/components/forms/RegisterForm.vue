@@ -75,7 +75,6 @@ const handleSubmit = (event: Event) => {
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/styles/breakpoints' as *;
 @use '@/assets/styles/_typography' as *;
 .login {
   &__container {
@@ -130,19 +129,6 @@ const handleSubmit = (event: Event) => {
     padding-top: 6px;
     gap: 6px;
     @include text-preset(preset9);
-  }
-
-  /* Media */
-  @include media-query-l {
-    // --black-bckg: #191919;
-    // --containerPadding: 40px;
-    // --catBlocksGap: 10px;
-  }
-  @include media-query-md {
-    // --black-bckg: #1a1a1a;
-  }
-  @include media-query-sm {
-    // --containerPadding: 24px;
   }
 }
 </style>

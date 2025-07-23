@@ -99,9 +99,6 @@ const moodList = [
     &--selected {
       border: 2px solid var(--blue-600);
     }
-    // &:focus {
-
-    // }
   }
   &__mood {
     padding-left: 32px;

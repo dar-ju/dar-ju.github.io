@@ -21,7 +21,6 @@
   }
   &__average-descr-block {
     display: flex;
-    // min-height: 42px;
     align-items: flex-start;
   }
   &__average-img {
@@ -52,7 +51,6 @@
     background-position-x: 260px;
     background-position-y: -70px;
     background-size: 100%;
-    // background-color: var(--blue-100);
   }
   &__average-info-title {
     margin: 0;
@@ -63,7 +61,6 @@
     margin: 0;
     max-width: 240px;
     @include text-preset(preset7);
-    // color: var(--neutral-600);
   }
 
   /* Media */

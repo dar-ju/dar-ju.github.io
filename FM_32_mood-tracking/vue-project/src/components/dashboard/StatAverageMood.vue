@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useDataStore } from '@/stores/moodData'
+import type { MoodValue } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap } = useMoodMap()
 
@@ -8,7 +9,13 @@ const mood = useDataStore()
 
 const CHECKINS = 5
 
-const averageData = ref({
+const averageData = ref<{
+  titleImg: string | null
+  title: string
+  arrowImg: string | null
+  descr: string
+  bckgColor: string
+}>({
   titleImg: null,
   title: 'Keep tracking!',
   arrowImg: null,
@@ -19,20 +26,23 @@ const averageData = ref({
 watch(
   () => mood.data,
   () => {
-    const moods = mood.data.moodEntries.map((item) => item.mood)
+    const moods = mood.data?.moodEntries?.map((item) => item.mood) ?? []
     if (moods.length >= CHECKINS) {
       const lastNMoods = moods.slice(-CHECKINS)
-      const average = Math.round(lastNMoods.reduce((acc, val) => acc + val, 0) / CHECKINS)
-      averageData.value.title = moodMap[average].title
-      averageData.value.titleImg = moodMap[average].img
-      averageData.value.bckgColor = moodMap[average].color
-      // console.log(lastNMoods)
-      // console.log(average)
+      const average = Math.round(
+        lastNMoods.reduce((acc: number, val: MoodValue) => acc + Number(val), 0) / CHECKINS,
+      )
+      const averageMood = average as MoodValue
+      averageData.value.title = moodMap[averageMood].title
+      averageData.value.titleImg = moodMap[averageMood].img
+      averageData.value.bckgColor = moodMap[averageMood].color
       if (moods.length >= CHECKINS && moods.length < CHECKINS * 2) {
         averageData.value.descr = `Log another ${CHECKINS} check‑ins to see your progress mood.`
       } else {
         const lastPrevNMoods = moods.slice(-CHECKINS * 2, -CHECKINS)
-        const averagePrev = Math.round(lastPrevNMoods.reduce((acc, val) => acc + val, 0) / CHECKINS)
+        const averagePrev = Math.round(
+          lastPrevNMoods.reduce((acc: number, val: MoodValue) => acc + val, 0) / CHECKINS,
+        )
         if (average > averagePrev) {
           averageData.value.descr = `Increase from the previous ${CHECKINS} check‑ins`
           averageData.value.arrowImg = '/assets/images/icon-trend-increase.svg'

@@ -61,16 +61,7 @@ const handleClick = () => {
   box-shadow: 0px 8px 16px 0px var(--shadow);
   top: 100px;
   right: var(--containerPadding);
-
-  // position: absolute; // это важно!
-  // top: 60px;
-  // right: 0;
   z-index: 1000;
-  // width: 200px;
-  // padding: 12px 16px;
-  // background: white;
-  // border-radius: 8px;
-  // box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
   &__name {
     margin-bottom: 2px;
     color: var(--neutral-900);

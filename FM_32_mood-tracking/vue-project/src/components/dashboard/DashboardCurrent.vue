@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useDataStore } from '@/stores/moodData'
+import type { MoodEntry } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
-const { moodMap, sleepMap } = useMoodMap()
+const { moodMap } = useMoodMap()
 
 const mood = useDataStore()
-const quote = ref(null)
-const lastLoggedDay = ref(null)
+const quote = ref<string | null>(null)
+const lastLoggedDay = ref<MoodEntry | null>(null)
 
 watch(
-  () => mood.data,
+  () => mood.data ?? null,
   (data) => {
-    if (data?.moodEntries) {
-      const keys = Object.keys(data.moodEntries)
-      const lastKey = keys[keys.length - 1]
-      lastLoggedDay.value = data.moodEntries[lastKey]
+    if (!data) return
+    const lastEntry = data.moodEntries[data.moodEntries.length - 1]
+    lastLoggedDay.value = lastEntry
 
-      // случайная цитата
-      const values = Object.values(data.moodQuotes[data.moodEntries[lastKey].mood])
-      const random = values[Math.floor(Math.random() * values.length)]
-      quote.value = random
-    }
+    const quotes = data.moodQuotes[lastEntry.mood]
+    const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+    quote.value = randomQuote
   },
   { immediate: true },
 )
@@ -32,12 +30,14 @@ watch(
       <div class="current__block current__feeling-block">
         <div>
           <span class="current__text">I’m feeling</span>
-          <h2 class="title current__title">{{ moodMap[lastLoggedDay.mood].title }}</h2>
+          <h2 class="title current__title">
+            {{ lastLoggedDay ? moodMap[lastLoggedDay.mood].title : '' }}
+          </h2>
         </div>
         <img
           class="current__img"
-          :src="moodMap[lastLoggedDay.mood].imgColor"
-          :alt="`Feeling is ${moodMap[lastLoggedDay.mood].title}`"
+          :src="lastLoggedDay ? moodMap[lastLoggedDay.mood].imgColor : ''"
+          :alt="`Feeling is ${lastLoggedDay ? moodMap[lastLoggedDay.mood].title : ''}`"
           width="320"
           height="320"
         />
@@ -46,10 +46,11 @@ watch(
             class="current__quote-img"
             src="/assets/images/icon-quote.svg"
             alt=""
+            aria-hidden="true"
             width="24"
             height="24"
           />
-          <p class="current__quote">
+          <p class="current__quote" aria-label="Motivational quote">
             {{ `“${quote}”` }}
           </p>
         </div>
@@ -61,12 +62,15 @@ watch(
               class="current__sleep-img"
               src="/assets/images/icon-sleep.svg"
               alt=""
+              aria-hidden="true"
               width="22"
               height="22"
             />
             <span class="current__sleep-text">Sleep</span>
           </div>
-          <h3 class="title current__sleep-title">{{ sleepMap[lastLoggedDay.sleepHours].title }}</h3>
+          <h3 class="title current__sleep-title">
+            {{ lastLoggedDay ? moodMap[lastLoggedDay.mood].title : '' }}
+          </h3>
         </div>
         <div class="current__block current__reflection-block">
           <div class="current__reflection-wrapper">
@@ -75,14 +79,17 @@ watch(
                 class="current__reflection-img"
                 src="/assets/images/icon-reflection.svg"
                 alt=""
+                aria-hidden="true"
                 width="22"
                 height="22"
               />
               <span class="current__reflection-title">Reflection of the day</span>
             </div>
-            <p class="current__reflection-text">{{ lastLoggedDay.journalEntry }}</p>
+            <p class="current__reflection-text">
+              {{ lastLoggedDay ? lastLoggedDay.journalEntry : '' }}
+            </p>
           </div>
-          <ul class="current__reflection-hash-list">
+          <ul v-if="lastLoggedDay" class="current__reflection-hash-list">
             <li v-for="item in lastLoggedDay.feelings" :key="item" class="current__reflection-hash">
               {{ `#${item}` }}
             </li>
@@ -163,8 +170,6 @@ watch(
     gap: 12px;
     align-items: center;
   }
-  &__sleep-img {
-  }
   &__sleep-text {
     @include text-preset(preset6);
     color: var(--neutral-600);
@@ -179,14 +184,10 @@ watch(
     padding: 20px;
     justify-content: space-between;
   }
-  &__reflection-wrapper {
-  }
   &__reflection-title-block {
     display: flex;
     margin-bottom: 16px;
     gap: 12px;
-  }
-  &__reflection-img {
   }
   &__reflection-title {
     @include text-preset(preset6);
@@ -223,7 +224,6 @@ watch(
     }
     &__block {
       width: 100%;
-      // max-width: initial;
     }
     &__img {
       right: 40px;

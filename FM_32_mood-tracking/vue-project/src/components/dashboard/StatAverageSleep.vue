@@ -6,18 +6,24 @@ const mood = useDataStore()
 
 const CHECKINS = 5
 
-const averageData = ref({
+const averageData = ref<{
+  titleImg: string | null
+  title: string
+  arrowImg: string | null
+  descr: string
+  bckgColor: string
+}>({
   titleImg: null,
-  title: 'Not enough data yet!',
+  title: 'Keep tracking!',
   arrowImg: null,
-  descr: `Track ${CHECKINS} nights to view average sleep.`,
+  descr: `Log ${CHECKINS} check-ins to see your average mood.`,
   bckgColor: 'var(--blue-100)',
 })
 
 watch(
   () => mood.data,
   () => {
-    const moods = mood.data.moodEntries.map((item) => item.sleepHours)
+    const moods = mood.data?.moodEntries?.map((item) => item.sleepHours) ?? []
     if (moods.length >= CHECKINS) {
       const lastNMoods = moods.slice(-CHECKINS)
       const average = Math.round(lastNMoods.reduce((acc, val) => acc + val, 0) / CHECKINS)
@@ -28,15 +34,12 @@ watch(
       else if (average >= 5 && average < 7) averageData.value.title = '5-6 hours'
       else if (average >= 3 && average < 5) averageData.value.title = '3-4 hours'
       else if (average >= 0 && average < 3) averageData.value.title = '0-2 hours'
-      // console.log(lastNMoods)
-      // console.log(average)
 
       if (moods.length >= CHECKINS && moods.length < CHECKINS * 2) {
         averageData.value.descr = `Log another ${CHECKINS} check‑ins to see your progress sleep.`
       } else {
         const lastPrevNMoods = moods.slice(-CHECKINS * 2, -CHECKINS)
         const averagePrev = Math.round(lastPrevNMoods.reduce((acc, val) => acc + val, 0) / CHECKINS)
-        // console.log(averagePrev)
 
         if (average > averagePrev) {
           averageData.value.descr = `Increase from the previous ${CHECKINS} check‑ins`

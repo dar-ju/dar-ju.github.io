@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, type Ref } from 'vue'
 import { useDataStore } from '@/stores/moodData'
+import type { MoodValue, MoodEntryPartial, MoodEntry } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 import MoodPopover from '@/components/modals/MoodPopover.vue'
 const { moodMap, sleepMap } = useMoodMap()
@@ -8,27 +9,23 @@ const { moodMap, sleepMap } = useMoodMap()
 const mood = useDataStore()
 
 const BARS = 11
-const limitData = ref({})
-const scrollRef = ref(null)
+const limitData: Ref<MoodEntryPartial[]> = ref([])
+const scrollRef = ref<HTMLElement | null>(null)
 
 const scrollToEnd = () => {
   const el = scrollRef.value
   if (!el) return
   const target = el.scrollWidth - el.clientWidth
   el.scrollLeft = target
-  // if (el.scrollLeft !== target) {
-  //   setTimeout(scrollToEnd, 100)
-  // }
 }
 
 onMounted(async () => {
-  limitData.value = mood.data?.moodEntries.slice(-BARS)
+  limitData.value = mood.data?.moodEntries.slice(-BARS) ?? []
   if (limitData.value.length < BARS) {
     const lastDate = new Date(limitData.value[0].createdAt)
     for (let i = limitData.value.length; i < BARS; i++) {
       lastDate.setUTCDate(lastDate.getUTCDate() - 1)
       const result = lastDate.toISOString().split('.')[0] + 'Z'
-      // originalDate.setUTCDate(originalDate.getUTCDate() - 1)
       limitData.value.unshift({
         createdAt: result,
         sleepHours: 0,
@@ -40,18 +37,18 @@ onMounted(async () => {
   setTimeout(scrollToEnd, 100)
 })
 
-function getDate(dateStr) {
+function getDate(dateStr: string): { day: number; month: string } {
   const date = new Date(dateStr)
   const day = date.getUTCDate()
   const month = date.toLocaleString('en-EN', { month: 'long' })
-  return { day: day, month: month }
+  return { day, month }
 }
 
-const hoveredItem = ref(null)
-const popoverStyle = ref({ top: '0px', left: '0px' })
-const dialogSide = ref(false)
+const hoveredItem = ref<string | null>(null)
+const popoverStyle = ref<{ top: string; left: string }>({ top: '0px', left: '0px' })
+const dialogSide = ref<boolean>(false)
 
-const showPopover = (el, item) => {
+const showPopover = (el: HTMLElement, item: MoodEntryPartial) => {
   const rect = el.getBoundingClientRect()
   hoveredItem.value = item.createdAt
   let left = rect.left + window.scrollX - 190
@@ -133,7 +130,7 @@ const hidePopover = () => {
               <MoodPopover
                 v-if="hoveredItem === item.createdAt"
                 :style="popoverStyle"
-                :item="item"
+                :item="item as Partial<MoodEntry>"
                 :side="dialogSide"
               />
             </Transition>
@@ -141,16 +138,16 @@ const hidePopover = () => {
           <div
             class="stat__trends-bar-column"
             :style="{
-              backgroundColor: moodMap[item.mood]?.color,
-              height: sleepMap[item.sleepHours].height,
+              backgroundColor: moodMap[String(item.mood) as keyof typeof moodMap]?.color,
+              height: sleepMap[String(item.sleepHours) as keyof typeof sleepMap]?.height,
             }"
-            @mouseenter="(e) => showPopover(e.currentTarget, item)"
+            @mouseenter="(e) => showPopover(e.currentTarget as HTMLElement, item)"
             @mouseleave="hidePopover"
           >
             <img
-              v-if="moodMap[item.mood]?.img"
+              v-if="item.mood !== undefined"
               class="stat__trends-bar-img"
-              :src="moodMap[item.mood].img"
+              :src="moodMap[String(item.mood) as keyof typeof moodMap].img"
               alt=""
               width="30"
               height="30"
@@ -199,22 +196,16 @@ const hidePopover = () => {
     margin: 0;
     gap: 40px;
     flex-direction: column;
-    // background-color: var(--neutral-300);
   }
   &__trends-hour {
-    // position: relative;
     display: flex;
     gap: 6px;
     align-items: center;
     &::after {
       content: '';
-      // padding-top: 20px;
-      // position: absolute;
       width: 100%;
       border-bottom: 1px solid var(--blue-100);
     }
-  }
-  &__trends-hour-icon {
   }
   &__trends-hour-text {
     min-width: 68px;
@@ -256,10 +247,8 @@ const hidePopover = () => {
     background-color: var(--other-amber-300);
     border-radius: 40px;
     transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    // overflow: hidden;
     animation: increaseHeight 0.6s forwards;
     animation-delay: var(--delay, 0ms);
-    // cursor: pointer;
   }
   &__trends-bar-img {
     position: absolute;
@@ -283,9 +272,6 @@ const hidePopover = () => {
   }
 
   /* Media */
-  @include media-query-lg {
-    // --containerPadding: 80px;
-  }
   @include media-query-l {
     &__trends {
       max-width: initial;
@@ -302,9 +288,6 @@ const hidePopover = () => {
       gap: 36px;
     }
   }
-  @include media-query-md {
-    // --containerPadding: 80px;
-  }
   @include media-query-sm {
     &__trends {
       padding: 20px 16px;
@@ -314,7 +297,6 @@ const hidePopover = () => {
     }
     &__trends-bars {
       max-height: 308px;
-      // gap: 15px;
     }
     &__trends-hours {
       gap: 38px;

@@ -96,9 +96,6 @@ $secondary: #ffffff00;
   @include media-query-l {
     --containerPadding: 32px;
   }
-  // @include media-query-md {
-  //   --containerPadding: 80px;
-  // }
   @include media-query-sm {
     --containerPadding: 16px;
   }

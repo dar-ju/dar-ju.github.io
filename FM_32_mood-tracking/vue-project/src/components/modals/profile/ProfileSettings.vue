@@ -213,8 +213,6 @@ const handleFile = (e: Event) => {
         width: 10px;
         height: 10px;
       }
-      // top: 0;
-      // right: 0;
     }
     &__descr {
       margin-bottom: 24px;

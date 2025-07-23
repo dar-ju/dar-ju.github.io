@@ -65,7 +65,6 @@ const closePopover = () => {
     align-items: center;
   }
   &__user {
-    // position: relative;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -78,8 +77,6 @@ const closePopover = () => {
   }
   &__user-img {
     border-radius: 50%;
-  }
-  &__dropdown {
   }
 
   /* Media */

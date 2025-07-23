@@ -32,8 +32,8 @@ onBeforeUnmount(() => {
 watch(
   () => mood.data,
   () => {
-    const totalDays = Object.keys(mood.data?.moodEntries).length
-    const lastLoggedDay = mood.data.moodEntries[totalDays - 1].createdAt.split('T')[0]
+    const totalDays = mood.data?.moodEntries ? Object.keys(mood.data.moodEntries).length : 0
+    const lastLoggedDay = mood.data?.moodEntries?.[totalDays - 1]?.createdAt?.split('T')[0] ?? ''
     const today = new Date()
     const formattedToday = today.toISOString().split('T')[0]
     if (lastLoggedDay === formattedToday) mood.isTodayLogged = true

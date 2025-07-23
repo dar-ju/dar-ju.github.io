@@ -32,7 +32,7 @@ const handleSubmit = () => {
   modal.currentLogStage = 1
 }
 
-const handleNavigate = (level) => {
+const handleNavigate = (level: number) => {
   if (level < modal.currentLogStage) modal.currentLogStage = level
   modal.isWarnVisible = false
 }

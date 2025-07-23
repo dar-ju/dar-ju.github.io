@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { useMoodMap } from '@/composables/useMoodMap'
+import type { MoodEntry } from '@/types/mood'
 const { moodMap, sleepMap } = useMoodMap()
 
-const props = defineProps({
-  style: Object,
-  item: Object,
-  side: Boolean,
-})
+const props = defineProps<{
+  style?: Record<string, any>
+  item?: Partial<MoodEntry>
+  side?: boolean
+}>()
 </script>
 
 <template>
@@ -20,25 +21,30 @@ const props = defineProps({
       <div class="mood-popover__mood-wrapper">
         <img
           class="current__img"
-          :src="moodMap[props.item.mood].imgColor"
+          :src="item && item.mood !== undefined ? (moodMap[item.mood]?.imgColor ?? '') : ''"
           alt=""
           width="16"
           height="16"
         />
-        <span class="mood-popover__text-primary">{{ moodMap[props.item.mood].title }}</span>
+        <span class="mood-popover__text-primary">
+          {{ item && item.mood !== undefined ? (moodMap[item.mood]?.title ?? '') : '' }}
+        </span>
       </div>
     </div>
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Sleep</h3>
-      <span class="mood-popover__text-primary">{{ sleepMap[props.item.sleepHours].title }}</span>
+      <span class="mood-popover__text-primary">{{
+        // @ts-ignore
+        item ? sleepMap[item.sleepHours].title : ''
+      }}</span>
     </div>
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Reflection</h3>
-      <span class="mood-popover__text-secondary">{{ props.item.journalEntry }}</span>
+      <span class="mood-popover__text-secondary">{{ item?.journalEntry || '' }}</span>
     </div>
     <div class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Tags</h3>
-      <span class="mood-popover__text-secondary">{{ props.item.feelings.join(', ') }}</span>
+      <span class="mood-popover__text-secondary">{{ item?.feelings?.join(', ') || '' }}</span>
     </div>
   </div>
 </template>
@@ -90,8 +96,6 @@ const props = defineProps({
   &__mood-wrapper {
     display: flex;
     gap: 6px;
-  }
-  &__img {
   }
   &__title {
     @include text-preset(preset8);

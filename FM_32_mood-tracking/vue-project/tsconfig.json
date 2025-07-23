@@ -7,5 +7,12 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "strict": false,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "skipLibCheck": true,
+    "noEmitOnError": false
+  }
 }

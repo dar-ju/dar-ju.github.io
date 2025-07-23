@@ -50,9 +50,6 @@ onMounted(async () => {
   }
 
   /* Media */
-  @include media-query-lg {
-    // --containerPadding: 80px;
-  }
   @include media-query-l {
     &__container {
       flex-direction: column;
@@ -60,12 +57,6 @@ onMounted(async () => {
     &__average {
       max-width: initial;
     }
-  }
-  @include media-query-md {
-    // --containerPadding: 80px;
-  }
-  @include media-query-sm {
-    // --containerPadding: 16px;
   }
 }
 </style>
