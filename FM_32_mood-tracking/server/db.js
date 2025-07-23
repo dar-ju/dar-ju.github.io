@@ -8,25 +8,25 @@ const TOKEN_VALIDITY_PERIOD = 1000 * 60 * 60 * 24 * 7
 
 
 // USERS
-const createUser = async (username, password) => {
-  if (username && password) {
+const createUser = async (email, password, username, img) => {
+  if (email && password) {
     try {
-      const getUser = await findUserByUsername(username)
+      const getUser = await findUserByEmail(email)
       if (!getUser) {
-        const [newUser] = await db("users").insert({ username, password })
-        await createNote(newUser, demoNote.title, demoNote.text)
+        const [newUser] = await db("users").insert({ email, password, username, img })
+        // await createNote(newUser, demoNote.title, demoNote.text)
         return newUser
       }
     } catch (err) {
-      console.error(`User ${username} not created, error (knex):`, err)
+      console.error(`User ${email} not created, error (knex):`, err)
     }
   }
 }
 
-const loginUser = async (username, password) => {
-  if (username && password) {
+const loginUser = async (email, password) => {
+  if (email && password) {
     try {
-      const getUser = await findUserByUsername(username)
+      const getUser = await findUserByEmail(email)
       if (!getUser) {
         console.error("User not found")
         return
@@ -35,23 +35,23 @@ const loginUser = async (username, password) => {
         console.error("This user is registered via Google")
         return
       }
-      if (getUser.username === username && getUser.password === password) return getUser
+      if (getUser.email === email && getUser.password === password) return getUser
       else {
         console.error("User does not exist or password is incorrect")
         return
       }
     } catch (err) {
-      console.error(`User ${username} does not exist or password is incorrect, error (knex):`, err)
+      console.error(`User ${email} does not exist or password is incorrect, error (knex):`, err)
     }
   }
 }
 
-const findUserByUsername = async (username) => {
+const findUserByEmail = async (email) => {
   try {
-    const [user] = await db("users").select().where({ username }).limit(1)
+    const [user] = await db("users").select().where({ email }).limit(1)
     return user
   } catch (err) {
-    console.error(`User ${username} not found, error (knex):`, err)
+    console.error(`User ${email} not found, error (knex):`, err)
   }
 }
 
@@ -227,7 +227,7 @@ export default {
   loginUser,
   createSession,
   findUserBySessionId,
-  findUserByUsername,
+  findUserByEmail,
   getSession,
   deleteSession,
 }

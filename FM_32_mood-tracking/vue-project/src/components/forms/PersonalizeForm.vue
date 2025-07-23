@@ -2,8 +2,13 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useFileCheck } from '@/composables/useFileCheck.ts'
+import { useModalStore } from '@/stores/modals'
+import { useUserStore } from '@/stores/userStore'
 
-const router = useRouter()
+const modalStore = useModalStore()
+const userStore = useUserStore()
+
+// const router = useRouter()
 const correctFile = ref(true)
 
 // form check
@@ -14,7 +19,17 @@ const handleSubmit = (event: Event) => {
   if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
-  } else router.push('/dashboard')
+  } else {
+    // router.push('/dashboard')
+    const formData = new FormData(currentForm)
+    const username = formData.get('name')?.toString() || ''
+    const img = formData.get('file')?.toString() || ''
+    userStore.registerData.username = username
+    // сделать обработку файла и запись ссылки
+    userStore.registerData.img = 'url' // тут добавить ссылку
+    if (username) userStore.registerUser(userStore.registerData)
+    console.log(userStore.registerData)
+  }
   currentForm.classList.add('was-validated')
 }
 
@@ -35,7 +50,8 @@ const handleFile = (e: Event) => {
           type="text"
           class="form-control personal__input"
           id="name"
-          placeholder="name@mail.com"
+          name="name"
+          placeholder="Jane Appleseed"
           required
           maxlength="100"
         />
@@ -56,6 +72,7 @@ const handleFile = (e: Event) => {
             <input
               type="file"
               id="file"
+              name="file"
               accept="image/png, image/jpeg"
               @change="handleFile"
               style="display: none"

@@ -29,6 +29,7 @@ const closePopover = () => {
         tabindex="0"
         @keydown.space.prevent="popoverToggle()"
         @keydown.enter.prevent="popoverToggle()"
+        aria-haspopup="dialog"
       >
         <img
           class="header__user-img"

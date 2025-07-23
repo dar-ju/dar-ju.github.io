@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import express from 'express'
+import cors from 'cors'
 import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import bcrypt from 'bcrypt'
@@ -13,6 +14,10 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.static('public'))
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}))
 
 
 app.use(passport.initialize())
@@ -36,12 +41,12 @@ app.use(async (req, res, next) => {
   next()
 })
 
-async function userLogin(username, password, res) {
-  const userDataFromDB = await db.findUserByUsername(username)
+async function userLogin(email, password, res) {
+  const userDataFromDB = await db.findUserByEmail(email)
   const hashPsw = userDataFromDB.password
   const match = await bcrypt.compare(password, hashPsw)
   if (match) {
-    const user = await db.loginUser(username, hashPsw)
+    const user = await db.loginUser(email, hashPsw)
     const sessionId = await db.createSession(user.id)
     res.cookie('sessionId', sessionId, { httpOnly: true })
     res.redirect('/dashboard')
@@ -54,8 +59,8 @@ async function userLogin(username, password, res) {
 
 app.post("/login", async (req, res) => {
   try {
-    const { username, password } = req.body
-    await userLogin(username, password, res)
+    const { email, password } = req.body
+    await userLogin(email, password, res)
   } catch (err) {
     res.redirect('/')
   }
@@ -73,10 +78,11 @@ app.get("/logout", async (req, res) => {
 })
 
 app.post("/signup", async (req, res) => {
-  const { username, password } = req.body
+  console.log('req.body:', req.body)
+  const { email, password, username, img } = req.body
   const hashPsw = await bcrypt.hash(password, 10)
-  await db.createUser(username, hashPsw)
-  await userLogin(username, password, res)
+  await db.createUser(email, hashPsw, username, img)
+  await userLogin(email, password, res)
 })
 
 // app.get("/api/notes", async (req, res) => {

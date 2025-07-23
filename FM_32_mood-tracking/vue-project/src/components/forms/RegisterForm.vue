@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { defineEmits, ref } from 'vue'
 import PersonalizeForm from '@/components/forms/PersonalizeForm.vue'
+import { useUserStore } from '@/stores/userStore'
+
+const userStore = useUserStore()
 
 // to personalize form
-const toPersonalize = ref(false)
+// const toPersonalize = ref(false)
 
 const emit = defineEmits<{
   (e: 'isLoginForm', value: boolean): void
@@ -21,14 +24,20 @@ const handleSubmit = (event: Event) => {
   if (!currentForm.checkValidity()) {
     event.preventDefault()
     event.stopPropagation()
-  } else toPersonalize.value = true
+  } else {
+    const formData = new FormData(currentForm)
+    const email = formData.get('email')?.toString() || ''
+    const password = formData.get('password')?.toString() || ''
+    userStore.registerData.email = email
+    userStore.registerData.password = password
+  }
   currentForm.classList.add('was-validated')
 }
 </script>
 
 <template>
   <Transition name="fade" mode="out-in">
-    <div v-if="!toPersonalize" class="login__wrapper">
+    <div v-if="!userStore.registerData.email" class="login__wrapper">
       <h1 class="title login__title">Create an&nbsp;account</h1>
       <p class="login__descr">Join to track your daily mood and sleep with ease.</p>
       <form class="login__form" ref="form" novalidate @submit.prevent="handleSubmit">
@@ -38,6 +47,7 @@ const handleSubmit = (event: Event) => {
             type="email"
             class="form-control login__input"
             id="email"
+            name="email"
             placeholder="name@mail.com"
             aria-describedby="emailHelp"
             required
@@ -62,7 +72,13 @@ const handleSubmit = (event: Event) => {
         </div>
         <div class="login__password-wrapper">
           <label for="password" class="form-label login__password-label">Password</label>
-          <input type="password" class="form-control login__input" id="password" required />
+          <input
+            type="password"
+            class="form-control login__input"
+            id="password"
+            name="password"
+            required
+          />
         </div>
         <button type="submit" class="btn btn-primary login__btn">Sign Up</button>
       </form>

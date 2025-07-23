@@ -1,10 +1,11 @@
 <script setup lang="ts">
-// import { RouterLink, RouterView } from 'vue-router'
+import DashboardView from '@/views/DashboardView.vue'
+import LoginView from '@/views/LoginView.vue'
 </script>
 
 <template>
-  <RouterView />
-  <!-- <h1 class="text-gray-500 dark:text-gray-400">test</h1> -->
+  <LoginView />
+  <DashboardView />
 </template>
 
 <style scoped></style>

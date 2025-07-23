@@ -8,11 +8,8 @@ export interface MoodEntry {
   sleepHours: number
 }
 
-export type MoodQuotes = Record<MoodValue, string[]>
-
 export interface MoodData {
   moodEntries: MoodEntry[]
-  moodQuotes: MoodQuotes
 }
 
 export interface MoodEntryPartial {

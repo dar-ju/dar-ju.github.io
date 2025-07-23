@@ -16,7 +16,7 @@ watch(
     const lastEntry = data.moodEntries[data.moodEntries.length - 1]
     lastLoggedDay.value = lastEntry
 
-    const quotes = data.moodQuotes[lastEntry.mood]
+    const quotes = moodMap[lastEntry.mood].quotes
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
     quote.value = randomQuote
   },

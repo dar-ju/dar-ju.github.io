@@ -7,7 +7,7 @@ import ProfileSettings from '@/components/modals/profile/ProfileSettings.vue'
 import LogMain from '@/components/modals/moodlog/LogMain.vue'
 import { useModalStore } from '@/stores/modals'
 import { useDataStore } from '@/stores/moodData'
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { onBeforeUnmount, onMounted, watch } from 'vue'
 
 const modal = useModalStore()
 const mood = useDataStore()
@@ -22,7 +22,6 @@ function handleKeyDown(e: KeyboardEvent) {
 
 onMounted(() => {
   window.addEventListener('keydown', handleKeyDown)
-  // console.log(new Date(mood.data.moodEntries?.createdAt))
 })
 
 onBeforeUnmount(() => {
