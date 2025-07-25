@@ -14,7 +14,7 @@ const sleepList = ['9+ hours', '7-8 hours', '5-6 hours', '3-4 hours', '0-2 hours
         <label
           class="log__sleep-block"
           :for="item"
-          :class="{ 'log__sleep-block--selected': modal.sleepLevel === item }"
+          :class="{ 'log__sleep-block--selected': modal.moodData.sleepHours === item }"
         >
           <div class="form-check log__sleep">
             <input
@@ -23,7 +23,7 @@ const sleepList = ['9+ hours', '7-8 hours', '5-6 hours', '3-4 hours', '0-2 hours
               name="sleep"
               :id="item"
               :value="item"
-              v-model="modal.sleepLevel"
+              v-model="modal.moodData.sleepHours"
             />
             <span class="form-check-label log__sleep-label">{{ item }}</span>
           </div>

@@ -5,9 +5,9 @@ import { watch } from 'vue'
 const modal = useModalStore()
 
 watch(
-  () => modal.moodLevel,
+  () => modal.moodData.mood,
   () => {
-    if (modal.moodLevel && modal.isWarnVisible) modal.isWarnVisible = false
+    if (modal.moodData.mood && modal.isWarnVisible) modal.isWarnVisible = false
   },
 )
 
@@ -32,7 +32,7 @@ const moodList = [
       <li v-for="item in moodList" :key="item.id">
         <label
           class="log__mood-block"
-          :class="{ 'log__mood-block--selected': modal.moodLevel === item.value }"
+          :class="{ 'log__mood-block--selected': modal.moodData.mood === item.value }"
           :for="item.title"
         >
           <div class="form-check log__mood">
@@ -42,7 +42,7 @@ const moodList = [
               name="mood"
               :id="item.title"
               :value="item.value"
-              v-model="modal.moodLevel"
+              v-model="modal.moodData.mood"
             />
             <span class="form-check-label log__mood-label">{{ item.title }}</span>
           </div>

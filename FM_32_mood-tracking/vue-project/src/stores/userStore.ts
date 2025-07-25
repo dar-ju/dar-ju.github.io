@@ -5,6 +5,8 @@ import { getSessionApi, loginUserApi, registerUserApi, logoutUserApi } from '@/a
 export const useUserStore = defineStore('user', () => {
   const user = ref('')
   const error = ref('')
+  const isUserRegistered = ref(false)
+  const isUserChecked = ref(false)
 
   const registerData = ref({
     email: '',
@@ -16,15 +18,20 @@ export const useUserStore = defineStore('user', () => {
   const getUser = async () => {
     try {
       const response = await getSessionApi()
-      user.value = response
+      if (!response) {
+        return null
+      }
+      user.value = response.user
     } catch (err) {
       error.value = err.message
     }
   }
 
-  const loginUser = async (username, password) => {
+  const loginUser = async (email, password) => {
     try {
-      const response = await loginUserApi(username, password)
+      const response = await loginUserApi(email, password)
+      console.log(response)
+
       user.value = response
     } catch (err) {
       error.value = err.message
@@ -34,6 +41,10 @@ export const useUserStore = defineStore('user', () => {
   const registerUser = async (userData) => {
     try {
       const response = await registerUserApi(userData)
+      if (response.isUserRegistered) {
+        isUserRegistered.value = true
+        return
+      }
       user.value = response
     } catch (err) {
       error.value = err.message
@@ -44,6 +55,8 @@ export const useUserStore = defineStore('user', () => {
     try {
       await logoutUserApi()
       user.value = ''
+      isUserRegistered.value = false
+      isUserChecked.value = false
     } catch (err) {
       error.value = err.message
     }
@@ -53,6 +66,8 @@ export const useUserStore = defineStore('user', () => {
     user,
     error,
     registerData,
+    isUserRegistered,
+    isUserChecked,
     getUser,
     loginUser,
     registerUser,

@@ -13,11 +13,13 @@ const TEXTLIMIT = 150
       <textarea
         class="form-control log__about-textarea"
         placeholder="Today, I felt…"
-        id="aboutText"
+        id="journalEntry"
         :maxlength="TEXTLIMIT"
-        v-model="modal.aboutText"
+        v-model="modal.moodData.journalEntry"
       ></textarea>
-      <span class="log__about-limit">{{ `${modal.aboutText.length} / ${TEXTLIMIT}` }}</span>
+      <span class="log__about-limit">{{
+        `${modal.moodData.journalEntry.length} / ${TEXTLIMIT}`
+      }}</span>
     </div>
     <Transition name="fade">
       <div v-if="modal.isWarnVisible" class="invalid">

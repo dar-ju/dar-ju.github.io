@@ -51,7 +51,7 @@ const findUserByEmail = async (email) => {
     const [user] = await db("users").select().where({ email }).limit(1)
     return user
   } catch (err) {
-    console.error(`User ${email} not found, error (knex):`, err)
+    console.error(`User with email ${email} not found, error (knex):`, err)
   }
 }
 
@@ -98,6 +98,17 @@ const deleteSession = async (sessionToken) => {
     await db("sessions").where({ session_token: sessionToken }).delete()
   } catch (err) {
     console.error(`Session ${sessionToken} not deleted, error (knex):`, err)
+  }
+}
+
+// MOODS
+const createMood = async (email, mood, feelings, journalEntry, sleepHours) => {
+  try {
+    const getUser = await findUserByEmail(email)
+    const userId = getUser.id
+    await db("moods").insert({ userId, mood, feelings, journalEntry, sleepHours })
+  } catch (err) {
+    console.error(`Mood not created, error (knex):`, err)
   }
 }
 

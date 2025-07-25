@@ -21,7 +21,7 @@ app.use(cors({
 
 
 app.use(passport.initialize())
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }))
+app.get('/api/auth/google', passport.authenticate('google', { scope: ['profile'] }))
 
 app.use(async (req, res, next) => {
   const sessionId = req.cookies.sessionId || req.cookies.session
@@ -30,6 +30,8 @@ app.use(async (req, res, next) => {
       const session = await db.getSession(sessionId)
       if (session) {
         const user = await db.findUserBySessionId(sessionId)
+        // console.log(user);
+
         if (user) {
           req.user = user
         }
@@ -42,47 +44,73 @@ app.use(async (req, res, next) => {
 })
 
 async function userLogin(email, password, res) {
+  console.log(email, password);
   const userDataFromDB = await db.findUserByEmail(email)
   const hashPsw = userDataFromDB.password
   const match = await bcrypt.compare(password, hashPsw)
+  console.log(userDataFromDB, match);
   if (match) {
     const user = await db.loginUser(email, hashPsw)
     const sessionId = await db.createSession(user.id)
     res.cookie('sessionId', sessionId, { httpOnly: true })
-    res.redirect('/dashboard')
+    res.json(user)
   }
   else {
     console.error('Wrong password')
-    res.redirect('/')
+    return res.status(200).json({ authorized: false })
   }
 }
 
-app.post("/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
   try {
+    console.log(req.body);
+
     const { email, password } = req.body
     await userLogin(email, password, res)
   } catch (err) {
-    res.redirect('/')
+    console.error(`Login error: ${err}`)
   }
 })
 
-app.get("/logout", async (req, res) => {
+app.post('/api/logout', async (req, res) => {
   try {
     const sessionId = req.cookies.sessionId
     await db.deleteSession(sessionId)
     res.clearCookie('sessionId')
-    res.redirect('/')
+    res.status(200).json({ message: 'Logged out' })
   } catch (err) {
-    res.redirect('/')
+    console.error(err)
+    res.status(500).json({ error: 'Logout failed' })
   }
 })
 
-app.post("/signup", async (req, res) => {
-  console.log('req.body:', req.body)
-  const { email, password, username, img } = req.body
-  const hashPsw = await bcrypt.hash(password, 10)
-  await db.createUser(email, hashPsw, username, img)
-  await userLogin(email, password, res)
+
+app.post("/api/signup", async (req, res) => {
+  try {
+    const { email, password, username, img } = req.body
+    if (!username) {
+      console.log(req.body);
+
+      const userDataFromDB = await db.findUserByEmail(email)
+      // console.log('юзер существует');
+      console.log(userDataFromDB);
+      if (!userDataFromDB) return res.status(200).json({ isUserRegistered: false })
+      else return res.status(200).json({ isUserRegistered: true })
+    }
+    const hashPsw = await bcrypt.hash(password, 10)
+    await db.createUser(email, hashPsw, username, img)
+    await userLogin(email, password, res)
+  } catch (error) {
+    console.error('Signup error:', error)
+    res.status(500).json({ error: error.message || 'Internal server error' })
+  }
+})
+
+app.get('/api/me', (req, res) => {
+  if (!req.user) {
+    return res.status(200).json({ authorized: false })
+  }
+  res.status(200).json({ authorized: true, user: req.user })
 })
 
 // app.get("/api/notes", async (req, res) => {
@@ -170,22 +198,21 @@ app.post("/signup", async (req, res) => {
 //   }
 // })
 
-app.get('/auth/google/callback', passport.authenticate('google', { session: false }), async (req, res) => {
+app.get('/api/auth/google/callback', passport.authenticate('google', { session: false }), async (req, res) => {
   const userId = req.user
   const sessionToken = await db.createSession(userId)
   res.cookie('sessionId', sessionToken, {
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 7
+    maxAge: 1000 * 60 * 60 * 24 * 365
   })
   res.redirect('/')
 })
 
 
-app.get("/", (req, res) => {
-  if (req.user) {
-    res.redirect('/dashboard')
-  } else res.render('index')
-})
+// app.get("/api", (req, res) => {
+//   if (req.user) {
+//   } else res.render('index')
+// })
 
 // app.get('/dashboard', (req, res) => {
 //   if (req.user) res.render('dashboard', { username: req.user.username })

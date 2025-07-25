@@ -41,14 +41,20 @@ watch(
 </script>
 
 <template>
-  <HeaderMood />
-  <DashboardHello />
-  <Transition name="fade">
-    <DashboardCurrent v-if="mood.isTodayLogged" />
-  </Transition>
-  <DashboardStat />
-  <ProfileSettings />
-  <LogMain />
+  <div>
+    <header>
+      <HeaderMood />
+    </header>
+    <main>
+      <DashboardHello />
+      <Transition name="fade">
+        <DashboardCurrent v-if="mood.isTodayLogged" />
+      </Transition>
+      <DashboardStat />
+      <ProfileSettings />
+      <LogMain />
+    </main>
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

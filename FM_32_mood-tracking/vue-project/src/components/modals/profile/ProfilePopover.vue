@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import { useModalStore } from '@/stores/modals'
+import { useUserStore } from '@/stores/userStore'
 
 const props = defineProps<{ onClose: () => void }>()
 
 const modal = useModalStore()
+const userStore = useUserStore()
 
-const handleClick = () => {
+const handleSettingsClick = () => {
   props.onClose()
   modal.isSettingsModalActive = true
+}
+
+const handleLogoutClick = () => {
+  props.onClose()
+  userStore.logoutUser()
 }
 </script>
 
@@ -18,7 +25,7 @@ const handleClick = () => {
       <p class="profile-popover__name">Lisa Maria</p>
       <p class="profile-popover__email">lisa@mail.com</p>
       <div class="profile-popover__link-block">
-        <div @click="handleClick" class="profile-popover__link">
+        <div @click="handleSettingsClick" class="profile-popover__link">
           <img
             class="profile-popover__link-img"
             src="/assets/images/icon-settings.svg"
@@ -34,7 +41,7 @@ const handleClick = () => {
             >Settings</span
           >
         </div>
-        <div class="profile-popover__link">
+        <div @click="handleLogoutClick" class="profile-popover__link">
           <img
             class="profile-popover__link-img"
             src="/assets/images/icon-logout.svg"

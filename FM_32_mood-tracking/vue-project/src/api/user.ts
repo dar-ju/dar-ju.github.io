@@ -2,28 +2,29 @@ const baseUrl = import.meta.env.VITE_BASE_URL
 
 export async function getSessionApi() {
   try {
-    const response = await fetch('https://todo-backend-3ew1.onrender.com/api/me', {
+    const response = await fetch(`${baseUrl}/api/me`, {
       method: 'GET',
       credentials: 'include',
     })
     if (response.status === 401) return null
-    if (!response.ok) throw new Error(`Error: ${response.status}`)
+    if (!response.ok) return null
     const data = await response.json()
     return data
   } catch (err) {
     console.error('Session load error:', err)
+    return null
   }
 }
 
-export const loginUserApi = async (username, password) => {
+export const loginUserApi = async (email, password) => {
   try {
-    const response = await fetch(`https://todo-backend-3ew1.onrender.com/login`, {
+    const response = await fetch(`${baseUrl}/api/login`, {
       method: 'POST',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ email, password }),
     })
     if (!response.ok) {
       const { error } = await response.json()
@@ -40,7 +41,7 @@ export const loginUserApi = async (username, password) => {
 
 export const registerUserApi = async ({ email, password, username, img }) => {
   try {
-    const response = await fetch(`${baseUrl}/signup`, {
+    const response = await fetch(`${baseUrl}/api/signup`, {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -55,12 +56,13 @@ export const registerUserApi = async ({ email, password, username, img }) => {
     return await response.json()
   } catch (error) {
     console.error('Signup error:', error)
+    throw error
   }
 }
 
 export const logoutUserApi = async () => {
   try {
-    const response = await fetch(`https://todo-backend-3ew1.onrender.com/logout`, {
+    const response = await fetch(`${baseUrl}/api/logout`, {
       method: 'POST',
       credentials: 'include',
     })

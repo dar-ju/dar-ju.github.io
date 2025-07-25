@@ -36,7 +36,7 @@ const feeliings = [
         v-for="item in feeliings"
         :key="item"
         class="list-group-item log__feel-item"
-        :class="{ 'log__feel-item--checked': modal.selectedFeelings.includes(item) }"
+        :class="{ 'log__feel-item--checked': modal.moodData.feelings.includes(item) }"
       >
         <label class="log__feel-item-block" :for="item">
           <input
@@ -44,14 +44,16 @@ const feeliings = [
             type="checkbox"
             :value="item"
             :id="item"
-            v-model="modal.selectedFeelings"
-            :disabled="modal.selectedFeelings.length >= 3 && !modal.selectedFeelings.includes(item)"
+            v-model="modal.moodData.feelings"
+            :disabled="
+              modal.moodData.feelings.length >= 3 && !modal.moodData.feelings.includes(item)
+            "
           />
           <span
             class="log__feel-text"
             :class="{
               'log__feel-text--disabled':
-                modal.selectedFeelings.length >= 3 && !modal.selectedFeelings.includes(item),
+                modal.moodData.feelings.length >= 3 && !modal.moodData.feelings.includes(item),
             }"
             >{{ item }}</span
           >

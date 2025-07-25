@@ -8,27 +8,29 @@ import { useUserStore } from '@/stores/userStore'
 const modalStore = useModalStore()
 const userStore = useUserStore()
 
-// const router = useRouter()
+const spinnerLoading = ref(false)
 const correctFile = ref(true)
 
 // form check
 const form = ref<HTMLFormElement | null>(null)
-const handleSubmit = (event: Event) => {
+const handleSubmit = async (event: Event) => {
   const currentForm = form.value
   if (!currentForm) return
   if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
   } else {
-    // router.push('/dashboard')
     const formData = new FormData(currentForm)
     const username = formData.get('name')?.toString() || ''
     const img = formData.get('file')?.toString() || ''
     userStore.registerData.username = username
     // сделать обработку файла и запись ссылки
     userStore.registerData.img = 'url' // тут добавить ссылку
-    if (username) userStore.registerUser(userStore.registerData)
-    console.log(userStore.registerData)
+    if (username) {
+      spinnerLoading.value = true
+      await userStore.registerUser(userStore.registerData)
+      spinnerLoading.value = false
+    }
   }
   currentForm.classList.add('was-validated')
 }
@@ -106,7 +108,15 @@ const handleFile = (e: Event) => {
           </div>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary personal__btn">Start Tracking</button>
+      <button type="submit" class="btn btn-primary personal__btn">
+        Start Tracking
+        <div
+          v-if="spinnerLoading"
+          class="spinner-border spinner-border-sm ms-auto"
+          role="status"
+          aria-hidden="true"
+        ></div>
+      </button>
     </form>
   </div>
 </template>
@@ -180,6 +190,7 @@ const handleFile = (e: Event) => {
     display: flex;
     padding-top: 6px;
     gap: 6px;
+    color: var(--red-700);
     @include text-preset(preset9);
   }
 }

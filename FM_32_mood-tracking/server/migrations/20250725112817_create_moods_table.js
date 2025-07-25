@@ -5,7 +5,7 @@
 export function up(knex) {
   return knex.schema.createTable('moods', (table) => {
     table.increments('id').primary()
-    table.integer('user_id').notNullable()
+    table.integer('userId').notNullable()
     table.timestamp('createdAt').notNullable().defaultTo(knex.fn.now())
     table.integer('mood').notNullable()
     table.json('feelings')

@@ -19,7 +19,7 @@ const today: Date = new Date()
       </div>
       <button
         v-if="!mood.isTodayLogged"
-        @click="modal.isLogModalActive = true"
+        @click="[(modal.isLogModalActive = true), (modal.isWarnVisible = false)]"
         type="button"
         class="btn btn-primary mood__btn"
       >

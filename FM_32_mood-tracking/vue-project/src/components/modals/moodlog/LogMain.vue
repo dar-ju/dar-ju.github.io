@@ -4,22 +4,24 @@ import LogStage1 from '@/components/modals/moodlog/LogStage1.vue'
 import LogStage2 from '@/components/modals/moodlog/LogStage2.vue'
 import LogStage3 from '@/components/modals/moodlog/LogStage3.vue'
 import LogStage4 from '@/components/modals/moodlog/LogStage4.vue'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const modal = useModalStore()
+
+const spinnerLoading = ref(false)
 
 const isLast = computed(() => modal.currentLogStage === 4)
 
 const next = () => {
-  if (modal.currentLogStage === 1 && modal.moodLevel === null) {
+  if (modal.currentLogStage === 1 && modal.moodData.mood === null) {
     modal.isWarnVisible = true
     return
   }
-  if (modal.currentLogStage === 2 && modal.selectedFeelings.length > 3) {
+  if (modal.currentLogStage === 2 && modal.moodData.feelings.length > 3) {
     modal.isWarnVisible = true
     return
   }
-  if (modal.currentLogStage === 3 && modal.aboutText.length === 0) {
+  if (modal.currentLogStage === 3 && modal.moodData.journalEntry.length === 0) {
     modal.isWarnVisible = true
     return
   }
@@ -27,7 +29,10 @@ const next = () => {
   modal.isWarnVisible = false
 }
 const handleSubmit = () => {
+  spinnerLoading.value = true
+  console.log(modal.moodData)
   //// добавить сохранение данных
+  spinnerLoading.value = false
   modal.isLogModalActive = false
   modal.currentLogStage = 1
 }
@@ -72,6 +77,12 @@ const handleNavigate = (level: number) => {
         <LogStage4 />
         <button type="submit" class="btn btn-primary log__btn">
           {{ isLast ? 'Submit' : 'Continue' }}
+          <div
+            v-if="spinnerLoading"
+            class="spinner-border spinner-border-sm ms-auto"
+            role="status"
+            aria-hidden="true"
+          ></div>
         </button>
       </form>
     </div>
