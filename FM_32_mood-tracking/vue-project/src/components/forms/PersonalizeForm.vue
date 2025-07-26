@@ -103,7 +103,7 @@ const handleFile = (e: Event) => {
               Upload
             </label>
             <div v-if="!correctFile" class="invalid-feedback">
-              <div class="personal__invalid-wrapper">
+              <div class="invalid invalid-auth">
                 <svg
                   width="12"
                   height="13"
@@ -206,13 +206,6 @@ const handleFile = (e: Event) => {
     width: 100%;
     border-radius: 10px;
     @include text-preset(preset5);
-  }
-  &__invalid-wrapper {
-    display: flex;
-    padding-top: 6px;
-    gap: 6px;
-    color: var(--red-700);
-    @include text-preset(preset9);
   }
 }
 </style>

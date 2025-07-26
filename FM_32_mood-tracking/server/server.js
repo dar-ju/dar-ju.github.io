@@ -1,11 +1,9 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
-import passport from 'passport'
 import cookieParser from 'cookie-parser'
 import bcrypt from 'bcrypt'
 import db from './db.js'
-import './auth/google.js'
 
 dotenv.config()
 
@@ -18,10 +16,6 @@ app.use(cors({
   origin: 'http://localhost:5173',
   credentials: true
 }))
-
-
-app.use(passport.initialize())
-app.get('/api/auth/google', passport.authenticate('google', { scope: ['profile'] }))
 
 app.use(async (req, res, next) => {
   const sessionId = req.cookies.sessionId || req.cookies.session
@@ -144,16 +138,6 @@ app.post('/api/moods', async (req, res) => {
     console.error('Mood get error:', error)
     res.status(500).json({ error: error.message || 'Internal server error' })
   }
-})
-
-app.get('/api/auth/google/callback', passport.authenticate('google', { session: false }), async (req, res) => {
-  const userId = req.user
-  const sessionToken = await db.createSession(userId)
-  res.cookie('sessionId', sessionToken, {
-    httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24 * 365
-  })
-  res.redirect('/')
 })
 
 app.use((req, res) => {

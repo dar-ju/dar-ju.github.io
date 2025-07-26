@@ -51,7 +51,7 @@ const handleSubmit = async (event: Event) => {
           aria-describedby="emailHelp"
         />
         <div class="invalid-feedback">
-          <div class="login__invalid-wrapper">
+          <div class="invalid invalid-auth">
             <svg
               width="12"
               height="13"
@@ -71,7 +71,7 @@ const handleSubmit = async (event: Event) => {
       <div class="login__password-wrapper">
         <label for="password" class="form-label login__password-label">Password</label>
         <input type="password" class="form-control login__input" id="password" name="password" />
-        <div v-if="userStore.user && !userStore.user.authorized" class="login__invalid-wrapper">
+        <div v-if="userStore.user && !userStore.user.authorized" class="invalid invalid-auth">
           <svg
             width="12"
             height="13"
@@ -141,19 +141,13 @@ const handleSubmit = async (event: Event) => {
   }
 
   &__toggle {
+    margin: 0;
     text-align: center;
     @include text-preset(preset6reg);
   }
   &__login {
     color: var(--blue-600);
     cursor: pointer;
-  }
-  &__invalid-wrapper {
-    display: flex;
-    padding-top: 6px;
-    gap: 6px;
-    color: var(--red-700);
-    @include text-preset(preset9);
   }
 }
 </style>

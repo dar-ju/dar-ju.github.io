@@ -22,7 +22,7 @@ const handleSubmit = async (event: Event) => {
   if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
-    return
+    currentForm.classList.add('was-validated')
   } else {
     const file = uploadedFile.value
 
@@ -44,7 +44,6 @@ const handleSubmit = async (event: Event) => {
 
     modalStore.isSettingsModalActive = false
   }
-  currentForm.classList.add('was-validated')
 }
 
 // file check

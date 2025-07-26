@@ -10,7 +10,6 @@ export function up(knex) {
     table.string('email', 50).notNullable().unique()
     table.string('password', 100).notNullable()
     table.string('img', 255)
-    table.string('google_id', 255)
   })
 }
 

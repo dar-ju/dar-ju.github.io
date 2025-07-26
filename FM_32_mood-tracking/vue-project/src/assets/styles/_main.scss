@@ -70,6 +70,12 @@ body::before {
   color: var(--red-700);
 }
 
+.invalid-auth {
+  padding-top: 6px;
+  margin-bottom: 0;
+  @include text-preset(preset9);
+}
+
 .btn-secondary {
   transition: border-color ease-in-out 0.3s;
 }

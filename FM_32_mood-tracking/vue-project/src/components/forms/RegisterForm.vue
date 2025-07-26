@@ -61,7 +61,7 @@ const handleSubmit = async (event: Event) => {
             @input="[(userStore.isUserRegistered = false), (userStore.isUserChecked = false)]"
           />
           <div class="invalid-feedback">
-            <div class="login__invalid-wrapper">
+            <div class="invalid invalid-auth">
               <svg
                 width="12"
                 height="13"
@@ -77,7 +77,7 @@ const handleSubmit = async (event: Event) => {
               <span>Invalid email format.</span>
             </div>
           </div>
-          <div v-if="userStore.isUserRegistered" class="login__invalid-wrapper">
+          <div v-if="userStore.isUserRegistered" class="invalid invalid-auth">
             <svg
               width="12"
               height="13"
@@ -163,19 +163,13 @@ const handleSubmit = async (event: Event) => {
   }
 
   &__toggle {
+    margin-bottom: 0;
     text-align: center;
     @include text-preset(preset6reg);
   }
   &__login {
     color: var(--blue-600);
     cursor: pointer;
-  }
-  &__invalid-wrapper {
-    display: flex;
-    padding-top: 6px;
-    gap: 6px;
-    color: var(--red-700);
-    @include text-preset(preset9);
   }
 }
 </style>
