@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useDataStore } from '@/stores/moodStore'
-import type { MoodValue } from '@/types/mood'
+import type { MoodValue, MoodAverageData } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap } = useMoodMap()
 
@@ -9,13 +9,7 @@ const mood = useDataStore()
 
 const CHECKINS = 5
 
-const averageData = ref<{
-  titleImg: string | null
-  title: string
-  arrowImg: string | null
-  descr: string
-  bckgColor: string
-}>({
+const averageData = ref<MoodAverageData>({
   titleImg: null,
   title: 'Keep tracking!',
   arrowImg: null,

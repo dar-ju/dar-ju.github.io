@@ -22,8 +22,16 @@ export interface MoodEntryPartial {
 
 export interface MoodPostPayload {
   email: string
-  mood: number
+  mood: number | null
   feelings: string[]
   journalEntry: string
-  sleepHours: number
+  sleepHours: string | number
+}
+
+export interface MoodAverageData {
+  titleImg: string | null
+  title: string
+  arrowImg: string | null
+  descr: string
+  bckgColor: string
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref, watch, type Ref } from 'vue'
 import { useDataStore } from '@/stores/moodStore'
-import type { MoodValue, MoodEntryPartial, MoodEntry } from '@/types/mood'
+import type { MoodEntryPartial, MoodEntry } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 import MoodPopover from '@/components/modals/MoodPopover.vue'
 const { moodMap, sleepMap } = useMoodMap()

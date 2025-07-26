@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { useDataStore } from '@/stores/moodStore'
 import StatTrends from '@/components/dashboard/StatTrends.vue'
 import StatAverageMood from '@/components/dashboard/StatAverageMood.vue'
 import StatAverageSleep from '@/components/dashboard/StatAverageSleep.vue'
-
-const moodStore = useDataStore()
 </script>
 
 <template>

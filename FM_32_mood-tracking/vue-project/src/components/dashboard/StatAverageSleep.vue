@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
+import type { MoodAverageData } from '@/types/mood'
 import { useDataStore } from '@/stores/moodStore'
 
 const mood = useDataStore()
@@ -8,13 +9,7 @@ const CHECKINS = 5
 const textColorTitle = ref('var(--neutral-900)')
 const textColorText = ref('var(--neutral-900)')
 
-const averageData = ref<{
-  titleImg: string | null
-  title: string
-  arrowImg: string | null
-  descr: string
-  bckgColor: string
-}>({
+const averageData = ref<MoodAverageData>({
   titleImg: null,
   title: 'Keep tracking!',
   arrowImg: null,

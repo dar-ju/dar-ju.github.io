@@ -81,7 +81,6 @@ app.post('/api/logout', async (req, res) => {
   }
 })
 
-
 app.post("/api/signup", async (req, res) => {
   try {
     const { email, password, username, img } = req.body
@@ -147,91 +146,6 @@ app.post('/api/moods', async (req, res) => {
   }
 })
 
-// app.get("/api/notes", async (req, res) => {
-//   if (!req.user) return res.status(401).json({ error: "User is not authorized" })
-//   try {
-//     const { age, search, page } = JSON.parse(req.query.filter)
-//     const userId = req.user.id
-//     let allNotes
-//     if (age === 'archive') allNotes = await db.getNotes(userId, 1, page, 'alltime', search)
-//     else if (age === '1month') allNotes = await db.getNotes(userId, 0, page, '1 MONTH', search)
-//     else if (age === '3months') allNotes = await db.getNotes(userId, 0, page, '3 MONTH', search)
-//     else allNotes = await db.getNotes(userId, 0, page, 'alltime', search)
-
-//     res.json({ data: allNotes.notes || [], hasMore: allNotes.hasMore })
-//   } catch (err) {
-//     console.error("Ошибка при получении заметок:", err)
-//     res.status(500).json({ error: "Ошибка сервера" })
-//   }
-// })
-
-
-// app.get("/api/note/:id", async (req, res) => {
-//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
-//   try {
-//     const noteId = req.params.id
-//     const note = await db.getNoteById(noteId)
-//     res.json(note)
-//   } catch (err) {
-//     console.error("Ошибка при получении заметки:", err)
-//     res.status(500).json({ error: "Ошибка сервера" })
-//   }
-// })
-
-// app.post("/api/note/new", async (req, res) => {
-//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
-//   try {
-//     const { title, html } = req.body
-//     const noteId = await db.createNote(req.user.id, title, html)
-//     res.json({ id: noteId })
-//   } catch (err) {
-//     console.error("Ошибка при создании заметки:", err)
-//     res.status(500).json({ error: "Ошибка сервера" })
-//   }
-// })
-
-// app.put("/api/note/:id/edit", async (req, res) => {
-//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
-//   try {
-//     if ('isArchived' in req.body) {
-//       const { id, isArchived } = req.body
-//       if (isArchived === true) await db.archiveToggleNote(id, 1)
-//       else await db.archiveToggleNote(id, 0)
-//     } else {
-//       const { id, title, html } = req.body
-//       await db.editNote(id, title, html)
-//     }
-//     const notes = await db.getNotes(req.user.id)
-//     res.json({ data: notes })
-//   } catch (err) {
-//     console.error("Ошибка при изменении заметки:", err)
-//     res.status(500).json({ error: "Ошибка сервера" })
-//   }
-// })
-
-// app.delete('/api/note/:id/delete', async (req, res) => {
-//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
-//   try {
-//     const { id } = req.params
-//     await db.deleteArchivedNote(id)
-//     res.json({ success: true })
-//   } catch (err) {
-//     console.error("Ошибка при удалении заметки:", err)
-//     res.status(500).json({ error: "Ошибка сервера" })
-//   }
-// })
-
-// app.delete('/api/notes/delete', async (req, res) => {
-//   if (!req.user) return res.status(401).json({ error: "Пользователь не авторизован" })
-//   try {
-//     await db.deleteAllArchivedNotes()
-//     res.json({ success: true })
-//   } catch (err) {
-//     console.error("Ошибка при удалении всех заметок:", err)
-//     res.status(500).json({ error: "Ошибка сервера" })
-//   }
-// })
-
 app.get('/api/auth/google/callback', passport.authenticate('google', { session: false }), async (req, res) => {
   const userId = req.user
   const sessionToken = await db.createSession(userId)
@@ -241,17 +155,6 @@ app.get('/api/auth/google/callback', passport.authenticate('google', { session: 
   })
   res.redirect('/')
 })
-
-
-// app.get("/api", (req, res) => {
-//   if (req.user) {
-//   } else res.render('index')
-// })
-
-// app.get('/dashboard', (req, res) => {
-//   if (req.user) res.render('dashboard', { username: req.user.username })
-//   else res.redirect('/')
-// })
 
 app.use((req, res) => {
   res.send('Page not found')

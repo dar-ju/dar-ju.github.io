@@ -2,6 +2,7 @@
 import { useModalStore } from '@/stores/modalStore'
 import { useUserStore } from '@/stores/userStore'
 import { useDataStore } from '@/stores/moodStore'
+import type { MoodPostPayload } from '@/types/mood'
 import LogStage1 from '@/components/modals/moodlog/LogStage1.vue'
 import LogStage2 from '@/components/modals/moodlog/LogStage2.vue'
 import LogStage3 from '@/components/modals/moodlog/LogStage3.vue'
@@ -32,11 +33,12 @@ const next = () => {
   modalStore.currentLogStage = modalStore.currentLogStage += 1
   modalStore.isWarnVisible = false
 }
+
 const handleSubmit = async () => {
   modalStore.moodData.email = userStore.user!.email
   spinnerLoading.value = true
   //save data
-  await moodStore.postData(modalStore.moodData)
+  await moodStore.postData(modalStore.moodData as MoodPostPayload)
   spinnerLoading.value = false
   modalStore.isLogModalActive = false
   modalStore.currentLogStage = 1

@@ -2,10 +2,8 @@
 import { ref } from 'vue'
 import { useFileCheck } from '@/composables/useFileCheck.ts'
 import { uploadToCloudinary } from '@/composables/useImageUpload.ts'
-import { useModalStore } from '@/stores/modalStore'
 import { useUserStore } from '@/stores/userStore'
 
-const modalStore = useModalStore()
 const userStore = useUserStore()
 
 const spinnerLoading = ref(false)
@@ -21,7 +19,6 @@ const handleSubmit = async (event: Event) => {
   if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
-    return
   } else {
     const formData = new FormData(currentForm)
     const username = formData.get('name')?.toString() || ''
