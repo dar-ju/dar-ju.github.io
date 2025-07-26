@@ -1,24 +1,47 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useFileCheck } from '@/composables/useFileCheck.ts'
-import { useModalStore } from '@/stores/modals'
+import { uploadToCloudinary } from '@/composables/useImageUpload.ts'
+import { useModalStore } from '@/stores/modalStore'
+import { useUserStore } from '@/stores/userStore'
 
-const modal = useModalStore()
+const modalStore = useModalStore()
+const userStore = useUserStore()
 
+const spinnerLoading = ref(false)
 const correctFile = ref(true)
+const previewImg = ref<string | null>(null)
+const uploadedFile = ref<File | null>(null)
+const username = ref(userStore.user.username)
 
 // form check
 const form = ref<HTMLFormElement | null>(null)
-const handleSubmit = (event: Event) => {
+const handleSubmit = async (event: Event) => {
   const currentForm = form.value
   if (!currentForm) return
   if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
+    return
   } else {
     //// дописать сохранение данных
     //// дописать подстановку данных в форму
-    modal.isSettingsModalActive = false
+    const formData = new FormData(currentForm)
+    // const username = formData.get('username')?.toString() || ''
+    const file = uploadedFile.value
+
+    spinnerLoading.value = true
+    if (file?.name) {
+      const imgUrl = await uploadToCloudinary(file)
+      if (imgUrl) {
+        await userStore.editUser(userStore.user.email, username.value, imgUrl)
+      }
+    } else {
+      await userStore.editUser(userStore.user.email, username.value, userStore.user.img)
+    }
+    await userStore.getUser()
+    spinnerLoading.value = false
+    modalStore.isSettingsModalActive = false
   }
   currentForm.classList.add('was-validated')
 }
@@ -26,12 +49,28 @@ const handleSubmit = (event: Event) => {
 // file check
 const handleFile = (e: Event) => {
   correctFile.value = useFileCheck(e)
+  const target = e.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (correctFile.value && file) {
+    if (previewImg.value) {
+      URL.revokeObjectURL(previewImg.value)
+    }
+    previewImg.value = URL.createObjectURL(file)
+    uploadedFile.value = file
+  }
+}
+
+const handleClose = () => {
+  modalStore.isSettingsModalActive = false
+  uploadedFile.value = null
+  previewImg.value = null
+  username.value = userStore.user.username
 }
 </script>
 
 <template>
   <Transition name="fade">
-    <div class="overlay" v-if="modal.isSettingsModalActive">
+    <div class="overlay" v-if="modalStore.isSettingsModalActive">
       <div class="personal__wrapper">
         <div class="personal__child-wrapper">
           <h1 class="title personal__title">Update your profile</h1>
@@ -43,15 +82,17 @@ const handleFile = (e: Event) => {
                 type="text"
                 class="form-control personal__input"
                 id="name"
+                name="username"
                 required
                 maxlength="100"
+                v-model="username"
               />
               <div class="invalid-feedback">Please enter your name</div>
             </div>
             <div class="personal__img-wrapper">
               <img
                 class="personal__img"
-                src="/assets/images/avatar-placeholder.svg"
+                :src="previewImg || userStore.user.img || '/assets/images/avatar-placeholder.svg'"
                 alt=""
                 width="64"
                 height="64"
@@ -63,6 +104,7 @@ const handleFile = (e: Event) => {
                   <input
                     type="file"
                     id="file"
+                    name="file"
                     accept="image/png, image/jpeg"
                     @change="handleFile"
                     style="display: none"
@@ -96,9 +138,17 @@ const handleFile = (e: Event) => {
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary personal__btn">Save changes</button>
+            <button type="submit" class="btn btn-primary personal__btn">
+              Save changes
+              <div
+                v-if="spinnerLoading"
+                class="spinner-border spinner-border-sm ms-auto"
+                role="status"
+                aria-hidden="true"
+              ></div>
+            </button>
           </form>
-          <button @click="modal.isSettingsModalActive = false" class="personal__close-btn">
+          <button @click="handleClose()" class="personal__close-btn">
             <svg
               width="15"
               height="15"
@@ -158,6 +208,13 @@ const handleFile = (e: Event) => {
     margin-bottom: 32px;
     gap: 20px;
     align-items: flex-start;
+  }
+  &__img {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
   }
   &__upload-block {
     display: flex;

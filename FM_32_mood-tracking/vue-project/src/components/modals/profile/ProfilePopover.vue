@@ -1,20 +1,24 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
+import { useModalStore } from '@/stores/modalStore'
 import { useUserStore } from '@/stores/userStore'
+import { useDataStore } from '@/stores/moodStore'
 
 const props = defineProps<{ onClose: () => void }>()
 
-const modal = useModalStore()
+const modalStore = useModalStore()
 const userStore = useUserStore()
+const moodStore = useDataStore()
 
 const handleSettingsClick = () => {
   props.onClose()
-  modal.isSettingsModalActive = true
+  modalStore.isSettingsModalActive = true
 }
 
 const handleLogoutClick = () => {
   props.onClose()
   userStore.logoutUser()
+  moodStore.data = null
+  moodStore.isTodayLogged = false
 }
 </script>
 
@@ -22,8 +26,8 @@ const handleLogoutClick = () => {
   <div class="popover-wrapper">
     <div class="profile-popover__overlay" @click="onClose" />
     <div class="profile-popover">
-      <p class="profile-popover__name">Lisa Maria</p>
-      <p class="profile-popover__email">lisa@mail.com</p>
+      <p class="profile-popover__name">{{ userStore.user.username }}</p>
+      <p class="profile-popover__email">{{ userStore.user.email }}</p>
       <div class="profile-popover__link-block">
         <div @click="handleSettingsClick" class="profile-popover__link">
           <img

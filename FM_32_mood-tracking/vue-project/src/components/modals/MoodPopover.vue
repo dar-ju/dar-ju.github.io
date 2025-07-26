@@ -42,7 +42,7 @@ const props = defineProps<{
       <h3 class="title mood-popover__title">Reflection</h3>
       <span class="mood-popover__text-secondary">{{ item?.journalEntry || '' }}</span>
     </div>
-    <div class="mood-popover__wrapper">
+    <div v-if="item?.feelings?.length" class="mood-popover__wrapper">
       <h3 class="title mood-popover__title">Tags</h3>
       <span class="mood-popover__text-secondary">{{ item?.feelings?.join(', ') || '' }}</span>
     </div>

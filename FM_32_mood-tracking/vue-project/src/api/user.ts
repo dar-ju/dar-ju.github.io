@@ -60,6 +60,25 @@ export const registerUserApi = async ({ email, password, username, img }) => {
   }
 }
 
+export async function editUserApi(email, username, img) {
+  try {
+    const response = await fetch(`${baseUrl}/api/userEdit`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, username, img }),
+    })
+    if (!response.ok) {
+      console.warn('User edit failed with status:', response.status)
+      return null
+    }
+    const data = await response.json()
+    return data
+  } catch (err) {
+    console.error('User edit error:', err)
+    return null
+  }
+}
+
 export const logoutUserApi = async () => {
   try {
     const response = await fetch(`${baseUrl}/api/logout`, {

@@ -1,12 +1,19 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import { getSessionApi, loginUserApi, registerUserApi, logoutUserApi } from '@/api/user.js'
+import {
+  getSessionApi,
+  loginUserApi,
+  registerUserApi,
+  editUserApi,
+  logoutUserApi,
+} from '@/api/user.js'
 
 export const useUserStore = defineStore('user', () => {
   const user = ref('')
   const error = ref('')
   const isUserRegistered = ref(false)
   const isUserChecked = ref(false)
+  const isUserLoading = ref(true)
 
   const registerData = ref({
     email: '',
@@ -24,14 +31,14 @@ export const useUserStore = defineStore('user', () => {
       user.value = response.user
     } catch (err) {
       error.value = err.message
+    } finally {
+      isUserLoading.value = false
     }
   }
 
   const loginUser = async (email, password) => {
     try {
       const response = await loginUserApi(email, password)
-      console.log(response)
-
       user.value = response
     } catch (err) {
       error.value = err.message
@@ -46,6 +53,15 @@ export const useUserStore = defineStore('user', () => {
         return
       }
       user.value = response
+    } catch (err) {
+      error.value = err.message
+    }
+  }
+
+  const editUser = async (email, username, img) => {
+    try {
+      await editUserApi(email, username, img)
+      // await getUser()
     } catch (err) {
       error.value = err.message
     }
@@ -68,9 +84,11 @@ export const useUserStore = defineStore('user', () => {
     registerData,
     isUserRegistered,
     isUserChecked,
+    isUserLoading,
     getUser,
     loginUser,
     registerUser,
+    editUser,
     logoutUser,
   }
 })

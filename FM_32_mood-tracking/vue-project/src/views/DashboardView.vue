@@ -5,22 +5,25 @@ import DashboardCurrent from '@/components/dashboard/DashboardCurrent.vue'
 import DashboardStat from '@/components/dashboard/DashboardStat.vue'
 import ProfileSettings from '@/components/modals/profile/ProfileSettings.vue'
 import LogMain from '@/components/modals/moodlog/LogMain.vue'
-import { useModalStore } from '@/stores/modals'
-import { useDataStore } from '@/stores/moodData'
+import { useModalStore } from '@/stores/modalStore'
+import { useDataStore } from '@/stores/moodStore'
+import { useUserStore } from '@/stores/userStore'
 import { onBeforeUnmount, onMounted, watch } from 'vue'
 
-const modal = useModalStore()
-const mood = useDataStore()
+const modalStore = useModalStore()
+const moodStore = useDataStore()
+const userStore = useUserStore()
 
 function handleKeyDown(e: KeyboardEvent) {
   if (e.key === 'Escape') {
-    modal.isLogModalActive = false
-    modal.isSettingsModalActive = false
-    modal.currentLogStage = 1
+    modalStore.isLogModalActive = false
+    modalStore.isSettingsModalActive = false
+    modalStore.currentLogStage = 1
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
+  await moodStore.getData(userStore.user.email, moodStore.NUMBER_OF_ITEMS)
   window.addEventListener('keydown', handleKeyDown)
 })
 
@@ -29,13 +32,13 @@ onBeforeUnmount(() => {
 })
 
 watch(
-  () => mood.data,
+  () => moodStore.data,
   () => {
-    const totalDays = mood.data?.moodEntries ? Object.keys(mood.data.moodEntries).length : 0
-    const lastLoggedDay = mood.data?.moodEntries?.[totalDays - 1]?.createdAt?.split('T')[0] ?? ''
+    const totalDays = moodStore.data?.moods ? Object.keys(moodStore.data.moods).length : 0
+    const lastLoggedDay = moodStore.data?.moods?.[totalDays - 1]?.createdAt?.split('T')[0] ?? ''
     const today = new Date()
     const formattedToday = today.toISOString().split('T')[0]
-    if (lastLoggedDay === formattedToday) mood.isTodayLogged = true
+    if (lastLoggedDay === formattedToday) moodStore.isTodayLogged = true
   },
 )
 </script>
@@ -47,8 +50,8 @@ watch(
     </header>
     <main>
       <DashboardHello />
-      <Transition name="fade">
-        <DashboardCurrent v-if="mood.isTodayLogged" />
+      <Transition name="fade" mode="in-out">
+        <DashboardCurrent v-if="moodStore.isTodayLogged" />
       </Transition>
       <DashboardStat />
       <ProfileSettings />

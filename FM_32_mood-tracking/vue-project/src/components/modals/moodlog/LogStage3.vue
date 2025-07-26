@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
+import { useModalStore } from '@/stores/modalStore'
 
-const modal = useModalStore()
+const modalStore = useModalStore()
 
 const TEXTLIMIT = 150
 </script>
 
 <template>
-  <div v-if="modal.currentLogStage === 3" class="log__about-wrapper">
+  <div v-if="modalStore.currentLogStage === 3" class="log__about-wrapper">
     <h2 class="title log__about-title">Write about your day...</h2>
     <div class="log__about-block">
       <textarea
@@ -15,14 +15,14 @@ const TEXTLIMIT = 150
         placeholder="Today, I felt…"
         id="journalEntry"
         :maxlength="TEXTLIMIT"
-        v-model="modal.moodData.journalEntry"
+        v-model="modalStore.moodData.journalEntry"
       ></textarea>
       <span class="log__about-limit">{{
-        `${modal.moodData.journalEntry.length} / ${TEXTLIMIT}`
+        `${modalStore.moodData.journalEntry.length} / ${TEXTLIMIT}`
       }}</span>
     </div>
     <Transition name="fade">
-      <div v-if="modal.isWarnVisible" class="invalid">
+      <div v-if="modalStore.isWarnVisible" class="invalid">
         <svg
           width="12"
           height="13"

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
+import { useModalStore } from '@/stores/modalStore'
 
-const modal = useModalStore()
+const modalStore = useModalStore()
 
 const feeliings = [
   'Joyful',
@@ -28,7 +28,7 @@ const feeliings = [
 </script>
 
 <template>
-  <div v-if="modal.currentLogStage === 2" class="log__feel-wrapper">
+  <div v-if="modalStore.currentLogStage === 2" class="log__feel-wrapper">
     <h2 class="title log__feel-title">How did you feel?</h2>
     <p class="log__feel-descr">Select up to three tags:</p>
     <ul class="list-group log__feel-list">
@@ -36,7 +36,7 @@ const feeliings = [
         v-for="item in feeliings"
         :key="item"
         class="list-group-item log__feel-item"
-        :class="{ 'log__feel-item--checked': modal.moodData.feelings.includes(item) }"
+        :class="{ 'log__feel-item--checked': modalStore.moodData.feelings.includes(item) }"
       >
         <label class="log__feel-item-block" :for="item">
           <input
@@ -44,16 +44,18 @@ const feeliings = [
             type="checkbox"
             :value="item"
             :id="item"
-            v-model="modal.moodData.feelings"
+            v-model="modalStore.moodData.feelings"
             :disabled="
-              modal.moodData.feelings.length >= 3 && !modal.moodData.feelings.includes(item)
+              modalStore.moodData.feelings.length >= 3 &&
+              !modalStore.moodData.feelings.includes(item)
             "
           />
           <span
             class="log__feel-text"
             :class="{
               'log__feel-text--disabled':
-                modal.moodData.feelings.length >= 3 && !modal.moodData.feelings.includes(item),
+                modalStore.moodData.feelings.length >= 3 &&
+                !modalStore.moodData.feelings.includes(item),
             }"
             >{{ item }}</span
           >
@@ -61,7 +63,7 @@ const feeliings = [
       </li>
     </ul>
     <Transition name="fade">
-      <div v-if="modal.isWarnVisible" class="invalid">
+      <div v-if="modalStore.isWarnVisible" class="invalid">
         <svg
           width="12"
           height="13"

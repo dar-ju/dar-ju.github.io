@@ -30,8 +30,6 @@ app.use(async (req, res, next) => {
       const session = await db.getSession(sessionId)
       if (session) {
         const user = await db.findUserBySessionId(sessionId)
-        // console.log(user);
-
         if (user) {
           req.user = user
         }
@@ -44,11 +42,12 @@ app.use(async (req, res, next) => {
 })
 
 async function userLogin(email, password, res) {
-  console.log(email, password);
   const userDataFromDB = await db.findUserByEmail(email)
+  if (!userDataFromDB) {
+    return res.status(200).json({ authorized: false })
+  }
   const hashPsw = userDataFromDB.password
   const match = await bcrypt.compare(password, hashPsw)
-  console.log(userDataFromDB, match);
   if (match) {
     const user = await db.loginUser(email, hashPsw)
     const sessionId = await db.createSession(user.id)
@@ -63,8 +62,6 @@ async function userLogin(email, password, res) {
 
 app.post("/api/login", async (req, res) => {
   try {
-    console.log(req.body);
-
     const { email, password } = req.body
     await userLogin(email, password, res)
   } catch (err) {
@@ -89,11 +86,7 @@ app.post("/api/signup", async (req, res) => {
   try {
     const { email, password, username, img } = req.body
     if (!username) {
-      console.log(req.body);
-
       const userDataFromDB = await db.findUserByEmail(email)
-      // console.log('юзер существует');
-      console.log(userDataFromDB);
       if (!userDataFromDB) return res.status(200).json({ isUserRegistered: false })
       else return res.status(200).json({ isUserRegistered: true })
     }
@@ -107,10 +100,51 @@ app.post("/api/signup", async (req, res) => {
 })
 
 app.get('/api/me', (req, res) => {
-  if (!req.user) {
-    return res.status(200).json({ authorized: false })
+  try {
+    if (!req.user) {
+      return res.status(200).json({ authorized: false })
+    }
+    res.status(200).json({ authorized: true, user: req.user })
+  } catch (err) {
+    res.status(500).json({ error: 'Get user data failed' })
   }
-  res.status(200).json({ authorized: true, user: req.user })
+})
+
+app.post('/api/userEdit', async (req, res) => {
+  try {
+    const { email, username, img } = req.body
+    if (!email) {
+      return res.status(400).json({ error: 'Email is required' })
+    }
+    await db.editUser(email, username, img)
+    res.status(200).json({ message: 'User updated successfully' })
+  } catch (err) {
+    console.error('User edit error:', err)
+    res.status(500).json({ error: 'User edit failed' })
+  }
+})
+
+app.post("/api/mood", async (req, res) => {
+  try {
+    const { email, mood, feelings, journalEntry, sleepHours } = req.body
+    await db.createMood(email, mood, feelings, journalEntry, sleepHours)
+    res.status(200).json({ success: true })
+  } catch (error) {
+    console.error('Mood create error:', error)
+    res.status(500).json({ error: error.message || 'Internal server error' })
+  }
+})
+
+app.post('/api/moods', async (req, res) => {
+  try {
+    const { email, numberOfItems } = req.body
+    const userDataFromDB = await db.findUserByEmail(email)
+    const moods = await db.getMoods(userDataFromDB.id, numberOfItems)
+    return res.status(200).json({ moods })
+  } catch (error) {
+    console.error('Mood get error:', error)
+    res.status(500).json({ error: error.message || 'Internal server error' })
+  }
 })
 
 // app.get("/api/notes", async (req, res) => {

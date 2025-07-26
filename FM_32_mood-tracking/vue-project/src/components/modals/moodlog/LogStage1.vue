@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
+import { useModalStore } from '@/stores/modalStore'
 import { watch } from 'vue'
 
-const modal = useModalStore()
+const modalStore = useModalStore()
 
 watch(
-  () => modal.moodData.mood,
+  () => modalStore.moodData.mood,
   () => {
-    if (modal.moodData.mood && modal.isWarnVisible) modal.isWarnVisible = false
+    if (modalStore.moodData.mood && modalStore.isWarnVisible) modalStore.isWarnVisible = false
   },
 )
 
@@ -26,13 +26,13 @@ const moodList = [
 </script>
 
 <template>
-  <div v-if="modal.currentLogStage === 1" class="log__mood-wrapper">
+  <div v-if="modalStore.currentLogStage === 1" class="log__mood-wrapper">
     <h2 class="title log__mood-title">How was your mood today?</h2>
     <ul class="log__mood-list">
       <li v-for="item in moodList" :key="item.id">
         <label
           class="log__mood-block"
-          :class="{ 'log__mood-block--selected': modal.moodData.mood === item.value }"
+          :class="{ 'log__mood-block--selected': modalStore.moodData.mood === item.value }"
           :for="item.title"
         >
           <div class="form-check log__mood">
@@ -42,7 +42,7 @@ const moodList = [
               name="mood"
               :id="item.title"
               :value="item.value"
-              v-model="modal.moodData.mood"
+              v-model="modalStore.moodData.mood"
             />
             <span class="form-check-label log__mood-label">{{ item.title }}</span>
           </div>
@@ -51,7 +51,7 @@ const moodList = [
       </li>
     </ul>
     <Transition name="fade">
-      <div v-if="modal.isWarnVisible" class="invalid">
+      <div v-if="modalStore.isWarnVisible" class="invalid">
         <svg
           width="12"
           height="13"

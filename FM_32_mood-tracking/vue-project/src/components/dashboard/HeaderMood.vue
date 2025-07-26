@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import ProfilePopover from '@/components/modals/profile/ProfilePopover.vue'
+import { useUserStore } from '@/stores/userStore'
 import { ref } from 'vue'
+
+const userStore = useUserStore()
 
 const isPopoverVisible = ref(false)
 
@@ -33,7 +36,7 @@ const closePopover = () => {
       >
         <img
           class="header__user-img"
-          src="/assets/images/avatar-lisa.jpg"
+          :src="userStore.user.img || '/assets/images/avatar-placeholder.svg'"
           alt=""
           width="40"
           height="40"

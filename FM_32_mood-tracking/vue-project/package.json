@@ -13,6 +13,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.21.0",
+    "@cloudinary/vue": "^1.13.3",
     "@popperjs/core": "^2.11.8",
     "@primeuix/themes": "^1.1.1",
     "@primevue/forms": "^4.3.5",

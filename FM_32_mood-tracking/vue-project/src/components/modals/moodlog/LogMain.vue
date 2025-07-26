@@ -1,53 +1,59 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
+import { useModalStore } from '@/stores/modalStore'
+import { useUserStore } from '@/stores/userStore'
+import { useDataStore } from '@/stores/moodStore'
 import LogStage1 from '@/components/modals/moodlog/LogStage1.vue'
 import LogStage2 from '@/components/modals/moodlog/LogStage2.vue'
 import LogStage3 from '@/components/modals/moodlog/LogStage3.vue'
 import LogStage4 from '@/components/modals/moodlog/LogStage4.vue'
 import { computed, ref } from 'vue'
 
-const modal = useModalStore()
+const modalStore = useModalStore()
+const userStore = useUserStore()
+const moodStore = useDataStore()
 
 const spinnerLoading = ref(false)
 
-const isLast = computed(() => modal.currentLogStage === 4)
+const isLast = computed(() => modalStore.currentLogStage === 4)
 
 const next = () => {
-  if (modal.currentLogStage === 1 && modal.moodData.mood === null) {
-    modal.isWarnVisible = true
+  if (modalStore.currentLogStage === 1 && modalStore.moodData.mood === null) {
+    modalStore.isWarnVisible = true
     return
   }
-  if (modal.currentLogStage === 2 && modal.moodData.feelings.length > 3) {
-    modal.isWarnVisible = true
+  if (modalStore.currentLogStage === 2 && modalStore.moodData.feelings.length > 3) {
+    modalStore.isWarnVisible = true
     return
   }
-  if (modal.currentLogStage === 3 && modal.moodData.journalEntry.length === 0) {
-    modal.isWarnVisible = true
+  if (modalStore.currentLogStage === 3 && modalStore.moodData.journalEntry.length === 0) {
+    modalStore.isWarnVisible = true
     return
   }
-  modal.currentLogStage = modal.currentLogStage += 1
-  modal.isWarnVisible = false
+  modalStore.currentLogStage = modalStore.currentLogStage += 1
+  modalStore.isWarnVisible = false
 }
-const handleSubmit = () => {
+const handleSubmit = async () => {
+  modalStore.moodData.email = userStore.user.email
   spinnerLoading.value = true
-  console.log(modal.moodData)
-  //// добавить сохранение данных
+  //save data
+  await moodStore.postData(modalStore.moodData)
   spinnerLoading.value = false
-  modal.isLogModalActive = false
-  modal.currentLogStage = 1
+  modalStore.isLogModalActive = false
+  modalStore.currentLogStage = 1
+  await moodStore.getData(userStore.user.email, moodStore.NUMBER_OF_ITEMS)
 }
 
 const handleNavigate = (level: number) => {
-  if (level < modal.currentLogStage) modal.currentLogStage = level
-  modal.isWarnVisible = false
+  if (level < modalStore.currentLogStage) modalStore.currentLogStage = level
+  modalStore.isWarnVisible = false
 }
 </script>
 
 <template>
   <Transition name="fade">
-    <div class="overlay" v-if="modal.isLogModalActive">
+    <div class="overlay" v-if="modalStore.isLogModalActive">
       <form @submit.prevent="isLast ? handleSubmit() : next()" class="log__form">
-        <button @click="modal.isLogModalActive = false" class="log__close-btn">
+        <button @click="modalStore.isLogModalActive = false" class="log__close-btn">
           <svg
             width="15"
             height="15"
@@ -67,7 +73,7 @@ const handleNavigate = (level: number) => {
             v-for="item in 4"
             :key="item"
             class="log__stage-item"
-            :class="{ 'log__stage-item_selected': item <= modal.currentLogStage }"
+            :class="{ 'log__stage-item_selected': item <= modalStore.currentLogStage }"
             @click="handleNavigate(item)"
           ></li>
         </ul>

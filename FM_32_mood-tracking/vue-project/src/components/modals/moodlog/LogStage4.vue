@@ -1,31 +1,33 @@
 <script setup lang="ts">
-import { useModalStore } from '@/stores/modals'
+import { useModalStore } from '@/stores/modalStore'
+import { useMoodMap } from '@/composables/useMoodMap'
+const { sleepMap } = useMoodMap()
 
-const modal = useModalStore()
+const modalStore = useModalStore()
 
-const sleepList = ['9+ hours', '7-8 hours', '5-6 hours', '3-4 hours', '0-2 hours']
+const sleepList = Object.entries(sleepMap).filter(([key]) => key !== '0')
 </script>
 
 <template>
-  <div v-if="modal.currentLogStage === 4" class="log__sleep-wrapper">
+  <div v-if="modalStore.currentLogStage === 4" class="log__sleep-wrapper">
     <h2 class="title log__sleep-title">How many hours did you sleep last night?</h2>
     <ul class="log__sleep-list">
-      <li v-for="item in sleepList" :key="item">
+      <li v-for="[key, item] in sleepList" :key="key">
         <label
           class="log__sleep-block"
-          :for="item"
-          :class="{ 'log__sleep-block--selected': modal.moodData.sleepHours === item }"
+          :for="key"
+          :class="{ 'log__sleep-block--selected': modalStore.moodData.sleepHours === key }"
         >
           <div class="form-check log__sleep">
             <input
               class="form-check-input log__sleep-input"
               type="radio"
               name="sleep"
-              :id="item"
-              :value="item"
-              v-model="modal.moodData.sleepHours"
+              :id="key"
+              :value="key"
+              v-model="modalStore.moodData.sleepHours"
             />
-            <span class="form-check-label log__sleep-label">{{ item }}</span>
+            <span class="form-check-label log__sleep-label">{{ item.title }}</span>
           </div>
         </label>
       </li>

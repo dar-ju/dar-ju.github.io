@@ -1,16 +1,21 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useDataStore } from '@/stores/moodData'
+import { useDataStore } from '@/stores/moodStore'
+// import { useUserStore } from '@/stores/userStore'
 import StatTrends from '@/components/dashboard/StatTrends.vue'
 import StatAverageMood from '@/components/dashboard/StatAverageMood.vue'
 import StatAverageSleep from '@/components/dashboard/StatAverageSleep.vue'
 
-const mood = useDataStore()
+const moodStore = useDataStore()
+// const userStore = useUserStore()
+// const NUMBER_OF_ITEMS = 11
 
-onMounted(async () => {
-  await mood.getdata()
-  console.log(mood.data)
-})
+// onMounted(async () => {
+//   console.log(userStore.user.email)
+
+//   await moodStore.getData(userStore.user.email, NUMBER_OF_ITEMS)
+//   console.log(moodStore.data)
+// })
 </script>
 
 <template>
@@ -20,7 +25,7 @@ onMounted(async () => {
         <StatAverageMood />
         <StatAverageSleep />
       </div>
-      <StatTrends v-if="mood.data?.moodEntries?.length" />
+      <StatTrends />
     </div>
   </section>
 </template>

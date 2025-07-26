@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useFormatDate } from '@/composables/useDateFormat.ts'
-import { useModalStore } from '@/stores/modals'
-import { useDataStore } from '@/stores/moodData'
+import { useModalStore } from '@/stores/modalStore'
+import { useDataStore } from '@/stores/moodStore'
+import { useUserStore } from '@/stores/userStore'
 
-const modal = useModalStore()
-const mood = useDataStore()
+const modalStore = useModalStore()
+const moodStore = useDataStore()
+const userStore = useUserStore()
 
 const today: Date = new Date()
 </script>
@@ -13,13 +15,13 @@ const today: Date = new Date()
   <section class="section mood">
     <div class="container mood__container">
       <div class="mood__wrapper">
-        <span class="mood__hello">Hello, Lisa!</span>
+        <span class="mood__hello">{{ `Hello, ${userStore.user.username.split(' ')[0]}!` }}</span>
         <h1 class="title mood__title">How are you feeling today?</h1>
         <span class="mood__date">{{ useFormatDate(today) }}</span>
       </div>
       <button
-        v-if="!mood.isTodayLogged"
-        @click="[(modal.isLogModalActive = true), (modal.isWarnVisible = false)]"
+        v-if="!moodStore.isTodayLogged"
+        @click="[(modalStore.isLogModalActive = true), (modalStore.isWarnVisible = false)]"
         type="button"
         class="btn btn-primary mood__btn"
       >

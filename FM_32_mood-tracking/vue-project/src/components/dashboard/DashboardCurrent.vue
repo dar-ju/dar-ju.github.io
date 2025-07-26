@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useDataStore } from '@/stores/moodData'
+import { useDataStore } from '@/stores/moodStore'
 import type { MoodEntry } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap } = useMoodMap()
@@ -13,7 +13,7 @@ watch(
   () => mood.data ?? null,
   (data) => {
     if (!data) return
-    const lastEntry = data.moodEntries[data.moodEntries.length - 1]
+    const lastEntry = data.moods[data.moods.length - 1]
     lastLoggedDay.value = lastEntry
 
     const quotes = moodMap[lastEntry.mood].quotes

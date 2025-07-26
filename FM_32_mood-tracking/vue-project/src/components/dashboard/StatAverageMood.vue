@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useDataStore } from '@/stores/moodData'
+import { useDataStore } from '@/stores/moodStore'
 import type { MoodValue } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 const { moodMap } = useMoodMap()
@@ -26,7 +26,7 @@ const averageData = ref<{
 watch(
   () => mood.data,
   () => {
-    const moods = mood.data?.moodEntries?.map((item) => item.mood) ?? []
+    const moods = mood.data?.moods?.map((item) => item.mood) ?? []
     if (moods.length >= CHECKINS) {
       const lastNMoods = moods.slice(-CHECKINS)
       const average = Math.round(

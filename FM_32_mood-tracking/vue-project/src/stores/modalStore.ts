@@ -13,6 +13,7 @@ export const useModalStore = defineStore('modal', () => {
   // const sleepLevel = ref('')
 
   const moodData = ref({
+    email: '',
     mood: null as number | null,
     feelings: [] as string[],
     journalEntry: '',

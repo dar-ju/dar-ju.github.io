@@ -46,6 +46,25 @@ const loginUser = async (email, password) => {
   }
 }
 
+const editUser = async (email, username, img) => {
+  try {
+    const user = await findUserByEmail(email)
+    if (!user) throw new Error('User not found')
+    await db('users').where({ id: user.id }).update({ username, img })
+  } catch (err) {
+    console.error(`User ${username} does not edited, error (knex):`, err)
+  }
+}
+
+// const editNote = async (id, title, html) => {
+//   try {
+//     await db('notes').where({ id }).update({ title, html, updated: new Date() })
+//   } catch (err) {
+//     console.error(`Ошибка при изменении заметки с ID ${id} (knex):`, err)
+//     throw err
+//   }
+// }
+
 const findUserByEmail = async (email) => {
   try {
     const [user] = await db("users").select().where({ email }).limit(1)
@@ -104,11 +123,25 @@ const deleteSession = async (sessionToken) => {
 // MOODS
 const createMood = async (email, mood, feelings, journalEntry, sleepHours) => {
   try {
-    const getUser = await findUserByEmail(email)
-    const userId = getUser.id
-    await db("moods").insert({ userId, mood, feelings, journalEntry, sleepHours })
+    const user = await findUserByEmail(email)
+    if (!user) throw new Error('User not found')
+    const userId = user.id
+    await db("moods").insert({ userId, mood, feelings: JSON.stringify(feelings), journalEntry, sleepHours })
   } catch (err) {
     console.error(`Mood not created, error (knex):`, err)
+  }
+}
+
+const getMoods = async (userId, numberOfItems) => {
+  try {
+    const moodsQuery = await db('moods')
+      .where({ userId })
+      .orderBy('createdAt', 'desc')
+      .limit(numberOfItems)
+    return moodsQuery.reverse()
+  } catch (err) {
+    console.error(`Moods get error (knex):`, err)
+    throw err
   }
 }
 
@@ -236,9 +269,12 @@ const createMood = async (email, mood, feelings, journalEntry, sleepHours) => {
 export default {
   createUser,
   loginUser,
+  editUser,
   createSession,
   findUserBySessionId,
   findUserByEmail,
   getSession,
   deleteSession,
+  createMood,
+  getMoods,
 }

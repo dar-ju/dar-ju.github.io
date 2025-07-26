@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
-import { useDataStore } from '@/stores/moodData'
+import { useDataStore } from '@/stores/moodStore'
 
 const mood = useDataStore()
 
 const CHECKINS = 5
+const textColorTitle = ref('var(--neutral-900)')
+const textColorText = ref('var(--neutral-900)')
 
 const averageData = ref<{
   titleImg: string | null
@@ -23,8 +25,10 @@ const averageData = ref<{
 watch(
   () => mood.data,
   () => {
-    const moods = mood.data?.moodEntries?.map((item) => item.sleepHours) ?? []
+    const moods = mood.data?.moods?.map((item) => item.sleepHours) ?? []
     if (moods.length >= CHECKINS) {
+      textColorTitle.value = 'var(--neutral-0)'
+      textColorText.value = 'var(--neutral-200)'
       const lastNMoods = moods.slice(-CHECKINS)
       const average = Math.round(lastNMoods.reduce((acc, val) => acc + val, 0) / CHECKINS)
       averageData.value.titleImg = 'ok'
@@ -81,10 +85,7 @@ watch(
             fill="var(--neutral-200)"
           />
         </svg>
-        <h3
-          class="stat__average-info-title"
-          :style="{ color: averageData.arrowImg ? 'var(--neutral-0)' : 'var(--neutral-900)' }"
-        >
+        <h3 class="stat__average-info-title" :style="{ color: textColorTitle }">
           {{ averageData.title }}
         </h3>
       </div>
@@ -97,10 +98,7 @@ watch(
           width="15"
           height="16"
         />
-        <p
-          class="stat__average-info-descr"
-          :style="{ color: averageData.arrowImg ? 'var(--neutral-200)' : 'var(--neutral-900)' }"
-        >
+        <p class="stat__average-info-descr" :style="{ color: textColorText }">
           {{ averageData.descr }}
         </p>
       </div>

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { onMounted, ref, type Ref } from 'vue'
-import { useDataStore } from '@/stores/moodData'
+import { onMounted, ref, watch, type Ref } from 'vue'
+import { useDataStore } from '@/stores/moodStore'
 import type { MoodValue, MoodEntryPartial, MoodEntry } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
 import MoodPopover from '@/components/modals/MoodPopover.vue'
 const { moodMap, sleepMap } = useMoodMap()
 
-const mood = useDataStore()
+const moodStore = useDataStore()
 
-const BARS = 11
 const limitData: Ref<MoodEntryPartial[]> = ref([])
 const scrollRef = ref<HTMLElement | null>(null)
+const sleepList = Object.entries(sleepMap).filter(([key]) => key !== '0')
 
 const scrollToEnd = () => {
   const el = scrollRef.value
@@ -19,11 +19,11 @@ const scrollToEnd = () => {
   el.scrollLeft = target
 }
 
-onMounted(async () => {
-  limitData.value = mood.data?.moodEntries.slice(-BARS) ?? []
-  if (limitData.value.length < BARS) {
-    const lastDate = new Date(limitData.value[0].createdAt)
-    for (let i = limitData.value.length; i < BARS; i++) {
+const fillData = () => {
+  limitData.value = moodStore.data?.moods.slice(-moodStore.NUMBER_OF_ITEMS) ?? []
+  if (limitData.value.length < moodStore.NUMBER_OF_ITEMS) {
+    const lastDate = limitData.value.length ? new Date(limitData.value[0].createdAt) : new Date()
+    for (let i = limitData.value.length; i < moodStore.NUMBER_OF_ITEMS; i++) {
       lastDate.setUTCDate(lastDate.getUTCDate() - 1)
       const result = lastDate.toISOString().split('.')[0] + 'Z'
       limitData.value.unshift({
@@ -31,11 +31,21 @@ onMounted(async () => {
         sleepHours: 0,
       })
     }
-    console.log(limitData.value)
   }
+}
 
+onMounted(async () => {
+  fillData()
   setTimeout(scrollToEnd, 100)
 })
+
+watch(
+  () => moodStore.data,
+  () => {
+    fillData()
+    setTimeout(scrollToEnd, 100)
+  },
+)
 
 function getDate(dateStr: string): { day: number; month: string } {
   const date = new Date(dateStr)
@@ -72,7 +82,17 @@ const hidePopover = () => {
     <h2 class="stat__trends-title">Mood and sleep trends</h2>
     <div class="stat__trends-block">
       <ul class="stat__trends-hours">
-        <li class="stat__trends-hour">
+        <li v-for="[key, item] in sleepList" :key="key" class="stat__trends-hour">
+          <img
+            class="stat__trends-hour-icon"
+            src="/assets/images/icon-sleep.svg"
+            alt=""
+            width="16"
+            height="16"
+          />
+          <span class="stat__trends-hour-text">{{ item.title }}</span>
+        </li>
+        <!-- <li class="stat__trends-hour">
           <img
             class="stat__trends-hour-icon"
             src="/assets/images/icon-sleep.svg"
@@ -121,7 +141,7 @@ const hidePopover = () => {
             height="16"
           />
           <span class="stat__trends-hour-text">0-2 hours</span>
-        </li>
+        </li> -->
       </ul>
       <ul ref="scrollRef" class="stat__trends-bars">
         <li v-for="item in limitData" :key="item.createdAt" class="stat__trends-bar">

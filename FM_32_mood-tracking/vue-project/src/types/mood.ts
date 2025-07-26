@@ -9,7 +9,7 @@ export interface MoodEntry {
 }
 
 export interface MoodData {
-  moodEntries: MoodEntry[]
+  moods: MoodEntry[]
 }
 
 export interface MoodEntryPartial {

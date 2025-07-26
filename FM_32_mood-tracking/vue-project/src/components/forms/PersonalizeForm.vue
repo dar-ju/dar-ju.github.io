@@ -2,7 +2,8 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useFileCheck } from '@/composables/useFileCheck.ts'
-import { useModalStore } from '@/stores/modals'
+import { uploadToCloudinary } from '@/composables/useImageUpload.ts'
+import { useModalStore } from '@/stores/modalStore'
 import { useUserStore } from '@/stores/userStore'
 
 const modalStore = useModalStore()
@@ -10,6 +11,8 @@ const userStore = useUserStore()
 
 const spinnerLoading = ref(false)
 const correctFile = ref(true)
+const previewImg = ref<string | null>(null)
+const uploadedFile = ref<File | null>(null)
 
 // form check
 const form = ref<HTMLFormElement | null>(null)
@@ -19,15 +22,23 @@ const handleSubmit = async (event: Event) => {
   if (!currentForm.checkValidity() || !correctFile.value) {
     event.preventDefault()
     event.stopPropagation()
+    return
   } else {
     const formData = new FormData(currentForm)
     const username = formData.get('name')?.toString() || ''
-    const img = formData.get('file')?.toString() || ''
+    const file = formData.get('file') as File
+
     userStore.registerData.username = username
     // сделать обработку файла и запись ссылки
-    userStore.registerData.img = 'url' // тут добавить ссылку
+    // userStore.registerData.img = 'url' // тут добавить ссылку
     if (username) {
       spinnerLoading.value = true
+      if (file.name) {
+        const imgUrl = await uploadToCloudinary(file)
+        if (imgUrl) {
+          userStore.registerData.img = imgUrl
+        }
+      }
       await userStore.registerUser(userStore.registerData)
       spinnerLoading.value = false
     }
@@ -38,6 +49,15 @@ const handleSubmit = async (event: Event) => {
 // file check
 const handleFile = (e: Event) => {
   correctFile.value = useFileCheck(e)
+  const target = e.target as HTMLInputElement
+  const file = target.files?.[0]
+  if (correctFile.value && file) {
+    if (previewImg.value) {
+      URL.revokeObjectURL(previewImg.value)
+    }
+    previewImg.value = URL.createObjectURL(file)
+    uploadedFile.value = file
+  }
 }
 </script>
 
@@ -62,7 +82,7 @@ const handleFile = (e: Event) => {
       <div class="personal__img-wrapper">
         <img
           class="personal__img"
-          src="/assets/images/avatar-placeholder.svg"
+          :src="previewImg || '/assets/images/avatar-placeholder.svg'"
           alt=""
           width="64"
           height="64"
@@ -156,6 +176,13 @@ const handleFile = (e: Event) => {
     margin-bottom: 32px;
     gap: 20px;
     align-items: flex-start;
+  }
+  &__img {
+    width: 64px;
+    height: 64px;
+    overflow: hidden;
+    border-radius: 50%;
+    object-fit: cover;
   }
   &__upload-block {
     display: flex;
