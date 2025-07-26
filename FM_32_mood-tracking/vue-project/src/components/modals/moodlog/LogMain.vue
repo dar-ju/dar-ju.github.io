@@ -33,14 +33,14 @@ const next = () => {
   modalStore.isWarnVisible = false
 }
 const handleSubmit = async () => {
-  modalStore.moodData.email = userStore.user.email
+  modalStore.moodData.email = userStore.user!.email
   spinnerLoading.value = true
   //save data
   await moodStore.postData(modalStore.moodData)
   spinnerLoading.value = false
   modalStore.isLogModalActive = false
   modalStore.currentLogStage = 1
-  await moodStore.getData(userStore.user.email, moodStore.NUMBER_OF_ITEMS)
+  await moodStore.getData(userStore.user!.email, moodStore.NUMBER_OF_ITEMS)
 }
 
 const handleNavigate = (level: number) => {

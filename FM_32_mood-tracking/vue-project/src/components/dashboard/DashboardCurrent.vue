@@ -50,9 +50,9 @@ watch(
             width="24"
             height="24"
           />
-          <p class="current__quote" aria-label="Motivational quote">
+          <blockquote class="current__quote" aria-label="Motivational quote">
             {{ `“${quote}”` }}
-          </p>
+          </blockquote>
         </div>
       </div>
       <div class="current__additional-block">

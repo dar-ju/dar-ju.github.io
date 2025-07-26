@@ -15,9 +15,13 @@ const today: Date = new Date()
   <section class="section mood">
     <div class="container mood__container">
       <div class="mood__wrapper">
-        <span class="mood__hello">{{ `Hello, ${userStore.user.username.split(' ')[0]}!` }}</span>
+        <span class="mood__hello">{{
+          `Hello, ${userStore.user?.username?.split(' ')[0] || ''}!`
+        }}</span>
         <h1 class="title mood__title">How are you feeling today?</h1>
-        <span class="mood__date">{{ useFormatDate(today) }}</span>
+        <time :datetime="new Date().toJSON().slice(0, 10)" class="mood__date">{{
+          useFormatDate(today)
+        }}</time>
       </div>
       <button
         v-if="!moodStore.isTodayLogged"

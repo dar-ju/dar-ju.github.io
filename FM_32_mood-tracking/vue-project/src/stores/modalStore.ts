@@ -7,11 +7,6 @@ export const useModalStore = defineStore('modal', () => {
   const currentLogStage = ref(1)
   const isWarnVisible = ref(false)
 
-  // const moodLevel = ref(null)
-  // const selectedFeelings = ref<string[]>([])
-  // const aboutText = ref('')
-  // const sleepLevel = ref('')
-
   const moodData = ref({
     email: '',
     mood: null as number | null,

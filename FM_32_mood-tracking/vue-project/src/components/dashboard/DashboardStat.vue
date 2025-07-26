@@ -1,21 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import { useDataStore } from '@/stores/moodStore'
-// import { useUserStore } from '@/stores/userStore'
 import StatTrends from '@/components/dashboard/StatTrends.vue'
 import StatAverageMood from '@/components/dashboard/StatAverageMood.vue'
 import StatAverageSleep from '@/components/dashboard/StatAverageSleep.vue'
 
 const moodStore = useDataStore()
-// const userStore = useUserStore()
-// const NUMBER_OF_ITEMS = 11
-
-// onMounted(async () => {
-//   console.log(userStore.user.email)
-
-//   await moodStore.getData(userStore.user.email, NUMBER_OF_ITEMS)
-//   console.log(moodStore.data)
-// })
 </script>
 
 <template>
@@ -32,7 +21,6 @@ const moodStore = useDataStore()
 
 <style lang="scss" scoped>
 @use '@/assets/styles/breakpoints' as *;
-@use '@/assets/styles/_typography' as *;
 
 .stat {
   padding-top: 16px;

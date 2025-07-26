@@ -23,7 +23,7 @@ function handleKeyDown(e: KeyboardEvent) {
 }
 
 onMounted(async () => {
-  await moodStore.getData(userStore.user.email, moodStore.NUMBER_OF_ITEMS)
+  await moodStore.getData(userStore.user?.email || '', moodStore.NUMBER_OF_ITEMS)
   window.addEventListener('keydown', handleKeyDown)
 })
 

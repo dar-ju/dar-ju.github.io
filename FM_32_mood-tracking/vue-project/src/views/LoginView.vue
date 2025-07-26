@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 import LoginForm from '@/components/forms/LoginForm.vue'
 import RegisterForm from '@/components/forms/RegisterForm.vue'
-// import PersonalizeForm from '@/components/forms/PersonalizeForm.vue'
 const isLoginForm = ref(true)
 
 const handleToggleForm = (val: boolean) => {
@@ -24,13 +23,11 @@ const handleToggleForm = (val: boolean) => {
         <LoginForm v-if="isLoginForm" @isLoginForm="handleToggleForm" />
         <RegisterForm v-else @isLoginForm="handleToggleForm" />
       </Transition>
-      <!-- <PersonalizeForm /> -->
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-@use '@/assets/styles/breakpoints' as *;
 .login {
   &__container {
     display: flex;
@@ -40,11 +37,6 @@ const handleToggleForm = (val: boolean) => {
   &__logo {
     margin: 0 auto;
     margin-bottom: 48px;
-  }
-
-  /* Media */
-  @include media-query-sm {
-    // --containerPadding: 24px;
   }
 }
 </style>

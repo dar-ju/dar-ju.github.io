@@ -26,8 +26,8 @@ const handleLogoutClick = () => {
   <div class="popover-wrapper">
     <div class="profile-popover__overlay" @click="onClose" />
     <div class="profile-popover">
-      <p class="profile-popover__name">{{ userStore.user.username }}</p>
-      <p class="profile-popover__email">{{ userStore.user.email }}</p>
+      <p class="profile-popover__name">{{ userStore.user?.username || '' }}</p>
+      <p class="profile-popover__email">{{ userStore.user?.email || '' }}</p>
       <div class="profile-popover__link-block">
         <div @click="handleSettingsClick" class="profile-popover__link">
           <img
@@ -40,8 +40,8 @@ const handleLogoutClick = () => {
           <span
             class="profile-popover__link-text"
             tabindex="0"
-            @keydown.space.prevent="handleClick"
-            @keydown.enter.prevent="handleClick"
+            @keydown.space.prevent="handleSettingsClick"
+            @keydown.enter.prevent="handleSettingsClick"
             >Settings</span
           >
         </div>

@@ -12,7 +12,7 @@ const emit = defineEmits<{
 
 const toggleLogin = () => {
   emit('isLoginForm', false)
-  userStore.user = ''
+  userStore.user = null
 }
 
 // form check
@@ -28,7 +28,6 @@ const handleSubmit = async (event: Event) => {
     const formData = new FormData(currentForm)
     const email = formData.get('email')?.toString() || ''
     const password = formData.get('password')?.toString() || ''
-    // console.log(email, password)
     spinnerLoading.value = true
     await userStore.loginUser(email, password)
     spinnerLoading.value = false

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import { useFileCheck } from '@/composables/useFileCheck.ts'
 import { uploadToCloudinary } from '@/composables/useImageUpload.ts'
 import { useModalStore } from '@/stores/modalStore'
@@ -29,8 +28,6 @@ const handleSubmit = async (event: Event) => {
     const file = formData.get('file') as File
 
     userStore.registerData.username = username
-    // сделать обработку файла и запись ссылки
-    // userStore.registerData.img = 'url' // тут добавить ссылку
     if (username) {
       spinnerLoading.value = true
       if (file.name) {

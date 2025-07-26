@@ -36,7 +36,7 @@ const closePopover = () => {
       >
         <img
           class="header__user-img"
-          :src="userStore.user.img || '/assets/images/avatar-placeholder.svg'"
+          :src="userStore.user?.img || '/assets/images/avatar-placeholder.svg'"
           alt=""
           width="40"
           height="40"

@@ -1,8 +1,7 @@
 const baseUrl = import.meta.env.VITE_BASE_URL
+import type { MoodData, MoodPostPayload } from '@/types/mood'
 
-import type { MoodData } from '@/types/mood'
-
-export const getMoodApi = async (email, numberOfItems): Promise<MoodData> => {
+export const getMoodApi = async (email: string, numberOfItems: number): Promise<MoodData> => {
   try {
     const fetchResponse = await fetch(`${baseUrl}/api/moods`, {
       method: 'POST',
@@ -16,7 +15,7 @@ export const getMoodApi = async (email, numberOfItems): Promise<MoodData> => {
   }
 }
 
-export const postMoodApi = async ({ email, mood, feelings, journalEntry, sleepHours }) => {
+export const postMoodApi = async (payload: MoodPostPayload): Promise<MoodData> => {
   try {
     const response = await fetch(`${baseUrl}/api/mood`, {
       method: 'POST',
@@ -24,7 +23,7 @@ export const postMoodApi = async ({ email, mood, feelings, journalEntry, sleepHo
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, mood, feelings, journalEntry, sleepHours }),
+      body: JSON.stringify(payload),
     })
     if (!response.ok) {
       const { error } = await response.json()

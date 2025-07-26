@@ -12,7 +12,7 @@ const spinnerLoading = ref(false)
 const correctFile = ref(true)
 const previewImg = ref<string | null>(null)
 const uploadedFile = ref<File | null>(null)
-const username = ref(userStore.user.username)
+const username = ref(userStore.user?.username || '')
 
 // form check
 const form = ref<HTMLFormElement | null>(null)
@@ -24,23 +24,24 @@ const handleSubmit = async (event: Event) => {
     event.stopPropagation()
     return
   } else {
-    //// дописать сохранение данных
-    //// дописать подстановку данных в форму
-    const formData = new FormData(currentForm)
-    // const username = formData.get('username')?.toString() || ''
     const file = uploadedFile.value
 
     spinnerLoading.value = true
     if (file?.name) {
       const imgUrl = await uploadToCloudinary(file)
       if (imgUrl) {
-        await userStore.editUser(userStore.user.email, username.value, imgUrl)
+        await userStore.editUser(userStore.user?.email || '', username.value, imgUrl)
       }
     } else {
-      await userStore.editUser(userStore.user.email, username.value, userStore.user.img)
+      await userStore.editUser(
+        userStore.user?.email || '',
+        username.value,
+        userStore.user?.img || '',
+      )
     }
     await userStore.getUser()
     spinnerLoading.value = false
+
     modalStore.isSettingsModalActive = false
   }
   currentForm.classList.add('was-validated')
@@ -64,7 +65,7 @@ const handleClose = () => {
   modalStore.isSettingsModalActive = false
   uploadedFile.value = null
   previewImg.value = null
-  username.value = userStore.user.username
+  username.value = userStore.user?.username || ''
 }
 </script>
 
@@ -92,7 +93,7 @@ const handleClose = () => {
             <div class="personal__img-wrapper">
               <img
                 class="personal__img"
-                :src="previewImg || userStore.user.img || '/assets/images/avatar-placeholder.svg'"
+                :src="previewImg || userStore.user?.img || '/assets/images/avatar-placeholder.svg'"
                 alt=""
                 width="64"
                 height="64"

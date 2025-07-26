@@ -6,8 +6,6 @@ import { useUserStore } from '@/stores/userStore'
 const userStore = useUserStore()
 
 const spinnerLoading = ref(false)
-// to personalize form
-// const toPersonalize = ref(false)
 
 const emit = defineEmits<{
   (e: 'isLoginForm', value: boolean): void
@@ -38,11 +36,7 @@ const handleSubmit = async (event: Event) => {
     await userStore.registerUser(userStore.registerData)
     spinnerLoading.value = false
     userStore.isUserChecked = true
-    if (!userStore.isUserRegistered) {
-      // userStore.isUserRegistered = false
-    }
   }
-  // currentForm.classList.add('was-validated')
 }
 </script>
 

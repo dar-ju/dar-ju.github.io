@@ -20,7 +20,12 @@ const scrollToEnd = () => {
 }
 
 const fillData = () => {
-  limitData.value = moodStore.data?.moods.slice(-moodStore.NUMBER_OF_ITEMS) ?? []
+  const moods = moodStore.data?.moods
+  if (!Array.isArray(moods)) {
+    limitData.value = []
+    return
+  }
+  limitData.value = moods.slice(-moodStore.NUMBER_OF_ITEMS)
   if (limitData.value.length < moodStore.NUMBER_OF_ITEMS) {
     const lastDate = limitData.value.length ? new Date(limitData.value[0].createdAt) : new Date()
     for (let i = limitData.value.length; i < moodStore.NUMBER_OF_ITEMS; i++) {
@@ -92,56 +97,6 @@ const hidePopover = () => {
           />
           <span class="stat__trends-hour-text">{{ item.title }}</span>
         </li>
-        <!-- <li class="stat__trends-hour">
-          <img
-            class="stat__trends-hour-icon"
-            src="/assets/images/icon-sleep.svg"
-            alt=""
-            width="16"
-            height="16"
-          />
-          <span class="stat__trends-hour-text">9+ hours</span>
-        </li>
-        <li class="stat__trends-hour">
-          <img
-            class="stat__trends-hour-icon"
-            src="/assets/images/icon-sleep.svg"
-            alt=""
-            width="16"
-            height="16"
-          />
-          <span class="stat__trends-hour-text">7-8 hours</span>
-        </li>
-        <li class="stat__trends-hour">
-          <img
-            class="stat__trends-hour-icon"
-            src="/assets/images/icon-sleep.svg"
-            alt=""
-            width="16"
-            height="16"
-          />
-          <span class="stat__trends-hour-text">5-6 hours</span>
-        </li>
-        <li class="stat__trends-hour">
-          <img
-            class="stat__trends-hour-icon"
-            src="/assets/images/icon-sleep.svg"
-            alt=""
-            width="16"
-            height="16"
-          />
-          <span class="stat__trends-hour-text">3-4 hours</span>
-        </li>
-        <li class="stat__trends-hour">
-          <img
-            class="stat__trends-hour-icon"
-            src="/assets/images/icon-sleep.svg"
-            alt=""
-            width="16"
-            height="16"
-          />
-          <span class="stat__trends-hour-text">0-2 hours</span>
-        </li> -->
       </ul>
       <ul ref="scrollRef" class="stat__trends-bars">
         <li v-for="item in limitData" :key="item.createdAt" class="stat__trends-bar">

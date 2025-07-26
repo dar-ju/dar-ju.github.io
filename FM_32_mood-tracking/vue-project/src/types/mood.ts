@@ -19,3 +19,11 @@ export interface MoodEntryPartial {
   feelings?: string[]
   journalEntry?: string
 }
+
+export interface MoodPostPayload {
+  email: string
+  mood: number
+  feelings: string[]
+  journalEntry: string
+  sleepHours: number
+}

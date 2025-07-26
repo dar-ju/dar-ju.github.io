@@ -1,6 +1,7 @@
 const baseUrl = import.meta.env.VITE_BASE_URL
+import type { User, RegisterData, SessionResponse, RegisterResponse } from '@/types/user'
 
-export async function getSessionApi() {
+export async function getSessionApi(): Promise<SessionResponse | null> {
   try {
     const response = await fetch(`${baseUrl}/api/me`, {
       method: 'GET',
@@ -8,7 +9,7 @@ export async function getSessionApi() {
     })
     if (response.status === 401) return null
     if (!response.ok) return null
-    const data = await response.json()
+    const data: SessionResponse = await response.json()
     return data
   } catch (err) {
     console.error('Session load error:', err)
@@ -16,7 +17,7 @@ export async function getSessionApi() {
   }
 }
 
-export const loginUserApi = async (email, password) => {
+export const loginUserApi = async (email: string, password: string): Promise<User> => {
   try {
     const response = await fetch(`${baseUrl}/api/login`, {
       method: 'POST',
@@ -30,8 +31,9 @@ export const loginUserApi = async (email, password) => {
       const { error } = await response.json()
       throw new Error(error)
     }
-    return await response.json()
-  } catch (error) {
+    const data: User = await response.json()
+    return data
+  } catch (error: any) {
     if (error.message === 'Failed to fetch') {
       throw new Error('No connection to server')
     }
@@ -39,7 +41,7 @@ export const loginUserApi = async (email, password) => {
   }
 }
 
-export const registerUserApi = async ({ email, password, username, img }) => {
+export const registerUserApi = async (userData: RegisterData): Promise<RegisterResponse> => {
   try {
     const response = await fetch(`${baseUrl}/api/signup`, {
       method: 'POST',
@@ -47,20 +49,25 @@ export const registerUserApi = async ({ email, password, username, img }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, password, username, img }),
+      body: JSON.stringify(userData),
     })
     if (!response.ok) {
       const { error } = await response.json()
       throw new Error(error)
     }
-    return await response.json()
+    const data: RegisterResponse = await response.json()
+    return data
   } catch (error) {
     console.error('Signup error:', error)
     throw error
   }
 }
 
-export async function editUserApi(email, username, img) {
+export async function editUserApi(
+  email: string,
+  username: string,
+  img?: string,
+): Promise<User | null> {
   try {
     const response = await fetch(`${baseUrl}/api/userEdit`, {
       method: 'POST',
@@ -71,7 +78,7 @@ export async function editUserApi(email, username, img) {
       console.warn('User edit failed with status:', response.status)
       return null
     }
-    const data = await response.json()
+    const data: User = await response.json()
     return data
   } catch (err) {
     console.error('User edit error:', err)
@@ -79,7 +86,7 @@ export async function editUserApi(email, username, img) {
   }
 }
 
-export const logoutUserApi = async () => {
+export const logoutUserApi = async (): Promise<{ success?: boolean }> => {
   try {
     const response = await fetch(`${baseUrl}/api/logout`, {
       method: 'POST',
@@ -92,5 +99,6 @@ export const logoutUserApi = async () => {
     return await response.json()
   } catch (error) {
     console.error('Logout error:', error)
+    return {}
   }
 }
