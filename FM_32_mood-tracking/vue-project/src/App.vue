@@ -6,11 +6,11 @@ import { onMounted } from 'vue'
 
 const userStore = useUserStore()
 
-onMounted(async () => {
+onMounted(() => {
   try {
-    await userStore.getUser()
+    userStore.getUser()
   } catch (err) {
-    console.log('Пользователь не авторизован')
+    console.log('User not authorized')
   }
 })
 </script>

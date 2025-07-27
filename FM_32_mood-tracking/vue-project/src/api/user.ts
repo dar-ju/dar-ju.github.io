@@ -2,7 +2,7 @@ const baseUrl = 'https://darju.ru/moods'
 import type { User, RegisterData, SessionResponse, RegisterResponse } from '@/types/user'
 
 function getAuthHeader(): Record<string, string> | {} {
-  const token = localStorage.getItem('token')
+  const token = localStorage.getItem('jwtToken')
   if (token) {
     return { Authorization: `Bearer ${token}` }
   }
