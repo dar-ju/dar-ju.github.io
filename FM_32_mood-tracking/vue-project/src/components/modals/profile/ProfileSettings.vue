@@ -249,7 +249,9 @@ const userImgSrc = computed(() => {
   }
   &__close-btn {
     position: absolute;
-    top: -18px;
+    width: 20px;
+    height: 20px;
+    top: -25px;
     right: 0;
     line-height: 0;
   }
@@ -267,7 +269,7 @@ const userImgSrc = computed(() => {
       padding: 40px 20px;
     }
     &__close-btn {
-      top: -13px;
+      right: -5px;
       & svg {
         width: 10px;
         height: 10px;
