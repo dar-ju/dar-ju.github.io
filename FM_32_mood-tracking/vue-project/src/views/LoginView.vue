@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import LoginForm from '@/components/forms/LoginForm.vue'
 import RegisterForm from '@/components/forms/RegisterForm.vue'
-const isLoginForm = ref(true)
+const isLoginForm = ref(false)
 
 const handleToggleForm = (val: boolean) => {
   isLoginForm.value = val
 }
+
+onMounted(() => {
+  if (localStorage.getItem('mood')) isLoginForm.value = true
+  else {
+    localStorage.setItem('mood', 'vizited')
+  }
+})
 </script>
 
 <template>
