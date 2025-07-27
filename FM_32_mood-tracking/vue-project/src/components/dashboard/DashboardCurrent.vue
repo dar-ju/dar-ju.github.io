@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useDataStore } from '@/stores/moodStore'
-import type { MoodEntry } from '@/types/mood'
+import type { MoodEntry, SleepHoursKey } from '@/types/mood'
 import { useMoodMap } from '@/composables/useMoodMap'
-const { moodMap } = useMoodMap()
+const { moodMap, sleepMap } = useMoodMap()
 
 const mood = useDataStore()
 const quote = ref<string | null>(null)
 const lastLoggedDay = ref<MoodEntry | null>(null)
+const sleepKey = computed(() => {
+  if (!lastLoggedDay.value) return null
+  return String(lastLoggedDay.value.sleepHours) as SleepHoursKey
+})
 
 watch(
   () => mood.data ?? null,
@@ -69,7 +73,7 @@ watch(
             <span class="current__sleep-text">Sleep</span>
           </div>
           <h3 class="title current__sleep-title">
-            {{ lastLoggedDay ? moodMap[lastLoggedDay.mood].title : '' }}
+            {{ sleepKey ? sleepMap[sleepKey].title : '' }}
           </h3>
         </div>
         <div class="current__block current__reflection-block">

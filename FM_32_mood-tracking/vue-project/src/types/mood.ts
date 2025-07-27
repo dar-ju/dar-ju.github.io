@@ -1,5 +1,7 @@
 export type MoodValue = -2 | -1 | 0 | 1 | 2
 
+export type SleepHoursKey = '9' | '7.5' | '5.5' | '3.5' | '1.5' | '0'
+
 export interface MoodEntry {
   createdAt: string
   mood: MoodValue
