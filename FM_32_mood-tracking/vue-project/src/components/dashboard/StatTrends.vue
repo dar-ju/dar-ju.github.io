@@ -258,7 +258,7 @@ const hidePopover = () => {
       flex-grow: 1;
     }
     &__trends-bars {
-      max-height: 300px;
+      max-height: 318px;
       gap: 15px;
     }
     &__trends-hours {
@@ -271,9 +271,6 @@ const hidePopover = () => {
     }
     &__trends-title {
       @include text-preset(preset3mob);
-    }
-    &__trends-bars {
-      max-height: 308px;
     }
     &__trends-hours {
       gap: 38px;

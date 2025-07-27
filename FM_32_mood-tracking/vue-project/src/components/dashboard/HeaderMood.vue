@@ -83,6 +83,7 @@ const userImgSrc = computed(() => {
 
   /* Media */
   @include media-query-sm {
+    padding-top: 32px;
     padding-bottom: 24px;
   }
 }
