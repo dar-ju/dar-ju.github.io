@@ -1,9 +1,11 @@
+const baseURL = import.meta.env.BASE_URL
+
 export const useMoodMap = () => {
   const moodMap = {
     '2': {
       title: 'Very Happy',
-      img: '/assets/images/icon-very-happy-white.svg',
-      imgColor: '/assets/images/icon-very-happy-color.svg',
+      img: baseURL + 'assets/images/icon-very-happy-white.svg',
+      imgColor: baseURL + 'assets/images/icon-very-happy-color.svg',
       color: 'var(--other-amber-300)',
       quotes: [
         'When your heart is full, share your light with the world.',
@@ -15,8 +17,8 @@ export const useMoodMap = () => {
     },
     '1': {
       title: 'Happy',
-      img: '/assets/images/icon-happy-white.svg',
-      imgColor: '/assets/images/icon-happy-color.svg',
+      img: baseURL + 'assets/images/icon-happy-white.svg',
+      imgColor: baseURL + 'assets/images/icon-happy-color.svg',
       color: 'var(--other-green-300)',
       quotes: [
         "Happiness grows when it's shared with others.",
@@ -28,8 +30,8 @@ export const useMoodMap = () => {
     },
     '0': {
       title: 'Neutral',
-      img: '/assets/images/icon-neutral-white.svg',
-      imgColor: '/assets/images/icon-neutral-color.svg',
+      img: baseURL + 'assets/images/icon-neutral-white.svg',
+      imgColor: baseURL + 'assets/images/icon-neutral-color.svg',
       color: 'var(--other-blue-300)',
       quotes: [
         'A calm mind can find opportunity in every moment.',
@@ -41,8 +43,8 @@ export const useMoodMap = () => {
     },
     '-1': {
       title: 'Sad',
-      img: '/assets/images/icon-sad-white.svg',
-      imgColor: '/assets/images/icon-sad-color.svg',
+      img: baseURL + 'assets/images/icon-sad-white.svg',
+      imgColor: baseURL + 'assets/images/icon-sad-color.svg',
       color: 'var(--other-indigo-200)',
       quotes: [
         'Pain is temporary, brighter days lie ahead.',
@@ -54,8 +56,8 @@ export const useMoodMap = () => {
     },
     '-2': {
       title: 'Very Sad',
-      img: '/assets/images/icon-very-sad-white.svg',
-      imgColor: '/assets/images/icon-very-sad-color.svg',
+      img: baseURL + 'assets/images/icon-very-sad-white.svg',
+      imgColor: baseURL + 'assets/images/icon-very-sad-color.svg',
       color: 'var(--other-red-300)',
       quotes: [
         'You are stronger than you think; the storm will pass.',

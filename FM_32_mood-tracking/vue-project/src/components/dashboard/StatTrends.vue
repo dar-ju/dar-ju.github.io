@@ -148,6 +148,7 @@ const hidePopover = () => {
     max-width: 768px;
     width: 100%;
     padding: 26px;
+    padding-bottom: 8px;
     gap: 32px;
     border-radius: 16px;
     background-color: var(--neutral-0);
@@ -191,10 +192,11 @@ const hidePopover = () => {
     position: absolute;
     display: flex;
     height: 100%;
-    max-height: 314px;
+    max-height: 332px;
     max-width: 626px;
     width: calc(100% - 84px);
     margin: 0;
+    padding-bottom: 18px;
     gap: 17px;
     right: 0;
     bottom: 0;

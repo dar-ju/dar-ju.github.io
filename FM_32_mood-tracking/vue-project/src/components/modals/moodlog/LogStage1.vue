@@ -3,6 +3,7 @@ import { useModalStore } from '@/stores/modalStore'
 import { watch } from 'vue'
 
 const modalStore = useModalStore()
+const baseURL = import.meta.env.BASE_URL
 
 watch(
   () => modalStore.moodData.mood,
@@ -16,12 +17,12 @@ const moodList = [
     id: 1,
     title: 'Very Happy',
     value: 2,
-    img: '/assets/images/icon-very-happy-color.svg',
+    img: baseURL + '/assets/images/icon-very-happy-color.svg',
   },
-  { id: 2, value: 1, title: 'Happy', img: '/assets/images/icon-happy-color.svg' },
-  { id: 3, value: 0, title: 'Neutral', img: '/assets/images/icon-neutral-color.svg' },
-  { id: 4, value: -1, title: 'Sad', img: '/assets/images/icon-sad-color.svg' },
-  { id: 5, value: -2, title: 'Very Sad', img: '/assets/images/icon-very-sad-color.svg' },
+  { id: 2, value: 1, title: 'Happy', img: baseURL + '/assets/images/icon-happy-color.svg' },
+  { id: 3, value: 0, title: 'Neutral', img: baseURL + '/assets/images/icon-neutral-color.svg' },
+  { id: 4, value: -1, title: 'Sad', img: baseURL + '/assets/images/icon-sad-color.svg' },
+  { id: 5, value: -2, title: 'Very Sad', img: baseURL + '/assets/images/icon-very-sad-color.svg' },
 ]
 </script>
 
