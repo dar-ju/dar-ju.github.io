@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.VITE_BASE_URL
+const baseUrl = 'https://darju.ru/moods'
 import type { MoodData, MoodPostPayload } from '@/types/mood'
 
 export const getMoodApi = async (email: string, numberOfItems: number): Promise<MoodData> => {

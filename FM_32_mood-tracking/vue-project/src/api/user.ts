@@ -1,4 +1,4 @@
-const baseUrl = import.meta.env.VITE_BASE_URL
+const baseUrl = 'https://darju.ru/moods'
 import type { User, RegisterData, SessionResponse, RegisterResponse } from '@/types/user'
 
 export async function getSessionApi(): Promise<SessionResponse | null> {

@@ -1,5 +1,5 @@
-const cloudName = import.meta.env.VITE_CLOUD_NAME
-const uploadPreset = import.meta.env.VITE_CLOUD_PRESET
+const cloudName = 'dhgsvt499'
+const uploadPreset = 'moods-imgs'
 
 export const uploadToCloudinary = async (file: File): Promise<string | null> => {
   const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
