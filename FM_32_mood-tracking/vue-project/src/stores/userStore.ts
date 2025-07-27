@@ -72,6 +72,7 @@ export const useUserStore = defineStore('user', () => {
       user.value = null
       isUserRegistered.value = false
       isUserChecked.value = false
+      localStorage.removeItem('jwtToken')
     } catch (err: any) {
       error.value = err.message
     }

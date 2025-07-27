@@ -5,6 +5,7 @@ export const getMoodApi = async (email: string, numberOfItems: number): Promise<
   try {
     const fetchResponse = await fetch(`${baseUrl}/api/moods`, {
       method: 'POST',
+      credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, numberOfItems }),
     })

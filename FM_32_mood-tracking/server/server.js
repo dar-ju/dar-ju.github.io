@@ -1,16 +1,18 @@
 import dotenv from 'dotenv'
 import express from 'express'
 import cors from 'cors'
-import cookieParser from 'cookie-parser'
+// import cookieParser from 'cookie-parser'
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
 import db from './db.js'
 
 dotenv.config()
 
+const JWT_SECRET = process.env.JWT_SECRET || 'supersecretkey'
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cookieParser())
+// app.use(cookieParser())
 app.use(express.static('public'))
 app.use(cors({
   origin: 'http://localhost:5173',
@@ -18,18 +20,17 @@ app.use(cors({
 }))
 
 app.use(async (req, res, next) => {
-  const sessionId = req.cookies.sessionId || req.cookies.session
-  if (sessionId) {
+  const authHeader = req.headers.authorization
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    const token = authHeader.substring(7) // Отрезаем "Bearer "
     try {
-      const session = await db.getSession(sessionId)
-      if (session) {
-        const user = await db.findUserBySessionId(sessionId)
-        if (user) {
-          req.user = user
-        }
+      const decoded = jwt.verify(token, JWT_SECRET)
+      const user = await db.findUserByEmail(decoded.email)
+      if (user) {
+        req.user = user
       }
     } catch (err) {
-      console.error('Error processing session:', err)
+      console.error('Invalid JWT token:', err)
     }
   }
   next()
@@ -44,11 +45,13 @@ async function userLogin(email, password, res) {
   const match = await bcrypt.compare(password, hashPsw)
   if (match) {
     const user = await db.loginUser(email, hashPsw)
-    const sessionId = await db.createSession(user.id)
-    res.cookie('sessionId', sessionId, { httpOnly: true })
-    res.json(user)
-  }
-  else {
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '365d' }
+    )
+    res.json({ authorized: true, user, token })
+  } else {
     console.error('Wrong password')
     return res.status(200).json({ authorized: false })
   }
@@ -64,15 +67,7 @@ app.post("/api/login", async (req, res) => {
 })
 
 app.post('/api/logout', async (req, res) => {
-  try {
-    const sessionId = req.cookies.sessionId
-    await db.deleteSession(sessionId)
-    res.clearCookie('sessionId')
-    res.status(200).json({ message: 'Logged out' })
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Logout failed' })
-  }
+  res.status(200).json({ message: 'Logged out' })
 })
 
 app.post("/api/signup", async (req, res) => {
