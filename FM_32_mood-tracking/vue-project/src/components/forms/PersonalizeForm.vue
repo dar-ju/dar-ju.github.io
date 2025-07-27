@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useFileCheck } from '@/composables/useFileCheck.ts'
 import { uploadToCloudinary } from '@/composables/useImageUpload.ts'
 import { useUserStore } from '@/stores/userStore'
@@ -53,6 +53,10 @@ const handleFile = (e: Event) => {
     uploadedFile.value = file
   }
 }
+
+const userImgSrc = computed(() => {
+  return previewImg.value || import.meta.env.BASE_URL + 'assets/images/avatar-placeholder.svg'
+})
 </script>
 
 <template>
@@ -74,13 +78,7 @@ const handleFile = (e: Event) => {
         <div class="invalid-feedback">Please enter your name</div>
       </div>
       <div class="personal__img-wrapper">
-        <img
-          class="personal__img"
-          :src="previewImg || '/assets/images/avatar-placeholder.svg'"
-          alt=""
-          width="64"
-          height="64"
-        />
+        <img class="personal__img" :src="userImgSrc" alt="" width="64" height="64" />
         <div class="personal__upload-block">
           <span class="personal__upload-title">Upload Image</span>
           <span class="personal__upload-descr">Max 250KB, PNG or JPEG</span>

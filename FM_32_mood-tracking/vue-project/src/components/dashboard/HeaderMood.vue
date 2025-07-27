@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ProfilePopover from '@/components/modals/profile/ProfilePopover.vue'
 import { useUserStore } from '@/stores/userStore'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const userStore = useUserStore()
 
@@ -14,6 +14,10 @@ const popoverToggle = () => {
 const closePopover = () => {
   isPopoverVisible.value = false
 }
+
+const userImgSrc = computed(() => {
+  return userStore.user?.img || import.meta.env.BASE_URL + 'assets/images/avatar-placeholder.svg'
+})
 </script>
 
 <template>
@@ -34,13 +38,7 @@ const closePopover = () => {
         @keydown.enter.prevent="popoverToggle()"
         aria-haspopup="dialog"
       >
-        <img
-          class="header__user-img"
-          :src="userStore.user?.img || '/assets/images/avatar-placeholder.svg'"
-          alt=""
-          width="40"
-          height="40"
-        />
+        <img class="header__user-img" :src="userImgSrc" alt="" width="40" height="40" />
         <img
           class="header__dropdown"
           src="/assets/images/icon-dropdown-arrow.svg"
