@@ -41,12 +41,10 @@ export const loginUserApi = async (email: string, password: string): Promise<Use
       throw new Error(error)
     }
     const data = await response.json()
-
     if (data.token) {
-      localStorage.setItem('jwtToken', data.token) // сохраняем токен
+      localStorage.setItem('jwtToken', data.token)
     }
-
-    return data.user || data // зависит от структуры ответа
+    return data.user || data
   } catch (error: any) {
     if (error.message === 'Failed to fetch') {
       throw new Error('No connection to server')
@@ -55,7 +53,7 @@ export const loginUserApi = async (email: string, password: string): Promise<Use
   }
 }
 
-export const registerUserApi = async (userData: RegisterData): Promise<RegisterResponse> => {
+export const registerUserApi = async (userData: RegisterData): Promise<User> => {
   try {
     const response = await fetch(`${baseUrl}/api/signup`, {
       method: 'POST',
@@ -68,8 +66,11 @@ export const registerUserApi = async (userData: RegisterData): Promise<RegisterR
       const { error } = await response.json()
       throw new Error(error)
     }
-    const data: RegisterResponse = await response.json()
-    return data
+    const data = await response.json()
+    if (data.token) {
+      localStorage.setItem('jwtToken', data.token)
+    }
+    return data.user || data
   } catch (error) {
     console.error('Signup error:', error)
     throw error

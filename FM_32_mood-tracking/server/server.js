@@ -22,7 +22,7 @@ app.use(cors({
 app.use(async (req, res, next) => {
   const authHeader = req.headers.authorization
   if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.substring(7) // Отрезаем "Bearer "
+    const token = authHeader.substring(7)
     try {
       const decoded = jwt.verify(token, JWT_SECRET)
       const user = await db.findUserByEmail(decoded.email)
@@ -80,7 +80,13 @@ app.post("/api/signup", async (req, res) => {
     }
     const hashPsw = await bcrypt.hash(password, 10)
     await db.createUser(email, hashPsw, username, img)
-    await userLogin(email, password, res)
+    const user = await db.findUserByEmail(email)
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      JWT_SECRET,
+      { expiresIn: '365d' }
+    )
+    res.json({ authorized: true, user, token })
   } catch (error) {
     console.error('Signup error:', error)
     res.status(500).json({ error: error.message || 'Internal server error' })
