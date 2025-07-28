@@ -1,6 +1,6 @@
 # Frontend Mentor - Mood tracking app
 
-![Design preview for the Mood tracking app coding challenge](./preview.jpg)
+![Design preview for the Mood tracking app coding challenge](./design/desktop-preview.jpg)
 
 ## Links
 
