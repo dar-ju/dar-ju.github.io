@@ -70,8 +70,7 @@ const handleLogoutClick = () => {
   border-radius: 8px;
   background-color: var(--neutral-0);
   box-shadow: 0px 8px 16px 0px var(--shadow);
-  top: 100px;
-  right: var(--containerPadding);
+  right: 0;
   z-index: 1000;
   &__name {
     margin-bottom: 2px;
@@ -114,8 +113,7 @@ const handleLogoutClick = () => {
 
   /* Media */
   @include media-query-sm {
-    width: 100%;
-    max-width: 343px;
+    min-width: 330px;
   }
 }
 </style>

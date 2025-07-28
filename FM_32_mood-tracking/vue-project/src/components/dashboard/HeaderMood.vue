@@ -12,7 +12,7 @@ const popoverToggle = () => {
 }
 
 const closePopover = () => {
-  isPopoverVisible.value = false
+  isPopoverVisible.value = true
 }
 
 const userImgSrc = computed(() => {
@@ -46,11 +46,12 @@ const userImgSrc = computed(() => {
           width="10"
           height="6"
         />
-        <Teleport to="body">
-          <Transition name="fade" mode="out-in">
+        <Transition name="fade">
+          <div v-if="isPopoverVisible" class="header__popover-wrapper">
+            <div class="header__popover-overlay" @click.stop="closePopover" />
             <ProfilePopover v-if="isPopoverVisible" :onClose="closePopover" />
-          </Transition>
-        </Teleport>
+          </div>
+        </Transition>
       </div>
     </div>
   </header>
@@ -67,6 +68,7 @@ const userImgSrc = computed(() => {
     align-items: center;
   }
   &__user {
+    position: relative;
     display: flex;
     gap: 10px;
     align-items: center;
@@ -79,6 +81,19 @@ const userImgSrc = computed(() => {
   }
   &__user-img {
     border-radius: 50%;
+  }
+  &__popover-wrapper {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 8px;
+    z-index: 100;
+  }
+  &__popover-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: transparent;
   }
 
   /* Media */

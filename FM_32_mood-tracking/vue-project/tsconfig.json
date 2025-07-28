@@ -9,7 +9,7 @@
     }
   ],
   "compilerOptions": {
-    "strict": false,
+    "strict": true,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true,
