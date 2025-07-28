@@ -1,5 +1,20 @@
 export const data = [
   {
+    "mood-tracking": {
+      "id": 32,
+      "en": {
+        "title": "Mood tracking app",
+        "description": "The challenge of increased complexity. I learned about teleport in VUE - the block with the graph has a scroll and is limited in size through overflow, each bar has a popup, so that these popups are not cut off, teleport was used in the body with coordinates. Due to the different location of the frontend and backend, it was necessary to rework from sessions to JWT.",
+      },
+      "ru": {
+        "title": "Трекер настроения",
+        "description": "Задание повышенного уровня сложности. Узнал про teleport во VUE - блок с графиком имеет скролл и ограничен в размерах через overflow, у каждого столбца есть всплывающее окно, чтобы оно не обрезались, использовался teleport в body с координатами. Из-за разного расположения frontend и backend пришлось переделывать с сессий на JWT.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/mood-tracking-app-EhXf-jtXMO",
+      "stack": ['vue', 'bootstrap', 'pinia', 'sass/scss', 'bem', 'mysql', 'express', 'typescript']
+    }
+  },
+  {
     "audiophile-ecommerce": {
       "id": 31,
       "en": {
