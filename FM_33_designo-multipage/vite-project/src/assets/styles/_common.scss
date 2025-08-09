@@ -1,0 +1,43 @@
+@use './breakpoints' as *;
+
+/* FONTS */
+@font-face {
+  font-family: 'Jost';
+  src:
+    local('Jost'),
+    url('../fonts/Jost-Regular.woff2') format('woff2'),
+    url('../fonts/Jost-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Jost';
+  src:
+    local('Jost'),
+    url('../fonts/Jost-Medium.woff2') format('woff2'),
+    url('../fonts/Jost-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* COLORS */
+  /* Primary */
+  --peach: #E7816B;
+  --black: #1D1C1E;
+  --white: #FFFFFF;
+  /* Secondary */
+  --light-peach: #FFAD9B;
+  --dark-grey: #333136;
+  --light-grey: #F1F3F5;
+
+  /* INDENTS */
+  --containerPadding: 165px;
+
+  /* Media */
+  @include media-query-lg {
+  }
+}
