@@ -1,0 +1,62 @@
+@use '../base/common' as var;
+
+.hero {
+  background-color: var.$color-peach;
+  color: var.$color-white;
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &__container {
+    max-width: 1110px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media (min-width: var.$tablet) {
+      flex-direction: row;
+      justify-content: space-between;
+      text-align: left;
+    }
+  }
+
+  &__content {
+    @media (min-width: var.$tablet) {
+      width: 50%;
+    }
+  }
+
+  &__title {
+    font-size: 36px;
+    line-height: 1.2;
+
+    @media (min-width: var.$tablet) {
+      font-size: 48px;
+    }
+  }
+
+  &__description {
+    margin-top: 16px;
+    margin-bottom: 24px;
+    max-width: 445px;
+  }
+
+  // &__button {
+  // }
+
+  &__image-wrapper {
+    @media (min-width: var.$tablet) {
+      width: 50%;
+      text-align: right;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+  }
+}
