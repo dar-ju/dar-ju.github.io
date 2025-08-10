@@ -1,0 +1,54 @@
+@use "../base/common" as var;
+
+.properties {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  &__item {
+    display: flex;
+    max-width: 350px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__img-wrapper {
+    position: relative;
+    margin-bottom: 38px;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("../assets/images/home/desktop/bg-pattern-hero-home.svg");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    &--left-bckg::before {
+      transform: rotate(270deg);
+    }
+    &--bottom-bckg::before {
+      transform: rotate(180deg);
+    }
+    &--top-bckg::before {
+      transform: rotate(0deg);
+    }
+  }
+  &__block {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 21px;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.313rem;
+    color: var.$color-dark-grey;
+  }
+  &__description {
+    color: var.$color-dark-grey;
+  }
+}

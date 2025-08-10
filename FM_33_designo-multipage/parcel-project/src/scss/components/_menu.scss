@@ -1,0 +1,19 @@
+@use "../base/common" as var;
+
+.menu {
+  &__list {
+    display: flex;
+    gap: 42px;
+  }
+  &__item {
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    &--dark {
+      color: var.$color-dark-grey;
+    }
+    &--light {
+      color: var.$color-white;
+    }
+  }
+}

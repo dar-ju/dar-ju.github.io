@@ -1,11 +1,17 @@
-@use 'base/normalize';
-@use 'base/reset';
-@use 'base/common';
-// @use 'base/mixins';
-@use 'base/typography';
+@use "base/normalize";
+@use "base/reset";
+@use "base/common";
+@use "base/typography";
+@use "base/main";
 
-// @use 'components/header';
-@use 'components/hero';
+@use "sections/header";
+@use "sections/hero";
+@use "sections/projects";
+@use "sections/properties";
+@use "sections/footer";
+
+@use "components/project-card";
+@use "components/menu";
 // @use 'components/advantages';
 // @use 'components/call-to-action';
 // @use 'components/footer';

@@ -1,0 +1,36 @@
+@use "../base/common" as var;
+
+.hero {
+  position: relative;
+  padding: 0 95px;
+  display: flex;
+  justify-content: space-between;
+  background-color: var.$color-peach;
+  background-image: url("../assets/images/home/desktop/bg-pattern-hero-home.svg");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  border-radius: 15px;
+  overflow: hidden;
+  &__wrapper {
+    text-align: left;
+  }
+  &__content {
+    width: 55%;
+    padding-top: 145px;
+    padding-bottom: 160px;
+  }
+  &__wrapper {
+    margin-bottom: 54px;
+  }
+  &__title {
+    margin-bottom: 33px;
+  }
+  &__description {
+    max-width: 445px;
+  }
+  &__image-wrapper {
+    position: absolute;
+    top: -5%;
+    right: -7%;
+  }
+}
