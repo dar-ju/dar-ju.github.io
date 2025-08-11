@@ -10,7 +10,7 @@ body {
   color: var.$color-white;
 }
 
-body::before {
+.decor-left::before {
   content: "";
   position: absolute;
   width: 1006px;
@@ -23,7 +23,7 @@ body::before {
   z-index: -1;
 }
 
-body::after {
+.decor-right::after {
   content: "";
   position: absolute;
   width: 1006px;
@@ -34,6 +34,10 @@ body::after {
   right: 0px;
   bottom: 470px;
   z-index: -1;
+}
+
+.hidden {
+  display: none;
 }
 
 // body::before {

@@ -9,9 +9,12 @@
 @use "sections/projects";
 @use "sections/properties";
 @use "sections/footer";
+@use "sections/design-hero";
+@use "sections/design-works";
 
 @use "components/project-card";
 @use "components/menu";
+@use "components/design-card";
 // @use 'components/advantages';
 // @use 'components/call-to-action';
 // @use 'components/footer';

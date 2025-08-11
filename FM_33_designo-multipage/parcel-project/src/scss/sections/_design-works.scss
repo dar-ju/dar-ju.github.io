@@ -1,0 +1,9 @@
+.design-works {
+  padding-top: 160px;
+  padding-bottom: 80px;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+}

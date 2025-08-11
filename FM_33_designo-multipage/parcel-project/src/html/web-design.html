@@ -26,9 +26,16 @@
   </header>
 
   <main>
-    <include src="sections/hero.html"></include>
-    <include src="sections/projects.html"></include>
-    <include src="sections/properties.html"></include>
+    <include src="sections/design-hero.html">{
+      "title": "Web Design",
+      "description": "We build websites that serve as powerful marketing tools and bring memorable brand experiences.",
+      "class": "design-hero__content--web-bckg"
+      }</include>
+    <include src="sections/design-works.html"></include>
+    <include src="sections/projects.html">{
+      "block": "hidden",
+      "height": "projects__list--height"
+      }</include>
   </main>
 
   <footer class="footer">

@@ -1,0 +1,27 @@
+@use "../base/common" as var;
+
+.design-hero {
+  &__content {
+    padding: 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var.$color-peach;
+    background-position: center right;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    &--web-bckg {
+      background-image: url("../assets/images/web-design/desktop/bg-pattern-intro-web.svg");
+    }
+  }
+  &__title {
+    margin-bottom: 24px;
+  }
+  &__description {
+    max-width: 400px;
+  }
+  &::before {
+    top: 285px;
+  }
+}
