@@ -1,3 +1,5 @@
+@use "../base/common" as var;
+
 .project-card {
   max-width: 541px;
   border-radius: 15px;
@@ -27,6 +29,13 @@
         center/cover no-repeat,
       rgba(0, 0, 0, 0.5);
   }
+  &--web-small-img {
+    grid-row: 1 / 3;
+    background: url("../assets/images/home/desktop/image-web-design-small.jpg")
+        center/cover no-repeat,
+      rgba(0, 0, 0, 0.5);
+    grid-row: initial;
+  }
   &--app-img {
     background: url("../assets/images/home/desktop/image-app-design.jpg")
         center/cover no-repeat,
@@ -36,5 +45,11 @@
     background: url("../assets/images/home/desktop/image-graphic-design.jpg")
         center/cover no-repeat,
       rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: var.$tablet) {
+  .project-card {
+    max-width: initial;
   }
 }

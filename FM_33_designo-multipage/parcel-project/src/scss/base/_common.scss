@@ -10,8 +10,28 @@ $color-dark-grey: #333136;
 $color-light-grey: #f1f3f5;
 
 /* IDENTS */
-$side-padding: 165px;
+:root {
+  --side-padding: 165px;
+}
 
 /* MEDIA */
-$tablet: 1024px;
-$mobile: 768px;
+$desktop: 1199px;
+$tablet: 1023px;
+$mobile: 767px;
+
+/* Media */
+@media (max-width: $desktop) {
+  :root {
+    --side-padding: 80px;
+  }
+}
+@media (max-width: $tablet) {
+  :root {
+    --side-padding: 40px;
+  }
+}
+@media (max-width: $mobile) {
+  :root {
+    --side-padding: 0;
+  }
+}

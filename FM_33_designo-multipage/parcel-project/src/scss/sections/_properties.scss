@@ -52,3 +52,28 @@
     color: var.$color-dark-grey;
   }
 }
+
+@media (max-width: var.$tablet) {
+  .properties {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &__list {
+      flex-direction: column;
+    }
+    &__item {
+      flex-direction: row;
+      max-width: initial;
+      gap: 48px;
+    }
+    &__img-wrapper {
+      min-width: 202px;
+      margin-bottom: 0;
+    }
+    &__block {
+      text-align: left;
+    }
+    &__title {
+      margin-bottom: 6px;
+    }
+  }
+}

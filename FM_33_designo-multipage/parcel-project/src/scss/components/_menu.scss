@@ -3,7 +3,9 @@
 .menu {
   &__list {
     display: flex;
-    gap: 42px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px 42px;
   }
   &__item {
     font-size: 0.875rem;

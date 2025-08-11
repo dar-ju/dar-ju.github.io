@@ -15,7 +15,7 @@
     transform: translateX(-50%);
     top: -56%;
     max-width: 1111px;
-    width: 100%;
+    width: 90%;
     padding: 78px 95px 72px;
     background-color: var.$color-peach;
     background-image: url("../assets/images/shared/desktop/bg-pattern-call-to-action.svg");
@@ -54,11 +54,13 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    gap: 30px;
   }
   &__contacts {
     display: flex;
     max-width: 578px;
     width: 100%;
+    gap: 20px;
     justify-content: space-between;
     font-size: 1.09rem;
     font-style: normal;
@@ -84,5 +86,35 @@
     gap: 16px;
   }
   &__social-item {
+  }
+}
+
+@media (max-width: var.$tablet) {
+  .footer {
+    padding-top: 278px;
+    &__container {
+      padding-top: 163px;
+    }
+    &__cta-block {
+      padding: 58px;
+      flex-direction: column;
+      top: -64%;
+      background-position: left center;
+    }
+    &__cta-wrapper {
+      display: flex;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      max-width: 440px;
+      margin-bottom: 32px;
+    }
+    &__cta-title {
+      margin-bottom: 13px;
+      line-height: 115%;
+    }
+    &__contacts {
+      max-width: 430px;
+    }
   }
 }
