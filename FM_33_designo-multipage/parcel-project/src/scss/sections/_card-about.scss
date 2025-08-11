@@ -1,0 +1,46 @@
+@use "../base/common" as var;
+
+.card-about {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  &__container {
+  }
+  &__block {
+    display: flex;
+    border-radius: 15px;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-color: var.$color-lighter-peach;
+    &--bckg1 {
+      background-image: url("../assets/images/about/desktop/bg-pattern-card-about-desktop.svg");
+      background-position: bottom right 195px;
+    }
+    &--bckg2 {
+      background-image: url("../assets/images/about/desktop/bg-pattern-card2-about-desktop.svg");
+      background-position: left bottom;
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 95px;
+    & p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+  &__title {
+    margin-bottom: 24px;
+    font-size: 2.2rem;
+    color: var.$color-peach;
+  }
+  &__description {
+    margin-bottom: 22px;
+    color: var.$color-dark-grey;
+  }
+  &__img {
+    &--image-first {
+      order: 1;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@use "../base/common" as var;
+
+.locations-short {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  &::after {
+    bottom: -330px;
+    right: -397px;
+  }
+  &__container {
+    min-height: 364px;
+  }
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  &__item {
+    display: flex;
+    max-width: 350px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__img-wrapper {
+    position: relative;
+    margin-bottom: 38px;
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("../assets/images/home/desktop/bg-pattern-hero-home.svg");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    &--left-bckg::before {
+      transform: rotate(270deg);
+    }
+    &--bottom-bckg::before {
+      transform: rotate(180deg);
+    }
+    &--top-bckg::before {
+      transform: rotate(0deg);
+    }
+  }
+  &__block {
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 34px;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.313rem;
+    color: var.$color-dark-grey;
+  }
+  &__btn {
+    padding: 18px;
+    color: var.$color-white;
+    background-color: var.$color-peach;
+  }
+}
+
+@media (max-width: var.$tablet) {
+  .locations-short {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    &__list {
+      flex-direction: column;
+    }
+    &__item {
+      flex-direction: row;
+      max-width: initial;
+      gap: 48px;
+    }
+    &__img-wrapper {
+      min-width: 202px;
+      margin-bottom: 0;
+    }
+    &__block {
+      text-align: left;
+    }
+    &__title {
+      margin-bottom: 6px;
+    }
+  }
+}

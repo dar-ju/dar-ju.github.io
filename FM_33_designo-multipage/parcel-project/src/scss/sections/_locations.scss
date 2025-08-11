@@ -1,0 +1,60 @@
+@use "../base/common" as var;
+
+.locations {
+  padding-bottom: 80px;
+  &__container {
+  }
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    & li:nth-child(2n) {
+      flex-direction: row-reverse;
+    }
+  }
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  &__text-block {
+    width: 100%;
+    padding: 88px 95px;
+    background-color: var.$color-lighter-peach;
+    border-radius: 15px;
+    background-image: url("../assets/images/shared/desktop/bg-pattern-two-circles.svg");
+    background-repeat: no-repeat;
+    background-position: bottom left;
+  }
+  &__title {
+    margin-bottom: 24px;
+    font-size: 2.3rem;
+    color: var.$color-peach;
+  }
+  &__address-block {
+    display: flex;
+    gap: 112px;
+    color: var.$color-dark-grey;
+  }
+  &__address {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+  }
+  &__address-title {
+    font-size: 1.05rem;
+    color: var.$color-dark-grey;
+    letter-spacing: initial;
+  }
+  &__address-text {
+  }
+  &__contact {
+    display: flex;
+    flex-direction: column;
+  }
+  &__map {
+    min-width: 350px;
+    height: 326px;
+    border-radius: 15px;
+  }
+}

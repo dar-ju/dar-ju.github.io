@@ -5,12 +5,17 @@
 @use "base/main";
 
 @use "sections/header";
-@use "sections/hero";
+@use "sections/hero-home";
 @use "sections/projects";
 @use "sections/properties";
 @use "sections/footer";
-@use "sections/design-hero";
+@use "sections/hero-design";
+@use "sections/hero-about";
 @use "sections/design-works";
+@use "sections/card-about";
+@use "sections/locations-short";
+@use "sections/locations";
+@use "sections/contact-form";
 
 @use "components/project-card";
 @use "components/menu";

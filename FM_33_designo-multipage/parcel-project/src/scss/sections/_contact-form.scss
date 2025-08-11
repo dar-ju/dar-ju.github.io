@@ -1,0 +1,60 @@
+@use "../base/common" as var;
+
+.contact-form {
+  padding-bottom: 80px;
+  &__container {
+  }
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 95px;
+    padding-bottom: 51px;
+    gap: 50px;
+    background-color: var.$color-peach;
+    background-image: url("../assets/images/contact/desktop/bg-pattern-hero-desktop.svg");
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    border-radius: 15px;
+  }
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 445px;
+    padding-bottom: 30px;
+  }
+  &__title {
+    margin-bottom: 32px;
+  }
+  &__description {
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    max-width: 380px;
+    min-width: 300px;
+    width: 100%;
+    gap: 30px;
+  }
+  &__form-field {
+    width: 100%;
+    padding-bottom: 12px;
+    padding-left: 16px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid var.$color-white;
+    color: var.$color-white;
+    &::placeholder {
+      color: #ffffff80;
+    }
+    &:focus {
+      outline: none;
+      border-bottom: 2px solid var.$color-white;
+    }
+  }
+  &__btn {
+    width: 100%;
+  }
+}
