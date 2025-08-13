@@ -8,10 +8,30 @@
     gap: 15px 42px;
   }
   &__item {
+    position: relative;
     font-size: 0.875rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var.$color-white;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0px;
+      height: 1px;
+      bottom: 0px;
+      left: 0;
+      border-bottom: 1px solid var.$color-white;
+      transition: width ease-in-out 0.3s;
+    }
+  }
+}
+
+/* Hover */
+@media (hover: hover) {
+  .menu-footer {
+    &__item:hover::after {
+      width: 100%;
+    }
   }
 }
 

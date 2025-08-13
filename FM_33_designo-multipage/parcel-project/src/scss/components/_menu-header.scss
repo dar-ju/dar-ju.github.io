@@ -9,10 +9,21 @@
     gap: 15px 42px;
   }
   &__item {
+    position: relative;
     font-size: 0.875rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var.$color-dark-grey;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0px;
+      height: 1px;
+      bottom: 0px;
+      left: 0;
+      border-bottom: 1px solid var.$color-dark-grey;
+      transition: width ease-in-out 0.3s;
+    }
   }
   &__close-btn {
     position: absolute;
@@ -22,6 +33,15 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity ease-in-out 0.3s;
+  }
+}
+
+/* Hover */
+@media (hover: hover) {
+  .menu-header {
+    &__item:hover::after {
+      width: 100%;
+    }
   }
 }
 

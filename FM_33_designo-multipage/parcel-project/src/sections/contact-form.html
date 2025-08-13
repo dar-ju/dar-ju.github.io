@@ -1,6 +1,6 @@
-<section class="contact-form">
+<div class="contact-form">
   <div class="container contact-form__container">
-    <div class="successful" aria-live="Message Sent">
+    <div class="successful" role="status" aria-live="polite">
       <span class="successful__title">Message Sent!</span>
       <span class="successful__message">Thanks for completing the form. We&rsquo;ll be&nbsp;in&nbsp;touch soon!</span>
     </div>
@@ -15,8 +15,8 @@
       <form class="contact-form__form" novalidate>
         <div class="contact-form__input-wrapper">
           <input class="contact-form__form-input" type="text" placeholder="Name" id="name" name="name"
-            autocomplete="name" maxlength="64">
-          <div class="contact-form__warning" id="nameWarning" aria-live="polite" role="alert">
+            autocomplete="name" maxlength="64" aria-label="your name">
+          <div class="contact-form__warning" id="nameWarning" role="alert">
             <span class="contact-form__warning-text">Can’t be empty</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g>
@@ -30,8 +30,8 @@
         </div>
         <div class="contact-form__input-wrapper">
           <input class="contact-form__form-input" type="email" placeholder="Email Address" id="email" name="email"
-            autocomplete="email" maxlength="64">
-          <div class="contact-form__warning" id="emailWarning" aria-live="polite" role="alert">
+            autocomplete="email" maxlength="64" aria-label="your email">
+          <div class="contact-form__warning" id="emailWarning" role="alert">
             <span class="contact-form__warning-text">Can’t be empty</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g>
@@ -42,7 +42,7 @@
               </g>
             </svg>
           </div>
-          <div class="contact-form__warning" id="emailWrong" aria-live="polite" role="alert">
+          <div class="contact-form__warning" id="emailWrong" role="alert">
             <span class="contact-form__warning-text">Wrong email format</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g>
@@ -56,8 +56,8 @@
         </div>
         <div class="contact-form__input-wrapper">
           <input class="contact-form__form-input" type="text" placeholder="Phone" id="phone" name="phone"
-            autocomplete="tel" maxlength="32">
-          <div class="contact-form__warning" id="phoneWarning" aria-live="polite" role="alert">
+            autocomplete="tel" maxlength="32" aria-label="your phone">
+          <div class="contact-form__warning" id="phoneWarning" role="alert">
             <span class="contact-form__warning-text">Can’t be empty</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g>
@@ -71,8 +71,8 @@
         </div>
         <div class="contact-form__input-wrapper contact-form__input-wrapper--margin">
           <textarea class="contact-form__form-input" name="message" id="message" rows="4" placeholder="Your Message"
-            maxlength="256"></textarea>
-          <div class="contact-form__warning" id="messageWarning" aria-live="polite" role="alert">
+            maxlength="256" aria-label="your message"></textarea>
+          <div class="contact-form__warning" id="messageWarning" role="alert">
             <span class="contact-form__warning-text">Can’t be empty</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g>
@@ -88,4 +88,4 @@
       </form>
     </div>
   </div>
-</section>
+</div>

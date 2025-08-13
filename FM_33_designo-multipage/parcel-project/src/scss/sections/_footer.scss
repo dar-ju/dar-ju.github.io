@@ -96,10 +96,21 @@
     gap: 16px;
     line-height: 0;
   }
-  &__social-item {
+  &__social-item svg path {
+    transition: fill ease-in-out 0.3s;
   }
 }
 
+/* Hover */
+@media (hover: hover) {
+  .footer {
+    &__social-item:hover svg path {
+      fill: var.$color-light-peach;
+    }
+  }
+}
+
+/* Media */
 @media (max-width: var.$tablet) {
   .footer {
     padding-top: 278px;

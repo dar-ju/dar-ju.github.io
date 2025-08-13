@@ -3,12 +3,12 @@
 .design-card {
   width: calc((100% - 30px * 2) / 3);
   min-width: 268px;
-  border-radius: 15px;
-  overflow: hidden;
   &__link {
     display: flex;
     flex-direction: column;
     height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
   }
   &__img {
   }
@@ -22,18 +22,35 @@
     padding: 36px;
     padding-top: 22px;
     background-color: var.$color-lighter-peach;
+    transition: background-color ease-in-out 0.3s;
   }
   &__title {
     font-size: 1.25rem;
     letter-spacing: 0.3rem;
     color: var.$color-peach;
     text-transform: uppercase;
+    transition: color ease-in-out 0.3s;
   }
   &__description {
     color: var.$color-dark-grey;
+    transition: color ease-in-out 0.3s;
   }
 }
 
+/* Hover */
+@media (hover: hover) {
+  .design-card {
+    &__link:hover &__wrapper {
+      background-color: var.$color-peach;
+    }
+    &__link:hover &__wrapper h2,
+    &__link:hover &__wrapper p {
+      color: var.$color-white;
+    }
+  }
+}
+
+/* Media */
 @media (max-width: var.$tablet2) {
   .design-card {
     width: 100%;
