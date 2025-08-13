@@ -1,5 +1,9 @@
 <section class="contact-form">
   <div class="container contact-form__container">
+    <div class="successful" aria-live="Message Sent">
+      <span class="successful__title">Message Sent!</span>
+      <span class="successful__message">Thanks for completing the form. We&rsquo;ll be&nbsp;in&nbsp;touch soon!</span>
+    </div>
     <div class="contact-form__block">
       <div class="contact-form__text-block">
         <h1 class="contact-form__title">Contact Us</h1>
@@ -8,13 +12,79 @@
           find out how we can help your business
           grow. If you are looking for unique digital experiences that’s relatable to your users, drop us a line.</p>
       </div>
-      <form class="contact-form__form">
-        <input class="contact-form__form-field" type="text" placeholder="Name" id="name" name="name">
-        <input class="contact-form__form-field" type="email" placeholder="Email Address" id="email" name="email">
-        <input class="contact-form__form-field" type="tel" placeholder="Phone" id="phone" name="phone">
-        <textarea class="contact-form__form-field" name="message" id="message" rows="4"
-          placeholder="Your Message"></textarea>
-        <button class="btn" type="submit">Submit</button>
+      <form class="contact-form__form" novalidate>
+        <div class="contact-form__input-wrapper">
+          <input class="contact-form__form-input" type="text" placeholder="Name" id="name" name="name"
+            autocomplete="name" maxlength="64">
+          <div class="contact-form__warning" id="nameWarning" aria-live="polite" role="alert">
+            <span class="contact-form__warning-text">Can’t be empty</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <circle cx="10" cy="10" r="10" fill="white" />
+                <g>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5H9V12H11V5ZM11 14H9V16H11V14Z" fill="#E7816B" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="contact-form__input-wrapper">
+          <input class="contact-form__form-input" type="email" placeholder="Email Address" id="email" name="email"
+            autocomplete="email" maxlength="64">
+          <div class="contact-form__warning" id="emailWarning" aria-live="polite" role="alert">
+            <span class="contact-form__warning-text">Can’t be empty</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <circle cx="10" cy="10" r="10" fill="white" />
+                <g>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5H9V12H11V5ZM11 14H9V16H11V14Z" fill="#E7816B" />
+                </g>
+              </g>
+            </svg>
+          </div>
+          <div class="contact-form__warning" id="emailWrong" aria-live="polite" role="alert">
+            <span class="contact-form__warning-text">Wrong email format</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <circle cx="10" cy="10" r="10" fill="white" />
+                <g>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5H9V12H11V5ZM11 14H9V16H11V14Z" fill="#E7816B" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="contact-form__input-wrapper">
+          <input class="contact-form__form-input" type="text" placeholder="Phone" id="phone" name="phone"
+            autocomplete="tel" maxlength="32">
+          <div class="contact-form__warning" id="phoneWarning" aria-live="polite" role="alert">
+            <span class="contact-form__warning-text">Can’t be empty</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <circle cx="10" cy="10" r="10" fill="white" />
+                <g>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5H9V12H11V5ZM11 14H9V16H11V14Z" fill="#E7816B" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="contact-form__input-wrapper contact-form__input-wrapper--margin">
+          <textarea class="contact-form__form-input" name="message" id="message" rows="4" placeholder="Your Message"
+            maxlength="256"></textarea>
+          <div class="contact-form__warning" id="messageWarning" aria-live="polite" role="alert">
+            <span class="contact-form__warning-text">Can’t be empty</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <circle cx="10" cy="10" r="10" fill="white" />
+                <g>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11 5H9V12H11V5ZM11 14H9V16H11V14Z" fill="#E7816B" />
+                </g>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <button class="btn contact-form__btn" type="submit">Submit</button>
       </form>
     </div>
   </div>

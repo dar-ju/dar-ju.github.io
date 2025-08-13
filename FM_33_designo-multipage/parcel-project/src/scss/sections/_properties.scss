@@ -77,3 +77,27 @@
     }
   }
 }
+
+@media (max-width: var.$mobile) {
+  .properties {
+    // padding-top: 60px;
+    // padding-bottom: 60px;
+    &__list {
+      gap: 78px;
+    }
+    &__item {
+      gap: 40px;
+      flex-direction: column;
+    }
+    &__img-wrapper {
+      // min-width: 202px;
+      // margin-bottom: 0;
+    }
+    &__block {
+      text-align: center;
+    }
+    &__title {
+      margin-bottom: 20px;
+    }
+  }
+}

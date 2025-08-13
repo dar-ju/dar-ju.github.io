@@ -12,11 +12,13 @@ $color-light-grey: #f1f3f5;
 /* IDENTS */
 :root {
   --side-padding: 165px;
+  --side-padding-mobile: 24px;
 }
 
 /* MEDIA */
 $desktop: 1199px;
 $tablet: 1023px;
+$tablet2: 960px;
 $mobile: 767px;
 
 /* Media */

@@ -7,8 +7,7 @@
   &__block {
     display: flex;
     justify-content: space-between;
-    padding: 60px 95px;
-    padding-bottom: 51px;
+    padding: 55px 95px;
     gap: 50px;
     background-color: var.$color-peach;
     background-image: url("../assets/images/contact/desktop/bg-pattern-hero-desktop.svg");
@@ -36,25 +35,119 @@
     max-width: 380px;
     min-width: 300px;
     width: 100%;
-    gap: 30px;
+    gap: 28px;
   }
-  &__form-field {
+  &__input-wrapper {
+    position: relative;
     width: 100%;
-    padding-bottom: 12px;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: 0;
+      background: var.$color-white;
+      transition: height 0.3s ease-in-out;
+      pointer-events: none;
+    }
+    &.focused::after {
+      height: 3px;
+    }
+  }
+  &__form-input {
+    width: 100%;
+    padding-bottom: 14px;
     padding-left: 16px;
     background-color: transparent;
     border: none;
-    border-bottom: 1px solid var.$color-white;
     color: var.$color-white;
     &::placeholder {
       color: #ffffff80;
     }
+    &:focus::after {
+      height: 3px;
+    }
     &:focus {
       outline: none;
-      border-bottom: 2px solid var.$color-white;
     }
+  }
+  &__warning {
+    display: none;
+    position: absolute;
+    align-items: center;
+    gap: 8px;
+    top: 2px;
+    right: 0;
+  }
+  &__warning-text {
+    font-size: 0.75rem;
+    font-style: italic;
   }
   &__btn {
     width: 100%;
+  }
+}
+
+@media (max-width: var.$tablet) {
+  .contact-form {
+    padding-bottom: 60px;
+    &__block {
+      flex-direction: column;
+      padding: 71px 57px;
+      gap: 40px;
+      background-position: -122px -120%;
+    }
+    &__text-block {
+      max-width: initial;
+      padding: 0;
+    }
+    &__form {
+      max-width: initial;
+      gap: 26px;
+    }
+    &__form-input {
+      padding-bottom: 15px;
+      padding-left: 23px;
+    }
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .contact-form {
+    &__block {
+      padding: 65px 24px;
+      padding-bottom: 73px;
+      border-radius: initial;
+      gap: 48px;
+      background-image: url("../assets/images/contact/mobile/bg-pattern-hero-contact-mobile.svg");
+      background-position: top left -92px;
+    }
+    &__text-block {
+      text-align: center;
+    }
+    &__title {
+      font-size: 2rem;
+      margin-bottom: 19px;
+    }
+    &__description {
+      font-size: 0.93rem;
+      line-height: 1.55rem;
+    }
+    &__form {
+      gap: 25px;
+    }
+    &__input-wrapper {
+      &--margin {
+        margin-bottom: 18px;
+      }
+    }
+    &__form-input {
+      padding-bottom: 16px;
+      padding-left: 13px;
+    }
+    &__btn {
+      align-self: center;
+    }
   }
 }

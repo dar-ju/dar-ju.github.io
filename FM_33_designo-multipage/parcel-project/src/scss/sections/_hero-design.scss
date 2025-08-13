@@ -33,3 +33,32 @@
     top: 285px;
   }
 }
+
+@media (max-width: var.$tablet) {
+  .hero-design {
+    &__content {
+      background-position: center;
+      background-image: url("../assets/images/shared/tablet/bg-pattern-design-pages-intro-tablet.svg");
+    }
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .hero-design {
+    &__content {
+      padding: 98px 22px;
+      padding-bottom: 106px;
+      border-radius: initial;
+      background-position: top right;
+      background-image: url("../assets/images/shared/mobile/bg-pattern-design-pages-intro-mobile.svg");
+    }
+    &__title {
+      margin-bottom: 17px;
+      font-size: 2rem;
+    }
+    &__description {
+      font-size: 0.95rem;
+      line-height: 1.563rem;
+    }
+  }
+}

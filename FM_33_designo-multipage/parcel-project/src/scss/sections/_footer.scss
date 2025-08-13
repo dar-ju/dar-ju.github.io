@@ -1,7 +1,13 @@
 @use "../base/common" as var;
 
 .footer {
-  padding-top: 300px;
+  padding-top: 297px;
+  &--padding {
+    padding-top: 80px;
+    & .footer__container {
+      padding-top: 72px;
+    }
+  }
   &__block {
     position: relative;
     background-color: var.$color-black;
@@ -15,13 +21,17 @@
     transform: translateX(-50%);
     top: -56%;
     max-width: 1111px;
-    width: 90%;
+    width: 77%;
+    max-width: 1590px;
     padding: 78px 95px 72px;
     background-color: var.$color-peach;
     background-image: url("../assets/images/shared/desktop/bg-pattern-call-to-action.svg");
     background-repeat: no-repeat;
     background-position: center right;
     border-radius: 15px;
+    &--hidden {
+      display: none;
+    }
   }
   &__cta-wrapper {
     max-width: 459px;
@@ -39,7 +49,7 @@
   }
   &__container {
     padding-top: 144px;
-    padding-bottom: 72px;
+    padding-bottom: 67px;
   }
   &__top {
     display: flex;
@@ -84,6 +94,7 @@
   &__social-block {
     display: flex;
     gap: 16px;
+    line-height: 0;
   }
   &__social-item {
   }
@@ -92,11 +103,15 @@
 @media (max-width: var.$tablet) {
   .footer {
     padding-top: 278px;
+    &--padding {
+      padding-top: 60px;
+    }
     &__container {
       padding-top: 163px;
     }
     &__cta-block {
-      padding: 58px;
+      width: 90%;
+      padding: 55px;
       flex-direction: column;
       top: -64%;
       background-position: left center;
@@ -113,8 +128,60 @@
       margin-bottom: 13px;
       line-height: 115%;
     }
+    &__top {
+      margin-bottom: 33px;
+    }
     &__contacts {
       max-width: 430px;
+    }
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .footer {
+    padding-top: 251px;
+    &--padding {
+      padding-top: 0px;
+    }
+    &__cta-block {
+      width: 87%;
+      top: -23%;
+      padding: 62px 24px;
+    }
+    &__cta-title {
+      font-size: 2rem;
+      letter-spacing: initial;
+    }
+    &__container {
+      padding-top: 253px;
+      padding-bottom: 63px;
+    }
+    &__top {
+      margin-bottom: 33px;
+      padding: 0;
+      gap: 26px;
+      border-bottom: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__logo-link {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      max-width: 327px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #ffffff1a;
+    }
+    &__bottom {
+      flex-direction: column;
+      align-items: center;
+      gap: 41px;
+    }
+    &__contacts {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 40px;
     }
   }
 }

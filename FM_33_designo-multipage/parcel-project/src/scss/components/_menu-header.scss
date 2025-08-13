@@ -1,0 +1,51 @@
+@use "../base/common" as var;
+
+.menu-header {
+  opacity: 1;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 15px 42px;
+  }
+  &__item {
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var.$color-dark-grey;
+  }
+  &__close-btn {
+    position: absolute;
+    display: none;
+    top: -59px;
+    right: 26px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity ease-in-out 0.3s;
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .menu-header {
+    position: absolute;
+    width: 100%;
+    padding: 48px 24px;
+    top: 60px;
+    left: 0;
+    background-color: var.$color-black;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity ease-in-out 0.3s;
+    &__list {
+      flex-direction: column;
+      text-align: left;
+    }
+    &__item {
+      color: var.$color-white;
+      font-size: 1.5rem;
+    }
+    &__close-btn {
+      display: block;
+    }
+  }
+}

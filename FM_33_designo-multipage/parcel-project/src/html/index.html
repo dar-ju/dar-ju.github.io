@@ -18,13 +18,14 @@
   <meta property="og:locale" content="en_US">
 
   <link rel="stylesheet" href="../scss/style.scss">
+  <script defer src="../js/mobile-menu.js"></script>
 </head>
 
 <body>
   <header class="header">
     <include src="sections/header.html"></include>
   </header>
-
+  <div class="overlay"></div>
   <main>
     <include src="sections/hero-home.html"></include>
     <include src="sections/projects-home.html"></include>
@@ -32,7 +33,7 @@
   </main>
 
   <footer class="footer">
-    <include src="sections/footer.html"></include>
+    <include src="sections/footer.html">{ "hidden": ""}</include>
   </footer>
 </body>
 

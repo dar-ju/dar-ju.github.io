@@ -1,9 +1,14 @@
-<div class="container header__container">
-  <img src="../assets/images/shared/desktop/logo-dark.png?as=webp" alt="Designo dark logo" class="header__logo"
-    width="201" height="24">
-  <include src="components/menu.html">
-    {
-    "fontColor": "menu__item--dark"
-    }
-  </include>
+<div class="container container--mobile header__container">
+  <a href="index.html">
+    <img src="../assets/images/shared/desktop/logo-dark.png?as=webp" alt="Designo dark logo" class="header__logo"
+      width="201" height="24">
+  </a>
+  <include src="components/menu-header.html"></include>
+  <button class="header__burger-btn">
+    <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="4" fill="#1D1C1E" />
+      <rect y="8" width="24" height="4" fill="#1D1C1E" />
+      <rect y="16" width="24" height="4" fill="#1D1C1E" />
+    </svg>
+  </button>
 </div>

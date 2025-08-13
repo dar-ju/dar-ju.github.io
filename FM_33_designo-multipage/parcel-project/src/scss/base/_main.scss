@@ -78,13 +78,83 @@ body {
   display: none;
 }
 
-/* Media */
+.overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  top: 96px;
+  pointer-events: none;
+  z-index: 5;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity ease-in-out 0.3s;
+}
+
+/* SUCCESSFUL MODAL */
+.successful {
+  display: none;
+  position: fixed;
+  width: 450px;
+  padding: 29px;
+  top: 24px;
+  right: var(--side-padding);
+  flex-direction: column;
+  border-radius: 13px;
+  background-color: var.$color-peach;
+  opacity: 0;
+  z-index: 1;
+  animation: successfulFadeIn 0.8s forwards;
+}
+.successful__title {
+  margin-bottom: 12px;
+  padding-left: 30px;
+  font-size: 1.15rem;
+  color: var(--color-white);
+}
+.successful__message {
+  font-size: 0.97rem;
+  color: var(--color-green-200-lighter);
+}
+
+/* ANIMATION */
+@keyframes successfulFadeIn {
+  0% {
+    top: 60px;
+    opacity: 0;
+  }
+  100% {
+    top: 24px;
+    opacity: 1;
+  }
+}
+
+/* HOVER */
+
+/* FOCUS */
+a:focus-visible {
+  outline: 3px solid grey;
+  outline-offset: 3px;
+}
+
+/* MEDIA */
 @media (max-width: var.$tablet) {
   .decor-left::before {
     display: none;
   }
   .decor-right::after {
     display: none;
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .container {
+    &--mobile {
+      padding-left: var(--side-padding-mobile);
+      padding-right: var(--side-padding-mobile);
+    }
+  }
+  .overlay {
+    display: block;
   }
 }
 

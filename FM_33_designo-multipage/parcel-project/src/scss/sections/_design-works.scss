@@ -1,3 +1,5 @@
+@use "../base/common" as var;
+
 .design-works {
   padding-top: 160px;
   padding-bottom: 80px;
@@ -5,5 +7,22 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+  }
+}
+
+@media (max-width: var.$tablet) {
+  .design-works {
+    padding-top: 120px;
+    padding-bottom: 60px;
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .design-works {
+    padding-top: 96px;
+    padding-bottom: 36px;
+    &__list {
+      gap: 40px;
+    }
   }
 }

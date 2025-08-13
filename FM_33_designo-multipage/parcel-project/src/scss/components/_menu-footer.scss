@@ -1,6 +1,6 @@
 @use "../base/common" as var;
 
-.menu {
+.menu-footer {
   &__list {
     display: flex;
     flex-wrap: wrap;
@@ -11,11 +11,16 @@
     font-size: 0.875rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    &--dark {
-      color: var.$color-dark-grey;
-    }
-    &--light {
-      color: var.$color-white;
+    color: var.$color-white;
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .menu-footer {
+    &__list {
+      gap: 19px 42px;
+      flex-direction: column;
+      text-align: center;
     }
   }
 }

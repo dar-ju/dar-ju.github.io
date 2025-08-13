@@ -1,8 +1,12 @@
 <section class="card-about">
   <div class="container card-about__container">
     <div class="card-about__block card-about__block--bckg2">
-      <img class="card-about__img card-about__img--image-first"
-        src="../assets/images/about/desktop/image-real-deal.jpg?as=webp" alt="The real deal image">
+      <picture class="card-about__img-wrapper card-about__img-wrapper--image-first">
+        <source media="(max-width: 767px)" srcset="../assets/images/about/mobile/image-real-deal.jpg?as=webp">
+        <source media="(max-width: 1023px)" srcset="../assets/images/about/tablet/image-real-deal.jpg?as=webp">
+        <img class="card-about__img" src="../assets/images/about/desktop/image-real-deal.jpg?as=webp"
+          alt="The real deal image">
+      </picture>
       <div class="card-about__content">
         <h2 class="card-about__title">The real deal</h2>
         <p class="card-about__description">As strategic partners in our clients’ businesses, we are ready to take on any

@@ -2,6 +2,8 @@
 
 .locations-short {
   position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
   padding-top: 80px;
   padding-bottom: 80px;
   &::after {
@@ -69,21 +71,31 @@
     padding-bottom: 60px;
     &__list {
       flex-direction: column;
+      gap: 95px;
     }
     &__item {
-      flex-direction: row;
+      flex-direction: column;
       max-width: initial;
-      gap: 48px;
+      gap: 37px;
     }
     &__img-wrapper {
       min-width: 202px;
       margin-bottom: 0;
     }
     &__block {
-      text-align: left;
+      text-align: center;
     }
     &__title {
-      margin-bottom: 6px;
+      margin-bottom: 36px;
+    }
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .locations-short {
+    padding-bottom: 135px;
+    &__list {
+      gap: 63px;
     }
   }
 }

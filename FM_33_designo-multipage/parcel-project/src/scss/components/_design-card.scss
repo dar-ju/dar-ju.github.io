@@ -2,10 +2,13 @@
 
 .design-card {
   width: calc((100% - 30px * 2) / 3);
-  min-width: 300px;
+  min-width: 268px;
   border-radius: 15px;
   overflow: hidden;
   &__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   &__img {
   }
@@ -14,6 +17,8 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    flex-grow: 1;
+    height: 100%;
     padding: 36px;
     padding-top: 22px;
     background-color: var.$color-lighter-peach;
@@ -26,5 +31,38 @@
   }
   &__description {
     color: var.$color-dark-grey;
+  }
+}
+
+@media (max-width: var.$tablet2) {
+  .design-card {
+    width: 100%;
+    &__link {
+      flex-direction: row;
+    }
+    &__img {
+      max-width: 50%;
+    }
+    &__wrapper {
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .design-card {
+    &__link {
+      flex-direction: column;
+    }
+    &__img {
+      max-width: 100%;
+      min-height: 320px;
+    }
+    &__wrapper {
+      padding-bottom: 31px;
+    }
+    &__title {
+      margin-bottom: 5px;
+    }
   }
 }

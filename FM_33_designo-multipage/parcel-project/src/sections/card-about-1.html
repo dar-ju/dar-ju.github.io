@@ -1,8 +1,12 @@
 <section class="card-about">
   <div class="container card-about__container">
     <div class="card-about__block card-about__block--bckg1">
-      <img class="card-about__img" src="../assets/images/about/desktop/image-world-class-talent.jpg?as=webp"
-        alt="World-class talent image">
+      <picture class="card-about__img-wrapper">
+        <source media="(max-width: 767px)" srcset="../assets/images/about/mobile/image-world-class-talent.jpg?as=webp">
+        <source media="(max-width: 1023px)" srcset="../assets/images/about/tablet/image-world-class-talent.jpg?as=webp">
+        <img class="card-about__img" src="../assets/images/about/desktop/image-world-class-talent.jpg?as=webp"
+          alt="World-class talent image">
+      </picture>
       <div class="card-about__content">
         <h2 class="card-about__title">World-class talent</h2>
         <p class="card-about__description">We are a crew of strategists, problem-solvers, and technologists. Every

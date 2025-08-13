@@ -9,14 +9,18 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-    padding: 50px;
+    border-radius: 15px;
   }
   &__wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 50px;
     gap: 20px;
     text-transform: uppercase;
+  }
+  &__title {
+    text-align: center;
   }
   &__view-text {
     margin-right: 15px;
@@ -51,5 +55,55 @@
 @media (max-width: var.$tablet) {
   .project-card {
     max-width: initial;
+    max-height: 200px;
+    &--web-small-img {
+      background: url("../assets/images/home/tablet/image-web-design.jpg")
+          center/cover no-repeat,
+        rgba(0, 0, 0, 0.5);
+    }
+    &--app-img {
+      background: url("../assets/images/home/tablet/image-app-design.jpg")
+          center/cover no-repeat,
+        rgba(0, 0, 0, 0.5);
+    }
+    &--graphic-img {
+      background: url("../assets/images/home/tablet/image-graphic-design.jpg")
+          center/cover no-repeat,
+        rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+@media (max-width: var.$mobile) {
+  .project-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 249px;
+    &--web-small-img {
+      background: url("../assets/images/home/mobile/image-web-design.jpg")
+          center/cover no-repeat,
+        rgba(0, 0, 0, 0.5);
+    }
+    &--app-img {
+      background: url("../assets/images/home/mobile/image-app-design.jpg")
+          center/cover no-repeat,
+        rgba(0, 0, 0, 0.5);
+    }
+    &--graphic-img {
+      background: url("../assets/images/home/mobile/image-graphic-design.jpg")
+          center/cover no-repeat,
+        rgba(0, 0, 0, 0.5);
+    }
+    &__link {
+      padding: 0;
+    }
+    &__wrapper {
+      padding: 50px 24px;
+      gap: 5px;
+    }
+    &__title {
+      font-size: 1.75rem;
+    }
   }
 }
