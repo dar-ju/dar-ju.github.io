@@ -1,2 +1,2 @@
 let burgerBtn=document.querySelector(".header__burger-btn"),closeBtn=document.querySelector(".menu-header__close-btn"),menu=document.querySelector(".menu-header"),overlay=document.querySelector(".overlay");burgerBtn.addEventListener("click",()=>{menu.style.opacity="1",overlay.style.opacity="1",burgerBtn.style.opacity="0",closeBtn.style.opacity="1",closeBtn.style.pointerEvents="initial"}),closeBtn.addEventListener("click",()=>{menu.style.opacity="0",overlay.style.opacity="0",burgerBtn.style.opacity="1",closeBtn.style.opacity="0",burgerBtn.style.pointerEvents="initial",closeBtn.style.pointerEvents="none"});
-//# sourceMappingURL=html.2106ddbf.js.map
+//# sourceMappingURL=about.76c4d158.js.map
