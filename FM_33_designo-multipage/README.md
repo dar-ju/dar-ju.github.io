@@ -2,7 +2,7 @@
 
 ![PageSpeed](./design/Screenshot_1.jpg)
 
-![Design preview for the Designo agency website coding challenge](./design/preview.jpg)
+![Design preview for the Designo agency website coding challenge](./design/desktop-preview.jpg)
 
 ## Links
 
