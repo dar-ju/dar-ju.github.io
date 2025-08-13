@@ -40,6 +40,7 @@
     display: flex;
     flex-direction: column;
     max-width: 200px;
+    min-width: 175px;
   }
   &__address-title {
     font-size: 1.05rem;
@@ -51,9 +52,12 @@
   &__contact {
     display: flex;
     flex-direction: column;
+    min-width: 165px;
   }
   &__map {
-    min-width: 350px;
+    min-width: 198px;
+    max-width: 350px;
+    width: 100%;
     height: 326px;
     border-radius: 15px;
   }
@@ -73,6 +77,9 @@
     }
     &__text-block {
       padding: 89px 74px;
+    }
+    &__map {
+      max-width: initial;
     }
   }
 }

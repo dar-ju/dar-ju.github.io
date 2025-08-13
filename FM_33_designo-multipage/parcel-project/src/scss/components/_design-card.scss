@@ -11,6 +11,8 @@
     overflow: hidden;
   }
   &__img {
+    object-fit: cover;
+    object-position: top;
   }
   &__wrapper {
     display: flex;
@@ -76,6 +78,7 @@
       min-height: 320px;
     }
     &__wrapper {
+      // max-height: 250px;
       padding-bottom: 31px;
     }
     &__title {
