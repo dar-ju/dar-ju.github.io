@@ -94,7 +94,6 @@
 
 @media (max-width: var.$mobile) {
   .hero {
-    // padding-bottom: 60px;
     &__block {
       padding: 0 24px;
       border-radius: initial;
@@ -114,13 +113,9 @@
       font-size: 0.938rem;
       line-height: 1.563rem;
     }
-    &__btn {
-    }
     &__image-wrapper {
       top: 35.5%;
       width: 167%;
-    }
-    &__img {
     }
   }
 }

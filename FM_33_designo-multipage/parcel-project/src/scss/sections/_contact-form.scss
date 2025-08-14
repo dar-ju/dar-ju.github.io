@@ -2,8 +2,6 @@
 
 .contact-form {
   padding-bottom: 80px;
-  &__container {
-  }
   &__block {
     display: flex;
     justify-content: space-between;
@@ -25,8 +23,6 @@
   }
   &__title {
     margin-bottom: 32px;
-  }
-  &__description {
   }
   &__form {
     display: flex;
@@ -89,6 +85,7 @@
   }
 }
 
+/* Media */
 @media (max-width: var.$tablet) {
   .contact-form {
     padding-bottom: 60px;

@@ -2,8 +2,6 @@
 
 .hero-about {
   padding-bottom: 80px;
-  &__container {
-  }
   &__block {
     display: flex;
     justify-content: center;
@@ -44,6 +42,7 @@
   }
 }
 
+/* Media */
 @media (max-width: var.$tablet) {
   .hero-about {
     padding-top: 7px;

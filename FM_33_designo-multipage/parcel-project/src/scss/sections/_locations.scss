@@ -2,8 +2,6 @@
 
 .locations {
   padding-bottom: 80px;
-  &__container {
-  }
   &__block {
     display: flex;
     flex-direction: column;
@@ -47,8 +45,6 @@
     color: var.$color-dark-grey;
     letter-spacing: initial;
   }
-  &__address-text {
-  }
   &__contact {
     display: flex;
     flex-direction: column;
@@ -63,6 +59,7 @@
   }
 }
 
+/* Media */
 @media (max-width: var.$tablet) {
   .locations {
     padding-bottom: 100px;

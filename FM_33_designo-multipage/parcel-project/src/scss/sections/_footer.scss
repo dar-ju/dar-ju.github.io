@@ -3,7 +3,7 @@
 .footer {
   padding-top: 297px;
   &--padding {
-    padding-top: 80px;
+    padding-top: 0;
     & .footer__container {
       padding-top: 72px;
     }
@@ -42,8 +42,6 @@
     font-size: 2.2rem;
     line-height: 100%;
   }
-  &__cta-description {
-  }
   &__cta-btn {
     padding: 17px;
   }
@@ -56,9 +54,8 @@
     justify-content: space-between;
     margin-bottom: 35px;
     padding-bottom: 40px;
+    gap: 30px;
     border-bottom: 1px solid #9797971a;
-  }
-  &__logo {
   }
   &__bottom {
     display: flex;
@@ -71,6 +68,7 @@
     max-width: 578px;
     width: 100%;
     gap: 20px;
+    flex-wrap: wrap;
     justify-content: space-between;
     font-size: 1.09rem;
     font-style: normal;
@@ -80,19 +78,21 @@
     display: flex;
     flex-direction: column;
   }
-  &__office-title {
-  }
   &__address {
     max-width: 200px;
+  }
+  &__office-title {
+    font-weight: 500;
   }
   &__contact-block {
     display: flex;
     flex-direction: column;
-  }
-  &__contact-title {
+    font-weight: 500;
   }
   &__social-block {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     gap: 16px;
     line-height: 0;
   }
@@ -193,6 +193,12 @@
       align-items: center;
       text-align: center;
       gap: 40px;
+    }
+    &__contact-block {
+      font-weight: 400;
+    }
+    &__contact-title {
+      font-weight: 500;
     }
   }
 }

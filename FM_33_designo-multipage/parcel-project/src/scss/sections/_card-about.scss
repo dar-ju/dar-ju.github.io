@@ -3,8 +3,6 @@
 .card-about {
   padding-top: 80px;
   padding-bottom: 80px;
-  &__container {
-  }
   &__block {
     display: flex;
     border-radius: 15px;
@@ -50,6 +48,7 @@
   }
 }
 
+/* Media */
 @media (max-width: var.$tablet) {
   .card-about {
     padding-top: 60px;
@@ -81,12 +80,9 @@
 @media (max-width: var.$mobile) {
   .card-about {
     padding-top: 0;
-    // padding-bottom: 60px;
     &__block {
       border-radius: initial;
-      // &--bckg1 {
       background-position: left bottom -16%;
-      // }
     }
     &__content {
       padding: 74px 24px;
@@ -103,11 +99,6 @@
     }
     &__img-wrapper {
       min-width: initial;
-    }
-    &__img {
-      // width: 100%;
-      // max-height: 320px;
-      // }
     }
   }
 }
