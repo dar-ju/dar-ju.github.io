@@ -1,5 +1,20 @@
 export const data = [
   {
+    "designo-multipage/build": {
+      "id": 33,
+      "en": {
+        "title": "Designo agency website",
+        "description": "Five-page site with PerfectPixel layout on all resolutions and pages. Parcel and Posthtml tools were used. All pages are PageSpeed 100 and close to it.",
+      },
+      "ru": {
+        "title": "Сайт агенства Designo",
+        "description": "Пятистраничный сайт с PerfectPixel версткой на всех разрешениях и страницах. Использовался сборщик Parcel и шаблонизатор Posthtml. Все страницы по PageSpeed 100 и близко к этому.",
+      },
+      "urlFm": "https://www.frontendmentor.io/solutions/mood-tracking-app-EhXf-jtXMO",
+      "stack": ['html', 'parcel', 'posthtml', 'sass/scss', 'bem']
+    }
+  },
+  {
     "mood-tracking": {
       "id": 32,
       "en": {
