@@ -1,8 +1,8 @@
 # Frontend Mentor - Designo agency website
 
-![PageSpeed](./design/Screenshot_1.jpg)
+![PageSpeed](./build/design/Screenshot_1.jpg)
 
-![Design preview for the Designo agency website coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Designo agency website coding challenge](./build/design/desktop-preview.jpg)
 
 ## Links
 
