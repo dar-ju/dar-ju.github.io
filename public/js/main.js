@@ -90,7 +90,7 @@ async function createLatestCard() {
         <a class="btn link" href="${latest.urlGit}">Github</a>
       </div>
     </div>
-    <img class="lazyload latest__img" data-src="${latest.image}" alt="${latestName} challenge image">
+    <img class="lazyload latest__img" data-src="${latest.image}" alt="${latestName} challenge image" width="900" height="660">
   `
   latestCard.insertAdjacentHTML("beforeend", cardLatest)
 }
@@ -122,7 +122,7 @@ async function createSectionCards(item) {
 
   const cardAll = `
     <li class="all__card">
-      <img class="lazyload all__image" data-src="${image}" alt="${taskName} challenge image">
+      <img class="lazyload all__image" data-src="${image}" alt="${taskName} challenge image" width="330" height="240">
       <div class="all__wrapper">
         <div class="all__about">
           <h3 class="all__name">${title}</h3>
