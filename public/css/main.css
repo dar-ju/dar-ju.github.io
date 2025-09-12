@@ -278,6 +278,7 @@ body {
 
 .all__image {
   max-height: 240px;
+  align-self: center;
   border-radius: 5px;
   object-fit: cover;
   object-position: top;
