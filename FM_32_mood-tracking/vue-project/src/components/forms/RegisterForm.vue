@@ -22,14 +22,14 @@ const form = ref<HTMLFormElement | null>(null)
 const handleSubmit = async (event: Event) => {
   const currentForm = form.value
   if (!currentForm) return
-  if (!currentForm.checkValidity()) {
+  const formData = new FormData(currentForm)
+  const email = formData.get('email')?.toString() || ''
+  const password = formData.get('password')?.toString() || ''
+  if (!currentForm.checkValidity() || !isValidEmail(email)) {
     event.preventDefault()
     event.stopPropagation()
     currentForm.classList.add('was-validated')
   } else {
-    const formData = new FormData(currentForm)
-    const email = formData.get('email')?.toString() || ''
-    const password = formData.get('password')?.toString() || ''
     userStore.registerData.email = email
     userStore.registerData.password = password
     spinnerLoading.value = true
@@ -37,6 +37,13 @@ const handleSubmit = async (event: Event) => {
     spinnerLoading.value = false
     userStore.isUserChecked = true
   }
+}
+
+const isValidEmail = (email: string): boolean => {
+  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+  console.log(re.test(email))
+
+  return re.test(email)
 }
 </script>
 
@@ -58,6 +65,7 @@ const handleSubmit = async (event: Event) => {
             placeholder="name@mail.com"
             aria-describedby="emailHelp"
             required
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
             @input="[(userStore.isUserRegistered = false), (userStore.isUserChecked = false)]"
           />
           <div class="invalid-feedback">
