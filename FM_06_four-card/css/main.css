@@ -1,30 +1,30 @@
 /* MAIN */
 body {
-    min-width: 375px;
-    font-family: "Poppins", sans-serif;
-    font-size: 14px;
-    font-weight: 200;
-    background-color: var(--color-very-light-gray);
-    color: var(--color-very-dark-blue);
+  min-width: 375px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 200;
+  background-color: var(--color-very-light-gray);
+  color: var(--color-very-dark-blue);
 }
 
 .container {
-    display: block;
-    max-width: 1440px;
-    width: 100%;
-    margin: auto;
-    padding-left: 50px;
-    padding-right: 50px;
-    text-align: center;
+  display: block;
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  text-align: center;
 }
 
 .project-structure {
-    display: flex;
-    padding-top: 81px;
-    padding-bottom: 81px;
-    gap: 66px;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  padding-top: 81px;
+  padding-bottom: 81px;
+  gap: 66px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .project-structure__title-block {
@@ -69,19 +69,35 @@ body {
 }
 
 .project-structure__card_cyan {
-  background: linear-gradient(to bottom, var(--color-cyan) 4px, var(--color-white) 4px);
+  background: linear-gradient(
+    to bottom,
+    var(--color-cyan) 4px,
+    var(--color-white) 4px
+  );
 }
 
 .project-structure__card_red {
-  background: linear-gradient(to bottom, var(--color-red) 4px, var(--color-white) 4px);
+  background: linear-gradient(
+    to bottom,
+    var(--color-red) 4px,
+    var(--color-white) 4px
+  );
 }
 
 .project-structure__card_orange {
-  background: linear-gradient(to bottom, var(--color-orange) 4px, var(--color-white) 4px);
+  background: linear-gradient(
+    to bottom,
+    var(--color-orange) 4px,
+    var(--color-white) 4px
+  );
 }
 
 .project-structure__card_blue {
-  background: linear-gradient(to bottom, var(--color-blue) 4px, var(--color-white) 4px);
+  background: linear-gradient(
+    to bottom,
+    var(--color-blue) 4px,
+    var(--color-white) 4px
+  );
 }
 
 .project-structure__card-wrapper {
@@ -96,20 +112,19 @@ body {
 }
 
 .project-structure__card-wrapper_supervisor {
-  background-image: url('../images/icon-supervisor.svg');
-
+  background-image: url("../images/icon-supervisor.svg");
 }
 
 .project-structure__card-wrapper_builder {
-  background-image: url('../images/icon-team-builder.svg');
+  background-image: url("../images/icon-team-builder.svg");
 }
 
 .project-structure__card-wrapper_karma {
-  background-image: url('../images/icon-karma.svg');
+  background-image: url("../images/icon-karma.svg");
 }
 
 .project-structure__card-wrapper_calculator {
-  background-image: url('../images/icon-calculator.svg');
+  background-image: url("../images/icon-calculator.svg");
 }
 
 .project-structure__card-title {
@@ -123,7 +138,6 @@ body {
   line-height: 22px;
   font-size: 13px;
 }
-
 
 /* MEDIA */
 @media (max-width: 768px) {
@@ -150,6 +164,7 @@ body {
   }
 
   .project-structure__cards {
+    max-width: 500px;
     flex-wrap: wrap;
     gap: 25px;
   }
@@ -163,7 +178,7 @@ body {
     max-width: 100%;
     min-height: 222px;
     padding: 29px;
-    background-size: 17%
+    background-size: 17%;
   }
 
   .project-structure__card-title {
